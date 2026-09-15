@@ -24,37 +24,50 @@ jobs:
       - name: Validate vocabulary structure
         id: terms
         continue-on-error: true
-        run: node scripts/validate-terms.mjs 2>&1 | tee audit-logs/terms.txt
+        run: |
+          set -o pipefail
+          node scripts/validate-terms.mjs 2>&1 | tee audit-logs/terms.txt
 
       - name: Audit vocabulary content
         id: content
         continue-on-error: true
-        run: node scripts/audit-content.mjs 2>&1 | tee audit-logs/content.txt
+        run: |
+          set -o pipefail
+          node scripts/audit-content.mjs 2>&1 | tee audit-logs/content.txt
 
       - name: Validate visuals and drawing contracts
         id: visuals
         continue-on-error: true
-        run: node scripts/validate-visuals.mjs 2>&1 | tee audit-logs/visuals.txt
+        run: |
+          set -o pipefail
+          node scripts/validate-visuals.mjs 2>&1 | tee audit-logs/visuals.txt
 
       - name: Validate PWA dependency contract
         id: pwa
         continue-on-error: true
-        run: node scripts/validate-pwa.mjs 2>&1 | tee audit-logs/pwa.txt
+        run: |
+          set -o pipefail
+          node scripts/validate-pwa.mjs 2>&1 | tee audit-logs/pwa.txt
 
       - name: Test learning state behavior
         id: learning
         continue-on-error: true
-        run: node scripts/test-learning-state.mjs 2>&1 | tee audit-logs/learning-state.txt
+        run: |
+          set -o pipefail
+          node scripts/test-learning-state.mjs 2>&1 | tee audit-logs/learning-state.txt
 
       - name: Test practice engine behavior
         id: practice
         continue-on-error: true
-        run: node scripts/test-practice-engine.mjs 2>&1 | tee audit-logs/practice-engine.txt
+        run: |
+          set -o pipefail
+          node scripts/test-practice-engine.mjs 2>&1 | tee audit-logs/practice-engine.txt
 
       - name: Check JavaScript syntax
         id: syntax
         continue-on-error: true
         run: |
+          set -o pipefail
           {
             node --check src/app.js
             node --check src/learning-state.js
@@ -70,7 +83,9 @@ jobs:
       - name: Validate manifest JSON
         id: manifest
         continue-on-error: true
-        run: node -e "JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); console.log('Manifest JSON OK')" 2>&1 | tee audit-logs/manifest.txt
+        run: |
+          set -o pipefail
+          node -e "JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); console.log('Manifest JSON OK')" 2>&1 | tee audit-logs/manifest.txt
 
       - name: Upload audit logs
         if: always()
