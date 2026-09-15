@@ -26,6 +26,7 @@ The vocabulary covers drainage, underground utilities, pipe embedment, earthwork
 - **Typed active recall** without answer choices.
 - Definition, scenario, diagram, and fill-in-the-blank questions.
 - **Similar terms** practice for confusing pairs such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
+- **My focus list** for words explicitly added from chat because the owner encountered or wants to learn them now.
 - **Category focus** for Drainage, Earthworks, Utilities, Roadworks, Estimating, Tendering, etc.
 - **Adaptive Smart Review** that weights overdue words, error rate, recent mistakes, and mastery level instead of using a fixed priority list.
 - **Quick 10** sessions with saved session history.
@@ -35,10 +36,32 @@ The vocabulary covers drainage, underground utilities, pipe embedment, earthwork
 - Due-review queue.
 - **Daily goal** with configurable reviews/day.
 - **Learning streak** based on completed daily goals.
-- **7-day activity chart**, total review count, recent session history, and hardest-word list.
+- **7-day activity chart**, total review count, recent session history, hardest-word list, and focus-word count.
 - **Drawing Challenge** using generic civil plan/section scenes. Answers also update the spaced-repetition record for the vocabulary term being tested.
-- Export/import of the complete learning state as JSON.
+- Export/import of the complete browser learning state as JSON.
 - Installable PWA shell with offline use after the first successful online load.
+
+## My focus list
+
+`data/focus-terms.json` is the bridge between chat and the learning app.
+
+When the owner asks ChatGPT or Claude to **add a word to the dictionary**, that means the word should become a current learning target even if the vocabulary entry already exists.
+
+Example:
+
+> Add `duct bank` to my construction dictionary.
+
+Expected behaviour:
+
+1. Search for `duct bank` in the existing vocabulary.
+2. If missing, create the full multilingual entry and diagram.
+3. If it already exists, reuse the existing canonical entry rather than creating a duplicate.
+4. In both cases, add/update its canonical ID in `data/focus-terms.json`.
+5. The app will then show it as `focus` and it can be trained with **Practice -> My focus list**.
+
+Repeated requests update `last_requested_at` and `request_count` instead of creating duplicates. Therefore a response that only says “this term already exists” is incomplete.
+
+The initial focus-list entry is `duct-bank`, added after this behaviour was introduced.
 
 ## Drawing Challenge
 
@@ -66,16 +89,19 @@ The app automatically migrates the previous `construction-vocab-progress-v1` loc
 
 Learning state is intentionally **not committed to GitHub**. Use **Export progress** before clearing browser data or moving devices, then **Import progress** on the new device.
 
+The repository focus list is different: it intentionally is committed so a chat request can change what the owner wants to study without needing access to the browser's localStorage.
+
 ## Vocabulary files
 
 Vocabulary is modular so it can grow without turning one JSON file into a maintenance problem:
 
 - `data/terms.json` - original 31-term core set.
 - `data/terms-expansion.json` - 29-term expansion set and default home for future additions.
+- `data/focus-terms.json` - current personal learning-focus IDs requested through chat.
 - `data/categories.json` - controlled category list.
 - `data/term.schema.json` - vocabulary schema.
 
-The app loads all vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs across files.
+The app loads all vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs across files and verifies that every focus-list ID exists.
 
 ## Visual and learning modules
 
@@ -84,16 +110,16 @@ The app loads all vocabulary modules and treats them as one 60-term dictionary. 
 - `src/visuals-all.js` - combined renderer and quiz-safe label stripping.
 - `src/drawing-challenges.js` - generic multi-feature civil drawing exercises.
 - `src/learning-state.js` - progress migration, adaptive weighting, daily goal, streaks, and session history.
-- `src/app.js` - application orchestration and practice logic.
+- `src/app.js` - application orchestration, focus-list loading, and practice logic.
 - `src/styles.css` - main interface styles.
 - `src/quiz.css` - typed recall and quiz styling.
 - `src/progress.css` - learning analytics and drawing challenge styling.
 - `AI_INSTRUCTIONS.md` - mandatory maintenance rules for ChatGPT / Claude.
-- `scripts/validate-terms.mjs` - multilingual vocabulary quality and duplicate checks.
-- `scripts/validate-visuals.mjs` - diagram, drawing challenge, and frontend contract checks.
+- `scripts/validate-terms.mjs` - multilingual vocabulary, duplicate, and focus-list checks.
+- `scripts/validate-visuals.mjs` - diagram, drawing challenge, focus-list frontend, and other contract checks.
 - `manifest.webmanifest` / `sw.js` - installable/offline app support.
 
-Every term must have a dedicated diagram. CI fails if visual coverage is incomplete or if a Drawing Challenge references a missing term.
+Every term must have a dedicated diagram. CI fails if visual coverage is incomplete or if a Drawing Challenge/focus-list entry references a missing term.
 
 ## Run locally
 
@@ -147,15 +173,19 @@ After GitHub Pages is enabled and the site has been opened once online:
 - **iPhone / iPad:** Safari -> Share -> Add to Home Screen.
 - **Android / Chrome:** browser menu -> Install app / Add to Home screen.
 
-The service worker caches the trainer, vocabulary, diagrams, learning-state code, and drawing challenges for offline use.
+The service worker caches the trainer for offline use. Vocabulary JSON and the focus list use **network-first** loading when online so chat-driven repository updates appear without manually changing the PWA cache version every time; cached copies are used when offline.
 
 ## Add words through ChatGPT or Claude
 
-A typical request can be as short as:
+In a chat with GitHub connected, a request can be as short as:
 
-> Add `hydrant`, `transformer pad`, and `traffic control` to my construction vocabulary trainer.
+> Add `hydrant` to my construction dictionary in `taiduc1302/construction-vocabulary-trainer`.
 
-The AI must read `AI_INSTRUCTIONS.md`, check all vocabulary files for duplicates, add the multilingual entry, add a dedicated diagram, add a Similar terms pairing when useful, run validation, and preserve existing term IDs whenever possible.
+or:
+
+> I saw `stub-out` today. Add it to my construction dictionary.
+
+The AI must read `AI_INSTRUCTIONS.md`. If the word already exists, it must still update **My focus list** rather than stopping. If the word is new, it creates the full vocabulary content and then also adds it to the focus list.
 
 You can also send a screenshot or a term encountered at work and say:
 
@@ -173,4 +203,4 @@ Wrong answers reduce the level immediately. Smart Review additionally considers 
 
 ## Privacy
 
-The repository contains generic vocabulary data only. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, private project data, or exported personal learning-state files.
+The repository contains generic vocabulary data and a non-confidential list of vocabulary IDs the owner wants to study. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, private project data, or exported personal browser learning-state files.
