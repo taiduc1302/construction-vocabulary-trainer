@@ -17,7 +17,7 @@ The trainer currently includes **60 civil-construction terms**, each with:
 - Related terminology and common-mistake notes.
 - A dedicated educational SVG-style diagram.
 
-The vocabulary now covers drainage, underground utilities, pipe embedment, earthworks, pavement structure, concrete, duct banks, civil drawings/survey, estimating, and tender language.
+The vocabulary covers drainage, underground utilities, pipe embedment, earthworks, pavement structure, concrete, duct banks, civil drawings/survey, estimating, and tender language.
 
 ## Learning features
 
@@ -25,12 +25,14 @@ The vocabulary now covers drainage, underground utilities, pipe embedment, earth
 - English -> Russian practice.
 - Russian -> English practice.
 - Vietnamese -> English practice.
+- **Typed active recall**: type the English term yourself without answer choices; capitalization and hyphens are normalized.
 - Definition -> term questions.
 - Scenario -> term questions.
 - Diagram -> term questions with answer labels removed.
 - Fill-in-the-blank questions.
 - **Similar terms** practice for commonly confused concepts such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
-- Mixed practice mode that also includes Similar terms questions.
+- **Category focus** so a session can target only Drainage, Earthworks, Utilities, Roadworks, Estimating, etc.
+- Mixed practice mode that includes typed recall and Similar terms questions.
 - **Smart review** that prioritizes due words, then weak words, then new words.
 - **Quick 10** sessions for short study breaks.
 - Browser speech pronunciation without revealing hidden answers before recall questions.
@@ -57,13 +59,13 @@ The app loads all vocabulary modules and treats them as one 60-term dictionary. 
 - `src/visuals.js` - diagrams for the core vocabulary.
 - `src/visuals-extra.js` - diagrams for the expansion vocabulary.
 - `src/visuals-all.js` - combined renderer and quiz-safe label stripping.
-- `src/quiz.css` - quiz-specific styling.
+- `src/quiz.css` - quiz-specific styling including typed recall.
 
 Every term must have a dedicated diagram. CI fails if visual coverage is incomplete.
 
 ## Other main files
 
-- `src/app.js` - dictionary, quiz, Similar terms, spaced review, speech and session logic.
+- `src/app.js` - dictionary, typed recall, Similar terms, category focus, spaced review, speech and session logic.
 - `src/styles.css` - main interface styles.
 - `AI_INSTRUCTIONS.md` - mandatory maintenance rules for ChatGPT / Claude.
 - `scripts/validate-terms.mjs` - multilingual vocabulary quality and duplicate checks.
