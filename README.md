@@ -22,26 +22,49 @@ The vocabulary covers drainage, underground utilities, pipe embedment, earthwork
 ## Learning features
 
 - Search and category filters.
-- English -> Russian practice.
-- Russian -> English practice.
-- Vietnamese -> English practice.
-- **Typed active recall**: type the English term yourself without answer choices; capitalization and hyphens are normalized.
-- Definition -> term questions.
-- Scenario -> term questions.
-- Diagram -> term questions with answer labels removed.
-- Fill-in-the-blank questions.
-- **Similar terms** practice for commonly confused concepts such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
-- **Category focus** so a session can target only Drainage, Earthworks, Utilities, Roadworks, Estimating, etc.
-- Mixed practice mode that includes typed recall and Similar terms questions.
-- **Smart review** that prioritizes due words, then weak words, then new words.
-- **Quick 10** sessions for short study breaks.
+- English -> Russian, Russian -> English, and Vietnamese -> English practice.
+- **Typed active recall** without answer choices.
+- Definition, scenario, diagram, and fill-in-the-blank questions.
+- **Similar terms** practice for confusing pairs such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
+- **Category focus** for Drainage, Earthworks, Utilities, Roadworks, Estimating, Tendering, etc.
+- **Adaptive Smart Review** that weights overdue words, error rate, recent mistakes, and mastery level instead of using a fixed priority list.
+- **Quick 10** sessions with saved session history.
 - Browser speech pronunciation without revealing hidden answers before recall questions.
 - Spaced repetition using `new -> learning -> review -> mastered`.
-- Weak-word ranking based on mistakes.
+- Adaptive weak-word ranking.
 - Due-review queue.
-- Accuracy and progress statistics.
-- Export/import learning progress as JSON.
+- **Daily goal** with configurable reviews/day.
+- **Learning streak** based on completed daily goals.
+- **7-day activity chart**, total review count, recent session history, and hardest-word list.
+- **Drawing Challenge** using generic civil plan/section scenes. Answers also update the spaced-repetition record for the vocabulary term being tested.
+- Export/import of the complete learning state as JSON.
 - Installable PWA shell with offline use after the first successful online load.
+
+## Drawing Challenge
+
+`src/drawing-challenges.js` contains generic educational drawings, never project drawings. The initial scenes are:
+
+1. Road drainage plan — catch basin, storm sewer, manhole, culvert, ditch.
+2. Road structure section — overlay, base course, subbase, subgrade, curb and gutter.
+3. Utility trench section — backfill, bedding, duct bank, shoring, trench.
+
+Each feature is identified by a neutral callout letter. The learner is asked which callout corresponds to a vocabulary term.
+
+## Adaptive learning state
+
+Learning data is stored locally in the browser in a versioned state managed by `src/learning-state.js`.
+
+The v2 state contains:
+
+- per-term spaced-repetition progress;
+- recent correct/incorrect results for adaptive weighting;
+- daily attempts and correct answers;
+- configurable daily goal;
+- completed Quick-session history.
+
+The app automatically migrates the previous `construction-vocab-progress-v1` localStorage format into the v2 state. Existing learned-word progress is therefore preserved when upgrading.
+
+Learning state is intentionally **not committed to GitHub**. Use **Export progress** before clearing browser data or moving devices, then **Import progress** on the new device.
 
 ## Vocabulary files
 
@@ -54,23 +77,23 @@ Vocabulary is modular so it can grow without turning one JSON file into a mainte
 
 The app loads all vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs across files.
 
-## Visual files
+## Visual and learning modules
 
 - `src/visuals.js` - diagrams for the core vocabulary.
 - `src/visuals-extra.js` - diagrams for the expansion vocabulary.
 - `src/visuals-all.js` - combined renderer and quiz-safe label stripping.
-- `src/quiz.css` - quiz-specific styling including typed recall.
-
-Every term must have a dedicated diagram. CI fails if visual coverage is incomplete.
-
-## Other main files
-
-- `src/app.js` - dictionary, typed recall, Similar terms, category focus, spaced review, speech and session logic.
+- `src/drawing-challenges.js` - generic multi-feature civil drawing exercises.
+- `src/learning-state.js` - progress migration, adaptive weighting, daily goal, streaks, and session history.
+- `src/app.js` - application orchestration and practice logic.
 - `src/styles.css` - main interface styles.
+- `src/quiz.css` - typed recall and quiz styling.
+- `src/progress.css` - learning analytics and drawing challenge styling.
 - `AI_INSTRUCTIONS.md` - mandatory maintenance rules for ChatGPT / Claude.
 - `scripts/validate-terms.mjs` - multilingual vocabulary quality and duplicate checks.
-- `scripts/validate-visuals.mjs` - diagram coverage and frontend contract checks.
+- `scripts/validate-visuals.mjs` - diagram, drawing challenge, and frontend contract checks.
 - `manifest.webmanifest` / `sw.js` - installable/offline app support.
+
+Every term must have a dedicated diagram. CI fails if visual coverage is incomplete or if a Drawing Challenge references a missing term.
 
 ## Run locally
 
@@ -124,9 +147,7 @@ After GitHub Pages is enabled and the site has been opened once online:
 - **iPhone / iPad:** Safari -> Share -> Add to Home Screen.
 - **Android / Chrome:** browser menu -> Install app / Add to Home screen.
 
-The service worker caches the trainer, both vocabulary modules, and all diagram modules for offline use.
-
-Learning progress is stored in that browser/device. Use **Export progress** before clearing browser data or moving to another device, then use **Import progress** on the new device.
+The service worker caches the trainer, vocabulary, diagrams, learning-state code, and drawing challenges for offline use.
 
 ## Add words through ChatGPT or Claude
 
@@ -142,16 +163,14 @@ You can also send a screenshot or a term encountered at work and say:
 
 The AI should identify the concept but create a **generic educational schematic**, not commit confidential project drawings.
 
-## Learning model
+## Review intervals
 
-Each browser keeps personal progress separately. Correct answers increase the review interval; wrong answers shorten it and increase the weak-word score.
-
-Current review intervals are approximately:
+Current spaced-review intervals are approximately:
 
 `1 -> 3 -> 7 -> 14 -> 30 -> 60 days`
 
-Progress is intentionally **not committed to GitHub**.
+Wrong answers reduce the level immediately. Smart Review additionally considers recent mistakes and overdue time when selecting the next word.
 
 ## Privacy
 
-The repository contains generic vocabulary data only. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, or private project data.
+The repository contains generic vocabulary data only. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, private project data, or exported personal learning-state files.
