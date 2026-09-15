@@ -33,7 +33,7 @@ for(const requiredId of requiredIds){
   if(!index.includes(`id="${requiredId}"`))errors.push(`index.html is missing required element #${requiredId}`);
 }
 
-for(const importPath of ['./visuals-all.js','./learning-state.js','./drawing-challenges.js']){
+for(const importPath of ['./visuals-all.js','./learning-state.js','./practice-engine.js','./drawing-challenges.js']){
   if(!app.includes(`from '${importPath}'`))errors.push(`app.js is not wired to ${importPath}`);
 }
 if(!app.includes("mode==='contrast'"))errors.push('app.js is missing similar-term contrast practice');
@@ -42,6 +42,7 @@ if(!app.includes('adaptiveWeight')||!app.includes('weightedPick'))errors.push('a
 if(!index.includes('value="contrast"')||!index.includes('value="typed"'))errors.push('index.html is missing advanced practice options');
 if(!index.includes('value="focus"'))errors.push('index.html is missing My focus list practice scope');
 if(!app.includes("fetchJson('data/focus-terms.json')"))errors.push('app.js is not loading data/focus-terms.json');
+if(!app.includes('session.poolIds.length')||!app.includes('poolIds:initialPool.map'))errors.push('Quick 10 is not freezing its starting practice pool');
 
 function classesUsed(source,prefix){
   const out=new Set();
@@ -97,3 +98,4 @@ if(errors.length){
 console.log(`Visual coverage OK: ${terms.length}/${terms.length} terms have dedicated diagrams.`);
 console.log(`Visual CSS coverage OK: ${definedTv.size} tv-* classes defined; every used class resolves.`);
 console.log(`Drawing challenge coverage OK: ${scenes.length} scenes / ${drawingTargets} valid callouts; every dc-* class resolves.`);
+console.log('Practice app contract OK: focus scope, strict practice engine and frozen Quick 10 pool are wired.');
