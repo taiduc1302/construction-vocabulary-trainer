@@ -12,6 +12,7 @@ const visualSources=[
 const app=fs.readFileSync(new URL('../src/app.js',import.meta.url),'utf8');
 const index=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const drawings=fs.readFileSync(new URL('../src/drawing-challenges.js',import.meta.url),'utf8');
+const serviceWorker=fs.readFileSync(new URL('../sw.js',import.meta.url),'utf8');
 
 const missing=terms.filter(term=>!visualSources.includes(`'${term.id}':`)).map(term=>term.id);
 if(missing.length){
@@ -53,6 +54,14 @@ if(!index.includes('value="contrast"')||!index.includes('value="typed"')){
   console.error('index.html is missing advanced practice options');
   process.exit(1);
 }
+if(!index.includes('value="focus"')||!app.includes("case 'focus'")||!app.includes("fetchJson('data/focus-terms.json')")){
+  console.error('Focus-list practice is not fully wired into the frontend');
+  process.exit(1);
+}
+if(!serviceWorker.includes("'./data/focus-terms.json'")||!serviceWorker.includes('isVocabularyData')){
+  console.error('Service worker is not configured to cache and refresh focus/vocabulary data');
+  process.exit(1);
+}
 
 const drawingTermIds=[...drawings.matchAll(/termId:'([^']+)'/g)].map(match=>match[1]);
 if(!drawingTermIds.length){
@@ -67,3 +76,4 @@ if(missingDrawingTerms.length){
 
 console.log(`Visual coverage OK: ${terms.length}/${terms.length} terms have dedicated diagrams.`);
 console.log(`Drawing challenge coverage OK: ${drawingTermIds.length} callouts reference valid terms.`);
+console.log('Focus-list practice and refresh contract OK.');
