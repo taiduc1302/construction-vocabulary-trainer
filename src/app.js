@@ -1,6 +1,6 @@
 import {renderTermVisual} from './visuals-all.js';
 import {getDrawingScenes,randomDrawingTarget,renderDrawingScene} from './drawing-challenges.js';
-import {normalizeRecall,recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions} from './practice-engine.js';
+import {recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions} from './practice-engine.js';
 import {
   loadLearningState,saveLearningState,recordFor,dueNow,recordAnswer,weaknessScore,
   adaptiveWeight,weightedPick,dailySummary,calculateStreak,setDailyGoal,recordSession,
@@ -45,7 +45,7 @@ let focusIds=new Set();
 let learningState=loadLearningState();
 let currentQuestion=null;
 let currentDrawingTarget=null;
-let session={active:false,total:0,done:0,correct:0,startedAt:null,mode:null,scope:null,category:null,seenIds:new Set()};
+let session={active:false,total:0,done:0,correct:0,startedAt:null,mode:null,scope:null,category:null,seenIds:new Set(),poolIds:[]};
 
 function progressRecord(id){return recordFor(learningState,id)}
 function termById(id){return terms.find(t=>t.id===id)}
@@ -145,6 +145,9 @@ function dueTerms(){return terms.filter(t=>{const r=progressRecord(t.id);return 
 function weakTerms(){return terms.filter(t=>weaknessScore(progressRecord(t.id))>0).sort((a,b)=>weaknessScore(progressRecord(b.id))-weaknessScore(progressRecord(a.id)))}
 
 function selectedPool(){
+  if(session.active&&session.poolIds.length){
+    return session.poolIds.map(termById).filter(Boolean);
+  }
   return selectPracticePool({
     terms,
     scope:els.practiceScope.value,
@@ -159,7 +162,7 @@ function selectedPool(){
 function pickPracticeTerm(pool){
   if(!pool.length)return null;
   const candidates=session.active?preferUnseen(pool,session.seenIds):pool;
-  const scope=els.practiceScope.value;
+  const scope=session.active?session.scope:els.practiceScope.value;
   if(scope==='smart'||scope==='focus')return weightedPick(candidates,t=>adaptiveWeight(progressRecord(t.id)));
   return candidates[Math.floor(Math.random()*candidates.length)];
 }
@@ -338,13 +341,15 @@ function submitTypedAnswer(){
 
 function nextQuestion(){makeQuestion()}
 function startQuickSession(){
-  if(!selectedPool().length){
+  const initialPool=selectedPool();
+  if(!initialPool.length){
     renderEmptyPractice(scopeEmptyMessage());
     return;
   }
   session={
     active:true,total:10,done:0,correct:0,startedAt:new Date().toISOString(),
-    mode:'mixed',scope:els.practiceScope.value,category:els.practiceCategory.value,seenIds:new Set()
+    mode:'mixed',scope:els.practiceScope.value,category:els.practiceCategory.value,
+    seenIds:new Set(),poolIds:initialPool.map(term=>term.id)
   };
   els.practiceMode.value='mixed';
   setSessionControlsLocked(true);
