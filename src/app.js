@@ -39,6 +39,8 @@ const confusablePairs=[
 const drawingScenes=getDrawingScenes();
 let terms=[];
 let categories=[];
+let focusEntries=[];
+let focusIds=new Set();
 let learningState=loadLearningState();
 let currentQuestion=null;
 let currentDrawingTarget=null;
@@ -117,7 +119,8 @@ function renderDictionary(){
     node.querySelector('.category-pill').textContent=categoryLabel(t.category);
     node.querySelector('.term-title').textContent=t.term;
     node.querySelector('.pronunciation').textContent=t.pronunciation||'';
-    node.querySelector('.status-badge').textContent=progressRecord(t.id).status;
+    const status=progressRecord(t.id).status;
+    node.querySelector('.status-badge').textContent=focusIds.has(t.id)?`${status} · focus`:status;
     node.querySelector('.visual-box').innerHTML=renderTermVisual(t);
     node.querySelector('.definition').textContent=t.definition_en;
     node.querySelector('.ru-text').textContent=t.translation_ru.join(', ');
@@ -144,6 +147,7 @@ function blankExample(t){const re=new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/
 function dueTerms(){return terms.filter(t=>{const r=progressRecord(t.id);return r.status!=='new'&&dueNow(r)})}
 function weakTerms(){return terms.filter(t=>weaknessScore(progressRecord(t.id))>0).sort((a,b)=>weaknessScore(progressRecord(b.id))-weaknessScore(progressRecord(a.id)))}
 function newTerms(){return terms.filter(t=>progressRecord(t.id).status==='new')}
+function focusTerms(){return terms.filter(t=>focusIds.has(t.id))}
 
 function applyPracticeCategory(pool){
   const cat=els.practiceCategory.value;
@@ -157,6 +161,7 @@ function applyPracticeCategory(pool){
 function selectedPool(){
   let pool;
   switch(els.practiceScope.value){
+    case 'focus':pool=focusTerms().length?focusTerms():terms;break;
     case 'due':pool=dueTerms().length?dueTerms():terms;break;
     case 'weak':pool=weakTerms().length?weakTerms():terms;break;
     case 'new':pool=newTerms().length?newTerms():terms;break;
@@ -167,13 +172,18 @@ function selectedPool(){
 
 function pickPracticeTerm(pool){
   if(!pool.length)return null;
-  if(els.practiceScope.value==='smart')return weightedPick(pool,t=>adaptiveWeight(progressRecord(t.id)));
+  if(els.practiceScope.value==='smart'||els.practiceScope.value==='focus')return weightedPick(pool,t=>adaptiveWeight(progressRecord(t.id)));
   return pool[Math.floor(Math.random()*pool.length)];
 }
 
 function makeContrastQuestion(){
   const selectedCategory=els.practiceCategory.value;
+  const focusScope=els.practiceScope.value==='focus'&&focusIds.size>0;
   let available=confusablePairs.map(([a,b])=>[termById(a),termById(b)]).filter(([a,b])=>a&&b);
+  if(focusScope){
+    const focusedPairs=available.filter(([a,b])=>focusIds.has(a.id)||focusIds.has(b.id));
+    if(focusedPairs.length)available=focusedPairs;
+  }
   if(selectedCategory!=='all'){
     const categoryPairs=available.filter(([a,b])=>a.category===selectedCategory||b.category===selectedCategory);
     if(categoryPairs.length)available=categoryPairs;
@@ -181,7 +191,11 @@ function makeContrastQuestion(){
   const pair=available[Math.floor(Math.random()*available.length)];
   const [first,second]=pair;
   const possibleTargets=selectedCategory==='all'?[first,second]:[first,second].filter(t=>t.category===selectedCategory);
-  const candidates=possibleTargets.length?possibleTargets:[first,second];
+  let candidates=possibleTargets.length?possibleTargets:[first,second];
+  if(focusScope){
+    const focusedTargets=candidates.filter(t=>focusIds.has(t.id));
+    if(focusedTargets.length)candidates=focusedTargets;
+  }
   const target=weightedPick(candidates,t=>adaptiveWeight(progressRecord(t.id)));
   const other=target.id===first.id?second:first;
   const sameCategory=terms.filter(t=>t.category===target.category&&t.id!==target.id&&t.id!==other.id);
@@ -304,7 +318,7 @@ function startQuickSession(){
 }
 function renderSessionStatus(){
   if(!session.active){
-    if(!els.sessionStatus.textContent)els.sessionStatus.textContent='Smart adaptive review weights overdue words, error rate, recent mistakes and mastery level.';
+    if(!els.sessionStatus.textContent)els.sessionStatus.textContent=`Smart review adapts to your mistakes. My focus list currently contains ${focusIds.size} word${focusIds.size===1?'':'s'} explicitly added from chat.`;
     return;
   }
   els.sessionStatus.innerHTML=`Quick 10: question <strong>${Math.min(session.done+1,session.total)}</strong> of ${session.total} · score ${session.correct}/${session.done}`;
@@ -319,7 +333,8 @@ function renderReviewLists(){
 }
 function row(t,right){
   const r=progressRecord(t.id);
-  return `<div class="list-row"><div><strong>${escapeHtml(t.term)}</strong><div class="small-muted">${escapeHtml(t.definition_en)}</div><div class="tiny-muted">${escapeHtml(categoryLabel(t.category))} · ${r.correct||0} correct / ${r.wrong||0} wrong</div></div><span>${escapeHtml(right)}</span></div>`;
+  const focus=focusIds.has(t.id)?' · focus':'';
+  return `<div class="list-row"><div><strong>${escapeHtml(t.term)}</strong><div class="small-muted">${escapeHtml(t.definition_en)}</div><div class="tiny-muted">${escapeHtml(categoryLabel(t.category))}${focus} · ${r.correct||0} correct / ${r.wrong||0} wrong</div></div><span>${escapeHtml(right)}</span></div>`;
 }
 
 function lastDays(count=7){
@@ -346,7 +361,7 @@ function renderProgressView(){
       <div class="stat"><span>Total reviews</span><strong>${allAttempts}</strong></div>
       <div class="stat"><span>7-day accuracy</span><strong>${sevenAccuracy}%</strong></div>
       <div class="stat"><span>Current streak</span><strong>${streak}</strong></div>
-      <div class="stat"><span>Saved sessions</span><strong>${learningState.sessions.length}</strong></div>
+      <div class="stat"><span>Focus words</span><strong>${focusIds.size}</strong></div>
     </div>
     <div class="week-chart" aria-label="Reviews during the last seven days">
       ${days.map(d=>`<div class="day-bar"><span class="bar-count">${d.attempts}</span><div class="bar-track"><span style="height:${Math.max(4,Math.round(d.attempts/maxAttempts*100))}%"></span></div><small>${escapeHtml(d.label)}</small></div>`).join('')}
@@ -433,12 +448,19 @@ async function fetchJson(path){
 }
 
 async function init(){
-  const [coreTerms,expandedTerms,loadedCategories]=await Promise.all([
-    fetchJson('data/terms.json'),fetchJson('data/terms-expansion.json'),fetchJson('data/categories.json')
+  const [coreTerms,expandedTerms,loadedCategories,focusData]=await Promise.all([
+    fetchJson('data/terms.json'),
+    fetchJson('data/terms-expansion.json'),
+    fetchJson('data/categories.json'),
+    fetchJson('data/focus-terms.json')
   ]);
   terms=[...coreTerms,...expandedTerms];categories=loadedCategories;
+  focusEntries=Array.isArray(focusData?.terms)?focusData.terms:[];
+  focusIds=new Set(focusEntries.map(item=>item.id));
   const ids=terms.map(t=>t.id);
   if(new Set(ids).size!==ids.length)throw new Error('Duplicate vocabulary IDs detected.');
+  const missingFocus=focusEntries.filter(item=>!ids.includes(item.id));
+  if(missingFocus.length)throw new Error(`Focus list references missing vocabulary IDs: ${missingFocus.map(item=>item.id).join(', ')}`);
 
   categories.forEach(c=>{
     const option=`<option value="${c.id}">${escapeHtml(c.label)}</option>`;
@@ -454,7 +476,7 @@ async function init(){
   document.querySelector('#newQuestion').addEventListener('click',nextQuestion);
   document.querySelector('#quickSession').addEventListener('click',startQuickSession);
   els.practiceMode.addEventListener('change',nextQuestion);
-  els.practiceScope.addEventListener('change',nextQuestion);
+  els.practiceScope.addEventListener('change',()=>{els.sessionStatus.textContent='';nextQuestion();renderSessionStatus()});
   els.practiceCategory.addEventListener('change',nextQuestion);
   els.drawingScene.addEventListener('change',renderDrawingQuestion);
   document.querySelector('#newDrawingQuestion').addEventListener('click',renderDrawingQuestion);
