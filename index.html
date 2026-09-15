@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Construction Vocabulary Trainer</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Personal civil construction trainer</p>
+      <h1>Construction Vocabulary</h1>
+    </div>
+    <div class="top-actions">
+      <button id="exportProgress" class="secondary">Export progress</button>
+      <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" /></label>
+    </div>
+  </header>
+
+  <main>
+    <section id="stats" class="stats-grid"></section>
+
+    <nav class="tabs" aria-label="Main sections">
+      <button class="tab active" data-view="dictionary">Dictionary</button>
+      <button class="tab" data-view="practice">Practice</button>
+      <button class="tab" data-view="review">Due review</button>
+      <button class="tab" data-view="weak">Weak words</button>
+    </nav>
+
+    <section id="dictionaryView" class="view active">
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Search term, Russian, Vietnamese, definition..." />
+        <select id="categoryFilter"><option value="all">All categories</option></select>
+      </div>
+      <div id="dictionaryGrid" class="card-grid"></div>
+    </section>
+
+    <section id="practiceView" class="view">
+      <div class="practice-controls">
+        <select id="practiceMode">
+          <option value="mixed">Mixed practice</option>
+          <option value="en-ru">English → Russian</option>
+          <option value="ru-en">Russian → English</option>
+          <option value="scenario">Scenario → term</option>
+          <option value="visual">Visual → term</option>
+          <option value="fill">Fill in the blank</option>
+        </select>
+        <button id="newQuestion">New question</button>
+      </div>
+      <div id="quizCard" class="quiz-card"></div>
+    </section>
+
+    <section id="reviewView" class="view">
+      <div id="reviewList" class="list-stack"></div>
+    </section>
+
+    <section id="weakView" class="view">
+      <div id="weakList" class="list-stack"></div>
+    </section>
+  </main>
+
+  <template id="termCardTemplate">
+    <article class="term-card">
+      <div class="term-card-head">
+        <div><span class="category-pill"></span><h2 class="term-title"></h2><p class="pronunciation"></p></div>
+        <span class="status-badge"></span>
+      </div>
+      <div class="visual-box"></div>
+      <p class="definition"></p>
+      <div class="translation-block"><strong>RU</strong><span class="ru-text"></span></div>
+      <div class="translation-block"><strong>VI</strong><span class="vi-text"></span></div>
+      <details><summary>Russian explanation</summary><p class="ru-explanation"></p></details>
+      <div class="example-box"><strong>Example</strong><p class="example-text"></p></div>
+    </article>
+  </template>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
