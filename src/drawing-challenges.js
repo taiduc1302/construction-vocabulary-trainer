@@ -61,9 +61,9 @@ const scenes=[
   },
   {
     id:'utility-trench',
-    title:'Utility trench section',
-    description:'A simplified trench section with pipe-zone and protection components.',
-    svg:`<svg viewBox="0 0 720 360" role="img" aria-label="Simplified utility trench section with lettered callouts">
+    title:'Underground utility section',
+    description:'A simplified underground installation showing support, encasement, fill zones, and excavation protection.',
+    svg:`<svg viewBox="0 0 720 360" role="img" aria-label="Simplified underground utility installation with lettered callouts">
       <rect x="0" y="0" width="720" height="360" class="dc-paper"/>
       <path d="M82 72H638V324H82z" class="dc-soil"/>
       <path d="M220 72L248 316H472L500 72z" class="dc-trench"/>
@@ -80,7 +80,7 @@ const scenes=[
       <g class="dc-callout"><circle cx="456" cy="182" r="16"/><text x="456" y="187">C</text></g>
       <g class="dc-callout"><circle cx="522" cy="112" r="16"/><text x="522" y="117">D</text></g>
       <g class="dc-callout"><circle cx="516" cy="254" r="16"/><text x="516" y="259">E</text></g>
-      <text x="42" y="35" class="dc-title">SIMPLIFIED UTILITY TRENCH</text>
+      <text x="42" y="35" class="dc-title">SIMPLIFIED UTILITY INSTALLATION</text>
       <text x="42" y="58" class="dc-note">Generic teaching section — not a construction detail</text>
     </svg>`,
     targets:[
@@ -95,10 +95,10 @@ const scenes=[
 
 export function getDrawingScenes(){return scenes.map(scene=>({...scene,targets:scene.targets.map(t=>({...t}))}))}
 
-export function randomDrawingTarget(scene,previousTermId=null){
+export function randomDrawingTarget(scene,previousTermId=null,rng=Math.random){
   const pool=scene.targets.filter(t=>t.termId!==previousTermId);
   const source=pool.length?pool:scene.targets;
-  return source[Math.floor(Math.random()*source.length)];
+  return source[Math.floor(rng()*source.length)];
 }
 
 export function renderDrawingScene(scene){
