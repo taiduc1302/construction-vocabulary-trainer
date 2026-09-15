@@ -78,11 +78,13 @@ When adding terms, make them usable in several forms of retrieval practice:
 - English -> Russian meaning
 - Russian -> English recall
 - Vietnamese -> English recall
+- typed English recall without answer choices
 - definition -> term
 - scenario -> term
 - diagram -> term
 - fill in the blank
 - distinguish from a similar term
+- focused practice by construction category
 
 The `scenario` must not contain the answer itself or an obvious grammatical variant of it.
 
