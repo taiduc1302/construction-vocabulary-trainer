@@ -36,10 +36,20 @@ jobs:
         continue-on-error: true
         run: node scripts/validate-visuals.mjs 2>&1 | tee audit-logs/visuals.txt
 
+      - name: Validate PWA dependency contract
+        id: pwa
+        continue-on-error: true
+        run: node scripts/validate-pwa.mjs 2>&1 | tee audit-logs/pwa.txt
+
       - name: Test learning state behavior
         id: learning
         continue-on-error: true
         run: node scripts/test-learning-state.mjs 2>&1 | tee audit-logs/learning-state.txt
+
+      - name: Test practice engine behavior
+        id: practice
+        continue-on-error: true
+        run: node scripts/test-practice-engine.mjs 2>&1 | tee audit-logs/practice-engine.txt
 
       - name: Check JavaScript syntax
         id: syntax
@@ -48,6 +58,7 @@ jobs:
           {
             node --check src/app.js
             node --check src/learning-state.js
+            node --check src/practice-engine.js
             node --check src/drawing-challenges.js
             node --check src/visuals.js
             node --check src/visuals-extra.js
@@ -76,12 +87,14 @@ jobs:
           TERMS: ${{ steps.terms.outcome }}
           CONTENT: ${{ steps.content.outcome }}
           VISUALS: ${{ steps.visuals.outcome }}
+          PWA: ${{ steps.pwa.outcome }}
           LEARNING: ${{ steps.learning.outcome }}
+          PRACTICE: ${{ steps.practice.outcome }}
           SYNTAX: ${{ steps.syntax.outcome }}
           MANIFEST: ${{ steps.manifest.outcome }}
         run: |
-          printf 'terms=%s\ncontent=%s\nvisuals=%s\nlearning=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$LEARNING" "$SYNTAX" "$MANIFEST"
-          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$LEARNING" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
+          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$SYNTAX" "$MANIFEST"
+          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
             echo 'One or more audit checks failed. See the uploaded audit logs artifact.'
             exit 1
           fi
