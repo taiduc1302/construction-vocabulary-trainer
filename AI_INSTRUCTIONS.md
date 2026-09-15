@@ -9,6 +9,7 @@ Vocabulary is intentionally modular:
 - `data/terms.json` contains the original/core vocabulary.
 - `data/terms-expansion.json` contains the current expansion pack and is the default location for new terms.
 - `data/categories.json` contains the controlled category list.
+- `data/focus-terms.json` contains the owner's current personal learning focus list.
 
 Treat all `data/terms*.json` files together as one vocabulary. Term IDs must be unique across every vocabulary file.
 
@@ -23,6 +24,39 @@ Before adding a term:
 For normal new vocabulary, append to `data/terms-expansion.json` and add its diagram to `src/visuals-extra.js`. Do not move old terms between files without a good reason because browser learning progress is keyed by term ID.
 
 Do not add a term if the resulting repository would fail validation.
+
+## What “add this word to my dictionary” means
+
+This phrase expresses learning intent, not merely a request to create a database row.
+
+When the owner says something like:
+
+`Add duct bank to my dictionary.`
+
+always do the following:
+
+1. Search the whole vocabulary for the term, aliases, spelling variants, and obvious canonical equivalents.
+2. If the term does **not** exist, create the complete vocabulary entry and its dedicated diagram.
+3. If the term **already exists**, do not stop with “already exists.” Review the existing entry for obvious gaps or inaccuracies, but do not rewrite good content just to make a commit.
+4. Whether the term was new or already present, **upsert its canonical ID into `data/focus-terms.json`**. This is the concrete action that means “I want to learn this word now.”
+5. If the ID is already in the focus list, update `last_requested_at` and increment `request_count` rather than creating a duplicate.
+6. If the user supplied an alias or abbreviation, focus the canonical vocabulary ID and explain the mapping briefly.
+7. The final response should say that the word is now in **My focus list**. Do not respond only that it already existed.
+
+`data/focus-terms.json` entries use this shape:
+
+```json
+{
+  "id": "duct-bank",
+  "added_at": "2026-09-15",
+  "last_requested_at": "2026-09-15",
+  "request_count": 1
+}
+```
+
+Use the user's local calendar date when available. Keep `added_at` unchanged on later requests.
+
+The focus list is intentionally stored in the repository because this is the owner's personal trainer. Never put confidential project information into focus-list notes or metadata.
 
 ## Required fields per term
 
@@ -121,6 +155,8 @@ The legacy `construction-vocab-progress-v1` localStorage key is migrated automat
 
 Smart Review uses adaptive weighting. Overdue terms, high error rate, recent mistakes, and low mastery raise a word's selection weight. Mastered words that are not due are deprioritized.
 
+`My focus list` is separate from browser mastery. It represents words the owner has explicitly encountered or asked to learn, and is sourced from `data/focus-terms.json`.
+
 Do not commit user learning-state exports to the repository. Do not reset or rename stable term IDs casually because those IDs link vocabulary to the user's stored history.
 
 The app uses the statuses:
@@ -130,15 +166,17 @@ The app uses the statuses:
 ## Editing workflow
 
 When asked to add or improve words:
-1. Fetch all `data/terms*.json` files, `data/categories.json`, and relevant existing visuals.
-2. Add or improve terms, normally in `data/terms-expansion.json`.
-3. Add/update their diagrams, normally in `src/visuals-extra.js`.
-4. Add a Similar terms pairing when useful.
-5. Consider whether the term belongs in an existing Drawing Challenge or justifies a new generic scene.
-6. Keep valid JSON and JavaScript.
-7. Run or reproduce `npm run validate`.
-8. Confirm the automated GitHub Action passes.
-9. Commit with a concise message such as `Add drainage vocabulary`.
+1. Fetch all `data/terms*.json` files, `data/categories.json`, `data/focus-terms.json`, and relevant existing visuals.
+2. Resolve the requested wording to an existing canonical term if possible.
+3. Add or improve the vocabulary entry when needed, normally in `data/terms-expansion.json`.
+4. Add/update its diagram when needed, normally in `src/visuals-extra.js`.
+5. Upsert the canonical term ID into `data/focus-terms.json` every time the owner explicitly asks to add/learn the word.
+6. Add a Similar terms pairing when useful.
+7. Consider whether the term belongs in an existing Drawing Challenge or justifies a new generic scene.
+8. Keep valid JSON and JavaScript.
+9. Run or reproduce `npm run validate`.
+10. Confirm the automated GitHub Action passes.
+11. Commit with concise messages.
 
 When asked to improve a word, update the existing entry instead of creating a duplicate.
 
@@ -148,10 +186,10 @@ The owner may simply say:
 
 `Add hydrant, transformer pad and traffic control to my dictionary.`
 
-Treat that as authorization to update this repository following these rules.
+Treat that as authorization to update this repository and put all three canonical IDs into the focus list.
 
 The owner may also provide a screenshot or term encountered at work and say something like:
 
 `I saw this on a drawing. Add it to my dictionary.`
 
-In that case, identify the terminology carefully, avoid copying confidential project content, and create a generic educational entry and diagram.
+In that case, identify the terminology carefully, avoid copying confidential project content, create or reuse the generic educational entry, and add the canonical term to the focus list.
