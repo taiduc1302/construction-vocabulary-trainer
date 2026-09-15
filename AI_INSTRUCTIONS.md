@@ -10,16 +10,19 @@ Vocabulary is intentionally modular:
 - `data/terms-expansion.json` contains the current expansion pack and is the default location for new terms.
 - `data/categories.json` contains the controlled category list.
 - `data/focus-terms.json` contains the owner's current personal learning focus list.
+- `data/fill-examples.json` contains exercise-only fill sentences for terms whose natural `example_en` intentionally uses another grammatical form.
+- `data/vocabulary-backlog.json` contains acknowledged related concepts that are not full cards yet, with priority and reason.
 
 Treat all `data/terms*.json` files together as one vocabulary. Term IDs must be unique across every vocabulary file.
 
 Before adding a term:
-1. Read all existing `data/terms*.json` files.
+1. Read all existing `data/terms*.json` files plus categories, focus, fill examples, and backlog.
 2. Check for duplicates, spelling variants, abbreviations, and near-synonyms.
 3. Reuse an existing category from `data/categories.json` when possible.
 4. Preserve all required fields.
 5. Add a dedicated educational diagram using the same term `id`.
-6. Run the full validation command: `npm run validate`.
+6. Remove the term from `data/vocabulary-backlog.json` if it was previously listed there.
+7. Run the full validation command: `npm run validate`.
 
 For normal new vocabulary, append to `data/terms-expansion.json` and add its diagram to `src/visuals-extra.js`. Do not move old terms between files without a good reason because browser learning progress is keyed by term ID.
 
@@ -35,7 +38,7 @@ When the owner says something like:
 
 always do the following:
 
-1. Search the whole vocabulary for the term, aliases, spelling variants, and obvious canonical equivalents.
+1. Search the whole vocabulary for the term, aliases, spelling variants, abbreviations, and obvious canonical equivalents.
 2. If the term does **not** exist, create the complete vocabulary entry and its dedicated diagram.
 3. If the term **already exists**, do not stop with “already exists.” Review the existing entry for obvious gaps or inaccuracies, but do not rewrite good content just to make a commit.
 4. Whether the term was new or already present, **upsert its canonical ID into `data/focus-terms.json`**. This is the concrete action that means “I want to learn this word now.”
@@ -75,6 +78,8 @@ The focus list is intentionally stored in the repository because this is the own
 - `common_mistakes`: optional but strongly encouraged for confusing terminology.
 - `difficulty`: integer 1-5.
 
+If an optional field is introduced, update the schema/validators and all code that relies on it in the same change. Do not create undocumented ad-hoc fields.
+
 ## Content standards
 
 - Prefer civil / heavy civil / estimating examples over generic building examples.
@@ -85,6 +90,9 @@ The focus list is intentionally stored in the repository because this is the own
 - Distinguish similar terms explicitly, e.g. `culvert` vs `storm sewer`, `subgrade` vs `subbase`, `trench box` vs `shoring`, `allowance` vs `contingency`, `RFI` vs `RFQ`, `unit price` vs `lump sum`.
 - Russian should sound natural to a Russian-speaking construction professional and explain the concept, not just translate it.
 - Vietnamese should use standard modern Vietnamese and practical construction wording.
+- The `scenario` must not contain the answer term or an obvious grammatical variant that gives away the answer.
+- Fill-in-the-blank must have a grammatically valid source containing the exact canonical `term` phrase. If natural `example_en` intentionally uses an inflected form such as `conduits`, `compact`, `mill`, or `station`, add a canonical exercise sentence to `data/fill-examples.json` instead of making the natural example awkward.
+- Every `related_terms` value should resolve to a current vocabulary id/name, a controlled category id, or an acknowledged id in `data/vocabulary-backlog.json`. Add a meaningful backlog entry rather than leaving an unexplained dangling concept.
 - Avoid company names, confidential tender information, client data, bid prices, credentials, and proprietary documents.
 
 ## Visual standard
@@ -106,6 +114,8 @@ Do not depend on copyrighted web images. Do not commit project drawings or scree
 
 Visual quizzes remove answer labels and captions through `src/visuals-all.js`, so the geometry must still make sense without seeing the answer word.
 
+All `tv-*` classes used in a vocabulary SVG must exist in the CSS. CI checks this contract; do not bypass the check by weakening the validator.
+
 ## Drawing Challenge standard
 
 `src/drawing-challenges.js` contains multi-feature generic civil drawings for contextual recognition practice.
@@ -115,43 +125,50 @@ Rules:
 - Create generic educational plan views or sections.
 - Use neutral callout letters such as A, B, C instead of writing the answer term on the scene.
 - Every `termId` referenced by a drawing challenge must exist in the vocabulary.
+- Every callout label must be unique in its scene and visibly present in the SVG.
+- Do not leak an answer term through the scene title, description/figcaption, visible SVG text, or accessibility/ARIA text.
+- Every `dc-*` class used by a scene must have a CSS definition.
 - Prefer realistic combinations of features that an estimator could see together on a drawing.
 - A Drawing Challenge answer updates the same spaced-repetition record as other practice modes.
 - Add a new scene only when it teaches a useful context that the single-term diagrams do not already provide.
 
-CI validates drawing `termId` references.
+CI validates both static drawing contracts and behavioral target selection.
 
-## Learning design
+## Practice behavior
 
-When adding terms, make them usable in several forms of retrieval practice:
-- English -> Russian meaning
-- Russian -> English recall
-- Vietnamese -> English recall
-- typed English recall without answer choices
-- definition -> term
-- scenario -> term
-- diagram -> term
-- fill in the blank
-- distinguish from a similar term
-- focused practice by construction category
-- contextual recognition in a generic drawing when appropriate
+`src/practice-engine.js` owns pure/testable practice-selection behavior. Preserve these invariants:
 
-The `scenario` must not contain the answer itself or an obvious grammatical variant of it.
+- `My focus list`, `Due`, `Weak`, and `New` are **strict scopes**. If category filtering makes the selected scope empty, show an empty-state message. Never silently substitute unrelated/all-category terms.
+- Smart and Focus selection may use adaptive weighting.
+- Typed recall normalizes punctuation, hyphens, capitalization, and spacing. Only add aliases when they are legitimate, unambiguous construction equivalents.
+- Multiple-choice options must be unique and should provide four choices whenever the vocabulary has enough distinct candidates.
+- Quick 10 freezes its starting term pool so progress changes during the session cannot make the pool disappear.
+- Quick 10 avoids repeating a target until its frozen pool is exhausted.
+- Quick 10 locks scope/category/mode while active so saved session metadata remains accurate.
+- Do not move pure selection/normalization logic back into DOM-heavy code unless there is a strong reason; it is intentionally unit tested separately.
 
 If a new term has a commonly confused counterpart, consider adding the pair to `confusablePairs` in `src/app.js` so it appears in **Similar terms** practice.
 
 ## Adaptive review and learning state
 
-`src/learning-state.js` owns browser learning state. It is versioned and currently uses v2.
+`src/learning-state.js` owns browser learning state. It is versioned and currently uses **v3**.
 
-The state contains:
+The v3 state contains:
 - per-term spaced-repetition records;
 - recent answer results used by adaptive weighting;
 - daily attempts/correct counts;
-- daily-goal setting;
+- the daily goal stored with each active historical day;
+- current daily-goal setting;
 - completed Quick-session history.
 
-The legacy `construction-vocab-progress-v1` localStorage key is migrated automatically into v2. Preserve this migration path unless there is a deliberate future migration.
+Migration paths that must remain supported unless deliberately superseded:
+
+- `construction-vocab-state-v2` -> v3
+- `construction-vocab-progress-v1` -> v3
+
+State loaded from storage/imports is normalized and sanitized. Preserve safe behavior for malformed counters, invalid timestamps, partial records, and unavailable localStorage. Do not allow invalid imported state to create `NaN` progress values or crash the app.
+
+Historical daily goals are intentional: changing today's goal must not retroactively change whether previous days met their goals or alter past streak history.
 
 Smart Review uses adaptive weighting. Overdue terms, high error rate, recent mistakes, and low mastery raise a word's selection weight. Mastered words that are not due are deprioritized.
 
@@ -163,20 +180,42 @@ The app uses the statuses:
 
 `new -> learning -> review -> mastered`
 
-## Editing workflow
+## PWA and cache rules
 
-When asked to add or improve words:
-1. Fetch all `data/terms*.json` files, `data/categories.json`, `data/focus-terms.json`, and relevant existing visuals.
+`sw.js` provides offline support but must not hide new chat-driven updates behind stale cache-first behavior.
+
+Rules:
+- Mutable HTML, JavaScript, CSS, JSON, and the web manifest use network-first behavior when online with cached fallback offline.
+- Every runtime JS module, data file, linked CSS file, manifest, and local icon/script dependency must be represented in the service-worker precache when appropriate.
+- Adding a new runtime module/file requires updating `sw.js` in the same change.
+- `scripts/validate-pwa.mjs` checks runtime dependency coverage. Do not weaken it just to make CI pass.
+- Cache names may be bumped for a major refresh, but normal correctness must not depend on remembering to bump the cache on every vocabulary edit.
+
+## Validation and editing workflow
+
+For normal vocabulary work:
+1. Fetch all `data/terms*.json` files, `data/categories.json`, `data/focus-terms.json`, `data/fill-examples.json`, `data/vocabulary-backlog.json`, and relevant existing visuals.
 2. Resolve the requested wording to an existing canonical term if possible.
 3. Add or improve the vocabulary entry when needed, normally in `data/terms-expansion.json`.
 4. Add/update its diagram when needed, normally in `src/visuals-extra.js`.
-5. Upsert the canonical term ID into `data/focus-terms.json` every time the owner explicitly asks to add/learn the word.
-6. Add a Similar terms pairing when useful.
-7. Consider whether the term belongs in an existing Drawing Challenge or justifies a new generic scene.
-8. Keep valid JSON and JavaScript.
-9. Run or reproduce `npm run validate`.
-10. Confirm the automated GitHub Action passes.
-11. Commit with concise messages.
+5. Remove the new term from the backlog if it was listed there; add intentional unresolved related concepts to backlog with priority/reason.
+6. Add a fill override only when `example_en` intentionally cannot contain the exact canonical term naturally.
+7. Upsert the canonical term ID into `data/focus-terms.json` every time the owner explicitly asks to add/learn the word.
+8. Add a Similar terms pairing when useful.
+9. Consider whether the term belongs in an existing Drawing Challenge or justifies a new generic scene.
+10. Keep valid JSON and JavaScript.
+11. Run `npm run validate`.
+12. Confirm the automated GitHub Action passes on the **final commit**, not an earlier commit.
+13. If the workflow uploads audit logs, inspect them when doing a deep audit instead of relying only on the green status.
+14. Commit with concise messages.
+
+For application/runtime changes, also review whether the change requires:
+- a unit test in `scripts/test-learning-state.mjs`, `scripts/test-practice-engine.mjs`, or `scripts/test-drawing-challenges.mjs`;
+- a static contract check in `scripts/validate-visuals.mjs`, `scripts/validate-pwa.mjs`, or `scripts/audit-content.mjs`;
+- a service-worker precache update;
+- a state migration rather than an in-place breaking change.
+
+GitHub Actions intentionally runs audit checks independently, uses shell `pipefail` so logged failures cannot become false-green, uploads diagnostic logs, and fails at the end if any check failed. Do not collapse this back into a single opaque step or remove `pipefail` from piped test commands.
 
 When asked to improve a word, update the existing entry instead of creating a duplicate.
 

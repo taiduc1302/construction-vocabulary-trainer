@@ -1,5 +1,6 @@
 import {renderTermVisual} from './visuals-all.js';
 import {getDrawingScenes,randomDrawingTarget,renderDrawingScene} from './drawing-challenges.js';
+import {recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions} from './practice-engine.js';
 import {
   loadLearningState,saveLearningState,recordFor,dueNow,recordAnswer,weaknessScore,
   adaptiveWeight,weightedPick,dailySummary,calculateStreak,setDailyGoal,recordSession,
@@ -39,12 +40,13 @@ const confusablePairs=[
 const drawingScenes=getDrawingScenes();
 let terms=[];
 let categories=[];
+let fillExamples={};
 let focusEntries=[];
 let focusIds=new Set();
 let learningState=loadLearningState();
 let currentQuestion=null;
 let currentDrawingTarget=null;
-let session={active:false,total:0,done:0,correct:0,startedAt:null,mode:null,scope:null,category:null};
+let session={active:false,total:0,done:0,correct:0,startedAt:null,mode:null,scope:null,category:null,seenIds:new Set(),poolIds:[]};
 
 function progressRecord(id){return recordFor(learningState,id)}
 function termById(id){return terms.find(t=>t.id===id)}
@@ -58,10 +60,6 @@ function speak(text){
   const u=new SpeechSynthesisUtterance(text);
   u.lang='en-CA';u.rate=.82;
   speechSynthesis.speak(u);
-}
-
-function normalizeRecall(v){
-  return String(v||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
 }
 
 function updateProgress(id,correct){
@@ -142,73 +140,65 @@ function shuffle(a){
 }
 function unique(values){return [...new Set(values.filter(Boolean))]}
 function chooseDistractors(correct,field,pool=terms){return unique(shuffle(pool.filter(t=>t.id!==correct.id)).map(t=>field(t))).slice(0,3)}
-function blankExample(t){const re=new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');return t.example_en.replace(re,'_____')}
+function blankExample(t){
+  const source=fillExamples[t.id]||t.example_en;
+  const re=new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+  const blanked=source.replace(re,'_____');
+  return blanked===source?`The relevant construction term is _____: ${t.definition_en}`:blanked;
+}
 
 function dueTerms(){return terms.filter(t=>{const r=progressRecord(t.id);return r.status!=='new'&&dueNow(r)})}
 function weakTerms(){return terms.filter(t=>weaknessScore(progressRecord(t.id))>0).sort((a,b)=>weaknessScore(progressRecord(b.id))-weaknessScore(progressRecord(a.id)))}
-function newTerms(){return terms.filter(t=>progressRecord(t.id).status==='new')}
-function focusTerms(){return terms.filter(t=>focusIds.has(t.id))}
-
-function applyPracticeCategory(pool){
-  const cat=els.practiceCategory.value;
-  if(cat==='all')return pool;
-  const filtered=pool.filter(t=>t.category===cat);
-  if(filtered.length)return filtered;
-  const categoryTerms=terms.filter(t=>t.category===cat);
-  return categoryTerms.length?categoryTerms:pool;
-}
 
 function selectedPool(){
-  let pool;
-  switch(els.practiceScope.value){
-    case 'focus':pool=focusTerms().length?focusTerms():terms;break;
-    case 'due':pool=dueTerms().length?dueTerms():terms;break;
-    case 'weak':pool=weakTerms().length?weakTerms():terms;break;
-    case 'new':pool=newTerms().length?newTerms():terms;break;
-    default:pool=terms;
+  if(session.active&&session.poolIds.length){
+    return session.poolIds.map(termById).filter(Boolean);
   }
-  return applyPracticeCategory(pool);
+  return selectPracticePool({
+    terms,
+    scope:els.practiceScope.value,
+    category:els.practiceCategory.value,
+    focusIds,
+    recordFor:progressRecord,
+    dueNow,
+    weaknessScore
+  });
 }
 
 function pickPracticeTerm(pool){
   if(!pool.length)return null;
-  if(els.practiceScope.value==='smart'||els.practiceScope.value==='focus')return weightedPick(pool,t=>adaptiveWeight(progressRecord(t.id)));
-  return pool[Math.floor(Math.random()*pool.length)];
+  const candidates=session.active?preferUnseen(pool,session.seenIds):pool;
+  const scope=session.active?session.scope:els.practiceScope.value;
+  if(scope==='smart'||scope==='focus')return weightedPick(candidates,t=>adaptiveWeight(progressRecord(t.id)));
+  return candidates[Math.floor(Math.random()*candidates.length)];
 }
 
-function makeContrastQuestion(){
-  const selectedCategory=els.practiceCategory.value;
-  const focusScope=els.practiceScope.value==='focus'&&focusIds.size>0;
-  let available=confusablePairs.map(([a,b])=>[termById(a),termById(b)]).filter(([a,b])=>a&&b);
-  if(focusScope){
-    const focusedPairs=available.filter(([a,b])=>focusIds.has(a.id)||focusIds.has(b.id));
-    if(focusedPairs.length)available=focusedPairs;
-  }
-  if(selectedCategory!=='all'){
-    const categoryPairs=available.filter(([a,b])=>a.category===selectedCategory||b.category===selectedCategory);
-    if(categoryPairs.length)available=categoryPairs;
-  }
+function markSessionTerm(term){if(session.active&&term)session.seenIds.add(term.id)}
+
+function makeContrastQuestion(pool){
+  const allowed=new Set(pool.map(t=>t.id));
+  const available=confusablePairs
+    .map(([a,b])=>[termById(a),termById(b)])
+    .filter(([a,b])=>a&&b&&(allowed.has(a.id)||allowed.has(b.id)));
+  if(!available.length)return null;
   const pair=available[Math.floor(Math.random()*available.length)];
   const [first,second]=pair;
-  const possibleTargets=selectedCategory==='all'?[first,second]:[first,second].filter(t=>t.category===selectedCategory);
-  let candidates=possibleTargets.length?possibleTargets:[first,second];
-  if(focusScope){
-    const focusedTargets=candidates.filter(t=>focusIds.has(t.id));
-    if(focusedTargets.length)candidates=focusedTargets;
-  }
+  let candidates=[first,second].filter(t=>allowed.has(t.id));
+  if(session.active)candidates=preferUnseen(candidates,session.seenIds);
   const target=weightedPick(candidates,t=>adaptiveWeight(progressRecord(t.id)));
   const other=target.id===first.id?second:first;
-  const sameCategory=terms.filter(t=>t.category===target.category&&t.id!==target.id&&t.id!==other.id);
-  const distractors=shuffle(sameCategory.length?sameCategory:terms).slice(0,2).map(t=>t.term);
+  const sameCategory=shuffle(terms.filter(t=>t.category===target.category&&t.id!==target.id&&t.id!==other.id)).map(t=>t.term);
+  const fallback=shuffle(terms.filter(t=>t.id!==target.id&&t.id!==other.id)).map(t=>t.term);
   return {
     term:target,compareWith:other,answer:target.term,
     prompt:`Which term best fits this situation? ${target.scenario}`,
-    options:shuffle(unique([target.term,other.term,...distractors])).slice(0,4),extra:''
+    options:shuffle(buildUniqueOptions(target.term,[other.term,...sameCategory],fallback,4)),extra:''
   };
 }
 
 function renderChoiceQuestion({t,prompt,answer,mode,options,extra='',compareWith=null}){
   currentQuestion={term:t,answer,mode,compareWith};
+  markSessionTerm(t);
   els.quiz.dataset.answered='no';
   const canSpeakBeforeAnswer=mode==='en-ru';
   const speakButton=canSpeakBeforeAnswer?'<button class="speak-question secondary" type="button">🔊 Listen</button>':'';
@@ -219,20 +209,42 @@ function renderChoiceQuestion({t,prompt,answer,mode,options,extra='',compareWith
 
 function renderTypedQuestion(t){
   currentQuestion={term:t,answer:t.term,mode:'typed',compareWith:null};
+  markSessionTerm(t);
   els.quiz.dataset.answered='no';
   const prompt=`Type the English construction term for “${t.translation_ru[0]}”.`;
-  els.quiz.innerHTML=`<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><span class="recall-badge">Active recall</span></div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="typed-answer-row"><input id="typedAnswer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English term" /><button id="checkTypedAnswer" type="button">Check answer</button></div><div class="small-muted typed-hint">Hyphens and capitalization do not matter.</div><div id="feedback"></div>`;
+  els.quiz.innerHTML=`<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><span class="recall-badge">Active recall</span></div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="typed-answer-row"><input id="typedAnswer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English term" /><button id="checkTypedAnswer" type="button">Check answer</button></div><div class="small-muted typed-hint">Hyphens, spaces and capitalization are normalized.</div><div id="feedback"></div>`;
   const input=document.querySelector('#typedAnswer');
   document.querySelector('#checkTypedAnswer').addEventListener('click',submitTypedAnswer);
   input.addEventListener('keydown',e=>{if(e.key==='Enter')submitTypedAnswer()});
   input.focus();
 }
 
+function renderEmptyPractice(message){
+  currentQuestion=null;
+  els.quiz.dataset.answered='yes';
+  els.quiz.innerHTML=`<div class="empty">${escapeHtml(message)}</div>`;
+  renderSessionStatus();
+}
+
+function scopeEmptyMessage(){
+  const scope=els.practiceScope.value;
+  const cat=els.practiceCategory.value;
+  const suffix=cat==='all'?'':` in ${categoryLabel(cat)}`;
+  if(scope==='focus')return `No focus words${suffix}. Add a word from chat or change the category.`;
+  if(scope==='due')return `No words are due${suffix}.`;
+  if(scope==='weak')return `No weak words${suffix} yet.`;
+  if(scope==='new')return `No new words${suffix}.`;
+  return `No words match this practice selection${suffix}.`;
+}
+
 function makeQuestion(){
   if(!terms.length)return;
   const pool=selectedPool();
+  if(!pool.length){renderEmptyPractice(scopeEmptyMessage());return}
+
   let mode=els.practiceMode.value;
-  if(mode==='mixed')mode=shuffle(['typed','en-ru','ru-en','vi-en','definition','scenario','visual','fill','contrast'])[0];
+  const mixed=mode==='mixed';
+  if(mixed)mode=shuffle(['typed','en-ru','ru-en','vi-en','definition','scenario','visual','fill','contrast'])[0];
 
   if(mode==='typed'){
     const t=pickPracticeTerm(pool);
@@ -241,9 +253,16 @@ function makeQuestion(){
 
   let t,prompt,answer,field,extra='',options=[],compareWith=null;
   if(mode==='contrast'){
-    const q=makeContrastQuestion();
-    t=q.term;prompt=q.prompt;answer=q.answer;options=q.options;extra=q.extra;compareWith=q.compareWith;
-  }else{
+    const q=makeContrastQuestion(pool);
+    if(!q){
+      if(mixed)mode='scenario';
+      else{renderEmptyPractice('No Similar terms pair exists for this practice selection. Choose another mode or broader scope.');return}
+    }else{
+      t=q.term;prompt=q.prompt;answer=q.answer;options=q.options;extra=q.extra;compareWith=q.compareWith;
+    }
+  }
+
+  if(mode!=='contrast'){
     t=pickPracticeTerm(pool);
     if(mode==='en-ru'){prompt=`What does “${t.term}” mean in Russian?`;answer=t.translation_ru[0];field=x=>x.translation_ru[0]}
     else if(mode==='ru-en'){prompt=`What is the English term for “${t.translation_ru[0]}”?`;answer=t.term;field=x=>x.term}
@@ -252,9 +271,9 @@ function makeQuestion(){
     else if(mode==='scenario'){prompt=t.scenario;answer=t.term;field=x=>x.term}
     else if(mode==='visual'){prompt='Identify the construction term shown by this diagram.';answer=t.term;field=x=>x.term;extra=renderTermVisual(t,{quiz:true})}
     else{prompt=`Complete the sentence: ${blankExample(t)}`;answer=t.term;field=x=>x.term}
-    options=unique([answer,...chooseDistractors(t,field)]);
-    if(options.length<4)options=unique([...options,...shuffle(terms).map(field)]).slice(0,4);
-    options=shuffle(options);
+    const candidates=chooseDistractors(t,field);
+    const fallback=shuffle(terms.filter(x=>x.id!==t.id)).map(field);
+    options=shuffle(buildUniqueOptions(answer,candidates,fallback,4));
   }
 
   renderChoiceQuestion({t,prompt,answer,mode,options,extra,compareWith});
@@ -264,18 +283,31 @@ function makeQuestion(){
 function feedbackMarkup(correct,userAnswer=''){
   const contrast=currentQuestion.compareWith?`<div class="contrast-note"><strong>Compare with ${escapeHtml(currentQuestion.compareWith.term)}:</strong> ${escapeHtml(currentQuestion.compareWith.definition_en)}</div>`:'';
   const caution=currentQuestion.term.common_mistakes?.length?`<div class="contrast-note"><strong>Watch out:</strong> ${escapeHtml(currentQuestion.term.common_mistakes.join(' '))}</div>`:'';
+  const aliases=currentQuestion.term.aliases_en?.length?`<div class="small-muted">Also accepted: ${escapeHtml(currentQuestion.term.aliases_en.join(', '))}</div>`:'';
   const yourAnswer=userAnswer&&!correct?`<div class="small-muted">Your answer: ${escapeHtml(userAnswer)}</div>`:'';
-  return `<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}${yourAnswer}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
+  return `<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}${yourAnswer}${aliases}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
+}
+
+function setSessionControlsLocked(locked){
+  els.practiceScope.disabled=locked;
+  els.practiceCategory.disabled=locked;
+  els.practiceMode.disabled=locked;
+  const quick=document.querySelector('#quickSession');
+  quick.disabled=locked;
+  quick.textContent=locked?'Quick 10 running':'Quick 10';
+  document.querySelector('#newQuestion').textContent=locked?'Next question':'New question';
 }
 
 function finishSessionIfNeeded(){
-  if(!session.active||session.done<session.total)return;
+  if(!session.active||session.done<session.total)return false;
   const finished={...session,completedAt:new Date().toISOString()};
   recordSession(learningState,finished);
   const pct=Math.round(session.correct/session.total*100);
-  els.sessionStatus.innerHTML=`Session complete: <strong>${session.correct}/${session.total}</strong> correct (${pct}%). Saved to Progress.`;
   session.active=false;
+  setSessionControlsLocked(false);
+  els.sessionStatus.innerHTML=`Session complete: <strong>${session.correct}/${session.total}</strong> correct (${pct}%). Saved to Progress.`;
   renderProgressView();
+  return true;
 }
 
 function completeAnswer(correct,{button=null,userAnswer=''}={}){
@@ -296,7 +328,12 @@ function completeAnswer(correct,{button=null,userAnswer=''}={}){
 
   document.querySelector('#feedback').innerHTML=feedbackMarkup(correct,userAnswer);
   document.querySelector('.feedback-speak')?.addEventListener('click',()=>speak(currentQuestion.term.term));
-  renderSessionStatus();finishSessionIfNeeded();
+  renderSessionStatus();
+  const finished=finishSessionIfNeeded();
+  if(!finished&&session.active){
+    document.querySelector('#feedback').insertAdjacentHTML('beforeend','<button class="feedback-next" type="button">Next question</button>');
+    document.querySelector('.feedback-next')?.addEventListener('click',nextQuestion);
+  }
 }
 
 function answerQuestion(button){completeAnswer(button.dataset.answer===currentQuestion.answer,{button})}
@@ -305,23 +342,31 @@ function submitTypedAnswer(){
   const input=document.querySelector('#typedAnswer');
   const raw=input?.value.trim()||'';
   if(!raw){input?.focus();return}
-  completeAnswer(normalizeRecall(raw)===normalizeRecall(currentQuestion.answer),{userAnswer:raw});
+  completeAnswer(recallMatches(raw,currentQuestion.answer,currentQuestion.term.aliases_en||[]),{userAnswer:raw});
 }
 
 function nextQuestion(){makeQuestion()}
 function startQuickSession(){
+  const initialPool=selectedPool();
+  if(!initialPool.length){
+    renderEmptyPractice(scopeEmptyMessage());
+    return;
+  }
   session={
     active:true,total:10,done:0,correct:0,startedAt:new Date().toISOString(),
-    mode:'mixed',scope:els.practiceScope.value,category:els.practiceCategory.value
+    mode:'mixed',scope:els.practiceScope.value,category:els.practiceCategory.value,
+    seenIds:new Set(),poolIds:initialPool.map(term=>term.id)
   };
-  els.practiceMode.value='mixed';makeQuestion();
+  els.practiceMode.value='mixed';
+  setSessionControlsLocked(true);
+  makeQuestion();
 }
 function renderSessionStatus(){
   if(!session.active){
     if(!els.sessionStatus.textContent)els.sessionStatus.textContent=`Smart review adapts to your mistakes. My focus list currently contains ${focusIds.size} word${focusIds.size===1?'':'s'} explicitly added from chat.`;
     return;
   }
-  els.sessionStatus.innerHTML=`Quick 10: question <strong>${Math.min(session.done+1,session.total)}</strong> of ${session.total} · score ${session.correct}/${session.done}`;
+  els.sessionStatus.innerHTML=`Quick 10: <strong>${session.done}/${session.total}</strong> answered · score ${session.correct}/${session.done}`;
 }
 
 function renderReviewLists(){
@@ -341,8 +386,8 @@ function lastDays(count=7){
   const out=[];
   for(let i=count-1;i>=0;i--){
     const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-i);
-    const key=localDateKey(d);const day=learningState.daily[key]||{attempts:0,correct:0};
-    out.push({key,label:d.toLocaleDateString(undefined,{weekday:'short'}),...day});
+    const key=localDateKey(d);const day=dailySummary(learningState,key);
+    out.push({key,label:d.toLocaleDateString(undefined,{weekday:'short'}),attempts:day.attempts,correct:day.correct,goal:day.goal});
   }
   return out;
 }
@@ -353,7 +398,7 @@ function renderProgressView(){
   const sevenAttempts=days.reduce((s,d)=>s+d.attempts,0);
   const sevenCorrect=days.reduce((s,d)=>s+d.correct,0);
   const sevenAccuracy=sevenAttempts?Math.round(sevenCorrect/sevenAttempts*100):0;
-  const allAttempts=Object.values(learningState.daily).reduce((s,d)=>s+(d.attempts||0),0);
+  const allAttempts=Object.values(learningState.daily).reduce((s,d)=>s+(Number(d.attempts)||0),0);
   const streak=calculateStreak(learningState);
   const maxAttempts=Math.max(1,...days.map(d=>d.attempts));
   els.progressOverview.innerHTML=`
@@ -362,6 +407,7 @@ function renderProgressView(){
       <div class="stat"><span>7-day accuracy</span><strong>${sevenAccuracy}%</strong></div>
       <div class="stat"><span>Current streak</span><strong>${streak}</strong></div>
       <div class="stat"><span>Focus words</span><strong>${focusIds.size}</strong></div>
+      <div class="stat"><span>Saved sessions</span><strong>${learningState.sessions.length}</strong></div>
     </div>
     <div class="week-chart" aria-label="Reviews during the last seven days">
       ${days.map(d=>`<div class="day-bar"><span class="bar-count">${d.attempts}</span><div class="bar-track"><span style="height:${Math.max(4,Math.round(d.attempts/maxAttempts*100))}%"></span></div><small>${escapeHtml(d.label)}</small></div>`).join('')}
@@ -417,7 +463,7 @@ function switchView(view){
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelector(`#${view}View`).classList.add('active');
-  if(view==='practice')nextQuestion();
+  if(view==='practice'&&(!currentQuestion||els.quiz.dataset.answered==='yes'))nextQuestion();
   if(view==='drawing')renderDrawingQuestion();
   if(view==='progress')renderProgressView();
   if(view==='review'||view==='weak')renderReviewLists();
@@ -426,7 +472,10 @@ function switchView(view){
 function exportProgress(){
   const payload={...exportableState(learningState),exportedAt:new Date().toISOString()};
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='construction-vocabulary-progress-v2.json';a.click();URL.revokeObjectURL(a.href);
+  const a=document.createElement('a');
+  const href=URL.createObjectURL(blob);
+  a.href=href;a.download='construction-vocabulary-progress-v3.json';a.click();
+  setTimeout(()=>URL.revokeObjectURL(href),0);
 }
 function importProgress(file){
   const reader=new FileReader();
@@ -447,20 +496,29 @@ async function fetchJson(path){
   return response.json();
 }
 
+async function fetchFocusData(){
+  try{return await fetchJson('data/focus-terms.json')}
+  catch(error){console.warn('Focus list unavailable; continuing without it.',error);return {version:1,terms:[]}}
+}
+
 async function init(){
-  const [coreTerms,expandedTerms,loadedCategories,focusData]=await Promise.all([
+  const [coreTerms,expandedTerms,loadedCategories,loadedFillExamples,focusData]=await Promise.all([
     fetchJson('data/terms.json'),
     fetchJson('data/terms-expansion.json'),
     fetchJson('data/categories.json'),
-    fetchJson('data/focus-terms.json')
+    fetchJson('data/fill-examples.json'),
+    fetchFocusData()
   ]);
   terms=[...coreTerms,...expandedTerms];categories=loadedCategories;
-  focusEntries=Array.isArray(focusData?.terms)?focusData.terms:[];
-  focusIds=new Set(focusEntries.map(item=>item.id));
+  fillExamples=loadedFillExamples&&typeof loadedFillExamples==='object'&&!Array.isArray(loadedFillExamples)?loadedFillExamples:{};
   const ids=terms.map(t=>t.id);
   if(new Set(ids).size!==ids.length)throw new Error('Duplicate vocabulary IDs detected.');
-  const missingFocus=focusEntries.filter(item=>!ids.includes(item.id));
-  if(missingFocus.length)throw new Error(`Focus list references missing vocabulary IDs: ${missingFocus.map(item=>item.id).join(', ')}`);
+  const idSet=new Set(ids);
+  const rawFocus=Array.isArray(focusData?.terms)?focusData.terms:[];
+  const missingFocus=rawFocus.filter(item=>!idSet.has(item.id));
+  if(missingFocus.length)console.warn(`Ignoring focus IDs missing from current vocabulary: ${missingFocus.map(item=>item.id).join(', ')}`);
+  focusEntries=rawFocus.filter(item=>idSet.has(item.id));
+  focusIds=new Set(focusEntries.map(item=>item.id));
 
   categories.forEach(c=>{
     const option=`<option value="${c.id}">${escapeHtml(c.label)}</option>`;
