@@ -6,6 +6,7 @@ const terms=groups.flat();
 const categories=JSON.parse(fs.readFileSync(new URL('../data/categories.json',import.meta.url),'utf8'));
 const focus=JSON.parse(fs.readFileSync(new URL('../data/focus-terms.json',import.meta.url),'utf8'));
 const fillExamples=JSON.parse(fs.readFileSync(new URL('../data/fill-examples.json',import.meta.url),'utf8'));
+const backlog=JSON.parse(fs.readFileSync(new URL('../data/vocabulary-backlog.json',import.meta.url),'utf8'));
 const errors=[];
 const warnings=[];
 
@@ -25,11 +26,27 @@ function validDateOnly(value){
 function nonEmptyStringArray(value){return Array.isArray(value)&&value.length>0&&value.every(v=>typeof v==='string'&&v.trim())}
 
 const ids=new Set(terms.map(t=>t.id));
+const categoryIds=new Set(categories.map(c=>c.id));
 const termsByNormalizedName=new Map();
 const knownNames=new Set();
 for(const term of terms){
   knownNames.add(normalized(term.term));
   knownNames.add(normalized(term.id));
+}
+
+const backlogIds=new Set();
+if(!Array.isArray(backlog)){
+  errors.push('vocabulary-backlog.json must be an array');
+}else{
+  for(const item of backlog){
+    if(!item||typeof item!=='object'){errors.push('vocabulary backlog entries must be objects');continue}
+    if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.id||''))errors.push(`backlog ${item.id||'(missing)'}: id must be kebab-case`);
+    if(backlogIds.has(item.id))errors.push(`backlog ${item.id}: duplicate backlog id`);
+    backlogIds.add(item.id);
+    if(ids.has(item.id))errors.push(`backlog ${item.id}: already exists in vocabulary and should be removed from backlog`);
+    if(!['high','medium','low'].includes(item.priority))errors.push(`backlog ${item.id}: priority must be high, medium, or low`);
+    if(typeof item.reason!=='string'||item.reason.trim().length<10)errors.push(`backlog ${item.id}: reason must be meaningful`);
+  }
 }
 
 if(!fillExamples||Array.isArray(fillExamples)||typeof fillExamples!=='object'){
@@ -63,7 +80,7 @@ for(const term of terms){
 
   for(const related of term.related_terms||[]){
     const key=normalized(related);
-    if(!ids.has(related)&&!knownNames.has(key))warnings.push(`${term.id}: related term “${related}” does not resolve to a current id or term name`);
+    if(!ids.has(related)&&!knownNames.has(key)&&!categoryIds.has(related)&&!backlogIds.has(related))warnings.push(`${term.id}: related term “${related}” is neither a current term, category, nor acknowledged backlog concept`);
   }
 }
 
@@ -93,4 +110,4 @@ if(errors.length){
   console.error(`Content audit failed with ${errors.length} issue(s):\n- ${errors.join('\n- ')}`);
   process.exit(1);
 }
-console.log(`Content audit OK: ${terms.length} terms checked for structure, answer leakage, canonical duplicates, fill prompts and focus metadata.`);
+console.log(`Content audit OK: ${terms.length} terms, ${Object.keys(fillExamples).length} fill overrides, ${backlogIds.size} backlog concepts, focus metadata and related references checked.`);
