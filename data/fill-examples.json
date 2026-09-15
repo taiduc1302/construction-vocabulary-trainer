@@ -1,0 +1,7 @@
+{
+  "conduit": "Provide one spare conduit through the road crossing for future cable installation.",
+  "compaction": "Verify compaction of the backfill in lifts to the specified density.",
+  "milling": "Allow for milling 40 mm of existing asphalt before placing the new overlay.",
+  "stationing": "Use the drawing stationing to locate the storm crossing near STA 1+240.",
+  "daylighting": "Complete daylighting of the existing gas line before excavating for the new storm crossing."
+}
