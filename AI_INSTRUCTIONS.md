@@ -10,16 +10,19 @@ Vocabulary is intentionally modular:
 - `data/terms-expansion.json` contains the current expansion pack and is the default location for new terms.
 - `data/categories.json` contains the controlled category list.
 - `data/focus-terms.json` contains the owner's current personal learning focus list.
+- `data/fill-examples.json` contains exercise-only fill sentences for terms whose natural `example_en` intentionally uses another grammatical form.
+- `data/vocabulary-backlog.json` contains acknowledged related concepts that are not full cards yet, with priority and reason.
 
 Treat all `data/terms*.json` files together as one vocabulary. Term IDs must be unique across every vocabulary file.
 
 Before adding a term:
-1. Read all existing `data/terms*.json` files.
+1. Read all existing `data/terms*.json` files plus categories, focus, fill examples, and backlog.
 2. Check for duplicates, spelling variants, abbreviations, and near-synonyms.
 3. Reuse an existing category from `data/categories.json` when possible.
 4. Preserve all required fields.
 5. Add a dedicated educational diagram using the same term `id`.
-6. Run the full validation command: `npm run validate`.
+6. Remove the term from `data/vocabulary-backlog.json` if it was previously listed there.
+7. Run the full validation command: `npm run validate`.
 
 For normal new vocabulary, append to `data/terms-expansion.json` and add its diagram to `src/visuals-extra.js`. Do not move old terms between files without a good reason because browser learning progress is keyed by term ID.
 
@@ -88,6 +91,8 @@ If an optional field is introduced, update the schema/validators and all code th
 - Russian should sound natural to a Russian-speaking construction professional and explain the concept, not just translate it.
 - Vietnamese should use standard modern Vietnamese and practical construction wording.
 - The `scenario` must not contain the answer term or an obvious grammatical variant that gives away the answer.
+- Fill-in-the-blank must have a grammatically valid source containing the exact canonical `term` phrase. If natural `example_en` intentionally uses an inflected form such as `conduits`, `compact`, `mill`, or `station`, add a canonical exercise sentence to `data/fill-examples.json` instead of making the natural example awkward.
+- Every `related_terms` value should resolve to a current vocabulary id/name, a controlled category id, or an acknowledged id in `data/vocabulary-backlog.json`. Add a meaningful backlog entry rather than leaving an unexplained dangling concept.
 - Avoid company names, confidential tender information, client data, bid prices, credentials, and proprietary documents.
 
 ## Visual standard
@@ -121,13 +126,13 @@ Rules:
 - Use neutral callout letters such as A, B, C instead of writing the answer term on the scene.
 - Every `termId` referenced by a drawing challenge must exist in the vocabulary.
 - Every callout label must be unique in its scene and visibly present in the SVG.
-- Do not place the answer term in visible SVG text.
+- Do not leak an answer term through the scene title, description/figcaption, visible SVG text, or accessibility/ARIA text.
 - Every `dc-*` class used by a scene must have a CSS definition.
 - Prefer realistic combinations of features that an estimator could see together on a drawing.
 - A Drawing Challenge answer updates the same spaced-repetition record as other practice modes.
 - Add a new scene only when it teaches a useful context that the single-term diagrams do not already provide.
 
-CI validates these drawing contracts.
+CI validates both static drawing contracts and behavioral target selection.
 
 ## Practice behavior
 
@@ -189,25 +194,28 @@ Rules:
 ## Validation and editing workflow
 
 For normal vocabulary work:
-1. Fetch all `data/terms*.json` files, `data/categories.json`, `data/focus-terms.json`, and relevant existing visuals.
+1. Fetch all `data/terms*.json` files, `data/categories.json`, `data/focus-terms.json`, `data/fill-examples.json`, `data/vocabulary-backlog.json`, and relevant existing visuals.
 2. Resolve the requested wording to an existing canonical term if possible.
 3. Add or improve the vocabulary entry when needed, normally in `data/terms-expansion.json`.
 4. Add/update its diagram when needed, normally in `src/visuals-extra.js`.
-5. Upsert the canonical term ID into `data/focus-terms.json` every time the owner explicitly asks to add/learn the word.
-6. Add a Similar terms pairing when useful.
-7. Consider whether the term belongs in an existing Drawing Challenge or justifies a new generic scene.
-8. Keep valid JSON and JavaScript.
-9. Run `npm run validate`.
-10. Confirm the automated GitHub Action passes on the final commit.
-11. Commit with concise messages.
+5. Remove the new term from the backlog if it was listed there; add intentional unresolved related concepts to backlog with priority/reason.
+6. Add a fill override only when `example_en` intentionally cannot contain the exact canonical term naturally.
+7. Upsert the canonical term ID into `data/focus-terms.json` every time the owner explicitly asks to add/learn the word.
+8. Add a Similar terms pairing when useful.
+9. Consider whether the term belongs in an existing Drawing Challenge or justifies a new generic scene.
+10. Keep valid JSON and JavaScript.
+11. Run `npm run validate`.
+12. Confirm the automated GitHub Action passes on the **final commit**, not an earlier commit.
+13. If the workflow uploads audit logs, inspect them when doing a deep audit instead of relying only on the green status.
+14. Commit with concise messages.
 
 For application/runtime changes, also review whether the change requires:
-- a unit test in `scripts/test-learning-state.mjs` or `scripts/test-practice-engine.mjs`;
+- a unit test in `scripts/test-learning-state.mjs`, `scripts/test-practice-engine.mjs`, or `scripts/test-drawing-challenges.mjs`;
 - a static contract check in `scripts/validate-visuals.mjs`, `scripts/validate-pwa.mjs`, or `scripts/audit-content.mjs`;
 - a service-worker precache update;
 - a state migration rather than an in-place breaking change.
 
-GitHub Actions intentionally runs audit checks independently, uploads diagnostic logs, and fails at the end if any check failed. Do not collapse this back into a single opaque step.
+GitHub Actions intentionally runs audit checks independently, uses shell `pipefail` so logged failures cannot become false-green, uploads diagnostic logs, and fails at the end if any check failed. Do not collapse this back into a single opaque step or remove `pipefail` from piped test commands.
 
 When asked to improve a word, update the existing entry instead of creating a duplicate.
 
