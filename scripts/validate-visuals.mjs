@@ -17,7 +17,7 @@ if(missing.length){
   process.exit(1);
 }
 
-for(const requiredId of ['practiceScope','practiceMode','quizCard','dictionaryGrid','quickSession']){
+for(const requiredId of ['practiceScope','practiceCategory','practiceMode','quizCard','dictionaryGrid','quickSession']){
   if(!index.includes(`id="${requiredId}"`)){
     console.error(`index.html is missing required element #${requiredId}`);
     process.exit(1);
@@ -28,12 +28,16 @@ if(!app.includes("from './visuals-all.js'")){
   console.error('app.js is not wired to the combined visual renderer');
   process.exit(1);
 }
-if(!app.includes("value==='contrast'")&&!app.includes("mode==='contrast'")){
+if(!app.includes("mode==='contrast'")){
   console.error('app.js is missing similar-term contrast practice');
   process.exit(1);
 }
-if(!index.includes('value="contrast"')){
-  console.error('index.html is missing the Similar terms practice option');
+if(!app.includes("mode==='typed'")){
+  console.error('app.js is missing typed active-recall practice');
+  process.exit(1);
+}
+if(!index.includes('value="contrast"')||!index.includes('value="typed"')){
+  console.error('index.html is missing advanced practice options');
   process.exit(1);
 }
 
