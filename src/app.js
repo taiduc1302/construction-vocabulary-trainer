@@ -1,37 +1,235 @@
-const els={stats:document.querySelector('#stats'),grid:document.querySelector('#dictionaryGrid'),search:document.querySelector('#searchInput'),category:document.querySelector('#categoryFilter'),practiceMode:document.querySelector('#practiceMode'),quiz:document.querySelector('#quizCard'),reviewList:document.querySelector('#reviewList'),weakList:document.querySelector('#weakList')};
+import {renderTermVisual} from './visuals.js';
+
+const els={
+  stats:document.querySelector('#stats'),
+  grid:document.querySelector('#dictionaryGrid'),
+  search:document.querySelector('#searchInput'),
+  category:document.querySelector('#categoryFilter'),
+  practiceScope:document.querySelector('#practiceScope'),
+  practiceMode:document.querySelector('#practiceMode'),
+  quiz:document.querySelector('#quizCard'),
+  reviewList:document.querySelector('#reviewList'),
+  weakList:document.querySelector('#weakList'),
+  sessionStatus:document.querySelector('#sessionStatus')
+};
+
 const STORAGE_KEY='construction-vocab-progress-v1';
 const intervals=[0,1,3,7,14,30,60];
-let terms=[];let categories=[];let progress=loadProgress();let currentQuestion=null;
+let terms=[];
+let categories=[];
+let progress=loadProgress();
+let currentQuestion=null;
+let session={active:false,total:0,done:0,correct:0};
 
 function loadProgress(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch{return {}}}
-function saveProgress(){localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));renderStats();renderReviewLists()}
+function saveProgress(){localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));renderStats();renderReviewLists();renderDictionary()}
 function recordFor(id){return progress[id]||{status:'new',level:0,correct:0,wrong:0,lastReviewed:null,due:null}}
 function dueNow(r){return !r.due||new Date(r.due)<=new Date()}
-function updateProgress(id,correct){const r=recordFor(id);if(correct){r.correct++;r.level=Math.min(r.level+1,intervals.length-1);r.status=r.level>=5?'mastered':r.level>=2?'review':'learning'}else{r.wrong++;r.level=Math.max(0,r.level-1);r.status='learning'}r.lastReviewed=new Date().toISOString();const days=correct?intervals[r.level]:0;r.due=new Date(Date.now()+days*86400000).toISOString();progress[id]=r;saveProgress()}
+function updateProgress(id,correct){
+  const r={...recordFor(id)};
+  if(correct){
+    r.correct++;
+    r.level=Math.min(r.level+1,intervals.length-1);
+    r.status=r.level>=5?'mastered':r.level>=2?'review':'learning';
+  }else{
+    r.wrong++;
+    r.level=Math.max(0,r.level-1);
+    r.status='learning';
+  }
+  r.lastReviewed=new Date().toISOString();
+  const days=correct?intervals[r.level]:0;
+  r.due=new Date(Date.now()+days*86400000).toISOString();
+  progress[id]=r;
+  saveProgress();
+}
 
-function iconFor(category){return ({drainage:'💧',utilities:'🛠️',electrical:'⚡',excavation:'🕳️',earthworks:'🚜',roadworks:'🛣️',concrete:'🧱',drawings:'📐',estimating:'📊',tendering:'📄',safety:'🦺'})[category]||'🏗️'}
-function visual(term){return `<div class="visual-diagram"><div class="visual-icon">${iconFor(term.category)}</div><strong>${escapeHtml(term.term)}</strong><span>${escapeHtml(term.visual)}</span></div>`}
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function categoryLabel(id){return categories.find(c=>c.id===id)?.label||id}
+function speak(text){
+  if(!('speechSynthesis' in window))return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-CA';u.rate=.82;
+  speechSynthesis.speak(u);
+}
 
-function renderStats(){const records=terms.map(t=>recordFor(t.id));const learned=records.filter(r=>r.status==='mastered').length;const learning=records.filter(r=>r.status==='learning'||r.status==='review').length;const due=records.filter((r,i)=>r.status!=='new'&&dueNow(r)).length;const attempts=records.reduce((s,r)=>s+r.correct+r.wrong,0);const correct=records.reduce((s,r)=>s+r.correct,0);const accuracy=attempts?Math.round(correct/attempts*100):0;els.stats.innerHTML=[['Terms',terms.length],['Learning',learning],['Due now',due],['Accuracy',`${accuracy}%`]].map(([a,b])=>`<div class="stat"><span>${a}</span><strong>${b}</strong></div>`).join('')}
+function renderStats(){
+  const records=terms.map(t=>recordFor(t.id));
+  const mastered=records.filter(r=>r.status==='mastered').length;
+  const learning=records.filter(r=>r.status==='learning'||r.status==='review').length;
+  const due=records.filter(r=>r.status!=='new'&&dueNow(r)).length;
+  const attempts=records.reduce((s,r)=>s+r.correct+r.wrong,0);
+  const correct=records.reduce((s,r)=>s+r.correct,0);
+  const accuracy=attempts?Math.round(correct/attempts*100):0;
+  els.stats.innerHTML=[['Terms',terms.length],['Learning',learning],['Mastered',mastered],['Due now',due],['Accuracy',`${accuracy}%`]].map(([a,b])=>`<div class="stat"><span>${a}</span><strong>${b}</strong></div>`).join('');
+}
 
-function renderDictionary(){const q=els.search.value.trim().toLowerCase();const cat=els.category.value;const filtered=terms.filter(t=>(cat==='all'||t.category===cat)&&(!q||JSON.stringify(t).toLowerCase().includes(q)));els.grid.innerHTML='';const tpl=document.querySelector('#termCardTemplate');filtered.forEach(t=>{const node=tpl.content.cloneNode(true);node.querySelector('.category-pill').textContent=categoryLabel(t.category);node.querySelector('.term-title').textContent=t.term;node.querySelector('.pronunciation').textContent=t.pronunciation||'';node.querySelector('.status-badge').textContent=recordFor(t.id).status;node.querySelector('.visual-box').innerHTML=visual(t);node.querySelector('.definition').textContent=t.definition_en;node.querySelector('.ru-text').textContent=t.translation_ru.join(', ');node.querySelector('.vi-text').textContent=t.translation_vi.join(', ');node.querySelector('.ru-explanation').textContent=t.explanation_ru;node.querySelector('.example-text').textContent=t.example_en;els.grid.appendChild(node)});if(!filtered.length)els.grid.innerHTML='<div class="empty">No terms match this filter.</div>'}
+function renderDictionary(){
+  if(!terms.length)return;
+  const q=els.search.value.trim().toLowerCase();
+  const cat=els.category.value;
+  const filtered=terms.filter(t=>(cat==='all'||t.category===cat)&&(!q||JSON.stringify(t).toLowerCase().includes(q)));
+  els.grid.innerHTML='';
+  const tpl=document.querySelector('#termCardTemplate');
+  filtered.forEach(t=>{
+    const node=tpl.content.cloneNode(true);
+    node.querySelector('.category-pill').textContent=categoryLabel(t.category);
+    node.querySelector('.term-title').textContent=t.term;
+    node.querySelector('.pronunciation').textContent=t.pronunciation||'';
+    node.querySelector('.status-badge').textContent=recordFor(t.id).status;
+    node.querySelector('.visual-box').innerHTML=renderTermVisual(t);
+    node.querySelector('.definition').textContent=t.definition_en;
+    node.querySelector('.ru-text').textContent=t.translation_ru.join(', ');
+    node.querySelector('.vi-text').textContent=t.translation_vi.join(', ');
+    node.querySelector('.ru-explanation').textContent=t.explanation_ru;
+    node.querySelector('.related-text').textContent=`Related: ${t.related_terms?.length?t.related_terms.join(', '):'—'}`;
+    node.querySelector('.mistakes-text').textContent=t.common_mistakes?.length?`Watch out: ${t.common_mistakes.join(' ')}`:'No common mistake note yet.';
+    node.querySelector('.example-text').textContent=t.example_en;
+    node.querySelector('.listen-btn').addEventListener('click',()=>speak(t.term));
+    els.grid.appendChild(node);
+  });
+  if(!filtered.length)els.grid.innerHTML='<div class="empty">No terms match this filter.</div>';
+}
 
-function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function chooseDistractors(correct,field){return shuffle(terms.filter(t=>t.id!==correct.id)).slice(0,3).map(t=>field(t))}
+function shuffle(a){
+  const out=[...a];
+  for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}
+  return out;
+}
+function unique(values){return [...new Set(values.filter(Boolean))]}
+function chooseDistractors(correct,field){return unique(shuffle(terms.filter(t=>t.id!==correct.id)).map(t=>field(t))).slice(0,3)}
 function blankExample(t){const re=new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');return t.example_en.replace(re,'_____')}
-function makeQuestion(){if(!terms.length)return;let pool=terms;const weak=terms.filter(t=>recordFor(t.id).wrong>0);if(document.querySelector('.tab.active')?.dataset.view==='weak'&&weak.length)pool=weak;const t=pool[Math.floor(Math.random()*pool.length)];let mode=els.practiceMode.value;if(mode==='mixed')mode=['en-ru','ru-en','scenario','visual','fill'][Math.floor(Math.random()*5)];let prompt,answer,field,extra='';if(mode==='en-ru'){prompt=`What does “${t.term}” mean in Russian?`;answer=t.translation_ru[0];field=x=>x.translation_ru[0]}else if(mode==='ru-en'){prompt=`What is the English term for “${t.translation_ru[0]}”?`;answer=t.term;field=x=>x.term}else if(mode==='scenario'){prompt=t.scenario;answer=t.term;field=x=>x.term}else if(mode==='visual'){prompt='Identify the construction term shown by this visual cue.';answer=t.term;field=x=>x.term;extra=visual(t)}else{prompt=`Complete the sentence: ${blankExample(t)}`;answer=t.term;field=x=>x.term}const options=shuffle([answer,...chooseDistractors(t,field)]);currentQuestion={term:t,answer,mode};els.quiz.innerHTML=`${extra}<div class="quiz-question">${escapeHtml(prompt)}</div><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback"></div>`;els.quiz.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',()=>answerQuestion(b)))}
-function answerQuestion(button){if(!currentQuestion||els.quiz.dataset.answered==='yes')return;els.quiz.dataset.answered='yes';const correct=button.dataset.answer===currentQuestion.answer;updateProgress(currentQuestion.term.id,correct);els.quiz.querySelectorAll('.quiz-option').forEach(b=>{if(b.dataset.answer===currentQuestion.answer)b.classList.add('correct');else if(b===button)b.classList.add('wrong')});document.querySelector('#feedback').innerHTML=`<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> ${escapeHtml(currentQuestion.term.definition_en)}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span></div>`}
-function nextQuestion(){els.quiz.dataset.answered='no';makeQuestion()}
 
-function renderReviewLists(){const due=terms.filter(t=>{const r=recordFor(t.id);return r.status!=='new'&&dueNow(r)});els.reviewList.innerHTML=due.length?due.map(t=>row(t,'Due')).join(''):'<div class="empty">Nothing is due yet. Practice some words first.</div>';const weak=terms.filter(t=>recordFor(t.id).wrong>0).sort((a,b)=>recordFor(b.id).wrong-recordFor(a.id).wrong);els.weakList.innerHTML=weak.length?weak.map(t=>row(t,`${recordFor(t.id).wrong} mistake${recordFor(t.id).wrong===1?'':'s'}`)).join(''):'<div class="empty">No weak words yet.</div>'}
-function row(t,right){return `<div class="list-row"><div><strong>${escapeHtml(t.term)}</strong><div class="small-muted">${escapeHtml(t.definition_en)}</div></div><span>${escapeHtml(right)}</span></div>`}
+function dueTerms(){return terms.filter(t=>{const r=recordFor(t.id);return r.status!=='new'&&dueNow(r)})}
+function weakTerms(){return terms.filter(t=>recordFor(t.id).wrong>0).sort((a,b)=>recordFor(b.id).wrong-recordFor(a.id).wrong)}
+function newTerms(){return terms.filter(t=>recordFor(t.id).status==='new')}
+function smartPool(){
+  const due=dueTerms();if(due.length)return due;
+  const weak=weakTerms();if(weak.length)return weak;
+  const fresh=newTerms();if(fresh.length)return fresh;
+  return terms;
+}
+function selectedPool(){
+  switch(els.practiceScope.value){
+    case 'due':return dueTerms().length?dueTerms():terms;
+    case 'weak':return weakTerms().length?weakTerms():terms;
+    case 'new':return newTerms().length?newTerms():terms;
+    case 'all':return terms;
+    default:return smartPool();
+  }
+}
 
-function switchView(view){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelector(`#${view}View`).classList.add('active');if(view==='practice'){nextQuestion()}if(view==='review'||view==='weak')renderReviewLists()}
+function makeQuestion(){
+  if(!terms.length)return;
+  const pool=selectedPool();
+  const t=pool[Math.floor(Math.random()*pool.length)];
+  let mode=els.practiceMode.value;
+  if(mode==='mixed')mode=shuffle(['en-ru','ru-en','vi-en','definition','scenario','visual','fill'])[0];
+  let prompt,answer,field,extra='';
+  if(mode==='en-ru'){
+    prompt=`What does “${t.term}” mean in Russian?`;answer=t.translation_ru[0];field=x=>x.translation_ru[0];
+  }else if(mode==='ru-en'){
+    prompt=`What is the English term for “${t.translation_ru[0]}”?`;answer=t.term;field=x=>x.term;
+  }else if(mode==='vi-en'){
+    prompt=`What is the English construction term for “${t.translation_vi[0]}”?`;answer=t.term;field=x=>x.term;
+  }else if(mode==='definition'){
+    prompt=t.definition_en;answer=t.term;field=x=>x.term;
+  }else if(mode==='scenario'){
+    prompt=t.scenario;answer=t.term;field=x=>x.term;
+  }else if(mode==='visual'){
+    prompt='Identify the construction term shown by this diagram.';answer=t.term;field=x=>x.term;extra=renderTermVisual(t);
+  }else{
+    prompt=`Complete the sentence: ${blankExample(t)}`;answer=t.term;field=x=>x.term;
+  }
+  let options=unique([answer,...chooseDistractors(t,field)]);
+  if(options.length<4){
+    options=unique([...options,...shuffle(terms).map(field)]).slice(0,4);
+  }
+  options=shuffle(options);
+  currentQuestion={term:t,answer,mode};
+  els.quiz.dataset.answered='no';
+  els.quiz.innerHTML=`${extra}<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><button class="speak-question secondary" type="button">🔊 ${escapeHtml(t.term)}</button></div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback"></div>`;
+  els.quiz.querySelector('.speak-question').addEventListener('click',()=>speak(t.term));
+  els.quiz.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',()=>answerQuestion(b)));
+  renderSessionStatus();
+}
 
-function exportProgress(){const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),progress},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='construction-vocabulary-progress.json';a.click();URL.revokeObjectURL(a.href)}
-function importProgress(file){const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);progress=data.progress||data;saveProgress();renderDictionary();alert('Progress imported.')}catch{alert('Could not read that progress file.')}};reader.readAsText(file)}
+function answerQuestion(button){
+  if(!currentQuestion||els.quiz.dataset.answered==='yes')return;
+  els.quiz.dataset.answered='yes';
+  const correct=button.dataset.answer===currentQuestion.answer;
+  updateProgress(currentQuestion.term.id,correct);
+  if(session.active){session.done++;if(correct)session.correct++}
+  els.quiz.querySelectorAll('.quiz-option').forEach(b=>{
+    if(b.dataset.answer===currentQuestion.answer)b.classList.add('correct');
+    else if(b===button)b.classList.add('wrong');
+    b.disabled=true;
+  });
+  document.querySelector('#feedback').innerHTML=`<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span></div>`;
+  renderSessionStatus();
+  if(session.active&&session.done>=session.total){
+    const pct=Math.round(session.correct/session.total*100);
+    els.sessionStatus.innerHTML=`Session complete: <strong>${session.correct}/${session.total}</strong> correct (${pct}%). Start another Quick 10 whenever you want.`;
+    session.active=false;
+  }
+}
 
-async function init(){[terms,categories]=await Promise.all([fetch('data/terms.json').then(r=>r.json()),fetch('data/categories.json').then(r=>r.json())]);categories.forEach(c=>els.category.insertAdjacentHTML('beforeend',`<option value="${c.id}">${escapeHtml(c.label)}</option>`));renderStats();renderDictionary();renderReviewLists();document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchView(t.dataset.view)));els.search.addEventListener('input',renderDictionary);els.category.addEventListener('change',renderDictionary);document.querySelector('#newQuestion').addEventListener('click',nextQuestion);els.practiceMode.addEventListener('change',nextQuestion);document.querySelector('#exportProgress').addEventListener('click',exportProgress);document.querySelector('#importProgress').addEventListener('change',e=>e.target.files[0]&&importProgress(e.target.files[0]))}
-init().catch(err=>{document.body.insertAdjacentHTML('beforeend',`<div class="empty">App failed to load: ${escapeHtml(err.message)}. Run it through a local web server.</div>`);console.error(err)});
+function nextQuestion(){makeQuestion()}
+function startQuickSession(){session={active:true,total:10,done:0,correct:0};els.practiceMode.value='mixed';makeQuestion()}
+function renderSessionStatus(){
+  if(!session.active){if(!els.sessionStatus.textContent)els.sessionStatus.textContent='Smart review prioritizes due words, then weak words, then new words.';return}
+  els.sessionStatus.innerHTML=`Quick 10: question <strong>${Math.min(session.done+1,session.total)}</strong> of ${session.total} · score ${session.correct}/${session.done}`;
+}
+
+function renderReviewLists(){
+  if(!terms.length)return;
+  const due=dueTerms();
+  els.reviewList.innerHTML=due.length?due.map(t=>row(t,'Due now')).join(''):'<div class="empty">Nothing is due yet. Practice some words first.</div>';
+  const weak=weakTerms();
+  els.weakList.innerHTML=weak.length?weak.map(t=>row(t,`${recordFor(t.id).wrong} mistake${recordFor(t.id).wrong===1?'':'s'}`)).join(''):'<div class="empty">No weak words yet.</div>';
+}
+function row(t,right){
+  const r=recordFor(t.id);
+  return `<div class="list-row"><div><strong>${escapeHtml(t.term)}</strong><div class="small-muted">${escapeHtml(t.definition_en)}</div><div class="tiny-muted">${escapeHtml(categoryLabel(t.category))} · ${r.correct} correct / ${r.wrong} wrong</div></div><span>${escapeHtml(right)}</span></div>`;
+}
+
+function switchView(view){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelector(`#${view}View`).classList.add('active');
+  if(view==='practice')nextQuestion();
+  if(view==='review'||view==='weak')renderReviewLists();
+}
+
+function exportProgress(){
+  const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),progress},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='construction-vocabulary-progress.json';a.click();URL.revokeObjectURL(a.href);
+}
+function importProgress(file){
+  const reader=new FileReader();
+  reader.onload=()=>{try{const data=JSON.parse(reader.result);progress=data.progress||data;saveProgress();alert('Progress imported.')}catch{alert('Could not read that progress file.')}};
+  reader.readAsText(file);
+}
+
+async function init(){
+  [terms,categories]=await Promise.all([
+    fetch('data/terms.json').then(r=>{if(!r.ok)throw new Error('Could not load terms.json');return r.json()}),
+    fetch('data/categories.json').then(r=>{if(!r.ok)throw new Error('Could not load categories.json');return r.json()})
+  ]);
+  categories.forEach(c=>els.category.insertAdjacentHTML('beforeend',`<option value="${c.id}">${escapeHtml(c.label)}</option>`));
+  renderStats();renderDictionary();renderReviewLists();renderSessionStatus();
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchView(t.dataset.view)));
+  els.search.addEventListener('input',renderDictionary);
+  els.category.addEventListener('change',renderDictionary);
+  document.querySelector('#newQuestion').addEventListener('click',nextQuestion);
+  document.querySelector('#quickSession').addEventListener('click',startQuickSession);
+  els.practiceMode.addEventListener('change',nextQuestion);
+  els.practiceScope.addEventListener('change',nextQuestion);
+  document.querySelector('#exportProgress').addEventListener('click',exportProgress);
+  document.querySelector('#importProgress').addEventListener('change',e=>e.target.files[0]&&importProgress(e.target.files[0]));
+}
+
+init().catch(err=>{
+  document.body.insertAdjacentHTML('beforeend',`<div class="empty fatal-error">App failed to load: ${escapeHtml(err.message)}. Run it through a local web server.</div>`);
+  console.error(err);
+});
