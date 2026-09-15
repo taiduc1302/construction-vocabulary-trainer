@@ -1,4 +1,4 @@
-import {renderTermVisual} from './visuals.js';
+import {renderTermVisual} from './visuals-all.js';
 
 const els={
   stats:document.querySelector('#stats'),
@@ -15,6 +15,25 @@ const els={
 
 const STORAGE_KEY='construction-vocab-progress-v1';
 const intervals=[0,1,3,7,14,30,60];
+const confusablePairs=[
+  ['culvert','storm-sewer'],
+  ['catch-basin','manhole'],
+  ['trench-box','shoring'],
+  ['subgrade','subbase'],
+  ['allowance','contingency'],
+  ['milling','overlay'],
+  ['bedding','backfill'],
+  ['duct-bank','conduit'],
+  ['unit-price','lump-sum'],
+  ['plan-view','profile'],
+  ['rfi','rfq'],
+  ['cut','fill'],
+  ['sanitary-sewer','storm-sewer'],
+  ['force-main','sanitary-sewer'],
+  ['base-course','subbase'],
+  ['daylighting','excavation']
+];
+
 let terms=[];
 let categories=[];
 let progress=loadProgress();
@@ -25,6 +44,7 @@ function loadProgress(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)|
 function saveProgress(){localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));renderStats();renderReviewLists();renderDictionary()}
 function recordFor(id){return progress[id]||{status:'new',level:0,correct:0,wrong:0,lastReviewed:null,due:null}}
 function dueNow(r){return !r.due||new Date(r.due)<=new Date()}
+function termById(id){return terms.find(t=>t.id===id)}
 function updateProgress(id,correct){
   const r={...recordFor(id)};
   if(correct){
@@ -97,7 +117,7 @@ function shuffle(a){
   return out;
 }
 function unique(values){return [...new Set(values.filter(Boolean))]}
-function chooseDistractors(correct,field){return unique(shuffle(terms.filter(t=>t.id!==correct.id)).map(t=>field(t))).slice(0,3)}
+function chooseDistractors(correct,field,pool=terms){return unique(shuffle(pool.filter(t=>t.id!==correct.id)).map(t=>field(t))).slice(0,3)}
 function blankExample(t){const re=new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');return t.example_en.replace(re,'_____')}
 
 function dueTerms(){return terms.filter(t=>{const r=recordFor(t.id);return r.status!=='new'&&dueNow(r)})}
@@ -119,37 +139,64 @@ function selectedPool(){
   }
 }
 
+function makeContrastQuestion(){
+  const available=confusablePairs
+    .map(([a,b])=>[termById(a),termById(b)])
+    .filter(([a,b])=>a&&b);
+  const pair=available[Math.floor(Math.random()*available.length)];
+  const [first,second]=pair;
+  const target=Math.random()<.5?first:second;
+  const other=target.id===first.id?second:first;
+  const sameCategory=terms.filter(t=>t.category===target.category&&t.id!==target.id&&t.id!==other.id);
+  const distractors=shuffle(sameCategory.length?sameCategory:terms).slice(0,2).map(t=>t.term);
+  return {
+    term:target,
+    compareWith:other,
+    answer:target.term,
+    prompt:`Which term best fits this situation? ${target.scenario}`,
+    options:shuffle(unique([target.term,other.term,...distractors])).slice(0,4),
+    extra:''
+  };
+}
+
 function makeQuestion(){
   if(!terms.length)return;
   const pool=selectedPool();
-  const t=pool[Math.floor(Math.random()*pool.length)];
   let mode=els.practiceMode.value;
-  if(mode==='mixed')mode=shuffle(['en-ru','ru-en','vi-en','definition','scenario','visual','fill'])[0];
-  let prompt,answer,field,extra='';
-  if(mode==='en-ru'){
-    prompt=`What does “${t.term}” mean in Russian?`;answer=t.translation_ru[0];field=x=>x.translation_ru[0];
-  }else if(mode==='ru-en'){
-    prompt=`What is the English term for “${t.translation_ru[0]}”?`;answer=t.term;field=x=>x.term;
-  }else if(mode==='vi-en'){
-    prompt=`What is the English construction term for “${t.translation_vi[0]}”?`;answer=t.term;field=x=>x.term;
-  }else if(mode==='definition'){
-    prompt=t.definition_en;answer=t.term;field=x=>x.term;
-  }else if(mode==='scenario'){
-    prompt=t.scenario;answer=t.term;field=x=>x.term;
-  }else if(mode==='visual'){
-    prompt='Identify the construction term shown by this diagram.';answer=t.term;field=x=>x.term;extra=renderTermVisual(t);
+  if(mode==='mixed')mode=shuffle(['en-ru','ru-en','vi-en','definition','scenario','visual','fill','contrast'])[0];
+
+  let t,prompt,answer,field,extra='',options=[],compareWith=null;
+  if(mode==='contrast'){
+    const q=makeContrastQuestion();
+    t=q.term;prompt=q.prompt;answer=q.answer;options=q.options;extra=q.extra;compareWith=q.compareWith;
   }else{
-    prompt=`Complete the sentence: ${blankExample(t)}`;answer=t.term;field=x=>x.term;
+    t=pool[Math.floor(Math.random()*pool.length)];
+    if(mode==='en-ru'){
+      prompt=`What does “${t.term}” mean in Russian?`;answer=t.translation_ru[0];field=x=>x.translation_ru[0];
+    }else if(mode==='ru-en'){
+      prompt=`What is the English term for “${t.translation_ru[0]}”?`;answer=t.term;field=x=>x.term;
+    }else if(mode==='vi-en'){
+      prompt=`What is the English construction term for “${t.translation_vi[0]}”?`;answer=t.term;field=x=>x.term;
+    }else if(mode==='definition'){
+      prompt=t.definition_en;answer=t.term;field=x=>x.term;
+    }else if(mode==='scenario'){
+      prompt=t.scenario;answer=t.term;field=x=>x.term;
+    }else if(mode==='visual'){
+      prompt='Identify the construction term shown by this diagram.';answer=t.term;field=x=>x.term;extra=renderTermVisual(t,{quiz:true});
+    }else{
+      prompt=`Complete the sentence: ${blankExample(t)}`;answer=t.term;field=x=>x.term;
+    }
+    options=unique([answer,...chooseDistractors(t,field)]);
+    if(options.length<4)options=unique([...options,...shuffle(terms).map(field)]).slice(0,4);
+    options=shuffle(options);
   }
-  let options=unique([answer,...chooseDistractors(t,field)]);
-  if(options.length<4){
-    options=unique([...options,...shuffle(terms).map(field)]).slice(0,4);
-  }
-  options=shuffle(options);
-  currentQuestion={term:t,answer,mode};
+
+  currentQuestion={term:t,answer,mode,compareWith};
   els.quiz.dataset.answered='no';
-  els.quiz.innerHTML=`${extra}<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><button class="speak-question secondary" type="button">🔊 ${escapeHtml(t.term)}</button></div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback"></div>`;
-  els.quiz.querySelector('.speak-question').addEventListener('click',()=>speak(t.term));
+  const canSpeakBeforeAnswer=mode==='en-ru';
+  const speakButton=canSpeakBeforeAnswer?`<button class="speak-question secondary" type="button">🔊 Listen</button>`:'';
+  els.quiz.innerHTML=`${extra}<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span>${speakButton}</div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback"></div>`;
+  if(canSpeakBeforeAnswer)els.quiz.querySelector('.speak-question').addEventListener('click',()=>speak(t.term));
   els.quiz.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',()=>answerQuestion(b)));
   renderSessionStatus();
 }
@@ -165,7 +212,15 @@ function answerQuestion(button){
     else if(b===button)b.classList.add('wrong');
     b.disabled=true;
   });
-  document.querySelector('#feedback').innerHTML=`<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span></div>`;
+
+  const contrast=currentQuestion.compareWith
+    ?`<div class="contrast-note"><strong>Compare with ${escapeHtml(currentQuestion.compareWith.term)}:</strong> ${escapeHtml(currentQuestion.compareWith.definition_en)}</div>`
+    :'';
+  const caution=currentQuestion.term.common_mistakes?.length
+    ?`<div class="contrast-note"><strong>Watch out:</strong> ${escapeHtml(currentQuestion.term.common_mistakes.join(' '))}</div>`
+    :'';
+  document.querySelector('#feedback').innerHTML=`<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
+  document.querySelector('.feedback-speak')?.addEventListener('click',()=>speak(currentQuestion.term.term));
   renderSessionStatus();
   if(session.active&&session.done>=session.total){
     const pct=Math.round(session.correct/session.total*100);
@@ -211,11 +266,23 @@ function importProgress(file){
   reader.readAsText(file);
 }
 
+async function fetchJson(path){
+  const response=await fetch(path);
+  if(!response.ok)throw new Error(`Could not load ${path}`);
+  return response.json();
+}
+
 async function init(){
-  [terms,categories]=await Promise.all([
-    fetch('data/terms.json').then(r=>{if(!r.ok)throw new Error('Could not load terms.json');return r.json()}),
-    fetch('data/categories.json').then(r=>{if(!r.ok)throw new Error('Could not load categories.json');return r.json()})
+  const [coreTerms,expandedTerms,loadedCategories]=await Promise.all([
+    fetchJson('data/terms.json'),
+    fetchJson('data/terms-expansion.json'),
+    fetchJson('data/categories.json')
   ]);
+  terms=[...coreTerms,...expandedTerms];
+  categories=loadedCategories;
+  const ids=terms.map(t=>t.id);
+  if(new Set(ids).size!==ids.length)throw new Error('Duplicate vocabulary IDs detected.');
+
   categories.forEach(c=>els.category.insertAdjacentHTML('beforeend',`<option value="${c.id}">${escapeHtml(c.label)}</option>`));
   renderStats();renderDictionary();renderReviewLists();renderSessionStatus();
   document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchView(t.dataset.view)));
