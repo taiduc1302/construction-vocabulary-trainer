@@ -20,7 +20,7 @@ Before adding a term:
 5. Add a dedicated educational diagram using the same term `id`.
 6. Run the full validation command: `npm run validate`.
 
-For normal new vocabulary, append to `data/terms-expansion.json` and add its diagram to `src/visuals-extra.js`. Do not move old terms between files without a good reason because browser learning progress is keyed by term ID and stable project structure makes AI maintenance safer.
+For normal new vocabulary, append to `data/terms-expansion.json` and add its diagram to `src/visuals-extra.js`. Do not move old terms between files without a good reason because browser learning progress is keyed by term ID.
 
 Do not add a term if the resulting repository would fail validation.
 
@@ -72,6 +72,21 @@ Do not depend on copyrighted web images. Do not commit project drawings or scree
 
 Visual quizzes remove answer labels and captions through `src/visuals-all.js`, so the geometry must still make sense without seeing the answer word.
 
+## Drawing Challenge standard
+
+`src/drawing-challenges.js` contains multi-feature generic civil drawings for contextual recognition practice.
+
+Rules:
+- Never copy a client/project drawing into the repository.
+- Create generic educational plan views or sections.
+- Use neutral callout letters such as A, B, C instead of writing the answer term on the scene.
+- Every `termId` referenced by a drawing challenge must exist in the vocabulary.
+- Prefer realistic combinations of features that an estimator could see together on a drawing.
+- A Drawing Challenge answer updates the same spaced-repetition record as other practice modes.
+- Add a new scene only when it teaches a useful context that the single-term diagrams do not already provide.
+
+CI validates drawing `termId` references.
+
 ## Learning design
 
 When adding terms, make them usable in several forms of retrieval practice:
@@ -85,18 +100,32 @@ When adding terms, make them usable in several forms of retrieval practice:
 - fill in the blank
 - distinguish from a similar term
 - focused practice by construction category
+- contextual recognition in a generic drawing when appropriate
 
 The `scenario` must not contain the answer itself or an obvious grammatical variant of it.
 
 If a new term has a commonly confused counterpart, consider adding the pair to `confusablePairs` in `src/app.js` so it appears in **Similar terms** practice.
 
-## Spaced review
+## Adaptive review and learning state
 
-The browser stores personal learning progress locally. Do not commit an individual's learning history into the repository. The app uses the statuses:
+`src/learning-state.js` owns browser learning state. It is versioned and currently uses v2.
+
+The state contains:
+- per-term spaced-repetition records;
+- recent answer results used by adaptive weighting;
+- daily attempts/correct counts;
+- daily-goal setting;
+- completed Quick-session history.
+
+The legacy `construction-vocab-progress-v1` localStorage key is migrated automatically into v2. Preserve this migration path unless there is a deliberate future migration.
+
+Smart Review uses adaptive weighting. Overdue terms, high error rate, recent mistakes, and low mastery raise a word's selection weight. Mastered words that are not due are deprioritized.
+
+Do not commit user learning-state exports to the repository. Do not reset or rename stable term IDs casually because those IDs link vocabulary to the user's stored history.
+
+The app uses the statuses:
 
 `new -> learning -> review -> mastered`
-
-Keep changes to vocabulary data backward-compatible with existing term ids whenever possible. Renaming an id can orphan stored progress, so only change ids when necessary.
 
 ## Editing workflow
 
@@ -105,10 +134,11 @@ When asked to add or improve words:
 2. Add or improve terms, normally in `data/terms-expansion.json`.
 3. Add/update their diagrams, normally in `src/visuals-extra.js`.
 4. Add a Similar terms pairing when useful.
-5. Keep valid JSON and JavaScript.
-6. Run or reproduce `npm run validate`.
-7. Confirm the automated GitHub Action passes.
-8. Commit with a concise message such as `Add drainage vocabulary`.
+5. Consider whether the term belongs in an existing Drawing Challenge or justifies a new generic scene.
+6. Keep valid JSON and JavaScript.
+7. Run or reproduce `npm run validate`.
+8. Confirm the automated GitHub Action passes.
+9. Commit with a concise message such as `Add drainage vocabulary`.
 
 When asked to improve a word, update the existing entry instead of creating a duplicate.
 
@@ -116,7 +146,7 @@ When asked to improve a word, update the existing entry instead of creating a du
 
 The owner may simply say:
 
-`Add headwall, daylighting and trench shield to my dictionary.`
+`Add hydrant, transformer pad and traffic control to my dictionary.`
 
 Treat that as authorization to update this repository following these rules.
 
