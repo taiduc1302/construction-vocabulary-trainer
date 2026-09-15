@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v6';
+const CACHE='construction-vocab-v7';
 const ASSETS=[
   './',
   './index.html',
@@ -14,6 +14,7 @@ const ASSETS=[
   './src/register-sw.js',
   './data/terms.json',
   './data/terms-expansion.json',
+  './data/focus-terms.json',
   './data/categories.json',
   './manifest.webmanifest',
   './assets/app-icon.svg'
@@ -37,7 +38,22 @@ self.addEventListener('activate',event=>{
 
 self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
-  if(new URL(event.request.url).origin!==self.location.origin)return;
+  const url=new URL(event.request.url);
+  if(url.origin!==self.location.origin)return;
+
+  const isVocabularyData=url.pathname.includes('/data/')&&url.pathname.endsWith('.json');
+  if(isVocabularyData){
+    event.respondWith(
+      fetch(event.request).then(response=>{
+        if(response.ok){
+          const copy=response.clone();
+          caches.open(CACHE).then(cache=>cache.put(event.request,copy));
+        }
+        return response;
+      }).catch(()=>caches.match(event.request).then(cached=>cached||Response.error()))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then(cached=>{
