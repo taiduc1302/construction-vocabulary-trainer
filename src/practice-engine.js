@@ -11,7 +11,8 @@ export function recallMatches(input,answer,aliases=[]){
   const typed=normalizeRecall(input);
   if(!typed)return false;
   const compact=typed.replace(/\s+/g,'');
-  return [answer,...aliases].some(candidate=>{
+  const aliasList=Array.isArray(aliases)?aliases:[];
+  return [answer,...aliasList].some(candidate=>{
     const normalized=normalizeRecall(candidate);
     return normalized===typed||normalized.replace(/\s+/g,'')===compact;
   });
