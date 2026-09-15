@@ -1,0 +1,13 @@
+[
+  {"id":"earthworks","label":"Earthworks"},
+  {"id":"excavation","label":"Excavation & Trenching"},
+  {"id":"drainage","label":"Drainage"},
+  {"id":"utilities","label":"Utilities"},
+  {"id":"roadworks","label":"Roadworks"},
+  {"id":"concrete","label":"Concrete & Structures"},
+  {"id":"electrical","label":"Electrical / Duct Bank"},
+  {"id":"drawings","label":"Civil Drawings & Survey"},
+  {"id":"estimating","label":"Estimating"},
+  {"id":"tendering","label":"Tendering & Contracts"},
+  {"id":"safety","label":"Safety"}
+]
