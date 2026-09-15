@@ -12,7 +12,7 @@ const assetBlock=sw.match(/const ASSETS=\[([\s\S]*?)\];/);
 if(!assetBlock){
   errors.push('sw.js is missing the ASSETS precache list');
 }else{
-  const assets=new Set([...assetBlock[1].matchAll(/['"](\.\/[^'"]+)['"]/g)].map(m=>m[1]));
+  const assets=new Set([...assetBlock[1].matchAll(/['"](\.\/[^'"]*)['"]/g)].map(m=>m[1]));
   const required=new Set(['./','./index.html']);
 
   for(const match of app.matchAll(/from\s+['"]\.\/([^'"]+)['"]/g))required.add(`./src/${match[1]}`);
