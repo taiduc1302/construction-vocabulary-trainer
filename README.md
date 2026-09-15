@@ -23,23 +23,24 @@ The vocabulary covers drainage, underground utilities, pipe embedment, earthwork
 
 - Search and category filters.
 - English -> Russian, Russian -> English, and Vietnamese -> English practice.
-- **Typed active recall** without answer choices.
+- **Typed active recall** without answer choices; punctuation, hyphens and spacing variants are normalized.
 - Definition, scenario, diagram, and fill-in-the-blank questions.
 - **Similar terms** practice for confusing pairs such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
 - **My focus list** for words explicitly added from chat because the owner encountered or wants to learn them now.
+- **Strict practice scopes**: Focus, Due, Weak, and New never silently substitute unrelated words when a filtered pool is empty.
 - **Category focus** for Drainage, Earthworks, Utilities, Roadworks, Estimating, Tendering, etc.
 - **Adaptive Smart Review** that weights overdue words, error rate, recent mistakes, and mastery level instead of using a fixed priority list.
-- **Quick 10** sessions with saved session history.
+- **Quick 10** sessions with a frozen starting pool, no target repeats until that pool is exhausted, locked session filters, clear next-question controls, and saved session history.
 - Browser speech pronunciation without revealing hidden answers before recall questions.
 - Spaced repetition using `new -> learning -> review -> mastered`.
 - Adaptive weak-word ranking.
 - Due-review queue.
 - **Daily goal** with configurable reviews/day.
-- **Learning streak** based on completed daily goals.
+- **Learning streak** based on each day's historical goal rather than today's goal being applied retroactively.
 - **7-day activity chart**, total review count, recent session history, hardest-word list, and focus-word count.
 - **Drawing Challenge** using generic civil plan/section scenes. Answers also update the spaced-repetition record for the vocabulary term being tested.
 - Export/import of the complete browser learning state as JSON.
-- Installable PWA shell with offline use after the first successful online load.
+- Installable PWA shell with fresh online updates and offline fallback.
 
 ## My focus list
 
@@ -71,21 +72,23 @@ The initial focus-list entry is `duct-bank`, added after this behaviour was intr
 2. Road structure section — overlay, base course, subbase, subgrade, curb and gutter.
 3. Utility trench section — backfill, bedding, duct bank, shoring, trench.
 
-Each feature is identified by a neutral callout letter. The learner is asked which callout corresponds to a vocabulary term.
+Each feature is identified by a neutral callout letter. The learner is asked which callout corresponds to a vocabulary term. CI verifies target IDs, unique labels, CSS coverage, and that visible scene text does not reveal the answer.
 
 ## Adaptive learning state
 
 Learning data is stored locally in the browser in a versioned state managed by `src/learning-state.js`.
 
-The v2 state contains:
+The current **v3** state contains:
 
 - per-term spaced-repetition progress;
 - recent correct/incorrect results for adaptive weighting;
+- sanitized counters and timestamps;
 - daily attempts and correct answers;
-- configurable daily goal;
-- completed Quick-session history.
+- the historical goal stored with each active day so later goal changes do not rewrite old streaks;
+- configurable current daily goal;
+- completed Quick-session history, capped to a safe size.
 
-The app automatically migrates the previous `construction-vocab-progress-v1` localStorage format into the v2 state. Existing learned-word progress is therefore preserved when upgrading.
+The app automatically migrates both the previous `construction-vocab-state-v2` state and the older `construction-vocab-progress-v1` format into v3. Malformed or partial stored/imported data is normalized instead of being allowed to produce broken counters or `NaN` values. Storage access failures also fail safely rather than crashing the trainer.
 
 Learning state is intentionally **not committed to GitHub**. Use **Export progress** before clearing browser data or moving devices, then **Import progress** on the new device.
 
@@ -103,23 +106,46 @@ Vocabulary is modular so it can grow without turning one JSON file into a mainte
 
 The app loads all vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs across files and verifies that every focus-list ID exists.
 
-## Visual and learning modules
+## Main modules
 
 - `src/visuals.js` - diagrams for the core vocabulary.
 - `src/visuals-extra.js` - diagrams for the expansion vocabulary.
 - `src/visuals-all.js` - combined renderer and quiz-safe label stripping.
 - `src/drawing-challenges.js` - generic multi-feature civil drawing exercises.
-- `src/learning-state.js` - progress migration, adaptive weighting, daily goal, streaks, and session history.
-- `src/app.js` - application orchestration, focus-list loading, and practice logic.
-- `src/styles.css` - main interface styles.
-- `src/quiz.css` - typed recall and quiz styling.
-- `src/progress.css` - learning analytics and drawing challenge styling.
+- `src/learning-state.js` - state migration, sanitization, adaptive weighting, daily goals, streaks, and session history.
+- `src/practice-engine.js` - recall normalization, strict scope/category selection, no-repeat pool helpers, and option deduplication.
+- `src/app.js` - application orchestration, focus-list loading, practice UI, Quick 10, and drawing challenge wiring.
+- `src/styles.css`, `src/quiz.css`, `src/progress.css` - interface styling.
 - `AI_INSTRUCTIONS.md` - mandatory maintenance rules for ChatGPT / Claude.
-- `scripts/validate-terms.mjs` - multilingual vocabulary, duplicate, and focus-list checks.
-- `scripts/validate-visuals.mjs` - diagram, drawing challenge, focus-list frontend, and other contract checks.
 - `manifest.webmanifest` / `sw.js` - installable/offline app support.
 
-Every term must have a dedicated diagram. CI fails if visual coverage is incomplete or if a Drawing Challenge/focus-list entry references a missing term.
+## Audit and tests
+
+Run the complete repository gate with:
+
+```bash
+npm run validate
+```
+
+Run behavioral tests only with:
+
+```bash
+npm test
+```
+
+The validation gate currently covers:
+
+- vocabulary structure, duplicate IDs, translations, category references, and focus-list integrity;
+- content quality checks including normalized duplicate names, answer leakage in scenarios, date validity, and malformed arrays;
+- dedicated visual coverage for every term and matching `tv-*` CSS classes;
+- Drawing Challenge IDs, callouts, visible-answer leakage, and `dc-*` CSS classes;
+- PWA dependency coverage so runtime modules/data cannot be omitted from offline precache;
+- network-first refresh policy for mutable HTML/JS/CSS/JSON while retaining offline fallback;
+- learning-state migration, sanitization, scheduling, weakness/adaptive weighting, daily goals, streaks, and session history;
+- practice-engine recall normalization, strict scope filtering, no-repeat preference, aliases, and unique options;
+- JavaScript syntax and manifest JSON validity.
+
+GitHub Actions runs these checks on pull requests and pushes to `main`. It runs independent checks even if one fails, uploads diagnostic audit logs as an artifact, and then fails the workflow if any gate failed.
 
 ## Run locally
 
@@ -138,14 +164,6 @@ With Node:
 ```bash
 npx serve .
 ```
-
-Validate the repository with:
-
-```bash
-npm run validate
-```
-
-GitHub Actions runs the same validation automatically on pushes and pull requests.
 
 ## Put it online with GitHub Pages
 
@@ -173,7 +191,7 @@ After GitHub Pages is enabled and the site has been opened once online:
 - **iPhone / iPad:** Safari -> Share -> Add to Home Screen.
 - **Android / Chrome:** browser menu -> Install app / Add to Home screen.
 
-The service worker caches the trainer for offline use. Vocabulary JSON and the focus list use **network-first** loading when online so chat-driven repository updates appear without manually changing the PWA cache version every time; cached copies are used when offline.
+The service worker precaches the trainer for offline use. Mutable app resources — HTML, JavaScript, CSS, JSON and the web manifest — use **network-first** loading when online, with cached copies used as fallback offline. This prevents chat-driven vocabulary or code updates from being hidden behind a stale cache-first app shell.
 
 ## Add words through ChatGPT or Claude
 
