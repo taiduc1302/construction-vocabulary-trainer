@@ -2,17 +2,25 @@
 
 This repository is a personal learning system for construction vocabulary. These rules apply to ChatGPT, Claude, and other AI agents.
 
-## Source of truth
+## Vocabulary source of truth
 
-`data/terms.json` is the canonical vocabulary file.
+Vocabulary is intentionally modular:
+
+- `data/terms.json` contains the original/core vocabulary.
+- `data/terms-expansion.json` contains the current expansion pack and is the default location for new terms.
+- `data/categories.json` contains the controlled category list.
+
+Treat all `data/terms*.json` files together as one vocabulary. Term IDs must be unique across every vocabulary file.
 
 Before adding a term:
-1. Read the existing file.
+1. Read all existing `data/terms*.json` files.
 2. Check for duplicates, spelling variants, abbreviations, and near-synonyms.
 3. Reuse an existing category from `data/categories.json` when possible.
 4. Preserve all required fields.
-5. Add a dedicated educational diagram to `src/visuals.js` using the same term `id`.
+5. Add a dedicated educational diagram using the same term `id`.
 6. Run the full validation command: `npm run validate`.
+
+For normal new vocabulary, append to `data/terms-expansion.json` and add its diagram to `src/visuals-extra.js`. Do not move old terms between files without a good reason because browser learning progress is keyed by term ID and stable project structure makes AI maintenance safer.
 
 Do not add a term if the resulting repository would fail validation.
 
@@ -40,7 +48,7 @@ Do not add a term if the resulting repository would fail validation.
 - Use terminology that a contractor, estimator, civil designer, supplier, or field crew would realistically use in Canada when applicable.
 - Do not fabricate code requirements, municipal standards, prices, project facts, or dimensions unless the user supplied them.
 - Generic dimensions may be used only as clearly illustrative examples.
-- Distinguish similar terms explicitly, e.g. `culvert` vs `storm sewer`, `subgrade` vs `subbase`, `trench box` vs `shoring`, `allowance` vs `contingency`.
+- Distinguish similar terms explicitly, e.g. `culvert` vs `storm sewer`, `subgrade` vs `subbase`, `trench box` vs `shoring`, `allowance` vs `contingency`, `RFI` vs `RFQ`, `unit price` vs `lump sum`.
 - Russian should sound natural to a Russian-speaking construction professional and explain the concept, not just translate it.
 - Vietnamese should use standard modern Vietnamese and practical construction wording.
 - Avoid company names, confidential tender information, client data, bid prices, credentials, and proprietary documents.
@@ -49,8 +57,10 @@ Do not add a term if the resulting repository would fail validation.
 
 Every vocabulary entry must have both:
 
-1. A `visual` description in `data/terms.json`.
-2. A dedicated SVG-style diagram keyed by the same `id` in `src/visuals.js`.
+1. A `visual` description in its `data/terms*.json` entry.
+2. A dedicated SVG-style diagram keyed by the same `id` in either `src/visuals.js` or `src/visuals-extra.js`.
+
+The combined renderer is `src/visuals-all.js`.
 
 The diagram should teach the physical idea quickly. Prefer:
 - cross-sections for buried utilities, pavement layers, excavation and drainage;
@@ -60,7 +70,7 @@ The diagram should teach the physical idea quickly. Prefer:
 
 Do not depend on copyrighted web images. Do not commit project drawings or screenshots just to illustrate a term. If the user provides a work screenshot to explain a word, identify the concept and create a clean generic schematic instead.
 
-Visual quizzes intentionally hide `tv-label` text and captions, so the geometry must still make sense without seeing the answer word.
+Visual quizzes remove answer labels and captions through `src/visuals-all.js`, so the geometry must still make sense without seeing the answer word.
 
 ## Learning design
 
@@ -76,6 +86,8 @@ When adding terms, make them usable in several forms of retrieval practice:
 
 The `scenario` must not contain the answer itself or an obvious grammatical variant of it.
 
+If a new term has a commonly confused counterpart, consider adding the pair to `confusablePairs` in `src/app.js` so it appears in **Similar terms** practice.
+
 ## Spaced review
 
 The browser stores personal learning progress locally. Do not commit an individual's learning history into the repository. The app uses the statuses:
@@ -87,13 +99,14 @@ Keep changes to vocabulary data backward-compatible with existing term ids whene
 ## Editing workflow
 
 When asked to add or improve words:
-1. Fetch `data/terms.json`, `data/categories.json`, and relevant existing visuals.
-2. Add or improve terms.
-3. Add/update their diagrams in `src/visuals.js`.
-4. Keep valid JSON and JavaScript.
-5. Run or reproduce `npm run validate`.
-6. Confirm the automated GitHub Action passes.
-7. Commit with a concise message such as `Add drainage vocabulary`.
+1. Fetch all `data/terms*.json` files, `data/categories.json`, and relevant existing visuals.
+2. Add or improve terms, normally in `data/terms-expansion.json`.
+3. Add/update their diagrams, normally in `src/visuals-extra.js`.
+4. Add a Similar terms pairing when useful.
+5. Keep valid JSON and JavaScript.
+6. Run or reproduce `npm run validate`.
+7. Confirm the automated GitHub Action passes.
+8. Commit with a concise message such as `Add drainage vocabulary`.
 
 When asked to improve a word, update the existing entry instead of creating a duplicate.
 
