@@ -56,6 +56,14 @@ function classesDefined(source,prefix){
   for(const match of source.matchAll(/\.([A-Za-z0-9_-]+)/g))if(match[1].startsWith(prefix))out.add(match[1]);
   return out;
 }
+function normalized(value){
+  return String(value||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
+}
+function containsPhrase(text,phrase){
+  const hay=` ${normalized(text)} `;
+  const needle=normalized(phrase);
+  return needle?hay.includes(` ${needle} `):false;
+}
 
 const definedTv=classesDefined(cssSources,'tv-');
 const missingTv=[...classesUsed(visualSources,'tv-')].filter(name=>!definedTv.has(name));
@@ -71,7 +79,9 @@ for(const scene of scenes){
   if(!Array.isArray(scene.targets)||scene.targets.length<2){errors.push(`Drawing scene ${scene.id} needs at least two targets`);continue}
   const labels=new Set();
   const sceneTermIds=new Set();
-  const visibleText=[...scene.svg.matchAll(/<text\b[^>]*>([\s\S]*?)<\/text>/gi)].map(m=>m[1].replace(/<[^>]+>/g,' ').trim().toLowerCase()).join(' ');
+  const visibleText=[...scene.svg.matchAll(/<text\b[^>]*>([\s\S]*?)<\/text>/gi)].map(m=>m[1].replace(/<[^>]+>/g,' ').trim()).join(' ');
+  const ariaText=[...scene.svg.matchAll(/aria-label="([^"]+)"/gi)].map(m=>m[1]).join(' ');
+  const userFacingContext=`${scene.title} ${scene.description} ${visibleText} ${ariaText}`;
   for(const target of scene.targets){
     drawingTargets++;
     if(!target.label||labels.has(target.label))errors.push(`Drawing scene ${scene.id} has missing/duplicate label ${target.label||'(missing)'}`);
@@ -80,8 +90,8 @@ for(const scene of scenes){
     if(sceneTermIds.has(target.termId))errors.push(`Drawing scene ${scene.id} repeats target term ${target.termId}`);
     sceneTermIds.add(target.termId);
     if(target.label&&!new RegExp(`>${target.label.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}<\\/text>`).test(scene.svg))errors.push(`Drawing scene ${scene.id} target ${target.label} has no visible callout label in SVG`);
-    const term=termById.get(target.termId)?.term?.toLowerCase();
-    if(term&&visibleText.includes(term))errors.push(`Drawing scene ${scene.id} leaks answer term “${term}” in visible SVG text`);
+    const term=termById.get(target.termId)?.term;
+    if(term&&containsPhrase(userFacingContext,term))errors.push(`Drawing scene ${scene.id} leaks answer term “${term}” in title, caption, SVG text, or accessibility text`);
   }
 }
 
@@ -97,5 +107,5 @@ if(errors.length){
 
 console.log(`Visual coverage OK: ${terms.length}/${terms.length} terms have dedicated diagrams.`);
 console.log(`Visual CSS coverage OK: ${definedTv.size} tv-* classes defined; every used class resolves.`);
-console.log(`Drawing challenge coverage OK: ${scenes.length} scenes / ${drawingTargets} valid callouts; every dc-* class resolves.`);
+console.log(`Drawing challenge coverage OK: ${scenes.length} scenes / ${drawingTargets} valid callouts; every dc-* class resolves and answer text stays hidden.`);
 console.log('Practice app contract OK: focus scope, strict practice engine and frozen Quick 10 pool are wired.');
