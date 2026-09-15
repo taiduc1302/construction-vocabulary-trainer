@@ -1,10 +1,13 @@
-const CACHE='construction-vocab-v5';
+const CACHE='construction-vocab-v6';
 const ASSETS=[
   './',
   './index.html',
   './src/styles.css',
   './src/quiz.css',
+  './src/progress.css',
   './src/app.js',
+  './src/learning-state.js',
+  './src/drawing-challenges.js',
   './src/visuals.js',
   './src/visuals-extra.js',
   './src/visuals-all.js',
