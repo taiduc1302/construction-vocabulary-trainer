@@ -17,25 +17,71 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Prepare audit logs
+        run: mkdir -p audit-logs
+
       - name: Validate vocabulary structure
-        run: node scripts/validate-terms.mjs
+        id: terms
+        continue-on-error: true
+        run: node scripts/validate-terms.mjs 2>&1 | tee audit-logs/terms.txt
+
       - name: Audit vocabulary content
-        run: node scripts/audit-content.mjs
+        id: content
+        continue-on-error: true
+        run: node scripts/audit-content.mjs 2>&1 | tee audit-logs/content.txt
+
       - name: Validate visuals and drawing contracts
-        run: node scripts/validate-visuals.mjs
+        id: visuals
+        continue-on-error: true
+        run: node scripts/validate-visuals.mjs 2>&1 | tee audit-logs/visuals.txt
+
       - name: Test learning state behavior
-        run: node scripts/test-learning-state.mjs
+        id: learning
+        continue-on-error: true
+        run: node scripts/test-learning-state.mjs 2>&1 | tee audit-logs/learning-state.txt
+
       - name: Check JavaScript syntax
+        id: syntax
+        continue-on-error: true
         run: |
-          node --check src/app.js
-          node --check src/learning-state.js
-          node --check src/drawing-challenges.js
-          node --check src/visuals.js
-          node --check src/visuals-extra.js
-          node --check src/visuals-all.js
-          node --check src/register-sw.js
-          node --check sw.js
+          {
+            node --check src/app.js
+            node --check src/learning-state.js
+            node --check src/drawing-challenges.js
+            node --check src/visuals.js
+            node --check src/visuals-extra.js
+            node --check src/visuals-all.js
+            node --check src/register-sw.js
+            node --check sw.js
+          } 2>&1 | tee audit-logs/syntax.txt
+
       - name: Validate manifest JSON
-        run: node -e "JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); console.log('Manifest JSON OK')"
-      - name: Run aggregate validation command
-        run: npm run validate
+        id: manifest
+        continue-on-error: true
+        run: node -e "JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); console.log('Manifest JSON OK')" 2>&1 | tee audit-logs/manifest.txt
+
+      - name: Upload audit logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-logs-${{ github.run_id }}
+          path: audit-logs/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Fail if any audit check failed
+        if: always()
+        env:
+          TERMS: ${{ steps.terms.outcome }}
+          CONTENT: ${{ steps.content.outcome }}
+          VISUALS: ${{ steps.visuals.outcome }}
+          LEARNING: ${{ steps.learning.outcome }}
+          SYNTAX: ${{ steps.syntax.outcome }}
+          MANIFEST: ${{ steps.manifest.outcome }}
+        run: |
+          printf 'terms=%s\ncontent=%s\nvisuals=%s\nlearning=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$LEARNING" "$SYNTAX" "$MANIFEST"
+          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$LEARNING" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
+            echo 'One or more audit checks failed. See the uploaded audit logs artifact.'
+            exit 1
+          fi
