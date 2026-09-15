@@ -1,0 +1,16 @@
+[
+  {"id":"grade","priority":"high","reason":"Referenced by invert, benchmark, swale, and cut; useful for civil drawings and earthworks."},
+  {"id":"groundwater","priority":"medium","reason":"Referenced by dewatering; useful for excavation and pump-station work."},
+  {"id":"connection","priority":"low","reason":"Referenced by tie-in; useful as a general utility relationship term."},
+  {"id":"asphalt","priority":"high","reason":"Referenced by milling and tack coat; common roadworks vocabulary."},
+  {"id":"pavement","priority":"high","reason":"Referenced by overlay; common roadworks and restoration vocabulary."},
+  {"id":"concrete","priority":"high","reason":"Referenced by curb/formwork/rebar/thrust-block concepts; common civil construction vocabulary."},
+  {"id":"survey","priority":"medium","reason":"Referenced by benchmark; useful for layout, elevations, and civil drawings."},
+  {"id":"estimate","priority":"high","reason":"Referenced by quantity takeoff, production rate, and contingency; central estimating vocabulary."},
+  {"id":"quotation","priority":"medium","reason":"Referenced by RFQ; useful for supplier and subcontractor pricing workflows."},
+  {"id":"erosion-control","priority":"medium","reason":"Referenced by riprap; useful for drainage and environmental scope."},
+  {"id":"utility-locate","priority":"high","reason":"Referenced by daylighting; common underground-utility workflow vocabulary."},
+  {"id":"pump-station","priority":"high","reason":"Referenced by force main and directly relevant to civil tender work."},
+  {"id":"crew","priority":"high","reason":"Referenced by production rate; central to HeavyBid and estimating productivity."},
+  {"id":"risk","priority":"medium","reason":"Referenced by contingency; useful for estimating and tender review."}
+]
