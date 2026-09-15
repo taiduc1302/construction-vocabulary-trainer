@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111923" />
   <title>Construction Vocabulary Trainer</title>
   <link rel="stylesheet" href="src/styles.css" />
 </head>
@@ -11,6 +12,7 @@
     <div>
       <p class="eyebrow">Personal civil construction trainer</p>
       <h1>Construction Vocabulary</h1>
+      <p class="header-note">English · Русский · Tiếng Việt · visual learning</p>
     </div>
     <div class="top-actions">
       <button id="exportProgress" class="secondary">Export progress</button>
@@ -37,25 +39,40 @@
     </section>
 
     <section id="practiceView" class="view">
-      <div class="practice-controls">
-        <select id="practiceMode">
-          <option value="mixed">Mixed practice</option>
-          <option value="en-ru">English → Russian</option>
-          <option value="ru-en">Russian → English</option>
-          <option value="scenario">Scenario → term</option>
-          <option value="visual">Visual → term</option>
-          <option value="fill">Fill in the blank</option>
-        </select>
-        <button id="newQuestion">New question</button>
+      <div class="practice-panel">
+        <div class="practice-controls">
+          <select id="practiceScope" aria-label="Practice word selection">
+            <option value="smart">Smart review</option>
+            <option value="due">Due words</option>
+            <option value="weak">Weak words</option>
+            <option value="new">New words</option>
+            <option value="all">All words</option>
+          </select>
+          <select id="practiceMode" aria-label="Practice question type">
+            <option value="mixed">Mixed practice</option>
+            <option value="en-ru">English → Russian</option>
+            <option value="ru-en">Russian → English</option>
+            <option value="vi-en">Vietnamese → English</option>
+            <option value="definition">Definition → term</option>
+            <option value="scenario">Scenario → term</option>
+            <option value="visual">Visual → term</option>
+            <option value="fill">Fill in the blank</option>
+          </select>
+          <button id="newQuestion">New question</button>
+          <button id="quickSession" class="secondary">Quick 10</button>
+        </div>
+        <div id="sessionStatus" class="session-status"></div>
       </div>
       <div id="quizCard" class="quiz-card"></div>
     </section>
 
     <section id="reviewView" class="view">
+      <div class="section-intro"><h2>Due review</h2><p>Words whose next spaced-repetition review is due now.</p></div>
       <div id="reviewList" class="list-stack"></div>
     </section>
 
     <section id="weakView" class="view">
+      <div class="section-intro"><h2>Weak words</h2><p>Words ranked by your mistakes so you can target them first.</p></div>
       <div id="weakList" class="list-stack"></div>
     </section>
   </main>
@@ -66,11 +83,13 @@
         <div><span class="category-pill"></span><h2 class="term-title"></h2><p class="pronunciation"></p></div>
         <span class="status-badge"></span>
       </div>
+      <div class="card-actions"><button class="listen-btn secondary" type="button">🔊 Listen</button></div>
       <div class="visual-box"></div>
       <p class="definition"></p>
       <div class="translation-block"><strong>RU</strong><span class="ru-text"></span></div>
       <div class="translation-block"><strong>VI</strong><span class="vi-text"></span></div>
       <details><summary>Russian explanation</summary><p class="ru-explanation"></p></details>
+      <details><summary>Related terms & common mistakes</summary><p class="related-text"></p><p class="mistakes-text"></p></details>
       <div class="example-box"><strong>Example</strong><p class="example-text"></p></div>
     </article>
   </template>
