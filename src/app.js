@@ -6,6 +6,7 @@ const els={
   search:document.querySelector('#searchInput'),
   category:document.querySelector('#categoryFilter'),
   practiceScope:document.querySelector('#practiceScope'),
+  practiceCategory:document.querySelector('#practiceCategory'),
   practiceMode:document.querySelector('#practiceMode'),
   quiz:document.querySelector('#quizCard'),
   reviewList:document.querySelector('#reviewList'),
@@ -72,6 +73,14 @@ function speak(text){
   u.lang='en-CA';u.rate=.82;
   speechSynthesis.speak(u);
 }
+function normalizeRecall(v){
+  return String(v||'')
+    .toLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[^a-z0-9]+/g,' ')
+    .trim()
+    .replace(/\s+/g,' ');
+}
 
 function renderStats(){
   const records=terms.map(t=>recordFor(t.id));
@@ -129,23 +138,38 @@ function smartPool(){
   const fresh=newTerms();if(fresh.length)return fresh;
   return terms;
 }
+function applyPracticeCategory(pool){
+  const cat=els.practiceCategory.value;
+  if(cat==='all')return pool;
+  const filtered=pool.filter(t=>t.category===cat);
+  if(filtered.length)return filtered;
+  const categoryTerms=terms.filter(t=>t.category===cat);
+  return categoryTerms.length?categoryTerms:pool;
+}
 function selectedPool(){
+  let pool;
   switch(els.practiceScope.value){
-    case 'due':return dueTerms().length?dueTerms():terms;
-    case 'weak':return weakTerms().length?weakTerms():terms;
-    case 'new':return newTerms().length?newTerms():terms;
-    case 'all':return terms;
-    default:return smartPool();
+    case 'due':pool=dueTerms().length?dueTerms():terms;break;
+    case 'weak':pool=weakTerms().length?weakTerms():terms;break;
+    case 'new':pool=newTerms().length?newTerms():terms;break;
+    case 'all':pool=terms;break;
+    default:pool=smartPool();
   }
+  return applyPracticeCategory(pool);
 }
 
 function makeContrastQuestion(){
-  const available=confusablePairs
+  const selectedCategory=els.practiceCategory.value;
+  let available=confusablePairs
     .map(([a,b])=>[termById(a),termById(b)])
     .filter(([a,b])=>a&&b);
-  const pair=available[Math.floor(Math.random()*available.length)];
-  const [first,second]=pair;
-  const target=Math.random()<.5?first:second;
+  if(selectedCategory!=='all'){
+    const categoryPairs=available.filter(([a,b])=>a.category===selectedCategory||b.category===selectedCategory);
+    if(categoryPairs.length)available=categoryPairs;
+  }
+  const [first,second]=available[Math.floor(Math.random()*available.length)];
+  const possibleTargets=selectedCategory==='all'?[first,second]:[first,second].filter(t=>t.category===selectedCategory);
+  const target=(possibleTargets.length?possibleTargets:[first,second])[Math.floor(Math.random()*(possibleTargets.length||2))];
   const other=target.id===first.id?second:first;
   const sameCategory=terms.filter(t=>t.category===target.category&&t.id!==target.id&&t.id!==other.id);
   const distractors=shuffle(sameCategory.length?sameCategory:terms).slice(0,2).map(t=>t.term);
@@ -159,11 +183,39 @@ function makeContrastQuestion(){
   };
 }
 
+function renderChoiceQuestion({t,prompt,answer,mode,options,extra='',compareWith=null}){
+  currentQuestion={term:t,answer,mode,compareWith};
+  els.quiz.dataset.answered='no';
+  const canSpeakBeforeAnswer=mode==='en-ru';
+  const speakButton=canSpeakBeforeAnswer?`<button class="speak-question secondary" type="button">🔊 Listen</button>`:'';
+  els.quiz.innerHTML=`${extra}<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span>${speakButton}</div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback"></div>`;
+  if(canSpeakBeforeAnswer)els.quiz.querySelector('.speak-question').addEventListener('click',()=>speak(t.term));
+  els.quiz.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',()=>answerQuestion(b)));
+}
+
+function renderTypedQuestion(t){
+  currentQuestion={term:t,answer:t.term,mode:'typed',compareWith:null};
+  els.quiz.dataset.answered='no';
+  const prompt=`Type the English construction term for “${t.translation_ru[0]}”.`;
+  els.quiz.innerHTML=`<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><span class="recall-badge">Active recall</span></div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="typed-answer-row"><input id="typedAnswer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English term" /><button id="checkTypedAnswer" type="button">Check answer</button></div><div class="small-muted typed-hint">Hyphens and capitalization do not matter.</div><div id="feedback"></div>`;
+  const input=document.querySelector('#typedAnswer');
+  document.querySelector('#checkTypedAnswer').addEventListener('click',submitTypedAnswer);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')submitTypedAnswer()});
+  input.focus();
+}
+
 function makeQuestion(){
   if(!terms.length)return;
   const pool=selectedPool();
   let mode=els.practiceMode.value;
-  if(mode==='mixed')mode=shuffle(['en-ru','ru-en','vi-en','definition','scenario','visual','fill','contrast'])[0];
+  if(mode==='mixed')mode=shuffle(['typed','en-ru','ru-en','vi-en','definition','scenario','visual','fill','contrast'])[0];
+
+  if(mode==='typed'){
+    const t=pool[Math.floor(Math.random()*pool.length)];
+    renderTypedQuestion(t);
+    renderSessionStatus();
+    return;
+  }
 
   let t,prompt,answer,field,extra='',options=[],compareWith=null;
   if(mode==='contrast'){
@@ -191,35 +243,38 @@ function makeQuestion(){
     options=shuffle(options);
   }
 
-  currentQuestion={term:t,answer,mode,compareWith};
-  els.quiz.dataset.answered='no';
-  const canSpeakBeforeAnswer=mode==='en-ru';
-  const speakButton=canSpeakBeforeAnswer?`<button class="speak-question secondary" type="button">🔊 Listen</button>`:'';
-  els.quiz.innerHTML=`${extra}<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span>${speakButton}</div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback"></div>`;
-  if(canSpeakBeforeAnswer)els.quiz.querySelector('.speak-question').addEventListener('click',()=>speak(t.term));
-  els.quiz.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',()=>answerQuestion(b)));
+  renderChoiceQuestion({t,prompt,answer,mode,options,extra,compareWith});
   renderSessionStatus();
 }
 
-function answerQuestion(button){
-  if(!currentQuestion||els.quiz.dataset.answered==='yes')return;
-  els.quiz.dataset.answered='yes';
-  const correct=button.dataset.answer===currentQuestion.answer;
-  updateProgress(currentQuestion.term.id,correct);
-  if(session.active){session.done++;if(correct)session.correct++}
-  els.quiz.querySelectorAll('.quiz-option').forEach(b=>{
-    if(b.dataset.answer===currentQuestion.answer)b.classList.add('correct');
-    else if(b===button)b.classList.add('wrong');
-    b.disabled=true;
-  });
-
+function feedbackMarkup(correct,userAnswer=''){
   const contrast=currentQuestion.compareWith
     ?`<div class="contrast-note"><strong>Compare with ${escapeHtml(currentQuestion.compareWith.term)}:</strong> ${escapeHtml(currentQuestion.compareWith.definition_en)}</div>`
     :'';
   const caution=currentQuestion.term.common_mistakes?.length
     ?`<div class="contrast-note"><strong>Watch out:</strong> ${escapeHtml(currentQuestion.term.common_mistakes.join(' '))}</div>`
     :'';
-  document.querySelector('#feedback').innerHTML=`<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
+  const yourAnswer=userAnswer&&!correct?`<div class="small-muted">Your answer: ${escapeHtml(userAnswer)}</div>`:'';
+  return `<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}${yourAnswer}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
+}
+
+function completeAnswer(correct,{button=null,userAnswer=''}={}){
+  if(!currentQuestion||els.quiz.dataset.answered==='yes')return;
+  els.quiz.dataset.answered='yes';
+  updateProgress(currentQuestion.term.id,correct);
+  if(session.active){session.done++;if(correct)session.correct++}
+
+  els.quiz.querySelectorAll('.quiz-option').forEach(b=>{
+    if(b.dataset.answer===currentQuestion.answer)b.classList.add('correct');
+    else if(b===button)b.classList.add('wrong');
+    b.disabled=true;
+  });
+  const typedInput=document.querySelector('#typedAnswer');
+  const typedButton=document.querySelector('#checkTypedAnswer');
+  if(typedInput)typedInput.disabled=true;
+  if(typedButton)typedButton.disabled=true;
+
+  document.querySelector('#feedback').innerHTML=feedbackMarkup(correct,userAnswer);
   document.querySelector('.feedback-speak')?.addEventListener('click',()=>speak(currentQuestion.term.term));
   renderSessionStatus();
   if(session.active&&session.done>=session.total){
@@ -229,10 +284,22 @@ function answerQuestion(button){
   }
 }
 
+function answerQuestion(button){
+  completeAnswer(button.dataset.answer===currentQuestion.answer,{button});
+}
+function submitTypedAnswer(){
+  if(!currentQuestion||els.quiz.dataset.answered==='yes')return;
+  const input=document.querySelector('#typedAnswer');
+  const raw=input?.value.trim()||'';
+  if(!raw){input?.focus();return}
+  const correct=normalizeRecall(raw)===normalizeRecall(currentQuestion.answer);
+  completeAnswer(correct,{userAnswer:raw});
+}
+
 function nextQuestion(){makeQuestion()}
 function startQuickSession(){session={active:true,total:10,done:0,correct:0};els.practiceMode.value='mixed';makeQuestion()}
 function renderSessionStatus(){
-  if(!session.active){if(!els.sessionStatus.textContent)els.sessionStatus.textContent='Smart review prioritizes due words, then weak words, then new words.';return}
+  if(!session.active){if(!els.sessionStatus.textContent)els.sessionStatus.textContent='Smart review prioritizes due words, then weak words, then new words. Choose a category to focus a session.';return}
   els.sessionStatus.innerHTML=`Quick 10: question <strong>${Math.min(session.done+1,session.total)}</strong> of ${session.total} · score ${session.correct}/${session.done}`;
 }
 
@@ -283,7 +350,11 @@ async function init(){
   const ids=terms.map(t=>t.id);
   if(new Set(ids).size!==ids.length)throw new Error('Duplicate vocabulary IDs detected.');
 
-  categories.forEach(c=>els.category.insertAdjacentHTML('beforeend',`<option value="${c.id}">${escapeHtml(c.label)}</option>`));
+  categories.forEach(c=>{
+    const option=`<option value="${c.id}">${escapeHtml(c.label)}</option>`;
+    els.category.insertAdjacentHTML('beforeend',option);
+    els.practiceCategory.insertAdjacentHTML('beforeend',option);
+  });
   renderStats();renderDictionary();renderReviewLists();renderSessionStatus();
   document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchView(t.dataset.view)));
   els.search.addEventListener('input',renderDictionary);
@@ -292,6 +363,7 @@ async function init(){
   document.querySelector('#quickSession').addEventListener('click',startQuickSession);
   els.practiceMode.addEventListener('change',nextQuestion);
   els.practiceScope.addEventListener('change',nextQuestion);
+  els.practiceCategory.addEventListener('change',nextQuestion);
   document.querySelector('#exportProgress').addEventListener('click',exportProgress);
   document.querySelector('#importProgress').addEventListener('change',e=>e.target.files[0]&&importProgress(e.target.files[0]));
 }
