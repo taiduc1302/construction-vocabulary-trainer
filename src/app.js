@@ -40,6 +40,7 @@ const confusablePairs=[
 const drawingScenes=getDrawingScenes();
 let terms=[];
 let categories=[];
+let fillExamples={};
 let focusEntries=[];
 let focusIds=new Set();
 let learningState=loadLearningState();
@@ -139,7 +140,12 @@ function shuffle(a){
 }
 function unique(values){return [...new Set(values.filter(Boolean))]}
 function chooseDistractors(correct,field,pool=terms){return unique(shuffle(pool.filter(t=>t.id!==correct.id)).map(t=>field(t))).slice(0,3)}
-function blankExample(t){const re=new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');return t.example_en.replace(re,'_____')}
+function blankExample(t){
+  const source=fillExamples[t.id]||t.example_en;
+  const re=new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+  const blanked=source.replace(re,'_____');
+  return blanked===source?`The relevant construction term is _____: ${t.definition_en}`:blanked;
+}
 
 function dueTerms(){return terms.filter(t=>{const r=progressRecord(t.id);return r.status!=='new'&&dueNow(r)})}
 function weakTerms(){return terms.filter(t=>weaknessScore(progressRecord(t.id))>0).sort((a,b)=>weaknessScore(progressRecord(b.id))-weaknessScore(progressRecord(a.id)))}
@@ -496,13 +502,15 @@ async function fetchFocusData(){
 }
 
 async function init(){
-  const [coreTerms,expandedTerms,loadedCategories,focusData]=await Promise.all([
+  const [coreTerms,expandedTerms,loadedCategories,loadedFillExamples,focusData]=await Promise.all([
     fetchJson('data/terms.json'),
     fetchJson('data/terms-expansion.json'),
     fetchJson('data/categories.json'),
+    fetchJson('data/fill-examples.json'),
     fetchFocusData()
   ]);
   terms=[...coreTerms,...expandedTerms];categories=loadedCategories;
+  fillExamples=loadedFillExamples&&typeof loadedFillExamples==='object'&&!Array.isArray(loadedFillExamples)?loadedFillExamples:{};
   const ids=terms.map(t=>t.id);
   if(new Set(ids).size!==ids.length)throw new Error('Duplicate vocabulary IDs detected.');
   const idSet=new Set(ids);
