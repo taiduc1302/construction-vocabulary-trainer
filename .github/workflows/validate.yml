@@ -63,6 +63,13 @@ jobs:
           set -o pipefail
           node scripts/test-practice-engine.mjs 2>&1 | tee audit-logs/practice-engine.txt
 
+      - name: Test Drawing Challenge behavior
+        id: drawing
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node scripts/test-drawing-challenges.mjs 2>&1 | tee audit-logs/drawing-challenges.txt
+
       - name: Check JavaScript syntax
         id: syntax
         continue-on-error: true
@@ -105,11 +112,12 @@ jobs:
           PWA: ${{ steps.pwa.outcome }}
           LEARNING: ${{ steps.learning.outcome }}
           PRACTICE: ${{ steps.practice.outcome }}
+          DRAWING: ${{ steps.drawing.outcome }}
           SYNTAX: ${{ steps.syntax.outcome }}
           MANIFEST: ${{ steps.manifest.outcome }}
         run: |
-          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$SYNTAX" "$MANIFEST"
-          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
+          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\ndrawing=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$DRAWING" "$SYNTAX" "$MANIFEST"
+          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$DRAWING" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
             echo 'One or more audit checks failed. See the uploaded audit logs artifact.'
             exit 1
           fi
