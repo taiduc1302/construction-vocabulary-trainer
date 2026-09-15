@@ -21,6 +21,7 @@ assert.equal(normalizeRecall(' Tie-in '),'tie in');
 assert.equal(recallMatches('tie in','tie-in'),true);
 assert.equal(recallMatches('water main','watermain'),true,'spacing variants should match');
 assert.equal(recallMatches('D.B.','duct bank',['DB']),true,'aliases should be accepted');
+assert.doesNotThrow(()=>recallMatches('duct bank','duct bank',42),'malformed alias metadata should not crash recall');
 assert.equal(recallMatches('storm sewer','sanitary sewer'),false);
 
 assert.deepEqual(filterByCategory(terms,'drainage').map(t=>t.id),['ditch','culvert']);
