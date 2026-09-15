@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Construction Vocabulary icon">
+  <rect width="512" height="512" rx="108" fill="#111923"/>
+  <path d="M92 330h328v58H92z" fill="#d7a553"/>
+  <path d="M132 278h248l-36-112H168z" fill="#eef3f1"/>
+  <path d="M183 330v-68c0-43 32-77 73-77s73 34 73 77v68h-44v-68c0-18-13-33-29-33s-29 15-29 33v68z" fill="#1c6b52"/>
+  <path d="M116 126h280" stroke="#d7a553" stroke-width="22" stroke-linecap="round"/>
+  <text x="256" y="455" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="44" font-weight="700">CIVIL WORDS</text>
+</svg>
