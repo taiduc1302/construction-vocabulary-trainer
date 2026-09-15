@@ -6,7 +6,7 @@ The project is designed to be maintained by **ChatGPT, Claude, or a human** with
 
 ## Current version
 
-The trainer currently includes **31 civil-construction terms**, each with:
+The trainer currently includes **60 civil-construction terms**, each with:
 
 - English term and pronunciation.
 - Plain-English definition.
@@ -17,6 +17,8 @@ The trainer currently includes **31 civil-construction terms**, each with:
 - Related terminology and common-mistake notes.
 - A dedicated educational SVG-style diagram.
 
+The vocabulary now covers drainage, underground utilities, pipe embedment, earthworks, pavement structure, concrete, duct banks, civil drawings/survey, estimating, and tender language.
+
 ## Learning features
 
 - Search and category filters.
@@ -25,12 +27,13 @@ The trainer currently includes **31 civil-construction terms**, each with:
 - Vietnamese -> English practice.
 - Definition -> term questions.
 - Scenario -> term questions.
-- Diagram -> term questions.
+- Diagram -> term questions with answer labels removed.
 - Fill-in-the-blank questions.
-- Mixed practice mode.
+- **Similar terms** practice for commonly confused concepts such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
+- Mixed practice mode that also includes Similar terms questions.
 - **Smart review** that prioritizes due words, then weak words, then new words.
 - **Quick 10** sessions for short study breaks.
-- Browser speech pronunciation for vocabulary cards.
+- Browser speech pronunciation without revealing hidden answers before recall questions.
 - Spaced repetition using `new -> learning -> review -> mastered`.
 - Weak-word ranking based on mistakes.
 - Due-review queue.
@@ -38,17 +41,32 @@ The trainer currently includes **31 civil-construction terms**, each with:
 - Export/import learning progress as JSON.
 - Installable PWA shell with offline use after the first successful online load.
 
-## Main files
+## Vocabulary files
 
-- `data/terms.json` - source of truth for vocabulary.
+Vocabulary is modular so it can grow without turning one JSON file into a maintenance problem:
+
+- `data/terms.json` - original 31-term core set.
+- `data/terms-expansion.json` - 29-term expansion set and default home for future additions.
 - `data/categories.json` - controlled category list.
 - `data/term.schema.json` - vocabulary schema.
-- `src/visuals.js` - dedicated diagrams for vocabulary terms.
-- `src/app.js` - dictionary, quiz, spaced review, speech and session logic.
+
+The app loads all vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs across files.
+
+## Visual files
+
+- `src/visuals.js` - diagrams for the core vocabulary.
+- `src/visuals-extra.js` - diagrams for the expansion vocabulary.
+- `src/visuals-all.js` - combined renderer and quiz-safe label stripping.
+- `src/quiz.css` - quiz-specific styling.
+
+Every term must have a dedicated diagram. CI fails if visual coverage is incomplete.
+
+## Other main files
+
+- `src/app.js` - dictionary, quiz, Similar terms, spaced review, speech and session logic.
 - `src/styles.css` - main interface styles.
-- `src/quiz.css` - quiz-specific rules that hide visual answer hints.
 - `AI_INSTRUCTIONS.md` - mandatory maintenance rules for ChatGPT / Claude.
-- `scripts/validate-terms.mjs` - vocabulary quality checks.
+- `scripts/validate-terms.mjs` - multilingual vocabulary quality and duplicate checks.
 - `scripts/validate-visuals.mjs` - diagram coverage and frontend contract checks.
 - `manifest.webmanifest` / `sw.js` - installable/offline app support.
 
@@ -91,11 +109,11 @@ One-time setup on GitHub:
 5. Select folder **/(root)**.
 6. Click **Save**.
 
-After GitHub publishes it, the expected address is:
+Expected address after publication:
 
 `https://taiduc1302.github.io/construction-vocabulary-trainer/`
 
-All application paths are relative, so the project works correctly from the repository sub-path.
+All application paths are relative, so the project works from the repository sub-path.
 
 ## Install on a phone
 
@@ -104,7 +122,7 @@ After GitHub Pages is enabled and the site has been opened once online:
 - **iPhone / iPad:** Safari -> Share -> Add to Home Screen.
 - **Android / Chrome:** browser menu -> Install app / Add to Home screen.
 
-The service worker caches the trainer, vocabulary data and diagrams for offline use.
+The service worker caches the trainer, both vocabulary modules, and all diagram modules for offline use.
 
 Learning progress is stored in that browser/device. Use **Export progress** before clearing browser data or moving to another device, then use **Import progress** on the new device.
 
@@ -112,9 +130,9 @@ Learning progress is stored in that browser/device. Use **Export progress** befo
 
 A typical request can be as short as:
 
-> Add `headwall`, `daylighting`, and `shoring` to my construction vocabulary trainer.
+> Add `hydrant`, `transformer pad`, and `traffic control` to my construction vocabulary trainer.
 
-The AI must read `AI_INSTRUCTIONS.md`, check for duplicates, update the multilingual entry, add a dedicated diagram, run validation, and preserve existing term IDs whenever possible.
+The AI must read `AI_INSTRUCTIONS.md`, check all vocabulary files for duplicates, add the multilingual entry, add a dedicated diagram, add a Similar terms pairing when useful, run validation, and preserve existing term IDs whenever possible.
 
 You can also send a screenshot or a term encountered at work and say:
 
@@ -131,10 +149,6 @@ Current review intervals are approximately:
 `1 -> 3 -> 7 -> 14 -> 30 -> 60 days`
 
 Progress is intentionally **not committed to GitHub**.
-
-## Initial focus
-
-The vocabulary is aimed at civil estimating and heavy civil work, including earthworks, excavation, drainage, utilities, roadworks, concrete, duct banks, civil drawings, estimating and tendering.
 
 ## Privacy
 
