@@ -95,10 +95,10 @@ globalThis.localStorage=new MemoryStorage();
     }
   });
   assert.equal(calculateStreak(state,now),2,'incomplete current day should preserve completed streak through yesterday');
-  setDailyGoal(state,5,now);
-  assert.equal(state.daily['2026-09-15'].goal,5,'changing goal should update current day');
+  setDailyGoal(state,2,now);
+  assert.equal(state.daily['2026-09-15'].goal,2,'changing goal should update current day');
   assert.equal(state.daily['2026-09-14'].goal,10,'changing goal must not rewrite historical goals');
-  assert.equal(calculateStreak(state,now),3,'current day joins streak once its own goal is met');
+  assert.equal(calculateStreak(state,now),3,'current day joins streak once its own goal is actually met');
 }
 
 {
