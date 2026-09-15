@@ -1,5 +1,7 @@
 .quiz-card .technical-visual .tv-label,
-.quiz-card .technical-visual figcaption,
-.quiz-card .speak-question{display:none}
+.quiz-card .technical-visual figcaption{display:none}
 
 .quiz-card .technical-visual{margin-bottom:14px}
+.quiz-card .speak-question{white-space:nowrap}
+.feedback-speak{margin-top:12px}
+.contrast-note{margin-top:10px;padding:10px 12px;border-left:3px solid #9eada6;background:#f7f9f8;border-radius:6px;font-size:.92rem}
