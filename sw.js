@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v7';
+const CACHE='construction-vocab-v8';
 const ASSETS=[
   './',
   './index.html',
@@ -20,6 +20,46 @@ const ASSETS=[
   './assets/app-icon.svg'
 ];
 
+function shouldUseNetworkFirst(request,url){
+  if(request.mode==='navigate')return true;
+  return ['.html','.js','.css','.json','.webmanifest'].some(ext=>url.pathname.endsWith(ext));
+}
+
+async function putInCache(request,response){
+  if(!response?.ok)return;
+  const cache=await caches.open(CACHE);
+  await cache.put(request,response.clone());
+}
+
+async function networkFirst(request){
+  const cached=await caches.match(request);
+  try{
+    const response=await fetch(request);
+    if(response.ok){
+      await putInCache(request,response);
+      return response;
+    }
+    if(cached)return cached;
+    return response;
+  }catch{
+    if(cached)return cached;
+    if(request.mode==='navigate')return (await caches.match('./index.html'))||Response.error();
+    return Response.error();
+  }
+}
+
+async function cacheFirst(request){
+  const cached=await caches.match(request);
+  if(cached)return cached;
+  try{
+    const response=await fetch(request);
+    if(response.ok)await putInCache(request,response);
+    return response;
+  }catch{
+    return request.mode==='navigate'?(await caches.match('./index.html'))||Response.error():Response.error();
+  }
+}
+
 self.addEventListener('install',event=>{
   event.waitUntil(
     caches.open(CACHE)
@@ -40,31 +80,5 @@ self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
   const url=new URL(event.request.url);
   if(url.origin!==self.location.origin)return;
-
-  const isVocabularyData=url.pathname.includes('/data/')&&url.pathname.endsWith('.json');
-  if(isVocabularyData){
-    event.respondWith(
-      fetch(event.request).then(response=>{
-        if(response.ok){
-          const copy=response.clone();
-          caches.open(CACHE).then(cache=>cache.put(event.request,copy));
-        }
-        return response;
-      }).catch(()=>caches.match(event.request).then(cached=>cached||Response.error()))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then(cached=>{
-      if(cached)return cached;
-      return fetch(event.request).then(response=>{
-        if(response.ok){
-          const copy=response.clone();
-          caches.open(CACHE).then(cache=>cache.put(event.request,copy));
-        }
-        return response;
-      }).catch(()=>event.request.mode==='navigate'?caches.match('./index.html'):Response.error());
-    })
-  );
+  event.respondWith(shouldUseNetworkFirst(event.request,url)?networkFirst(event.request):cacheFirst(event.request));
 });
