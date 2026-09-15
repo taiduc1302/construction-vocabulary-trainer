@@ -17,5 +17,25 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Validate vocabulary data
+      - name: Validate vocabulary structure
+        run: node scripts/validate-terms.mjs
+      - name: Audit vocabulary content
+        run: node scripts/audit-content.mjs
+      - name: Validate visuals and drawing contracts
+        run: node scripts/validate-visuals.mjs
+      - name: Test learning state behavior
+        run: node scripts/test-learning-state.mjs
+      - name: Check JavaScript syntax
+        run: |
+          node --check src/app.js
+          node --check src/learning-state.js
+          node --check src/drawing-challenges.js
+          node --check src/visuals.js
+          node --check src/visuals-extra.js
+          node --check src/visuals-all.js
+          node --check src/register-sw.js
+          node --check sw.js
+      - name: Validate manifest JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); console.log('Manifest JSON OK')"
+      - name: Run aggregate validation command
         run: npm run validate
