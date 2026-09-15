@@ -26,10 +26,13 @@
 
   <main>
     <section id="stats" class="stats-grid"></section>
+    <section id="dailyGoalCard" class="daily-goal-card" aria-label="Daily learning goal"></section>
 
     <nav class="tabs" aria-label="Main sections">
       <button class="tab active" data-view="dictionary">Dictionary</button>
       <button class="tab" data-view="practice">Practice</button>
+      <button class="tab" data-view="drawing">Drawing challenge</button>
+      <button class="tab" data-view="progress">Progress</button>
       <button class="tab" data-view="review">Due review</button>
       <button class="tab" data-view="weak">Weak words</button>
     </nav>
@@ -46,7 +49,7 @@
       <div class="practice-panel">
         <div class="practice-controls">
           <select id="practiceScope" aria-label="Practice word selection">
-            <option value="smart">Smart review</option>
+            <option value="smart">Smart adaptive review</option>
             <option value="due">Due words</option>
             <option value="weak">Weak words</option>
             <option value="new">New words</option>
@@ -75,13 +78,43 @@
       <div id="quizCard" class="quiz-card"></div>
     </section>
 
+    <section id="drawingView" class="view">
+      <div class="section-intro">
+        <h2>Drawing challenge</h2>
+        <p>Read a simplified civil drawing and identify the feature by its callout letter. No project drawings are stored here.</p>
+      </div>
+      <div class="drawing-toolbar">
+        <select id="drawingSceneSelect" aria-label="Drawing challenge scene"></select>
+        <button id="newDrawingQuestion">New drawing question</button>
+      </div>
+      <div id="drawingChallenge" class="drawing-challenge"></div>
+    </section>
+
+    <section id="progressView" class="view">
+      <div class="section-intro">
+        <h2>Learning progress</h2>
+        <p>Daily consistency, completed sessions, and the words that deserve the most attention.</p>
+      </div>
+      <div id="progressOverview" class="progress-overview"></div>
+      <div class="progress-columns">
+        <section class="progress-panel">
+          <h3>Hardest words</h3>
+          <div id="hardestWords" class="list-stack"></div>
+        </section>
+        <section class="progress-panel">
+          <h3>Recent sessions</h3>
+          <div id="sessionHistory" class="list-stack"></div>
+        </section>
+      </div>
+    </section>
+
     <section id="reviewView" class="view">
       <div class="section-intro"><h2>Due review</h2><p>Words whose next spaced-repetition review is due now.</p></div>
       <div id="reviewList" class="list-stack"></div>
     </section>
 
     <section id="weakView" class="view">
-      <div class="section-intro"><h2>Weak words</h2><p>Words ranked by your mistakes so you can target them first.</p></div>
+      <div class="section-intro"><h2>Weak words</h2><p>Words ranked by adaptive weakness score, not just raw mistakes.</p></div>
       <div id="weakList" class="list-stack"></div>
     </section>
   </main>
