@@ -46,6 +46,14 @@ With Node:
 npx serve .
 ```
 
+Validate vocabulary data with:
+
+```bash
+npm run validate
+```
+
+GitHub Actions runs the same validation automatically on pushes and pull requests.
+
 ## Add words through ChatGPT or Claude
 
 A typical request can be as short as:
@@ -67,6 +75,10 @@ Progress is intentionally **not committed to GitHub**. Use Export/Import in the 
 ## Initial focus
 
 The first vocabulary set is aimed at civil estimating and heavy civil work: earthworks, drainage, utilities, roadworks, concrete, duct banks, drawings, estimating and tendering.
+
+## GitHub Pages
+
+Because the app is fully static, it can be hosted directly with GitHub Pages. Set Pages to deploy from the `main` branch root and the same app can be opened from a phone or desktop browser.
 
 ## Privacy
 
