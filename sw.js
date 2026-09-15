@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v9';
+const CACHE='construction-vocab-v10';
 const ASSETS=[
   './',
   './index.html',
@@ -15,6 +15,7 @@ const ASSETS=[
   './src/register-sw.js',
   './data/terms.json',
   './data/terms-expansion.json',
+  './data/fill-examples.json',
   './data/focus-terms.json',
   './data/categories.json',
   './manifest.webmanifest',
