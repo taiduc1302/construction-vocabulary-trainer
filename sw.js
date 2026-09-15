@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v8';
+const CACHE='construction-vocab-v9';
 const ASSETS=[
   './',
   './index.html',
@@ -7,6 +7,7 @@ const ASSETS=[
   './src/progress.css',
   './src/app.js',
   './src/learning-state.js',
+  './src/practice-engine.js',
   './src/drawing-challenges.js',
   './src/visuals.js',
   './src/visuals-extra.js',
