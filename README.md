@@ -25,6 +25,7 @@ The vocabulary covers drainage, underground utilities, pipe embedment, earthwork
 - English -> Russian, Russian -> English, and Vietnamese -> English practice.
 - **Typed active recall** without answer choices; punctuation, hyphens and spacing variants are normalized.
 - Definition, scenario, diagram, and fill-in-the-blank questions.
+- **Validated fill prompts**: natural examples may use an inflected form (`conduits`, `compact`, `mill`, etc.), while `data/fill-examples.json` provides a canonical-term exercise sentence only where needed.
 - **Similar terms** practice for confusing pairs such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
 - **My focus list** for words explicitly added from chat because the owner encountered or wants to learn them now.
 - **Strict practice scopes**: Focus, Due, Weak, and New never silently substitute unrelated words when a filtered pool is empty.
@@ -70,9 +71,9 @@ The initial focus-list entry is `duct-bank`, added after this behaviour was intr
 
 1. Road drainage plan — catch basin, storm sewer, manhole, culvert, ditch.
 2. Road structure section — overlay, base course, subbase, subgrade, curb and gutter.
-3. Utility trench section — backfill, bedding, duct bank, shoring, trench.
+3. Underground utility section — backfill, bedding, duct bank, shoring, trench.
 
-Each feature is identified by a neutral callout letter. The learner is asked which callout corresponds to a vocabulary term. CI verifies target IDs, unique labels, CSS coverage, and that visible scene text does not reveal the answer.
+Each feature is identified by a neutral callout letter. The learner is asked which callout corresponds to a vocabulary term. CI verifies target IDs, unique labels, CSS coverage, behavioural target selection, and that title/caption/SVG/accessibility text does not reveal the answer.
 
 ## Adaptive learning state
 
@@ -100,11 +101,13 @@ Vocabulary is modular so it can grow without turning one JSON file into a mainte
 
 - `data/terms.json` - original 31-term core set.
 - `data/terms-expansion.json` - 29-term expansion set and default home for future additions.
+- `data/fill-examples.json` - exercise-only canonical-term sentences for entries whose natural example intentionally uses another grammatical form.
 - `data/focus-terms.json` - current personal learning-focus IDs requested through chat.
+- `data/vocabulary-backlog.json` - acknowledged related concepts worth adding later, with priority and reason.
 - `data/categories.json` - controlled category list.
 - `data/term.schema.json` - vocabulary schema.
 
-The app loads all vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs across files and verifies that every focus-list ID exists.
+The app loads the vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs, focus references, fill sources, and whether related concepts resolve to a current term/category or the explicit backlog.
 
 ## Main modules
 
@@ -114,7 +117,7 @@ The app loads all vocabulary modules and treats them as one 60-term dictionary. 
 - `src/drawing-challenges.js` - generic multi-feature civil drawing exercises.
 - `src/learning-state.js` - state migration, sanitization, adaptive weighting, daily goals, streaks, and session history.
 - `src/practice-engine.js` - recall normalization, strict scope/category selection, no-repeat pool helpers, and option deduplication.
-- `src/app.js` - application orchestration, focus-list loading, practice UI, Quick 10, and drawing challenge wiring.
+- `src/app.js` - application orchestration, focus/fill data loading, practice UI, Quick 10, and drawing challenge wiring.
 - `src/styles.css`, `src/quiz.css`, `src/progress.css` - interface styling.
 - `AI_INSTRUCTIONS.md` - mandatory maintenance rules for ChatGPT / Claude.
 - `manifest.webmanifest` / `sw.js` - installable/offline app support.
@@ -135,17 +138,17 @@ npm test
 
 The validation gate currently covers:
 
-- vocabulary structure, duplicate IDs, translations, category references, and focus-list integrity;
+- vocabulary structure, duplicate IDs, translations, category references, focus-list integrity, fill prompts, and acknowledged related-concept backlog;
 - content quality checks including normalized duplicate names, answer leakage in scenarios, date validity, and malformed arrays;
 - dedicated visual coverage for every term and matching `tv-*` CSS classes;
-- Drawing Challenge IDs, callouts, visible-answer leakage, and `dc-*` CSS classes;
+- Drawing Challenge IDs, callouts, target-selection behavior, user-visible/accessibility answer leakage, and `dc-*` CSS classes;
 - PWA dependency coverage so runtime modules/data cannot be omitted from offline precache;
 - network-first refresh policy for mutable HTML/JS/CSS/JSON while retaining offline fallback;
 - learning-state migration, sanitization, scheduling, weakness/adaptive weighting, daily goals, streaks, and session history;
 - practice-engine recall normalization, strict scope filtering, no-repeat preference, aliases, and unique options;
 - JavaScript syntax and manifest JSON validity.
 
-GitHub Actions runs these checks on pull requests and pushes to `main`. It runs independent checks even if one fails, uploads diagnostic audit logs as an artifact, and then fails the workflow if any gate failed.
+GitHub Actions runs these checks on pull requests and pushes to `main`. Independent checks use `pipefail`, continue long enough to collect every diagnostic result, upload audit logs as an artifact, and then fail the workflow if any gate failed.
 
 ## Run locally
 
@@ -221,4 +224,4 @@ Wrong answers reduce the level immediately. Smart Review additionally considers 
 
 ## Privacy
 
-The repository contains generic vocabulary data and a non-confidential list of vocabulary IDs the owner wants to study. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, private project data, or exported personal browser learning-state files.
+The repository contains generic vocabulary data, exercise metadata, an explicit vocabulary backlog, and a non-confidential list of vocabulary IDs the owner wants to study. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, private project data, or exported personal browser learning-state files.
