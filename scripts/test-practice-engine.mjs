@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import {
   normalizeRecall,recallMatches,mergeTermMetadata,typedPromptCandidates,pickTypedPrompt,
-  drawingLabelTerms,pickDrawingLabel,filterByCategory,selectPracticePool,preferUnseen,buildUniqueOptions
+  drawingLabelTerms,pickDrawingLabel,estimatorChallengesForPool,pickEstimatorChallenge,
+  filterByCategory,selectPracticePool,preferUnseen,buildUniqueOptions
 } from '../src/practice-engine.js';
 
 const terms=[
@@ -41,6 +42,14 @@ assert.ok(prompts.some(p=>p.kind==='drawing-label'));
 assert.equal(pickTypedPrompt(enriched[0],()=>0).kind,'ru');
 assert.doesNotThrow(()=>mergeTermMetadata(terms,{terms:{'duct-bank':{aliases_en:42,drawing_labels:null}}}));
 
+const challenges=[
+  {id:'duct-cost',term_id:'duct-bank',options:[{text:'A',correct:true},{text:'B',correct:false}]},
+  {id:'culvert-check',term_id:'culvert',options:[{text:'A',correct:true},{text:'B',correct:false}]}
+];
+assert.deepEqual(estimatorChallengesForPool(challenges,[enriched[0]]).map(c=>c.id),['duct-cost']);
+assert.equal(pickEstimatorChallenge(challenges,[enriched[3]],()=>0).id,'culvert-check');
+assert.equal(pickEstimatorChallenge(challenges,[enriched[1]],()=>0),null);
+
 assert.deepEqual(filterByCategory(terms,'drainage').map(t=>t.id),['ditch','culvert']);
 assert.deepEqual(selectPracticePool({terms,scope:'focus',category:'all',focusIds:new Set(['duct-bank']),recordFor,dueNow,weaknessScore}).map(t=>t.id),['duct-bank']);
 assert.deepEqual(selectPracticePool({terms,scope:'focus',category:'drainage',focusIds:new Set(['duct-bank']),recordFor,dueNow,weaknessScore}),[],'focus scope must not silently fall back to non-focus words');
@@ -52,4 +61,4 @@ assert.deepEqual(preferUnseen(terms,new Set(['duct-bank','conduit','ditch'])).ma
 assert.equal(preferUnseen(terms,new Set(terms.map(t=>t.id))).length,terms.length,'pool should reset after all terms have been seen');
 assert.deepEqual(buildUniqueOptions('duct bank',['conduit','conduit'],['ditch','culvert']),['duct bank','conduit','ditch','culvert']);
 
-console.log('Practice-engine tests OK: recall normalization, metadata merge, varied typed prompts, drawing labels, strict scopes, unseen preference and option uniqueness.');
+console.log('Practice-engine tests OK: recall normalization, metadata merge, varied typed prompts, drawing labels, estimator selection, strict scopes, unseen preference and option uniqueness.');
