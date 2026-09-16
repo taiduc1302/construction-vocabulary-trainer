@@ -5,6 +5,7 @@ const root=new URL('../',import.meta.url);
 const read=path=>fs.readFileSync(new URL(path,root),'utf8');
 const index=read('index.html');
 const ux=read('src/ux.css');
+const dark=read('src/dark.css');
 const ui=read('src/ui-enhancements.js');
 
 assert.match(index,/id="homeView" class="view active"/,'Today/Home must be the default active view');
@@ -26,6 +27,7 @@ for(const action of ['smart10','focus','due','estimator','drawing-label','drawin
 }
 
 assert.ok(index.includes('src/ux.css'),'index.html must load the mobile-first UX stylesheet');
+assert.ok(index.includes('src/dark.css'),'index.html must load automatic dark-theme overrides');
 assert.ok(index.includes('src/ui-enhancements.js'),'index.html must load the UX behavior module');
 assert.match(index,/class="practice-settings"/,'advanced practice selectors should live behind Practice settings');
 assert.match(index,/class="data-menu"/,'export/import should be grouped into a secondary Data menu');
@@ -42,6 +44,12 @@ assert.ok(ux.includes('.view-router-only{display:none}'),'routing-only controls 
 assert.ok(ux.includes(':focus-visible'),'keyboard focus styling is required');
 assert.ok(ux.includes('prefers-reduced-motion'),'reduced-motion accessibility handling is required');
 
+assert.match(dark,/@media\(prefers-color-scheme:dark\)/,'dark theme must follow the device color scheme automatically');
+assert.ok(dark.includes('color-scheme:dark'),'dark theme should advertise native dark controls');
+assert.ok(dark.includes('.quick-launch'),'dark theme must cover Today quick-launch cards');
+assert.ok(dark.includes('.quiz-option'),'dark theme must cover practice answers');
+assert.ok(dark.includes('.visual-box,.technical-visual,.drawing-sheet svg'),'technical diagrams should retain a readable light-style rendering in dark mode');
+
 assert.ok(ui.includes("construction-vocab-card-density-v1"),'dictionary density preference must be persisted separately');
 assert.ok(ui.includes("window.matchMedia('(max-width: 640px)')"),'mobile should default to compact dictionary cards when no preference exists');
 assert.ok(ui.includes("setSelect('#practiceScope'"),'quick-start actions must configure practice scope');
@@ -52,5 +60,6 @@ assert.ok(ui.includes('ensurePracticeNext')&&ui.includes('ensureDrawingNext'),'a
 assert.ok(ui.includes("document.querySelector('#newDrawingQuestion')?.click()"),'inline drawing Next must route through the existing drawing engine');
 assert.ok(ui.includes('trainerReady()'),'quick actions should wait until app data has loaded');
 assert.ok(ui.includes('aria-current'),'navigation must expose the current view to assistive technology');
+assert.ok(ui.includes("view==='review'||view==='weak'"),'review subviews should preserve Progress as their visible navigation parent');
 
-console.log('UX contract OK: Today-first flow, five-tab mobile navigation, one-tap shortcuts, inline next actions, compact dictionary, secondary data controls, 44px touch targets and iPhone-safe layout.');
+console.log('UX contract OK: Today-first flow, five-tab mobile navigation, one-tap shortcuts, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
