@@ -55,6 +55,8 @@ assert.ok(ui.includes("window.matchMedia('(max-width: 640px)')"),'mobile should 
 assert.ok(ui.includes("setSelect('#practiceScope'"),'quick-start actions must configure practice scope');
 assert.ok(ui.includes("document.querySelector('#quickSession')?.click()"),'Smart 10 shortcut must start the existing Quick 10 engine');
 assert.ok(ui.includes("document.querySelector('#newQuestion')?.click()"),'mode shortcuts must force a fresh question instead of resurfacing stale practice');
+assert.ok(ui.includes('quickSessionRunning()'),'Today practice shortcuts must detect an active Quick 10');
+assert.match(ui,/if\(quickSessionRunning\(\)\)\{[\s\S]*?openView\('practice'\)[\s\S]*?return;/,'active Quick 10 shortcuts should resume the frozen session before changing any selectors');
 assert.ok(ui.includes('MutationObserver'),'feedback must be enhanced without coupling the UX layer to learning-state internals');
 assert.ok(ui.includes('ensurePracticeNext')&&ui.includes('ensureDrawingNext'),'answered practice and drawing questions need inline next actions');
 assert.ok(ui.includes("document.querySelector('#newDrawingQuestion')?.click()"),'inline drawing Next must route through the existing drawing engine');
@@ -62,4 +64,4 @@ assert.ok(ui.includes('trainerReady()'),'quick actions should wait until app dat
 assert.ok(ui.includes('aria-current'),'navigation must expose the current view to assistive technology');
 assert.ok(ui.includes("view==='review'||view==='weak'"),'review subviews should preserve Progress as their visible navigation parent');
 
-console.log('UX contract OK: Today-first flow, five-tab mobile navigation, one-tap shortcuts, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
+console.log('UX contract OK: Today-first flow, five-tab mobile navigation, safe Quick 10 resume, one-tap shortcuts, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
