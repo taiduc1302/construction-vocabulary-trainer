@@ -2,81 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#111923" />
   <meta name="description" content="Multilingual civil construction vocabulary trainer with visual practice, estimator scenarios, drawing abbreviations and spaced review." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Construction Vocab" />
   <title>Construction Vocabulary Trainer</title>
   <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="src/styles.css" />
   <link rel="stylesheet" href="src/quiz.css" />
   <link rel="stylesheet" href="src/progress.css" />
+  <link rel="stylesheet" href="src/ux.css" />
 </head>
 <body>
   <header class="topbar">
-    <div>
+    <div class="brand-block">
       <p class="eyebrow">Personal civil construction trainer</p>
       <h1>Construction Vocabulary</h1>
       <p class="header-note">English · Русский · Tiếng Việt · visual learning</p>
     </div>
-    <div class="top-actions">
-      <button id="exportProgress" class="secondary">Export progress</button>
-      <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" /></label>
-    </div>
+    <details class="data-menu">
+      <summary aria-label="Progress data menu">Data</summary>
+      <div class="data-menu-popover">
+        <button id="exportProgress" class="secondary">Export progress</button>
+        <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" /></label>
+      </div>
+    </details>
   </header>
 
   <main>
-    <section id="stats" class="stats-grid"></section>
-    <section id="dailyGoalCard" class="daily-goal-card" aria-label="Daily learning goal"></section>
-
     <nav class="tabs" aria-label="Main sections">
-      <button class="tab active" data-view="dictionary">Dictionary</button>
-      <button class="tab" data-view="practice">Practice</button>
-      <button class="tab" data-view="drawing">Drawing challenge</button>
-      <button class="tab" data-view="progress">Progress</button>
-      <button class="tab" data-view="review">Due review</button>
-      <button class="tab" data-view="weak">Weak words</button>
+      <button class="tab active" data-view="home"><span class="tab-icon" aria-hidden="true">⌂</span><span class="tab-label">Today</span></button>
+      <button class="tab" data-view="practice"><span class="tab-icon" aria-hidden="true">▶</span><span class="tab-label">Practice</span></button>
+      <button class="tab" data-view="dictionary"><span class="tab-icon" aria-hidden="true">Aa</span><span class="tab-label">Dictionary</span></button>
+      <button class="tab" data-view="drawing"><span class="tab-icon" aria-hidden="true">⌗</span><span class="tab-label">Drawing</span></button>
+      <button class="tab" data-view="progress"><span class="tab-icon" aria-hidden="true">↗</span><span class="tab-label">Progress</span></button>
+      <button class="tab" data-view="review"><span class="tab-icon" aria-hidden="true">◷</span><span class="tab-label">Due</span></button>
+      <button class="tab" data-view="weak"><span class="tab-icon" aria-hidden="true">!</span><span class="tab-label">Weak</span></button>
     </nav>
 
-    <section id="dictionaryView" class="view active">
-      <div class="toolbar">
-        <input id="searchInput" type="search" placeholder="Search term, abbreviation, Russian, Vietnamese, definition..." />
-        <select id="categoryFilter"><option value="all">All categories</option></select>
+    <section id="homeView" class="view active">
+      <section class="home-hero" aria-labelledby="todayTitle">
+        <p class="home-kicker">Today</p>
+        <h2 id="todayTitle">Learn the construction words you actually use.</h2>
+        <p>Start with ten adaptive questions, then spend extra time on the words you recently added from chat.</p>
+        <div class="home-hero-actions">
+          <button class="home-primary" data-quick-action="smart10">Start Smart 10</button>
+          <button class="home-secondary" data-quick-action="focus">Practice focus words</button>
+        </div>
+      </section>
+
+      <section id="dailyGoalCard" class="daily-goal-card" aria-label="Daily learning goal"></section>
+      <section id="stats" class="stats-grid" aria-label="Learning statistics"></section>
+
+      <section class="home-section" aria-labelledby="quickStartTitle">
+        <div class="home-section-head">
+          <div>
+            <h2 id="quickStartTitle">Quick start</h2>
+            <p>One tap to the exercise you need.</p>
+          </div>
+        </div>
+        <div class="quick-launch-grid">
+          <button class="quick-launch" data-quick-action="due">
+            <span class="quick-launch-icon" aria-hidden="true">◷</span>
+            <span><strong>Review due words</strong><small>Go straight to spaced-repetition words that are ready now.</small></span>
+          </button>
+          <button class="quick-launch" data-quick-action="estimator">
+            <span class="quick-launch-icon" aria-hidden="true">$</span>
+            <span><strong>Estimator scenario</strong><small>Practice a realistic estimating decision instead of a flashcard.</small></span>
+          </button>
+          <button class="quick-launch" data-quick-action="drawing-label">
+            <span class="quick-launch-icon" aria-hidden="true">AB</span>
+            <span><strong>Drawing abbreviations</strong><small>Train labels such as CB, INV, STA, WM and SAN.</small></span>
+          </button>
+          <button class="quick-launch" data-quick-action="drawing">
+            <span class="quick-launch-icon" aria-hidden="true">⌗</span>
+            <span><strong>Drawing challenge</strong><small>Identify features on simplified civil plan and section scenes.</small></span>
+          </button>
+          <button class="quick-launch" data-quick-action="dictionary">
+            <span class="quick-launch-icon" aria-hidden="true">Aa</span>
+            <span><strong>Browse dictionary</strong><small>Search English, Russian, Vietnamese, definitions and abbreviations.</small></span>
+          </button>
+          <button class="quick-launch" data-quick-action="progress">
+            <span class="quick-launch-icon" aria-hidden="true">↗</span>
+            <span><strong>Check progress</strong><small>See streak, hardest words, recent sessions and weekly activity.</small></span>
+          </button>
+        </div>
+      </section>
+
+      <div class="home-routine">
+        <span aria-hidden="true">✓</span>
+        <span><strong>Simple routine:</strong> Smart 10 daily → focus words when you add something from work → Drawing or Estimator practice when you have another few minutes.</span>
+      </div>
+    </section>
+
+    <section id="dictionaryView" class="view">
+      <div class="toolbar dictionary-toolbar">
+        <input id="searchInput" type="search" placeholder="Search term, abbreviation, Russian, Vietnamese, definition..." aria-label="Search dictionary" />
+        <select id="categoryFilter" aria-label="Dictionary category"><option value="all">All categories</option></select>
+        <button id="toggleCardDensity" class="secondary density-toggle" type="button" aria-pressed="false">Compact cards</button>
       </div>
       <div id="dictionaryGrid" class="card-grid"></div>
     </section>
 
     <section id="practiceView" class="view">
       <div class="practice-panel">
-        <div class="practice-controls">
-          <select id="practiceScope" aria-label="Practice word selection">
-            <option value="smart">Smart adaptive review</option>
-            <option value="focus">My focus list</option>
-            <option value="due">Due words</option>
-            <option value="weak">Weak words</option>
-            <option value="new">New words</option>
-            <option value="all">All words</option>
-          </select>
-          <select id="practiceCategory" aria-label="Practice category">
-            <option value="all">All categories</option>
-          </select>
-          <select id="practiceMode" aria-label="Practice question type">
-            <option value="mixed">Mixed practice</option>
-            <option value="typed">Type the answer</option>
-            <option value="drawing-label">Drawing abbreviations</option>
-            <option value="estimator">Estimator scenarios</option>
-            <option value="contrast">Similar terms</option>
-            <option value="en-ru">English → Russian</option>
-            <option value="ru-en">Russian → English</option>
-            <option value="vi-en">Vietnamese → English</option>
-            <option value="definition">Definition → term</option>
-            <option value="scenario">Scenario → term</option>
-            <option value="visual">Visual → term</option>
-            <option value="fill">Fill in the blank</option>
-          </select>
-          <button id="newQuestion">New question</button>
-          <button id="quickSession" class="secondary">Quick 10</button>
+        <div class="practice-primary-actions">
+          <button id="quickSession">Start Quick 10</button>
+          <button id="newQuestion" class="secondary">New question</button>
         </div>
+        <details class="practice-settings">
+          <summary>Practice settings</summary>
+          <div class="practice-controls">
+            <select id="practiceScope" aria-label="Practice word selection">
+              <option value="smart">Smart adaptive review</option>
+              <option value="focus">My focus list</option>
+              <option value="due">Due words</option>
+              <option value="weak">Weak words</option>
+              <option value="new">New words</option>
+              <option value="all">All words</option>
+            </select>
+            <select id="practiceCategory" aria-label="Practice category">
+              <option value="all">All categories</option>
+            </select>
+            <select id="practiceMode" aria-label="Practice question type">
+              <option value="mixed">Mixed practice</option>
+              <option value="typed">Type the answer</option>
+              <option value="drawing-label">Drawing abbreviations</option>
+              <option value="estimator">Estimator scenarios</option>
+              <option value="contrast">Similar terms</option>
+              <option value="en-ru">English → Russian</option>
+              <option value="ru-en">Russian → English</option>
+              <option value="vi-en">Vietnamese → English</option>
+              <option value="definition">Definition → term</option>
+              <option value="scenario">Scenario → term</option>
+              <option value="visual">Visual → term</option>
+              <option value="fill">Fill in the blank</option>
+            </select>
+          </div>
+        </details>
         <div id="sessionStatus" class="session-status"></div>
       </div>
       <div id="quizCard" class="quiz-card"></div>
@@ -141,6 +207,7 @@
   </template>
 
   <script type="module" src="src/app.js"></script>
+  <script type="module" src="src/ui-enhancements.js"></script>
   <script type="module" src="src/register-sw.js"></script>
 </body>
 </html>
