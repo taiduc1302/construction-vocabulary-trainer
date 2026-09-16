@@ -1,16 +1,22 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 
-const readJson=path=>JSON.parse(fs.readFileSync(new URL(`../${path}`,import.meta.url),'utf8'));
+const root=new URL('../',import.meta.url);
+const read=path=>fs.readFileSync(new URL(path,root),'utf8');
+const readJson=path=>JSON.parse(read(path));
 const terms=[...readJson('data/terms.json'),...readJson('data/terms-expansion.json')];
 const termMap=new Map(terms.map(term=>[term.id,term]));
 const metadata=readJson('data/term-meta.json');
 const challenges=readJson('data/estimator-challenges.json');
+const index=read('index.html');
+const app=read('src/app.js');
+const sw=read('sw.js');
 
 assert.equal(new Set(terms.map(t=>t.id)).size,terms.length,'vocabulary IDs must stay unique');
 assert.ok(metadata&&typeof metadata==='object'&&!Array.isArray(metadata),'term-meta.json must be an object');
 assert.ok(metadata.terms&&typeof metadata.terms==='object'&&!Array.isArray(metadata.terms),'term-meta.json must contain a terms object');
 assert.ok(Array.isArray(challenges)&&challenges.length>0,'estimator-challenges.json must contain challenges');
+assert.ok(typeof metadata.note==='string'&&/verify/i.test(metadata.note),'drawing metadata must tell the learner to verify the project legend/specifications');
 
 const labelOwners=new Map();
 for(const [id,meta] of Object.entries(metadata.terms)){
@@ -51,4 +57,15 @@ for(const challenge of challenges){
   assert.ok(challenge.options.every(option=>typeof option.correct==='boolean'),`${challenge.id} option correctness must be boolean`);
 }
 
-console.log(`Learning-content tests OK: ${Object.keys(metadata.terms).length} metadata records, ${labelOwners.size} drawing labels, ${challenges.length} estimator challenges.`);
+assert.ok(index.includes('value="drawing-label"'),'index.html must expose Drawing abbreviations practice');
+assert.ok(index.includes('value="estimator"'),'index.html must expose Estimator scenarios practice');
+assert.ok(app.includes("fetchJson('data/term-meta.json')"),'app must load term-meta.json');
+assert.ok(app.includes("fetchJson('data/estimator-challenges.json')"),'app must load estimator-challenges.json');
+assert.ok(app.includes('makeDrawingLabelQuestion'),'app must wire Drawing abbreviations practice');
+assert.ok(app.includes('makeEstimatorQuestion'),'app must wire Estimator scenarios practice');
+assert.ok(app.includes('pickTypedPrompt'),'app must use varied typed active recall prompts');
+for(const asset of ['./data/term-meta.json','./data/estimator-challenges.json']){
+  assert.ok(sw.includes(`'${asset}'`),`service worker must precache ${asset}`);
+}
+
+console.log(`Learning-content tests OK: ${Object.keys(metadata.terms).length} metadata records, ${labelOwners.size} drawing labels, ${challenges.length} estimator challenges, UI/runtime/PWA wiring verified.`);
