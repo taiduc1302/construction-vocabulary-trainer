@@ -4,7 +4,7 @@ Personal multilingual construction-vocabulary trainer for civil estimating and s
 
 ## Current version
 
-**v0.7.0** currently contains **61 civil-construction terms**. Each vocabulary card includes:
+**v0.8.0** currently contains **61 civil-construction terms**. Each vocabulary card includes:
 
 - English term and pronunciation;
 - plain-English definition;
@@ -16,6 +16,22 @@ Personal multilingual construction-vocabulary trainer for civil estimating and s
 - a dedicated educational SVG-style diagram.
 
 The vocabulary covers drainage, underground utilities, trench/pipe embedment, earthworks, roadworks, concrete, duct banks, drawings/survey, estimating and tendering.
+
+## Daily-use UX
+
+v0.8 is organized around fast phone use rather than exposing every control at once:
+
+- **Today** is the default screen, with the daily goal, learning stats and a primary **Smart 10** action.
+- One-tap shortcuts open Focus words, Due review, Estimator scenarios, Drawing abbreviations, Drawing Challenge, Dictionary and Progress.
+- Mobile navigation is reduced to five primary destinations: **Today / Practice / Dictionary / Drawing / Progress**.
+- Due and Weak lists remain available from Progress instead of occupying permanent navigation space.
+- Practice scope/category/mode controls live under **Practice settings**, keeping the normal training flow uncluttered.
+- Every answered normal question gets an inline **Next question** action; Drawing Challenge gets **Next drawing**.
+- An active Quick 10 is protected: shortcuts resume the frozen session instead of silently changing its scope or mode.
+- Dictionary cards default to **Compact** on phones and can be switched to Detailed; the preference is remembered locally.
+- Export/Import are grouped into a secondary **Data** menu.
+- Controls keep at least 44 px touch targets, the bottom navigation respects iPhone safe areas, and reduced-motion preferences are honored.
+- The interface automatically follows the device **dark/light theme** while technical diagrams keep a high-contrast educational rendering.
 
 ## Learning features
 
@@ -134,12 +150,15 @@ The app combines the two term files into one **61-term dictionary**.
 
 ## Main modules
 
-- `src/app.js` — application orchestration and UI.
+- `src/app.js` — application orchestration and learning UI.
+- `src/ui-enhancements.js` — Today shortcuts, mobile routing, compact dictionary state, inline Next actions and UX safety around active Quick 10 sessions.
 - `src/practice-engine.js` — recall normalization, metadata merge, prompt generation, practice selection and challenge helpers.
 - `src/learning-state.js` — state migration, scheduling, adaptive weighting, daily goals/streaks and sessions.
 - `src/drawing-challenges.js` — multi-feature drawing exercises.
 - `src/visuals.js`, `src/visuals-extra.js`, `src/visuals-all.js` — term diagrams and quiz-safe rendering.
-- `src/styles.css`, `src/quiz.css`, `src/progress.css` — interface styling.
+- `src/styles.css`, `src/quiz.css`, `src/progress.css` — core interface styling.
+- `src/ux.css` — Today-first/mobile interaction layer.
+- `src/dark.css` — automatic system dark-theme overrides.
 - `AI_INSTRUCTIONS.md` — maintenance contract for AI agents.
 - `sw.js` / `manifest.webmanifest` — PWA/offline support.
 
@@ -168,7 +187,8 @@ CI validates, among other things:
 - recall normalization, aliases, varied typed prompts, strict practice scopes and option uniqueness;
 - drawing-label metadata uniqueness and referenced term IDs;
 - estimator challenge IDs, categories, option structure and exactly-one-correct-answer contract;
-- UI/runtime/PWA wiring for the new learning modes;
+- UI/runtime/PWA wiring for the learning modes;
+- **mobile UX contract**: Today-first flow, five-tab navigation, one-tap routing, safe Quick 10 resume, inline Next controls, compact cards, dark mode, 44 px touch targets and iPhone safe-area handling;
 - JavaScript syntax and manifest JSON validity.
 
 GitHub Actions uses `pipefail`, collects independent diagnostics, uploads audit logs, and fails at the final gate if any check failed.
