@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "note": "Drawing abbreviations vary by owner, municipality and consultant. Always verify the project legend and specifications.",
+  "terms": {
+    "catch-basin": {"drawing_labels": ["CB"]},
+    "manhole": {"drawing_labels": ["MH"]},
+    "storm-sewer": {"drawing_labels": ["STM"]},
+    "sanitary-sewer": {"drawing_labels": ["SAN"]},
+    "watermain": {"aliases_en": ["water main"], "drawing_labels": ["WM"]},
+    "invert": {"drawing_labels": ["INV"]},
+    "stationing": {"drawing_labels": ["STA"]},
+    "culvert": {"drawing_labels": ["CULV"]},
+    "force-main": {"drawing_labels": ["FM"]},
+    "curb-and-gutter": {"drawing_labels": ["C&G"]},
+    "quantity-takeoff": {"aliases_en": ["takeoff", "quantity take-off"], "drawing_labels": ["QTO"]},
+    "duct-bank": {"drawing_labels": ["DB"]},
+    "conduit": {"drawing_labels": ["COND"]},
+    "sawcut": {"aliases_en": ["saw cut", "saw-cut"]},
+    "proof-roll": {"aliases_en": ["proof rolling"]},
+    "rfi": {"aliases_en": ["request for information"]},
+    "rfq": {"aliases_en": ["request for quotation", "request for quote"]}
+  }
+}

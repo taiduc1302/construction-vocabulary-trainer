@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#111923" />
-  <meta name="description" content="Multilingual civil construction vocabulary trainer with visual practice and spaced review." />
+  <meta name="description" content="Multilingual civil construction vocabulary trainer with visual practice, estimator scenarios, drawing abbreviations and spaced review." />
   <title>Construction Vocabulary Trainer</title>
   <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
@@ -40,7 +40,7 @@
 
     <section id="dictionaryView" class="view active">
       <div class="toolbar">
-        <input id="searchInput" type="search" placeholder="Search term, Russian, Vietnamese, definition..." />
+        <input id="searchInput" type="search" placeholder="Search term, abbreviation, Russian, Vietnamese, definition..." />
         <select id="categoryFilter"><option value="all">All categories</option></select>
       </div>
       <div id="dictionaryGrid" class="card-grid"></div>
@@ -63,6 +63,8 @@
           <select id="practiceMode" aria-label="Practice question type">
             <option value="mixed">Mixed practice</option>
             <option value="typed">Type the answer</option>
+            <option value="drawing-label">Drawing abbreviations</option>
+            <option value="estimator">Estimator scenarios</option>
             <option value="contrast">Similar terms</option>
             <option value="en-ru">English → Russian</option>
             <option value="ru-en">Russian → English</option>

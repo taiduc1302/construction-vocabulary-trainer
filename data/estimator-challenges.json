@@ -1,0 +1,122 @@
+[
+  {
+    "id": "utility-crossing-uncertainty",
+    "term_id": "daylighting",
+    "category": "utilities",
+    "title": "Unknown utility crossing",
+    "scenario": "A proposed storm line crosses an existing gas utility. The plan location is approximate and the depth is not confirmed.",
+    "question": "What is the best estimating assumption before treating the crossing as straightforward excavation?",
+    "options": [
+      {"text": "Include controlled daylighting or vacuum excavation to confirm the utility before the crossing work.", "correct": true},
+      {"text": "Assume the utility is exactly where the plan line is drawn and price normal excavation only.", "correct": false},
+      {"text": "Ignore the existing utility because it is outside the new pipe quantity.", "correct": false},
+      {"text": "Increase asphalt quantity to cover the uncertainty.", "correct": false}
+    ],
+    "explanation": "Existing utility drawings can be approximate. A controlled exposure can confirm horizontal position and depth before excavation near the crossing."
+  },
+  {
+    "id": "late-addendum",
+    "term_id": "addendum",
+    "category": "tendering",
+    "title": "Late tender revision",
+    "scenario": "A formal tender revision arrives two days before bid closing and changes several drawing details.",
+    "question": "What should the estimator do first?",
+    "options": [
+      {"text": "Review the addendum against the current takeoff and pricing, then revise affected quantities and scope before submission.", "correct": true},
+      {"text": "Keep the original estimate because the takeoff is already complete.", "correct": false},
+      {"text": "Only save the document for the project manager after award.", "correct": false},
+      {"text": "Apply a general contingency without checking what changed.", "correct": false}
+    ],
+    "explanation": "An addendum is part of the tender documents. Its changes can affect quantities, scope, subcontractor quotes and bid forms."
+  },
+  {
+    "id": "pipe-embedment-breakdown",
+    "term_id": "bedding",
+    "category": "excavation",
+    "title": "Pipe trench quantities",
+    "scenario": "A pipe trench detail shows specified bedding below the pipe, compacted material at the haunches and general backfill above.",
+    "question": "How should the takeoff be structured?",
+    "options": [
+      {"text": "Measure bedding, haunching and backfill separately because they can use different materials, placement methods and unit costs.", "correct": true},
+      {"text": "Measure the entire trench volume as one backfill item.", "correct": false},
+      {"text": "Measure only pipe length because trench materials are incidental.", "correct": false},
+      {"text": "Combine bedding with asphalt restoration because both are granular work.", "correct": false}
+    ],
+    "explanation": "Separating trench zones gives a cleaner quantity and cost build-up, especially where material specifications and production differ."
+  },
+  {
+    "id": "unit-price-quantity-risk",
+    "term_id": "unit-price",
+    "category": "estimating",
+    "title": "Measured tender item",
+    "scenario": "A tender item will be paid by the actual measured quantity installed, using the contractor's bid rate per metre.",
+    "question": "Which pricing approach best matches this bid structure?",
+    "options": [
+      {"text": "Build a complete cost per metre, including the resources and production needed for one unit of work.", "correct": true},
+      {"text": "Enter one total project price and ignore the measured quantity.", "correct": false},
+      {"text": "Price only material because labour will be adjusted later.", "correct": false},
+      {"text": "Use the contingency amount as the unit rate.", "correct": false}
+    ],
+    "explanation": "A unit-price item needs a defensible cost per measured unit. Quantity changes can then extend against the same bid rate."
+  },
+  {
+    "id": "crew-output-check",
+    "term_id": "production-rate",
+    "category": "estimating",
+    "title": "Crew output assumption",
+    "scenario": "A trench crew is priced for ten working days, but the takeoff quantity and assumed daily output imply fifteen days of work.",
+    "question": "What should be checked before finalizing the estimate?",
+    "options": [
+      {"text": "Reconcile the quantity, crew production rate and duration so the labour and equipment hours match the planned output.", "correct": true},
+      {"text": "Keep the ten-day duration because production does not affect cost.", "correct": false},
+      {"text": "Reduce the takeoff quantity until it matches the schedule.", "correct": false},
+      {"text": "Remove equipment hours and keep only labour hours.", "correct": false}
+    ],
+    "explanation": "Production connects quantity to time. If quantity divided by daily output does not match the priced duration, the estimate needs reconciliation."
+  },
+  {
+    "id": "allowance-vs-risk",
+    "term_id": "allowance",
+    "category": "tendering",
+    "title": "Known scope, unresolved value",
+    "scenario": "The tender requires a specialty scope that is not fully defined yet, and the bid instructions permit a clearly identified allowance for it.",
+    "question": "What is the cleaner estimating treatment?",
+    "options": [
+      {"text": "Carry a clearly identified allowance for that scope and document what the amount is intended to cover.", "correct": true},
+      {"text": "Hide the amount inside general contingency without identifying the scope.", "correct": false},
+      {"text": "Exclude the scope because the details are incomplete.", "correct": false},
+      {"text": "Replace the scope with a production rate.", "correct": false}
+    ],
+    "explanation": "When the tender structure permits it, an allowance can represent a known requirement whose exact scope or cost is not yet established. Contingency is a broader risk reserve and should not silently replace documented known scope."
+  },
+  {
+    "id": "duct-bank-cost-components",
+    "term_id": "duct-bank",
+    "category": "electrical",
+    "title": "Duct bank takeoff",
+    "scenario": "A concrete-encased conduit run crosses paved and unpaved areas and includes several structures along the alignment.",
+    "question": "Which takeoff approach is strongest for estimating?",
+    "options": [
+      {"text": "Break out conduit, concrete encasement, excavation, backfill, structures and surface restoration so each cost driver is visible.", "correct": true},
+      {"text": "Use only the duct bank centreline length and one blended material price.", "correct": false},
+      {"text": "Measure asphalt only because the electrical subcontractor covers everything underground.", "correct": false},
+      {"text": "Count conduits but ignore concrete and excavation quantities.", "correct": false}
+    ],
+    "explanation": "Duct bank cost is driven by more than centreline length. Separating major components makes production, subcontractor scope and restoration easier to review."
+  },
+  {
+    "id": "mill-overlay-boundary",
+    "term_id": "milling",
+    "category": "roadworks",
+    "title": "Road restoration limit",
+    "scenario": "A road restoration detail requires removal of the existing asphalt surface before a new overlay is placed over the repair area.",
+    "question": "Which quantities should be checked separately?",
+    "options": [
+      {"text": "Measure the milling area and the new overlay area separately, then verify whether their limits and thicknesses are actually the same.", "correct": true},
+      {"text": "Use only the trench width for both operations without reviewing the restoration detail.", "correct": false},
+      {"text": "Measure milling as excavation volume in cubic metres only.", "correct": false},
+      {"text": "Ignore milling because overlay automatically includes removal of existing asphalt.", "correct": false}
+    ],
+    "explanation": "Removal and replacement are distinct operations. Their limits can differ, so each should be measured from the applicable detail or plan."
+  }
+]
