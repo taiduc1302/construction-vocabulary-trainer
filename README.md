@@ -4,7 +4,7 @@ Personal multilingual construction-vocabulary trainer for civil estimating and s
 
 ## Current version
 
-**v0.8.0** currently contains **61 civil-construction terms**. Each vocabulary card includes:
+**v0.9.0** currently contains **61 civil-construction terms**. Each vocabulary card includes:
 
 - English term and pronunciation;
 - plain-English definition;
@@ -17,9 +17,24 @@ Personal multilingual construction-vocabulary trainer for civil estimating and s
 
 The vocabulary covers drainage, underground utilities, trench/pipe embedment, earthworks, roadworks, concrete, duct banks, drawings/survey, estimating and tendering.
 
+## Intended user workflow
+
+GitHub is the maintenance backend, not the daily user interface.
+
+The normal owner workflow is deliberately only two surfaces:
+
+1. **ChatGPT** — identify or add a construction word. ChatGPT maintains GitHub, the Focus list, visuals and validation.
+2. **Trainer PWA** — learn the words from the Today screen, Practice, Dictionary, Drawing and Progress.
+
+The owner should not need to edit JSON, manage commits, open Actions or browse repository settings during normal use.
+
+The Today screen includes an **Add a word you saw today** bridge. The owner enters a term and the trainer prepares the exact repository-aware ChatGPT prompt. On supported phones it can use the native Share sheet; Copy prompt is always available as a fallback.
+
+On iPhone, the web version also shows temporary first-run guidance for **Safari → Share → Add to Home Screen**. Once installed as a PWA, that guidance disappears automatically.
+
 ## Daily-use UX
 
-v0.8 is organized around fast phone use rather than exposing every control at once:
+v0.9 is organized around fast phone use rather than exposing every control at once:
 
 - **Today** is the default screen, with the daily goal, learning stats and a primary **Smart 10** action.
 - One-tap shortcuts open Focus words, Due review, Estimator scenarios, Drawing abbreviations, Drawing Challenge, Dictionary and Progress.
@@ -30,6 +45,8 @@ v0.8 is organized around fast phone use rather than exposing every control at on
 - An active Quick 10 is protected: shortcuts resume the frozen session instead of silently changing its scope or mode.
 - Dictionary cards default to **Compact** on phones and can be switched to Detailed; the preference is remembered locally.
 - Export/Import are grouped into a secondary **Data** menu.
+- The Today screen can generate/share the correct ChatGPT add-word command without requiring the owner to remember the repository name.
+- First-run iPhone install help appears only when appropriate and can be dismissed temporarily.
 - Controls keep at least 44 px touch targets, the bottom navigation respects iPhone safe areas, and reduced-motion preferences are honored.
 - The interface automatically follows the device **dark/light theme** while technical diagrams keep a high-contrast educational rendering.
 
@@ -152,6 +169,7 @@ The app combines the two term files into one **61-term dictionary**.
 
 - `src/app.js` — application orchestration and learning UI.
 - `src/ui-enhancements.js` — Today shortcuts, mobile routing, compact dictionary state, inline Next actions and UX safety around active Quick 10 sessions.
+- `src/onboarding.js` — iPhone install guidance and repository-aware ChatGPT add-word prompt generation/share/copy behavior.
 - `src/practice-engine.js` — recall normalization, metadata merge, prompt generation, practice selection and challenge helpers.
 - `src/learning-state.js` — state migration, scheduling, adaptive weighting, daily goals/streaks and sessions.
 - `src/drawing-challenges.js` — multi-feature drawing exercises.
@@ -159,6 +177,7 @@ The app combines the two term files into one **61-term dictionary**.
 - `src/styles.css`, `src/quiz.css`, `src/progress.css` — core interface styling.
 - `src/ux.css` — Today-first/mobile interaction layer.
 - `src/dark.css` — automatic system dark-theme overrides.
+- `src/onboarding.css` — install/chat bridge styling and responsive behavior.
 - `AI_INSTRUCTIONS.md` — maintenance contract for AI agents.
 - `sw.js` / `manifest.webmanifest` — PWA/offline support.
 
@@ -188,7 +207,7 @@ CI validates, among other things:
 - drawing-label metadata uniqueness and referenced term IDs;
 - estimator challenge IDs, categories, option structure and exactly-one-correct-answer contract;
 - UI/runtime/PWA wiring for the learning modes;
-- **mobile UX contract**: Today-first flow, five-tab navigation, one-tap routing, safe Quick 10 resume, inline Next controls, compact cards, dark mode, 44 px touch targets and iPhone safe-area handling;
+- **mobile UX contract**: Today-first flow, five-tab navigation, one-tap routing, safe Quick 10 resume, inline Next controls, compact cards, dark mode, 44 px touch targets, iPhone safe-area handling, install guidance and the ChatGPT add-word bridge;
 - JavaScript syntax and manifest JSON validity.
 
 GitHub Actions uses `pipefail`, collects independent diagnostics, uploads audit logs, and fails at the final gate if any check failed.
@@ -209,8 +228,11 @@ The repository already contains `.github/workflows/deploy-pages.yml`. Once GitHu
 
 One-time GitHub setting:
 
-1. Repository → **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+1. Open the repository settings in the **GitHub website** (not the GitHub mobile app).
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+
+The GitHub mobile app does not expose the complete repository administration UI, so Pages setup should be done once in Safari/desktop browser. After that, normal use should not require GitHub at all.
 
 Until Pages is enabled, the deploy workflow performs a clean preflight and skips deployment rather than leaving a false red failure.
 
@@ -227,11 +249,15 @@ After the Pages site is live and opened once online:
 - iPhone/iPad: Safari → Share → Add to Home Screen.
 - Android/Chrome: browser menu → Install app / Add to Home screen.
 
+The app itself reminds iPhone users of the Safari install path until it is installed, with a temporary dismiss option.
+
 Mutable HTML/JS/CSS/JSON use network-first loading when online, with cached fallback offline, so chat-driven updates are not hidden behind a stale app shell.
 
 ## Add words through ChatGPT / Claude
 
-A request can be as short as:
+The preferred path is the **Add a word you saw today** field on the Today screen. It generates the repository-aware prompt automatically.
+
+A manual request can still be as short as:
 
 > Add `hydrant` to my construction dictionary in `taiduc1302/construction-vocabulary-trainer`.
 
