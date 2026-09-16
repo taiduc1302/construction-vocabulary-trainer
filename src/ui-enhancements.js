@@ -4,8 +4,20 @@ function anyViewButton(view){
   return document.querySelector(`.tab[data-view="${view}"]`);
 }
 
+function updateTabAria(){
+  document.querySelectorAll('.tabs .tab').forEach(tab=>{
+    if(tab.classList.contains('active'))tab.setAttribute('aria-current','page');
+    else tab.removeAttribute('aria-current');
+  });
+}
+
 function openView(view){
   anyViewButton(view)?.click();
+  if(view==='review'||view==='weak'){
+    const progress=document.querySelector('.tabs .tab[data-view="progress"]');
+    progress?.classList.add('active');
+    updateTabAria();
+  }
 }
 
 function setSelect(selector,value){
@@ -92,13 +104,6 @@ function bindQuickActions(){
     if(attempts<120)setTimeout(wait,50);
   };
   wait();
-}
-
-function updateTabAria(){
-  document.querySelectorAll('.tabs .tab').forEach(tab=>{
-    if(tab.classList.contains('active'))tab.setAttribute('aria-current','page');
-    else tab.removeAttribute('aria-current');
-  });
 }
 
 function bindTabAria(){
