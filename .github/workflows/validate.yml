@@ -77,6 +77,13 @@ jobs:
           set -o pipefail
           node scripts/test-learning-content.mjs 2>&1 | tee audit-logs/learning-content.txt
 
+      - name: Validate mobile UX contract
+        id: ux
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node scripts/validate-ux.mjs 2>&1 | tee audit-logs/ux.txt
+
       - name: Check JavaScript syntax
         id: syntax
         continue-on-error: true
@@ -84,6 +91,7 @@ jobs:
           set -o pipefail
           {
             node --check src/app.js
+            node --check src/ui-enhancements.js
             node --check src/learning-state.js
             node --check src/practice-engine.js
             node --check src/drawing-challenges.js
@@ -121,11 +129,12 @@ jobs:
           PRACTICE: ${{ steps.practice.outcome }}
           DRAWING: ${{ steps.drawing.outcome }}
           LEARNING_CONTENT: ${{ steps.learningcontent.outcome }}
+          UX: ${{ steps.ux.outcome }}
           SYNTAX: ${{ steps.syntax.outcome }}
           MANIFEST: ${{ steps.manifest.outcome }}
         run: |
-          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\ndrawing=%s\nlearning_content=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$DRAWING" "$LEARNING_CONTENT" "$SYNTAX" "$MANIFEST"
-          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$DRAWING" != success ] || [ "$LEARNING_CONTENT" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
+          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\ndrawing=%s\nlearning_content=%s\nux=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$DRAWING" "$LEARNING_CONTENT" "$UX" "$SYNTAX" "$MANIFEST"
+          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$DRAWING" != success ] || [ "$LEARNING_CONTENT" != success ] || [ "$UX" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
             echo 'One or more audit checks failed. See the uploaded audit logs artifact.'
             exit 1
           fi
