@@ -77,17 +77,17 @@
   {
     "id": "allowance-vs-risk",
     "term_id": "allowance",
-    "category": "estimating",
-    "title": "Known scope, unknown exact value",
-    "scenario": "The tender clearly requires a small specialty item, but the supplier price is not available before closing.",
+    "category": "tendering",
+    "title": "Known scope, unresolved value",
+    "scenario": "The tender requires a specialty scope that is not fully defined yet, and the bid instructions permit a clearly identified allowance for it.",
     "question": "What is the cleaner estimating treatment?",
     "options": [
-      {"text": "Carry a clearly identified allowance for that known scope and document what it covers.", "correct": true},
+      {"text": "Carry a clearly identified allowance for that scope and document what the amount is intended to cover.", "correct": true},
       {"text": "Hide the amount inside general contingency without identifying the scope.", "correct": false},
-      {"text": "Exclude the item because the supplier has not quoted it yet.", "correct": false},
-      {"text": "Replace the item with a production rate.", "correct": false}
+      {"text": "Exclude the scope because the details are incomplete.", "correct": false},
+      {"text": "Replace the scope with a production rate.", "correct": false}
     ],
-    "explanation": "An allowance can represent a known requirement whose exact cost is not yet established. Contingency is broader risk reserve, not a substitute for documenting known scope."
+    "explanation": "When the tender structure permits it, an allowance can represent a known requirement whose exact scope or cost is not yet established. Contingency is a broader risk reserve and should not silently replace documented known scope."
   },
   {
     "id": "duct-bank-cost-components",
