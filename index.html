@@ -39,9 +39,11 @@
       <button class="tab" data-view="dictionary"><span class="tab-icon" aria-hidden="true">Aa</span><span class="tab-label">Dictionary</span></button>
       <button class="tab" data-view="drawing"><span class="tab-icon" aria-hidden="true">⌗</span><span class="tab-label">Drawing</span></button>
       <button class="tab" data-view="progress"><span class="tab-icon" aria-hidden="true">↗</span><span class="tab-label">Progress</span></button>
-      <button class="tab" data-view="review"><span class="tab-icon" aria-hidden="true">◷</span><span class="tab-label">Due</span></button>
-      <button class="tab" data-view="weak"><span class="tab-icon" aria-hidden="true">!</span><span class="tab-label">Weak</span></button>
     </nav>
+    <div class="view-router-only" aria-hidden="true">
+      <button class="tab" data-view="review" tabindex="-1">Due</button>
+      <button class="tab" data-view="weak" tabindex="-1">Weak</button>
+    </div>
 
     <section id="homeView" class="view active">
       <section class="home-hero" aria-labelledby="todayTitle">
@@ -164,6 +166,10 @@
       <div class="section-intro">
         <h2>Learning progress</h2>
         <p>Daily consistency, completed sessions, and the words that deserve the most attention.</p>
+      </div>
+      <div class="progress-shortcuts" aria-label="Review shortcuts">
+        <button class="secondary" data-quick-action="review">Open due list</button>
+        <button class="secondary" data-quick-action="weak">Open weak words</button>
       </div>
       <div id="progressOverview" class="progress-overview"></div>
       <div class="progress-columns">
