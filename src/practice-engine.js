@@ -48,8 +48,11 @@ export function mergeTermMetadata(terms,metadata={}){
 
 function promptLeaksAnswer(text,term){
   const source=normalizeRecall(text);
-  const answer=normalizeRecall(term?.term);
-  return Boolean(source&&answer&&source.includes(answer));
+  if(!source)return false;
+  const accepted=cleanStrings([term?.term,...(Array.isArray(term?.aliases_en)?term.aliases_en:[])])
+    .map(normalizeRecall)
+    .filter(Boolean);
+  return accepted.some(answer=>source.includes(answer));
 }
 
 export function typedPromptCandidates(term){
