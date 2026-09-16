@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="src/progress.css" />
   <link rel="stylesheet" href="src/ux.css" />
   <link rel="stylesheet" href="src/dark.css" />
+  <link rel="stylesheet" href="src/onboarding.css" />
 </head>
 <body>
   <header class="topbar">
@@ -57,8 +58,34 @@
         </div>
       </section>
 
+      <section id="installCard" class="install-card" hidden aria-labelledby="installTitle">
+        <div class="install-icon" aria-hidden="true">↗</div>
+        <div class="install-copy">
+          <h2 id="installTitle">Put the trainer on your iPhone Home Screen</h2>
+          <p class="install-steps">Open this site in <strong>Safari</strong> → tap <strong>Share</strong> → <strong>Add to Home Screen</strong>. After that, use it like a normal app.</p>
+          <div class="install-actions"><button id="dismissInstall" type="button" class="secondary">Not now</button></div>
+        </div>
+      </section>
+
       <section id="dailyGoalCard" class="daily-goal-card" aria-label="Daily learning goal"></section>
       <section id="stats" class="stats-grid" aria-label="Learning statistics"></section>
+
+      <section class="chat-bridge" aria-labelledby="addWordTitle">
+        <div class="chat-bridge-head">
+          <div>
+            <p class="system-kicker">From work → ChatGPT → trainer</p>
+            <h2 id="addWordTitle">Add a word you saw today</h2>
+            <p>You do not need to remember the repository name or command format. Type the word and this app prepares the exact ChatGPT request.</p>
+          </div>
+        </div>
+        <form id="addWordForm" class="add-word-form">
+          <input id="addWordInput" type="text" autocomplete="off" enterkeyhint="done" placeholder="e.g. stub-out" aria-label="Construction word to add" />
+          <button id="shareWordPrompt" type="button">Share prompt</button>
+          <button id="copyWordPrompt" type="button" class="secondary">Copy prompt</button>
+        </form>
+        <p class="bridge-help">On iPhone, Share can send the prepared request to ChatGPT when ChatGPT is available in the share sheet. Copy always works as a fallback.</p>
+        <p id="addWordStatus" class="bridge-status" role="status" aria-live="polite"></p>
+      </section>
 
       <section class="home-section" aria-labelledby="quickStartTitle">
         <div class="home-section-head">
@@ -215,6 +242,7 @@
 
   <script type="module" src="src/app.js"></script>
   <script type="module" src="src/ui-enhancements.js"></script>
+  <script type="module" src="src/onboarding.js"></script>
   <script type="module" src="src/register-sw.js"></script>
 </body>
 </html>
