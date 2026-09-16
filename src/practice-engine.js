@@ -85,6 +85,18 @@ export function pickDrawingLabel(term,random=Math.random){
   return labels[Math.floor(value*labels.length)];
 }
 
+export function estimatorChallengesForPool(challenges=[],pool=[]){
+  const allowed=new Set(pool.map(term=>term.id));
+  return challenges.filter(challenge=>challenge&&allowed.has(challenge.term_id)&&Array.isArray(challenge.options));
+}
+
+export function pickEstimatorChallenge(challenges,pool,random=Math.random){
+  const eligible=estimatorChallengesForPool(challenges,pool);
+  if(!eligible.length)return null;
+  const value=Math.max(0,Math.min(.999999,Number(random())||0));
+  return eligible[Math.floor(value*eligible.length)];
+}
+
 export function filterByCategory(pool,category){
   if(category==='all')return [...pool];
   return pool.filter(term=>term.category===category);
