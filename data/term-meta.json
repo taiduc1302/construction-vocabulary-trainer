@@ -15,6 +15,7 @@
     "quantity-takeoff": {"aliases_en": ["takeoff", "quantity take-off"], "drawing_labels": ["QTO"]},
     "duct-bank": {"drawing_labels": ["DB"]},
     "conduit": {"drawing_labels": ["COND"]},
+    "backfill": {"aliases_en": ["general trench backfill"]},
     "sawcut": {"aliases_en": ["saw cut", "saw-cut"]},
     "proof-roll": {"aliases_en": ["proof rolling"]},
     "rfi": {"aliases_en": ["request for information"]},
