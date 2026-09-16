@@ -1,11 +1,11 @@
 const DENSITY_KEY='construction-vocab-card-density-v1';
 
-function navButton(view){
-  return document.querySelector(`.tabs .tab[data-view="${view}"]`);
+function anyViewButton(view){
+  return document.querySelector(`.tab[data-view="${view}"]`);
 }
 
 function openView(view){
-  navButton(view)?.click();
+  anyViewButton(view)?.click();
 }
 
 function setSelect(selector,value){
@@ -18,6 +18,12 @@ function reducedMotion(){
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+function scrollToElement(selector){
+  requestAnimationFrame(()=>{
+    document.querySelector(selector)?.scrollIntoView({block:'start',behavior:reducedMotion()?'auto':'smooth'});
+  });
+}
+
 function openPractice({scope='smart',mode='mixed',category='all',quick=false}={}){
   setSelect('#practiceScope',scope);
   setSelect('#practiceMode',mode);
@@ -27,9 +33,7 @@ function openPractice({scope='smart',mode='mixed',category='all',quick=false}={}
   else document.querySelector('#newQuestion')?.click();
 
   openView('practice');
-  requestAnimationFrame(()=>{
-    document.querySelector('#quizCard')?.scrollIntoView({block:'start',behavior:reducedMotion()?'auto':'smooth'});
-  });
+  scrollToElement('#quizCard');
 }
 
 function handleQuickAction(action){
@@ -135,18 +139,58 @@ function bindCardDensity(){
   });
 }
 
+function ensurePracticeNext(){
+  const feedback=document.querySelector('#feedback');
+  if(!feedback?.querySelector('.feedback')||feedback.querySelector('.feedback-next'))return;
+  const sessionComplete=document.querySelector('#sessionStatus')?.textContent.includes('Session complete');
+  if(sessionComplete)return;
+
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='feedback-next';
+  button.textContent='Next question';
+  button.addEventListener('click',()=>{
+    document.querySelector('#newQuestion')?.click();
+    scrollToElement('#quizCard');
+  });
+  feedback.appendChild(button);
+}
+
+function ensureDrawingNext(){
+  const feedback=document.querySelector('#drawingFeedback');
+  if(!feedback?.querySelector('.feedback')||feedback.querySelector('.drawing-inline-next'))return;
+
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='feedback-next drawing-inline-next';
+  button.textContent='Next drawing';
+  button.addEventListener('click',()=>{
+    document.querySelector('#newDrawingQuestion')?.click();
+    scrollToElement('#drawingChallenge');
+  });
+  feedback.appendChild(button);
+}
+
+function bindInlineNextActions(){
+  const observer=new MutationObserver(()=>{
+    ensurePracticeNext();
+    ensureDrawingNext();
+  });
+  observer.observe(document.body,{childList:true,subtree:true});
+}
+
 function bindDataMenu(){
   const menu=document.querySelector('.data-menu');
   if(!menu)return;
   document.addEventListener('click',event=>{
     if(menu.open&&!menu.contains(event.target))menu.removeAttribute('open');
   });
-  menu.querySelectorAll('button,.file-label').forEach(item=>item.addEventListener('click',()=>{
-    if(item.id==='exportProgress')menu.removeAttribute('open');
-  }));
+  document.querySelector('#exportProgress')?.addEventListener('click',()=>menu.removeAttribute('open'));
+  document.querySelector('#importProgress')?.addEventListener('change',()=>menu.removeAttribute('open'));
 }
 
 bindQuickActions();
 bindTabAria();
 bindCardDensity();
+bindInlineNextActions();
 bindDataMenu();
