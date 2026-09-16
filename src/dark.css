@@ -1,0 +1,65 @@
+@media(prefers-color-scheme:dark){
+  :root{
+    color-scheme:dark;
+    color:#e7edf2;
+    background:#0d141a;
+    --ux-surface:#151e25;
+    --ux-border:#2a3944;
+    --ux-muted:#9badb9;
+    --ux-primary-soft:#19392f;
+    --ux-shadow:0 12px 32px rgba(0,0,0,.28);
+  }
+
+  body{background:#0d141a;color:#e7edf2}
+  .topbar{background:#0b1217}
+  .tabs{background:rgba(13,20,26,.94)}
+  .tab,.secondary,.file-label{background:#151e25;color:#e7edf2;border-color:#33434e}
+  .tab.active{background:#1d473a;color:#dff4eb;border-color:#2b654f}
+  .data-menu-popover{background:#151e25;color:#e7edf2;border-color:#33434e}
+  .data-menu-popover .secondary,.data-menu-popover .file-label{background:#1b252d}
+
+  .stat,.daily-goal-card,.term-card,.practice-panel,.quiz-card,.list-row,.progress-panel,.week-chart,.drawing-sheet,.drawing-question-card,.empty{
+    background:#151e25;
+    color:#e7edf2;
+    border-color:#2a3944;
+  }
+  .stat span,.small-muted,.tiny-muted,.section-intro p,.session-status,.goal-controls,.goal-kicker,.bar-count,.day-bar,.drawing-sheet figcaption,.pronunciation{color:#99abb7}
+  .goal-streak{color:#c4d8d0}
+  .goal-progress,.bar-track{background:#26333c}
+  .example-box,.contrast-note,.feedback,.home-routine{background:#1a2726;color:#d6e5df}
+  .home-routine strong{color:#eef8f4}
+  .category-pill{background:#183a30;color:#bfe5d5}
+  .status-badge,.recall-badge{background:#26323b;color:#b8c6cf}
+  .mistakes-text{color:#deb18e}
+
+  .toolbar input,.toolbar select,.practice-controls select,.drawing-toolbar select,.typed-answer-row input,.goal-controls select{
+    background:#10181f;
+    color:#e7edf2;
+    border-color:#344550;
+  }
+  input::placeholder{color:#788a96}
+  .practice-settings{border-color:#27343d}
+  .practice-settings>summary{color:#b3c1ca}
+  .progress-shortcuts button{background:#151e25}
+
+  .quick-launch{background:#151e25!important;color:#e7edf2!important;border-color:#2a3944!important;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+  .quick-launch:hover{border-color:#486054!important;box-shadow:0 7px 18px rgba(0,0,0,.2)}
+  .quick-launch small{color:#9badb9}
+  .quick-launch-icon{background:#19392f;color:#bfe5d5}
+
+  .quiz-option,.drawing-option{background:#111a21!important;color:#e7edf2!important;border-color:#33434e!important}
+  .quiz-option.correct,.drawing-option.correct{background:#17392d!important}
+  .quiz-option.wrong,.drawing-option.wrong{background:#3b2225!important}
+
+  .compact-cards .term-card{background:#151e25}
+  .density-toggle[aria-pressed="true"]{background:#19392f;color:#bfe5d5;border-color:#35644f}
+
+  .visual-box,.technical-visual,.drawing-sheet svg{color:#18212b}
+
+  @media(max-width:640px){
+    .tabs{background:rgba(13,20,26,.97);border-top-color:#2a3944;box-shadow:0 -8px 24px rgba(0,0,0,.3)}
+    .tab{background:transparent;border-color:transparent}
+    .tab.active{background:#1d473a;color:#dff4eb}
+    .toolbar.dictionary-toolbar{background:rgba(13,20,26,.96)}
+  }
+}
