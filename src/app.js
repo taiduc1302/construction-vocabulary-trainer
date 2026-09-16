@@ -1,6 +1,9 @@
 import {renderTermVisual} from './visuals-all.js';
 import {getDrawingScenes,randomDrawingTarget,renderDrawingScene} from './drawing-challenges.js';
-import {recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions} from './practice-engine.js';
+import {
+  recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions,mergeTermMetadata,
+  pickTypedPrompt,drawingLabelTerms,pickDrawingLabel,pickEstimatorChallenge
+} from './practice-engine.js';
 import {
   loadLearningState,saveLearningState,recordFor,dueNow,recordAnswer,weaknessScore,
   adaptiveWeight,weightedPick,dailySummary,calculateStreak,setDailyGoal,recordSession,
@@ -43,6 +46,8 @@ let categories=[];
 let fillExamples={};
 let focusEntries=[];
 let focusIds=new Set();
+let estimatorChallenges=[];
+let drawingLabelNote='Drawing abbreviations vary. Always verify the project legend.';
 let learningState=loadLearningState();
 let currentQuestion=null;
 let currentDrawingTarget=null;
@@ -116,7 +121,14 @@ function renderDictionary(){
     const node=tpl.content.cloneNode(true);
     node.querySelector('.category-pill').textContent=categoryLabel(t.category);
     node.querySelector('.term-title').textContent=t.term;
-    node.querySelector('.pronunciation').textContent=t.pronunciation||'';
+    const pronunciation=node.querySelector('.pronunciation');
+    pronunciation.textContent=t.pronunciation||'';
+    if(t.drawing_labels?.length){
+      const label=document.createElement('p');
+      label.className='tiny-muted drawing-label-note';
+      label.textContent=`Drawing labels: ${t.drawing_labels.join(', ')} · verify project legend`;
+      pronunciation.after(label);
+    }
     const status=progressRecord(t.id).status;
     node.querySelector('.status-badge').textContent=focusIds.has(t.id)?`${status} · focus`:status;
     node.querySelector('.visual-box').innerHTML=renderTermVisual(t);
@@ -196,8 +208,40 @@ function makeContrastQuestion(pool){
   };
 }
 
-function renderChoiceQuestion({t,prompt,answer,mode,options,extra='',compareWith=null}){
-  currentQuestion={term:t,answer,mode,compareWith};
+function makeDrawingLabelQuestion(pool){
+  const labeled=drawingLabelTerms(pool);
+  if(!labeled.length)return null;
+  const target=pickPracticeTerm(labeled);
+  const label=pickDrawingLabel(target);
+  if(!target||!label)return null;
+  const sameCategory=shuffle(drawingLabelTerms(terms).filter(t=>t.category===target.category&&t.id!==target.id)).map(t=>t.term);
+  const fallback=shuffle(terms.filter(t=>t.id!==target.id)).map(t=>t.term);
+  return {
+    term:target,answer:target.term,
+    prompt:`A civil drawing uses “${label}”. What does this abbreviation most likely mean?`,
+    options:shuffle(buildUniqueOptions(target.term,sameCategory,fallback,4)),
+    extra:`<div class="contrast-note"><strong>Drawing abbreviation practice.</strong> ${escapeHtml(drawingLabelNote)}</div>`
+  };
+}
+
+function makeEstimatorQuestion(pool){
+  const challenge=pickEstimatorChallenge(estimatorChallenges,pool);
+  if(!challenge)return null;
+  const term=termById(challenge.term_id);
+  const correct=challenge.options.find(option=>option.correct===true);
+  if(!term||!correct)return null;
+  return {
+    term,
+    answer:correct.text,
+    prompt:`${challenge.scenario} ${challenge.question}`,
+    options:shuffle(challenge.options.map(option=>option.text)),
+    extra:`<div class="contrast-note"><strong>${escapeHtml(challenge.title)}</strong> · Generic estimator decision</div>`,
+    estimatorExplanation:challenge.explanation
+  };
+}
+
+function renderChoiceQuestion({t,prompt,answer,mode,options,extra='',compareWith=null,estimatorExplanation=''}){
+  currentQuestion={term:t,answer,mode,compareWith,estimatorExplanation};
   markSessionTerm(t);
   els.quiz.dataset.answered='no';
   const canSpeakBeforeAnswer=mode==='en-ru';
@@ -208,11 +252,14 @@ function renderChoiceQuestion({t,prompt,answer,mode,options,extra='',compareWith
 }
 
 function renderTypedQuestion(t){
-  currentQuestion={term:t,answer:t.term,mode:'typed',compareWith:null};
+  const recallPrompt=pickTypedPrompt(t);
+  currentQuestion={term:t,answer:t.term,mode:'typed',compareWith:null,promptKind:recallPrompt.kind};
   markSessionTerm(t);
   els.quiz.dataset.answered='no';
-  const prompt=`Type the English construction term for “${t.translation_ru[0]}”.`;
-  els.quiz.innerHTML=`<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><span class="recall-badge">Active recall</span></div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="typed-answer-row"><input id="typedAnswer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English term" /><button id="checkTypedAnswer" type="button">Check answer</button></div><div class="small-muted typed-hint">Hyphens, spaces and capitalization are normalized.</div><div id="feedback"></div>`;
+  const hint=recallPrompt.kind==='drawing-label'
+    ?`Write the full term, not just the abbreviation. ${drawingLabelNote}`
+    :'Hyphens, spaces and capitalization are normalized. Legitimate English aliases are accepted.';
+  els.quiz.innerHTML=`<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><span class="recall-badge">Active recall · ${escapeHtml(recallPrompt.kind)}</span></div><div class="quiz-question">${escapeHtml(recallPrompt.prompt)}</div><div class="typed-answer-row"><input id="typedAnswer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English term" /><button id="checkTypedAnswer" type="button">Check answer</button></div><div class="small-muted typed-hint">${escapeHtml(hint)}</div><div id="feedback"></div>`;
   const input=document.querySelector('#typedAnswer');
   document.querySelector('#checkTypedAnswer').addEventListener('click',submitTypedAnswer);
   input.addEventListener('keydown',e=>{if(e.key==='Enter')submitTypedAnswer()});
@@ -244,11 +291,25 @@ function makeQuestion(){
 
   let mode=els.practiceMode.value;
   const mixed=mode==='mixed';
-  if(mixed)mode=shuffle(['typed','en-ru','ru-en','vi-en','definition','scenario','visual','fill','contrast'])[0];
+  if(mixed)mode=shuffle(['typed','drawing-label','estimator','en-ru','ru-en','vi-en','definition','scenario','visual','fill','contrast'])[0];
 
   if(mode==='typed'){
     const t=pickPracticeTerm(pool);
     renderTypedQuestion(t);renderSessionStatus();return;
+  }
+
+  if(mode==='drawing-label'){
+    const q=makeDrawingLabelQuestion(pool);
+    if(q){renderChoiceQuestion({t:q.term,prompt:q.prompt,answer:q.answer,mode,options:q.options,extra:q.extra});renderSessionStatus();return}
+    if(!mixed){renderEmptyPractice('No drawing abbreviations exist for this practice selection. Broaden the scope or choose another mode.');return}
+    mode='scenario';
+  }
+
+  if(mode==='estimator'){
+    const q=makeEstimatorQuestion(pool);
+    if(q){renderChoiceQuestion({t:q.term,prompt:q.prompt,answer:q.answer,mode,options:q.options,extra:q.extra,estimatorExplanation:q.estimatorExplanation});renderSessionStatus();return}
+    if(!mixed){renderEmptyPractice('No estimator scenario is linked to this practice selection yet. Broaden the scope or choose another mode.');return}
+    mode='scenario';
   }
 
   let t,prompt,answer,field,extra='',options=[],compareWith=null;
@@ -284,8 +345,10 @@ function feedbackMarkup(correct,userAnswer=''){
   const contrast=currentQuestion.compareWith?`<div class="contrast-note"><strong>Compare with ${escapeHtml(currentQuestion.compareWith.term)}:</strong> ${escapeHtml(currentQuestion.compareWith.definition_en)}</div>`:'';
   const caution=currentQuestion.term.common_mistakes?.length?`<div class="contrast-note"><strong>Watch out:</strong> ${escapeHtml(currentQuestion.term.common_mistakes.join(' '))}</div>`:'';
   const aliases=currentQuestion.term.aliases_en?.length?`<div class="small-muted">Also accepted: ${escapeHtml(currentQuestion.term.aliases_en.join(', '))}</div>`:'';
+  const drawingLabels=currentQuestion.term.drawing_labels?.length?`<div class="small-muted">Common drawing label(s): ${escapeHtml(currentQuestion.term.drawing_labels.join(', '))} · verify the project legend.</div>`:'';
+  const estimator=currentQuestion.estimatorExplanation?`<div class="contrast-note"><strong>Estimator reasoning:</strong> ${escapeHtml(currentQuestion.estimatorExplanation)}</div>`:'';
   const yourAnswer=userAnswer&&!correct?`<div class="small-muted">Your answer: ${escapeHtml(userAnswer)}</div>`:'';
-  return `<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}${yourAnswer}${aliases}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
+  return `<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}${yourAnswer}${aliases}${drawingLabels}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${estimator}${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
 }
 
 function setSessionControlsLocked(locked){
@@ -502,14 +565,18 @@ async function fetchFocusData(){
 }
 
 async function init(){
-  const [coreTerms,expandedTerms,loadedCategories,loadedFillExamples,focusData]=await Promise.all([
+  const [coreTerms,expandedTerms,loadedCategories,loadedFillExamples,focusData,termMetadata,loadedEstimatorChallenges]=await Promise.all([
     fetchJson('data/terms.json'),
     fetchJson('data/terms-expansion.json'),
     fetchJson('data/categories.json'),
     fetchJson('data/fill-examples.json'),
-    fetchFocusData()
+    fetchFocusData(),
+    fetchJson('data/term-meta.json'),
+    fetchJson('data/estimator-challenges.json')
   ]);
-  terms=[...coreTerms,...expandedTerms];categories=loadedCategories;
+  terms=mergeTermMetadata([...coreTerms,...expandedTerms],termMetadata);categories=loadedCategories;
+  drawingLabelNote=typeof termMetadata?.note==='string'&&termMetadata.note.trim()?termMetadata.note:drawingLabelNote;
+  estimatorChallenges=Array.isArray(loadedEstimatorChallenges)?loadedEstimatorChallenges:[];
   fillExamples=loadedFillExamples&&typeof loadedFillExamples==='object'&&!Array.isArray(loadedFillExamples)?loadedFillExamples:{};
   const ids=terms.map(t=>t.id);
   if(new Set(ids).size!==ids.length)throw new Error('Duplicate vocabulary IDs detected.');
