@@ -14,14 +14,21 @@ function setSelect(selector,value){
   el.value=value;
 }
 
+function reducedMotion(){
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function openPractice({scope='smart',mode='mixed',category='all',quick=false}={}){
   setSelect('#practiceScope',scope);
   setSelect('#practiceMode',mode);
   setSelect('#practiceCategory',category);
+
+  if(quick)document.querySelector('#quickSession')?.click();
+  else document.querySelector('#newQuestion')?.click();
+
   openView('practice');
   requestAnimationFrame(()=>{
-    if(quick)document.querySelector('#quickSession')?.click();
-    document.querySelector('#quizCard')?.scrollIntoView({block:'start',behavior:'smooth'});
+    document.querySelector('#quizCard')?.scrollIntoView({block:'start',behavior:reducedMotion()?'auto':'smooth'});
   });
 }
 
@@ -54,10 +61,33 @@ function handleQuickAction(action){
   }
 }
 
-function bindQuickActions(){
+function trainerReady(){
+  return (document.querySelector('#categoryFilter')?.options.length||0)>1;
+}
+
+function setQuickActionsReady(ready){
   document.querySelectorAll('[data-quick-action]').forEach(button=>{
-    button.addEventListener('click',()=>handleQuickAction(button.dataset.quickAction));
+    button.disabled=!ready;
+    if(ready)button.removeAttribute('aria-busy');
+    else button.setAttribute('aria-busy','true');
   });
+}
+
+function bindQuickActions(){
+  const buttons=[...document.querySelectorAll('[data-quick-action]')];
+  buttons.forEach(button=>button.addEventListener('click',()=>handleQuickAction(button.dataset.quickAction)));
+  setQuickActionsReady(false);
+
+  let attempts=0;
+  const wait=()=>{
+    if(trainerReady()){
+      setQuickActionsReady(true);
+      return;
+    }
+    attempts++;
+    if(attempts<120)setTimeout(wait,50);
+  };
+  wait();
 }
 
 function updateTabAria(){
