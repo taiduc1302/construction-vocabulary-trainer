@@ -6,7 +6,9 @@ const read=path=>fs.readFileSync(new URL(path,root),'utf8');
 const index=read('index.html');
 const ux=read('src/ux.css');
 const dark=read('src/dark.css');
+const onboardingCss=read('src/onboarding.css');
 const ui=read('src/ui-enhancements.js');
+const onboarding=read('src/onboarding.js');
 
 assert.match(index,/id="homeView" class="view active"/,'Today/Home must be the default active view');
 assert.match(index,/class="tab active" data-view="home"/,'Today tab must be the default active navigation item');
@@ -17,7 +19,7 @@ const primaryViews=[...navBlock.matchAll(/data-view="([^"]+)"/g)].map(match=>mat
 assert.deepEqual(primaryViews,['home','practice','dictionary','drawing','progress'],'primary navigation should stay focused on five daily destinations');
 assert.match(index,/class="view-router-only"[\s\S]*data-view="review"[\s\S]*data-view="weak"/,'Due and Weak views need hidden routing controls after leaving primary navigation');
 
-for(const id of ['stats','dailyGoalCard','searchInput','categoryFilter','practiceScope','practiceCategory','practiceMode','newQuestion','quickSession','quizCard','drawingChallenge','progressOverview','exportProgress','importProgress','toggleCardDensity']){
+for(const id of ['stats','dailyGoalCard','searchInput','categoryFilter','practiceScope','practiceCategory','practiceMode','newQuestion','quickSession','quizCard','drawingChallenge','progressOverview','exportProgress','importProgress','toggleCardDensity','installCard','dismissInstall','addWordForm','addWordInput','shareWordPrompt','copyWordPrompt','addWordStatus']){
   assert.ok(index.includes(`id="${id}"`),`index.html missing required UX/runtime id ${id}`);
 }
 
@@ -28,11 +30,14 @@ for(const action of ['smart10','focus','due','estimator','drawing-label','drawin
 
 assert.ok(index.includes('src/ux.css'),'index.html must load the mobile-first UX stylesheet');
 assert.ok(index.includes('src/dark.css'),'index.html must load automatic dark-theme overrides');
+assert.ok(index.includes('src/onboarding.css'),'index.html must load onboarding styles');
 assert.ok(index.includes('src/ui-enhancements.js'),'index.html must load the UX behavior module');
+assert.ok(index.includes('src/onboarding.js'),'index.html must load onboarding/chat-bridge behavior');
 assert.match(index,/class="practice-settings"/,'advanced practice selectors should live behind Practice settings');
 assert.match(index,/class="data-menu"/,'export/import should be grouped into a secondary Data menu');
 assert.match(index,/viewport-fit=cover/,'viewport must support iPhone safe areas');
 assert.match(index,/class="progress-shortcuts"/,'Due and Weak lists should remain directly reachable from Progress');
+assert.match(index,/From work → ChatGPT → trainer/,'Today screen should explain the chat-to-trainer flow');
 
 assert.ok(ux.includes('safe-area-inset-bottom'),'mobile UX must account for iPhone safe-area bottom inset');
 assert.match(ux,/@media\(max-width:640px\)[\s\S]*\.tabs\{position:fixed/,'mobile navigation should remain reachable at the bottom of the screen');
@@ -50,6 +55,11 @@ assert.ok(dark.includes('.quick-launch'),'dark theme must cover Today quick-laun
 assert.ok(dark.includes('.quiz-option'),'dark theme must cover practice answers');
 assert.ok(dark.includes('.visual-box,.technical-visual,.drawing-sheet svg'),'technical diagrams should retain a readable light-style rendering in dark mode');
 
+assert.ok(onboardingCss.includes('.chat-bridge'),'chat-to-trainer bridge styling is missing');
+assert.ok(onboardingCss.includes('.install-card'),'install guidance styling is missing');
+assert.ok(onboardingCss.includes('min-height:44px'),'onboarding actions should preserve a 44px touch target');
+assert.match(onboardingCss,/@media\(prefers-color-scheme:dark\)/,'onboarding UI should follow dark mode');
+
 assert.ok(ui.includes("construction-vocab-card-density-v1"),'dictionary density preference must be persisted separately');
 assert.ok(ui.includes("window.matchMedia('(max-width: 640px)')"),'mobile should default to compact dictionary cards when no preference exists');
 assert.ok(ui.includes("setSelect('#practiceScope'"),'quick-start actions must configure practice scope');
@@ -64,4 +74,13 @@ assert.ok(ui.includes('trainerReady()'),'quick actions should wait until app dat
 assert.ok(ui.includes('aria-current'),'navigation must expose the current view to assistive technology');
 assert.ok(ui.includes("view==='review'||view==='weak'"),'review subviews should preserve Progress as their visible navigation parent');
 
-console.log('UX contract OK: Today-first flow, five-tab mobile navigation, safe Quick 10 resume, one-tap shortcuts, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
+assert.ok(onboarding.includes("const REPO='taiduc1302/construction-vocabulary-trainer'"),'chat bridge must target the canonical repository');
+assert.ok(onboarding.includes('AI_INSTRUCTIONS.md'),'prepared ChatGPT prompt must explicitly use repository maintenance rules');
+assert.ok(onboarding.includes('My focus list'),'prepared prompt must preserve learning-intent semantics for existing terms');
+assert.ok(onboarding.includes('navigator.share'),'iPhone bridge should use the native share sheet when available');
+assert.ok(onboarding.includes('navigator.clipboard'),'chat bridge needs a copy fallback');
+assert.ok(onboarding.includes("display-mode: standalone"),'install guidance must detect installed PWA mode');
+assert.ok(onboarding.includes('/iphone|ipad|ipod/i'),'install guidance should target iOS browsers');
+assert.ok(onboarding.includes('INSTALL_RESHOW_MS'),'dismissed install help should reappear later instead of disappearing forever');
+
+console.log('UX contract OK: Today-first flow, five-tab mobile navigation, safe Quick 10 resume, one-tap shortcuts, inline next actions, compact dictionary, automatic dark mode, iPhone install guidance, ChatGPT add-word bridge, 44px touch targets and iPhone-safe layout.');
