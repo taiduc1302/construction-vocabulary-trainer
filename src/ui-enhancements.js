@@ -36,7 +36,18 @@ function scrollToElement(selector){
   });
 }
 
+function quickSessionRunning(){
+  const quick=document.querySelector('#quickSession');
+  return Boolean(quick?.disabled&&/running/i.test(quick.textContent||''));
+}
+
 function openPractice({scope='smart',mode='mixed',category='all',quick=false}={}){
+  if(quickSessionRunning()){
+    openView('practice');
+    scrollToElement('#quizCard');
+    return;
+  }
+
   setSelect('#practiceScope',scope);
   setSelect('#practiceMode',mode);
   setSelect('#practiceCategory',category);
