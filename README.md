@@ -1,160 +1,181 @@
 # Construction Vocabulary Trainer
 
-Personal multilingual construction vocabulary trainer for civil estimating and site work.
-
-The project is designed to be maintained by **ChatGPT, Claude, or a human** without a database or backend.
+Personal multilingual construction-vocabulary trainer for civil estimating and site work. It is designed to be maintained directly by **ChatGPT, Claude, or a human** without a database or backend.
 
 ## Current version
 
-The trainer currently includes **60 civil-construction terms**, each with:
+**v0.7.0** currently contains **61 civil-construction terms**. Each vocabulary card includes:
 
-- English term and pronunciation.
-- Plain-English definition.
-- Practical Russian explanation and translation.
-- Vietnamese translation.
-- Realistic construction example sentence.
-- Scenario clue for recall practice.
-- Related terminology and common-mistake notes.
-- A dedicated educational SVG-style diagram.
+- English term and pronunciation;
+- plain-English definition;
+- practical Russian explanation and translation;
+- Vietnamese translation;
+- realistic construction example;
+- scenario clue;
+- related terminology and common mistakes;
+- a dedicated educational SVG-style diagram.
 
-The vocabulary covers drainage, underground utilities, pipe embedment, earthworks, pavement structure, concrete, duct banks, civil drawings/survey, estimating, and tender language.
+The vocabulary covers drainage, underground utilities, trench/pipe embedment, earthworks, roadworks, concrete, duct banks, drawings/survey, estimating and tendering.
 
 ## Learning features
 
 - Search and category filters.
-- English -> Russian, Russian -> English, and Vietnamese -> English practice.
-- **Typed active recall** without answer choices; punctuation, hyphens and spacing variants are normalized.
-- Definition, scenario, diagram, and fill-in-the-blank questions.
-- **Validated fill prompts**: natural examples may use an inflected form (`conduits`, `compact`, `mill`, etc.), while `data/fill-examples.json` provides a canonical-term exercise sentence only where needed.
+- EN → RU, RU → EN and VI → EN practice.
+- **Typed active recall** with prompts that can come from Russian, Vietnamese, an English definition, a work scenario or a drawing abbreviation.
+- Legitimate English aliases are accepted; punctuation, hyphens, capitalization and spacing are normalized.
+- **Drawing abbreviations** practice for common labels such as `CB`, `MH`, `STM`, `SAN`, `WM`, `INV`, `STA`, `FM` and others. These are learning aids, not universal standards — always verify the project legend/specifications.
+- **Estimator scenarios**: generic decision questions about takeoff structure, addenda, utility uncertainty, production, unit pricing, duct-bank cost components and similar estimating situations.
+- Definition, scenario, diagram and fill-in-the-blank questions.
+- Validated fill prompts through `data/fill-examples.json` where a natural example uses an inflected form.
 - **Similar terms** practice for confusing pairs such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
-- **My focus list** for words explicitly added from chat because the owner encountered or wants to learn them now.
-- **Strict practice scopes**: Focus, Due, Weak, and New never silently substitute unrelated words when a filtered pool is empty.
-- **Category focus** for Drainage, Earthworks, Utilities, Roadworks, Estimating, Tendering, etc.
-- **Adaptive Smart Review** that weights overdue words, error rate, recent mistakes, and mastery level instead of using a fixed priority list.
-- **Quick 10** sessions with a frozen starting pool, no target repeats until that pool is exhausted, locked session filters, clear next-question controls, and saved session history.
-- Browser speech pronunciation without revealing hidden answers before recall questions.
-- Spaced repetition using `new -> learning -> review -> mastered`.
-- Adaptive weak-word ranking.
-- Due-review queue.
-- **Daily goal** with configurable reviews/day.
-- **Learning streak** based on each day's historical goal rather than today's goal being applied retroactively.
-- **7-day activity chart**, total review count, recent session history, hardest-word list, and focus-word count.
-- **Drawing Challenge** using generic civil plan/section scenes. Answers also update the spaced-repetition record for the vocabulary term being tested.
-- Export/import of the complete browser learning state as JSON.
-- Installable PWA shell with fresh online updates and offline fallback.
+- **My focus list** for words explicitly added from chat.
+- Strict Focus / Due / Weak / New scopes: filters never silently substitute unrelated terms.
+- Category-focused practice.
+- Adaptive Smart Review using overdue time, error history, recent mistakes and mastery level.
+- **Quick 10** with a frozen starting pool, no target repeats until that pool is exhausted, locked filters and saved session history.
+- Speech pronunciation without revealing hidden answers before recall.
+- Spaced-repetition states: `new -> learning -> review -> mastered`.
+- Adaptive weak-word ranking and Due Review queue.
+- Configurable daily goal, streak, 7-day activity, hardest words and recent sessions.
+- **Drawing Challenge** with generic civil plan/section scenes; answers update the same term progress.
+- Export/import of browser learning state.
+- Installable PWA with network-first online refresh and offline fallback.
 
-## My focus list
+## Chat → My focus list
 
-`data/focus-terms.json` is the bridge between chat and the learning app.
+`data/focus-terms.json` is the bridge between chat and the trainer.
 
-When the owner asks ChatGPT or Claude to **add a word to the dictionary**, that means the word should become a current learning target even if the vocabulary entry already exists.
-
-Example:
+When the owner says:
 
 > Add `duct bank` to my construction dictionary.
 
-Expected behaviour:
+that means **learning intent**, not merely “create a JSON row.” The expected workflow is:
 
-1. Search for `duct bank` in the existing vocabulary.
-2. If missing, create the full multilingual entry and diagram.
-3. If it already exists, reuse the existing canonical entry rather than creating a duplicate.
-4. In both cases, add/update its canonical ID in `data/focus-terms.json`.
-5. The app will then show it as `focus` and it can be trained with **Practice -> My focus list**.
+1. Search all vocabulary/aliases for the canonical term.
+2. If missing, create the complete multilingual card and diagram.
+3. If it already exists, reuse it rather than creating a duplicate.
+4. In both cases, upsert the canonical ID into `data/focus-terms.json`.
+5. Repeated requests update `last_requested_at` and `request_count`.
+6. The app marks it `focus` and exposes it under **Practice → My focus list**.
 
-Repeated requests update `last_requested_at` and `request_count` instead of creating duplicates. Therefore a response that only says “this term already exists” is incomplete.
+A response that only says “already exists” is incomplete.
 
-The initial focus-list entry is `duct-bank`, added after this behaviour was introduced.
+## Drawing abbreviations and aliases
+
+`data/term-meta.json` stores optional learning metadata separately from canonical vocabulary cards:
+
+- `aliases_en` — legitimate English equivalents accepted by typed recall;
+- `drawing_labels` — common drawing abbreviations/labels used for recognition practice.
+
+Example:
+
+```json
+"watermain": {
+  "aliases_en": ["water main"],
+  "drawing_labels": ["WM"]
+}
+```
+
+Drawing conventions vary by owner, municipality and consultant. The app therefore displays a **verify project legend** warning instead of presenting these labels as universal standards.
+
+## Estimator scenarios
+
+`data/estimator-challenges.json` contains generic, non-project-specific estimator decisions. Each challenge:
+
+- links to one existing canonical `term_id`;
+- uses the same vocabulary category as that term;
+- presents a scenario and question;
+- has multiple unique options with exactly one intended correct answer;
+- explains the estimating reasoning after the answer;
+- updates spaced-repetition progress for the linked term.
+
+The initial set covers utility crossing uncertainty, addenda, trench material breakdown, unit pricing, production-rate reconciliation, allowances, duct-bank cost components and mill/overlay limits.
+
+Do not store client drawings, bid prices or confidential tender facts in these scenarios.
 
 ## Drawing Challenge
 
-`src/drawing-challenges.js` contains generic educational drawings, never project drawings. The initial scenes are:
+`src/drawing-challenges.js` contains generic educational drawings, never project drawings. Current scenes:
 
 1. Road drainage plan — catch basin, storm sewer, manhole, culvert, ditch.
 2. Road structure section — overlay, base course, subbase, subgrade, curb and gutter.
 3. Underground utility section — backfill, bedding, duct bank, shoring, trench.
 
-Each feature is identified by a neutral callout letter. The learner is asked which callout corresponds to a vocabulary term. CI verifies target IDs, unique labels, CSS coverage, behavioural target selection, and that title/caption/SVG/accessibility text does not reveal the answer.
+CI validates target IDs, callout uniqueness, CSS coverage, behavioral selection and answer leakage through visible/accessibility text.
 
 ## Adaptive learning state
 
-Learning data is stored locally in the browser in a versioned state managed by `src/learning-state.js`.
+Browser progress is managed by `src/learning-state.js` and currently uses state **v3**. It stores:
 
-The current **v3** state contains:
+- per-term spaced-repetition records;
+- recent answer results for adaptive weighting;
+- daily attempts/correct counts;
+- historical daily goal for each active day;
+- current daily-goal setting;
+- completed Quick-session history.
 
-- per-term spaced-repetition progress;
-- recent correct/incorrect results for adaptive weighting;
-- sanitized counters and timestamps;
-- daily attempts and correct answers;
-- the historical goal stored with each active day so later goal changes do not rewrite old streaks;
-- configurable current daily goal;
-- completed Quick-session history, capped to a safe size.
+The app migrates `construction-vocab-state-v2` and the older `construction-vocab-progress-v1` into v3. Malformed stored/imported values are sanitized rather than allowed to create `NaN` counters or crash the app.
 
-The app automatically migrates both the previous `construction-vocab-state-v2` state and the older `construction-vocab-progress-v1` format into v3. Malformed or partial stored/imported data is normalized instead of being allowed to produce broken counters or `NaN` values. Storage access failures also fail safely rather than crashing the trainer.
+Learning state is local to the browser and is **not committed to GitHub**. Use Export/Import before clearing browser data or moving devices.
 
-Learning state is intentionally **not committed to GitHub**. Use **Export progress** before clearing browser data or moving devices, then **Import progress** on the new device.
+## Data files
 
-The repository focus list is different: it intentionally is committed so a chat request can change what the owner wants to study without needing access to the browser's localStorage.
+- `data/terms.json` — original 31-term core.
+- `data/terms-expansion.json` — current 30-term expansion and default home for new terms.
+- `data/categories.json` — controlled categories.
+- `data/focus-terms.json` — terms explicitly requested through chat.
+- `data/term-meta.json` — optional English aliases and common drawing labels.
+- `data/estimator-challenges.json` — generic estimator decision exercises.
+- `data/fill-examples.json` — canonical fill sentences where needed.
+- `data/vocabulary-backlog.json` — acknowledged future related concepts.
+- `data/term.schema.json` — vocabulary-card schema.
 
-## Vocabulary files
-
-Vocabulary is modular so it can grow without turning one JSON file into a maintenance problem:
-
-- `data/terms.json` - original 31-term core set.
-- `data/terms-expansion.json` - 29-term expansion set and default home for future additions.
-- `data/fill-examples.json` - exercise-only canonical-term sentences for entries whose natural example intentionally uses another grammatical form.
-- `data/focus-terms.json` - current personal learning-focus IDs requested through chat.
-- `data/vocabulary-backlog.json` - acknowledged related concepts worth adding later, with priority and reason.
-- `data/categories.json` - controlled category list.
-- `data/term.schema.json` - vocabulary schema.
-
-The app loads the vocabulary modules and treats them as one 60-term dictionary. Validation checks duplicate IDs, focus references, fill sources, and whether related concepts resolve to a current term/category or the explicit backlog.
+The app combines the two term files into one **61-term dictionary**.
 
 ## Main modules
 
-- `src/visuals.js` - diagrams for the core vocabulary.
-- `src/visuals-extra.js` - diagrams for the expansion vocabulary.
-- `src/visuals-all.js` - combined renderer and quiz-safe label stripping.
-- `src/drawing-challenges.js` - generic multi-feature civil drawing exercises.
-- `src/learning-state.js` - state migration, sanitization, adaptive weighting, daily goals, streaks, and session history.
-- `src/practice-engine.js` - recall normalization, strict scope/category selection, no-repeat pool helpers, and option deduplication.
-- `src/app.js` - application orchestration, focus/fill data loading, practice UI, Quick 10, and drawing challenge wiring.
-- `src/styles.css`, `src/quiz.css`, `src/progress.css` - interface styling.
-- `AI_INSTRUCTIONS.md` - mandatory maintenance rules for ChatGPT / Claude.
-- `manifest.webmanifest` / `sw.js` - installable/offline app support.
+- `src/app.js` — application orchestration and UI.
+- `src/practice-engine.js` — recall normalization, metadata merge, prompt generation, practice selection and challenge helpers.
+- `src/learning-state.js` — state migration, scheduling, adaptive weighting, daily goals/streaks and sessions.
+- `src/drawing-challenges.js` — multi-feature drawing exercises.
+- `src/visuals.js`, `src/visuals-extra.js`, `src/visuals-all.js` — term diagrams and quiz-safe rendering.
+- `src/styles.css`, `src/quiz.css`, `src/progress.css` — interface styling.
+- `AI_INSTRUCTIONS.md` — maintenance contract for AI agents.
+- `sw.js` / `manifest.webmanifest` — PWA/offline support.
 
 ## Audit and tests
 
-Run the complete repository gate with:
+Run the complete gate:
 
 ```bash
 npm run validate
 ```
 
-Run behavioral tests only with:
+Run behavioral/content tests only:
 
 ```bash
 npm test
 ```
 
-The validation gate currently covers:
+CI validates, among other things:
 
-- vocabulary structure, duplicate IDs, translations, category references, focus-list integrity, fill prompts, and acknowledged related-concept backlog;
-- content quality checks including normalized duplicate names, answer leakage in scenarios, date validity, and malformed arrays;
-- dedicated visual coverage for every term and matching `tv-*` CSS classes;
-- Drawing Challenge IDs, callouts, target-selection behavior, user-visible/accessibility answer leakage, and `dc-*` CSS classes;
-- PWA dependency coverage so runtime modules/data cannot be omitted from offline precache;
-- network-first refresh policy for mutable HTML/JS/CSS/JSON while retaining offline fallback;
-- learning-state migration, sanitization, scheduling, weakness/adaptive weighting, daily goals, streaks, and session history;
-- practice-engine recall normalization, strict scope filtering, no-repeat preference, aliases, and unique options;
+- vocabulary structure, categories, focus metadata, fill prompts and related-term backlog;
+- content-quality and answer-leak checks;
+- 61/61 dedicated visual coverage and SVG CSS contracts;
+- Drawing Challenge scene/callout behavior;
+- PWA runtime/precache dependencies and network-first freshness;
+- learning-state migration, sanitization, scheduling, adaptive weighting, goals, streaks and sessions;
+- recall normalization, aliases, varied typed prompts, strict practice scopes and option uniqueness;
+- drawing-label metadata uniqueness and referenced term IDs;
+- estimator challenge IDs, categories, option structure and exactly-one-correct-answer contract;
+- UI/runtime/PWA wiring for the new learning modes;
 - JavaScript syntax and manifest JSON validity.
 
-GitHub Actions runs these checks on pull requests and pushes to `main`. Independent checks use `pipefail`, continue long enough to collect every diagnostic result, upload audit logs as an artifact, and then fail the workflow if any gate failed.
+GitHub Actions uses `pipefail`, collects independent diagnostics, uploads audit logs, and fails at the final gate if any check failed.
 
 ## Run locally
 
-The app uses `fetch()` to load JSON, so open it through a small local web server rather than double-clicking `index.html`.
-
-With Python:
+Because the app loads JSON with `fetch()`, serve it through HTTP rather than double-clicking `index.html`.
 
 ```bash
 python -m http.server 8000
@@ -162,43 +183,35 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-With Node:
+## Publish with GitHub Pages
 
-```bash
-npx serve .
-```
+The repository already contains `.github/workflows/deploy-pages.yml`. Once GitHub Pages is enabled, every push to `main` can publish automatically.
 
-## Put it online with GitHub Pages
+One-time GitHub setting:
 
-This is a fully static app and can be served directly from this repository.
+1. Repository → **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
 
-One-time setup on GitHub:
+Until Pages is enabled, the deploy workflow performs a clean preflight and skips deployment rather than leaving a false red failure.
 
-1. Open the repository.
-2. Go to **Settings -> Pages**.
-3. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-4. Select branch **main**.
-5. Select folder **/(root)**.
-6. Click **Save**.
-
-Expected address after publication:
+Expected site address after publication:
 
 `https://taiduc1302.github.io/construction-vocabulary-trainer/`
 
-All application paths are relative, so the project works from the repository sub-path.
+Do not assume the site is live merely because the repository or workflow exists; verify the actual deployment first.
 
 ## Install on a phone
 
-After GitHub Pages is enabled and the site has been opened once online:
+After the Pages site is live and opened once online:
 
-- **iPhone / iPad:** Safari -> Share -> Add to Home Screen.
-- **Android / Chrome:** browser menu -> Install app / Add to Home screen.
+- iPhone/iPad: Safari → Share → Add to Home Screen.
+- Android/Chrome: browser menu → Install app / Add to Home screen.
 
-The service worker precaches the trainer for offline use. Mutable app resources — HTML, JavaScript, CSS, JSON and the web manifest — use **network-first** loading when online, with cached copies used as fallback offline. This prevents chat-driven vocabulary or code updates from being hidden behind a stale cache-first app shell.
+Mutable HTML/JS/CSS/JSON use network-first loading when online, with cached fallback offline, so chat-driven updates are not hidden behind a stale app shell.
 
-## Add words through ChatGPT or Claude
+## Add words through ChatGPT / Claude
 
-In a chat with GitHub connected, a request can be as short as:
+A request can be as short as:
 
 > Add `hydrant` to my construction dictionary in `taiduc1302/construction-vocabulary-trainer`.
 
@@ -206,22 +219,18 @@ or:
 
 > I saw `stub-out` today. Add it to my construction dictionary.
 
-The AI must read `AI_INSTRUCTIONS.md`. If the word already exists, it must still update **My focus list** rather than stopping. If the word is new, it creates the full vocabulary content and then also adds it to the focus list.
+The agent must follow `AI_INSTRUCTIONS.md`, update My focus list even when the term already exists, run the validation gate and confirm the final GitHub Action.
 
-You can also send a screenshot or a term encountered at work and say:
-
-> I saw this on a drawing. Explain it and add it to my dictionary.
-
-The AI should identify the concept but create a **generic educational schematic**, not commit confidential project drawings.
+A screenshot from work can be used to identify a term, but the repository should contain a clean **generic educational schematic**, not the confidential project drawing.
 
 ## Review intervals
 
-Current spaced-review intervals are approximately:
+Approximate spaced-review intervals:
 
 `1 -> 3 -> 7 -> 14 -> 30 -> 60 days`
 
-Wrong answers reduce the level immediately. Smart Review additionally considers recent mistakes and overdue time when selecting the next word.
+Wrong answers reduce mastery immediately. Smart Review also considers recent mistakes and overdue time.
 
 ## Privacy
 
-The repository contains generic vocabulary data, exercise metadata, an explicit vocabulary backlog, and a non-confidential list of vocabulary IDs the owner wants to study. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, private project data, or exported personal browser learning-state files.
+The repository may contain generic vocabulary, learning metadata, estimator exercises, an explicit vocabulary backlog and the non-confidential IDs the owner wants to study. Do not commit company-confidential drawings, tender documents, prices, customer information, credentials, private project data or exported browser learning-state files.
