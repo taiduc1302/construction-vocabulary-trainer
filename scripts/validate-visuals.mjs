@@ -9,7 +9,8 @@ const termIds=new Set(terms.map(t=>t.id));
 const termById=new Map(terms.map(t=>[t.id,t]));
 const visualSources=[
   fs.readFileSync(new URL('../src/visuals.js',import.meta.url),'utf8'),
-  fs.readFileSync(new URL('../src/visuals-extra.js',import.meta.url),'utf8')
+  fs.readFileSync(new URL('../src/visuals-extra.js',import.meta.url),'utf8'),
+  fs.readFileSync(new URL('../src/visuals-chat.js',import.meta.url),'utf8')
 ].join('\n');
 const app=fs.readFileSync(new URL('../src/app.js',import.meta.url),'utf8');
 const index=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
