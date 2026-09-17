@@ -1,5 +1,6 @@
 import {renderTermVisual as renderCoreVisual} from './visuals.js';
 import {renderExtraVisual} from './visuals-extra.js';
+import {renderChatVisual} from './visuals-chat.js';
 
 function hideQuizLabels(html){
   return html
@@ -9,6 +10,6 @@ function hideQuizLabels(html){
 }
 
 export function renderTermVisual(term,{quiz=false}={}){
-  const html=renderExtraVisual(term)||renderCoreVisual(term);
+  const html=renderChatVisual(term)||renderExtraVisual(term)||renderCoreVisual(term);
   return quiz?hideQuizLabels(html):html;
 }
