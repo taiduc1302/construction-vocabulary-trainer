@@ -4,5 +4,6 @@
   "milling": "Allow for milling 40 mm of existing asphalt before placing the new overlay.",
   "stationing": "Use the drawing stationing to locate the storm crossing near STA 1+240.",
   "daylighting": "Complete daylighting of the existing gas line before excavating for the new storm crossing.",
-  "fre-bend": "Include each required FRE bend where the duct bank changes direction before entering the pull box."
+  "fre-bend": "Include each required FRE bend where the duct bank changes direction before entering the pull box.",
+  "duct-spacer": "Install each duct spacer at the specified interval to maintain conduit separation before concrete encasement."
 }
