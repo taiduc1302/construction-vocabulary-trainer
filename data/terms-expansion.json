@@ -961,5 +961,35 @@
       "Spacer type, spacing along the run, and required conduit separation must be taken from the project detail or manufacturer system rather than assumed."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "permanent-mill-and-overlay",
+    "term": "permanent mill and overlay",
+    "pronunciation": "PUR-muh-nent MILL and OH-ver-lay",
+    "category": "roadworks",
+    "definition_en": "Final asphalt pavement restoration in which a specified depth of existing pavement is milled over a defined area and replaced with a new asphalt overlay to provide a permanent finished surface.",
+    "explanation_ru": "Окончательное восстановление асфальтового покрытия: существующий асфальт фрезеруют на заданную глубину в установленных пределах, после чего укладывают новый слой асфальта. Обычно это постоянное восстановление после временного патча, траншейных работ или других вскрытий.",
+    "translation_ru": [
+      "постоянное восстановление методом фрезеровки и нового асфальтового слоя",
+      "окончательная фрезеровка и асфальтовое перекрытие",
+      "постоянный mill and overlay"
+    ],
+    "translation_vi": [
+      "phục hồi mặt đường vĩnh viễn bằng cào bóc và thảm phủ asphalt",
+      "cào bóc và thảm lại lớp asphalt hoàn thiện"
+    ],
+    "example_en": "Complete the permanent mill and overlay after utility installation and temporary pavement restoration are accepted.",
+    "scenario": "A utility trench was temporarily patched. Before final project completion, the road surface is milled across the specified restoration limits and a continuous new asphalt lift is placed to create the permanent finished pavement.",
+    "visual": "Road cross-section and plan view showing a temporary trench patch within a wider rectangular milling limit, with the upper asphalt layer removed and replaced by a continuous permanent overlay.",
+    "related_terms": [
+      "milling",
+      "overlay",
+      "tack-coat"
+    ],
+    "common_mistakes": [
+      "Permanent mill and overlay is not the same as a temporary trench patch; it is the final restoration treatment.",
+      "The milling depth and restoration limits must be taken from the drawings, specifications, municipal standards, or bid item description rather than assumed from the trench width."
+    ],
+    "difficulty": 3
   }
 ]
