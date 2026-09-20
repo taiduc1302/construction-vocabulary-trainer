@@ -10,6 +10,7 @@ const INSTALL_DISMISS_KEY='construction-vocab-install-dismissed-v1';
 const INSTALL_RESHOW_MS=7*24*60*60*1000;
 const MAX_BATCH_TERMS=25;
 let vocabInbox=loadInbox();
+let syncedInboxKeys=new Set();
 
 function isStandalone(){
   return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
@@ -136,6 +137,44 @@ function escapeHtml(value=''){
   }[char]));
 }
 
+
+function syncKey(value){
+  return String(value||'')
+    .toLocaleLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[^a-z0-9]+/g,' ')
+    .trim()
+    .replace(/\s+/g,' ');
+}
+
+export function syncedInboxKeysForFocus(focusData,allTerms,termMetadata,items){
+  const focusIds=new Set((Array.isArray(focusData?.terms)?focusData.terms:[]).map(item=>item.id));
+  const byId=new Map(allTerms.map(term=>[term.id,term]));
+  const metaMap=termMetadata&&typeof termMetadata==='object'&&!Array.isArray(termMetadata)
+    ?(termMetadata.terms&&typeof termMetadata.terms==='object'?termMetadata.terms:termMetadata)
+    :{};
+  const accepted=new Set();
+
+  for(const id of focusIds){
+    const term=byId.get(id);
+    if(!term)continue;
+    const meta=metaMap[id]&&typeof metaMap[id]==='object'?metaMap[id]:{};
+    const names=[
+      term.term,
+      ...(Array.isArray(term.aliases_en)?term.aliases_en:[]),
+      ...(Array.isArray(meta.aliases_en)?meta.aliases_en:[]),
+      ...(Array.isArray(meta.drawing_labels)?meta.drawing_labels:[])
+    ];
+    names.map(syncKey).filter(Boolean).forEach(name=>accepted.add(name));
+  }
+
+  return new Set(
+    (Array.isArray(items)?items:[])
+      .map(item=>syncKey(typeof item==='string'?item:item?.term))
+      .filter(key=>key&&accepted.has(key))
+  );
+}
+
 function inboxDate(value){
   const date=new Date(value);
   if(Number.isNaN(date.getTime()))return '';
@@ -147,21 +186,27 @@ function renderInbox(){
   const list=document.querySelector('#vocabInboxList');
   const send=document.querySelector('#shareInbox');
   const copy=document.querySelector('#copyInbox');
+  const clearSynced=document.querySelector('#clearSyncedInbox');
   const clear=document.querySelector('#clearInbox');
   const items=vocabInbox;
+  const syncedCount=items.filter(item=>syncedInboxKeys.has(syncKey(item.term))).length;
 
-  if(count)count.textContent=`${items.length} saved`;
+  if(count)count.textContent=syncedCount?`${items.length} saved · ${syncedCount} synced`:`${items.length} saved`;
   if(send)send.disabled=!items.length;
   if(copy)copy.disabled=!items.length;
+  if(clearSynced)clearSynced.disabled=!syncedCount;
   if(clear)clear.disabled=!items.length;
   if(!list)return;
 
   list.innerHTML=items.length
-    ?items.map(item=>`
-      <div class="inbox-row">
-        <div><strong>${escapeHtml(item.term)}</strong><small>saved ${escapeHtml(inboxDate(item.addedAt))}</small></div>
+    ?items.map(item=>{
+      const synced=syncedInboxKeys.has(syncKey(item.term));
+      return `
+      <div class="inbox-row ${synced?'is-synced':''}">
+        <div><strong>${escapeHtml(item.term)}</strong><small>saved ${escapeHtml(inboxDate(item.addedAt))}${synced?' · <span class="inbox-sync-badge">Synced</span>':''}</small></div>
         <button type="button" class="inbox-remove secondary" data-inbox-remove="${encodeURIComponent(item.term)}" aria-label="Remove ${escapeHtml(item.term)} from vocabulary inbox">Remove</button>
-      </div>`).join('')
+      </div>`;
+    }).join('')
     :'<div class="inbox-empty">Nothing saved. Capture terms here during the workday and send them together later.</div>';
 
   list.querySelectorAll('[data-inbox-remove]').forEach(button=>button.addEventListener('click',()=>{
@@ -218,6 +263,17 @@ async function copyInbox(){
   }
 }
 
+
+function clearSyncedInbox(){
+  const before=vocabInbox.length;
+  vocabInbox=saveInbox(vocabInbox.filter(item=>!syncedInboxKeys.has(syncKey(item.term))));
+  const removed=before-vocabInbox.length;
+  renderInbox();
+  setStatus(removed
+    ?`Cleared ${removed} synced term${removed===1?'':'s'}; unsynced captures were kept.`
+    :'No synced Inbox terms to clear.','neutral');
+}
+
 function clearInbox(){
   if(!vocabInbox.length)return;
   const ok=typeof window.confirm!=='function'||window.confirm('Clear all saved vocabulary from this device?');
@@ -250,6 +306,7 @@ function bindWordBridge(){
   save?.addEventListener('click',saveCurrentToInbox);
   document.querySelector('#shareInbox')?.addEventListener('click',shareInbox);
   document.querySelector('#copyInbox')?.addEventListener('click',copyInbox);
+  document.querySelector('#clearSyncedInbox')?.addEventListener('click',clearSyncedInbox);
   document.querySelector('#clearInbox')?.addEventListener('click',clearInbox);
   renderInbox();
 }
@@ -311,12 +368,16 @@ async function loadRecentFocus(){
   const list=document.querySelector('#recentFocusList');
   if(!list)return;
   try{
-    const [focus,core,expanded]=await Promise.all([
+    const [focus,core,expanded,termMetadata]=await Promise.all([
       fetchJsonFresh('data/focus-terms.json'),
       fetchJsonFresh('data/terms.json'),
-      fetchJsonFresh('data/terms-expansion.json')
+      fetchJsonFresh('data/terms-expansion.json'),
+      fetchJsonFresh('data/term-meta.json')
     ]);
-    const recent=recentFocusItems(focus,[...core,...expanded],5);
+    const allTerms=[...core,...expanded];
+    syncedInboxKeys=syncedInboxKeysForFocus(focus,allTerms,termMetadata,vocabInbox);
+    renderInbox();
+    const recent=recentFocusItems(focus,allTerms,5);
     list.innerHTML=recent.length
       ?recent.map(item=>`<div class="recent-focus-row"><div><strong>${escapeHtml(item.term.term)}</strong><small>${escapeHtml(item.term.category)}</small></div><span>${escapeHtml(dateLabel(item.last_requested_at||item.added_at))}${item.request_count>1?` · ×${item.request_count}`:''}</span></div>`).join('')
       :'<div class="recent-focus-empty">No focus words yet. Add one through ChatGPT.</div>';
