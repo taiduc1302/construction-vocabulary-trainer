@@ -50,6 +50,21 @@ Example focus entry:
 
 Use the user's local calendar date when available. Never put confidential project information in focus metadata.
 
+## Atomic change and release rule
+
+A vocabulary request is one logical transaction. Do not leave the default branch in a partial state such as “term added but visual/focus/tests not added yet.”
+
+For a new or updated term:
+
+1. Prepare all required files first: card, visual, focus metadata, aliases/fill/backlog changes when applicable.
+2. Prefer **one atomic commit** containing the complete request. If the connector/workflow cannot safely make one commit, use a short-lived branch/PR and merge only after the complete change is ready.
+3. Do **not** intentionally push partial vocabulary states to `main`.
+4. The validation workflow must pass on the final commit.
+5. GitHub Pages deployment is release-gated and occurs only after the `Validate vocabulary` workflow succeeds on `main`.
+6. A user-facing “added” confirmation means the complete change is validated; do not present an intermediate commit as finished.
+
+This is a correctness rule, not merely a preferred Git style. The live trainer must never depend on a later follow-up commit to become internally consistent.
+
 ## Required vocabulary fields
 
 Every full card must include:
@@ -225,7 +240,13 @@ GitHub Actions intentionally runs checks independently, uses shell `pipefail`, u
 
 ## GitHub Pages
 
-`.github/workflows/deploy-pages.yml` is the deployment workflow. GitHub Pages must first be enabled in repository **Settings → Pages → Source: GitHub Actions**. Until then the workflow performs a successful preflight/skip. Do not claim the public trainer is live until an actual Pages deployment succeeds and the site URL is verified.
+`.github/workflows/deploy-pages.yml` is the release workflow.
+
+- Normal deployment is triggered by successful completion of the `Validate vocabulary` workflow on `main`, not by a raw push.
+- The deploy job checks out the exact validated commit SHA.
+- A manual `workflow_dispatch` is allowed, but it must run `npm run validate` before publishing.
+- Do not weaken this release gate or reintroduce direct push-to-Pages publishing.
+- Do not claim a change is live until the Pages deployment for the validated commit succeeds.
 
 ## User-facing shorthand
 
