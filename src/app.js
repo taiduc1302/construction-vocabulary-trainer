@@ -2,7 +2,7 @@ import {renderTermVisual} from './visuals-all.js';
 import {getDrawingScenes,randomDrawingTarget,renderDrawingScene} from './drawing-challenges.js';
 import {
   recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions,mergeTermMetadata,
-  pickTypedPrompt,drawingLabelTerms,pickDrawingLabel,pickEstimatorChallenge
+  pickTypedPrompt,drawingLabelTerms,pickDrawingLabel,pickEstimatorChallenge,focusRecencyMultiplier
 } from './practice-engine.js';
 import {
   loadLearningState,saveLearningState,recordFor,dueNow,recordAnswer,weaknessScore,
@@ -46,6 +46,7 @@ let categories=[];
 let fillExamples={};
 let focusEntries=[];
 let focusIds=new Set();
+let focusEntryById=new Map();
 let estimatorChallenges=[];
 let drawingLabelNote='Drawing abbreviations vary. Always verify the project legend.';
 let learningState=loadLearningState();
@@ -177,11 +178,17 @@ function selectedPool(){
   });
 }
 
+function practiceWeight(term){
+  const base=adaptiveWeight(progressRecord(term.id));
+  const focusBoost=focusIds.has(term.id)?focusRecencyMultiplier(focusEntryById.get(term.id)):1;
+  return base*focusBoost;
+}
+
 function pickPracticeTerm(pool){
   if(!pool.length)return null;
   const candidates=session.active?preferUnseen(pool,session.seenIds):pool;
   const scope=session.active?session.scope:els.practiceScope.value;
-  if(scope==='smart'||scope==='focus')return weightedPick(candidates,t=>adaptiveWeight(progressRecord(t.id)));
+  if(scope==='smart'||scope==='focus')return weightedPick(candidates,practiceWeight);
   return candidates[Math.floor(Math.random()*candidates.length)];
 }
 
@@ -197,7 +204,7 @@ function makeContrastQuestion(pool){
   const [first,second]=pair;
   let candidates=[first,second].filter(t=>allowed.has(t.id));
   if(session.active)candidates=preferUnseen(candidates,session.seenIds);
-  const target=weightedPick(candidates,t=>adaptiveWeight(progressRecord(t.id)));
+  const target=weightedPick(candidates,practiceWeight);
   const other=target.id===first.id?second:first;
   const sameCategory=shuffle(terms.filter(t=>t.category===target.category&&t.id!==target.id&&t.id!==other.id)).map(t=>t.term);
   const fallback=shuffle(terms.filter(t=>t.id!==target.id&&t.id!==other.id)).map(t=>t.term);
@@ -586,6 +593,7 @@ async function init(){
   if(missingFocus.length)console.warn(`Ignoring focus IDs missing from current vocabulary: ${missingFocus.map(item=>item.id).join(', ')}`);
   focusEntries=rawFocus.filter(item=>idSet.has(item.id));
   focusIds=new Set(focusEntries.map(item=>item.id));
+  focusEntryById=new Map(focusEntries.map(item=>[item.id,item]));
 
   categories.forEach(c=>{
     const option=`<option value="${c.id}">${escapeHtml(c.label)}</option>`;
