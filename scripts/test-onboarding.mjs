@@ -32,17 +32,32 @@ assert.deepEqual(recent.map(item=>item.id),['newer','old'],'recent focus should 
 assert.equal(recent[0].request_count,2);
 
 const synced=syncedInboxKeysForFocus(
-  {terms:[{id:'watermain'},{id:'catch-basin'}]},
+  {terms:[
+    {id:'watermain',added_at:'2026-09-10',last_requested_at:'2026-09-20'},
+    {id:'catch-basin',added_at:'2026-09-01',last_requested_at:'2026-09-18'}
+  ]},
   [{id:'watermain',term:'watermain'},{id:'catch-basin',term:'catch basin'}],
   {terms:{
     watermain:{aliases_en:['water main'],drawing_labels:['WM']},
     'catch-basin':{drawing_labels:['CB']}
   }},
-  [{term:'water main'},{term:'CB'},{term:'duct bank'}]
+  [
+    {term:'water main',addedAt:'2026-09-20T08:00:00.000Z'},
+    {term:'CB',addedAt:'2026-09-20T08:00:00.000Z'},
+    {term:'duct bank',addedAt:'2026-09-20T08:00:00.000Z'}
+  ]
 );
-assert.equal(synced.has('water main'),true,'English aliases should sync to their focused canonical term');
-assert.equal(synced.has('cb'),true,'drawing labels should sync to their focused canonical term');
+assert.equal(synced.has('water main'),true,'English aliases should sync when the published Focus request is fresh enough');
+assert.equal(synced.has('cb'),false,'an old Focus entry must not satisfy a newly captured repeat-learning request');
 assert.equal(synced.has('duct bank'),false,'unfocused terms must stay unsynced');
+
+const drawingLabelSynced=syncedInboxKeysForFocus(
+  {terms:[{id:'catch-basin',added_at:'2026-09-01',last_requested_at:'2026-09-20'}]},
+  [{id:'catch-basin',term:'catch basin'}],
+  {terms:{'catch-basin':{drawing_labels:['CB']}}},
+  [{term:'CB',addedAt:'2026-09-20T08:00:00.000Z'}]
+);
+assert.equal(drawingLabelSynced.has('cb'),true,'drawing labels should sync after the canonical Focus request is refreshed');
 
 
 
