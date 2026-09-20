@@ -120,6 +120,7 @@ jobs:
             node --check src/drawing-challenges.js
             node --check src/visuals.js
             node --check src/visuals-extra.js
+            node --check src/visuals-chat.js
             node --check src/visuals-all.js
             node --check src/register-sw.js
             node --check sw.js
