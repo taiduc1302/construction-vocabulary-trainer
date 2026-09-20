@@ -147,32 +147,49 @@ function syncKey(value){
     .replace(/\s+/g,' ');
 }
 
+function localDateFromTimestamp(value){
+  const date=new Date(value);
+  if(Number.isNaN(date.getTime()))return '1970-01-01';
+  const pad=number=>String(number).padStart(2,'0');
+  return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+}
+
 export function syncedInboxKeysForFocus(focusData,allTerms,termMetadata,items){
-  const focusIds=new Set((Array.isArray(focusData?.terms)?focusData.terms:[]).map(item=>item.id));
+  const focusEntries=Array.isArray(focusData?.terms)?focusData.terms:[];
   const byId=new Map(allTerms.map(term=>[term.id,term]));
   const metaMap=termMetadata&&typeof termMetadata==='object'&&!Array.isArray(termMetadata)
     ?(termMetadata.terms&&typeof termMetadata.terms==='object'?termMetadata.terms:termMetadata)
     :{};
-  const accepted=new Set();
+  const acceptedAt=new Map();
 
-  for(const id of focusIds){
-    const term=byId.get(id);
+  for(const focusEntry of focusEntries){
+    const term=byId.get(focusEntry.id);
     if(!term)continue;
-    const meta=metaMap[id]&&typeof metaMap[id]==='object'?metaMap[id]:{};
+    const requestedAt=focusEntry.last_requested_at||focusEntry.added_at;
+    if(typeof requestedAt!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(requestedAt))continue;
+    const meta=metaMap[focusEntry.id]&&typeof metaMap[focusEntry.id]==='object'?metaMap[focusEntry.id]:{};
     const names=[
       term.term,
       ...(Array.isArray(term.aliases_en)?term.aliases_en:[]),
       ...(Array.isArray(meta.aliases_en)?meta.aliases_en:[]),
       ...(Array.isArray(meta.drawing_labels)?meta.drawing_labels:[])
     ];
-    names.map(syncKey).filter(Boolean).forEach(name=>accepted.add(name));
+    for(const name of names.map(syncKey).filter(Boolean)){
+      const existing=acceptedAt.get(name);
+      if(!existing||requestedAt>existing)acceptedAt.set(name,requestedAt);
+    }
   }
 
-  return new Set(
-    (Array.isArray(items)?items:[])
-      .map(item=>syncKey(typeof item==='string'?item:item?.term))
-      .filter(key=>key&&accepted.has(key))
-  );
+  const synced=new Set();
+  for(const item of Array.isArray(items)?items:[]){
+    const key=syncKey(typeof item==='string'?item:item?.term);
+    if(!key)continue;
+    const publishedDate=acceptedAt.get(key);
+    if(!publishedDate)continue;
+    const capturedDate=typeof item==='string'?'1970-01-01':localDateFromTimestamp(item?.addedAt);
+    if(publishedDate>=capturedDate)synced.add(key);
+  }
+  return synced;
 }
 
 function inboxDate(value){
