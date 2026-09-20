@@ -1,7 +1,16 @@
+import {
+  VOCAB_INBOX_LIMIT,normalizeRequestedTerms,addInboxTerms,removeInboxTerm,
+  inboxTerms,loadInbox,saveInbox,clearInbox as clearStoredInbox
+} from './vocab-inbox.js';
+
+export {normalizeRequestedTerms} from './vocab-inbox.js';
 export const REPO='taiduc1302/construction-vocabulary-trainer';
+
 const INSTALL_DISMISS_KEY='construction-vocab-install-dismissed-v1';
 const INSTALL_RESHOW_MS=7*24*60*60*1000;
 const MAX_BATCH_TERMS=25;
+let vocabInbox=loadInbox();
+let syncedInboxKeys=new Set();
 
 function isStandalone(){
   return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
@@ -34,31 +43,11 @@ function bindInstallCard(){
   });
 }
 
-function cleanRequestedTerm(value){
-  return String(value||'').trim().replace(/\s+/g,' ').replace(/[“”]/g,'"');
-}
-
-export function normalizeRequestedTerms(value){
-  const seen=new Set();
-  const out=[];
-  String(value||'')
-    .split(/[\n,;]+/)
-    .map(cleanRequestedTerm)
-    .filter(Boolean)
-    .forEach(term=>{
-      const key=term.toLocaleLowerCase();
-      if(seen.has(key))return;
-      seen.add(key);
-      out.push(term);
-    });
-  return out;
-}
-
 export function buildPrompt(value){
   const terms=normalizeRequestedTerms(value);
   if(!terms.length)return '';
   const requested=terms.map(term=>`"${term.replace(/"/g,'\\\"')}"`).join(', ');
-  return `Используй подключенный GitHub. В репозитории ${REPO} следуй AI_INSTRUCTIONS.md. В словарь: ${requested}. Обработай весь запрос как одно атомарное изменение: не публикуй частичное состояние; для существующих терминов обнови My focus list, для новых создай полную карточку и visual. Прогони проверки, дождись зеленого GitHub Actions и только после этого считай изменение завершенным.`;
+  return `Используй подключенный GitHub. В репозитории ${REPO} следуй AI_INSTRUCTIONS.md. В словарь: ${requested}. Обработай весь запрос как одно атомарное изменение: не публикуй частичное состояние; для существующих терминов обнови My focus list, для новых создай полную карточку и visual. Прогони проверки, дождись зеленого GitHub Actions и успешного Pages deployment для проверенного commit, и только после этого считай изменение завершенным.`;
 }
 
 function setStatus(message,type='neutral'){
@@ -86,7 +75,7 @@ async function copyPrompt(prompt){
   return copied;
 }
 
-function currentPrompt(){
+function inputTerms({forSend=false}={}){
   const input=document.querySelector('#addWordInput');
   const terms=normalizeRequestedTerms(input?.value);
   if(!terms.length){
@@ -94,39 +83,221 @@ function currentPrompt(){
     setStatus('Type at least one construction term first.','error');
     return null;
   }
-  if(terms.length>MAX_BATCH_TERMS){
-    setStatus(`Send ${MAX_BATCH_TERMS} or fewer terms at once.`,'error');
+  if(forSend&&terms.length>MAX_BATCH_TERMS){
+    setStatus(`Send ${MAX_BATCH_TERMS} or fewer terms to ChatGPT at once, or save them to the Inbox first.`,'error');
     return null;
   }
-  return buildPrompt(terms.join(', '));
+  return terms;
 }
 
-async function handleCopy(){
-  const prompt=currentPrompt();
-  if(!prompt)return;
-  try{
-    const copied=await copyPrompt(prompt);
-    setStatus(copied?'Copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
-  }catch{
-    setStatus('Could not copy automatically. Try Share prompt instead.','error');
-  }
-}
-
-async function handleShare(){
-  const prompt=currentPrompt();
-  if(!prompt)return;
-
+async function shareBuiltPrompt(prompt,{successMessage='Prompt shared. Choose ChatGPT in the share sheet when available.'}={}){
+  if(!prompt)return false;
   if(!navigator.share){
-    await handleCopy();
-    return;
+    try{
+      const copied=await copyPrompt(prompt);
+      setStatus(copied?'Copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
+      return copied;
+    }catch{
+      setStatus('Could not copy automatically.','error');
+      return false;
+    }
   }
 
   try{
     await navigator.share({title:'Add construction vocabulary',text:prompt});
-    setStatus('Prompt shared. Choose ChatGPT in the share sheet when available.','success');
+    setStatus(successMessage,'success');
+    return true;
   }catch(error){
     if(error?.name!=='AbortError')setStatus('Share was not available. Use Copy prompt instead.','error');
+    return false;
   }
+}
+
+async function handleCopy(){
+  const terms=inputTerms({forSend:true});
+  if(!terms)return;
+  const prompt=buildPrompt(terms.join(', '));
+  try{
+    const copied=await copyPrompt(prompt);
+    setStatus(copied?'Copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
+  }catch{
+    setStatus('Could not copy automatically. Try Send now instead.','error');
+  }
+}
+
+async function handleShare(){
+  const terms=inputTerms({forSend:true});
+  if(!terms)return;
+  await shareBuiltPrompt(buildPrompt(terms.join(', ')));
+}
+
+function escapeHtml(value=''){
+  return String(value).replace(/[&<>'"]/g,char=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
+  }[char]));
+}
+
+
+function syncKey(value){
+  return String(value||'')
+    .toLocaleLowerCase()
+    .replace(/&/g,' and ')
+    .replace(/[^a-z0-9]+/g,' ')
+    .trim()
+    .replace(/\s+/g,' ');
+}
+
+function localDateFromTimestamp(value){
+  const date=new Date(value);
+  if(Number.isNaN(date.getTime()))return '1970-01-01';
+  const pad=number=>String(number).padStart(2,'0');
+  return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+}
+
+export function syncedInboxKeysForFocus(focusData,allTerms,termMetadata,items){
+  const focusEntries=Array.isArray(focusData?.terms)?focusData.terms:[];
+  const byId=new Map(allTerms.map(term=>[term.id,term]));
+  const metaMap=termMetadata&&typeof termMetadata==='object'&&!Array.isArray(termMetadata)
+    ?(termMetadata.terms&&typeof termMetadata.terms==='object'?termMetadata.terms:termMetadata)
+    :{};
+  const acceptedAt=new Map();
+
+  for(const focusEntry of focusEntries){
+    const term=byId.get(focusEntry.id);
+    if(!term)continue;
+    const requestedAt=focusEntry.last_requested_at||focusEntry.added_at;
+    if(typeof requestedAt!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(requestedAt))continue;
+    const meta=metaMap[focusEntry.id]&&typeof metaMap[focusEntry.id]==='object'?metaMap[focusEntry.id]:{};
+    const names=[
+      term.term,
+      ...(Array.isArray(term.aliases_en)?term.aliases_en:[]),
+      ...(Array.isArray(meta.aliases_en)?meta.aliases_en:[]),
+      ...(Array.isArray(meta.drawing_labels)?meta.drawing_labels:[])
+    ];
+    for(const name of names.map(syncKey).filter(Boolean)){
+      const existing=acceptedAt.get(name);
+      if(!existing||requestedAt>existing)acceptedAt.set(name,requestedAt);
+    }
+  }
+
+  const synced=new Set();
+  for(const item of Array.isArray(items)?items:[]){
+    const key=syncKey(typeof item==='string'?item:item?.term);
+    if(!key)continue;
+    const publishedDate=acceptedAt.get(key);
+    if(!publishedDate)continue;
+    const capturedDate=typeof item==='string'?'1970-01-01':localDateFromTimestamp(item?.addedAt);
+    if(publishedDate>=capturedDate)synced.add(key);
+  }
+  return synced;
+}
+
+function inboxDate(value){
+  const date=new Date(value);
+  if(Number.isNaN(date.getTime()))return '';
+  return date.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+}
+
+function renderInbox(){
+  const count=document.querySelector('#vocabInboxCount');
+  const list=document.querySelector('#vocabInboxList');
+  const send=document.querySelector('#shareInbox');
+  const copy=document.querySelector('#copyInbox');
+  const clearSynced=document.querySelector('#clearSyncedInbox');
+  const clear=document.querySelector('#clearInbox');
+  const items=vocabInbox;
+  const syncedCount=items.filter(item=>syncedInboxKeys.has(syncKey(item.term))).length;
+
+  if(count)count.textContent=syncedCount?`${items.length} saved · ${syncedCount} synced`:`${items.length} saved`;
+  if(send)send.disabled=!items.length;
+  if(copy)copy.disabled=!items.length;
+  if(clearSynced)clearSynced.disabled=!syncedCount;
+  if(clear)clear.disabled=!items.length;
+  if(!list)return;
+
+  list.innerHTML=items.length
+    ?items.map(item=>{
+      const synced=syncedInboxKeys.has(syncKey(item.term));
+      return `
+      <div class="inbox-row ${synced?'is-synced':''}">
+        <div><strong>${escapeHtml(item.term)}</strong><small>saved ${escapeHtml(inboxDate(item.addedAt))}${synced?' · <span class="inbox-sync-badge">Synced</span>':''}</small></div>
+        <button type="button" class="inbox-remove secondary" data-inbox-remove="${encodeURIComponent(item.term)}" aria-label="Remove ${escapeHtml(item.term)} from vocabulary inbox">Remove</button>
+      </div>`;
+    }).join('')
+    :'<div class="inbox-empty">Nothing saved. Capture terms here during the workday and send them together later.</div>';
+
+  list.querySelectorAll('[data-inbox-remove]').forEach(button=>button.addEventListener('click',()=>{
+    const term=decodeURIComponent(button.dataset.inboxRemove||'');
+    vocabInbox=saveInbox(removeInboxTerm(vocabInbox,term));
+    renderInbox();
+    setStatus(`Removed "${term}" from your local inbox.`,'neutral');
+  }));
+}
+
+function saveCurrentToInbox(){
+  const terms=inputTerms();
+  if(!terms)return;
+  const before=vocabInbox.length;
+  vocabInbox=saveInbox(addInboxTerms(vocabInbox,terms.join(', ')));
+  const added=vocabInbox.length-before;
+  document.querySelector('#addWordInput').value='';
+  renderInbox();
+  const panel=document.querySelector('#vocabInboxPanel');
+  if(panel)panel.open=true;
+  if(vocabInbox.length>=VOCAB_INBOX_LIMIT&&added<terms.length){
+    setStatus(`Inbox is full at ${VOCAB_INBOX_LIMIT} saved terms. Send or clear some before saving more.`,'error');
+    return;
+  }
+  setStatus(added
+    ?`Saved ${added} term${added===1?'':'s'} locally. Send the inbox to ChatGPT when convenient.`
+    :'Those terms are already in your local inbox.','success');
+}
+
+async function shareInbox(){
+  const allTerms=inboxTerms(vocabInbox);
+  if(!allTerms.length){setStatus('Your vocabulary inbox is empty.','error');return}
+  const terms=allTerms.slice(0,MAX_BATCH_TERMS);
+  await shareBuiltPrompt(buildPrompt(terms.join(', ')),{
+    successMessage:allTerms.length>MAX_BATCH_TERMS
+      ?`Shared the first ${MAX_BATCH_TERMS} of ${allTerms.length} saved terms. Keep the Inbox until each batch appears in Recently added.`
+      :'Inbox shared. Keep it until the words appear in Recently added, then clear it.'
+  });
+}
+
+async function copyInbox(){
+  const allTerms=inboxTerms(vocabInbox);
+  if(!allTerms.length){setStatus('Your vocabulary inbox is empty.','error');return}
+  const terms=allTerms.slice(0,MAX_BATCH_TERMS);
+  try{
+    const copied=await copyPrompt(buildPrompt(terms.join(', ')));
+    setStatus(copied
+      ?(allTerms.length>MAX_BATCH_TERMS
+        ?`Copied the first ${MAX_BATCH_TERMS} of ${allTerms.length} saved terms. Paste into ChatGPT.`
+        :'Inbox prompt copied. Paste it into ChatGPT.')
+      :'Could not copy automatically.','success');
+  }catch{
+    setStatus('Could not copy the inbox prompt.','error');
+  }
+}
+
+
+function clearSyncedInbox(){
+  const before=vocabInbox.length;
+  vocabInbox=saveInbox(vocabInbox.filter(item=>!syncedInboxKeys.has(syncKey(item.term))));
+  const removed=before-vocabInbox.length;
+  renderInbox();
+  setStatus(removed
+    ?`Cleared ${removed} synced term${removed===1?'':'s'}; unsynced captures were kept.`
+    :'No synced Inbox terms to clear.','neutral');
+}
+
+function clearInbox(){
+  if(!vocabInbox.length)return;
+  const ok=typeof window.confirm!=='function'||window.confirm('Clear all saved vocabulary from this device?');
+  if(!ok)return;
+  vocabInbox=clearStoredInbox();
+  renderInbox();
+  setStatus('Local vocabulary inbox cleared.','neutral');
 }
 
 function bindWordBridge(){
@@ -134,26 +305,27 @@ function bindWordBridge(){
   const input=document.querySelector('#addWordInput');
   const copy=document.querySelector('#copyWordPrompt');
   const share=document.querySelector('#shareWordPrompt');
+  const save=document.querySelector('#saveWordInbox');
   if(!form)return;
 
   if(input){
     input.placeholder='e.g. bedding, duct spacer, valve box';
     input.setAttribute('aria-label','Construction terms to add; separate multiple terms with commas');
   }
-  if(!navigator.share&&share)share.hidden=true;
+  if(!navigator.share&&share)share.textContent='Copy for ChatGPT';
 
   form.addEventListener('submit',event=>{
     event.preventDefault();
-    handleCopy();
+    saveCurrentToInbox();
   });
   copy?.addEventListener('click',handleCopy);
   share?.addEventListener('click',handleShare);
-}
-
-function escapeHtml(value=''){
-  return String(value).replace(/[&<>'"]/g,char=>({
-    '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
-  }[char]));
+  save?.addEventListener('click',saveCurrentToInbox);
+  document.querySelector('#shareInbox')?.addEventListener('click',shareInbox);
+  document.querySelector('#copyInbox')?.addEventListener('click',copyInbox);
+  document.querySelector('#clearSyncedInbox')?.addEventListener('click',clearSyncedInbox);
+  document.querySelector('#clearInbox')?.addEventListener('click',clearInbox);
+  renderInbox();
 }
 
 async function fetchJsonFresh(path){
@@ -173,7 +345,7 @@ function ensureRecentFocusCard(){
         <div>
           <p class="system-kicker">Sync check</p>
           <h2 id="recentFocusTitle">Recently added</h2>
-          <p>Your latest chat-added focus words from GitHub.</p>
+          <p>Your latest chat-added focus words from the validated live vocabulary.</p>
         </div>
         <button id="refreshVocabulary" type="button" class="secondary">Refresh vocabulary</button>
       </div>
@@ -213,12 +385,16 @@ async function loadRecentFocus(){
   const list=document.querySelector('#recentFocusList');
   if(!list)return;
   try{
-    const [focus,core,expanded]=await Promise.all([
+    const [focus,core,expanded,termMetadata]=await Promise.all([
       fetchJsonFresh('data/focus-terms.json'),
       fetchJsonFresh('data/terms.json'),
-      fetchJsonFresh('data/terms-expansion.json')
+      fetchJsonFresh('data/terms-expansion.json'),
+      fetchJsonFresh('data/term-meta.json')
     ]);
-    const recent=recentFocusItems(focus,[...core,...expanded],5);
+    const allTerms=[...core,...expanded];
+    syncedInboxKeys=syncedInboxKeysForFocus(focus,allTerms,termMetadata,vocabInbox);
+    renderInbox();
+    const recent=recentFocusItems(focus,allTerms,5);
     list.innerHTML=recent.length
       ?recent.map(item=>`<div class="recent-focus-row"><div><strong>${escapeHtml(item.term.term)}</strong><small>${escapeHtml(item.term.category)}</small></div><span>${escapeHtml(dateLabel(item.last_requested_at||item.added_at))}${item.request_count>1?` · ×${item.request_count}`:''}</span></div>`).join('')
       :'<div class="recent-focus-empty">No focus words yet. Add one through ChatGPT.</div>';

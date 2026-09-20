@@ -4,7 +4,7 @@ Personal multilingual construction-vocabulary trainer for civil estimating and s
 
 ## Current version
 
-**v1.0.0** uses a growing modular civil-construction vocabulary. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
+**v1.1.0** uses a growing modular civil-construction vocabulary. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
 
 - English term and pronunciation;
 - plain-English definition;
@@ -34,7 +34,7 @@ On iPhone, the web version also shows temporary first-run guidance for **Safari 
 
 ## Daily-use UX
 
-v1.0 is organized around fast phone use and a validation-gated ChatGPT → GitHub → trainer workflow:
+v1.1 is organized around fast phone use and a validation-gated ChatGPT → GitHub → trainer workflow:
 
 - **Today** is the default screen, with the daily goal, learning stats and a primary **Smart 10** action.
 - One-tap shortcuts open Focus words, Due review, Estimator scenarios, Drawing abbreviations, Drawing Challenge, Dictionary and Progress.
@@ -46,6 +46,8 @@ v1.0 is organized around fast phone use and a validation-gated ChatGPT → GitHu
 - Dictionary cards default to **Compact** on phones and can be switched to Detailed; the preference is remembered locally.
 - Export/Import are grouped into a secondary **Data** menu.
 - The Today screen can generate/share the correct ChatGPT add-word command without requiring the owner to remember the repository name.
+- **Vocabulary Inbox** lets the owner capture terms locally during work without leaving the trainer, then send them to ChatGPT in reviewable batches of up to 25.
+- Inbox terms stay only on that device until shared; after a validated release, published Focus terms are marked **Synced** and can be cleared without deleting unsynced captures.
 - First-run iPhone install help appears only when appropriate and can be dismissed temporarily.
 - Controls keep at least 44 px touch targets, the bottom navigation respects iPhone safe areas, and reduced-motion preferences are honored.
 - The interface automatically follows the device **dark/light theme** while technical diagrams keep a high-contrast educational rendering.
@@ -74,6 +76,22 @@ v1.0 is organized around fast phone use and a validation-gated ChatGPT → GitHu
 - **Drawing Challenge** with generic civil plan/section scenes; answers update the same term progress.
 - Export/import of browser learning state.
 - Installable PWA with network-first online refresh and offline fallback.
+
+## Vocabulary Inbox
+
+`src/vocab-inbox.js` provides a small local capture queue for workday terminology.
+
+Typical flow:
+
+1. See a term on a drawing/site note and type it into Today.
+2. Tap **Save for later** instead of switching apps.
+3. Keep capturing terms during the day; duplicates are removed case-insensitively.
+4. Open **Vocabulary Inbox** and tap **Send next batch to ChatGPT**. AI batches are capped at 25 terms so every term can be reviewed properly.
+5. After ChatGPT confirms validation + Pages deployment, tap **Refresh vocabulary**.
+6. Captures that map to the published Focus list (canonical term, legitimate alias, or known drawing label) show **Synced** only when the published Focus request date is at least as recent as the local capture. Re-adding an old Focus word therefore still requires a fresh AI update.
+7. Tap **Clear synced** to remove only confirmed captures; unresolved items remain.
+
+The Inbox is localStorage-only, bounded to 100 terms, and is deliberately separate from GitHub and browser learning progress. It should contain terminology only — not project names, prices, confidential notes, client information or tender details.
 
 ## Chat → My focus list
 
@@ -170,7 +188,8 @@ The app combines the two term files into one live dictionary; its size grows as 
 
 - `src/app.js` — application orchestration and learning UI.
 - `src/ui-enhancements.js` — Today shortcuts, mobile routing, compact dictionary state, inline Next actions and UX safety around active Quick 10 sessions.
-- `src/onboarding.js` — iPhone install guidance and repository-aware ChatGPT add-word prompt generation/share/copy behavior.
+- `src/onboarding.js` — iPhone install guidance, repository-aware ChatGPT prompts, recent Focus sync and Inbox UI behavior.
+- `src/vocab-inbox.js` — bounded local capture queue, deduplication, persistence and safe recovery from storage failures.
 - `src/practice-engine.js` — recall normalization, metadata merge, prompt generation, practice selection and challenge helpers.
 - `src/learning-state.js` — state migration, scheduling, adaptive weighting, daily goals/streaks and sessions.
 - `src/drawing-challenges.js` — multi-feature drawing exercises.
@@ -202,7 +221,8 @@ CI validates, among other things:
 - content-quality and answer-leak checks;
 - 100% dedicated visual coverage for the current vocabulary and SVG CSS contracts;
 - Drawing Challenge scene/callout behavior;
-- PWA runtime/precache dependencies and network-first freshness;
+- PWA runtime/precache dependencies (recursively discovered from the index/import graph) and network-first freshness;
+- local Vocabulary Inbox parsing, deduplication, bounded persistence, storage-failure safety and published Focus sync matching;
 - learning-state migration, sanitization, scheduling, adaptive weighting, goals, streaks and sessions;
 - recall normalization, aliases, varied typed prompts, strict practice scopes and option uniqueness;
 - drawing-label metadata uniqueness and referenced term IDs;

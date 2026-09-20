@@ -77,6 +77,13 @@ jobs:
           set -o pipefail
           node scripts/test-learning-content.mjs 2>&1 | tee audit-logs/learning-content.txt
 
+      - name: Test local vocabulary inbox
+        id: inbox
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node scripts/test-vocab-inbox.mjs 2>&1 | tee audit-logs/vocab-inbox.txt
+
       - name: Test ChatGPT add-word bridge
         id: onboarding
         continue-on-error: true
@@ -107,11 +114,13 @@ jobs:
             node --check src/app.js
             node --check src/ui-enhancements.js
             node --check src/onboarding.js
+            node --check src/vocab-inbox.js
             node --check src/learning-state.js
             node --check src/practice-engine.js
             node --check src/drawing-challenges.js
             node --check src/visuals.js
             node --check src/visuals-extra.js
+            node --check src/visuals-chat.js
             node --check src/visuals-all.js
             node --check src/register-sw.js
             node --check sw.js
@@ -144,14 +153,15 @@ jobs:
           PRACTICE: ${{ steps.practice.outcome }}
           DRAWING: ${{ steps.drawing.outcome }}
           LEARNING_CONTENT: ${{ steps.learningcontent.outcome }}
+          INBOX: ${{ steps.inbox.outcome }}
           ONBOARDING: ${{ steps.onboarding.outcome }}
           DELIVERY: ${{ steps.delivery.outcome }}
           UX: ${{ steps.ux.outcome }}
           SYNTAX: ${{ steps.syntax.outcome }}
           MANIFEST: ${{ steps.manifest.outcome }}
         run: |
-          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\ndrawing=%s\nlearning_content=%s\nonboarding=%s\ndelivery=%s\nux=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$DRAWING" "$LEARNING_CONTENT" "$ONBOARDING" "$DELIVERY" "$UX" "$SYNTAX" "$MANIFEST"
-          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$DRAWING" != success ] || [ "$LEARNING_CONTENT" != success ] || [ "$ONBOARDING" != success ] || [ "$DELIVERY" != success ] || [ "$UX" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
+          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\ndrawing=%s\nlearning_content=%s\ninbox=%s\nonboarding=%s\ndelivery=%s\nux=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$DRAWING" "$LEARNING_CONTENT" "$INBOX" "$ONBOARDING" "$DELIVERY" "$UX" "$SYNTAX" "$MANIFEST"
+          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$DRAWING" != success ] || [ "$LEARNING_CONTENT" != success ] || [ "$INBOX" != success ] || [ "$ONBOARDING" != success ] || [ "$DELIVERY" != success ] || [ "$UX" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
             echo 'One or more audit checks failed. See the uploaded audit logs artifact.'
             exit 1
           fi
