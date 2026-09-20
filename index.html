@@ -75,15 +75,26 @@
           <div>
             <p class="system-kicker">From work → ChatGPT → trainer</p>
             <h2 id="addWordTitle">Add a word you saw today</h2>
-            <p>You do not need to remember the repository name or command format. Type the word and this app prepares the exact ChatGPT request.</p>
+            <p>You do not need to remember the repository name or command format. Send a term to ChatGPT now or save several locally during the day and process them together later.</p>
           </div>
         </div>
         <form id="addWordForm" class="add-word-form">
-          <input id="addWordInput" type="text" autocomplete="off" enterkeyhint="done" placeholder="e.g. stub-out" aria-label="Construction word to add" />
-          <button id="shareWordPrompt" type="button">Share prompt</button>
+          <input id="addWordInput" type="text" autocomplete="off" enterkeyhint="done" placeholder="e.g. bedding, duct spacer, valve box" aria-label="Construction terms to add" />
+          <button id="shareWordPrompt" type="button">Send now</button>
+          <button id="saveWordInbox" type="button" class="secondary">Save for later</button>
           <button id="copyWordPrompt" type="button" class="secondary">Copy prompt</button>
         </form>
-        <p class="bridge-help">On iPhone, Share can send the prepared request to ChatGPT when ChatGPT is available in the share sheet. Copy always works as a fallback.</p>
+        <p class="bridge-help">Working and do not want to switch apps? Save terms locally, then send them to ChatGPT together later. The Inbox stays only on this device until you choose to share it.</p>
+        <details id="vocabInboxPanel" class="vocab-inbox">
+          <summary><span>Vocabulary Inbox</span><strong id="vocabInboxCount">0 saved</strong></summary>
+          <div id="vocabInboxList" class="vocab-inbox-list"></div>
+          <div class="vocab-inbox-actions">
+            <button id="shareInbox" type="button">Send next batch to ChatGPT</button>
+            <button id="copyInbox" type="button" class="secondary">Copy next batch</button>
+            <button id="clearInbox" type="button" class="secondary danger-soft">Clear inbox</button>
+          </div>
+          <p class="inbox-privacy">Local capture only. Save terminology, not project names, prices, client information or confidential notes. AI batches are limited to 25 terms so each one can be reviewed properly.</p>
+        </details>
         <p id="addWordStatus" class="bridge-status" role="status" aria-live="polite"></p>
       </section>
 
