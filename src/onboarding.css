@@ -26,3 +26,7 @@
 @media(max-width:560px){.vocab-inbox-actions{display:grid;grid-template-columns:1fr}.vocab-inbox-actions button{width:100%}.inbox-row{align-items:flex-start}}
 
 @media(prefers-color-scheme:dark){.vocab-inbox{background:#10171d;border-color:#2b3741}.vocab-inbox summary strong,.inbox-row small,.inbox-empty,.inbox-privacy{color:#a8b4bc}.inbox-row,.vocab-inbox-actions{border-color:#2b3741}.danger-soft{color:#ef9a9a}}
+
+.inbox-row.is-synced{background:linear-gradient(90deg,rgba(47,139,101,.07),transparent)}
+.inbox-sync-badge{display:inline-flex;align-items:center;border-radius:999px;padding:2px 6px;background:#e9f6ef;color:#247452;font-size:.72rem;font-weight:800;letter-spacing:.02em}
+@media(prefers-color-scheme:dark){.inbox-row.is-synced{background:linear-gradient(90deg,rgba(127,211,173,.09),transparent)}.inbox-sync-badge{background:#173326;color:#8bd6b3}}
