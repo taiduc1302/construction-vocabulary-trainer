@@ -20,7 +20,7 @@
 .vocab-inbox summary::-webkit-details-marker{display:none}.vocab-inbox summary strong{font-size:.82rem;color:#64737d}
 .vocab-inbox-list{padding:0 12px}.inbox-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid #e8eef2}
 .inbox-row:first-child{border-top:0}.inbox-row div{display:grid;gap:2px;min-width:0}.inbox-row strong{overflow-wrap:anywhere}.inbox-row small,.inbox-empty,.inbox-privacy{font-size:.82rem;color:#6b7a84}
-.inbox-remove{min-height:40px;padding:8px 10px;flex:0 0 auto}.vocab-inbox-actions{display:flex;gap:8px;flex-wrap:wrap;padding:12px;border-top:1px solid #e8eef2}
+.inbox-remove{min-height:44px;padding:8px 10px;flex:0 0 auto}.vocab-inbox-actions{display:flex;gap:8px;flex-wrap:wrap;padding:12px;border-top:1px solid #e8eef2}
 .vocab-inbox-actions button{min-height:44px}.inbox-privacy{margin:0!important;padding:0 12px 12px}.danger-soft{color:#9b3f3f}
 
 @media(max-width:560px){.vocab-inbox-actions{display:grid;grid-template-columns:1fr}.vocab-inbox-actions button{width:100%}.inbox-row{align-items:flex-start}}
