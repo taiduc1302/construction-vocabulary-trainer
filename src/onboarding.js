@@ -1,7 +1,15 @@
+import {
+  VOCAB_INBOX_LIMIT,normalizeRequestedTerms,addInboxTerms,removeInboxTerm,
+  inboxTerms,loadInbox,saveInbox,clearInbox as clearStoredInbox
+} from './vocab-inbox.js';
+
+export {normalizeRequestedTerms} from './vocab-inbox.js';
 export const REPO='taiduc1302/construction-vocabulary-trainer';
+
 const INSTALL_DISMISS_KEY='construction-vocab-install-dismissed-v1';
 const INSTALL_RESHOW_MS=7*24*60*60*1000;
 const MAX_BATCH_TERMS=25;
+let vocabInbox=loadInbox();
 
 function isStandalone(){
   return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
@@ -34,31 +42,11 @@ function bindInstallCard(){
   });
 }
 
-function cleanRequestedTerm(value){
-  return String(value||'').trim().replace(/\s+/g,' ').replace(/[“”]/g,'"');
-}
-
-export function normalizeRequestedTerms(value){
-  const seen=new Set();
-  const out=[];
-  String(value||'')
-    .split(/[\n,;]+/)
-    .map(cleanRequestedTerm)
-    .filter(Boolean)
-    .forEach(term=>{
-      const key=term.toLocaleLowerCase();
-      if(seen.has(key))return;
-      seen.add(key);
-      out.push(term);
-    });
-  return out;
-}
-
 export function buildPrompt(value){
   const terms=normalizeRequestedTerms(value);
   if(!terms.length)return '';
   const requested=terms.map(term=>`"${term.replace(/"/g,'\\\"')}"`).join(', ');
-  return `Используй подключенный GitHub. В репозитории ${REPO} следуй AI_INSTRUCTIONS.md. В словарь: ${requested}. Обработай весь запрос как одно атомарное изменение: не публикуй частичное состояние; для существующих терминов обнови My focus list, для новых создай полную карточку и visual. Прогони проверки, дождись зеленого GitHub Actions и только после этого считай изменение завершенным.`;
+  return `Используй подключенный GitHub. В репозитории ${REPO} следуй AI_INSTRUCTIONS.md. В словарь: ${requested}. Обработай весь запрос как одно атомарное изменение: не публикуй частичное состояние; для существующих терминов обнови My focus list, для новых создай полную карточку и visual. Прогони проверки, дождись зеленого GitHub Actions и успешного Pages deployment для проверенного commit, и только после этого считай изменение завершенным.`;
 }
 
 function setStatus(message,type='neutral'){
@@ -86,7 +74,7 @@ async function copyPrompt(prompt){
   return copied;
 }
 
-function currentPrompt(){
+function inputTerms(){
   const input=document.querySelector('#addWordInput');
   const terms=normalizeRequestedTerms(input?.value);
   if(!terms.length){
@@ -95,38 +83,148 @@ function currentPrompt(){
     return null;
   }
   if(terms.length>MAX_BATCH_TERMS){
-    setStatus(`Send ${MAX_BATCH_TERMS} or fewer terms at once.`,'error');
+    setStatus(`Send ${MAX_BATCH_TERMS} or fewer terms to ChatGPT at once.`,'error');
     return null;
   }
-  return buildPrompt(terms.join(', '));
+  return terms;
 }
 
-async function handleCopy(){
-  const prompt=currentPrompt();
-  if(!prompt)return;
-  try{
-    const copied=await copyPrompt(prompt);
-    setStatus(copied?'Copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
-  }catch{
-    setStatus('Could not copy automatically. Try Share prompt instead.','error');
-  }
-}
-
-async function handleShare(){
-  const prompt=currentPrompt();
-  if(!prompt)return;
-
+async function shareBuiltPrompt(prompt,{successMessage='Prompt shared. Choose ChatGPT in the share sheet when available.'}={}){
+  if(!prompt)return false;
   if(!navigator.share){
-    await handleCopy();
-    return;
+    try{
+      const copied=await copyPrompt(prompt);
+      setStatus(copied?'Copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
+      return copied;
+    }catch{
+      setStatus('Could not copy automatically.','error');
+      return false;
+    }
   }
 
   try{
     await navigator.share({title:'Add construction vocabulary',text:prompt});
-    setStatus('Prompt shared. Choose ChatGPT in the share sheet when available.','success');
+    setStatus(successMessage,'success');
+    return true;
   }catch(error){
     if(error?.name!=='AbortError')setStatus('Share was not available. Use Copy prompt instead.','error');
+    return false;
   }
+}
+
+async function handleCopy(){
+  const terms=inputTerms();
+  if(!terms)return;
+  const prompt=buildPrompt(terms.join(', '));
+  try{
+    const copied=await copyPrompt(prompt);
+    setStatus(copied?'Copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
+  }catch{
+    setStatus('Could not copy automatically. Try Send now instead.','error');
+  }
+}
+
+async function handleShare(){
+  const terms=inputTerms();
+  if(!terms)return;
+  await shareBuiltPrompt(buildPrompt(terms.join(', ')));
+}
+
+function escapeHtml(value=''){
+  return String(value).replace(/[&<>'"]/g,char=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
+  }[char]));
+}
+
+function inboxDate(value){
+  const date=new Date(value);
+  if(Number.isNaN(date.getTime()))return '';
+  return date.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+}
+
+function renderInbox(){
+  const count=document.querySelector('#vocabInboxCount');
+  const list=document.querySelector('#vocabInboxList');
+  const send=document.querySelector('#shareInbox');
+  const copy=document.querySelector('#copyInbox');
+  const clear=document.querySelector('#clearInbox');
+  const items=vocabInbox;
+
+  if(count)count.textContent=`${items.length} saved`;
+  if(send)send.disabled=!items.length;
+  if(copy)copy.disabled=!items.length;
+  if(clear)clear.disabled=!items.length;
+  if(!list)return;
+
+  list.innerHTML=items.length
+    ?items.map(item=>`
+      <div class="inbox-row">
+        <div><strong>${escapeHtml(item.term)}</strong><small>saved ${escapeHtml(inboxDate(item.addedAt))}</small></div>
+        <button type="button" class="inbox-remove secondary" data-inbox-remove="${encodeURIComponent(item.term)}" aria-label="Remove ${escapeHtml(item.term)} from vocabulary inbox">Remove</button>
+      </div>`).join('')
+    :'<div class="inbox-empty">Nothing saved. Capture terms here during the workday and send them together later.</div>';
+
+  list.querySelectorAll('[data-inbox-remove]').forEach(button=>button.addEventListener('click',()=>{
+    const term=decodeURIComponent(button.dataset.inboxRemove||'');
+    vocabInbox=saveInbox(removeInboxTerm(vocabInbox,term));
+    renderInbox();
+    setStatus(`Removed "${term}" from your local inbox.`,'neutral');
+  }));
+}
+
+function saveCurrentToInbox(){
+  const terms=inputTerms();
+  if(!terms)return;
+  const before=vocabInbox.length;
+  vocabInbox=saveInbox(addInboxTerms(vocabInbox,terms.join(', ')));
+  const added=vocabInbox.length-before;
+  document.querySelector('#addWordInput').value='';
+  renderInbox();
+  const panel=document.querySelector('#vocabInboxPanel');
+  if(panel)panel.open=true;
+  if(vocabInbox.length>=VOCAB_INBOX_LIMIT&&added<terms.length){
+    setStatus(`Inbox is full at ${VOCAB_INBOX_LIMIT} saved terms. Send or clear some before saving more.`,'error');
+    return;
+  }
+  setStatus(added
+    ?`Saved ${added} term${added===1?'':'s'} locally. Send the inbox to ChatGPT when convenient.`
+    :'Those terms are already in your local inbox.','success');
+}
+
+async function shareInbox(){
+  const terms=inboxTerms(vocabInbox);
+  if(!terms.length){setStatus('Your vocabulary inbox is empty.','error');return}
+  if(terms.length>MAX_BATCH_TERMS){
+    setStatus(`Your inbox has ${terms.length} terms. Send at most ${MAX_BATCH_TERMS} at a time so AI can review each term carefully.`,'error');
+    return;
+  }
+  await shareBuiltPrompt(buildPrompt(terms.join(', ')),{
+    successMessage:'Inbox shared. Keep it until the words appear in Recently added, then clear it.'
+  });
+}
+
+async function copyInbox(){
+  const terms=inboxTerms(vocabInbox);
+  if(!terms.length){setStatus('Your vocabulary inbox is empty.','error');return}
+  if(terms.length>MAX_BATCH_TERMS){
+    setStatus(`Your inbox has ${terms.length} terms. Remove or send some first; the AI batch limit is ${MAX_BATCH_TERMS}.`,'error');
+    return;
+  }
+  try{
+    const copied=await copyPrompt(buildPrompt(terms.join(', ')));
+    setStatus(copied?'Inbox prompt copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
+  }catch{
+    setStatus('Could not copy the inbox prompt.','error');
+  }
+}
+
+function clearInbox(){
+  if(!vocabInbox.length)return;
+  const ok=typeof window.confirm!=='function'||window.confirm('Clear all saved vocabulary from this device?');
+  if(!ok)return;
+  vocabInbox=clearStoredInbox();
+  renderInbox();
+  setStatus('Local vocabulary inbox cleared.','neutral');
 }
 
 function bindWordBridge(){
@@ -134,26 +232,26 @@ function bindWordBridge(){
   const input=document.querySelector('#addWordInput');
   const copy=document.querySelector('#copyWordPrompt');
   const share=document.querySelector('#shareWordPrompt');
+  const save=document.querySelector('#saveWordInbox');
   if(!form)return;
 
   if(input){
     input.placeholder='e.g. bedding, duct spacer, valve box';
     input.setAttribute('aria-label','Construction terms to add; separate multiple terms with commas');
   }
-  if(!navigator.share&&share)share.hidden=true;
+  if(!navigator.share&&share)share.textContent='Copy for ChatGPT';
 
   form.addEventListener('submit',event=>{
     event.preventDefault();
-    handleCopy();
+    saveCurrentToInbox();
   });
   copy?.addEventListener('click',handleCopy);
   share?.addEventListener('click',handleShare);
-}
-
-function escapeHtml(value=''){
-  return String(value).replace(/[&<>'"]/g,char=>({
-    '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
-  }[char]));
+  save?.addEventListener('click',saveCurrentToInbox);
+  document.querySelector('#shareInbox')?.addEventListener('click',shareInbox);
+  document.querySelector('#copyInbox')?.addEventListener('click',copyInbox);
+  document.querySelector('#clearInbox')?.addEventListener('click',clearInbox);
+  renderInbox();
 }
 
 async function fetchJsonFresh(path){
@@ -173,7 +271,7 @@ function ensureRecentFocusCard(){
         <div>
           <p class="system-kicker">Sync check</p>
           <h2 id="recentFocusTitle">Recently added</h2>
-          <p>Your latest chat-added focus words from GitHub.</p>
+          <p>Your latest chat-added focus words from the validated live vocabulary.</p>
         </div>
         <button id="refreshVocabulary" type="button" class="secondary">Refresh vocabulary</button>
       </div>
