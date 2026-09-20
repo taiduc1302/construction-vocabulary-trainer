@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {normalizeRequestedTerms,buildPrompt} from '../src/onboarding.js';
+import {normalizeRequestedTerms,buildPrompt,recentFocusItems} from '../src/onboarding.js';
 
 assert.deepEqual(
   normalizeRequestedTerms('Bedding, duct spacer\nBedding; valve box'),
@@ -18,4 +18,17 @@ assert.match(prompt,/атомар/i,'prompt should require one atomic change');
 assert.match(prompt,/My focus list/i,'prompt should preserve learning intent');
 assert.match(prompt,/GitHub Actions/i,'prompt should require validation completion');
 
-console.log('Onboarding bridge tests OK: batch parsing, deduplication and repository-aware atomic ChatGPT prompt generation.');
+const recent=recentFocusItems(
+  {terms:[
+    {id:'old',added_at:'2026-08-01',last_requested_at:'2026-08-01',request_count:1},
+    {id:'newer',added_at:'2026-09-18',last_requested_at:'2026-09-18',request_count:2},
+    {id:'missing',added_at:'2026-09-19',last_requested_at:'2026-09-19',request_count:1}
+  ]},
+  [{id:'old',term:'old term',category:'estimating'},{id:'newer',term:'new term',category:'utilities'}],
+  5
+);
+assert.deepEqual(recent.map(item=>item.id),['newer','old'],'recent focus should sort newest first and ignore IDs missing from vocabulary');
+assert.equal(recent[0].request_count,2);
+
+
+console.log('Onboarding bridge tests OK: batch parsing, deduplication, recent-focus sorting and repository-aware atomic ChatGPT prompt generation.');
