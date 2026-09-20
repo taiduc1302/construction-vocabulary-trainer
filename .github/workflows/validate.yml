@@ -77,6 +77,20 @@ jobs:
           set -o pipefail
           node scripts/test-learning-content.mjs 2>&1 | tee audit-logs/learning-content.txt
 
+      - name: Test ChatGPT add-word bridge
+        id: onboarding
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node scripts/test-onboarding.mjs 2>&1 | tee audit-logs/onboarding.txt
+
+      - name: Validate release delivery gate
+        id: delivery
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node scripts/validate-delivery.mjs 2>&1 | tee audit-logs/delivery.txt
+
       - name: Validate mobile UX contract
         id: ux
         continue-on-error: true
@@ -130,12 +144,14 @@ jobs:
           PRACTICE: ${{ steps.practice.outcome }}
           DRAWING: ${{ steps.drawing.outcome }}
           LEARNING_CONTENT: ${{ steps.learningcontent.outcome }}
+          ONBOARDING: ${{ steps.onboarding.outcome }}
+          DELIVERY: ${{ steps.delivery.outcome }}
           UX: ${{ steps.ux.outcome }}
           SYNTAX: ${{ steps.syntax.outcome }}
           MANIFEST: ${{ steps.manifest.outcome }}
         run: |
-          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\ndrawing=%s\nlearning_content=%s\nux=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$DRAWING" "$LEARNING_CONTENT" "$UX" "$SYNTAX" "$MANIFEST"
-          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$DRAWING" != success ] || [ "$LEARNING_CONTENT" != success ] || [ "$UX" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
+          printf 'terms=%s\ncontent=%s\nvisuals=%s\npwa=%s\nlearning=%s\npractice=%s\ndrawing=%s\nlearning_content=%s\nonboarding=%s\ndelivery=%s\nux=%s\nsyntax=%s\nmanifest=%s\n' "$TERMS" "$CONTENT" "$VISUALS" "$PWA" "$LEARNING" "$PRACTICE" "$DRAWING" "$LEARNING_CONTENT" "$ONBOARDING" "$DELIVERY" "$UX" "$SYNTAX" "$MANIFEST"
+          if [ "$TERMS" != success ] || [ "$CONTENT" != success ] || [ "$VISUALS" != success ] || [ "$PWA" != success ] || [ "$LEARNING" != success ] || [ "$PRACTICE" != success ] || [ "$DRAWING" != success ] || [ "$LEARNING_CONTENT" != success ] || [ "$ONBOARDING" != success ] || [ "$DELIVERY" != success ] || [ "$UX" != success ] || [ "$SYNTAX" != success ] || [ "$MANIFEST" != success ]; then
             echo 'One or more audit checks failed. See the uploaded audit logs artifact.'
             exit 1
           fi
