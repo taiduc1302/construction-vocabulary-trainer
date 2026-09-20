@@ -60,6 +60,7 @@ assert.ok(dark.includes('.visual-box,.technical-visual,.drawing-sheet svg'),'tec
 assert.ok(onboardingCss.includes('.chat-bridge'),'chat-to-trainer bridge styling is missing');
 assert.ok(onboardingCss.includes('.install-card'),'install guidance styling is missing');
 assert.ok(onboardingCss.includes('min-height:44px'),'onboarding actions should preserve a 44px touch target');
+assert.ok(!onboardingCss.includes('min-height:40px'),'onboarding controls below 44px are not finger-friendly');
 assert.match(onboardingCss,/@media\(prefers-color-scheme:dark\)/,'onboarding UI should follow dark mode');
 
 assert.ok(ui.includes("construction-vocab-card-density-v1"),'dictionary density preference must be persisted separately');
