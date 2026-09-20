@@ -74,6 +74,13 @@ assert.ok(ui.includes('trainerReady()'),'quick actions should wait until app dat
 assert.ok(ui.includes('aria-current'),'navigation must expose the current view to assistive technology');
 assert.ok(ui.includes("view==='review'||view==='weak'"),'review subviews should preserve Progress as their visible navigation parent');
 
+assert.ok(onboarding.includes('normalizeRequestedTerms'),'add-word bridge should support batch term parsing');
+assert.ok(onboarding.includes('recentFocusItems'),'Today should expose recent chat-added focus confirmation');
+assert.ok(onboarding.includes('Refresh vocabulary'),'Today should offer an explicit vocabulary refresh action');
+assert.ok(onboarding.includes("cache:'no-store'"),'recent focus sync should bypass stale browser HTTP data');
+assert.ok(onboarding.includes('My focus list'),'generated ChatGPT prompt must preserve focus-list intent');
+
+
 assert.ok(onboarding.includes("const REPO='taiduc1302/construction-vocabulary-trainer'"),'chat bridge must target the canonical repository');
 assert.ok(onboarding.includes('AI_INSTRUCTIONS.md'),'prepared ChatGPT prompt must explicitly use repository maintenance rules');
 assert.ok(onboarding.includes('My focus list'),'prepared prompt must preserve learning-intent semantics for existing terms');
@@ -83,4 +90,4 @@ assert.ok(onboarding.includes("display-mode: standalone"),'install guidance must
 assert.ok(onboarding.includes('/iphone|ipad|ipod/i'),'install guidance should target iOS browsers');
 assert.ok(onboarding.includes('INSTALL_RESHOW_MS'),'dismissed install help should reappear later instead of disappearing forever');
 
-console.log('UX contract OK: Today-first flow, five-tab mobile navigation, safe Quick 10 resume, one-tap shortcuts, inline next actions, compact dictionary, automatic dark mode, iPhone install guidance, ChatGPT add-word bridge, 44px touch targets and iPhone-safe layout.');
+console.log('UX contract OK: Today-first flow, five-tab mobile navigation, safe Quick 10 resume, batch ChatGPT add-word bridge, recent-focus sync confirmation, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
