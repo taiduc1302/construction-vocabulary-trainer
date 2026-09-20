@@ -176,7 +176,7 @@ Rules:
 - Never commit Inbox contents or exported local Inbox state to GitHub.
 - The Inbox may contain up to 100 locally captured terms; ChatGPT processing batches are intentionally limited to 25 terms at a time.
 - Saving to Inbox does **not** mean a term has been added to the dictionary or Focus list.
-- A term is considered synced only when the published `data/focus-terms.json` contains the mapped canonical ID.
+- A term is considered synced only when the published `data/focus-terms.json` contains the mapped canonical ID **and** its `last_requested_at`/`added_at` date is at least as recent as the local Inbox capture date. An old Focus entry must not satisfy a newly captured repeat-learning request.
 - Sync matching may use canonical English names, legitimate `aliases_en`, and common `drawing_labels`; do not invent fuzzy matches.
 - **Clear synced** may remove only locally captured terms confirmed against the published Focus vocabulary. Unsynced captures must remain.
 - Do not store project names, prices, client information, confidential drawing notes, bid assumptions or other sensitive project context in the Inbox.
