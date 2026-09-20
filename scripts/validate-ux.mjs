@@ -19,7 +19,7 @@ const primaryViews=[...navBlock.matchAll(/data-view="([^"]+)"/g)].map(match=>mat
 assert.deepEqual(primaryViews,['home','practice','dictionary','drawing','progress'],'primary navigation should stay focused on five daily destinations');
 assert.match(index,/class="view-router-only"[\s\S]*data-view="review"[\s\S]*data-view="weak"/,'Due and Weak views need hidden routing controls after leaving primary navigation');
 
-for(const id of ['stats','dailyGoalCard','searchInput','categoryFilter','practiceScope','practiceCategory','practiceMode','newQuestion','quickSession','quizCard','drawingChallenge','progressOverview','exportProgress','importProgress','toggleCardDensity','installCard','dismissInstall','addWordForm','addWordInput','shareWordPrompt','saveWordInbox','copyWordPrompt','vocabInboxPanel','vocabInboxCount','vocabInboxList','shareInbox','copyInbox','clearInbox','addWordStatus']){
+for(const id of ['stats','dailyGoalCard','searchInput','categoryFilter','practiceScope','practiceCategory','practiceMode','newQuestion','quickSession','quizCard','drawingChallenge','progressOverview','exportProgress','importProgress','toggleCardDensity','installCard','dismissInstall','addWordForm','addWordInput','shareWordPrompt','saveWordInbox','copyWordPrompt','vocabInboxPanel','vocabInboxCount','vocabInboxList','shareInbox','copyInbox','clearSyncedInbox','clearInbox','addWordStatus']){
   assert.ok(index.includes(`id="${id}"`),`index.html missing required UX/runtime id ${id}`);
 }
 
@@ -83,6 +83,7 @@ assert.ok(onboarding.includes("cache:'no-store'"),'recent focus sync should bypa
 assert.ok(onboarding.includes('My focus list'),'generated ChatGPT prompt must preserve focus-list intent');
 assert.ok(onboarding.includes('saveCurrentToInbox'),'Today bridge must support local capture without leaving the trainer');
 assert.ok(onboarding.includes('shareInbox'),'Inbox must support sending a saved batch to ChatGPT');
+assert.ok(onboarding.includes('syncedInboxKeysForFocus'),'Inbox must reconcile local captures against published Focus aliases/labels');
 assert.ok(onboarding.includes('clearStoredInbox'),'Inbox clearing must use the tested local-storage layer');
 assert.ok(onboarding.includes('MAX_BATCH_TERMS'),'AI processing batches must remain deliberately bounded');
 assert.ok(onboardingCss.includes('.vocab-inbox'),'Vocabulary Inbox must have responsive styling');
