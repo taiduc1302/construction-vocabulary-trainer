@@ -74,7 +74,7 @@ async function copyPrompt(prompt){
   return copied;
 }
 
-function inputTerms(){
+function inputTerms({forSend=false}={}){
   const input=document.querySelector('#addWordInput');
   const terms=normalizeRequestedTerms(input?.value);
   if(!terms.length){
@@ -82,8 +82,8 @@ function inputTerms(){
     setStatus('Type at least one construction term first.','error');
     return null;
   }
-  if(terms.length>MAX_BATCH_TERMS){
-    setStatus(`Send ${MAX_BATCH_TERMS} or fewer terms to ChatGPT at once.`,'error');
+  if(forSend&&terms.length>MAX_BATCH_TERMS){
+    setStatus(`Send ${MAX_BATCH_TERMS} or fewer terms to ChatGPT at once, or save them to the Inbox first.`,'error');
     return null;
   }
   return terms;
@@ -113,7 +113,7 @@ async function shareBuiltPrompt(prompt,{successMessage='Prompt shared. Choose Ch
 }
 
 async function handleCopy(){
-  const terms=inputTerms();
+  const terms=inputTerms({forSend:true});
   if(!terms)return;
   const prompt=buildPrompt(terms.join(', '));
   try{
@@ -125,7 +125,7 @@ async function handleCopy(){
 }
 
 async function handleShare(){
-  const terms=inputTerms();
+  const terms=inputTerms({forSend:true});
   if(!terms)return;
   await shareBuiltPrompt(buildPrompt(terms.join(', ')));
 }
@@ -192,27 +192,27 @@ function saveCurrentToInbox(){
 }
 
 async function shareInbox(){
-  const terms=inboxTerms(vocabInbox);
-  if(!terms.length){setStatus('Your vocabulary inbox is empty.','error');return}
-  if(terms.length>MAX_BATCH_TERMS){
-    setStatus(`Your inbox has ${terms.length} terms. Send at most ${MAX_BATCH_TERMS} at a time so AI can review each term carefully.`,'error');
-    return;
-  }
+  const allTerms=inboxTerms(vocabInbox);
+  if(!allTerms.length){setStatus('Your vocabulary inbox is empty.','error');return}
+  const terms=allTerms.slice(0,MAX_BATCH_TERMS);
   await shareBuiltPrompt(buildPrompt(terms.join(', ')),{
-    successMessage:'Inbox shared. Keep it until the words appear in Recently added, then clear it.'
+    successMessage:allTerms.length>MAX_BATCH_TERMS
+      ?`Shared the first ${MAX_BATCH_TERMS} of ${allTerms.length} saved terms. Keep the Inbox until each batch appears in Recently added.`
+      :'Inbox shared. Keep it until the words appear in Recently added, then clear it.'
   });
 }
 
 async function copyInbox(){
-  const terms=inboxTerms(vocabInbox);
-  if(!terms.length){setStatus('Your vocabulary inbox is empty.','error');return}
-  if(terms.length>MAX_BATCH_TERMS){
-    setStatus(`Your inbox has ${terms.length} terms. Remove or send some first; the AI batch limit is ${MAX_BATCH_TERMS}.`,'error');
-    return;
-  }
+  const allTerms=inboxTerms(vocabInbox);
+  if(!allTerms.length){setStatus('Your vocabulary inbox is empty.','error');return}
+  const terms=allTerms.slice(0,MAX_BATCH_TERMS);
   try{
     const copied=await copyPrompt(buildPrompt(terms.join(', ')));
-    setStatus(copied?'Inbox prompt copied. Paste it into ChatGPT.':'Could not copy automatically.','success');
+    setStatus(copied
+      ?(allTerms.length>MAX_BATCH_TERMS
+        ?`Copied the first ${MAX_BATCH_TERMS} of ${allTerms.length} saved terms. Paste into ChatGPT.`
+        :'Inbox prompt copied. Paste it into ChatGPT.')
+      :'Could not copy automatically.','success');
   }catch{
     setStatus('Could not copy the inbox prompt.','error');
   }
