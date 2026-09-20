@@ -65,6 +65,7 @@ v1.0 is organized around fast phone use and a validation-gated ChatGPT → GitHu
 - Strict Focus / Due / Weak / New scopes: filters never silently substitute unrelated terms.
 - Category-focused practice.
 - Adaptive Smart Review using overdue time, error history, recent mistakes and mastery level.
+- **Recent Focus words receive a temporary recency boost**, so terms just added from work appear more often without permanently crowding out due/weak vocabulary.
 - **Quick 10** with a frozen starting pool, no target repeats until that pool is exhausted, locked filters and saved session history.
 - Speech pronunciation without revealing hidden answers before recall.
 - Spaced-repetition states: `new -> learning -> review -> mastered`.
