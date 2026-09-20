@@ -1,33 +1,73 @@
 import fs from 'node:fs';
+import path from 'node:path';
 
 const root=new URL('../',import.meta.url);
-const read=path=>fs.readFileSync(new URL(path,root),'utf8');
-const exists=path=>fs.existsSync(new URL(path.replace(/^\.\//,''),root));
+const read=file=>fs.readFileSync(new URL(file,root),'utf8');
+const exists=file=>fs.existsSync(new URL(file.replace(/^\.\//,''),root));
 const sw=read('sw.js');
-const app=read('src/app.js');
 const index=read('index.html');
 const errors=[];
+
+function relativeAsset(file){
+  return `./${file.replace(/^\.\//,'').replaceAll('\\\\','/')}`;
+}
+
+function resolveModule(fromFile,specifier){
+  if(!specifier.startsWith('.'))return null;
+  const resolved=path.posix.normalize(path.posix.join(path.posix.dirname(fromFile),specifier));
+  return resolved.replace(/^\.\//,'');
+}
+
+function runtimeDependencies(){
+  const required=new Set(['./','./index.html']);
+  const queue=[];
+
+  for(const match of index.matchAll(/(?:href|src)=['"]([^'"#]+)['"]/g)){
+    const value=match[1];
+    if(/^(?:https?:|data:|#)/.test(value))continue;
+    const asset=relativeAsset(value);
+    required.add(asset);
+    if(value.endsWith('.js'))queue.push(value.replace(/^\.\//,''));
+  }
+
+  const visited=new Set();
+  while(queue.length){
+    const file=queue.shift();
+    if(visited.has(file))continue;
+    visited.add(file);
+    if(!exists(relativeAsset(file))){
+      errors.push(`runtime module ${file} referenced by index/import graph does not exist`);
+      continue;
+    }
+
+    const source=read(file);
+    for(const match of source.matchAll(/from\s+['"]([^'"]+)['"]/g)){
+      const resolved=resolveModule(file,match[1]);
+      if(!resolved)continue;
+      required.add(relativeAsset(resolved));
+      if(resolved.endsWith('.js'))queue.push(resolved);
+    }
+    for(const match of source.matchAll(/fetchJson\(['"]([^'"]+)['"]\)/g)){
+      required.add(relativeAsset(match[1]));
+    }
+  }
+
+  return required;
+}
 
 const assetBlock=sw.match(/const ASSETS=\[([\s\S]*?)\];/);
 if(!assetBlock){
   errors.push('sw.js is missing the ASSETS precache list');
 }else{
   const assets=new Set([...assetBlock[1].matchAll(/['"](\.\/[^'"]*)['"]/g)].map(m=>m[1]));
-  const required=new Set(['./','./index.html']);
+  const required=runtimeDependencies();
 
-  for(const match of app.matchAll(/from\s+['"]\.\/([^'"]+)['"]/g))required.add(`./src/${match[1]}`);
-  for(const match of app.matchAll(/fetchJson\(['"]([^'"]+)['"]\)/g))required.add(`./${match[1]}`);
-  for(const match of index.matchAll(/(?:href|src)=['"]([^'"#]+)['"]/g)){
-    const value=match[1];
-    if(!/^(?:https?:|data:|#)/.test(value))required.add(`./${value.replace(/^\.\//,'')}`);
+  for(const asset of required){
+    if(!assets.has(asset))errors.push(`sw.js precache is missing runtime asset ${asset}`);
   }
-
-  for(const path of required){
-    if(!assets.has(path))errors.push(`sw.js precache is missing runtime asset ${path}`);
-  }
-  for(const path of assets){
-    if(path==='./')continue;
-    if(!exists(path))errors.push(`sw.js precache references missing file ${path}`);
+  for(const asset of assets){
+    if(asset==='./')continue;
+    if(!exists(asset))errors.push(`sw.js precache references missing file ${asset}`);
   }
 }
 
@@ -42,4 +82,4 @@ if(errors.length){
   console.error(`PWA validation failed with ${errors.length} issue(s):\n- ${errors.join('\n- ')}`);
   process.exit(1);
 }
-console.log('PWA contract OK: runtime dependencies are precached and mutable app resources use network-first refresh with offline fallback.');
+console.log('PWA contract OK: recursive runtime dependencies are precached and mutable app resources use network-first refresh with offline fallback.');
