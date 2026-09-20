@@ -17,6 +17,7 @@ const ASSETS=[
   './src/drawing-challenges.js',
   './src/visuals.js',
   './src/visuals-extra.js',
+  './src/visuals-chat.js',
   './src/visuals-all.js',
   './src/register-sw.js',
   './data/terms.json',
