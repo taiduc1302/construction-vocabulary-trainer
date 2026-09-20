@@ -88,7 +88,7 @@ Typical flow:
 3. Keep capturing terms during the day; duplicates are removed case-insensitively.
 4. Open **Vocabulary Inbox** and tap **Send next batch to ChatGPT**. AI batches are capped at 25 terms so every term can be reviewed properly.
 5. After ChatGPT confirms validation + Pages deployment, tap **Refresh vocabulary**.
-6. Captures that map to the published Focus list (canonical term, legitimate alias, or known drawing label) show **Synced**.
+6. Captures that map to the published Focus list (canonical term, legitimate alias, or known drawing label) show **Synced** only when the published Focus request date is at least as recent as the local capture. Re-adding an old Focus word therefore still requires a fresh AI update.
 7. Tap **Clear synced** to remove only confirmed captures; unresolved items remain.
 
 The Inbox is localStorage-only, bounded to 100 terms, and is deliberately separate from GitHub and browser learning progress. It should contain terminology only — not project names, prices, confidential notes, client information or tender details.
