@@ -4,7 +4,7 @@ Personal multilingual construction-vocabulary trainer for civil estimating and s
 
 ## Current version
 
-**v0.9.0** currently contains **61 civil-construction terms**. Each vocabulary card includes:
+**v1.0.0** uses a growing modular civil-construction vocabulary. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
 
 - English term and pronunciation;
 - plain-English definition;
@@ -34,7 +34,7 @@ On iPhone, the web version also shows temporary first-run guidance for **Safari 
 
 ## Daily-use UX
 
-v0.9 is organized around fast phone use rather than exposing every control at once:
+v1.0 is organized around fast phone use and a validation-gated ChatGPT → GitHub → trainer workflow:
 
 - **Today** is the default screen, with the daily goal, learning stats and a primary **Smart 10** action.
 - One-tap shortcuts open Focus words, Due review, Estimator scenarios, Drawing abbreviations, Drawing Challenge, Dictionary and Progress.
@@ -154,7 +154,7 @@ Learning state is local to the browser and is **not committed to GitHub**. Use E
 ## Data files
 
 - `data/terms.json` — original 31-term core.
-- `data/terms-expansion.json` — current 30-term expansion and default home for new terms.
+- `data/terms-expansion.json` — expansion vocabulary and default home for new terms.
 - `data/categories.json` — controlled categories.
 - `data/focus-terms.json` — terms explicitly requested through chat.
 - `data/term-meta.json` — optional English aliases and common drawing labels.
@@ -163,7 +163,7 @@ Learning state is local to the browser and is **not committed to GitHub**. Use E
 - `data/vocabulary-backlog.json` — acknowledged future related concepts.
 - `data/term.schema.json` — vocabulary-card schema.
 
-The app combines the two term files into one **61-term dictionary**.
+The app combines the two term files into one live dictionary; its size grows as chat-added vocabulary is validated.
 
 ## Main modules
 
@@ -199,7 +199,7 @@ CI validates, among other things:
 
 - vocabulary structure, categories, focus metadata, fill prompts and related-term backlog;
 - content-quality and answer-leak checks;
-- 61/61 dedicated visual coverage and SVG CSS contracts;
+- 100% dedicated visual coverage for the current vocabulary and SVG CSS contracts;
 - Drawing Challenge scene/callout behavior;
 - PWA runtime/precache dependencies and network-first freshness;
 - learning-state migration, sanitization, scheduling, adaptive weighting, goals, streaks and sessions;
@@ -224,7 +224,7 @@ Then open `http://localhost:8000`.
 
 ## Publish with GitHub Pages
 
-The repository already contains `.github/workflows/deploy-pages.yml`. Once GitHub Pages is enabled, every push to `main` can publish automatically.
+The repository already contains `.github/workflows/deploy-pages.yml`. GitHub Pages is release-gated: a normal publish occurs only after `Validate vocabulary` completes successfully on `main`.
 
 One-time GitHub setting:
 
@@ -234,13 +234,24 @@ One-time GitHub setting:
 
 The GitHub mobile app does not expose the complete repository administration UI, so Pages setup should be done once in Safari/desktop browser. After that, normal use should not require GitHub at all.
 
-Until Pages is enabled, the deploy workflow performs a clean preflight and skips deployment rather than leaving a false red failure.
+Direct push-to-Pages publishing is intentionally disabled. The deploy workflow checks out the exact validated commit; manual deployment re-runs the full validation gate before publishing.
 
 Expected site address after publication:
 
 `https://taiduc1302.github.io/construction-vocabulary-trainer/`
 
 Do not assume the site is live merely because the repository or workflow exists; verify the actual deployment first.
+
+
+### Safe chat-to-live release flow
+
+1. ChatGPT/Claude prepares the complete vocabulary change (card + visual + Focus metadata + any related metadata).
+2. The change must be atomic: one complete commit, or a short-lived branch/PR that is merged only when complete.
+3. `Validate vocabulary` runs first.
+4. Only a successful validation run can trigger GitHub Pages deployment.
+5. The Today screen can show the latest Focus additions; use **Refresh vocabulary** after an AI confirms the change if the app was already open.
+
+This prevents incomplete multi-commit states from briefly appearing in the live trainer.
 
 ## Install on a phone
 
@@ -255,7 +266,7 @@ Mutable HTML/JS/CSS/JSON use network-first loading when online, with cached fall
 
 ## Add words through ChatGPT / Claude
 
-The preferred path is the **Add a word you saw today** field on the Today screen. It generates the repository-aware prompt automatically.
+The preferred path is still **ChatGPT**. If you are already inside the trainer, the Today-screen add-word bridge can prepare one repository-aware request for a single term or a comma-separated batch. The trainer itself never writes to GitHub or stores credentials.
 
 A manual request can still be as short as:
 
