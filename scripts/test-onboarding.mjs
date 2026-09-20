@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {normalizeRequestedTerms,buildPrompt,recentFocusItems} from '../src/onboarding.js';
+import {normalizeRequestedTerms,buildPrompt,recentFocusItems,syncedInboxKeysForFocus} from '../src/onboarding.js';
 
 assert.deepEqual(
   normalizeRequestedTerms('Bedding, duct spacer\nBedding; valve box'),
@@ -31,5 +31,19 @@ const recent=recentFocusItems(
 assert.deepEqual(recent.map(item=>item.id),['newer','old'],'recent focus should sort newest first and ignore IDs missing from vocabulary');
 assert.equal(recent[0].request_count,2);
 
+const synced=syncedInboxKeysForFocus(
+  {terms:[{id:'watermain'},{id:'catch-basin'}]},
+  [{id:'watermain',term:'watermain'},{id:'catch-basin',term:'catch basin'}],
+  {terms:{
+    watermain:{aliases_en:['water main'],drawing_labels:['WM']},
+    'catch-basin':{drawing_labels:['CB']}
+  }},
+  [{term:'water main'},{term:'CB'},{term:'duct bank'}]
+);
+assert.equal(synced.has('water main'),true,'English aliases should sync to their focused canonical term');
+assert.equal(synced.has('cb'),true,'drawing labels should sync to their focused canonical term');
+assert.equal(synced.has('duct bank'),false,'unfocused terms must stay unsynced');
 
-console.log('Onboarding bridge tests OK: batch parsing, deduplication, recent-focus sorting and repository-aware atomic ChatGPT prompt generation.');
+
+
+console.log('Onboarding bridge tests OK: batch parsing, recent-focus sorting, alias/label sync matching and repository-aware atomic ChatGPT prompt generation.');
