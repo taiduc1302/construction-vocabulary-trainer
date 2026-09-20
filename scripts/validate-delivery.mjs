@@ -5,6 +5,7 @@ const deploy=fs.readFileSync(new URL('../.github/workflows/deploy-pages.yml',imp
 const ai=fs.readFileSync(new URL('../AI_INSTRUCTIONS.md',import.meta.url),'utf8');
 
 assert.match(deploy,/workflow_run:/,'Pages deploy must be triggered by the validation workflow, not by raw pushes');
+assert.match(deploy,/permissions:[\s\S]*actions:\s*read/,'Pages deploy should have read-only Actions metadata access');
 assert.match(deploy,/workflows:\s*\[["']Validate vocabulary["']\]/,'Pages deploy must wait for Validate vocabulary');
 assert.match(deploy,/types:\s*\[completed\]/,'Pages deploy must run only after validation completes');
 assert.match(deploy,/branches:\s*\[main\]/,'Pages deploy workflow_run must be scoped to main');
