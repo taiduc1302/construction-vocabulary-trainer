@@ -1,11 +1,11 @@
 {
   "name": "construction-vocabulary-trainer",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
-    "test": "node scripts/test-learning-state.mjs && node scripts/test-practice-engine.mjs && node scripts/test-drawing-challenges.mjs && node scripts/test-learning-content.mjs && node scripts/test-onboarding.mjs && node scripts/validate-ux.mjs && node scripts/validate-delivery.mjs",
+    "test": "node scripts/test-learning-state.mjs && node scripts/test-practice-engine.mjs && node scripts/test-drawing-challenges.mjs && node scripts/test-learning-content.mjs && node scripts/test-vocab-inbox.mjs && node scripts/test-onboarding.mjs && node scripts/validate-ux.mjs && node scripts/validate-delivery.mjs",
     "audit:content": "node scripts/audit-content.mjs",
-    "validate": "node scripts/validate-terms.mjs && node scripts/audit-content.mjs && node scripts/validate-visuals.mjs && node scripts/validate-pwa.mjs && node scripts/test-learning-state.mjs && node scripts/test-practice-engine.mjs && node scripts/test-drawing-challenges.mjs && node scripts/test-learning-content.mjs && node scripts/test-onboarding.mjs && node scripts/validate-ux.mjs && node scripts/validate-delivery.mjs && node --check src/app.js && node --check src/ui-enhancements.js && node --check src/onboarding.js && node --check src/learning-state.js && node --check src/practice-engine.js && node --check src/drawing-challenges.js && node --check src/visuals.js && node --check src/visuals-extra.js && node --check src/visuals-all.js && node --check src/register-sw.js && node --check sw.js && node -e \"JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); console.log('Manifest JSON OK')\""
+    "validate": "node scripts/validate-terms.mjs && node scripts/audit-content.mjs && node scripts/validate-visuals.mjs && node scripts/validate-pwa.mjs && node scripts/test-learning-state.mjs && node scripts/test-practice-engine.mjs && node scripts/test-drawing-challenges.mjs && node scripts/test-learning-content.mjs && node scripts/test-vocab-inbox.mjs && node scripts/test-onboarding.mjs && node scripts/validate-ux.mjs && node scripts/validate-delivery.mjs && node --check src/app.js && node --check src/ui-enhancements.js && node --check src/onboarding.js && node --check src/vocab-inbox.js && node --check src/learning-state.js && node --check src/practice-engine.js && node --check src/drawing-challenges.js && node --check src/visuals.js && node --check src/visuals-extra.js && node --check src/visuals-all.js && node --check src/register-sw.js && node --check sw.js && node -e \"JSON.parse(require('fs').readFileSync('manifest.webmanifest','utf8')); console.log('Manifest JSON OK')\""
   }
 }
