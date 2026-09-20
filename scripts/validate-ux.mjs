@@ -19,7 +19,7 @@ const primaryViews=[...navBlock.matchAll(/data-view="([^"]+)"/g)].map(match=>mat
 assert.deepEqual(primaryViews,['home','practice','dictionary','drawing','progress'],'primary navigation should stay focused on five daily destinations');
 assert.match(index,/class="view-router-only"[\s\S]*data-view="review"[\s\S]*data-view="weak"/,'Due and Weak views need hidden routing controls after leaving primary navigation');
 
-for(const id of ['stats','dailyGoalCard','searchInput','categoryFilter','practiceScope','practiceCategory','practiceMode','newQuestion','quickSession','quizCard','drawingChallenge','progressOverview','exportProgress','importProgress','toggleCardDensity','installCard','dismissInstall','addWordForm','addWordInput','shareWordPrompt','copyWordPrompt','addWordStatus']){
+for(const id of ['stats','dailyGoalCard','searchInput','categoryFilter','practiceScope','practiceCategory','practiceMode','newQuestion','quickSession','quizCard','drawingChallenge','progressOverview','exportProgress','importProgress','toggleCardDensity','installCard','dismissInstall','addWordForm','addWordInput','shareWordPrompt','saveWordInbox','copyWordPrompt','vocabInboxPanel','vocabInboxCount','vocabInboxList','shareInbox','copyInbox','clearInbox','addWordStatus']){
   assert.ok(index.includes(`id="${id}"`),`index.html missing required UX/runtime id ${id}`);
 }
 
@@ -38,6 +38,8 @@ assert.match(index,/class="data-menu"/,'export/import should be grouped into a s
 assert.match(index,/viewport-fit=cover/,'viewport must support iPhone safe areas');
 assert.match(index,/class="progress-shortcuts"/,'Due and Weak lists should remain directly reachable from Progress');
 assert.match(index,/From work → ChatGPT → trainer/,'Today screen should explain the chat-to-trainer flow');
+assert.match(index,/Vocabulary Inbox/,'Today should expose a local vocabulary capture inbox');
+assert.match(index,/stays only on this device/i,'Inbox UI must explain that captured words remain local before sharing');
 
 assert.ok(ux.includes('safe-area-inset-bottom'),'mobile UX must account for iPhone safe-area bottom inset');
 assert.match(ux,/@media\(max-width:640px\)[\s\S]*\.tabs\{position:fixed/,'mobile navigation should remain reachable at the bottom of the screen');
@@ -79,6 +81,11 @@ assert.ok(onboarding.includes('recentFocusItems'),'Today should expose recent ch
 assert.ok(onboarding.includes('Refresh vocabulary'),'Today should offer an explicit vocabulary refresh action');
 assert.ok(onboarding.includes("cache:'no-store'"),'recent focus sync should bypass stale browser HTTP data');
 assert.ok(onboarding.includes('My focus list'),'generated ChatGPT prompt must preserve focus-list intent');
+assert.ok(onboarding.includes('saveCurrentToInbox'),'Today bridge must support local capture without leaving the trainer');
+assert.ok(onboarding.includes('shareInbox'),'Inbox must support sending a saved batch to ChatGPT');
+assert.ok(onboarding.includes('clearStoredInbox'),'Inbox clearing must use the tested local-storage layer');
+assert.ok(onboarding.includes('MAX_BATCH_TERMS'),'AI processing batches must remain deliberately bounded');
+assert.ok(onboardingCss.includes('.vocab-inbox'),'Vocabulary Inbox must have responsive styling');
 
 
 assert.ok(onboarding.includes("const REPO='taiduc1302/construction-vocabulary-trainer'"),'chat bridge must target the canonical repository');
@@ -90,4 +97,4 @@ assert.ok(onboarding.includes("display-mode: standalone"),'install guidance must
 assert.ok(onboarding.includes('/iphone|ipad|ipod/i'),'install guidance should target iOS browsers');
 assert.ok(onboarding.includes('INSTALL_RESHOW_MS'),'dismissed install help should reappear later instead of disappearing forever');
 
-console.log('UX contract OK: Today-first flow, five-tab mobile navigation, safe Quick 10 resume, batch ChatGPT add-word bridge, recent-focus sync confirmation, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
+console.log('UX contract OK: Today-first flow, five-tab mobile navigation, local Vocabulary Inbox, bounded ChatGPT batches, recent-focus sync confirmation, safe Quick 10 resume, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
