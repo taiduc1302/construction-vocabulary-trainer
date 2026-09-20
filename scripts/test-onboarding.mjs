@@ -17,6 +17,7 @@ assert.match(prompt,/"duct spacer"/,'prompt should include the second requested 
 assert.match(prompt,/атомар/i,'prompt should require one atomic change');
 assert.match(prompt,/My focus list/i,'prompt should preserve learning intent');
 assert.match(prompt,/GitHub Actions/i,'prompt should require validation completion');
+assert.match(prompt,/Pages deployment/i,'prompt should require the validated change to reach the live trainer before completion');
 
 const recent=recentFocusItems(
   {terms:[
