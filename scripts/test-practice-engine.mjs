@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {
   normalizeRecall,recallMatches,mergeTermMetadata,typedPromptCandidates,pickTypedPrompt,
   drawingLabelTerms,pickDrawingLabel,estimatorChallengesForPool,pickEstimatorChallenge,
-  filterByCategory,selectPracticePool,preferUnseen,buildUniqueOptions
+  filterByCategory,selectPracticePool,preferUnseen,buildUniqueOptions,focusRecencyMultiplier
 } from '../src/practice-engine.js';
 
 const terms=[
@@ -70,4 +70,12 @@ assert.deepEqual(preferUnseen(terms,new Set(['duct-bank','conduit','ditch'])).ma
 assert.equal(preferUnseen(terms,new Set(terms.map(t=>t.id))).length,terms.length,'pool should reset after all terms have been seen');
 assert.deepEqual(buildUniqueOptions('duct bank',['conduit','conduit'],['ditch','culvert']),['duct bank','conduit','ditch','culvert']);
 
-console.log('Practice-engine tests OK: recall normalization, alias-safe prompt generation, metadata merge, varied typed prompts, drawing labels, estimator selection, strict scopes, unseen preference and option uniqueness.');
+const now=Date.parse('2026-09-19T12:00:00Z');
+assert.equal(focusRecencyMultiplier({last_requested_at:'2026-09-18'},now),3,'very recent focus words should get the strongest boost');
+assert.equal(focusRecencyMultiplier({last_requested_at:'2026-09-10'},now),2,'recent focus words should retain a moderate boost');
+assert.equal(focusRecencyMultiplier({last_requested_at:'2026-08-25'},now),1.5,'month-old focus words should keep a smaller boost');
+assert.equal(focusRecencyMultiplier({last_requested_at:'2026-01-01'},now),1,'old focus words should not be permanently over-weighted');
+assert.equal(focusRecencyMultiplier({last_requested_at:'bad-date'},now),1,'malformed focus dates should be neutral');
+
+
+console.log('Practice-engine tests OK: recall normalization, alias-safe prompts, metadata merge, focus recency weighting, drawing labels, estimator selection, strict scopes, unseen preference and option uniqueness.');

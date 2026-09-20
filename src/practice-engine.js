@@ -100,6 +100,20 @@ export function pickEstimatorChallenge(challenges,pool,random=Math.random){
   return eligible[Math.floor(value*eligible.length)];
 }
 
+export function focusRecencyMultiplier(entry,nowMs=Date.now()){
+  if(!entry||typeof entry!=='object')return 1;
+  const raw=entry.last_requested_at||entry.added_at;
+  if(typeof raw!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(raw))return 1;
+  const stamp=Date.parse(`${raw}T12:00:00Z`);
+  if(!Number.isFinite(stamp))return 1;
+  const days=Math.max(0,(Number(nowMs)-stamp)/86400000);
+  if(days<=3)return 3;
+  if(days<=14)return 2;
+  if(days<=30)return 1.5;
+  if(days<=90)return 1.15;
+  return 1;
+}
+
 export function filterByCategory(pool,category){
   if(category==='all')return [...pool];
   return pool.filter(term=>term.category===category);
