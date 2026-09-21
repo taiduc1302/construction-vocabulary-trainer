@@ -54,6 +54,12 @@
       "added_at": "2026-09-18",
       "last_requested_at": "2026-09-18",
       "request_count": 1
+    },
+    {
+      "id": "interlock-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
     }
   ]
 }
