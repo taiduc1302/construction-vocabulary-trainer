@@ -991,5 +991,36 @@
       "The milling depth and restoration limits must be taken from the drawings, specifications, municipal standards, or bid item description rather than assumed from the trench width."
     ],
     "difficulty": 3
+  },
+  {
+    "id": "interlock-spacer",
+    "term": "interlock spacer",
+    "pronunciation": "IN-ter-lock SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A modular duct-bank spacer that locks or snaps together with adjacent spacer sections to hold multiple conduits at the required spacing and arrangement.",
+    "explanation_ru": "Модульный фиксатор для duct bank, отдельные секции которого защёлкиваются или соединяются друг с другом. Он удерживает несколько conduit на заданном расстоянии и помогает собрать стабильную сетку труб перед обратной засыпкой или бетонной обоймой.",
+    "translation_ru": [
+      "защёлкивающийся дистанционный фиксатор кабельных труб",
+      "модульная распорка для conduit",
+      "interlock-спейсер duct bank"
+    ],
+    "translation_vi": [
+      "giá định vị ống luồn cáp liên kết",
+      "miếng đệm ống cáp lắp ghép",
+      "spacer duct bank dạng khóa"
+    ],
+    "example_en": "Install each interlock spacer at the specified interval so the conduits remain aligned and evenly separated.",
+    "scenario": "A multi-duct electrical bank uses modular spacer sections that connect together around the conduits to maintain the required horizontal and vertical separation along the run.",
+    "visual": "Duct-bank cross-section showing six conduits supported by modular spacer sections that interlock at their edges to form one continuous spacer grid.",
+    "related_terms": [
+      "duct-spacer",
+      "conduit",
+      "duct-bank"
+    ],
+    "common_mistakes": [
+      "An interlock spacer is a specific modular type of duct spacer; not every duct spacer uses an interlocking or snap-together design.",
+      "Spacer configuration and spacing along the run must follow the project detail or manufacturer requirements; do not assume a standard grid or interval."
+    ],
+    "difficulty": 3
   }
 ]
