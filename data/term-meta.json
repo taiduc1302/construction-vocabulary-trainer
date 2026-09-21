@@ -107,6 +107,11 @@
         "interlocking spacer",
         "interlocking spacers"
       ]
+    },
+    "bore-spacer": {
+      "aliases_en": [
+        "bore spacers"
+      ]
     }
   }
 }
