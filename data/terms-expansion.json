@@ -1311,7 +1311,7 @@
       "lề bó vỉa"
     ],
     "example_en": "Replace the damaged kerb along the edge of the sidewalk before final paving.",
-    "scenario": "A utility excavation damages the roadway edge, so the existing kerb is removed and reconstructed before adjacent asphalt and sidewalk restoration.",
+    "scenario": "A utility excavation damages the raised roadway edge, so the existing concrete edge element is removed and reconstructed before adjacent asphalt and sidewalk restoration.",
     "visual": "Road-edge cross-section showing a raised kerb between asphalt pavement and sidewalk, with the kerb clearly highlighted.",
     "related_terms": [
       "curb-and-gutter",
