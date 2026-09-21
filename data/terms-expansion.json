@@ -1022,5 +1022,36 @@
       "Spacer configuration and spacing along the run must follow the project detail or manufacturer requirements; do not assume a standard grid or interval."
     ],
     "difficulty": 3
+  },
+  {
+    "id": "bore-spacer",
+    "term": "bore spacer",
+    "pronunciation": "BOR SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A spacer assembly used to support, separate, and maintain the alignment of multiple conduits installed inside a casing or bored crossing, while allowing the conduit bundle to be pulled or pushed into position and, where required, grouted.",
+    "explanation_ru": "Специальный фиксатор для нескольких кабельных труб внутри casing или бурового перехода. Он удерживает conduits на заданном расстоянии и в правильной конфигурации при протяжке или установке через переход; конструкция часто предусматривает свободное прохождение grout вокруг труб.",
+    "translation_ru": [
+      "спейсер для труб в футляре",
+      "дистанционный фиксатор conduit в буровом переходе",
+      "распорка для кабельных труб внутри casing"
+    ],
+    "translation_vi": [
+      "giá định vị ống trong ống vỏ",
+      "spacer cho ống luồn cáp trong đoạn khoan",
+      "bộ giữ khoảng cách ống trong casing"
+    ],
+    "example_en": "Install each bore spacer at the specified interval to keep the conduits aligned within the casing before grouting.",
+    "scenario": "Several electrical conduits must pass beneath a roadway inside a large casing. Bore spacers support the conduit bundle, maintain separation during installation, and help preserve grout flow paths around the conduits.",
+    "visual": "Cross-section of a large circular casing containing multiple conduits held in a fixed pattern by a bore spacer, with open paths around the conduits for grout flow.",
+    "related_terms": [
+      "duct-spacer",
+      "conduit",
+      "duct-bank"
+    ],
+    "common_mistakes": [
+      "A bore spacer is used for conduit-in-casing or bored-crossing installations; a typical duct spacer is generally used to maintain conduit spacing in an open trench or conventional duct bank.",
+      "Do not assume the spacer configuration or interval. Casing diameter, conduit count and size, installation method, grout requirements, and manufacturer design can change the required bore spacer."
+    ],
+    "difficulty": 3
   }
 ]
