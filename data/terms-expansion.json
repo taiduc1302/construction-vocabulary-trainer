@@ -1203,5 +1203,67 @@
       "Do not substitute a metallic welded grid where project requirements call for non-magnetic or non-metallic spacers without approval."
     ],
     "difficulty": 3
+  },
+  {
+    "id": "base-spacer",
+    "term": "base spacer",
+    "pronunciation": "BAYS SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A spacer support installed at the bottom of a conduit or duct-bank assembly to support the lowest conduit tier and establish the required clearance and spacing above the trench base or foundation.",
+    "explanation_ru": "Нижний spacer, который устанавливают под первым рядом conduit в duct bank. Он поддерживает нижний ряд труб, задаёт их положение и обеспечивает требуемый зазор от основания траншеи или бетонной подготовки.",
+    "translation_ru": [
+      "нижний spacer для duct bank",
+      "опорный spacer нижнего ряда conduit",
+      "базовый фиксатор кабельных труб"
+    ],
+    "translation_vi": [
+      "spacer đáy cho duct bank",
+      "giá đỡ hàng ống dưới cùng",
+      "bộ định vị đáy ống luồn cáp"
+    ],
+    "example_en": "Install each base spacer at the specified interval before placing the first conduit tier.",
+    "scenario": "The first row of conduits must be held off the trench base at a consistent elevation before intermediate spacers and additional conduit tiers are assembled.",
+    "visual": "Duct-bank cross-section showing the lowest conduit row resting on a base spacer above the trench bottom, with a dimension indicating bottom clearance.",
+    "related_terms": [
+      "duct-spacer",
+      "interlock-spacer",
+      "chair-spacer"
+    ],
+    "common_mistakes": [
+      "A base spacer supports the lowest conduit tier; it is not the same component as an intermediate spacer installed between conduit rows.",
+      "Base-spacer height and spacing must follow the project detail or manufacturer system because they control conduit elevation and concrete cover."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "intermediate-interlock-spacer",
+    "term": "intermediate interlock spacer",
+    "pronunciation": "IN-ter-MEE-dee-it IN-ter-lock SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A modular interlocking spacer installed between conduit tiers to maintain vertical and horizontal separation and to connect successive layers of a multi-tier duct-bank assembly.",
+    "explanation_ru": "Промежуточный защёлкивающийся spacer между рядами conduit. Он фиксирует расстояние между уровнями труб и соединяется с соседними spacer-элементами, формируя многоярусную сетку duct bank.",
+    "translation_ru": [
+      "промежуточный interlock-spacer",
+      "межрядный защёлкивающийся spacer для conduit",
+      "промежуточный фиксатор рядов duct bank"
+    ],
+    "translation_vi": [
+      "spacer interlock trung gian",
+      "bộ định vị liên kết giữa các tầng ống",
+      "spacer khóa giữa các hàng ống"
+    ],
+    "example_en": "Install each intermediate interlock spacer between conduit tiers to maintain the required duct separation.",
+    "scenario": "After the bottom conduit row is set on base spacers, additional rows are stacked above it using interlocking intermediate spacer sections that keep the full duct-bank grid aligned.",
+    "visual": "Multi-tier duct-bank cross-section showing a base spacer below the first row and intermediate interlock spacer sections between the lower and upper conduit tiers.",
+    "related_terms": [
+      "interlock-spacer",
+      "base-spacer",
+      "duct-spacer"
+    ],
+    "common_mistakes": [
+      "An intermediate interlock spacer is installed between conduit tiers; it should not be confused with the base spacer beneath the lowest tier.",
+      "The interlocking profile, conduit spacing, and number of tiers are system-specific and should be verified against the project detail or manufacturer requirements."
+    ],
+    "difficulty": 3
   }
 ]
