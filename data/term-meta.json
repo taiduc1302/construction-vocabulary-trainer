@@ -112,6 +112,35 @@
       "aliases_en": [
         "bore spacers"
       ]
+    },
+    "chair-spacer": {
+      "aliases_en": [
+        "chair spacers",
+        "conduit chair",
+        "conduit chairs"
+      ]
+    },
+    "cradle-spacer": {
+      "aliases_en": [
+        "cradle spacers"
+      ]
+    },
+    "saddle-spacer": {
+      "aliases_en": [
+        "saddle spacers"
+      ]
+    },
+    "solid-plate-spacer": {
+      "aliases_en": [
+        "solid plate",
+        "solid plate spacers"
+      ]
+    },
+    "welded-grid-spacer": {
+      "aliases_en": [
+        "welded grid",
+        "welded grid spacers"
+      ]
     }
   }
 }
