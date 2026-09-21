@@ -141,6 +141,20 @@
         "welded grid",
         "welded grid spacers"
       ]
+    },
+    "base-spacer": {
+      "aliases_en": [
+        "base spacers",
+        "duct base spacer",
+        "duct base spacers"
+      ]
+    },
+    "intermediate-interlock-spacer": {
+      "aliases_en": [
+        "intermediate interlock spacers",
+        "intermediate spacer",
+        "intermediate spacers"
+      ]
     }
   }
 }
