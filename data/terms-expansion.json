@@ -1053,5 +1053,155 @@
       "Do not assume the spacer configuration or interval. Casing diameter, conduit count and size, installation method, grout requirements, and manufacturer design can change the required bore spacer."
     ],
     "difficulty": 3
+  },
+  {
+    "id": "chair-spacer",
+    "term": "chair spacer",
+    "pronunciation": "CHAIR SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A chair-style support used in underground conduit or duct-bank work to hold conduits at the required elevation and spacing during assembly and encasement.",
+    "explanation_ru": "Опора типа «стул» для conduit/duct bank. Поддерживает трубы на нужной высоте и помогает сохранять требуемые интервалы между ними во время сборки и бетонной обоймы.",
+    "translation_ru": [
+      "опора-стул для кабельных труб",
+      "chair-спейсер для conduit",
+      "опорный spacer duct bank"
+    ],
+    "translation_vi": [
+      "giá đỡ dạng ghế cho ống luồn cáp",
+      "spacer dạng ghế cho duct bank"
+    ],
+    "example_en": "Place each chair spacer at the specified interval so the lower conduit tier remains supported during concrete placement.",
+    "scenario": "A concrete-encased duct bank needs its lower row of conduits held above the trench base before the next conduit tier is assembled.",
+    "visual": "Duct-bank side and cross-section view showing a chair-shaped support beneath a conduit row, holding the ducts above the base.",
+    "related_terms": [
+      "duct-spacer",
+      "interlock-spacer",
+      "conduit"
+    ],
+    "common_mistakes": [
+      "Chair spacer terminology can vary by manufacturer; verify the project detail before assuming a specific shape or load rating.",
+      "Do not confuse a conduit chair spacer with a rebar chair used only to support reinforcing steel."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "cradle-spacer",
+    "term": "cradle spacer",
+    "pronunciation": "KRAY-dul SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A spacer or support with a cradle-shaped seat that supports conduit from below and helps maintain its required position within a duct-bank or casing assembly.",
+    "explanation_ru": "Spacer с седловидной/люлькообразной опорой снизу, в которую укладывается conduit. Он помогает удерживать трубу в заданном положении внутри duct bank или casing. Название и форма могут отличаться у разных производителей.",
+    "translation_ru": [
+      "люлькообразный spacer для conduit",
+      "опора-люлька для кабельной трубы",
+      "cradle-спейсер"
+    ],
+    "translation_vi": [
+      "giá đỡ dạng máng cho ống luồn cáp",
+      "spacer dạng cradle cho ống cáp"
+    ],
+    "example_en": "Use the cradle spacer shown on the detail to support the conduit bundle through the crossing.",
+    "scenario": "A conduit bundle needs shaped supports that seat the ducts from below while preserving the intended alignment through a crossing.",
+    "visual": "Cross-section showing conduits resting in curved cradle-shaped seats that support the lower half of each duct.",
+    "related_terms": [
+      "duct-spacer",
+      "bore-spacer",
+      "saddle-spacer"
+    ],
+    "common_mistakes": [
+      "Cradle spacer is not a universal standardized product name; use the project drawing or manufacturer terminology to confirm the intended spacer.",
+      "A cradle spacer supports and positions conduit; it is not a conduit coupling or joint fitting."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "saddle-spacer",
+    "term": "saddle spacer",
+    "pronunciation": "SAD-ul SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A saddle-shaped spacer or support used to locate and restrain conduit at a required position or separation within an underground conduit assembly.",
+    "explanation_ru": "Spacer седловидной формы, который фиксирует положение conduit и помогает выдержать требуемый зазор в подземной сборке. В разных системах saddle может охватывать трубу частично или служить опорой под ней.",
+    "translation_ru": [
+      "седловой spacer для conduit",
+      "седловая опора кабельной трубы",
+      "saddle-спейсер"
+    ],
+    "translation_vi": [
+      "spacer dạng yên đỡ ống luồn cáp",
+      "giá đỡ dạng saddle cho ống cáp"
+    ],
+    "example_en": "Install the saddle spacer where shown to restrain the conduit and maintain the specified separation.",
+    "scenario": "A conduit run requires shaped supports at intervals so individual ducts do not shift while the surrounding assembly is installed.",
+    "visual": "Conduit cross-section seated in a saddle-shaped support with dimension arrows indicating maintained clearance.",
+    "related_terms": [
+      "cradle-spacer",
+      "duct-spacer",
+      "conduit"
+    ],
+    "common_mistakes": [
+      "Do not automatically interpret saddle spacer as a wall-mounted conduit saddle; in underground work the term may refer to a duct-support spacer.",
+      "Project and manufacturer details control the exact saddle shape and spacing."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "solid-plate-spacer",
+    "term": "solid plate spacer",
+    "pronunciation": "SOL-id PLAYT SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A one-piece plate-style conduit spacer with openings or cutouts that locate multiple ducts in a fixed pattern, commonly used as a rigid alternative to individual chair-style supports.",
+    "explanation_ru": "Жёсткий spacer в виде цельной пластины/карты с отверстиями или вырезами под несколько conduit. Он фиксирует всю конфигурацию труб как единую сетку и обычно жёстче отдельных chair-style supports.",
+    "translation_ru": [
+      "цельнопластинчатый spacer для conduit",
+      "сплошная spacer-пластина",
+      "жёсткая карта-фиксатор duct bank"
+    ],
+    "translation_vi": [
+      "tấm spacer đặc định vị ống luồn cáp",
+      "tấm định vị ống dạng liền khối"
+    ],
+    "example_en": "Use the solid plate spacer to maintain the six-duct configuration and required separation through the run.",
+    "scenario": "Six conduits must remain in a fixed two-by-three pattern, so a rigid plate with conduit openings is installed at specified intervals.",
+    "visual": "Front view of a solid rectangular spacer plate with six circular conduit openings arranged in a fixed grid.",
+    "related_terms": [
+      "duct-spacer",
+      "chair-spacer",
+      "interlock-spacer"
+    ],
+    "common_mistakes": [
+      "Solid plate spacer describes the spacer construction, not the conduit material or a solid cover plate.",
+      "Plate thickness, opening size, and conduit separation must match the approved spacer design or project detail."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "welded-grid-spacer",
+    "term": "welded grid spacer",
+    "pronunciation": "WEL-did GRID SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A fabricated spacer made from welded bars, wire, or sections arranged as a grid to hold multiple conduits in a defined pattern and maintain separation.",
+    "explanation_ru": "Сварной spacer-каркас из прутков, проволоки или профилей, образующих сетку для фиксации нескольких conduit в заданной конфигурации и с нужными зазорами.",
+    "translation_ru": [
+      "сварной сетчатый spacer для conduit",
+      "сварная решётка-фиксатор duct bank",
+      "сварной grid spacer"
+    ],
+    "translation_vi": [
+      "khung spacer lưới hàn cho ống luồn cáp",
+      "giá định vị ống bằng lưới hàn"
+    ],
+    "example_en": "Install the welded grid spacer at the specified stations to keep the conduit bundle aligned through the crossing.",
+    "scenario": "A custom conduit bundle requires a fabricated rigid grid rather than a molded plastic spacer, so welded members form the required duct openings.",
+    "visual": "Front view of a welded rectangular grid forming multiple conduit cells, with circular ducts passing through the cells.",
+    "related_terms": [
+      "solid-plate-spacer",
+      "duct-spacer",
+      "bore-spacer"
+    ],
+    "common_mistakes": [
+      "Welded grid spacer is a fabrication description and may be project-specific rather than a universal product category.",
+      "Do not substitute a metallic welded grid where project requirements call for non-magnetic or non-metallic spacers without approval."
+    ],
+    "difficulty": 3
   }
 ]
