@@ -1294,5 +1294,34 @@
       "Restoration limits may extend to full panels or nearest joints; do not assume the replacement area is only the trench width."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "kerb",
+    "term": "kerb",
+    "pronunciation": "KURB",
+    "category": "concrete",
+    "definition_en": "A raised edge, usually concrete or stone, installed along the side of a roadway, sidewalk, median, or landscaped area to define the boundary and help control drainage and vehicle movement.",
+    "explanation_ru": "Бордюр — приподнятый бетонный или каменный край вдоль дороги, тротуара, островка или озеленённой зоны. Он отделяет поверхности, удерживает край покрытия и может направлять поверхностную воду. В Канаде и США чаще пишут curb; kerb — британское написание.",
+    "translation_ru": [
+      "бордюр",
+      "бортовой камень"
+    ],
+    "translation_vi": [
+      "bó vỉa",
+      "lề bó vỉa"
+    ],
+    "example_en": "Replace the damaged kerb along the edge of the sidewalk before final paving.",
+    "scenario": "A utility excavation damages the roadway edge, so the existing kerb is removed and reconstructed before adjacent asphalt and sidewalk restoration.",
+    "visual": "Road-edge cross-section showing a raised kerb between asphalt pavement and sidewalk, with the kerb clearly highlighted.",
+    "related_terms": [
+      "curb-and-gutter",
+      "concrete-sidewalk",
+      "formwork"
+    ],
+    "common_mistakes": [
+      "Kerb and curb mean the same roadway-edge element; kerb is British spelling, while curb is more common in Canadian and U.S. drawings.",
+      "A kerb is not always combined with a gutter; curb and gutter is a specific combined profile."
+    ],
+    "difficulty": 1
   }
 ]
