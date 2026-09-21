@@ -165,6 +165,13 @@
       "drawing_labels": [
         "CONC. SIDEWALK"
       ]
+    },
+    "kerb": {
+      "aliases_en": [
+        "curb",
+        "kerbs",
+        "curbs"
+      ]
     }
   }
 }
