@@ -66,6 +66,36 @@
       "added_at": "2026-09-21",
       "last_requested_at": "2026-09-21",
       "request_count": 1
+    },
+    {
+      "id": "chair-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
+    },
+    {
+      "id": "cradle-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
+    },
+    {
+      "id": "saddle-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
+    },
+    {
+      "id": "solid-plate-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
+    },
+    {
+      "id": "welded-grid-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
     }
   ]
 }
