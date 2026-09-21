@@ -96,6 +96,18 @@
       "added_at": "2026-09-21",
       "last_requested_at": "2026-09-21",
       "request_count": 1
+    },
+    {
+      "id": "base-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
+    },
+    {
+      "id": "intermediate-interlock-spacer",
+      "added_at": "2026-09-21",
+      "last_requested_at": "2026-09-21",
+      "request_count": 1
     }
   ]
 }
