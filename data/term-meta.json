@@ -52,7 +52,8 @@
     },
     "curb-and-gutter": {
       "drawing_labels": [
-        "C&G"
+        "C&G",
+        "C & G"
       ]
     },
     "quantity-takeoff": {
@@ -154,6 +155,15 @@
         "intermediate interlock spacers",
         "intermediate spacer",
         "intermediate spacers"
+      ]
+    },
+    "concrete-sidewalk": {
+      "aliases_en": [
+        "conc. sidewalk",
+        "conc sidewalk"
+      ],
+      "drawing_labels": [
+        "CONC. SIDEWALK"
       ]
     }
   }
