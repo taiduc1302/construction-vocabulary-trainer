@@ -1265,5 +1265,34 @@
       "The interlocking profile, conduit spacing, and number of tiers are system-specific and should be verified against the project detail or manufacturer requirements."
     ],
     "difficulty": 3
+  },
+  {
+    "id": "concrete-sidewalk",
+    "term": "concrete sidewalk",
+    "pronunciation": "KON-kreet SIDE-wawk",
+    "category": "concrete",
+    "definition_en": "A pedestrian walkway constructed of cast-in-place concrete, typically placed beside a curb, boulevard, roadway, or building frontage.",
+    "explanation_ru": "Бетонный тротуар для пешеходов, обычно устраиваемый вдоль бордюра, бульвара, дороги или здания. В смете обычно учитываются площадь бетона, подготовка основания, формы, швы и восстановление примыканий.",
+    "translation_ru": [
+      "бетонный тротуар",
+      "тротуар из монолитного бетона"
+    ],
+    "translation_vi": [
+      "vỉa hè bê tông",
+      "lối đi bộ bằng bê tông"
+    ],
+    "example_en": "Replace the concrete sidewalk within the restoration limits after the utility work is complete.",
+    "scenario": "A utility crossing disturbs an existing sidewalk, so the affected panels are removed and reconstructed to the project or municipal standard.",
+    "visual": "Plan and cross-section showing a concrete sidewalk panel beside curb and gutter, with slab thickness, base material, and panel joints.",
+    "related_terms": [
+      "curb-and-gutter",
+      "formwork",
+      "sawcut"
+    ],
+    "common_mistakes": [
+      "Concrete sidewalk refers to the pedestrian slab, not the curb and gutter beside it.",
+      "Restoration limits may extend to full panels or nearest joints; do not assume the replacement area is only the trench width."
+    ],
+    "difficulty": 2
   }
 ]
