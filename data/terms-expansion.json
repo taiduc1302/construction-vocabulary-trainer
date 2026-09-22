@@ -846,8 +846,8 @@
     "term": "FRE bend",
     "pronunciation": "F-R-E bend",
     "category": "electrical",
-    "definition_en": "A factory-made bend or elbow used with fiberglass-reinforced epoxy (FRE®) conduit to change direction in an electrical or communication conduit run, including underground duct-bank work.",
-    "explanation_ru": "Заводской отвод или изгиб для стеклопластиковой кабельной трубы FRE (fiberglass-reinforced epoxy). Его ставят там, где трасса conduit меняет направление; в duct bank такие отводы помогают выполнить поворот без резкого перегиба кабеля.",
+    "definition_en": "A factory-made bend or elbow used with fibreglass reinforced epoxy (FRE) conduit to change direction in an electrical or communication conduit run, including underground duct-bank work.",
+    "explanation_ru": "Заводской отвод или изгиб для кабельной трубы FRE (fibreglass reinforced epoxy). Его ставят там, где трасса conduit меняет направление; в duct bank такой отвод позволяет выполнить плавный поворот для последующей протяжки кабеля.",
     "translation_ru": [
       "FRE-отвод для кабельной трубы",
       "стеклопластиковый отвод conduit",
@@ -864,11 +864,12 @@
     "related_terms": [
       "conduit",
       "duct-bank",
-      "pull-box"
+      "pull-box",
+      "fre"
     ],
     "common_mistakes": [
-      "FRE bend refers to a fiberglass/epoxy conduit fitting, not to a field-bent length of ordinary PVC conduit.",
-      "FRE® is a product/trade name used for fiberglass conduit; project specifications should be checked for the exact accepted conduit system and fitting requirements."
+      "An FRE bend is a factory-made fitting for an FRE conduit system, not simply a field-bent length of ordinary PVC conduit.",
+      "FRE in this context means fibreglass reinforced epoxy; verify the specified conduit standard, manufacturer, bend radius, and joint system before pricing or ordering."
     ],
     "difficulty": 3
   },
@@ -1323,5 +1324,182 @@
       "A kerb is not always combined with a gutter; curb and gutter is a specific combined profile."
     ],
     "difficulty": 1
+  },
+  {
+    "id": "integral-bell-end",
+    "term": "integral bell end",
+    "pronunciation": "IN-ti-grul BELL end",
+    "category": "electrical",
+    "definition_en": "A factory-formed enlarged socket at one end of a conduit or duct length that receives the plain (spigot) end of the next length to make a joint.",
+    "explanation_ru": "Заводской раструб, сформированный на конце conduit/duct. В него вставляют гладкий (spigot) конец следующей трубы, чтобы соединить секции без отдельной муфты, если система рассчитана на такое соединение.",
+    "translation_ru": [
+      "интегральный раструб",
+      "раструб на конце кабельной трубы"
+    ],
+    "translation_vi": [
+      "đầu nong liền ống",
+      "đầu loe tích hợp của ống luồn cáp"
+    ],
+    "example_en": "Insert the plain end of the next conduit fully into the integral bell end in accordance with the manufacturer’s instructions.",
+    "scenario": "One end of each conduit length is factory-enlarged into a socket so the next straight section can slide into it.",
+    "visual": "Side view of two conduit lengths showing a straight spigot end sliding into the enlarged socket formed on the adjacent conduit.",
+    "related_terms": [
+      "conduit",
+      "duct-coupling",
+      "fre"
+    ],
+    "common_mistakes": [
+      "An integral bell end is formed as part of the conduit length; a separate coupling is a different fitting.",
+      "Some catalogs also use “bell end” for separate end fittings, so verify the specified product and connection detail."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "conduit-cap-plug",
+    "term": "conduit cap / plug",
+    "pronunciation": "KON-doo-it KAP / PLUG",
+    "category": "electrical",
+    "definition_en": "A closure fitting used to seal or protect the open end of a conduit or duct, temporarily or permanently, so dirt, water, concrete, and debris cannot enter.",
+    "explanation_ru": "Колпак или заглушка для закрытия открытого конца conduit/duct. Нужна, чтобы в запасную или временно неиспользуемую трубу не попали грунт, вода, бетон и мусор.",
+    "translation_ru": [
+      "колпак для кабельной трубы",
+      "заглушка conduit",
+      "заглушка duct"
+    ],
+    "translation_vi": [
+      "nắp bịt ống luồn cáp",
+      "nút bịt ống cáp"
+    ],
+    "example_en": "Install a conduit cap / plug on each spare conduit before backfilling the duct bank.",
+    "scenario": "A spare underground raceway is left unused after installation and its open end must be closed so soil and concrete cannot enter.",
+    "visual": "Side-by-side detail showing a cap fitting over the outside of one conduit end and a plug closing the opening of another conduit end.",
+    "related_terms": [
+      "conduit",
+      "duct-bank",
+      "pull-string"
+    ],
+    "common_mistakes": [
+      "A cap normally covers the outside of an open end, while a plug blocks the opening; the exact fitting style depends on the conduit system.",
+      "Do not assume a temporary shipping cap satisfies the permanent project requirement."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "conduit-adaptor",
+    "term": "conduit adaptor",
+    "pronunciation": "KON-doo-it uh-DAP-ter",
+    "category": "electrical",
+    "definition_en": "A fitting used to connect a conduit or duct to a different size, material, connection style, fitting, or equipment entry when the two ends do not mate directly.",
+    "explanation_ru": "Переходник для conduit/duct. Он соединяет кабельную трубу с другим размером, материалом, типом соединения, fitting или вводом оборудования, когда напрямую состыковать элементы нельзя.",
+    "translation_ru": [
+      "переходник для кабельной трубы",
+      "адаптер conduit",
+      "переходник duct"
+    ],
+    "translation_vi": [
+      "đầu chuyển ống luồn cáp",
+      "khớp chuyển ống cáp"
+    ],
+    "example_en": "Use the specified conduit adaptor where the FRE duct transitions to the equipment connection.",
+    "scenario": "An underground raceway reaches another system with a different end connection, so a purpose-made transition fitting is required.",
+    "visual": "Two conduit sections with different end sizes and connection profiles joined by a short transition fitting between them.",
+    "related_terms": [
+      "conduit",
+      "duct-coupling",
+      "fre"
+    ],
+    "common_mistakes": [
+      "An adaptor does not necessarily reduce diameter; it may change size, material, thread, socket type, or equipment connection.",
+      "Verify the exact adaptor type and compatible conduit system before pricing or ordering."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pull-string",
+    "term": "pull string",
+    "pronunciation": "PULL string",
+    "category": "electrical",
+    "definition_en": "A light cord installed or left inside a conduit so a cable, pulling rope, or heavier line can be drawn through the conduit later.",
+    "explanation_ru": "Лёгкая протяжка, оставленная внутри conduit. За неё позже протягивают более прочный трос или сам кабель, поэтому запасную трубу можно подготовить заранее для будущей кабельной установки.",
+    "translation_ru": [
+      "протяжка",
+      "шнур для протяжки кабеля"
+    ],
+    "translation_vi": [
+      "dây mồi kéo cáp",
+      "dây kéo luồn sẵn trong ống"
+    ],
+    "example_en": "Leave a pull string in each spare conduit and secure both ends for future cable installation.",
+    "scenario": "A spare raceway is installed now, but the cable will be installed later; a light cord is left inside to make the future pull easier.",
+    "visual": "Long conduit with a thin cord running through the full length, with the cord ends secured and arrows indicating a future cable pull.",
+    "related_terms": [
+      "conduit",
+      "pull-box",
+      "duct-bank"
+    ],
+    "common_mistakes": [
+      "A pull string is not the electrical cable itself and may only be used to pull in a stronger rope before the final cable pull.",
+      "Required pull-line material and strength depend on the project specification and installation method."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "conduit-bend",
+    "term": "conduit bend",
+    "pronunciation": "KON-doo-it bend",
+    "category": "electrical",
+    "definition_en": "A curved conduit section or fitting used to change the direction of a raceway while maintaining a smooth path for cable installation and pulling.",
+    "explanation_ru": "Отвод или изгиб кабельной трубы, который меняет направление трассы conduit. Для кабельной протяжки важен плавный радиус; конкретный угол и радиус берут из проекта, спецификаций и системы производителя.",
+    "translation_ru": [
+      "отвод кабельной трубы",
+      "изгиб conduit",
+      "колено duct"
+    ],
+    "translation_vi": [
+      "co ống luồn cáp",
+      "đoạn uốn ống cáp"
+    ],
+    "example_en": "Provide a conduit bend at the change in alignment before the run enters the pull box.",
+    "scenario": "A straight underground raceway must turn toward an access structure without creating a sharp corner that would obstruct cable pulling.",
+    "visual": "Plan-and-profile schematic showing straight conduit transitioning through a smooth curved section into a new direction.",
+    "related_terms": [
+      "conduit",
+      "fre-bend",
+      "duct-bank"
+    ],
+    "common_mistakes": [
+      "Do not assume the bend radius or allowable number of bends; use the project requirements and the specified conduit system.",
+      "A bend changes direction; a coupling joins sections without intentionally changing alignment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "fre",
+    "term": "FRE",
+    "pronunciation": "F-R-E",
+    "category": "electrical",
+    "definition_en": "In electrical and utility conduit work, FRE commonly refers to fibreglass reinforced epoxy, a nonmetallic composite used for rigid conduit and compatible fittings.",
+    "explanation_ru": "В кабельных и utility-системах FRE обычно означает fibreglass reinforced epoxy — стекловолокно, армированное/связанное эпоксидной смолой. Из него делают жёсткие conduit и совместимые fittings, включая bends, adaptors и caps.",
+    "translation_ru": [
+      "стеклопластик на эпоксидной смоле",
+      "FRE — fibreglass reinforced epoxy"
+    ],
+    "translation_vi": [
+      "composite sợi thủy tinh gia cường epoxy",
+      "FRE — vật liệu sợi thủy tinh epoxy"
+    ],
+    "example_en": "Use FRE conduit and compatible fittings where the project specification calls for a fibreglass reinforced epoxy raceway system.",
+    "scenario": "A specification calls for a lightweight, corrosion-resistant nonmetallic raceway made from glass fibres bonded with epoxy resin.",
+    "visual": "Cutaway of a rigid conduit wall showing wound glass-fibre reinforcement embedded in an epoxy resin matrix.",
+    "related_terms": [
+      "fre-bend",
+      "conduit",
+      "duct-bank"
+    ],
+    "common_mistakes": [
+      "FRE identifies a fibreglass-reinforced-epoxy conduit material or system; do not assume all fibreglass conduit products have identical ratings or joint systems.",
+      "Always verify the specified standard, approved manufacturer, fitting system, and installation requirements for the project."
+    ],
+    "difficulty": 2
   }
 ]

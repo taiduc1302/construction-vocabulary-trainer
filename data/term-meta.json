@@ -73,6 +73,10 @@
     "conduit": {
       "drawing_labels": [
         "COND"
+      ],
+      "aliases_en": [
+        "duct",
+        "electrical duct"
       ]
     },
     "backfill": {
@@ -147,7 +151,9 @@
       "aliases_en": [
         "base spacers",
         "duct base spacer",
-        "duct base spacers"
+        "duct base spacers",
+        "base interlock spacer",
+        "base interlock spacers"
       ]
     },
     "intermediate-interlock-spacer": {
@@ -171,6 +177,40 @@
         "curb",
         "kerbs",
         "curbs"
+      ]
+    },
+    "integral-bell-end": {
+      "aliases_en": [
+        "integral bell",
+        "bell end"
+      ]
+    },
+    "conduit-cap-plug": {
+      "aliases_en": [
+        "conduit cap",
+        "conduit plug",
+        "duct cap",
+        "duct plug"
+      ]
+    },
+    "conduit-adaptor": {
+      "aliases_en": [
+        "conduit adapter",
+        "duct adaptor",
+        "duct adapter"
+      ]
+    },
+    "conduit-bend": {
+      "aliases_en": [
+        "duct bend",
+        "conduit elbow",
+        "duct elbow"
+      ]
+    },
+    "fre": {
+      "aliases_en": [
+        "fibreglass reinforced epoxy",
+        "fiberglass reinforced epoxy"
       ]
     }
   }
