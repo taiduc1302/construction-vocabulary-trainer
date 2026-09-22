@@ -34,8 +34,8 @@
     {
       "id": "duct-coupling",
       "added_at": "2026-09-16",
-      "last_requested_at": "2026-09-16",
-      "request_count": 1
+      "last_requested_at": "2026-09-22",
+      "request_count": 2
     },
     {
       "id": "silt-fence",
@@ -46,8 +46,8 @@
     {
       "id": "duct-spacer",
       "added_at": "2026-09-17",
-      "last_requested_at": "2026-09-17",
-      "request_count": 1
+      "last_requested_at": "2026-09-22",
+      "request_count": 2
     },
     {
       "id": "permanent-mill-and-overlay",
@@ -100,14 +100,14 @@
     {
       "id": "base-spacer",
       "added_at": "2026-09-21",
-      "last_requested_at": "2026-09-21",
-      "request_count": 1
+      "last_requested_at": "2026-09-22",
+      "request_count": 2
     },
     {
       "id": "intermediate-interlock-spacer",
       "added_at": "2026-09-21",
-      "last_requested_at": "2026-09-21",
-      "request_count": 1
+      "last_requested_at": "2026-09-22",
+      "request_count": 2
     },
     {
       "id": "curb-and-gutter",
@@ -125,6 +125,48 @@
       "id": "kerb",
       "added_at": "2026-09-21",
       "last_requested_at": "2026-09-21",
+      "request_count": 1
+    },
+    {
+      "id": "conduit",
+      "added_at": "2026-09-22",
+      "last_requested_at": "2026-09-22",
+      "request_count": 1
+    },
+    {
+      "id": "integral-bell-end",
+      "added_at": "2026-09-22",
+      "last_requested_at": "2026-09-22",
+      "request_count": 1
+    },
+    {
+      "id": "conduit-cap-plug",
+      "added_at": "2026-09-22",
+      "last_requested_at": "2026-09-22",
+      "request_count": 1
+    },
+    {
+      "id": "conduit-adaptor",
+      "added_at": "2026-09-22",
+      "last_requested_at": "2026-09-22",
+      "request_count": 1
+    },
+    {
+      "id": "pull-string",
+      "added_at": "2026-09-22",
+      "last_requested_at": "2026-09-22",
+      "request_count": 1
+    },
+    {
+      "id": "conduit-bend",
+      "added_at": "2026-09-22",
+      "last_requested_at": "2026-09-22",
+      "request_count": 1
+    },
+    {
+      "id": "fre",
+      "added_at": "2026-09-22",
+      "last_requested_at": "2026-09-22",
       "request_count": 1
     }
   ]
