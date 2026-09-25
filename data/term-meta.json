@@ -212,6 +212,13 @@
         "fibreglass reinforced epoxy",
         "fiberglass reinforced epoxy"
       ]
+    },
+    "telebelt": {
+      "aliases_en": [
+        "tele belt",
+        "telescopic belt conveyor",
+        "telescopic conveyor"
+      ]
     }
   }
 }
