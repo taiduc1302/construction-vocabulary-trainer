@@ -168,6 +168,12 @@
       "added_at": "2026-09-22",
       "last_requested_at": "2026-09-22",
       "request_count": 1
+    },
+    {
+      "id": "telebelt",
+      "added_at": "2026-09-25",
+      "last_requested_at": "2026-09-25",
+      "request_count": 1
     }
   ]
 }

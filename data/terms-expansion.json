@@ -1501,5 +1501,35 @@
       "Always verify the specified standard, approved manufacturer, fitting system, and installation requirements for the project."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "telebelt",
+    "term": "Telebelt",
+    "pronunciation": "TEL-uh-belt",
+    "category": "earthworks",
+    "definition_en": "A telescopic belt-conveyor material-placement system, commonly truck-mounted, used to convey and place concrete, aggregate, sand, gravel, backfill, and other flowable bulk materials at locations that are difficult to reach directly.",
+    "explanation_ru": "Telebelt — телескопический ленточный конвейер для подачи материала по площадке. Обычно это машина на шасси с выдвижной конвейерной стрелой: материал загружают в приёмный бункер, а лента переносит его к месту укладки. В civil работах Telebelt используют для бетона, щебня, песка, гравия, backfill и других сыпучих материалов, когда самосвал или бетонный миксер не может подъехать непосредственно к точке укладки.",
+    "translation_ru": [
+      "телескопический ленточный конвейер",
+      "машина Telebelt для подачи материала"
+    ],
+    "translation_vi": [
+      "băng tải cần vươn telesco",
+      "xe băng tải telescopic để cấp vật liệu"
+    ],
+    "example_en": "Use a Telebelt to place granular backfill behind the structure where dump trucks cannot safely access.",
+    "scenario": "A crew needs to move a large volume of granular material from an accessible loading point to a placement area behind a structure, without repeatedly moving small equipment through the work zone.",
+    "visual": "Side-view schematic of a truck-mounted telescopic conveyor receiving material at a hopper and extending a long belt boom over an obstruction to discharge into a controlled placement area.",
+    "related_terms": [
+      "backfill",
+      "base-course",
+      "concrete"
+    ],
+    "common_mistakes": [
+      "Telebelt is a Putzmeister brand name; the generic equipment type is a telescopic belt conveyor.",
+      "Do not assume a Telebelt is only for concrete. Depending on the model and project requirements, it can place many flowable bulk materials such as aggregate, sand, gravel, and backfill.",
+      "For estimating, check mobilization, reach, setup space, outriggers, material compatibility, production needs, and whether a loader, dump truck, or mixer is required to feed the hopper."
+    ],
+    "difficulty": 2
   }
 ]
