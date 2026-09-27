@@ -1531,5 +1531,34 @@
       "For estimating, check mobilization, reach, setup space, outriggers, material compatibility, production needs, and whether a loader, dump truck, or mixer is required to feed the hopper."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "hydrant",
+    "term": "hydrant",
+    "pronunciation": "HY-drant",
+    "category": "utilities",
+    "definition_en": "An above-ground outlet connected to a pressurized water distribution system, used mainly to supply water for firefighting and sometimes for flushing or testing.",
+    "explanation_ru": "Надземный пожарный гидрант, подключённый к напорной водопроводной сети. Через него пожарные получают большой расход воды; на civil-проектах estimator обычно учитывает сам гидрант, ответвление от watermain, запорную арматуру, земляные работы и восстановление покрытия.",
+    "translation_ru": [
+      "пожарный гидрант",
+      "гидрант"
+    ],
+    "translation_vi": [
+      "trụ cứu hỏa",
+      "trụ chữa cháy"
+    ],
+    "example_en": "Install the hydrant on the new watermain branch at the location shown on the civil plan.",
+    "scenario": "A vertical above-ground fitting is connected to the municipal water distribution system so firefighters can quickly access a high-flow water supply.",
+    "visual": "Civil utility section showing an above-ground fire hydrant connected by a short branch pipe to a buried watermain.",
+    "related_terms": [
+      "watermain",
+      "valve",
+      "service-connection"
+    ],
+    "common_mistakes": [
+      "A hydrant is connected to the pressurized water distribution system; it is not a sanitary or storm drainage structure.",
+      "For estimating, do not count only the hydrant body—check the branch connection, valve, fittings, excavation, backfill, testing, and surface restoration required by the project."
+    ],
+    "difficulty": 1
   }
 ]

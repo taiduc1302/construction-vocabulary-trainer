@@ -219,6 +219,11 @@
         "telescopic belt conveyor",
         "telescopic conveyor"
       ]
+    },
+    "hydrant": {
+      "aliases_en": [
+        "fire hydrant"
+      ]
     }
   }
 }
