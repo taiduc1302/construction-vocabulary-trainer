@@ -180,6 +180,30 @@
       "added_at": "2026-09-26",
       "last_requested_at": "2026-09-26",
       "request_count": 1
+    },
+    {
+      "id": "bulk-excavation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "footing-excavation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "below-grade-plumbing",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "shoring",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
     }
   ]
 }

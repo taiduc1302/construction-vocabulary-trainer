@@ -1560,5 +1560,95 @@
       "For estimating, do not count only the hydrant body—check the branch connection, valve, fittings, excavation, backfill, testing, and surface restoration required by the project."
     ],
     "difficulty": 1
+  },
+  {
+    "id": "bulk-excavation",
+    "term": "bulk excavation",
+    "pronunciation": "BULK eks-kuh-VAY-shun",
+    "category": "earthworks",
+    "definition_en": "Large-scale excavation over a broad area to remove substantial volumes of soil, rock, or other material, usually to reach formation level, create a large foundation excavation, or reshape a site.",
+    "explanation_ru": "Массовая разработка грунта на большой площади — не узкая траншея, а значительный объём выемки для котлована, понижения площадки или выхода на проектную отметку. Для estimator важно отдельно учитывать объём, производительность экскаваторов, погрузку, haul/disposal или reuse, доступ техники, воду и необходимость откосов либо shoring.",
+    "translation_ru": [
+      "массовая выемка грунта",
+      "массовая разработка грунта",
+      "разработка котлована"
+    ],
+    "translation_vi": [
+      "đào đất khối lượng lớn",
+      "đào đất đại trà"
+    ],
+    "example_en": "Carry the bulk excavation separately from utility trench excavation so production and haul assumptions can be priced correctly.",
+    "scenario": "A large open area must be lowered several metres, with excavators loading trucks continuously rather than digging a narrow utility trench.",
+    "visual": "Wide open excavation with sloped sides, an excavator loading dump trucks, and a broad design formation level at the bottom.",
+    "related_terms": [
+      "excavation",
+      "cut",
+      "fill"
+    ],
+    "common_mistakes": [
+      "Bulk excavation is large-area or large-volume excavation; do not treat every narrow utility trench as bulk excavation.",
+      "For estimating, confirm whether loading, hauling, disposal, reuse, dewatering, access, slopes, or temporary support are separate scope items."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "footing-excavation",
+    "term": "footing excavation",
+    "pronunciation": "FOOT-ing eks-kuh-VAY-shun",
+    "category": "excavation",
+    "definition_en": "Excavation made specifically to form the trenches, pads, or localized cuts required for concrete footings and foundation elements.",
+    "explanation_ru": "Выемка грунта именно под footing — ленточный или отдельный фундамент. Обычно это более локальная и точная excavation, чем bulk excavation: нужно учитывать ширину и глубину footing, рабочее пространство, over-excavation, ручную подчистку, вывоз грунта и последующую работу formwork/rebar.",
+    "translation_ru": [
+      "выемка под фундамент",
+      "разработка грунта под подошву фундамента",
+      "траншея под фундамент"
+    ],
+    "translation_vi": [
+      "đào móng",
+      "đào đất cho móng"
+    ],
+    "example_en": "Price the footing excavation separately from the bulk excavation because the footing trenches require more precise digging and cleanup.",
+    "scenario": "After the main site cut is complete, narrower and deeper localized excavations are dug along the building foundation lines for concrete footings.",
+    "visual": "Foundation section showing a narrow footing excavation below general formation level with the concrete footing footprint outlined at the bottom.",
+    "related_terms": [
+      "excavation",
+      "formwork",
+      "rebar"
+    ],
+    "common_mistakes": [
+      "Footing excavation is not the same as the entire bulk site excavation; it is the localized cut needed for foundation footings.",
+      "Check whether working room, over-excavation, hand trimming, disposal, shoring, dewatering, or backfill are measured separately."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "below-grade-plumbing",
+    "term": "below-grade plumbing",
+    "pronunciation": "bee-LOH grade PLUM-ing",
+    "category": "utilities",
+    "definition_en": "Plumbing piping and fittings installed below finished grade or below a slab/foundation zone before concrete and backfill make the work inaccessible.",
+    "explanation_ru": "Подземная plumbing-разводка, которую прокладывают до бетонирования и обратной засыпки. В зоне фундаментов трубы могут проходить внутри или через footing excavation либо под slab; estimator должен проверить трассу, sleeves/penetrations, excavation, bedding, connections и координацию с footing concrete.",
+    "translation_ru": [
+      "подземная сантехническая разводка",
+      "трубопроводы ниже уровня пола/фундамента",
+      "сантехнические сети в зоне фундамента"
+    ],
+    "translation_vi": [
+      "hệ thống ống nước ngầm",
+      "đường ống nước dưới nền/móng"
+    ],
+    "example_en": "Coordinate the below-grade plumbing within the footing areas before the concrete crew places the footings and slab.",
+    "scenario": "Sanitary or water piping must be installed through the foundation zone before the concrete work closes access to the excavation.",
+    "visual": "Foundation section showing buried plumbing piping routed through the footing excavation and beneath the future slab, with a sleeve/penetration at the foundation zone.",
+    "related_terms": [
+      "service-connection",
+      "sanitary-sewer",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "Do not assume every pipe near a footing is cast directly inside structural concrete; verify the structural and plumbing drawings for sleeves, clearances, and routing.",
+      "Below-grade plumbing is broader than exterior municipal utility work and may include building sanitary, water, or other plumbing below the slab/foundation."
+    ],
+    "difficulty": 3
   }
 ]
