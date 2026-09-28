@@ -224,6 +224,33 @@
       "aliases_en": [
         "fire hydrant"
       ]
+    },
+    "bulk-excavation": {
+      "aliases_en": [
+        "mass excavation"
+      ]
+    },
+    "footing-excavation": {
+      "aliases_en": [
+        "excavation for footings",
+        "excavation of footings",
+        "foundation footing excavation"
+      ]
+    },
+    "below-grade-plumbing": {
+      "aliases_en": [
+        "under-slab plumbing",
+        "underslab plumbing",
+        "plumbing within footings",
+        "plumbing within the footings",
+        "plumbing in footings"
+      ]
+    },
+    "shoring": {
+      "aliases_en": [
+        "excavation shoring",
+        "shoring for excavation"
+      ]
     }
   }
 }
