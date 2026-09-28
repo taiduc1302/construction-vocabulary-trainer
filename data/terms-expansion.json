@@ -1650,5 +1650,1068 @@
       "Below-grade plumbing is broader than exterior municipal utility work and may include building sanitary, water, or other plumbing below the slab/foundation."
     ],
     "difficulty": 3
+  },
+  {
+    "id": "soil-stabilization",
+    "term": "soil stabilization",
+    "pronunciation": "SOYL stay-buh-luh-ZAY-shun",
+    "category": "earthworks",
+    "definition_en": "The improvement or reinforcement of soil so it can safely support excavation, temporary works, foundations, traffic, or construction operations.",
+    "explanation_ru": "Стабилизация грунта — меры для повышения устойчивости или несущей способности грунта. Это может быть уплотнение, замена, смешивание с вяжущими, инъектирование, армирование и другие методы; конкретный метод выбирают по проекту и геотехническим условиям.",
+    "translation_ru": [
+      "стабилизация грунта",
+      "укрепление грунта"
+    ],
+    "translation_vi": [
+      "gia cố đất",
+      "ổn định nền đất"
+    ],
+    "example_en": "The shoring design may require soil stabilization before the excavation advances.",
+    "scenario": "Weak or moving ground beside a deep cut needs to be strengthened so the excavation and nearby structures remain stable.",
+    "visual": "Excavation cross-section showing weak soil beside a cut being improved in a treated zone before deeper digging.",
+    "related_terms": [
+      "shoring",
+      "excavation",
+      "groundwater"
+    ],
+    "common_mistakes": [
+      "Soil stabilization is a broad concept; it is not automatically the same as shoring.",
+      "Do not assume a treatment method without the geotechnical design or specification."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "tieback-anchor",
+    "term": "tieback anchor",
+    "pronunciation": "TIE-back ANG-ker",
+    "category": "safety",
+    "definition_en": "A tensioned ground anchor installed through or behind a retaining or shoring wall to transfer lateral loads into competent soil or rock.",
+    "explanation_ru": "Анкерная тяга для шоринга: буровой анкер проходит через стену или за стену котлована и передаёт растягивающее усилие в устойчивый грунт или скалу. Часто такие анкеры называют ground anchors или shoring anchors.",
+    "translation_ru": [
+      "анкерная тяга",
+      "грунтовый анкер шоринга",
+      "tieback-анкер"
+    ],
+    "translation_vi": [
+      "neo đất dự ứng lực",
+      "neo giữ tường shoring"
+    ],
+    "example_en": "The temporary shoring system includes a tieback anchor at each designed anchor elevation.",
+    "scenario": "A deep excavation wall needs lateral restraint without internal braces blocking the work area, so tensioned elements are drilled back into the ground.",
+    "visual": "Shoring wall cross-section with an inclined tension anchor extending behind the wall into a bonded soil zone.",
+    "related_terms": [
+      "shoring",
+      "soil-stabilization",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "A tieback anchor is not the same as a trench box or internal strut.",
+      "Anchor length, angle, bond zone, testing, and grouting are engineered requirements."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "detailed-excavation",
+    "term": "detailed excavation",
+    "pronunciation": "DEE-tayld eks-kuh-VAY-shun",
+    "category": "excavation",
+    "definition_en": "Localized, relatively precise excavation for specific structural or utility features such as footings, pits, trenches, chambers, or grade changes after or alongside the main site cut.",
+    "explanation_ru": "Детальная разработка грунта — локальные точные выемки под отдельные элементы: footings, pits, trenches, chambers и т. п. В отличие от bulk excavation, здесь считают каждую локальную выемку и внимательно следят за глубинами и пересечениями.",
+    "translation_ru": [
+      "детальная разработка грунта",
+      "локальная выемка грунта"
+    ],
+    "translation_vi": [
+      "đào chi tiết",
+      "đào cục bộ theo cấu kiện"
+    ],
+    "example_en": "Measure the detailed excavation separately from the bulk excavation to avoid mixing the two quantities.",
+    "scenario": "After the main building platform is cut down, smaller precise pits and trenches still have to be measured around foundations and services.",
+    "visual": "Site section with a broad bulk cut and several smaller precise pits and trenches highlighted below it.",
+    "related_terms": [
+      "bulk-excavation",
+      "footing-excavation",
+      "mechanical-excavation"
+    ],
+    "common_mistakes": [
+      "Detailed excavation is not simply another name for all excavation.",
+      "Avoid double counting areas already included in the bulk cut or another detailed excavation item."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "footing",
+    "term": "footing",
+    "pronunciation": "FOOT-ing",
+    "category": "concrete",
+    "definition_en": "The enlarged lower part of a foundation that spreads structural loads from a wall, column, or core into the supporting soil or rock.",
+    "explanation_ru": "Фундаментная подошва или отдельная фундаментная часть, которая распределяет нагрузку от стены, колонны или ядра здания на грунт. Footing может быть ленточным, отдельным, ступенчатым и т. д.",
+    "translation_ru": [
+      "фундаментная подошва",
+      "фундамент"
+    ],
+    "translation_vi": [
+      "móng",
+      "đế móng"
+    ],
+    "example_en": "Excavate the footing to the specified bearing elevation before placing reinforcing steel and concrete.",
+    "scenario": "A column or wall transfers load into a wider concrete base bearing on soil or rock.",
+    "visual": "Section showing a wall or column bearing on a wider reinforced concrete base below grade.",
+    "related_terms": [
+      "footing-excavation",
+      "formwork",
+      "rebar"
+    ],
+    "common_mistakes": [
+      "A footing is the load-spreading foundation element, not the excavation around it.",
+      "Do not assume every footing has the same shape or requires formwork."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "strip-footing",
+    "term": "strip footing",
+    "pronunciation": "STRIP FOOT-ing",
+    "category": "concrete",
+    "definition_en": "A continuous footing that runs beneath a wall or a line of closely spaced supports and distributes their load along a strip.",
+    "explanation_ru": "Ленточный фундамент — непрерывная бетонная подошва под стеной или линией опор. В takeoff обычно измеряется по длине, ширине и глубине, а excavation может идти непрерывной траншеей.",
+    "translation_ru": [
+      "ленточный фундамент",
+      "непрерывная фундаментная подошва"
+    ],
+    "translation_vi": [
+      "móng băng"
+    ],
+    "example_en": "Measure each strip footing along the wall line and use the structural elevations for excavation depth.",
+    "scenario": "A long foundation base follows the same line as a structural wall instead of appearing as isolated pads.",
+    "visual": "Plan and section showing a continuous concrete foundation strip below a wall.",
+    "related_terms": [
+      "footing",
+      "footing-excavation",
+      "formwork"
+    ],
+    "common_mistakes": [
+      "Do not confuse a strip footing with isolated pad footings under individual columns.",
+      "Check steps and changes in bearing elevation rather than assuming one constant depth."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "core-footing",
+    "term": "core footing",
+    "pronunciation": "KOR FOOT-ing",
+    "category": "concrete",
+    "definition_en": "A footing or foundation element supporting a building core, such as elevator, stair, or shear-wall core walls, often deeper or more heavily loaded than nearby foundations.",
+    "explanation_ru": "Фундамент под ядром здания — например под стенами elevator/stair/shear-wall core. Он часто глубже и массивнее соседних footings, поэтому его excavation, working space и последовательность нужно проверять отдельно.",
+    "translation_ru": [
+      "фундамент ядра здания",
+      "фундамент под лифтовым или лестничным ядром"
+    ],
+    "translation_vi": [
+      "móng lõi công trình",
+      "móng khu lõi thang máy/cầu thang"
+    ],
+    "example_en": "The core footing requires a deeper excavation than the adjacent strip footings.",
+    "scenario": "The elevator and stair core bears on a large foundation element that extends lower than the surrounding foundation system.",
+    "visual": "Building section showing a deep foundation block beneath an elevator/stair core beside shallower foundations.",
+    "related_terms": [
+      "footing",
+      "working-space",
+      "concrete-slab"
+    ],
+    "common_mistakes": [
+      "Core footing is a functional description; the actual structural type may be a mat, strip, or other engineered foundation.",
+      "Measure its starting elevation from the correct structural level."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "working-space",
+    "term": "working space",
+    "pronunciation": "WUR-king SPAYS",
+    "category": "excavation",
+    "definition_en": "Additional excavation clearance outside a footing, wall, chamber, or other structure so workers can install and remove forms, waterproofing, reinforcement, or other work safely.",
+    "explanation_ru": "Рабочий зазор вокруг конструкции внутри котлована. Его добавляют к размеру excavation, когда снаружи footing/wall нужны формы, гидроизоляция или доступ людей. Если бетон можно лить прямо по грунту, отдельный working space может не требоваться — это зависит от метода и проекта.",
+    "translation_ru": [
+      "рабочий зазор",
+      "рабочее пространство в котловане"
+    ],
+    "translation_vi": [
+      "khoảng trống thi công",
+      "không gian làm việc quanh hố đào"
+    ],
+    "example_en": "Add working space around the deep core foundation where formwork must be installed.",
+    "scenario": "Workers need clearance between the excavation face and a formed concrete element so they can build, strip, and access the forms.",
+    "visual": "Footing excavation section with a dimensioned clearance between the concrete form and excavation face.",
+    "related_terms": [
+      "footing-excavation",
+      "formwork",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "Do not add working space automatically to every footing.",
+      "Required clearance depends on means and methods, safety requirements, depth, formwork, and project details."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "excavation-sloping",
+    "term": "excavation sloping",
+    "pronunciation": "eks-kuh-VAY-shun SLOH-ping",
+    "category": "safety",
+    "definition_en": "Cutting excavation faces back at an engineered or permitted inclination instead of leaving them vertical, to reduce cave-in risk and maintain ground stability.",
+    "explanation_ru": "Откос котлована — боковую стенку выемки делают наклонной, а не вертикальной. Допустимый угол зависит от грунта, глубины, воды, нагрузок и требований безопасности; его нельзя просто принимать по привычке.",
+    "translation_ru": [
+      "устройство откосов котлована",
+      "разработка с откосами"
+    ],
+    "translation_vi": [
+      "đào taluy",
+      "tạo mái dốc hố đào"
+    ],
+    "example_en": "Use excavation sloping where a vertical cut cannot be safely maintained without shoring.",
+    "scenario": "A deep open cut has enough room to widen at the top, so the sides are laid back rather than supported vertically.",
+    "visual": "Excavation cross-section comparing a vertical face with a laid-back inclined face.",
+    "related_terms": [
+      "shoring",
+      "slope-ratio",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "The safe slope is not universally 1:1 or 1.5:1.",
+      "Use the governing safety rules and geotechnical requirements for the actual ground conditions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dropped-footing",
+    "term": "dropped footing",
+    "pronunciation": "DROPT FOOT-ing",
+    "category": "concrete",
+    "definition_en": "A footing whose bearing elevation is locally lowered or stepped to maintain support, avoid interference, or satisfy required separation from adjacent deep utilities or excavations.",
+    "explanation_ru": "Пониженный footing — участок фундамента опускают глубже, например рядом с глубоким manhole, chamber или utility trench, чтобы сохранить безопасную зону влияния и не подмыть основание.",
+    "translation_ru": [
+      "пониженный фундамент",
+      "опущенная фундаментная подошва"
+    ],
+    "translation_vi": [
+      "móng hạ cốt",
+      "móng hạ thấp"
+    ],
+    "example_en": "Provide a dropped footing where the adjacent utility excavation would otherwise enter the foundation influence zone.",
+    "scenario": "A deep chamber sits close to a shallow foundation, so part of the foundation must bear lower to avoid being undermined.",
+    "visual": "Section showing a shallow footing stepping down beside a deeper utility structure.",
+    "related_terms": [
+      "footing",
+      "zone-of-influence",
+      "strip-footing"
+    ],
+    "common_mistakes": [
+      "A dropped footing is not simply extra excavation under every foundation.",
+      "The required step or lowered elevation must follow structural/geotechnical design."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "zone-of-influence",
+    "term": "zone of influence",
+    "pronunciation": "ZOHN of IN-floo-ens",
+    "category": "excavation",
+    "definition_en": "The conceptual soil zone beneath and beside a footing or other supported element within which excavation or weakened ground may affect its support and stability.",
+    "explanation_ru": "Зона влияния фундамента — область грунта, через которую нагрузка передаётся от footing. Глубокая траншея или manhole рядом не должны заходить в эту зону без инженерного решения; на чертежах её часто показывают наклонной линией от подошвы.",
+    "translation_ru": [
+      "зона влияния фундамента",
+      "зона распространения нагрузки"
+    ],
+    "translation_vi": [
+      "vùng ảnh hưởng của móng",
+      "vùng truyền tải trọng nền móng"
+    ],
+    "example_en": "Check the zone of influence before accepting a deep chamber excavation beside an existing footing.",
+    "scenario": "An adjacent deep excavation approaches the soil supporting a foundation, so an imaginary load-spread line is checked for interference.",
+    "visual": "Footing section with diagonal influence lines extending downward and outward toward an adjacent deep excavation.",
+    "related_terms": [
+      "footing",
+      "dropped-footing",
+      "utility-chamber"
+    ],
+    "common_mistakes": [
+      "Do not assume one universal slope ratio for the zone of influence.",
+      "The governing geometry comes from the project structural/geotechnical requirements."
+    ],
+    "difficulty": 4
+  },
+  {
+    "id": "bottom-of-excavation",
+    "term": "bottom of excavation",
+    "pronunciation": "BOT-um of eks-kuh-VAY-shun",
+    "category": "drawings",
+    "definition_en": "The design or required lowest elevation of an excavation before bedding, mud slab, concrete, or other subsequent material is placed.",
+    "explanation_ru": "Отметка дна выемки — самая нижняя проектная отметка excavation. Для manhole, chamber, footing или trench её используют вместе с existing/proposed elevations, invert и толщинами bedding/gravel, чтобы получить глубину.",
+    "translation_ru": [
+      "отметка дна котлована",
+      "дно выемки"
+    ],
+    "translation_vi": [
+      "cao độ đáy hố đào",
+      "đáy hố đào"
+    ],
+    "example_en": "Use the bottom of excavation elevation to calculate the required depth of the chamber excavation.",
+    "scenario": "A detail gives the lowest cut level below a structure before granular material or concrete is placed.",
+    "visual": "Section with grade at top, a structure, and a dimension to the lowest excavation line below it.",
+    "related_terms": [
+      "elevation",
+      "subgrade",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "Bottom of excavation is not necessarily the same as pipe invert or underside of concrete.",
+      "Account for bedding, granular base, mud slab, or other layers shown in the details."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "mechanical-excavation",
+    "term": "mechanical excavation",
+    "pronunciation": "meh-KAN-i-kul eks-kuh-VAY-shun",
+    "category": "excavation",
+    "definition_en": "Excavation required for below-grade mechanical or plumbing systems such as sanitary, storm, sumps, interceptors, chambers, and service piping.",
+    "explanation_ru": "Выемка под mechanical/plumbing системы ниже плиты: трубы, manholes, interceptors, chambers и другие элементы. В takeoff важно измерять линии и отдельные boxes/pits, но исключать пересечения, уже учтённые в footing excavation.",
+    "translation_ru": [
+      "выемка под механические сети",
+      "разработка грунта под подземную сантехнику"
+    ],
+    "translation_vi": [
+      "đào cho hệ cơ điện ngầm",
+      "đào hệ thống ống dưới sàn"
+    ],
+    "example_en": "Measure the mechanical excavation by trench length and by separate pits for chambers and structures.",
+    "scenario": "After the bulk cut, underground plumbing and mechanical services still require trenches and localized pits before the slab is poured.",
+    "visual": "Plan and section showing utility trenches connecting several pits below a future slab.",
+    "related_terms": [
+      "below-grade-plumbing",
+      "trench",
+      "utility-chamber"
+    ],
+    "common_mistakes": [
+      "Mechanical excavation is a scope description, not a universal pay item.",
+      "Avoid double counting where a trench overlaps footing or chamber excavation already measured."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "utility-chamber",
+    "term": "utility chamber",
+    "pronunciation": "yoo-TIL-i-tee CHAYM-ber",
+    "category": "utilities",
+    "definition_en": "An underground access or equipment structure used to house, connect, inspect, or maintain utility piping, valves, interceptors, or other service components.",
+    "explanation_ru": "Подземная камера для размещения или обслуживания utility components. В отличие от обычной trench excavation, chamber обычно считают отдельным box excavation по плановым размерам, глубине и рабочему зазору.",
+    "translation_ru": [
+      "подземная инженерная камера",
+      "камера инженерных сетей"
+    ],
+    "translation_vi": [
+      "hố kỹ thuật ngầm",
+      "buồng kỹ thuật tiện ích"
+    ],
+    "example_en": "Excavate the utility chamber before constructing the nearby shallow footing if the chamber is deeper.",
+    "scenario": "A below-grade structure is larger than a pipe trench and provides access to utility equipment or connections.",
+    "visual": "Underground rectangular chamber connected to incoming and outgoing pipes with an access opening at grade.",
+    "related_terms": [
+      "manhole",
+      "interceptor",
+      "mechanical-excavation"
+    ],
+    "common_mistakes": [
+      "A utility chamber is broader than a manhole; the exact function comes from the mechanical/civil drawings.",
+      "Do not assume all chambers have the same excavation allowance or working space."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "interceptor",
+    "term": "interceptor",
+    "pronunciation": "in-ter-SEP-ter",
+    "category": "utilities",
+    "definition_en": "A plumbing or drainage device or chamber that separates or captures specified materials from a waste stream before flow continues to the downstream sewer system.",
+    "explanation_ru": "Interceptor — устройство или камера на drainage/plumbing системе для отделения определённых загрязнений до попадания потока дальше в sewer. Это может быть grease, oil, sediment и другой тип; точное назначение всегда нужно смотреть по mechanical drawings/specifications.",
+    "translation_ru": [
+      "интерцептор",
+      "сепаратор-уловитель в канализационной системе"
+    ],
+    "translation_vi": [
+      "bể tách",
+      "thiết bị chặn/tách trong hệ thoát nước"
+    ],
+    "example_en": "Measure the interceptor as a separate structure excavation using its bottom elevation and base preparation.",
+    "scenario": "A large below-grade unit sits in a drainage line and removes a specified contaminant before discharge downstream.",
+    "visual": "Buried rectangular tank connected to inlet and outlet pipes with separated material settling inside.",
+    "related_terms": [
+      "below-grade-plumbing",
+      "sanitary-sewer",
+      "utility-chamber"
+    ],
+    "common_mistakes": [
+      "Interceptor is a generic term; verify whether the project means grease, oil, sediment, or another interceptor.",
+      "Do not infer the excavation dimensions from the pipe size alone."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "crane-pad",
+    "term": "crane pad",
+    "pronunciation": "KRAYN pad",
+    "category": "earthworks",
+    "definition_en": "A prepared level working platform designed to support crane loads, often built with engineered granular fill, mats, concrete, or another specified system.",
+    "explanation_ru": "Площадка под кран — подготовленное ровное основание, которое распределяет нагрузки от crane/outriggers. Для estimate нужно учитывать excavation, granular build-up, compaction и возможное removal/restoration, но состав зависит от engineered design.",
+    "translation_ru": [
+      "площадка под кран",
+      "основание под кран"
+    ],
+    "translation_vi": [
+      "bãi kê cẩu",
+      "nền đặt cần cẩu"
+    ],
+    "example_en": "Include a crane pad in the earthworks quantity if the lifting plan requires a dedicated working platform.",
+    "scenario": "A large lifting machine needs a stable level platform that can safely carry concentrated setup loads.",
+    "visual": "Crane with outriggers bearing on a prepared rectangular granular platform above compacted subgrade.",
+    "related_terms": [
+      "subgrade",
+      "aggregate",
+      "compaction"
+    ],
+    "common_mistakes": [
+      "A crane pad is not simply any flat gravel area.",
+      "Dimensions and bearing requirements must come from the lifting/geotechnical design."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "construction-sequencing",
+    "term": "construction sequencing",
+    "pronunciation": "kun-STRUK-shun SEE-kwen-sing",
+    "category": "estimating",
+    "definition_en": "Planning the logical order in which construction activities occur so later work is not blocked, undermined, damaged, or forced to be reworked.",
+    "explanation_ru": "Последовательность производства работ. На встрече ключевой принцип был: более глубокие элементы часто выполняются раньше более мелких, чтобы потом не подкапывать уже построенные foundations или services.",
+    "translation_ru": [
+      "последовательность строительных работ",
+      "очерёдность работ"
+    ],
+    "translation_vi": [
+      "trình tự thi công"
+    ],
+    "example_en": "Review the construction sequencing where deep utility chambers are close to shallow foundations.",
+    "scenario": "Several trades need the same area, and the order of excavation, underground services, foundations, and slab work affects rework and access.",
+    "visual": "Four-step flow diagram showing deep utility work, foundations, backfill, and slab construction in sequence.",
+    "related_terms": [
+      "excavation",
+      "below-grade-plumbing",
+      "footing"
+    ],
+    "common_mistakes": [
+      "The deepest-first approach is a useful planning principle, not an absolute rule for every project.",
+      "Quantity takeoff can sometimes be completed before the final field sequence is decided."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "underground-parkade",
+    "term": "underground parkade",
+    "pronunciation": "UN-der-ground par-KAYD",
+    "category": "concrete",
+    "definition_en": "A below-grade parking structure or parking garage, a term especially common in Canadian construction and real-estate usage.",
+    "explanation_ru": "Подземный паркинг/гараж. В Британской Колумбии слово parkade очень распространено. В estimating существующий underground parkade важен для demolition, shoring и excavation, потому что существующие slabs/walls создают пустоты и ограничения по последовательности.",
+    "translation_ru": [
+      "подземный паркинг",
+      "подземный гараж"
+    ],
+    "translation_vi": [
+      "bãi đỗ xe ngầm",
+      "gara đậu xe ngầm"
+    ],
+    "example_en": "Exclude the existing underground parkade void from the soil volume when calculating bulk excavation.",
+    "scenario": "An existing multi-level parking structure remains below grade inside part of a redevelopment site.",
+    "visual": "Building section with ground level above multiple below-grade parking decks.",
+    "related_terms": [
+      "demolition",
+      "bulk-excavation",
+      "shoring"
+    ],
+    "common_mistakes": [
+      "Parkade is a Canadian term; parking garage is more common in many other regions.",
+      "Existing below-grade voids are not soil and should not automatically be counted as excavation volume."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "demolition",
+    "term": "demolition",
+    "pronunciation": "dem-uh-LISH-un",
+    "category": "earthworks",
+    "definition_en": "The planned removal, dismantling, breaking, or deconstruction of an existing building, structure, slab, pavement, or other constructed element.",
+    "explanation_ru": "Демонтаж существующих конструкций. В tender review нужно точно определить, кто снимает building, slab, walls, foundations и underground structures, потому что граница demolition scope часто создаёт scope gaps.",
+    "translation_ru": [
+      "демонтаж",
+      "снос"
+    ],
+    "translation_vi": [
+      "phá dỡ",
+      "tháo dỡ công trình"
+    ],
+    "example_en": "Confirm whether the demolition scope includes the existing slab and below-grade foundation walls.",
+    "scenario": "A redevelopment project removes an existing structure, but the tender documents are unclear about which below-grade elements remain.",
+    "visual": "Existing wall and slab shown with dashed removal limits and debris arrows toward a haul truck.",
+    "related_terms": [
+      "underground-parkade",
+      "scope-of-work",
+      "sawcut"
+    ],
+    "common_mistakes": [
+      "Do not assume above-grade demolition includes all below-grade slabs, walls, and footings.",
+      "Clarify interfaces between demolition, shoring, and excavation scopes."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "general-contractor",
+    "term": "general contractor",
+    "pronunciation": "JEN-er-ul KON-trak-ter",
+    "category": "tendering",
+    "definition_en": "The contractor responsible for managing and coordinating the overall construction work, including its own work and subcontracted trade scopes.",
+    "explanation_ru": "Генеральный подрядчик (GC) — компания, которая несёт общую ответственность за выполнение проекта и координирует subcontractors, procurement, schedule и scope interfaces.",
+    "translation_ru": [
+      "генеральный подрядчик",
+      "генподрядчик"
+    ],
+    "translation_vi": [
+      "tổng thầu xây dựng"
+    ],
+    "example_en": "The general contractor must confirm whether the remaining demolition is in its own scope or a trade package.",
+    "scenario": "One company submits the overall bid to the owner and coordinates several specialty trade contractors.",
+    "visual": "Simple organization chart with owner above one main contractor and several trade packages below.",
+    "related_terms": [
+      "subcontractor",
+      "scope-of-work",
+      "rfq"
+    ],
+    "common_mistakes": [
+      "GC responsibilities depend on the contract and project delivery method.",
+      "Do not assume every scope gap is automatically performed by the GC."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "subcontractor",
+    "term": "subcontractor",
+    "pronunciation": "sub-KON-trak-ter",
+    "category": "tendering",
+    "definition_en": "A company or trade contractor hired by another contractor to perform a defined portion of the construction work.",
+    "explanation_ru": "Субподрядчик (часто просто sub) — отдельная компания, которая выполняет определённый scope, например shoring, hauling, concrete или ESC, по договору с GC или другим contractor.",
+    "translation_ru": [
+      "субподрядчик"
+    ],
+    "translation_vi": [
+      "nhà thầu phụ"
+    ],
+    "example_en": "Send the RFQ to more than one subcontractor when competitive coverage is needed for the trade.",
+    "scenario": "A specialty company prices one trade package rather than the entire project.",
+    "visual": "Main contractor box connected to several specialty trade boxes such as shoring, concrete, and utilities.",
+    "related_terms": [
+      "general-contractor",
+      "rfq",
+      "subcontractor-quote"
+    ],
+    "common_mistakes": [
+      "A subcontractor's scope is defined by its proposal and subcontract, not just by trade name.",
+      "The lowest quoted total may not cover the same scope as competitors."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "subcontractor-quote",
+    "term": "subcontractor quote",
+    "pronunciation": "sub-KON-trak-ter KWOHT",
+    "category": "tendering",
+    "definition_en": "A subcontractor's price proposal for a defined trade scope, including the stated price, inclusions, exclusions, qualifications, alternates, and commercial conditions.",
+    "explanation_ru": "Предложение субподрядчика с ценой и условиями. Для estimator важно читать не только итоговую сумму, но и inclusions/exclusions/qualifications, потому что две цены могут покрывать разный scope.",
+    "translation_ru": [
+      "котировка субподрядчика",
+      "ценовое предложение субподрядчика"
+    ],
+    "translation_vi": [
+      "báo giá nhà thầu phụ"
+    ],
+    "example_en": "Review each subcontractor quote for scope gaps before selecting the number to carry.",
+    "scenario": "Several trade proposals arrive with different inclusions and exclusions even though they appear to price the same package.",
+    "visual": "Comparison sheet showing three trade proposals with price, inclusions, exclusions, and notes.",
+    "related_terms": [
+      "rfq",
+      "bid-leveling",
+      "carry-a-number"
+    ],
+    "common_mistakes": [
+      "A low quote is not automatically the lowest complete cost.",
+      "Keep the original proposal and all clarifications traceable."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "bid-leveling",
+    "term": "bid leveling",
+    "pronunciation": "BID LEV-uh-ling",
+    "category": "tendering",
+    "definition_en": "The process of normalizing competing contractor or subcontractor proposals to a common scope so their prices and qualifications can be compared fairly.",
+    "explanation_ru": "Выравнивание/нормализация коммерческих предложений. Estimator сравнивает inclusions, exclusions, quantities, alternates и qualifications и приводит bids к одинаковому scope перед выбором цены.",
+    "translation_ru": [
+      "выравнивание предложений",
+      "сопоставление предложений по одинаковому объёму"
+    ],
+    "translation_vi": [
+      "cân bằng báo giá",
+      "so sánh thầu trên cùng phạm vi"
+    ],
+    "example_en": "Complete the bid leveling before deciding which subcontractor number to use in the estimate.",
+    "scenario": "Three proposals have different totals because each bidder included a different set of work, so the estimator creates an apples-to-apples comparison.",
+    "visual": "Bid comparison matrix with common scope rows and bidder columns adjusted to comparable totals.",
+    "related_terms": [
+      "subcontractor-quote",
+      "scope-of-work",
+      "plug-number"
+    ],
+    "common_mistakes": [
+      "Bid leveling is not simply sorting bids from lowest to highest.",
+      "Document every add, deduct, assumption, and scope adjustment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "carry-a-number",
+    "term": "carry a number",
+    "pronunciation": "KAR-ee uh NUM-ber",
+    "category": "estimating",
+    "definition_en": "Estimator jargon meaning to include a particular cost figure or subcontractor price in the working estimate or bid.",
+    "explanation_ru": "Estimator jargon: «заложить/нести эту цену в смете». Если говорят “we’ll carry their number”, значит именно эту цену используют в estimate как текущую стоимость данного scope.",
+    "translation_ru": [
+      "заложить цену в смету",
+      "принять число в расчёт"
+    ],
+    "translation_vi": [
+      "đưa một mức giá vào dự toán",
+      "mang giá đó trong estimate"
+    ],
+    "example_en": "After leveling the quotes, carry a number that represents the selected complete scope.",
+    "scenario": "Several prices are available for one trade and the estimator chooses one figure to include in the current estimate.",
+    "visual": "Estimate sheet with one highlighted subcontract value flowing into the project total.",
+    "related_terms": [
+      "subcontractor-quote",
+      "bid-leveling",
+      "estimate"
+    ],
+    "common_mistakes": [
+      "Carrying a number does not necessarily mean the subcontract has been awarded.",
+      "Record whose price it is and what scope assumptions are attached to it."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "budget-estimate",
+    "term": "budget estimate",
+    "pronunciation": "BUJ-it ES-ti-mit",
+    "category": "estimating",
+    "definition_en": "A preliminary cost estimate prepared to establish an expected project or scope cost before final bid-level information and firm pricing are available.",
+    "explanation_ru": "Бюджетная оценка — предварительная стоимость, когда проект ещё не требует твёрдой bid price или находится далеко от construction. Обычно используют исторические цены, budget quotes и разумные assumptions, а не пытаются зафиксировать будущую цену.",
+    "translation_ru": [
+      "бюджетная оценка",
+      "предварительная смета"
+    ],
+    "translation_vi": [
+      "dự toán ngân sách",
+      "ước tính chi phí sơ bộ"
+    ],
+    "example_en": "Use a budget estimate for the future phase instead of requesting firm trade pricing years in advance.",
+    "scenario": "A later construction phase is still far from execution, so the team needs a reasonable planning number rather than a binding bid.",
+    "visual": "Timeline showing conceptual design leading to a broad cost estimate before detailed bid pricing.",
+    "related_terms": [
+      "plug-number",
+      "contingency",
+      "estimate"
+    ],
+    "common_mistakes": [
+      "A budget estimate is not a firm bid or guaranteed price.",
+      "State the basis, date, assumptions, and expected level of uncertainty."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "plug-number",
+    "term": "plug number",
+    "pronunciation": "PLUG NUM-ber",
+    "category": "estimating",
+    "definition_en": "A temporary placeholder cost inserted into an estimate when firm pricing is not yet available, intended to be tracked and replaced or validated later.",
+    "explanation_ru": "Временная заглушка в смете: estimator ставит разумную стоимость вместо ещё не полученной quote. Plug number помогает не оставлять ноль, но его нужно явно пометить и заменить/проверить до финальной подачи, если это bid.",
+    "translation_ru": [
+      "временная цена-заглушка",
+      "условная стоимость в смете"
+    ],
+    "translation_vi": [
+      "giá tạm chèn vào dự toán",
+      "con số tạm thời"
+    ],
+    "example_en": "Use a plug number for the scope until a reliable quote or current budget rate is available.",
+    "scenario": "A trade has no firm price yet, but the estimate cannot remain incomplete while the team continues working.",
+    "visual": "Estimate spreadsheet with one highlighted placeholder cell and an arrow showing future replacement by a quote.",
+    "related_terms": [
+      "budget-estimate",
+      "allowance",
+      "contingency"
+    ],
+    "common_mistakes": [
+      "A plug number is an internal estimating placeholder, not automatically a contractual allowance.",
+      "Track plugs so they are not silently treated as verified prices."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "alternate-price",
+    "term": "alternate price",
+    "pronunciation": "AWL-ter-nit PRYSS",
+    "category": "tendering",
+    "definition_en": "A separate add or deduct price for an optional change in scope, method, material, or requirement, presented apart from the base price.",
+    "explanation_ru": "Отдельная цена на вариант: заказчик или GC может попросить base price и дополнительную/вычитаемую стоимость, если определённый scope включается, исключается или меняется.",
+    "translation_ru": [
+      "альтернативная цена",
+      "цена опции"
+    ],
+    "translation_vi": [
+      "giá phương án thay thế",
+      "giá tùy chọn"
+    ],
+    "example_en": "Ask the shoring bidder for an alternate price that excludes the specified optional anchor treatment.",
+    "scenario": "The base proposal includes one scope, but the estimator also needs a separate add/deduct amount for a possible change.",
+    "visual": "Proposal sheet showing one base total and a separate add/deduct alternate line.",
+    "related_terms": [
+      "rfq",
+      "scope-of-work",
+      "subcontractor-quote"
+    ],
+    "common_mistakes": [
+      "An alternate price should clearly state what changes from the base scope.",
+      "Do not mix an alternate into the base bid without documenting whether it was accepted."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "groundwater",
+    "term": "groundwater",
+    "pronunciation": "GROUND-waw-ter",
+    "category": "earthworks",
+    "definition_en": "Water present below the ground surface within soil or rock, which can affect excavation stability, pumping, shoring, compaction, and foundation work.",
+    "explanation_ru": "Грунтовые воды. Даже небольшой приток может влиять на excavation, shoring, pumping/dewatering, bearing surface и compaction. Уровень и ожидаемый приток нужно брать из geotechnical information и наблюдений, а не угадывать.",
+    "translation_ru": [
+      "грунтовые воды"
+    ],
+    "translation_vi": [
+      "nước ngầm"
+    ],
+    "example_en": "Review the groundwater conditions before selecting the excavation and dewatering approach.",
+    "scenario": "Water begins entering a deep cut from the surrounding soil and affects the stability and dryness of the work area.",
+    "visual": "Soil section with a water table line intersecting a deep excavation and arrows showing seepage.",
+    "related_terms": [
+      "dewatering",
+      "soil-stabilization",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "Groundwater level can vary seasonally and across a site.",
+      "Do not assume minor groundwater has no cost or schedule impact."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "erosion-control",
+    "term": "erosion and sediment control",
+    "pronunciation": "ee-ROH-zhun and SED-uh-ment kun-TROHL",
+    "category": "drainage",
+    "definition_en": "Temporary and permanent measures used during construction to limit soil erosion and prevent sediment-laden runoff from leaving disturbed areas or entering drainage systems and waterbodies.",
+    "explanation_ru": "Контроль эрозии и наносов (ESC): меры, которые не дают размытому грунту и мутной воде уйти с площадки в catch basins, storm system или водоём. Сюда относятся silt fence, inlet protection, stabilization, sediment control и maintenance.",
+    "translation_ru": [
+      "контроль эрозии и наносов",
+      "противоэрозионные и противоиловые меры"
+    ],
+    "translation_vi": [
+      "kiểm soát xói mòn và bùn cặn"
+    ],
+    "example_en": "Include erosion and sediment control measures before starting major earth disturbance.",
+    "scenario": "Rainfall can carry exposed soil from a construction area into storm drains, so temporary controls are installed and maintained.",
+    "visual": "Graded site with silt fence, protected catch basin, stabilized stockpile, and runoff arrows.",
+    "related_terms": [
+      "silt-fence",
+      "catch-basin",
+      "drainage"
+    ],
+    "common_mistakes": [
+      "ESC is a system of measures, not only silt fence.",
+      "Requirements are project- and regulator-specific and need ongoing inspection and maintenance."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "select-backfill",
+    "term": "select backfill",
+    "pronunciation": "suh-LEKT BACK-fill",
+    "category": "earthworks",
+    "definition_en": "Backfill material specifically selected or specified to meet required properties for placement around or beneath structures and utilities.",
+    "explanation_ru": "Отборный/специально заданный материал обратной засыпки. Он должен соответствовать требованиям проекта по gradation, moisture, compaction и другим свойствам; это не просто любой excavated material.",
+    "translation_ru": [
+      "отборная обратная засыпка",
+      "специальный материал обратной засыпки"
+    ],
+    "translation_vi": [
+      "vật liệu lấp chọn lọc",
+      "đất/vật liệu lấp được chọn"
+    ],
+    "example_en": "Price the select backfill separately where imported material is required around the structure.",
+    "scenario": "Excavated native soil cannot be reused in a sensitive zone, so a specified higher-quality material must be imported, placed, and compacted.",
+    "visual": "Trench section showing a highlighted specified backfill zone around a structure above bedding.",
+    "related_terms": [
+      "backfill",
+      "aggregate",
+      "compaction"
+    ],
+    "common_mistakes": [
+      "Select backfill properties vary by specification; do not assume one universal gradation.",
+      "Keep imported material, placement, compaction, and trucking assumptions clear in the estimate."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "slab-preparation",
+    "term": "slab preparation",
+    "pronunciation": "SLAB prep-uh-RAY-shun",
+    "category": "concrete",
+    "definition_en": "The work required to prepare the supporting surface beneath a concrete slab, which may include trimming subgrade, granular material, compaction, leveling, and other specified under-slab layers.",
+    "explanation_ru": "Подготовка основания под бетонную плиту. Scope может включать trimming subgrade, gravel/base material, compaction и доведение отметки перед concrete work. Точный состав нужно брать из details/specifications.",
+    "translation_ru": [
+      "подготовка основания под плиту",
+      "подготовка под бетонную плиту"
+    ],
+    "translation_vi": [
+      "chuẩn bị nền dưới sàn bê tông"
+    ],
+    "example_en": "Carry slab preparation separately from the structural concrete if it is a distinct trade scope.",
+    "scenario": "Before concrete placement, the entire floor area needs a uniform compacted support surface at the required level.",
+    "visual": "Slab cross-section showing concrete above a prepared granular layer and compacted subgrade.",
+    "related_terms": [
+      "concrete-slab",
+      "subgrade",
+      "compaction"
+    ],
+    "common_mistakes": [
+      "Slab preparation scope varies widely between projects and trade packages.",
+      "Do not assume vapour barrier, insulation, mud slab, or granular thickness unless shown."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-slab",
+    "term": "concrete slab",
+    "pronunciation": "KON-kreet SLAB",
+    "category": "concrete",
+    "definition_en": "A broad, relatively thin reinforced or unreinforced concrete structural or ground-supported element forming a floor, roof, parking deck, or working surface.",
+    "explanation_ru": "Бетонная плита. В контексте встречи важны existing parkade slabs и новые slabs, внутри/под которыми идут below-grade services. Плита может быть slab-on-grade или suspended — это разные конструкции.",
+    "translation_ru": [
+      "бетонная плита",
+      "железобетонная плита"
+    ],
+    "translation_vi": [
+      "sàn bê tông",
+      "bản bê tông"
+    ],
+    "example_en": "Coordinate the below-grade plumbing before the concrete slab is poured.",
+    "scenario": "A large horizontal concrete element forms the floor or parking deck and covers the underground work below it.",
+    "visual": "Section through a horizontal concrete floor with reinforcement and utility piping below.",
+    "related_terms": [
+      "formwork",
+      "rebar",
+      "below-grade-plumbing"
+    ],
+    "common_mistakes": [
+      "A concrete slab is not automatically slab-on-grade; some slabs are suspended.",
+      "Check thickness, reinforcement, support condition, and construction joints in the structural drawings."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "slope-ratio",
+    "term": "slope ratio",
+    "pronunciation": "SLOHP RAY-shee-oh",
+    "category": "drawings",
+    "definition_en": "A numerical way to express the steepness of a slope, commonly as horizontal distance to vertical distance (H:V), such as 1.5H:1V.",
+    "explanation_ru": "Отношение уклона — запись крутизны откоса, обычно Horizontal:Vertical. Например, 1.5H:1V означает 1.5 единицы по горизонтали на 1 по вертикали. Всегда проверяй, в каком порядке записан ratio.",
+    "translation_ru": [
+      "отношение уклона",
+      "крутизна откоса H:V"
+    ],
+    "translation_vi": [
+      "tỷ lệ mái dốc",
+      "tỷ lệ ngang:đứng"
+    ],
+    "example_en": "Confirm the slope ratio shown in the geotechnical or structural note before calculating the excavation footprint.",
+    "scenario": "A drawing note gives two numbers separated by a colon to define how far a line moves horizontally for each unit of vertical change.",
+    "visual": "Right triangle showing horizontal run, vertical rise, and an H:V label on the inclined face.",
+    "related_terms": [
+      "excavation-sloping",
+      "profile",
+      "zone-of-influence"
+    ],
+    "common_mistakes": [
+      "Do not assume every ratio is written H:V; read the drawing note.",
+      "A project-specific influence-line ratio is not automatically the same as a safe excavation slope."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "elevation",
+    "term": "elevation",
+    "pronunciation": "el-uh-VAY-shun",
+    "category": "drawings",
+    "definition_en": "The vertical height of a point relative to a stated datum or benchmark, used to define grades, inverts, floors, excavation bottoms, and structural levels.",
+    "explanation_ru": "Отметка высоты точки относительно принятого datum/benchmark. В takeoff разница между existing, slab, invert и bottom-of-excavation elevations превращается в depth.",
+    "translation_ru": [
+      "высотная отметка",
+      "отметка"
+    ],
+    "translation_vi": [
+      "cao độ"
+    ],
+    "example_en": "Use the correct elevation from the architectural, structural, and civil drawings when calculating excavation depth.",
+    "scenario": "A plan or section gives a numeric vertical level that must be compared with another level to determine depth or height.",
+    "visual": "Profile with a benchmark line and several points labelled at different vertical levels.",
+    "related_terms": [
+      "benchmark",
+      "invert",
+      "profile"
+    ],
+    "common_mistakes": [
+      "Elevation is a vertical level, not the same as depth.",
+      "Confirm the drawing datum and units before comparing elevations from different disciplines."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "split-level",
+    "term": "split level",
+    "pronunciation": "SPLIT LEV-ul",
+    "category": "drawings",
+    "definition_en": "A layout in which adjacent floors, slabs, parking decks, or foundation areas occur at different elevations rather than one continuous level.",
+    "explanation_ru": "Разноуровневая схема: соседние части здания или parkade находятся на разных отметках. Для excavation это важно, потому что один footing может начинаться от P2, а другой от P3, и глубина будет разной.",
+    "translation_ru": [
+      "разноуровневый уровень",
+      "перепад уровней"
+    ],
+    "translation_vi": [
+      "công trình lệch tầng",
+      "mặt bằng khác cao độ"
+    ],
+    "example_en": "Treat the split level carefully because the same footing type may have different excavation depths on each side.",
+    "scenario": "Two adjacent floor areas are offset vertically and connected by a step or ramp rather than forming one flat plane.",
+    "visual": "Building section with two adjacent slabs at different elevations connected by a step.",
+    "related_terms": [
+      "elevation",
+      "plan-view",
+      "profile"
+    ],
+    "common_mistakes": [
+      "Do not use one average level across a split-level structure unless the estimating method explicitly allows it.",
+      "Check which level each footing or service belongs to."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "disposal",
+    "term": "excavated material disposal",
+    "pronunciation": "EX-kuh-vay-tid muh-TEER-ee-ul dis-POH-zul",
+    "category": "earthworks",
+    "definition_en": "The handling and legal removal of excavated soil, rock, debris, or unsuitable material from the site to an approved reuse, recycling, or disposal location.",
+    "explanation_ru": "Вывоз и размещение excavated material за пределами площадки. В estimate это отдельный cost driver: loading, trucking, dump/tipping fees, material classification и destination могут существенно менять цену.",
+    "translation_ru": [
+      "утилизация вынутого грунта",
+      "вывоз грунта на размещение"
+    ],
+    "translation_vi": [
+      "thải bỏ vật liệu đào",
+      "vận chuyển đất đào đi đổ"
+    ],
+    "example_en": "Separate excavated material disposal from excavation and trucking when the estimate tracks those costs individually.",
+    "scenario": "The site has more excavated soil than can be reused, so excess material must be hauled to an approved destination.",
+    "visual": "Excavator loading a truck with arrows from the site to an off-site disposal facility.",
+    "related_terms": [
+      "bulk-excavation",
+      "trucking",
+      "earthworks"
+    ],
+    "common_mistakes": [
+      "Excavation, trucking, and disposal fees may be separate cost components.",
+      "Material acceptance and disposal requirements depend on classification and destination."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trucking",
+    "term": "trucking",
+    "pronunciation": "TRUK-ing",
+    "category": "earthworks",
+    "definition_en": "The use and pricing of haul trucks to move excavated material, aggregate, fill, demolition debris, or other construction materials between the site and external locations.",
+    "explanation_ru": "Автоперевозка материалов самосвалами/haul trucks. Для earthworks estimator важно отделять truck time/loads от excavation, material supply и dump fees и учитывать haul distance, cycle time и loading constraints.",
+    "translation_ru": [
+      "перевозка самосвалами",
+      "автовывоз/доставка материалов"
+    ],
+    "translation_vi": [
+      "vận chuyển bằng xe tải",
+      "xe ben vận chuyển vật liệu"
+    ],
+    "example_en": "Price trucking separately when excavated soil must be hauled off site and imported aggregate must be delivered.",
+    "scenario": "Material must move between the project and an external source or disposal site, requiring repeated truck cycles.",
+    "visual": "Haul truck traveling between an excavation site and an external material or disposal location.",
+    "related_terms": [
+      "disposal",
+      "bulk-excavation",
+      "aggregate"
+    ],
+    "common_mistakes": [
+      "Trucking cost is not the same as disposal or material supply cost.",
+      "Production depends on haul distance, queueing, load time, dump time, traffic, and truck capacity."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "double-counting",
+    "term": "double counting",
+    "pronunciation": "DUB-ul KOWN-ting",
+    "category": "estimating",
+    "definition_en": "An estimating error in which the same quantity or scope is measured or priced more than once because overlapping items are not reconciled.",
+    "explanation_ru": "Двойной учёт. В этой встрече пример — trench проходит через footing excavation: если footing volume уже включает этот объём, нельзя снова полностью посчитать его как trench excavation.",
+    "translation_ru": [
+      "двойной учёт",
+      "повторный подсчёт"
+    ],
+    "translation_vi": [
+      "tính trùng khối lượng",
+      "đếm trùng"
+    ],
+    "example_en": "Check trench and footing overlaps to prevent double counting in the detailed excavation takeoff.",
+    "scenario": "Two takeoff items overlap physically, and adding both full quantities would charge the same volume twice.",
+    "visual": "Plan view with two overlapping takeoff shapes and the overlap highlighted once.",
+    "related_terms": [
+      "quantity-takeoff",
+      "footing-excavation",
+      "mechanical-excavation"
+    ],
+    "common_mistakes": [
+      "Do not remove legitimate separate work just because two scopes occupy the same area.",
+      "Use clear takeoff boundaries and reconciliation notes for overlaps."
+    ],
+    "difficulty": 2
   }
 ]

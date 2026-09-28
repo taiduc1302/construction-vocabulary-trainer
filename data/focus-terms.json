@@ -22,8 +22,8 @@
     {
       "id": "backfill",
       "added_at": "2026-09-16",
-      "last_requested_at": "2026-09-16",
-      "request_count": 1
+      "last_requested_at": "2026-09-28",
+      "request_count": 2
     },
     {
       "id": "fre-bend",
@@ -185,22 +185,322 @@
       "id": "bulk-excavation",
       "added_at": "2026-09-28",
       "last_requested_at": "2026-09-28",
-      "request_count": 1
+      "request_count": 2
     },
     {
       "id": "footing-excavation",
       "added_at": "2026-09-28",
       "last_requested_at": "2026-09-28",
-      "request_count": 1
+      "request_count": 2
     },
     {
       "id": "below-grade-plumbing",
       "added_at": "2026-09-28",
       "last_requested_at": "2026-09-28",
-      "request_count": 1
+      "request_count": 2
     },
     {
       "id": "shoring",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 2
+    },
+    {
+      "id": "excavation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "trench",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "subgrade",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "aggregate",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "compaction",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "formwork",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "catch-basin",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "manhole",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "invert",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "quantity-takeoff",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "rfq",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "addendum",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "dewatering",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "soil-stabilization",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "tieback-anchor",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "detailed-excavation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "footing",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "strip-footing",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "core-footing",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "working-space",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "excavation-sloping",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "dropped-footing",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "zone-of-influence",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "bottom-of-excavation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "mechanical-excavation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "utility-chamber",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "interceptor",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "crane-pad",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "construction-sequencing",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "underground-parkade",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "demolition",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "general-contractor",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "subcontractor",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "subcontractor-quote",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "bid-leveling",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "carry-a-number",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "budget-estimate",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "plug-number",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "alternate-price",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "groundwater",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "erosion-control",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "select-backfill",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "slab-preparation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "concrete-slab",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "slope-ratio",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "elevation",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "split-level",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "disposal",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "trucking",
+      "added_at": "2026-09-28",
+      "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "double-counting",
       "added_at": "2026-09-28",
       "last_requested_at": "2026-09-28",
       "request_count": 1

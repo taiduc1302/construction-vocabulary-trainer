@@ -251,6 +251,177 @@
         "excavation shoring",
         "shoring for excavation"
       ]
+    },
+    "tieback-anchor": {
+      "aliases_en": [
+        "ground anchor",
+        "shoring anchor",
+        "tieback",
+        "tie-back anchor"
+      ]
+    },
+    "detailed-excavation": {
+      "aliases_en": [
+        "detail excavation",
+        "detailed excavation work"
+      ]
+    },
+    "working-space": {
+      "aliases_en": [
+        "excavation working space"
+      ]
+    },
+    "excavation-sloping": {
+      "aliases_en": [
+        "sloping",
+        "slope back",
+        "sloping back"
+      ]
+    },
+    "dropped-footing": {
+      "aliases_en": [
+        "drop footing",
+        "lowered footing"
+      ]
+    },
+    "zone-of-influence": {
+      "aliases_en": [
+        "ZOI",
+        "foundation influence zone"
+      ]
+    },
+    "bottom-of-excavation": {
+      "aliases_en": [
+        "BOE",
+        "excavation bottom"
+      ]
+    },
+    "mechanical-excavation": {
+      "aliases_en": [
+        "plumbing excavation",
+        "underground mechanical excavation"
+      ]
+    },
+    "utility-chamber": {
+      "aliases_en": [
+        "service chamber",
+        "underground chamber"
+      ]
+    },
+    "general-contractor": {
+      "aliases_en": [
+        "GC",
+        "prime contractor"
+      ]
+    },
+    "subcontractor": {
+      "aliases_en": [
+        "sub",
+        "trade contractor"
+      ]
+    },
+    "subcontractor-quote": {
+      "aliases_en": [
+        "sub quote",
+        "subcontractor bid",
+        "trade quote"
+      ]
+    },
+    "bid-leveling": {
+      "aliases_en": [
+        "bid levelling",
+        "quote leveling",
+        "quote levelling"
+      ]
+    },
+    "carry-a-number": {
+      "aliases_en": [
+        "carry the number",
+        "carry their number",
+        "carry a price"
+      ]
+    },
+    "budget-estimate": {
+      "aliases_en": [
+        "budget price",
+        "budget pricing",
+        "budget number"
+      ]
+    },
+    "plug-number": {
+      "aliases_en": [
+        "plug",
+        "placeholder number",
+        "plugged number"
+      ]
+    },
+    "alternate-price": {
+      "aliases_en": [
+        "optional price",
+        "alternate",
+        "add/deduct price"
+      ]
+    },
+    "erosion-control": {
+      "aliases_en": [
+        "ESC",
+        "erosion control",
+        "sediment control"
+      ]
+    },
+    "slab-preparation": {
+      "aliases_en": [
+        "slab prep",
+        "under-slab preparation"
+      ]
+    },
+    "underground-parkade": {
+      "aliases_en": [
+        "underground parking",
+        "underground parking garage"
+      ]
+    },
+    "concrete-slab": {
+      "aliases_en": [
+        "slab",
+        "concrete floor slab"
+      ]
+    },
+    "select-backfill": {
+      "aliases_en": [
+        "selected backfill"
+      ]
+    },
+    "disposal": {
+      "aliases_en": [
+        "dumping",
+        "soil disposal",
+        "excavation disposal"
+      ]
+    },
+    "trucking": {
+      "aliases_en": [
+        "hauling",
+        "haulage"
+      ]
+    },
+    "double-counting": {
+      "aliases_en": [
+        "double count",
+        "duplicate quantity"
+      ]
+    },
+    "slope-ratio": {
+      "aliases_en": [
+        "H:V slope",
+        "horizontal to vertical slope"
+      ]
+    },
+    "split-level": {
+      "aliases_en": [
+        "split level structure",
+        "split-level structure"
+      ]
     }
   }
 }
