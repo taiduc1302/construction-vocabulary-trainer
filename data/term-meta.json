@@ -422,6 +422,242 @@
         "split level structure",
         "split-level structure"
       ]
+    },
+    "soldier-pile": {
+      "aliases_en": [
+        "soldier piles"
+      ]
+    },
+    "lagging": {
+      "aliases_en": [
+        "timber lagging",
+        "wood lagging"
+      ]
+    },
+    "waler": {
+      "aliases_en": [
+        "wale",
+        "waler beam"
+      ]
+    },
+    "strut": {
+      "aliases_en": [
+        "shoring strut",
+        "cross strut"
+      ]
+    },
+    "raker": {
+      "aliases_en": [
+        "raker brace",
+        "raking brace"
+      ]
+    },
+    "secant-pile-wall": {
+      "aliases_en": [
+        "secant wall"
+      ]
+    },
+    "shotcrete": {
+      "aliases_en": [
+        "sprayed concrete",
+        "gunite"
+      ]
+    },
+    "underpinning": {
+      "aliases_en": [
+        "foundation underpinning"
+      ]
+    },
+    "surcharge-load": {
+      "aliases_en": [
+        "surcharge"
+      ]
+    },
+    "anchor-grouting": {
+      "aliases_en": [
+        "tieback grouting",
+        "ground anchor grouting"
+      ]
+    },
+    "pad-footing": {
+      "aliases_en": [
+        "isolated footing",
+        "spread footing"
+      ]
+    },
+    "grade-beam": {
+      "aliases_en": [
+        "gradebeam",
+        "foundation beam"
+      ]
+    },
+    "mat-foundation": {
+      "aliases_en": [
+        "raft foundation",
+        "raft slab"
+      ]
+    },
+    "elevator-pit": {
+      "aliases_en": [
+        "lift pit"
+      ]
+    },
+    "sump-pit": {
+      "aliases_en": [
+        "sump"
+      ]
+    },
+    "slab-on-grade": {
+      "aliases_en": [
+        "SOG",
+        "slab on ground"
+      ]
+    },
+    "mud-slab": {
+      "aliases_en": [
+        "blinding concrete",
+        "blinding slab",
+        "working slab",
+        "lean concrete blinding"
+      ]
+    },
+    "bearing-elevation": {
+      "aliases_en": [
+        "founding elevation",
+        "foundation bearing elevation"
+      ]
+    },
+    "rim-elevation": {
+      "aliases_en": [
+        "rim level"
+      ],
+      "drawing_labels": [
+        "RIM"
+      ]
+    },
+    "over-excavation": {
+      "aliases_en": [
+        "overexcavation"
+      ]
+    },
+    "excavation-ramp": {
+      "aliases_en": [
+        "haul ramp",
+        "access ramp"
+      ]
+    },
+    "stockpile": {
+      "aliases_en": [
+        "material stockpile"
+      ]
+    },
+    "imported-fill": {
+      "aliases_en": [
+        "import fill",
+        "import material"
+      ]
+    },
+    "tipping-fee": {
+      "aliases_en": [
+        "dump fee",
+        "disposal fee"
+      ]
+    },
+    "haul-distance": {
+      "aliases_en": [
+        "haul length"
+      ]
+    },
+    "truck-cycle-time": {
+      "aliases_en": [
+        "haul cycle",
+        "truck cycle"
+      ]
+    },
+    "swell-factor": {
+      "aliases_en": [
+        "bulking factor",
+        "swell"
+      ]
+    },
+    "bank-cubic-metre": {
+      "aliases_en": [
+        "BCM",
+        "bank cubic meter"
+      ]
+    },
+    "loose-cubic-metre": {
+      "aliases_en": [
+        "LCM",
+        "loose cubic meter"
+      ]
+    },
+    "unsuitable-material": {
+      "aliases_en": [
+        "unsuitable soil"
+      ]
+    },
+    "sump-pumping": {
+      "aliases_en": [
+        "sump dewatering"
+      ]
+    },
+    "utility-conflict": {
+      "aliases_en": [
+        "service conflict",
+        "clash"
+      ]
+    },
+    "scope-gap": {
+      "aliases_en": [
+        "scope gap risk"
+      ]
+    },
+    "inclusion": {
+      "aliases_en": [
+        "included scope"
+      ]
+    },
+    "exclusion": {
+      "aliases_en": [
+        "excluded scope"
+      ]
+    },
+    "qualification": {
+      "aliases_en": [
+        "proposal qualification",
+        "quote qualification"
+      ]
+    },
+    "mobilization": {
+      "aliases_en": [
+        "mobilisation",
+        "mob"
+      ]
+    },
+    "standby-time": {
+      "aliases_en": [
+        "standby"
+      ]
+    },
+    "historical-pricing": {
+      "aliases_en": [
+        "historical cost",
+        "past pricing",
+        "previous pricing"
+      ]
+    },
+    "escalation": {
+      "aliases_en": [
+        "cost escalation",
+        "price escalation"
+      ]
+    },
+    "price-validity": {
+      "aliases_en": [
+        "quote validity",
+        "validity period"
+      ]
     }
   }
 }
