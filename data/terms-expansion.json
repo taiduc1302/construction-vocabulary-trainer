@@ -2713,5 +2713,1193 @@
       "Use clear takeoff boundaries and reconciliation notes for overlaps."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "soldier-pile",
+    "term": "soldier pile",
+    "pronunciation": "SOHL-jer PYLE",
+    "category": "safety",
+    "definition_en": "A vertical structural member, commonly steel H-pile, installed at intervals to support an excavation shoring wall, with lagging spanning between adjacent piles.",
+    "explanation_ru": "Вертикальная несущая стойка шоринга, часто стальная H-pile. Между соседними soldier piles устанавливают lagging; сами стойки могут удерживаться tiebacks, walers или внутренними распорками.",
+    "translation_ru": [
+      "солдатская свая",
+      "стойка ограждения котлована"
+    ],
+    "translation_vi": [
+      "cọc soldier pile",
+      "cọc thép giữ thành hố đào"
+    ],
+    "example_en": "Install each soldier pile before the excavation proceeds to the next shoring stage.",
+    "scenario": "Vertical steel members are installed along the excavation perimeter before soil is removed between them.",
+    "visual": "Excavation section showing vertical H-piles at intervals with retaining elements between them.",
+    "related_terms": [
+      "shoring",
+      "lagging",
+      "tieback-anchor"
+    ],
+    "common_mistakes": [
+      "A soldier pile is not the lagging itself.",
+      "Pile size, spacing, embedment, and installation method are engineered."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "lagging",
+    "term": "lagging",
+    "pronunciation": "LAG-ing",
+    "category": "safety",
+    "definition_en": "Horizontal boards, panels, or structural elements installed between soldier piles to retain soil as excavation progresses.",
+    "explanation_ru": "Lagging — горизонтальные доски, панели или иные элементы между soldier piles, которые удерживают грунт по мере углубления котлована.",
+    "translation_ru": [
+      "забирка",
+      "горизонтальное заполнение между стойками шоринга"
+    ],
+    "translation_vi": [
+      "ván chắn đất giữa cọc",
+      "tấm lagging"
+    ],
+    "example_en": "Place the lagging progressively as the excavation is lowered.",
+    "scenario": "Soil is removed in stages and retaining panels are inserted between previously installed vertical piles.",
+    "visual": "Shoring elevation showing horizontal panels spanning between vertical soldier piles.",
+    "related_terms": [
+      "soldier-pile",
+      "shoring",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "Lagging retains soil between supports; it is not the main vertical pile.",
+      "Material and thickness depend on the engineered shoring design."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "waler",
+    "term": "waler",
+    "pronunciation": "WAY-ler",
+    "category": "safety",
+    "definition_en": "A horizontal structural member that distributes shoring loads along a wall to tiebacks, struts, rakers, or other supports.",
+    "explanation_ru": "Waler — горизонтальная балка вдоль shoring wall, которая собирает и распределяет боковую нагрузку между анкерами, struts/rakers и элементами ограждения.",
+    "translation_ru": [
+      "распределительная балка шоринга",
+      "валер"
+    ],
+    "translation_vi": [
+      "dầm waler",
+      "dầm phân phối tải tường chắn"
+    ],
+    "example_en": "Install the waler at the anchor level before stressing the tiebacks.",
+    "scenario": "A continuous horizontal beam links several shoring supports so wall loads are shared rather than concentrated at one point.",
+    "visual": "Shoring wall with a horizontal beam connecting several support points.",
+    "related_terms": [
+      "shoring",
+      "tieback-anchor",
+      "raker"
+    ],
+    "common_mistakes": [
+      "Do not confuse a waler with lagging; they have different structural roles.",
+      "Waler size and connection details come from the shoring design."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "strut",
+    "term": "strut",
+    "pronunciation": "STRUT",
+    "category": "safety",
+    "definition_en": "An internal compression brace used to support opposite excavation walls or transfer shoring loads to another structural support.",
+    "explanation_ru": "Strut — внутренняя распорка, работающая на сжатие. Её ставят внутри котлована, когда стенки shoring поддерживают друг друга или передают нагрузку на внутреннюю систему распорок.",
+    "translation_ru": [
+      "внутренняя распорка",
+      "сжатая распорка шоринга"
+    ],
+    "translation_vi": [
+      "thanh chống ngang",
+      "strut chống hố đào"
+    ],
+    "example_en": "Provide a strut where internal bracing is required instead of tieback anchors.",
+    "scenario": "The excavation cannot use anchors beyond the property line, so compression braces span within the cut.",
+    "visual": "Excavation section with a horizontal compression brace spanning between two shoring walls.",
+    "related_terms": [
+      "shoring",
+      "waler",
+      "raker"
+    ],
+    "common_mistakes": [
+      "A strut works mainly in compression and can obstruct access inside the excavation.",
+      "Do not assume tiebacks can be replaced by struts without redesign."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "raker",
+    "term": "raker",
+    "pronunciation": "RAY-ker",
+    "category": "safety",
+    "definition_en": "An inclined compression brace used to support a shoring wall by transferring lateral load down to a footing, block, slab, or other reaction point.",
+    "explanation_ru": "Raker — наклонная распорка шоринга. Она передаёт боковую нагрузку от стены вниз на опорный блок, footing или другое основание внутри котлована.",
+    "translation_ru": [
+      "наклонная распорка",
+      "раскос шоринга"
+    ],
+    "translation_vi": [
+      "thanh chống xiên",
+      "raker chống tường"
+    ],
+    "example_en": "Use a raker where the shoring wall requires internal inclined bracing.",
+    "scenario": "An excavation wall needs support but a horizontal brace would block the work area, so an inclined compression member is used.",
+    "visual": "Shoring section with an inclined brace from the wall down to an interior reaction block.",
+    "related_terms": [
+      "shoring",
+      "waler",
+      "strut"
+    ],
+    "common_mistakes": [
+      "Rakers consume working space inside the excavation.",
+      "Reaction blocks and connections are engineered components, not incidental concrete."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "secant-pile-wall",
+    "term": "secant pile wall",
+    "pronunciation": "SEE-kant PYLE wall",
+    "category": "safety",
+    "definition_en": "A continuous shoring wall formed by overlapping bored concrete piles, commonly used for deep excavations where stiffness and groundwater cutoff are important.",
+    "explanation_ru": "Secant pile wall — сплошная стена из взаимно перекрывающихся буронабивных бетонных свай. Её применяют для глубоких котлованов, ограниченных площадок и там, где важен контроль грунта и воды.",
+    "translation_ru": [
+      "стена из секущихся свай",
+      "секущая свайная стена"
+    ],
+    "translation_vi": [
+      "tường cọc secant",
+      "tường cọc khoan giao nhau"
+    ],
+    "example_en": "Price the secant pile wall separately from conventional soldier-pile-and-lagging shoring.",
+    "scenario": "Overlapping drilled piles create a nearly continuous retaining wall around a deep excavation.",
+    "visual": "Plan and section showing overlapping circular piles forming a continuous perimeter wall.",
+    "related_terms": [
+      "shoring",
+      "dewatering",
+      "groundwater"
+    ],
+    "common_mistakes": [
+      "A secant pile wall is different from spaced soldier piles with lagging.",
+      "Pile overlap, reinforcement, tolerances, and water control are design-specific."
+    ],
+    "difficulty": 4
+  },
+  {
+    "id": "shotcrete",
+    "term": "shotcrete",
+    "pronunciation": "SHOT-kreet",
+    "category": "concrete",
+    "definition_en": "Concrete or mortar pneumatically projected at high velocity onto a surface, often used for shoring facing, slope stabilization, repair, and structural work.",
+    "explanation_ru": "Shotcrete — бетон/раствор, который наносят под давлением через сопло. На excavation проектах его часто используют как facing шоринга или для стабилизации поверхности грунта.",
+    "translation_ru": [
+      "торкрет-бетон",
+      "набрызг-бетон"
+    ],
+    "translation_vi": [
+      "bê tông phun",
+      "shotcrete"
+    ],
+    "example_en": "Apply shotcrete to the exposed shoring face where the design requires a continuous facing.",
+    "scenario": "Fresh concrete is sprayed onto a vertical excavation support surface instead of being poured into conventional forms.",
+    "visual": "Worker nozzle spraying concrete onto an excavation wall supported by reinforcement.",
+    "related_terms": [
+      "shoring",
+      "soil-stabilization",
+      "concrete"
+    ],
+    "common_mistakes": [
+      "Shotcrete placement is not the same as ordinary cast-in-place concrete.",
+      "Thickness, reinforcement, surface preparation, and testing follow the design/specification."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "underpinning",
+    "term": "underpinning",
+    "pronunciation": "UN-der-pin-ing",
+    "category": "concrete",
+    "definition_en": "Temporary or permanent work that strengthens or deepens an existing foundation so nearby excavation or new construction does not undermine it.",
+    "explanation_ru": "Underpinning — усиление или углубление существующего фундамента. Может понадобиться, когда новый глубокий котлован подходит слишком близко к соседнему зданию или существующей foundation.",
+    "translation_ru": [
+      "подведение нового фундамента",
+      "усиление существующего фундамента"
+    ],
+    "translation_vi": [
+      "gia cố móng hiện hữu",
+      "underpinning"
+    ],
+    "example_en": "Include underpinning only where the temporary works or structural design requires support of the existing foundation.",
+    "scenario": "A new basement extends below an adjacent existing footing, so the old foundation needs additional support before excavation continues.",
+    "visual": "Section showing an existing shallow footing supported by new deeper underpinning elements beside an excavation.",
+    "related_terms": [
+      "zone-of-influence",
+      "shoring",
+      "footing"
+    ],
+    "common_mistakes": [
+      "Underpinning is engineered temporary/structural work, not ordinary excavation.",
+      "Do not assume it is included in shoring unless the scope clearly says so."
+    ],
+    "difficulty": 4
+  },
+  {
+    "id": "surcharge-load",
+    "term": "surcharge load",
+    "pronunciation": "SUR-charj LOHD",
+    "category": "safety",
+    "definition_en": "An additional load applied near an excavation or retaining system from buildings, traffic, stockpiles, cranes, equipment, or other sources above the retained ground.",
+    "explanation_ru": "Surcharge load — дополнительная нагрузка у края котлована: здание, техника, traffic, stockpile, crane и т. п. Эта нагрузка увеличивает давление на shoring и влияет на temporary works design.",
+    "translation_ru": [
+      "пригрузка у котлована",
+      "дополнительная поверхностная нагрузка"
+    ],
+    "translation_vi": [
+      "tải trọng phụ cạnh hố đào",
+      "surcharge load"
+    ],
+    "example_en": "Account for the surcharge load from construction equipment near the shoring wall.",
+    "scenario": "Heavy equipment sits close to the excavation edge and adds lateral demand to the retaining system.",
+    "visual": "Excavation section with equipment at grade and arrows showing added load toward the shoring wall.",
+    "related_terms": [
+      "shoring",
+      "crane-pad",
+      "stockpile"
+    ],
+    "common_mistakes": [
+      "Surcharge is not limited to buildings; temporary construction loads also matter.",
+      "Keep heavy stockpiles and equipment locations consistent with the shoring design."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "anchor-grouting",
+    "term": "anchor grouting",
+    "pronunciation": "ANG-ker GROUT-ing",
+    "category": "safety",
+    "definition_en": "The placement or injection of grout around a ground anchor or tieback to form the bonded zone that transfers anchor load into soil or rock.",
+    "explanation_ru": "Anchor grouting — инъектирование grout вокруг tieback/ground anchor для создания bonded zone, через которую усилие анкера передаётся в грунт или скалу.",
+    "translation_ru": [
+      "инъектирование анкера",
+      "цементация грунтового анкера"
+    ],
+    "translation_vi": [
+      "bơm vữa neo đất",
+      "grouting neo"
+    ],
+    "example_en": "Carry anchor grouting as part of the tieback system when it is included in the shoring design.",
+    "scenario": "After an anchor hole is drilled and the tendon is installed, grout is injected so the anchor can develop bond with the ground.",
+    "visual": "Section showing an inclined tieback with a grouted bond zone behind the shoring wall.",
+    "related_terms": [
+      "tieback-anchor",
+      "shoring",
+      "soil-stabilization"
+    ],
+    "common_mistakes": [
+      "Grouting details and pressures are engineered and system-specific.",
+      "Do not treat optional post-grouting or regrouting as automatically included in the base anchor price."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pad-footing",
+    "term": "pad footing",
+    "pronunciation": "PAD FOOT-ing",
+    "category": "concrete",
+    "definition_en": "An isolated footing that supports a single column or concentrated load and spreads it into the soil over a wider base area.",
+    "explanation_ru": "Pad footing — отдельный фундамент под колонну или другую сосредоточенную нагрузку. В excavation takeoff обычно считается отдельной rectangular/stepped выемкой.",
+    "translation_ru": [
+      "отдельный фундамент",
+      "подошва под колонну"
+    ],
+    "translation_vi": [
+      "móng đơn",
+      "móng pad"
+    ],
+    "example_en": "Measure each pad footing separately where column foundations occur at different elevations.",
+    "scenario": "Individual columns bear on separate widened concrete bases rather than one continuous strip.",
+    "visual": "Plan and section showing an isolated square concrete footing beneath a column.",
+    "related_terms": [
+      "footing",
+      "footing-excavation",
+      "bearing-elevation"
+    ],
+    "common_mistakes": [
+      "Do not assume every isolated footing has the same depth or working-space requirement.",
+      "Pad footing and strip footing quantities should not be mixed."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "grade-beam",
+    "term": "grade beam",
+    "pronunciation": "GRAYD BEEM",
+    "category": "concrete",
+    "definition_en": "A reinforced concrete beam at or near ground level that spans between foundations or supports walls, while transferring loads to footings, piles, or other supports.",
+    "explanation_ru": "Grade beam — железобетонная балка у уровня земли/ниже земли, которая соединяет foundations или несёт стены и передаёт нагрузку на footings/piles. Для excavation она часто требует длинной узкой выемки.",
+    "translation_ru": [
+      "фундаментная балка",
+      "ростверковая балка"
+    ],
+    "translation_vi": [
+      "dầm móng",
+      "grade beam"
+    ],
+    "example_en": "Excavate the grade beam trench after confirming its underside and adjacent footing elevations.",
+    "scenario": "A continuous reinforced beam links separate foundation supports and carries a wall above.",
+    "visual": "Section showing a reinforced beam spanning between two isolated foundations.",
+    "related_terms": [
+      "footing",
+      "pad-footing",
+      "rebar"
+    ],
+    "common_mistakes": [
+      "A grade beam is structural concrete, not merely a thickened slab edge.",
+      "Check whether it bears on soil or spans between supports."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "mat-foundation",
+    "term": "mat foundation",
+    "pronunciation": "MAT fown-DAY-shun",
+    "category": "concrete",
+    "definition_en": "A large continuous reinforced concrete foundation, also called a raft foundation, that supports many columns, walls, or a building core over a broad area.",
+    "explanation_ru": "Mat foundation / raft foundation — большая сплошная железобетонная фундаментная плита, распределяющая нагрузку от многих колонн/стен по большой площади.",
+    "translation_ru": [
+      "фундаментная плита",
+      "плитный фундамент"
+    ],
+    "translation_vi": [
+      "móng bè",
+      "móng raft"
+    ],
+    "example_en": "Treat the mat foundation as a large continuous foundation excavation rather than separate isolated footings.",
+    "scenario": "Many structural loads are supported by one thick reinforced concrete foundation covering most of the building footprint.",
+    "visual": "Section showing columns and core walls bearing on one thick continuous foundation slab.",
+    "related_terms": [
+      "core-footing",
+      "footing",
+      "rebar"
+    ],
+    "common_mistakes": [
+      "A mat foundation is much thicker and more heavily reinforced than a typical floor slab.",
+      "Raft foundation is a common synonym."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "elevator-pit",
+    "term": "elevator pit",
+    "pronunciation": "EL-uh-vay-ter PIT",
+    "category": "concrete",
+    "definition_en": "A depressed structural pit below the lowest elevator landing that provides required space beneath the elevator car and equipment.",
+    "explanation_ru": "Elevator pit — углубление ниже самого нижнего уровня лифта. Для estimator это отдельная глубокая excavation внутри core, обычно с более низкой bottom elevation, стенами и slab.",
+    "translation_ru": [
+      "лифтовый приямок",
+      "яма лифта"
+    ],
+    "translation_vi": [
+      "hố thang máy",
+      "pit thang máy"
+    ],
+    "example_en": "Measure the elevator pit excavation below the surrounding core foundation level.",
+    "scenario": "The elevator shaft continues below the lowest floor into a deeper structural pocket.",
+    "visual": "Core section showing an elevator shaft extending into a depressed pit below the lowest slab.",
+    "related_terms": [
+      "core-footing",
+      "detailed-excavation",
+      "bottom-of-excavation"
+    ],
+    "common_mistakes": [
+      "Do not stop the excavation quantity at the lowest floor slab elevation.",
+      "Coordinate pit depth with structural and elevator drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "sump-pit",
+    "term": "sump pit",
+    "pronunciation": "SUMP PIT",
+    "category": "drainage",
+    "definition_en": "A localized depressed pit that collects drainage or groundwater so it can be pumped to an approved discharge or drainage system.",
+    "explanation_ru": "Sump pit — локальный приямок для сбора воды. В building excavation он может быть частью permanent drainage или временного dewatering и обычно требует отдельной глубокой выемки.",
+    "translation_ru": [
+      "водосборный приямок",
+      "дренажный приямок"
+    ],
+    "translation_vi": [
+      "hố thu nước",
+      "hố sump"
+    ],
+    "example_en": "Excavate the sump pit to the required bottom elevation before installing the drainage components.",
+    "scenario": "Water is directed to one low point below the surrounding floor so a pump can remove it.",
+    "visual": "Section showing a depressed pit below slab level with water collection arrows.",
+    "related_terms": [
+      "dewatering",
+      "sump-pumping",
+      "concrete-slab"
+    ],
+    "common_mistakes": [
+      "A permanent sump pit and a temporary excavation sump are not necessarily the same scope.",
+      "Check pump, piping, waterproofing, and discharge requirements separately."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "slab-on-grade",
+    "term": "slab on grade",
+    "pronunciation": "SLAB on GRAYD",
+    "category": "concrete",
+    "definition_en": "A concrete slab cast directly on prepared ground or granular base rather than spanning structurally between beams, walls, or columns.",
+    "explanation_ru": "Slab on grade — бетонная плита по подготовленному грунту/гранулярному основанию. Под ней обычно координируются subgrade, slab prep и underground services.",
+    "translation_ru": [
+      "бетонная плита по грунту"
+    ],
+    "translation_vi": [
+      "sàn bê tông trên nền đất"
+    ],
+    "example_en": "Complete the underground services and slab preparation before placing the slab on grade.",
+    "scenario": "A floor slab is supported continuously by prepared ground rather than suspended over open space.",
+    "visual": "Cross-section showing concrete slab over granular base and compacted subgrade.",
+    "related_terms": [
+      "slab-preparation",
+      "subgrade",
+      "below-grade-plumbing"
+    ],
+    "common_mistakes": [
+      "Do not confuse slab on grade with a suspended structural slab.",
+      "Under-slab layers vary by project."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "mud-slab",
+    "term": "mud slab",
+    "pronunciation": "MUD SLAB",
+    "category": "concrete",
+    "definition_en": "A thin layer of low-strength concrete placed over soil or granular base to provide a clean, stable working surface for reinforcement, waterproofing, or foundation construction.",
+    "explanation_ru": "Mud slab — тонкий слой слабого/lean concrete по грунту, создающий чистую ровную рабочую поверхность под foundation, waterproofing или rebar. Также может называться blinding concrete.",
+    "translation_ru": [
+      "бетонная подготовка",
+      "подбетонка"
+    ],
+    "translation_vi": [
+      "bê tông lót",
+      "lớp bê tông blinding"
+    ],
+    "example_en": "Place the mud slab over the trimmed excavation before foundation reinforcement work begins.",
+    "scenario": "After excavation reaches grade, a thin non-structural concrete layer creates a clean base for the structural foundation work.",
+    "visual": "Section showing a thin concrete layer beneath a thicker structural footing or mat foundation.",
+    "related_terms": [
+      "bottom-of-excavation",
+      "mat-foundation",
+      "concrete"
+    ],
+    "common_mistakes": [
+      "A mud slab is generally not the main structural foundation.",
+      "Thickness and strength must come from the project requirements."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "bearing-elevation",
+    "term": "bearing elevation",
+    "pronunciation": "BAIR-ing el-uh-VAY-shun",
+    "category": "drawings",
+    "definition_en": "The elevation at which a footing or foundation is intended to bear on competent supporting soil, rock, or engineered material.",
+    "explanation_ru": "Bearing elevation — проектная отметка подошвы/опирания foundation. От неё зависит глубина footing excavation и проверка zone of influence рядом с глубокими services.",
+    "translation_ru": [
+      "отметка опирания фундамента",
+      "отметка подошвы"
+    ],
+    "translation_vi": [
+      "cao độ đặt móng",
+      "cao độ chịu tải của móng"
+    ],
+    "example_en": "Use the bearing elevation to calculate the footing excavation depth from the surrounding excavation level.",
+    "scenario": "The structural detail identifies the level where the foundation must contact suitable supporting material.",
+    "visual": "Foundation section with a labelled horizontal bearing line beneath the footing.",
+    "related_terms": [
+      "footing",
+      "elevation",
+      "bottom-of-excavation"
+    ],
+    "common_mistakes": [
+      "Bearing elevation is not always the same as bottom of excavation if a mud slab or granular layer is below the footing.",
+      "Confirm whether drawings reference underside of concrete or prepared bearing surface."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "rim-elevation",
+    "term": "rim elevation",
+    "pronunciation": "RIM el-uh-VAY-shun",
+    "category": "drawings",
+    "definition_en": "The elevation at the top of a manhole, catch basin, chamber, or similar structure where its cover or frame meets the finished surface.",
+    "explanation_ru": "Rim elevation — отметка верха manhole/catch basin/chamber, обычно у cover/frame на finished grade. Вместе с invert или structure bottom помогает понять полную глубину.",
+    "translation_ru": [
+      "отметка люка",
+      "отметка верха колодца"
+    ],
+    "translation_vi": [
+      "cao độ miệng hố ga",
+      "cao độ nắp hố"
+    ],
+    "example_en": "Compare the rim elevation with the invert and structure bottom to check the chamber depth.",
+    "scenario": "A utility structure has a top cover at finished grade and pipe connections lower inside it.",
+    "visual": "Vertical structure section labelled at cover level and at lower pipe/invert elevations.",
+    "related_terms": [
+      "manhole",
+      "invert",
+      "elevation"
+    ],
+    "common_mistakes": [
+      "Rim elevation is the top reference, not the pipe invert.",
+      "Always confirm whether the drawing uses rim, lid, frame, or finished-grade terminology."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "over-excavation",
+    "term": "over-excavation",
+    "pronunciation": "OH-ver eks-kuh-VAY-shun",
+    "category": "excavation",
+    "definition_en": "Excavation carried deeper or wider than the nominal design limit, either intentionally for unsuitable material removal, working space, replacement fill, or by construction tolerance.",
+    "explanation_ru": "Over-excavation — дополнительная выемка сверх номинальной линии проекта по глубине или ширине. Может быть преднамеренной из-за плохого грунта или замены material, либо нежелательной.",
+    "translation_ru": [
+      "переэкскавация",
+      "дополнительная выемка грунта"
+    ],
+    "translation_vi": [
+      "đào quá thiết kế",
+      "đào vượt phạm vi"
+    ],
+    "example_en": "Track over-excavation separately where unsuitable material must be removed below the planned subgrade.",
+    "scenario": "The design cut is reached but weak material continues below it and must be removed before replacement fill is placed.",
+    "visual": "Excavation section showing the design line and a deeper localized removal zone below it.",
+    "related_terms": [
+      "subgrade",
+      "unsuitable-material",
+      "backfill"
+    ],
+    "common_mistakes": [
+      "Do not automatically include all over-excavation in the base quantity unless the scope requires it.",
+      "Replacement material and disposal can be separate costs."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "excavation-ramp",
+    "term": "excavation ramp",
+    "pronunciation": "eks-kuh-VAY-shun RAMP",
+    "category": "earthworks",
+    "definition_en": "A temporary sloped access route built into or through an excavation so trucks and equipment can enter and exit lower working levels.",
+    "explanation_ru": "Excavation ramp — временный съезд в котлован для excavators, loaders и trucks. Его объём и последующее removal могут влиять на production и последовательность bulk excavation.",
+    "translation_ru": [
+      "временный съезд в котлован",
+      "рампа котлована"
+    ],
+    "translation_vi": [
+      "đường dốc xuống hố đào",
+      "ramp thi công"
+    ],
+    "example_en": "Allow for the excavation ramp when planning truck access and the final bulk cut sequence.",
+    "scenario": "Haul trucks must reach the bottom of a deep excavation, so part of the soil is temporarily left or built into a sloped access route.",
+    "visual": "Deep excavation section with a sloping truck access route from grade to the bottom.",
+    "related_terms": [
+      "bulk-excavation",
+      "trucking",
+      "construction-sequencing"
+    ],
+    "common_mistakes": [
+      "Ramp material may be excavated later, so avoid double counting its volume.",
+      "Ramp grade and width depend on equipment, safety, and site constraints."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "stockpile",
+    "term": "stockpile",
+    "pronunciation": "STOK-pyle",
+    "category": "earthworks",
+    "definition_en": "A temporary pile of excavated soil, aggregate, backfill, or other bulk material stored on site for later reuse, loading, or disposal.",
+    "explanation_ru": "Stockpile — временная куча/склад грунта или aggregate на площадке. В earthworks estimating влияет на rehandling, space, surcharge near shoring, moisture и haul logistics.",
+    "translation_ru": [
+      "склад грунта",
+      "временный отвал"
+    ],
+    "translation_vi": [
+      "đống vật liệu tạm",
+      "bãi chứa đất"
+    ],
+    "example_en": "Keep the stockpile away from the excavation edge unless the shoring design allows the surcharge.",
+    "scenario": "Excavated soil is kept on site for later reuse instead of being hauled away immediately.",
+    "visual": "Site plan showing a material pile, equipment access, and setback from an excavation edge.",
+    "related_terms": [
+      "surcharge-load",
+      "backfill",
+      "trucking"
+    ],
+    "common_mistakes": [
+      "Stockpiling can create rehandling cost and shoring surcharge.",
+      "Not all excavated material is suitable or permitted for reuse."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "imported-fill",
+    "term": "imported fill",
+    "pronunciation": "im-POR-tid FILL",
+    "category": "earthworks",
+    "definition_en": "Fill material brought onto the project from an off-site source because suitable on-site material is unavailable, insufficient, or not approved for reuse.",
+    "explanation_ru": "Imported fill — материал обратной засыпки/насыпи, который завозят на площадку извне. В цене обычно важны material supply, trucking, placement и compaction.",
+    "translation_ru": [
+      "привозной грунт",
+      "привозной материал засыпки"
+    ],
+    "translation_vi": [
+      "vật liệu đắp nhập về",
+      "đất đắp chở từ ngoài vào"
+    ],
+    "example_en": "Price imported fill separately when native excavated soil cannot satisfy the backfill requirements.",
+    "scenario": "The project needs more suitable fill than can be reused from the excavation, so approved material is hauled in.",
+    "visual": "Truck delivering aggregate/fill into a placement area beside an excavation.",
+    "related_terms": [
+      "select-backfill",
+      "backfill",
+      "trucking"
+    ],
+    "common_mistakes": [
+      "Imported fill cost is not only the material purchase price.",
+      "Verify source, gradation/specification, moisture, trucking, placement, and compaction."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "tipping-fee",
+    "term": "tipping fee",
+    "pronunciation": "TIP-ing FEE",
+    "category": "earthworks",
+    "definition_en": "The fee charged by a disposal, transfer, recycling, or soil facility to accept a load of excavated material or construction debris.",
+    "explanation_ru": "Tipping fee / dump fee — плата площадке приёмки за каждую нагрузку/тонну/объём вывезенного material. Это отдельный cost от самого trucking.",
+    "translation_ru": [
+      "плата за приём грунта",
+      "dump fee",
+      "плата за утилизацию"
+    ],
+    "translation_vi": [
+      "phí đổ thải",
+      "phí tiếp nhận vật liệu"
+    ],
+    "example_en": "Include the tipping fee separately from truck time when pricing off-site disposal.",
+    "scenario": "A haul truck reaches an approved facility and the estimator must account for the facility's charge to accept the load.",
+    "visual": "Haul truck entering a disposal facility with a fee ticket symbol.",
+    "related_terms": [
+      "disposal",
+      "trucking",
+      "haul-distance"
+    ],
+    "common_mistakes": [
+      "Tipping fees can vary by material classification and facility.",
+      "Do not assume trucking includes disposal fees unless the quote clearly says so."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "haul-distance",
+    "term": "haul distance",
+    "pronunciation": "HAWL DIS-tuns",
+    "category": "earthworks",
+    "definition_en": "The travel distance between the project and a material source, disposal site, or other destination used to estimate trucking time and cost.",
+    "explanation_ru": "Haul distance — расстояние перевозки между площадкой и dump/source. Оно напрямую влияет на truck cycle time, количество trucks и production.",
+    "translation_ru": [
+      "плечо перевозки",
+      "дальность вывоза/доставки"
+    ],
+    "translation_vi": [
+      "cự ly vận chuyển",
+      "quãng đường haul"
+    ],
+    "example_en": "Check the haul distance before using historical trucking rates for soil export.",
+    "scenario": "The same excavated volume can have very different transport cost depending on how far the truck must travel.",
+    "visual": "Simple route diagram between construction site and disposal/source location with a distance arrow.",
+    "related_terms": [
+      "trucking",
+      "truck-cycle-time",
+      "disposal"
+    ],
+    "common_mistakes": [
+      "Distance alone is not enough; traffic, queueing, and loading/unloading time also matter.",
+      "Use one-way or round-trip distance consistently."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "truck-cycle-time",
+    "term": "truck cycle time",
+    "pronunciation": "TRUK SY-kul TYM",
+    "category": "estimating",
+    "definition_en": "The total time for one truck to be loaded, travel to its destination, unload, return, and become available for the next load.",
+    "explanation_ru": "Truck cycle time — полный цикл самосвала: loading → haul → dump → return → ready for next load. По нему estimator определяет нужное количество trucks под excavator production.",
+    "translation_ru": [
+      "время цикла самосвала",
+      "оборот рейса"
+    ],
+    "translation_vi": [
+      "thời gian chu kỳ xe tải",
+      "thời gian một vòng xe"
+    ],
+    "example_en": "Use truck cycle time to size the hauling fleet so the excavator is not waiting for trucks.",
+    "scenario": "A truck repeats the same loading, travel, dumping, and return sequence throughout the shift.",
+    "visual": "Circular flow diagram with load, haul, dump, return, and repeat.",
+    "related_terms": [
+      "trucking",
+      "haul-distance",
+      "production-rate"
+    ],
+    "common_mistakes": [
+      "Too few trucks can idle the excavator; too many can create queues.",
+      "Cycle time changes with traffic, queueing, and site access."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "swell-factor",
+    "term": "swell factor",
+    "pronunciation": "SWEL FAK-ter",
+    "category": "estimating",
+    "definition_en": "A factor describing the increase in volume that occurs when in-situ soil or rock is excavated and becomes loose material.",
+    "explanation_ru": "Swell factor — увеличение объёма после выемки грунта. Bank volume после рыхления занимает больше loose volume, что важно для truck loads и disposal.",
+    "translation_ru": [
+      "коэффициент разрыхления",
+      "коэффициент увеличения объёма"
+    ],
+    "translation_vi": [
+      "hệ số nở rời",
+      "hệ số tăng thể tích sau đào"
+    ],
+    "example_en": "Apply the swell factor when converting bank excavation volume into estimated loose trucked volume.",
+    "scenario": "Material occupies more space after excavation because the compact in-place structure is disturbed.",
+    "visual": "Three-volume comparison showing smaller in-place block and larger loose pile after excavation.",
+    "related_terms": [
+      "bank-cubic-metre",
+      "loose-cubic-metre",
+      "trucking"
+    ],
+    "common_mistakes": [
+      "Do not use one swell factor for every soil or rock type.",
+      "Keep bank, loose, and compacted volume bases clearly labelled."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "bank-cubic-metre",
+    "term": "bank cubic metre",
+    "pronunciation": "BANK KYOO-bik MEE-ter",
+    "category": "estimating",
+    "definition_en": "A cubic metre of material measured in its natural undisturbed in-place condition before excavation.",
+    "explanation_ru": "Bank cubic metre (BCM) — кубометр грунта в естественном положении до выемки. Это типичная база для earthwork takeoff; после excavation тот же material может иметь больший loose volume.",
+    "translation_ru": [
+      "банковский кубометр",
+      "кубометр грунта в естественном залегании"
+    ],
+    "translation_vi": [
+      "mét khối nguyên thổ",
+      "BCM"
+    ],
+    "example_en": "Report bulk excavation in bank cubic metre quantities unless the estimate clearly uses another volume basis.",
+    "scenario": "The takeoff measures the volume of soil as it exists in the ground before the excavator loosens it.",
+    "visual": "In-place soil block labelled before excavation, contrasted with a loose pile.",
+    "related_terms": [
+      "swell-factor",
+      "loose-cubic-metre",
+      "bulk-excavation"
+    ],
+    "common_mistakes": [
+      "BCM is a volume basis, not a soil classification.",
+      "Do not compare a bank quantity directly with loose truck capacity without conversion."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "loose-cubic-metre",
+    "term": "loose cubic metre",
+    "pronunciation": "LOOS KYOO-bik MEE-ter",
+    "category": "estimating",
+    "definition_en": "A cubic metre of excavated material measured in a loose, uncompacted condition after it has been dug or handled.",
+    "explanation_ru": "Loose cubic metre (LCM) — кубометр разрыхлённого грунта после excavation. Обычно нужен для truck capacity, stockpile и disposal calculations.",
+    "translation_ru": [
+      "рыхлый кубометр",
+      "кубометр разрыхлённого грунта"
+    ],
+    "translation_vi": [
+      "mét khối rời",
+      "LCM"
+    ],
+    "example_en": "Convert the bank quantity to loose cubic metre volume when estimating truck loads.",
+    "scenario": "Excavated soil forms a loose pile that occupies more space than it did in the ground.",
+    "visual": "Loose soil pile labelled after excavation beside a smaller in-place reference block.",
+    "related_terms": [
+      "bank-cubic-metre",
+      "swell-factor",
+      "trucking"
+    ],
+    "common_mistakes": [
+      "LCM and BCM are not interchangeable.",
+      "Truck box volume normally relates more closely to loose material than bank quantity."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "unsuitable-material",
+    "term": "unsuitable material",
+    "pronunciation": "un-SOO-tuh-bul muh-TEER-ee-ul",
+    "category": "earthworks",
+    "definition_en": "Soil or other material that does not meet the required properties for the intended support, backfill, or embankment use and therefore may require removal, treatment, or replacement.",
+    "explanation_ru": "Unsuitable material — грунт/материал, который нельзя оставить или использовать по назначению из-за слабости, органики, влажности, contamination или несоответствия specification.",
+    "translation_ru": [
+      "непригодный грунт",
+      "неподходящий материал"
+    ],
+    "translation_vi": [
+      "vật liệu không phù hợp",
+      "đất không đạt yêu cầu"
+    ],
+    "example_en": "Remove unsuitable material below subgrade and replace it with approved material where directed.",
+    "scenario": "The planned subgrade is reached but the exposed soil cannot provide the required support.",
+    "visual": "Subgrade section with a localized weak zone removed and replaced by approved fill.",
+    "related_terms": [
+      "over-excavation",
+      "subgrade",
+      "imported-fill"
+    ],
+    "common_mistakes": [
+      "Unsuitable material is defined by the project/geotechnical requirements, not appearance alone.",
+      "Removal often creates both disposal and replacement-fill costs."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "sump-pumping",
+    "term": "sump pumping",
+    "pronunciation": "SUMP PUMP-ing",
+    "category": "earthworks",
+    "definition_en": "A dewatering method that collects water in a low point or sump within the excavation and removes it with a pump.",
+    "explanation_ru": "Sump pumping — простой способ dewatering: вода стекает в низкую точку/приямок, откуда её откачивают насосом. Подходит не для всех грунтов и глубин.",
+    "translation_ru": [
+      "откачка из приямка",
+      "водоотлив насосом"
+    ],
+    "translation_vi": [
+      "bơm nước từ hố thu",
+      "bơm sump"
+    ],
+    "example_en": "Use sump pumping for localized inflow only where the excavation and soil conditions permit it.",
+    "scenario": "Seepage is directed to a low collection point and pumped out of the excavation.",
+    "visual": "Excavation with water arrows flowing to a low sump and a pump discharge line.",
+    "related_terms": [
+      "dewatering",
+      "groundwater",
+      "sump-pit"
+    ],
+    "common_mistakes": [
+      "Sump pumping can draw fines or destabilize some soils.",
+      "Discharge treatment and location may be regulated or specified."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "utility-conflict",
+    "term": "utility conflict",
+    "pronunciation": "yoo-TIL-i-tee KON-flikt",
+    "category": "utilities",
+    "definition_en": "A physical or clearance conflict between a proposed or existing utility and another pipe, structure, foundation, duct bank, or construction element.",
+    "explanation_ru": "Utility conflict — пересечение/столкновение utility с другим pipe, footing, chamber, duct bank или structural element. На estimate/design review это часто требует lowering, rerouting, dropped footing или RFI.",
+    "translation_ru": [
+      "конфликт инженерных сетей",
+      "пересечение сетей"
+    ],
+    "translation_vi": [
+      "xung đột hạ tầng kỹ thuật",
+      "xung đột tuyến ống"
+    ],
+    "example_en": "Flag the utility conflict where the deep chamber enters the footing influence zone.",
+    "scenario": "A proposed pipe or chamber occupies the same space needed by another structure or utility.",
+    "visual": "Plan and section showing two proposed elements overlapping at one location.",
+    "related_terms": [
+      "rfi",
+      "dropped-footing",
+      "zone-of-influence"
+    ],
+    "common_mistakes": [
+      "A utility crossing is not automatically a conflict if elevations provide clearance.",
+      "Resolve conflicts using all relevant plan/profile/structural information."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "scope-gap",
+    "term": "scope gap",
+    "pronunciation": "SKOHP GAP",
+    "category": "tendering",
+    "definition_en": "Work required by the project that is not clearly included in any contractor or subcontractor scope, creating risk of an unpriced responsibility.",
+    "explanation_ru": "Scope gap — работа нужна, но ни один proposal/scope явно её не включает. Типичный пример — неясно, кто демонтирует существующие below-grade элементы.",
+    "translation_ru": [
+      "пробел в объёме работ",
+      "неучтённая зона ответственности"
+    ],
+    "translation_vi": [
+      "khoảng trống phạm vi công việc",
+      "hạng mục chưa ai nhận"
+    ],
+    "example_en": "Resolve the scope gap before bid close so required work is not omitted from the estimate.",
+    "scenario": "Two trade proposals stop at different boundaries and a required piece of work falls between them.",
+    "visual": "Scope diagram with two adjacent trade boxes and a highlighted uncovered gap between them.",
+    "related_terms": [
+      "scope-of-work",
+      "inclusion",
+      "exclusion"
+    ],
+    "common_mistakes": [
+      "Scope gaps can exist even when every trade has submitted a quote.",
+      "Use clarifications or RFIs rather than silently assuming another party carries the work."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "inclusion",
+    "term": "inclusion",
+    "pronunciation": "in-KLOO-zhun",
+    "category": "tendering",
+    "definition_en": "A specific item, service, material, or responsibility explicitly included in a contractor's quoted scope and price.",
+    "explanation_ru": "Inclusion — то, что proposal прямо включает в цену. При bid leveling важно сравнивать inclusions между subs, а не только totals.",
+    "translation_ru": [
+      "включение в объём",
+      "включённая работа"
+    ],
+    "translation_vi": [
+      "hạng mục bao gồm",
+      "nội dung đã tính trong giá"
+    ],
+    "example_en": "Confirm each inclusion before carrying a subcontractor quote in the estimate.",
+    "scenario": "A proposal lists the work and services covered by the quoted price.",
+    "visual": "Proposal page with a highlighted INCLUDED scope list.",
+    "related_terms": [
+      "subcontractor-quote",
+      "exclusion",
+      "bid-leveling"
+    ],
+    "common_mistakes": [
+      "An inclusion can still have limits or qualifications.",
+      "Do not infer an inclusion only from the trade name."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "exclusion",
+    "term": "exclusion",
+    "pronunciation": "eks-KLOO-zhun",
+    "category": "tendering",
+    "definition_en": "A specific item, service, material, or responsibility explicitly not included in a contractor's quoted scope or price.",
+    "explanation_ru": "Exclusion — то, что sub прямо исключает из своей цены. Именно exclusions часто создают scope gaps или делают «самую низкую» quote фактически дороже.",
+    "translation_ru": [
+      "исключение из объёма",
+      "исключённая работа"
+    ],
+    "translation_vi": [
+      "hạng mục loại trừ",
+      "nội dung không bao gồm"
+    ],
+    "example_en": "Add or cover each exclusion before comparing the final leveled subcontractor prices.",
+    "scenario": "A proposal identifies work that the bidder will not provide under the quoted price.",
+    "visual": "Proposal page with a highlighted EXCLUDED scope list.",
+    "related_terms": [
+      "subcontractor-quote",
+      "inclusion",
+      "scope-gap"
+    ],
+    "common_mistakes": [
+      "An exclusion is not necessarily an error; it may belong to another trade.",
+      "Do not ignore small exclusions that carry large downstream cost."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "qualification",
+    "term": "qualification",
+    "pronunciation": "kwol-uh-fuh-KAY-shun",
+    "category": "tendering",
+    "definition_en": "A condition, assumption, limitation, or clarification attached to a contractor's proposal that defines how its price or scope should be interpreted.",
+    "explanation_ru": "Qualification — условие/оговорка в quote. Например цена действует при определённом access, hours, quantities, schedule или responsibility split.",
+    "translation_ru": [
+      "оговорка в предложении",
+      "условие предложения"
+    ],
+    "translation_vi": [
+      "điều kiện báo giá",
+      "ghi chú hạn chế phạm vi"
+    ],
+    "example_en": "Review every qualification before deciding whether two subcontractor prices are truly comparable.",
+    "scenario": "A bidder's price is valid only under stated assumptions about access, schedule, quantities, or responsibilities.",
+    "visual": "Proposal page with a highlighted CONDITIONS / QUALIFICATIONS section.",
+    "related_terms": [
+      "subcontractor-quote",
+      "bid-leveling",
+      "price-validity"
+    ],
+    "common_mistakes": [
+      "Qualifications can materially change risk even when the quoted total looks low.",
+      "Carry important qualifications into the estimate notes and clarifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "mobilization",
+    "term": "mobilization",
+    "pronunciation": "MOH-buh-luh-ZAY-shun",
+    "category": "estimating",
+    "definition_en": "The cost and activity of bringing crews, equipment, temporary facilities, and resources to the project and setting them up to begin work.",
+    "explanation_ru": "Mobilization — доставка и первоначальная организация crews/equipment на проекте. Для shoring, excavation, cranes, pumps и specialty subs это часто отдельная заметная стоимость.",
+    "translation_ru": [
+      "мобилизация на объект",
+      "доставка и развёртывание"
+    ],
+    "translation_vi": [
+      "huy động thiết bị và nhân lực",
+      "mobilization"
+    ],
+    "example_en": "Include mobilization separately when the subcontractor quote does not bury it in the unit rates.",
+    "scenario": "Before production begins, equipment and crews must travel to site, unload, set up, and become ready to work.",
+    "visual": "Equipment truck arriving at a jobsite with setup arrows toward the work area.",
+    "related_terms": [
+      "unit-price",
+      "subcontractor-quote",
+      "production-rate"
+    ],
+    "common_mistakes": [
+      "Mobilization is not production quantity itself.",
+      "Multiple phases or remobilizations can create more than one mobilization cost."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "standby-time",
+    "term": "standby time",
+    "pronunciation": "STAND-bye TYM",
+    "category": "estimating",
+    "definition_en": "Paid or cost-incurring time when labor or equipment is available at or for the project but cannot perform productive work because of delay, access, coordination, inspection, breakdown, or another constraint.",
+    "explanation_ru": "Standby time — оплачиваемое/затратное ожидание, когда crew или equipment готовы, но не могут работать из-за задержки, доступа, coordination и т. п.",
+    "translation_ru": [
+      "время простоя в ожидании",
+      "оплачиваемый простой"
+    ],
+    "translation_vi": [
+      "thời gian chờ",
+      "standby"
+    ],
+    "example_en": "Check the standby time terms for pumps, trucks, cranes, and specialty equipment before using the quoted rate.",
+    "scenario": "Equipment remains on site and incurs cost while another activity prevents productive work.",
+    "visual": "Machine parked beside an active work zone with a clock symbol.",
+    "related_terms": [
+      "production-rate",
+      "mobilization",
+      "subcontractor-quote"
+    ],
+    "common_mistakes": [
+      "Standby rules differ by supplier and subcontractor.",
+      "Separate avoidable idle time from contractual standby charges."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "historical-pricing",
+    "term": "historical pricing",
+    "pronunciation": "his-TOR-ih-kul PRY-sing",
+    "category": "estimating",
+    "definition_en": "Past project, bid, purchase, or subcontract pricing used as a reference when developing or checking a current estimate.",
+    "explanation_ru": "Historical pricing — прошлые цены с похожих проектов, которые используют как benchmark. Их нужно нормализовать по date, scope, quantity, location и market conditions, а не копировать вслепую.",
+    "translation_ru": [
+      "исторические цены",
+      "цены прошлых проектов"
+    ],
+    "translation_vi": [
+      "giá lịch sử",
+      "dữ liệu giá từ dự án trước"
+    ],
+    "example_en": "Use historical pricing from similar excavation projects as a reference, then adjust it for current scope and timing.",
+    "scenario": "The estimator reviews recent comparable jobs to test whether a new budget rate is reasonable.",
+    "visual": "Comparison sheet showing prior project rates adjusted to a current estimate date.",
+    "related_terms": [
+      "budget-estimate",
+      "unit-price",
+      "production-rate"
+    ],
+    "common_mistakes": [
+      "Past pricing is a reference, not automatically today's market price.",
+      "Check scope, date, quantity, location, and escalation before reuse."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "escalation",
+    "term": "escalation",
+    "pronunciation": "es-kuh-LAY-shun",
+    "category": "estimating",
+    "definition_en": "An allowance or forecast for future increases in labor, material, equipment, subcontract, or other costs between the estimate date and the time the work will be performed.",
+    "explanation_ru": "Escalation — ожидаемый рост стоимости между сегодняшним estimate и будущим construction. Для phase, которая будет строиться через годы, нельзя просто считать сегодняшнюю firm quote вечной.",
+    "translation_ru": [
+      "эскалация стоимости",
+      "рост цен во времени"
+    ],
+    "translation_vi": [
+      "trượt giá",
+      "tăng chi phí theo thời gian"
+    ],
+    "example_en": "Apply an escalation assumption to the future phase when the work will occur well after the current estimate date.",
+    "scenario": "A budget prepared today must account for the possibility that construction costs will be higher in a later year.",
+    "visual": "Timeline from estimate date to construction date with an upward cost arrow.",
+    "related_terms": [
+      "budget-estimate",
+      "historical-pricing",
+      "contingency"
+    ],
+    "common_mistakes": [
+      "Escalation is time-related cost growth, not the same as contingency for unknown scope.",
+      "State the base date, future date, and escalation assumption."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "price-validity",
+    "term": "price validity",
+    "pronunciation": "PRYSS vuh-LID-uh-tee",
+    "category": "tendering",
+    "definition_en": "The period during which a quoted price remains open and can be accepted without the bidder requiring repricing.",
+    "explanation_ru": "Price validity — срок действия quote. Особенно важно, если construction далеко в будущем: sub может дать цену valid 30/60/90 days, но не до далёкой future phase.",
+    "translation_ru": [
+      "срок действия цены",
+      "период действительности предложения"
+    ],
+    "translation_vi": [
+      "thời hạn hiệu lực báo giá",
+      "hiệu lực giá"
+    ],
+    "example_en": "Record the price validity when using a subcontractor quote for a future construction phase.",
+    "scenario": "A bidder states that its quoted price can be accepted only until a specified date.",
+    "visual": "Proposal header with quote date, expiry date, and a highlighted validity window.",
+    "related_terms": [
+      "subcontractor-quote",
+      "qualification",
+      "escalation"
+    ],
+    "common_mistakes": [
+      "Expired pricing may still be useful as a benchmark but is not a firm current commitment.",
+      "Do not confuse quote validity with the project construction schedule."
+    ],
+    "difficulty": 2
   }
 ]
