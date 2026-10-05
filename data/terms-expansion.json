@@ -4102,5 +4102,243 @@
       "Gutter pan is the drainage portion beside the curb; it is not the same thing as the raised curb face."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "pvc-db2",
+    "term": "PVC DB2",
+    "pronunciation": "P-V-C D-B-two",
+    "category": "electrical",
+    "definition_en": "A Type DB-2 PVC underground electrical or communications duct used in Canadian power and communications work for direct-burial and/or concrete-encased installations where the project permits it.",
+    "explanation_ru": "PVC DB2 / Type DB-2 — лёгкий подземный PVC duct для электрических и communication трасс. В Канаде его часто используют либо direct burial, либо внутри concrete-encased duct bank. Это не то же самое, что обычный rigid PVC conduit/Schedule 40: класс, стенка, стандарт и допустимое применение нужно проверять по drawings/specifications и approved material list.",
+    "translation_ru": [
+      "ПВХ канал DB2",
+      "подземный кабельный duct DB2",
+      "PVC DB2 conduit"
+    ],
+    "translation_vi": [
+      "ống nhựa PVC DB2 chôn ngầm",
+      "ống luồn cáp PVC loại DB2"
+    ],
+    "example_en": "Install the specified PVC DB2 ducts in the concrete-encased duct bank and maintain the required conduit spacing.",
+    "scenario": "A utility drawing calls for multiple underground PVC ducts that will carry future power cables through a concrete duct bank.",
+    "visual": "Cross-section of several labelled PVC DB2 ducts arranged in rows inside an underground duct-bank installation.",
+    "related_terms": [
+      "duct-bank",
+      "conduit",
+      "duct-spacer"
+    ],
+    "common_mistakes": [
+      "Do not assume DB2 is interchangeable with rigid PVC conduit or Schedule 40/80; use the material type and certification required by the project.",
+      "DB2 may be specified for direct burial or concrete encasement, but the permitted installation method, size, fittings, cover, and concrete requirements are project-specific.",
+      "Super Duct is an IPEX product name; DB-2 is the duct type, not a universal brand name."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "direct-burial",
+    "term": "direct burial",
+    "pronunciation": "dy-REKT BAIR-ee-ul",
+    "category": "electrical",
+    "definition_en": "An underground installation method where approved conduit, duct, cable, or equipment is placed in the ground without a surrounding concrete encasement.",
+    "explanation_ru": "Direct burial — прокладка прямо в грунте без полного бетонного encasement. Для DB2 это один из возможных способов установки, если он разрешён проектом. В смете проверяют trench, bedding, cover, warning tape, backfill, spacers/support, crossings и требования owner/utility.",
+    "translation_ru": [
+      "прямая прокладка в грунте",
+      "непосредственное захоронение",
+      "прокладка без бетонной обоймы"
+    ],
+    "translation_vi": [
+      "chôn trực tiếp",
+      "lắp đặt chôn ngầm trực tiếp"
+    ],
+    "example_en": "The communications ducts are shown as direct burial outside the concrete-encased crossing limits.",
+    "scenario": "Underground duct is placed on prepared trench bedding and backfilled without pouring a concrete envelope around it.",
+    "visual": "Trench section showing DB2 ducts on bedding with compacted backfill above and no concrete envelope.",
+    "related_terms": [
+      "pvc-db2",
+      "backfill",
+      "trench"
+    ],
+    "common_mistakes": [
+      "Direct burial does not mean simply placing any conduit in soil; the product and installation must be approved for that use.",
+      "Do not carry concrete encasement quantities through direct-burial limits unless the drawings or specifications require them."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-encasement",
+    "term": "concrete encasement",
+    "pronunciation": "KON-kreet en-KAYS-ment",
+    "category": "electrical",
+    "definition_en": "Concrete placed around an underground conduit or duct assembly to form a protective envelope and maintain the designed duct-bank geometry.",
+    "explanation_ru": "Concrete encasement — бетонная обойма вокруг группы conduit/duct. В duct bank бетон защищает трубы и фиксирует их в заданном положении. Для takeoff важно учитывать размеры envelope, spacers, cover around ducts, formwork where required, concrete volume, placement sequence и возможные reinforcing requirements.",
+    "translation_ru": [
+      "бетонная обойма",
+      "бетонирование кабельного блока",
+      "бетонное окружение duct bank"
+    ],
+    "translation_vi": [
+      "bê tông bao ống cáp",
+      "khối bê tông bọc duct bank"
+    ],
+    "example_en": "Place concrete encasement around the DB2 conduit bank without disturbing the specified duct spacing.",
+    "scenario": "Several rows of conduits are held by spacers while concrete is poured around the complete assembly.",
+    "visual": "Duct-bank cross-section showing rows of conduits and spacers fully surrounded by a rectangular concrete envelope.",
+    "related_terms": [
+      "duct-bank",
+      "pvc-db2",
+      "duct-spacer"
+    ],
+    "common_mistakes": [
+      "Concrete encasement is the concrete envelope around the ducts; it is not the same as concrete poured inside a conduit.",
+      "Do not assume envelope dimensions or reinforcement—take them from the project detail."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "solvent-cement",
+    "term": "solvent cement",
+    "pronunciation": "SOL-vent suh-MENT",
+    "category": "electrical",
+    "definition_en": "A chemical joining compound used with compatible PVC duct, conduit, and fittings to make a solvent-welded socket joint.",
+    "explanation_ru": "Solvent cement — специальный состав для соединения совместимых PVC duct/conduit и fittings. Он размягчает контактные поверхности и формирует solvent-weld joint. Это не обычный строительный клей; нужно использовать подходящий продукт и процедуру производителя.",
+    "translation_ru": [
+      "клей-растворитель для ПВХ",
+      "состав для solvent-weld соединения PVC"
+    ],
+    "translation_vi": [
+      "keo dán dung môi PVC",
+      "keo hàn dung môi cho ống PVC"
+    ],
+    "example_en": "Use the specified solvent cement for the DB2 bell-and-spigot joints and keep the conduit interior clean.",
+    "scenario": "A plain conduit end is inserted into a PVC socket after the approved joining surfaces are prepared and solvent cement is applied.",
+    "visual": "Close-up schematic of a PVC spigot entering a bell socket with solvent cement highlighted at the joint.",
+    "related_terms": [
+      "pvc-db2",
+      "duct-coupling",
+      "integral-bell-end"
+    ],
+    "common_mistakes": [
+      "Do not use an arbitrary PVC glue; jointing products must be compatible with the specified duct and fitting system.",
+      "A solvent-welded joint and a push-fit coupling are different connection methods."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "monobloc-spacer",
+    "term": "Monobloc spacer",
+    "pronunciation": "MON-oh-block SPAY-ser",
+    "category": "electrical",
+    "definition_en": "A modular multi-duct spacer system used to support and separate underground conduits in a duct-bank arrangement; Monobloc is an IPEX product name.",
+    "explanation_ru": "Monobloc spacer — модульный spacer для одновременного удержания нескольких duct/conduit в заданной сетке. Часто применяется в concrete-encased или direct-burial duct bank. Monobloc — торговое название IPEX; в проекте может быть разрешён эквивалент другого производителя.",
+    "translation_ru": [
+      "модульный spacer для duct bank",
+      "решётчатый разделитель кабельных труб Monobloc"
+    ],
+    "translation_vi": [
+      "bộ spacer Monobloc cho cụm ống cáp",
+      "giá định vị nhiều ống conduit"
+    ],
+    "example_en": "Install Monobloc spacers at the specified intervals to maintain the DB2 duct-bank configuration during concrete placement.",
+    "scenario": "A multi-row conduit bank must stay aligned and evenly spaced while crews assemble it and place concrete.",
+    "visual": "Grid-style spacer holding several DB2 conduits in two horizontal rows with equal separation.",
+    "related_terms": [
+      "duct-spacer",
+      "base-spacer",
+      "intermediate-interlock-spacer"
+    ],
+    "common_mistakes": [
+      "Monobloc is a product name; do not assume every project requires that manufacturer.",
+      "Spacer type, spacing interval, rebar provisions, and duct arrangement must follow the project detail or approved system."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "mandrel-test",
+    "term": "mandrel test",
+    "pronunciation": "MAN-drel test",
+    "category": "electrical",
+    "definition_en": "A conduit proofing check where a sized mandrel is pulled through an installed duct to verify that the internal passage is clear and has not been excessively deformed or obstructed.",
+    "explanation_ru": "Mandrel test / duct proofing — проверка готового conduit: через трубу протягивают калиброванный mandrel, чтобы убедиться, что duct не пережат, не деформирован и не забит бетоном/мусором. Обычно выполняется перед окончательной передачей duct для кабельной протяжки.",
+    "translation_ru": [
+      "проверка conduit калибром",
+      "протяжка mandrel",
+      "контроль проходимости кабельной трубы"
+    ],
+    "translation_vi": [
+      "kiểm tra ống bằng mandrel",
+      "kéo dưỡng kiểm tra lòng ống"
+    ],
+    "example_en": "Mandrel-test each completed DB2 duct before installing the final pull rope.",
+    "scenario": "After backfill or concrete placement, a rigid gauge is pulled through each conduit to confirm a usable cable path.",
+    "visual": "Long conduit with a cylindrical mandrel being pulled through by a rope from one end to the other.",
+    "related_terms": [
+      "pvc-db2",
+      "pull-rope",
+      "conduit"
+    ],
+    "common_mistakes": [
+      "A visual inspection from the conduit end does not replace a specified mandrel/proofing test.",
+      "Mandrel size and acceptance criteria come from the owner, utility, or project specification."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "conduit-stub-up",
+    "term": "conduit stub-up",
+    "pronunciation": "KON-doo-it STUB-up",
+    "category": "electrical",
+    "definition_en": "The end portion of an underground conduit run that turns or rises upward to emerge at equipment, a structure, a pole, a vault, or another termination point.",
+    "explanation_ru": "Conduit stub-up / riser — участок подземного conduit, который поворачивает вверх и выходит к transformer, pull box, building, pole или другому termination. Важно учитывать bend radius, точное расположение, высоту выхода, защиту и возможный переход DB2 на другой тип conduit.",
+    "translation_ru": [
+      "вертикальный вывод кабельной трубы",
+      "выход conduit вверх",
+      "стояк conduit"
+    ],
+    "translation_vi": [
+      "đoạn ống conduit đi lên",
+      "ống chờ đứng lên thiết bị"
+    ],
+    "example_en": "Set the conduit stub-ups accurately before the equipment pad is poured.",
+    "scenario": "An underground duct-bank run approaches a concrete equipment pad and several conduits curve upward through the pad location.",
+    "visual": "Profile showing underground conduits turning upward through smooth bends to terminate above a future equipment pad.",
+    "related_terms": [
+      "conduit-bend",
+      "duct-bank",
+      "pvc-db2"
+    ],
+    "common_mistakes": [
+      "Do not assume the underground DB2 material continues above grade; the design may require a transition to another conduit type.",
+      "Stub-up location, projection, bend radius, and spacing are coordination-sensitive and should be checked before concrete placement."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pull-rope",
+    "term": "pull rope",
+    "pronunciation": "PULL rope",
+    "category": "electrical",
+    "definition_en": "A rope left in or installed through a conduit for pulling electrical or communication cable, usually stronger than a light pull string.",
+    "explanation_ru": "Pull rope — прочная протяжная верёвка/канат внутри conduit для последующей протяжки кабеля. В отличие от light pull string, rope обычно рассчитан на более серьёзное pulling load; требуемый материал и прочность определяются спецификацией.",
+    "translation_ru": [
+      "протяжной канат",
+      "тяговая верёвка для кабеля"
+    ],
+    "translation_vi": [
+      "dây kéo cáp",
+      "dây thừng kéo cáp"
+    ],
+    "example_en": "Install the specified pull rope after the duct has been cleaned and mandrel-tested.",
+    "scenario": "The empty conduit is complete and needs a durable line left inside so the electrical contractor can pull cable later.",
+    "visual": "Empty underground conduit with a pull rope running continuously through it and tagged at both ends.",
+    "related_terms": [
+      "pull-string",
+      "mandrel-test",
+      "conduit"
+    ],
+    "common_mistakes": [
+      "A light pull string and a rated pull rope may serve different purposes; use the line type and strength specified.",
+      "Keep the rope ends secured and identified so the line is not lost inside the duct."
+    ],
+    "difficulty": 2
   }
 ]
