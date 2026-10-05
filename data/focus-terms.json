@@ -112,20 +112,20 @@
     {
       "id": "curb-and-gutter",
       "added_at": "2026-09-21",
-      "last_requested_at": "2026-09-21",
-      "request_count": 1
+      "last_requested_at": "2026-10-05",
+      "request_count": 2
     },
     {
       "id": "concrete-sidewalk",
       "added_at": "2026-09-21",
-      "last_requested_at": "2026-09-21",
-      "request_count": 1
+      "last_requested_at": "2026-10-05",
+      "request_count": 2
     },
     {
       "id": "kerb",
       "added_at": "2026-09-21",
-      "last_requested_at": "2026-09-21",
-      "request_count": 1
+      "last_requested_at": "2026-10-05",
+      "request_count": 2
     },
     {
       "id": "conduit",
@@ -749,6 +749,48 @@
       "id": "price-validity",
       "added_at": "2026-09-28",
       "last_requested_at": "2026-09-28",
+      "request_count": 1
+    },
+    {
+      "id": "bullnose-curb",
+      "added_at": "2026-10-05",
+      "last_requested_at": "2026-10-05",
+      "request_count": 1
+    },
+    {
+      "id": "barrier-curb",
+      "added_at": "2026-10-05",
+      "last_requested_at": "2026-10-05",
+      "request_count": 1
+    },
+    {
+      "id": "mountable-curb",
+      "added_at": "2026-10-05",
+      "last_requested_at": "2026-10-05",
+      "request_count": 1
+    },
+    {
+      "id": "curb-return",
+      "added_at": "2026-10-05",
+      "last_requested_at": "2026-10-05",
+      "request_count": 1
+    },
+    {
+      "id": "curb-ramp",
+      "added_at": "2026-10-05",
+      "last_requested_at": "2026-10-05",
+      "request_count": 1
+    },
+    {
+      "id": "concrete-driveway",
+      "added_at": "2026-10-05",
+      "last_requested_at": "2026-10-05",
+      "request_count": 1
+    },
+    {
+      "id": "gutter-pan",
+      "added_at": "2026-10-05",
+      "last_requested_at": "2026-10-05",
       "request_count": 1
     }
   ]
