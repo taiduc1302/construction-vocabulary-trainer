@@ -4,6 +4,8 @@ Personal multilingual construction-vocabulary trainer for civil estimating and s
 
 ## Current version
 
+Maintenance pulse: repository workflow re-checked on **2026-10-04**.
+
 **v1.1.0** uses a growing modular civil-construction vocabulary. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
 
 - English term and pronunciation;
