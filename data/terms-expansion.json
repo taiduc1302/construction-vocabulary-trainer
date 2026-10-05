@@ -4210,7 +4210,7 @@
       "keo hàn dung môi cho ống PVC"
     ],
     "example_en": "Use the specified solvent cement for the DB2 bell-and-spigot joints and keep the conduit interior clean.",
-    "scenario": "A plain conduit end is inserted into a PVC socket after the approved joining surfaces are prepared and solvent cement is applied.",
+    "scenario": "A plain PVC conduit end is inserted into a compatible socket after the joining surfaces are prepared and the specified chemical joining compound is applied.",
     "visual": "Close-up schematic of a PVC spigot entering a bell socket with solvent cement highlighted at the joint.",
     "related_terms": [
       "pvc-db2",
@@ -4238,7 +4238,7 @@
       "bộ spacer Monobloc cho cụm ống cáp",
       "giá định vị nhiều ống conduit"
     ],
-    "example_en": "Install Monobloc spacers at the specified intervals to maintain the DB2 duct-bank configuration during concrete placement.",
+    "example_en": "Install each Monobloc spacer at the specified interval to maintain the DB2 duct-bank configuration during concrete placement.",
     "scenario": "A multi-row conduit bank must stay aligned and evenly spaced while crews assemble it and place concrete.",
     "visual": "Grid-style spacer holding several DB2 conduits in two horizontal rows with equal separation.",
     "related_terms": [
@@ -4298,7 +4298,7 @@
       "đoạn ống conduit đi lên",
       "ống chờ đứng lên thiết bị"
     ],
-    "example_en": "Set the conduit stub-ups accurately before the equipment pad is poured.",
+    "example_en": "Set each conduit stub-up accurately before the equipment pad is poured.",
     "scenario": "An underground duct-bank run approaches a concrete equipment pad and several conduits curve upward through the pad location.",
     "visual": "Profile showing underground conduits turning upward through smooth bends to terminate above a future equipment pad.",
     "related_terms": [
