@@ -157,14 +157,16 @@
         "duct base spacer",
         "duct base spacers",
         "base interlock spacer",
-        "base interlock spacers"
+        "base interlock spacers",
+        "DB2 base spacer"
       ]
     },
     "intermediate-interlock-spacer": {
       "aliases_en": [
         "intermediate interlock spacers",
         "intermediate spacer",
-        "intermediate spacers"
+        "intermediate spacers",
+        "DB2 intermediate spacer"
       ]
     },
     "concrete-sidewalk": {
@@ -186,7 +188,9 @@
     "integral-bell-end": {
       "aliases_en": [
         "integral bell",
-        "bell end"
+        "bell end",
+        "DB2 bell end",
+        "DB2 bell"
       ]
     },
     "conduit-cap-plug": {
@@ -194,21 +198,31 @@
         "conduit cap",
         "conduit plug",
         "duct cap",
-        "duct plug"
+        "duct plug",
+        "DB2 cap",
+        "DB2 plug",
+        "DB2 duct cap",
+        "DB2 duct plug"
       ]
     },
     "conduit-adaptor": {
       "aliases_en": [
         "conduit adapter",
         "duct adaptor",
-        "duct adapter"
+        "duct adapter",
+        "DB2 adaptor",
+        "DB2 adapter"
       ]
     },
     "conduit-bend": {
       "aliases_en": [
         "duct bend",
         "conduit elbow",
-        "duct elbow"
+        "duct elbow",
+        "DB2 bend",
+        "DB2 sweep",
+        "DB2 elbow",
+        "DB2 90"
       ]
     },
     "fre": {
@@ -707,6 +721,87 @@
       "aliases_en": [
         "concrete gutter pan",
         "curb gutter pan"
+      ]
+    },
+    "pvc-db2": {
+      "aliases_en": [
+        "DB2",
+        "DB-2",
+        "Type DB-2",
+        "PVC DB2 conduit",
+        "PVC DB2 duct",
+        "DB2 duct",
+        "DB II",
+        "IPEX Super Duct",
+        "Super Duct"
+      ],
+      "drawing_labels": [
+        "DB2"
+      ]
+    },
+    "direct-burial": {
+      "aliases_en": [
+        "direct buried",
+        "direct-buried conduit",
+        "direct burial conduit"
+      ]
+    },
+    "concrete-encasement": {
+      "aliases_en": [
+        "concrete encased",
+        "concrete-encased duct bank",
+        "concrete encased duct bank",
+        "duct bank concrete encasement"
+      ]
+    },
+    "solvent-cement": {
+      "aliases_en": [
+        "PVC solvent cement",
+        "solvent weld cement",
+        "PVC glue"
+      ]
+    },
+    "monobloc-spacer": {
+      "aliases_en": [
+        "Monobloc",
+        "Monobloc duct spacer",
+        "IPEX Monobloc spacer"
+      ]
+    },
+    "mandrel-test": {
+      "aliases_en": [
+        "duct proofing",
+        "conduit proofing",
+        "mandrel pull",
+        "proof mandrel"
+      ]
+    },
+    "conduit-stub-up": {
+      "aliases_en": [
+        "stub up",
+        "stub-up",
+        "conduit riser",
+        "duct riser",
+        "DB2 stub-up"
+      ]
+    },
+    "pull-rope": {
+      "aliases_en": [
+        "pulling rope",
+        "cable pull rope",
+        "pull line"
+      ]
+    },
+    "duct-coupling": {
+      "aliases_en": [
+        "DB2 coupling",
+        "DB2 duct coupling"
+      ]
+    },
+    "duct-spacer": {
+      "aliases_en": [
+        "DB2 spacer",
+        "DB2 duct spacer"
       ]
     }
   }
