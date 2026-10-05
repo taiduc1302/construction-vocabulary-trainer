@@ -3901,5 +3901,206 @@
       "Do not confuse quote validity with the project construction schedule."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "bullnose-curb",
+    "term": "bullnose curb",
+    "pronunciation": "BULL-nohz curb",
+    "category": "concrete",
+    "definition_en": "A cast-in-place or precast concrete curb with a rounded exposed top or face profile, shaped according to a project, municipal, or owner standard detail.",
+    "explanation_ru": "Bullnose curb — бетонный бордюр с округлённым верхом или лицевой гранью. Точная геометрия зависит от стандартного detail проекта/муниципалитета. В смете важно не путать его с обычным barrier curb или curb and gutter: могут отличаться форма, опалубка, армирование, способ оплаты и производительность.",
+    "translation_ru": [
+      "бетонный бордюр с закруглённым профилем",
+      "закруглённый бордюр",
+      "bullnose curb"
+    ],
+    "translation_vi": [
+      "bó vỉa bê tông bo tròn",
+      "bó vỉa dạng bullnose"
+    ],
+    "example_en": "Price the bullnose curb separately where the drawings call for the rounded curb profile.",
+    "scenario": "A concrete restoration detail shows a rounded curb profile rather than a standard vertical curb face.",
+    "visual": "Cross-section comparing a rounded bullnose concrete curb profile with adjacent pavement and sidewalk.",
+    "related_terms": [
+      "curb-and-gutter",
+      "barrier-curb",
+      "mountable-curb"
+    ],
+    "common_mistakes": [
+      "Bullnose curb dimensions are not universal; always use the project or municipal standard detail.",
+      "Do not assume a bullnose curb is the same as curb and gutter or mountable curb simply because the exposed face is rounded."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "barrier-curb",
+    "term": "barrier curb",
+    "pronunciation": "BAIR-ee-er curb",
+    "category": "concrete",
+    "definition_en": "A raised concrete curb with a relatively steep or near-vertical traffic-side face intended to discourage vehicles from crossing it and to define the roadway edge.",
+    "explanation_ru": "Barrier curb — высокий бетонный бордюр с почти вертикальной дорожной гранью. Он физически отделяет проезжую часть и не предназначен для обычного переезда автомобилем. Профиль и размеры берут из стандартного detail.",
+    "translation_ru": [
+      "барьерный бордюр",
+      "высокий непереезжаемый бордюр"
+    ],
+    "translation_vi": [
+      "bó vỉa đứng",
+      "bó vỉa chắn xe"
+    ],
+    "example_en": "Restore the barrier curb to the same profile and elevation as the existing curb.",
+    "scenario": "A roadway edge needs a raised curb that clearly separates vehicle traffic from the boulevard or sidewalk.",
+    "visual": "Road cross-section with asphalt meeting a raised concrete curb with a steep traffic-side face.",
+    "related_terms": [
+      "bullnose-curb",
+      "mountable-curb",
+      "curb-and-gutter"
+    ],
+    "common_mistakes": [
+      "Barrier curb is generally less traversable than mountable curb; verify the actual standard section instead of judging only by the name."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "mountable-curb",
+    "term": "mountable curb",
+    "pronunciation": "MOWN-tuh-bul curb",
+    "category": "concrete",
+    "definition_en": "A concrete curb with a sloped or low rounded face designed so vehicles can cross it more easily than a barrier curb where permitted.",
+    "explanation_ru": "Mountable curb — переезжаемый бордюр с пологой или низкой округлой гранью. Машина может пересечь его легче, чем barrier curb. Часто встречается у жилых дорог, парковок и некоторых driveway transitions.",
+    "translation_ru": [
+      "переезжаемый бордюр",
+      "пониженный наклонный бордюр"
+    ],
+    "translation_vi": [
+      "bó vỉa có thể chạy qua",
+      "bó vỉa dốc thấp"
+    ],
+    "example_en": "Replace the damaged mountable curb along the driveway frontage.",
+    "scenario": "A curb profile is intentionally sloped so vehicle tires can pass over it without a vertical curb face.",
+    "visual": "Cross-section showing pavement meeting a low sloped concrete curb that a vehicle tire can cross.",
+    "related_terms": [
+      "barrier-curb",
+      "bullnose-curb",
+      "concrete-driveway"
+    ],
+    "common_mistakes": [
+      "Mountable curb does not mean every vehicle crossing is automatically acceptable; geometry and permitted use depend on the design."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "curb-return",
+    "term": "curb return",
+    "pronunciation": "CURB ree-TURN",
+    "category": "concrete",
+    "definition_en": "The curved section of curb that transitions around a street corner, driveway, island, or other change in roadway edge alignment.",
+    "explanation_ru": "Curb return — криволинейный участок бордюра, который поворачивает линию curb вокруг угла перекрёстка, driveway, островка или другого изменения направления. В takeoff его длину обычно измеряют по кривой, а не по хорде.",
+    "translation_ru": [
+      "закругление бордюра",
+      "радиусный участок бордюра"
+    ],
+    "translation_vi": [
+      "đoạn bó vỉa cong",
+      "bó vỉa bo góc"
+    ],
+    "example_en": "Measure the curb return along the arc rather than using the straight chord length.",
+    "scenario": "At an intersection corner the curb line bends through a radius instead of continuing straight.",
+    "visual": "Plan view showing two straight curb lines connected by a curved radius at a corner.",
+    "related_terms": [
+      "curb-and-gutter",
+      "curb-ramp",
+      "bullnose-curb"
+    ],
+    "common_mistakes": [
+      "For quantity takeoff, a curb return is measured along its actual curved length unless the bid documents state otherwise."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "curb-ramp",
+    "term": "curb ramp",
+    "pronunciation": "CURB ramp",
+    "category": "concrete",
+    "definition_en": "A sloped pedestrian transition between a sidewalk and roadway that lowers or removes the curb barrier at a crossing, usually designed to accessibility requirements.",
+    "explanation_ru": "Curb ramp — пониженный наклонный участок тротуара/бордюра для перехода между sidewalk и roadway. Обычно выполняется по требованиям accessibility и может включать detectable warning surface.",
+    "translation_ru": [
+      "пандус в бордюре",
+      "понижение бордюра для пешеходов",
+      "тротуарный пандус"
+    ],
+    "translation_vi": [
+      "dốc hạ vỉa hè",
+      "ram dốc cho người đi bộ"
+    ],
+    "example_en": "Reconstruct the curb ramp to the accessibility detail after the utility crossing.",
+    "scenario": "A sidewalk crossing needs a gradual sloped transition down to roadway elevation rather than a vertical curb.",
+    "visual": "Plan and section showing sidewalk sloping down through a curb ramp to roadway level with a detectable warning zone.",
+    "related_terms": [
+      "concrete-sidewalk",
+      "curb-return",
+      "curb-and-gutter"
+    ],
+    "common_mistakes": [
+      "Do not treat a curb ramp as ordinary flat sidewalk; slopes, landings, widths, and detectable warning requirements are detail-specific."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-driveway",
+    "term": "concrete driveway",
+    "pronunciation": "KON-kreet DRIVE-way",
+    "category": "concrete",
+    "definition_en": "A concrete vehicular access slab connecting a roadway or lane to a property, parking area, garage, or site entrance.",
+    "explanation_ru": "Concrete driveway — бетонный автомобильный въезд. В restoration estimate нужно проверить толщину slab, base preparation, reinforcement if required, joints, limits to nearest panel/joint, curb transition и tie-in к существующему покрытию.",
+    "translation_ru": [
+      "бетонный проезд",
+      "бетонный въезд",
+      "бетонная подъездная дорожка"
+    ],
+    "translation_vi": [
+      "lối xe vào bằng bê tông",
+      "đường xe vào bê tông"
+    ],
+    "example_en": "Restore the 200 mm concrete driveway after the utility trench is backfilled and compacted.",
+    "scenario": "A utility crossing cuts through a concrete vehicle entrance and the affected driveway panel must be reconstructed.",
+    "visual": "Plan and section of a concrete driveway slab crossing the boulevard between roadway curb and private property.",
+    "related_terms": [
+      "concrete-sidewalk",
+      "mountable-curb",
+      "sawcut"
+    ],
+    "common_mistakes": [
+      "Do not assume driveway thickness matches sidewalk thickness; use the project or municipal detail.",
+      "Restoration limits may extend to full panels or joints rather than only the trench width."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "gutter-pan",
+    "term": "gutter pan",
+    "pronunciation": "GUT-ter pan",
+    "category": "concrete",
+    "definition_en": "The concrete drainage strip or channel immediately adjacent to a curb that collects roadway runoff and directs it toward catch basins or other drainage inlets.",
+    "explanation_ru": "Gutter pan — бетонная водоотводная полоса/лоток непосредственно у бордюра. В monolithic curb and gutter она является нижней дорожной частью профиля, по которой вода идёт к catch basin.",
+    "translation_ru": [
+      "бетонный водоотводный лоток у бордюра",
+      "лотковая часть curb and gutter"
+    ],
+    "translation_vi": [
+      "máng thoát nước cạnh bó vỉa",
+      "rãnh bê tông sát bó vỉa"
+    ],
+    "example_en": "Match the gutter pan grade so runoff continues to drain toward the catch basin.",
+    "scenario": "Rainwater flows along the low concrete strip beside the curb before entering a drainage inlet.",
+    "visual": "Road cross-section showing curb face and adjacent sloped concrete gutter pan carrying runoff.",
+    "related_terms": [
+      "curb-and-gutter",
+      "catch-basin",
+      "barrier-curb"
+    ],
+    "common_mistakes": [
+      "Gutter pan is the drainage portion beside the curb; it is not the same thing as the raised curb face."
+    ],
+    "difficulty": 2
   }
 ]

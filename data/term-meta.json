@@ -54,6 +54,10 @@
       "drawing_labels": [
         "C&G",
         "C & G"
+      ],
+      "aliases_en": [
+        "concrete curb and gutter",
+        "curb & gutter"
       ]
     },
     "quantity-takeoff": {
@@ -657,6 +661,52 @@
       "aliases_en": [
         "quote validity",
         "validity period"
+      ]
+    },
+    "bullnose-curb": {
+      "aliases_en": [
+        "bullnose curb concrete",
+        "bullnose concrete curb",
+        "concrete bullnose curb"
+      ]
+    },
+    "barrier-curb": {
+      "aliases_en": [
+        "barrier concrete curb",
+        "vertical curb"
+      ]
+    },
+    "mountable-curb": {
+      "aliases_en": [
+        "mountable concrete curb",
+        "rolled curb",
+        "roll curb"
+      ]
+    },
+    "curb-return": {
+      "aliases_en": [
+        "curb return concrete",
+        "curb radius return"
+      ]
+    },
+    "curb-ramp": {
+      "aliases_en": [
+        "pedestrian curb ramp",
+        "wheelchair curb ramp",
+        "curb cut"
+      ]
+    },
+    "concrete-driveway": {
+      "aliases_en": [
+        "concrete driveway restoration",
+        "driveway concrete",
+        "concrete driveway slab"
+      ]
+    },
+    "gutter-pan": {
+      "aliases_en": [
+        "concrete gutter pan",
+        "curb gutter pan"
       ]
     }
   }
