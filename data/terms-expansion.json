@@ -4340,5 +4340,1302 @@
       "Keep the rope ends secured and identified so the line is not lost inside the duct."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "grade",
+    "term": "grade",
+    "pronunciation": "GRAYD",
+    "category": "drawings",
+    "definition_en": "The required elevation, level, or slope of a surface, pipe, road, or excavation used to control vertical construction geometry.",
+    "explanation_ru": "Grade — проектная отметка или уклон поверхности/трубы. На civil drawings это может означать конечную отметку, линию уклона или требуемый уровень после excavation/fill.",
+    "translation_ru": [
+      "проектная отметка",
+      "уклон",
+      "уровень"
+    ],
+    "translation_vi": [
+      "cao độ thiết kế",
+      "độ dốc thiết kế"
+    ],
+    "example_en": "Verify the finished grade before calculating the final excavation depth.",
+    "scenario": "The estimator must compare existing and design elevations to understand how much material is removed or placed.",
+    "visual": "Profile view showing existing ground and a design elevation line with slope arrows.",
+    "related_terms": [
+      "elevation",
+      "profile",
+      "subgrade"
+    ],
+    "common_mistakes": [
+      "Grade can mean elevation or slope depending on context; read the drawing note and profile."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "asphalt",
+    "term": "asphalt",
+    "pronunciation": "ASS-fawlt",
+    "category": "roadworks",
+    "definition_en": "A bituminous paving material made from aggregate bound with asphalt cement and placed in compacted layers for roads, aprons, parking areas, and restoration.",
+    "explanation_ru": "Asphalt — асфальтобетонное покрытие. В estimate обычно считаются площадь, толщина, тоннаж, tack coat, milling, sawcut и limits of restoration.",
+    "translation_ru": [
+      "асфальт",
+      "асфальтобетон"
+    ],
+    "translation_vi": [
+      "bê tông nhựa",
+      "asphalt"
+    ],
+    "example_en": "Include asphalt removal and replacement within the defined restoration limits.",
+    "scenario": "A black flexible surface course is placed and compacted over prepared granular layers.",
+    "visual": "Pavement cross-section showing a dark surface layer over granular base and subbase.",
+    "related_terms": [
+      "milling",
+      "overlay",
+      "tack-coat"
+    ],
+    "common_mistakes": [
+      "Do not assume thickness or mix type; use the project pavement section."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "pavement",
+    "term": "pavement",
+    "pronunciation": "PAYV-ment",
+    "category": "roadworks",
+    "definition_en": "The complete traffic-supporting surface system, which may include asphalt or concrete surfacing plus supporting base, subbase, and prepared subgrade.",
+    "explanation_ru": "Pavement — вся дорожная конструкция, а не только верхний асфальт. В зависимости от проекта включает surface, base, subbase и subgrade.",
+    "translation_ru": [
+      "дорожная одежда",
+      "дорожное покрытие и основание"
+    ],
+    "translation_vi": [
+      "kết cấu mặt đường",
+      "mặt đường"
+    ],
+    "example_en": "Rebuild the pavement after the underground work is complete.",
+    "scenario": "A roadway is formed by several structural layers that distribute wheel loads into the ground.",
+    "visual": "Layered road section with surface, base, subbase, and subgrade.",
+    "related_terms": [
+      "asphalt",
+      "pcc-pavement",
+      "pavement-structure"
+    ],
+    "common_mistakes": [
+      "Pavement is the full traffic-supporting system; it is not always synonymous with asphalt."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "concrete",
+    "term": "concrete",
+    "pronunciation": "KON-kreet",
+    "category": "concrete",
+    "definition_en": "A construction material made primarily from cementitious binder, water, and aggregate that hardens into a stone-like mass.",
+    "explanation_ru": "Concrete — бетон. Для estimator важны mix/specification, объём, placement, formwork, rebar, joints, curing и доступ для укладки.",
+    "translation_ru": [
+      "бетон"
+    ],
+    "translation_vi": [
+      "bê tông"
+    ],
+    "example_en": "Place concrete around the prepared reinforcement and forms.",
+    "scenario": "Cementitious paste binds sand and stone into a hardened structural material.",
+    "visual": "Concrete placement schematic showing aggregate mixture entering formwork around reinforcement.",
+    "related_terms": [
+      "formwork",
+      "rebar",
+      "precast-concrete"
+    ],
+    "common_mistakes": [
+      "Concrete and cement are not the same thing; cement is one component of concrete."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "pump-station",
+    "term": "pump station",
+    "pronunciation": "PUMP STAY-shun",
+    "category": "utilities",
+    "definition_en": "A facility that uses pumps and associated mechanical, electrical, piping, control, and civil systems to move water or wastewater when gravity flow is insufficient.",
+    "explanation_ru": "Pump station — насосная станция. Может перекачивать wastewater, stormwater или water; civil scope часто включает excavation, structures, piping, valves, electrical, controls and restoration.",
+    "translation_ru": [
+      "насосная станция"
+    ],
+    "translation_vi": [
+      "trạm bơm"
+    ],
+    "example_en": "The pump station scope includes below-grade structures, piping, electrical work, and site restoration.",
+    "scenario": "A low point in a utility system must mechanically raise flow to a higher discharge elevation.",
+    "visual": "Section showing an underground chamber with pumps discharging through a pressure pipe.",
+    "related_terms": [
+      "sanitary-pump-station",
+      "force-main",
+      "wet-well"
+    ],
+    "common_mistakes": [
+      "A pump station is a complete facility, not only the pump equipment."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "sanitary-pump-station",
+    "term": "sanitary pump station",
+    "pronunciation": "SAN-i-tair-ee PUMP STAY-shun",
+    "category": "utilities",
+    "definition_en": "A wastewater pumping facility that receives sanitary sewage, usually from gravity sewers, and pumps it into a force main or higher sewer system.",
+    "explanation_ru": "Sanitary pump station — канализационная насосная станция. Обычно включает wet well, pumps, force main, valves, controls, bypass provisions и associated civil works.",
+    "translation_ru": [
+      "канализационная насосная станция",
+      "КНС"
+    ],
+    "translation_vi": [
+      "trạm bơm nước thải"
+    ],
+    "example_en": "The sanitary pump station receives gravity sewer flow and discharges through a force main.",
+    "scenario": "Wastewater enters a low chamber and must be mechanically lifted into a pressurized discharge line.",
+    "visual": "Wastewater facility section showing inflow, wet chamber, pumps, valves, and force main.",
+    "related_terms": [
+      "pump-station",
+      "wet-well",
+      "force-main"
+    ],
+    "common_mistakes": [
+      "Do not confuse a sanitary facility with a stormwater pumping facility; the conveyed flow and process requirements differ."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "wet-well",
+    "term": "wet well",
+    "pronunciation": "WET well",
+    "category": "utilities",
+    "definition_en": "A below-grade chamber that receives and temporarily stores wastewater or drainage flow before pumps remove it.",
+    "explanation_ru": "Wet well — мокрый колодец/приёмный резервуар насосной станции, куда приходит поток перед перекачкой. Глубина wet well часто определяет excavation and shoring requirements.",
+    "translation_ru": [
+      "приёмный резервуар",
+      "мокрый колодец насосной станции"
+    ],
+    "translation_vi": [
+      "hố ướt",
+      "bể thu nước của trạm bơm"
+    ],
+    "example_en": "Excavate the wet well to the structural founding elevation before installing the base.",
+    "scenario": "Incoming gravity flow collects in a deep chamber until equipment starts and lowers the liquid level.",
+    "visual": "Deep chamber section with inflow pipe, liquid level, and submersible pumps.",
+    "related_terms": [
+      "sanitary-pump-station",
+      "sump-pit",
+      "force-main"
+    ],
+    "common_mistakes": [
+      "A wet well stores pumped-system inflow; it is not simply a manhole."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "valve-chamber",
+    "term": "valve chamber",
+    "pronunciation": "VALV CHAYM-ber",
+    "category": "utilities",
+    "definition_en": "An accessible below-grade structure containing valves, fittings, meters, or other piping components that require operation or maintenance.",
+    "explanation_ru": "Valve chamber — подземная камера с valves и fittings, к которым нужен доступ для эксплуатации. Для estimate важны excavation, structure, penetrations, piping, access hatch and drainage.",
+    "translation_ru": [
+      "камера задвижек",
+      "арматурная камера"
+    ],
+    "translation_vi": [
+      "hố van",
+      "buồng van"
+    ],
+    "example_en": "Install the valve chamber adjacent to the discharge piping and provide access for maintenance.",
+    "scenario": "Several large pipe-control components need a protected underground enclosure that workers can access.",
+    "visual": "Underground chamber with multiple valves on large pipes and an access hatch at grade.",
+    "related_terms": [
+      "valve",
+      "pump-station",
+      "utility-chamber"
+    ],
+    "common_mistakes": [
+      "A valve chamber is an access structure for piping components; its geometry must come from structural/mechanical drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "bypass-pumping",
+    "term": "bypass pumping",
+    "pronunciation": "BY-pass PUMP-ing",
+    "category": "utilities",
+    "definition_en": "A temporary pumping arrangement that diverts live wastewater or drainage flow around a section of system that must be isolated for construction, tie-ins, or repairs.",
+    "explanation_ru": "Bypass pumping — временная перекачка потока в обход участка, который отключают для tie-in или ремонта. В estimate важны flow, duration, pumps, hoses/pipes, redundancy, monitoring and setup/removal.",
+    "translation_ru": [
+      "временная перекачка в обход",
+      "байпасная откачка"
+    ],
+    "translation_vi": [
+      "bơm bypass tạm thời",
+      "bơm chuyển dòng tạm"
+    ],
+    "example_en": "Provide bypass pumping during the live sewer tie-in so upstream service can continue.",
+    "scenario": "Flow cannot be stopped, so temporary equipment carries it around an isolated work zone.",
+    "visual": "Existing sewer flow diverted through temporary pumps and hoses around a work area.",
+    "related_terms": [
+      "tie-in",
+      "shutdown-window",
+      "sanitary-sewer"
+    ],
+    "common_mistakes": [
+      "Do not assume bypass equipment must run for the full project duration; it may only be needed during specific isolation periods."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "decommissioning",
+    "term": "decommissioning",
+    "pronunciation": "dee-kuh-MISH-un-ing",
+    "category": "utilities",
+    "definition_en": "The controlled process of taking an existing facility, system, pipe, or equipment permanently out of service, including isolation, removal, abandonment, or making it safe.",
+    "explanation_ru": "Decommissioning — вывод существующей системы из эксплуатации. Это может означать removal equipment, plugging/capping pipes, electrical isolation, abandonment in place или demolition — конкретный scope надо брать из документов.",
+    "translation_ru": [
+      "вывод из эксплуатации",
+      "ликвидация/консервация объекта"
+    ],
+    "translation_vi": [
+      "ngừng khai thác",
+      "tháo bỏ và đưa ra khỏi vận hành"
+    ],
+    "example_en": "Complete the decommissioning only after the replacement system is operational and accepted.",
+    "scenario": "An old facility is permanently taken out of service after the new system becomes available.",
+    "visual": "Old facility isolated from live network with valves closed and equipment removal arrows.",
+    "related_terms": [
+      "demolition",
+      "conduit-cap-plug",
+      "pump-station"
+    ],
+    "common_mistakes": [
+      "Decommissioning does not automatically mean complete demolition; some structures or pipes may remain in place."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "shutdown-window",
+    "term": "shutdown window",
+    "pronunciation": "SHUT-down WIN-doh",
+    "category": "utilities",
+    "definition_en": "An approved limited time period when a live utility or process may be intentionally interrupted so a tie-in, cutover, repair, or switching operation can be completed.",
+    "explanation_ru": "Shutdown window — согласованное окно отключения действующей системы. Для estimator/schedule важно учитывать preparation, crews, temporary bypass, contingency and restoration внутри ограниченного времени.",
+    "translation_ru": [
+      "окно отключения",
+      "разрешённый период остановки системы"
+    ],
+    "translation_vi": [
+      "khoảng thời gian ngừng hệ thống",
+      "cửa sổ cắt dịch vụ"
+    ],
+    "example_en": "Plan the tie-in crew and contingency around the approved shutdown window.",
+    "scenario": "The owner allows the live system to be interrupted only during a short scheduled period.",
+    "visual": "Timeline with a highlighted limited outage period between preparation and return-to-service steps.",
+    "related_terms": [
+      "tie-in",
+      "bypass-pumping",
+      "construction-sequencing"
+    ],
+    "common_mistakes": [
+      "A shutdown window is a time constraint, not the same thing as the physical tie-in itself."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "sheet-pile",
+    "term": "sheet pile",
+    "pronunciation": "SHEET PYLE",
+    "category": "safety",
+    "definition_en": "A long interlocking structural section, commonly steel, driven or installed vertically to form a retaining, shoring, cutoff, or temporary excavation wall.",
+    "explanation_ru": "Sheet pile — шпунтовая свая/шпунтина. Интерlocking sections образуют стену для удержания грунта и иногда воды. Для estimate считают perimeter/area, length, installation/extraction, bracing and design requirements.",
+    "translation_ru": [
+      "шпунт",
+      "шпунтовая свая"
+    ],
+    "translation_vi": [
+      "cọc ván",
+      "cọc ván thép"
+    ],
+    "example_en": "Install the sheet pile to the design toe elevation before deep excavation begins.",
+    "scenario": "Interlocking vertical steel sections form a continuous temporary wall around a deep excavation.",
+    "visual": "Deep excavation section with interlocking vertical steel sheets around the perimeter.",
+    "related_terms": [
+      "shoring",
+      "cofferdam",
+      "waler"
+    ],
+    "common_mistakes": [
+      "Sheet length and embedment are design-dependent; excavation depth alone does not determine pile length."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "cofferdam",
+    "term": "cofferdam",
+    "pronunciation": "KAW-fer-dam",
+    "category": "safety",
+    "definition_en": "A temporary enclosed retaining system built around a work area so soil and/or water can be excluded and construction can proceed inside the enclosure.",
+    "explanation_ru": "Cofferdam — временный замкнутый короб/ограждение вокруг excavation. Может выполняться из sheet piles и bracing; создаёт рабочую зону для deep structures и water control.",
+    "translation_ru": [
+      "шпунтовый котлован",
+      "временное ограждение котлована",
+      "коффердам"
+    ],
+    "translation_vi": [
+      "đê quây tạm",
+      "khung vây hố đào"
+    ],
+    "example_en": "The cofferdam provides a contained excavation for the below-grade structures.",
+    "scenario": "A temporary perimeter wall creates a protected work area for deep construction while surrounding ground or water is held back.",
+    "visual": "Plan and section of a rectangular enclosed excavation supported by sheet piles and internal bracing.",
+    "related_terms": [
+      "sheet-pile",
+      "shoring",
+      "dewatering"
+    ],
+    "common_mistakes": [
+      "A cofferdam is a temporary enclosure/system, not simply one sheet pile wall."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "hdpe-pipe",
+    "term": "HDPE pipe",
+    "pronunciation": "H-D-P-E pipe",
+    "category": "utilities",
+    "definition_en": "Pipe made from high-density polyethylene, widely used for pressure and some gravity utility systems because it is flexible, corrosion-resistant, and can be fusion-joined.",
+    "explanation_ru": "HDPE pipe — труба из полиэтилена высокой плотности. На civil projects часто соединяется butt fusion или electrofusion; для estimate важны DR/SDR, diameter, fittings, fusion, testing and handling.",
+    "translation_ru": [
+      "труба ПНД",
+      "полиэтиленовая труба высокой плотности"
+    ],
+    "translation_vi": [
+      "ống HDPE",
+      "ống polyethylene mật độ cao"
+    ],
+    "example_en": "Install the HDPE pipe between the new structure and the existing utility connection.",
+    "scenario": "A flexible black polyethylene pressure line is joined into long leak-resistant runs for underground service.",
+    "visual": "Black polyethylene pipe run with fusion joint and trench installation.",
+    "related_terms": [
+      "butt-fusion",
+      "electrofusion-coupling",
+      "force-main"
+    ],
+    "common_mistakes": [
+      "Do not price HDPE by diameter alone; DR/SDR, pressure class, joining method, fittings, and testing matter."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "electrofusion-coupling",
+    "term": "electrofusion coupling",
+    "pronunciation": "ee-LEK-troh-FYOO-zhun KUP-ling",
+    "category": "utilities",
+    "definition_en": "A polyethylene fitting with embedded electrical heating elements used to fuse and join compatible PE pipe ends.",
+    "explanation_ru": "Electrofusion coupling — муфта для PE/HDPE с встроенной нагревательной спиралью. После подготовки pipe ends контроллер нагревает fitting и формирует fused joint. Friatec — известная product family/brand для таких fittings.",
+    "translation_ru": [
+      "электромуфтовое соединение",
+      "электросварная муфта для ПНД"
+    ],
+    "translation_vi": [
+      "măng sông hàn điện trở",
+      "khớp nối electrofusion"
+    ],
+    "example_en": "Use the specified electrofusion coupling for the connection where butt fusion is not practical.",
+    "scenario": "A fitting with embedded heating coils joins two prepared polyethylene pipe ends using controlled electrical energy.",
+    "visual": "HDPE pipe ends inserted into a coupling with embedded heating coils and control leads.",
+    "related_terms": [
+      "hdpe-pipe",
+      "butt-fusion",
+      "tie-in"
+    ],
+    "common_mistakes": [
+      "Friatec is a product/brand family, not the generic name of every electrofusion fitting.",
+      "Pipe preparation, scraping, alignment, and fusion procedure must follow the approved system."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "butt-fusion",
+    "term": "butt fusion",
+    "pronunciation": "BUTT FYOO-zhun",
+    "category": "utilities",
+    "definition_en": "A heat-fusion process that joins compatible thermoplastic pipe ends by facing them, heating them on a plate, and pressing the molten ends together under controlled conditions.",
+    "explanation_ru": "Butt fusion — стыковая сварка HDPE/PE труб нагревательной плитой. Концы торцуются, нагреваются и соединяются под контролируемым давлением.",
+    "translation_ru": [
+      "стыковая сварка ПНД",
+      "термосварка встык"
+    ],
+    "translation_vi": [
+      "hàn đối đầu ống HDPE",
+      "hàn nhiệt đối đầu"
+    ],
+    "example_en": "Complete the butt fusion in a clean setup area before lowering the pipe string into the trench.",
+    "scenario": "Two square-cut polyethylene pipe ends are heated against a plate and then pressed together to form one continuous joint.",
+    "visual": "Fusion machine holding two HDPE pipe ends around a central heater plate.",
+    "related_terms": [
+      "hdpe-pipe",
+      "electrofusion-coupling",
+      "production-rate"
+    ],
+    "common_mistakes": [
+      "Butt fusion requires compatible materials, approved procedures, proper equipment, and qualified operators."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pvc-drain-pipe",
+    "term": "PVC drain pipe",
+    "pronunciation": "P-V-C DRAYN pipe",
+    "category": "drainage",
+    "definition_en": "A polyvinyl chloride pipe used for gravity drainage applications such as site drains, building drainage connections, or small storm/sanitary lines where specified.",
+    "explanation_ru": "PVC drain pipe — PVC труба для самотечного дренажа. Класс, SDR, diameter, bedding, slope and fittings зависят от проекта.",
+    "translation_ru": [
+      "ПВХ дренажная труба",
+      "ПВХ труба самотечной канализации"
+    ],
+    "translation_vi": [
+      "ống thoát nước PVC"
+    ],
+    "example_en": "Install the PVC drain pipe at the required slope and connect it to the drainage structure.",
+    "scenario": "A small rigid plastic gravity line carries collected water toward a downstream structure.",
+    "visual": "Small sloped PVC gravity pipe between two drainage points with flow arrow.",
+    "related_terms": [
+      "storm-sewer",
+      "bedding",
+      "invert"
+    ],
+    "common_mistakes": [
+      "Do not confuse PVC drainage pipe with PVC electrical duct; standards and fittings differ."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "copper-water-line",
+    "term": "copper water line",
+    "pronunciation": "KOP-er WAW-ter line",
+    "category": "utilities",
+    "definition_en": "A copper pipe used to convey potable or service water, commonly in smaller-diameter building or site water connections where specified.",
+    "explanation_ru": "Copper water line — медная водопроводная линия. В civil takeoff важно отличать её от watermain/HDPE/PVC и учитывать fittings, valves, insulation/protection and tie-ins по проекту.",
+    "translation_ru": [
+      "медная водопроводная труба",
+      "медная линия воды"
+    ],
+    "translation_vi": [
+      "ống cấp nước bằng đồng"
+    ],
+    "example_en": "Route the copper water line from the service connection to the equipment area.",
+    "scenario": "A small-diameter metallic water supply runs between a utility connection and local equipment.",
+    "visual": "Small copper-colored water pipe with valve and connection points.",
+    "related_terms": [
+      "watermain",
+      "service-connection",
+      "valve"
+    ],
+    "common_mistakes": [
+      "Material, type, joining method, and protection requirements must come from the plumbing/mechanical specification."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "centerline-length",
+    "term": "centerline length",
+    "pronunciation": "SEN-ter-line length",
+    "category": "drawings",
+    "definition_en": "A linear quantity measured along the centerline or axis of a pipe, duct, road, trench, or alignment rather than along an outside edge.",
+    "explanation_ru": "Centerline length — длина по оси элемента. Для pipe/duct takeoff обычно измеряют трассу по centerline, чтобы не считать по одной из наружных граней.",
+    "translation_ru": [
+      "длина по оси",
+      "осевая длина"
+    ],
+    "translation_vi": [
+      "chiều dài theo tim tuyến",
+      "chiều dài tim ống"
+    ],
+    "example_en": "Use the centerline length for the pipe quantity unless the bid item defines another measurement basis.",
+    "scenario": "An estimator measures along the axis of a routed utility through bends and direction changes.",
+    "visual": "Plan view of a routed pipe with highlighted centerline and dimension ticks.",
+    "related_terms": [
+      "alignment",
+      "quantity-takeoff",
+      "profile"
+    ],
+    "common_mistakes": [
+      "Measurement basis can vary by contract; fittings or structures may be paid separately."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "cable-tray",
+    "term": "cable tray",
+    "pronunciation": "KAY-bul tray",
+    "category": "electrical",
+    "definition_en": "An open or ventilated support system used to carry and organize electrical or communication cables along walls, ceilings, structures, or equipment areas.",
+    "explanation_ru": "Cable tray — кабельный лоток/эстакада для открытой прокладки кабелей. Это не underground conduit: кабели лежат на поддерживающей системе и остаются доступными.",
+    "translation_ru": [
+      "кабельный лоток",
+      "кабельная трасса на лотках"
+    ],
+    "translation_vi": [
+      "máng cáp"
+    ],
+    "example_en": "Route the feeder cables on the cable tray between the electrical source and the equipment area.",
+    "scenario": "Power cables travel above grade on an accessible support system instead of inside buried ducts.",
+    "visual": "Wall-mounted ladder tray carrying several cables between equipment locations.",
+    "related_terms": [
+      "conduit",
+      "duct-bank",
+      "cable-trough"
+    ],
+    "common_mistakes": [
+      "Cable tray and conduit are different raceway/support systems and are measured differently."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "cable-trough",
+    "term": "cable trough",
+    "pronunciation": "KAY-bul troff",
+    "category": "electrical",
+    "definition_en": "A linear channel or trough, often covered, used to route and protect cables at or below grade while keeping them accessible or organized.",
+    "explanation_ru": "Cable trough — кабельный канал/желоб. Может быть бетонным, металлическим или другим; в demolition/restoration его нужно отличать от conduit duct bank и cable tray.",
+    "translation_ru": [
+      "кабельный канал",
+      "кабельный желоб"
+    ],
+    "translation_vi": [
+      "mương cáp",
+      "rãnh cáp có nắp"
+    ],
+    "example_en": "Remove the abandoned cable trough where it conflicts with the new civil work.",
+    "scenario": "Cables run through a long covered channel rather than through individual buried conduit pipes.",
+    "visual": "Covered linear channel with several cables inside and removable lids.",
+    "related_terms": [
+      "cable-tray",
+      "conduit",
+      "demolition"
+    ],
+    "common_mistakes": [
+      "A trough is not automatically a duct bank; confirm construction and cable support from the drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ventilation-duct",
+    "term": "ventilation duct",
+    "pronunciation": "ven-ti-LAY-shun duct",
+    "category": "utilities",
+    "definition_en": "A duct or enclosed passage used to convey supply, exhaust, or ventilation air between equipment, rooms, shafts, or structures.",
+    "explanation_ru": "Ventilation duct — вентиляционный воздуховод. На underground civil/mechanical interfaces он может быть крупным коробом в отдельной траншее, поэтому его нельзя автоматически считать electrical duct.",
+    "translation_ru": [
+      "вентиляционный воздуховод",
+      "вентиляционный канал"
+    ],
+    "translation_vi": [
+      "ống gió",
+      "ống thông gió"
+    ],
+    "example_en": "Excavate the route for the ventilation duct separately from the electrical duct bank.",
+    "scenario": "A large enclosed passage carries air between mechanical equipment and a below-grade structure.",
+    "visual": "Large rectangular air duct in a trench with airflow arrows.",
+    "related_terms": [
+      "mechanical-excavation",
+      "utility-conflict",
+      "excavation"
+    ],
+    "common_mistakes": [
+      "Ventilation duct is for air movement; it is not an electrical conduit despite the word duct."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pcc-pavement",
+    "term": "PCC pavement",
+    "pronunciation": "P-C-C PAYV-ment",
+    "category": "roadworks",
+    "definition_en": "Portland cement concrete pavement: a rigid traffic surface formed from concrete slabs, typically with designed joints and load-transfer details.",
+    "explanation_ru": "PCC pavement — жёсткое бетонное дорожное/аэродромное покрытие из Portland cement concrete. В takeoff считаются slabs/panels, thickness, base layers, dowels, joints, sawcuts and restoration limits.",
+    "translation_ru": [
+      "цементобетонное покрытие",
+      "бетонное дорожное покрытие"
+    ],
+    "translation_vi": [
+      "mặt đường bê tông xi măng",
+      "PCC pavement"
+    ],
+    "example_en": "Replace the PCC pavement panels disturbed by the construction work.",
+    "scenario": "Traffic is carried by rigid jointed slabs rather than a flexible bituminous surface.",
+    "visual": "Rigid concrete slab pavement section with joints and dowel bars over base layer.",
+    "related_terms": [
+      "pavement",
+      "dowel-bar",
+      "pavement-joint"
+    ],
+    "common_mistakes": [
+      "PCC thickness, joint layout, reinforcement, and base section are project-specific."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pavement-structure",
+    "term": "pavement structure",
+    "pronunciation": "PAYV-ment STRUK-cher",
+    "category": "roadworks",
+    "definition_en": "The complete engineered layer system that supports traffic, commonly including surface course, base, subbase, and prepared subgrade.",
+    "explanation_ru": "Pavement structure / road structure — конструкция дорожной одежды по слоям. Для estimate важно не потерять каждый layer и demolition/reinstatement of the existing section.",
+    "translation_ru": [
+      "конструкция дорожной одежды",
+      "дорожная конструкция"
+    ],
+    "translation_vi": [
+      "kết cấu áo đường",
+      "cấu tạo mặt đường"
+    ],
+    "example_en": "Build the pavement structure to the layer thicknesses shown in the civil detail.",
+    "scenario": "The roadway section consists of several engineered layers from finished surface down to prepared soil.",
+    "visual": "Exploded road section labeling surface, base, subbase, and subgrade layers.",
+    "related_terms": [
+      "pavement",
+      "base-course",
+      "subbase"
+    ],
+    "common_mistakes": [
+      "Do not price only the surface layer when the scope calls for full-depth reconstruction."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pavement-restoration",
+    "term": "pavement restoration",
+    "pronunciation": "PAYV-ment res-tuh-RAY-shun",
+    "category": "roadworks",
+    "definition_en": "Reconstruction or repair of road, apron, parking, or other paved surfaces disturbed by excavation or construction so the finished area meets the required section and limits.",
+    "explanation_ru": "Pavement restoration — восстановление дорожного/аэродромного покрытия после utility/excavation work. Может включать sawcut, removal, granular layers, asphalt/PCC, joints and markings.",
+    "translation_ru": [
+      "восстановление дорожного покрытия",
+      "восстановление дорожной одежды"
+    ],
+    "translation_vi": [
+      "hoàn trả mặt đường",
+      "phục hồi kết cấu mặt đường"
+    ],
+    "example_en": "Complete the pavement restoration after the utility trench has been backfilled and accepted.",
+    "scenario": "A disturbed traffic surface and its supporting layers must be rebuilt after underground work.",
+    "visual": "Before/after trench section showing disturbed roadway rebuilt through all layers.",
+    "related_terms": [
+      "permanent-mill-and-overlay",
+      "pavement-structure",
+      "sawcut"
+    ],
+    "common_mistakes": [
+      "Restoration limits may extend beyond the trench width to joints, lane limits, or specified rectangles."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "crushed-granular-base",
+    "term": "crushed granular base",
+    "pronunciation": "KRUSHT GRAN-yuh-ler BASE",
+    "category": "roadworks",
+    "definition_en": "A dense, well-graded crushed aggregate base layer placed and compacted beneath pavement to provide structural support and a stable working surface.",
+    "explanation_ru": "Crushed granular base (CGB) — верхний несущий слой дроблёного granular material под asphalt/PCC. Требования к gradation, compaction and thickness берутся из specification.",
+    "translation_ru": [
+      "щебёночное основание",
+      "дроблёное гранулярное основание"
+    ],
+    "translation_vi": [
+      "lớp móng cấp phối đá dăm",
+      "lớp đá dăm nền đường"
+    ],
+    "example_en": "Place and compact the crushed granular base before the surface course is constructed.",
+    "scenario": "A dense crushed aggregate layer is compacted immediately below the traffic surfacing.",
+    "visual": "Road section highlighting the granular base layer beneath the surface.",
+    "related_terms": [
+      "base-course",
+      "subbase",
+      "pavement-structure"
+    ],
+    "common_mistakes": [
+      "CGB naming and gradation are specification-dependent; verify the project material requirement."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "cement-stabilized-base",
+    "term": "cement-stabilized base",
+    "pronunciation": "suh-MENT STAY-buh-lyzd BASE",
+    "category": "roadworks",
+    "definition_en": "A pavement base material strengthened by mixing soil or aggregate with a controlled amount of cement and water, then placing and curing the mixture.",
+    "explanation_ru": "Cement-stabilized base (CSB) — основание, укреплённое цементом. Это не обычный loose aggregate: материал смешивается с cement/water и набирает прочность после placement and curing.",
+    "translation_ru": [
+      "цементогрунтовое основание",
+      "основание, стабилизированное цементом"
+    ],
+    "translation_vi": [
+      "lớp móng gia cố xi măng",
+      "cấp phối gia cố xi măng"
+    ],
+    "example_en": "Construct the cement-stabilized base to the specified thickness below the concrete pavement.",
+    "scenario": "Granular or soil material is mixed with cement so the base cures into a stronger bound layer.",
+    "visual": "Pavement section highlighting a cement-treated base under rigid slabs.",
+    "related_terms": [
+      "pcc-pavement",
+      "pavement-structure",
+      "compaction"
+    ],
+    "common_mistakes": [
+      "CSB proportions, strength, curing, and terminology vary by specification; verify the project requirements."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dowel-bar",
+    "term": "dowel bar",
+    "pronunciation": "DOW-ul bar",
+    "category": "concrete",
+    "definition_en": "A smooth steel bar installed across a concrete pavement or slab joint to transfer wheel or structural load while allowing limited joint movement.",
+    "explanation_ru": "Dowel bar — гладкий стальной штырь через joint между бетонными плитами. Передаёт нагрузку между slabs, но позволяет controlled opening/closing of the joint.",
+    "translation_ru": [
+      "дюбельный стержень",
+      "гладкий штырь между бетонными плитами"
+    ],
+    "translation_vi": [
+      "thanh dowel truyền lực",
+      "thanh thép trơn qua khe"
+    ],
+    "example_en": "Install each dowel bar at the spacing and elevation shown in the pavement joint detail.",
+    "scenario": "Smooth steel bars cross between adjacent rigid slabs so wheel loads transfer across the separation.",
+    "visual": "Two concrete slabs separated by joint with smooth horizontal dowels crossing the joint.",
+    "related_terms": [
+      "pcc-pavement",
+      "pavement-joint",
+      "rebar"
+    ],
+    "common_mistakes": [
+      "Dowel bars are not the same as deformed reinforcing bars tying two slabs rigidly together."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pavement-joint",
+    "term": "pavement joint",
+    "pronunciation": "PAYV-ment JOYNT",
+    "category": "roadworks",
+    "definition_en": "A deliberately formed or cut separation in rigid pavement used to control cracking, accommodate movement, define slab panels, or connect construction stages.",
+    "explanation_ru": "Pavement joint — проектный шов в PCC slab. Может быть construction, contraction, expansion or isolation joint; детали sealant/dowels/tie bars зависят от типа.",
+    "translation_ru": [
+      "шов бетонного покрытия",
+      "дорожный деформационный/технологический шов"
+    ],
+    "translation_vi": [
+      "khe mặt đường bê tông",
+      "khe nối tấm bê tông"
+    ],
+    "example_en": "Construct the pavement joint in accordance with the slab layout and joint detail.",
+    "scenario": "Adjacent rigid slabs need an intentional separation so cracking and movement occur in controlled locations.",
+    "visual": "Concrete slab plan with panel grid and a highlighted joint detail.",
+    "related_terms": [
+      "pcc-pavement",
+      "dowel-bar",
+      "sawcut"
+    ],
+    "common_mistakes": [
+      "Joint type and load-transfer details must be read from the drawings; not every joint uses the same dowels or seal."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "temporary-access-road",
+    "term": "temporary access road",
+    "pronunciation": "TEM-puh-rair-ee AK-sess road",
+    "category": "roadworks",
+    "definition_en": "A short-term roadway or route built or designated to provide construction vehicles, crews, or operations access while permanent work is underway.",
+    "explanation_ru": "Temporary access road — временная дорога/подъезд для стройки. Может быть новой granular road, использованием existing pavement или temporary marking route; конструкцию нельзя предполагать без drawings/spec.",
+    "translation_ru": [
+      "временная подъездная дорога",
+      "временный строительный проезд"
+    ],
+    "translation_vi": [
+      "đường công vụ tạm",
+      "đường tiếp cận tạm"
+    ],
+    "example_en": "Maintain the temporary access road until the permanent route is restored and opened.",
+    "scenario": "Construction vehicles need a short-term route around an active work zone.",
+    "visual": "Plan view with temporary route arrows bypassing a fenced work area.",
+    "related_terms": [
+      "temporary-detour",
+      "construction-gate",
+      "temporary-works"
+    ],
+    "common_mistakes": [
+      "A temporary route is not automatically a new full-depth road; it may use existing pavement or temporary markings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "temporary-detour",
+    "term": "temporary detour",
+    "pronunciation": "TEM-puh-rair-ee DEE-tour",
+    "category": "roadworks",
+    "definition_en": "A temporary rerouting of vehicles, pedestrians, or operational traffic around a closed or obstructed work area.",
+    "explanation_ru": "Temporary detour — временный объезд действующей зоны работ. Scope может включать temporary markings, barriers/signage, surface preparation and later removal.",
+    "translation_ru": [
+      "временный объезд",
+      "временная схема движения в обход"
+    ],
+    "translation_vi": [
+      "đường vòng tạm",
+      "phân luồng tạm"
+    ],
+    "example_en": "Set up the temporary detour before closing the existing traffic route through the work area.",
+    "scenario": "Normal traffic cannot pass through the construction zone and is redirected along another route.",
+    "visual": "Plan view with original route blocked and arrows following an alternate path.",
+    "related_terms": [
+      "temporary-access-road",
+      "temporary-pavement-marking",
+      "construction-sequencing"
+    ],
+    "common_mistakes": [
+      "A detour is the rerouted movement path; its physical road construction may be separate scope."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "temporary-pavement-marking",
+    "term": "temporary pavement marking",
+    "pronunciation": "TEM-puh-rair-ee PAYV-ment MAR-king",
+    "category": "roadworks",
+    "definition_en": "Short-term painted, taped, or otherwise applied traffic guidance markings used during construction staging or temporary traffic arrangements.",
+    "explanation_ru": "Temporary pavement marking — временная разметка для construction staging/traffic detour. После завершения обычно требуется removal и permanent markings.",
+    "translation_ru": [
+      "временная дорожная разметка"
+    ],
+    "translation_vi": [
+      "vạch kẻ đường tạm thời"
+    ],
+    "example_en": "Install the temporary pavement marking before the detour is placed into service.",
+    "scenario": "Short-term lines and symbols guide traffic through a construction-stage route.",
+    "visual": "Road plan with dashed temporary lane lines and arrows around work zone.",
+    "related_terms": [
+      "temporary-detour",
+      "marking-removal",
+      "permanent-pavement-marking"
+    ],
+    "common_mistakes": [
+      "Temporary markings still require defined materials, colours, widths, and removal methods from the traffic plan/specification."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "permanent-pavement-marking",
+    "term": "permanent pavement marking",
+    "pronunciation": "PUR-muh-nent PAYV-ment MAR-king",
+    "category": "roadworks",
+    "definition_en": "Final traffic lines, symbols, bars, legends, and other surface markings installed for the completed roadway or operational area.",
+    "explanation_ru": "Permanent pavement marking — окончательная разметка после restoration. В takeoff могут отдельно считаться line lengths, widths, symbols, stop bars and specialty materials.",
+    "translation_ru": [
+      "постоянная дорожная разметка"
+    ],
+    "translation_vi": [
+      "vạch kẻ đường vĩnh viễn"
+    ],
+    "example_en": "Apply the permanent pavement marking after the final surface is accepted.",
+    "scenario": "Final lines and symbols are installed after construction staging is removed and the finished route is ready for operation.",
+    "visual": "Finished road plan with centerline, edge lines, stop bar, and directional symbols.",
+    "related_terms": [
+      "temporary-pavement-marking",
+      "marking-removal",
+      "pavement-restoration"
+    ],
+    "common_mistakes": [
+      "Do not reuse temporary-marking quantities as final-marking quantities without checking the final layout."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "marking-removal",
+    "term": "marking removal",
+    "pronunciation": "MAR-king ree-MOO-vul",
+    "category": "roadworks",
+    "definition_en": "Removal or obliteration of existing or temporary pavement markings so obsolete lines and symbols no longer conflict with the final traffic pattern.",
+    "explanation_ru": "Marking removal — удаление временной/старой разметки. Метод может быть grinding, blasting, waterblasting, removal tape и т.п.; важно не повредить substrate больше допустимого.",
+    "translation_ru": [
+      "удаление дорожной разметки"
+    ],
+    "translation_vi": [
+      "xóa vạch kẻ đường",
+      "loại bỏ sơn kẻ đường"
+    ],
+    "example_en": "Complete the marking removal before opening the final traffic layout.",
+    "scenario": "Short-term lines must disappear so drivers do not see conflicting guidance after staging changes.",
+    "visual": "Road surface with temporary stripe being mechanically removed and final line shown nearby.",
+    "related_terms": [
+      "temporary-pavement-marking",
+      "permanent-pavement-marking",
+      "demolition"
+    ],
+    "common_mistakes": [
+      "Removal method and acceptable shadowing/scarring are project-specific."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "contaminated-soil",
+    "term": "contaminated soil",
+    "pronunciation": "kun-TAM-uh-nay-tid soil",
+    "category": "earthworks",
+    "definition_en": "Soil containing contaminants at concentrations that require special characterization, handling, stockpiling, transport, treatment, or disposal under project and regulatory requirements.",
+    "explanation_ru": "Contaminated soil — загрязнённый грунт. Для estimate нельзя просто считать его как обычный spoil: нужны testing/classification, segregation, loading, transport, tipping/treatment and documentation.",
+    "translation_ru": [
+      "загрязнённый грунт"
+    ],
+    "translation_vi": [
+      "đất ô nhiễm"
+    ],
+    "example_en": "Segregate the contaminated soil and haul it to the approved receiving facility.",
+    "scenario": "Excavated material contains regulated substances and cannot be handled as ordinary clean fill.",
+    "visual": "Excavation with segregated covered stockpile, sample tags, and truck to approved facility.",
+    "related_terms": [
+      "disposal",
+      "stockpile",
+      "trucking"
+    ],
+    "common_mistakes": [
+      "Do not assume a percentage or disposal class without environmental information; contamination is project-specific."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "temporary-fencing",
+    "term": "temporary fencing",
+    "pronunciation": "TEM-puh-rair-ee FEN-sing",
+    "category": "safety",
+    "definition_en": "Removable fencing installed for construction security, exclusion zones, site boundaries, or separation from operations and the public.",
+    "explanation_ru": "Temporary fencing — временное ограждение стройплощадки. В estimate учитывают length, panels/posts, ballast/anchors, gates, mobilization, relocations and removal.",
+    "translation_ru": [
+      "временное ограждение"
+    ],
+    "translation_vi": [
+      "hàng rào tạm"
+    ],
+    "example_en": "Maintain the temporary fencing around the active construction zone throughout the work.",
+    "scenario": "Portable barrier panels separate the work area from adjacent operations and unauthorized access.",
+    "visual": "Plan view of fenced work perimeter with panels and controlled gate.",
+    "related_terms": [
+      "construction-gate",
+      "mobilization",
+      "safety"
+    ],
+    "common_mistakes": [
+      "Fence alignment may change by phase; verify staging and gate locations instead of measuring only one snapshot."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "construction-gate",
+    "term": "construction gate",
+    "pronunciation": "kun-STRUK-shun GAYT",
+    "category": "safety",
+    "definition_en": "A controlled opening in a construction perimeter used for authorized vehicles, equipment, or personnel to enter and exit the work area.",
+    "explanation_ru": "Construction gate — ворота в ограждении стройплощадки. Для estimator могут быть отдельные vehicle/personnel gates, operators/security, temporary surfacing and relocations.",
+    "translation_ru": [
+      "строительные ворота",
+      "въездные ворота стройплощадки"
+    ],
+    "translation_vi": [
+      "cổng công trường"
+    ],
+    "example_en": "Provide the construction gate at the designated truck access point.",
+    "scenario": "A controlled opening in the site perimeter allows deliveries and equipment to pass while maintaining security.",
+    "visual": "Temporary fence line with wide vehicle gate and access-control point.",
+    "related_terms": [
+      "temporary-fencing",
+      "temporary-access-road",
+      "mobilization"
+    ],
+    "common_mistakes": [
+      "Gate width, type, security, and operating requirements are site-specific."
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "prequalification",
+    "term": "prequalification",
+    "pronunciation": "pree-kwol-uh-fi-KAY-shun",
+    "category": "tendering",
+    "definition_en": "A procurement screening process used to assess contractors, teams, experience, capacity, safety, financial strength, or other qualifications before inviting later bids or proposals.",
+    "explanation_ru": "Prequalification / prequal — предквалификация подрядчиков. Обычно оценивают experience, team, methodology, safety, schedule capability and references; это ещё не обязательно ценовой tender.",
+    "translation_ru": [
+      "предквалификация",
+      "предварительный отбор подрядчиков"
+    ],
+    "translation_vi": [
+      "sơ tuyển",
+      "đánh giá năng lực sơ bộ"
+    ],
+    "example_en": "The prequalification submission focuses on capability and relevant experience rather than detailed bid pricing.",
+    "scenario": "An owner screens interested contractors before deciding who may proceed to the next procurement stage.",
+    "visual": "Procurement funnel showing many respondents reduced to a qualified shortlist.",
+    "related_terms": [
+      "rfeoi",
+      "statement-of-qualifications",
+      "subcontractor"
+    ],
+    "common_mistakes": [
+      "Prequalification requirements vary by owner; do not assume pricing is always requested."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "rfeoi",
+    "term": "RFEOI",
+    "pronunciation": "R-F-E-O-I",
+    "category": "tendering",
+    "definition_en": "Request for Expressions of Interest: a procurement document inviting organizations to indicate interest and often demonstrate qualifications for a future opportunity or shortlist.",
+    "explanation_ru": "RFEOI — Request for Expressions of Interest. Заказчик просит участников выразить интерес и предоставить qualification information; часто используется как ранний этап procurement/prequalification.",
+    "translation_ru": [
+      "запрос выражения заинтересованности",
+      "RFEOI"
+    ],
+    "translation_vi": [
+      "yêu cầu bày tỏ quan tâm",
+      "RFEOI"
+    ],
+    "example_en": "Review the RFEOI requirements before preparing the experience, team, and schedule sections.",
+    "scenario": "An owner asks the market to show interest and capability before a later competitive procurement stage.",
+    "visual": "Procurement document flowing from owner to respondents with shortlist outcome.",
+    "related_terms": [
+      "prequalification",
+      "statement-of-qualifications",
+      "addendum"
+    ],
+    "common_mistakes": [
+      "RFEOI format and whether it creates a shortlist depend on the procurement documents."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "statement-of-qualifications",
+    "term": "statement of qualifications",
+    "pronunciation": "STAYT-ment of kwol-uh-fi-KAY-shunz",
+    "category": "tendering",
+    "definition_en": "A structured submission describing a firm's experience, team, resources, project approach, safety record, references, and other qualifications requested by an owner.",
+    "explanation_ru": "Statement of Qualifications (SOQ) — пакет квалификационной информации о компании. Обычно включает experience, key personnel, methodology, safety, references and capacity.",
+    "translation_ru": [
+      "квалификационная заявка",
+      "заявление о квалификации"
+    ],
+    "translation_vi": [
+      "hồ sơ năng lực",
+      "bản trình bày năng lực"
+    ],
+    "example_en": "The statement of qualifications includes relevant projects, key personnel, and the proposed approach.",
+    "scenario": "A respondent assembles evidence of capability and experience rather than a detailed construction price.",
+    "visual": "Submission binder with tabs for experience, team, safety, approach, and references.",
+    "related_terms": [
+      "prequalification",
+      "rfeoi",
+      "scope-of-work"
+    ],
+    "common_mistakes": [
+      "An SOQ is not necessarily a priced bid; follow the requested submission form."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "gantt-schedule",
+    "term": "Gantt schedule",
+    "pronunciation": "GANT SKEJ-ool",
+    "category": "estimating",
+    "definition_en": "A time-based project schedule that displays activities as horizontal bars against dates or durations, showing sequence, overlap, milestones, and dependencies.",
+    "explanation_ru": "Gantt schedule — календарный график с bars по времени. Для preconstruction используют quantities/production rates, sequencing, milestones and constraints, чтобы показать ожидаемую duration.",
+    "translation_ru": [
+      "диаграмма Ганта",
+      "календарный график"
+    ],
+    "translation_vi": [
+      "biểu đồ Gantt",
+      "tiến độ Gantt"
+    ],
+    "example_en": "Build the Gantt schedule from the major quantities, production assumptions, and required milestones.",
+    "scenario": "Project activities are displayed as horizontal bars so the team can see when work starts, overlaps, and finishes.",
+    "visual": "Simple Gantt chart with excavation, shoring, piping, restoration, and milestone bars.",
+    "related_terms": [
+      "construction-sequencing",
+      "schedule-driver",
+      "production-rate"
+    ],
+    "common_mistakes": [
+      "A schedule should reflect logic and constraints, not just arbitrary bar lengths."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "schedule-driver",
+    "term": "schedule driver",
+    "pronunciation": "SKEJ-ool DRY-ver",
+    "category": "estimating",
+    "definition_en": "A quantity, activity, constraint, resource, approval, or interface that materially controls project duration or the timing of downstream work.",
+    "explanation_ru": "Schedule driver — фактор, который реально определяет duration/sequence: большой excavation quantity, sheet piling, tie-in window, curing, long-lead item и т.п.",
+    "translation_ru": [
+      "ключевой фактор графика",
+      "работа, определяющая срок"
+    ],
+    "translation_vi": [
+      "yếu tố chi phối tiến độ"
+    ],
+    "example_en": "Treat the deep excavation quantity as a schedule driver when developing the preliminary construction duration.",
+    "scenario": "One major work package or constraint controls how quickly the following activities can begin.",
+    "visual": "Schedule chain with one highlighted controlling activity and downstream dependent tasks.",
+    "related_terms": [
+      "gantt-schedule",
+      "production-rate",
+      "construction-sequencing"
+    ],
+    "common_mistakes": [
+      "Not every large quantity is a schedule driver; access, approvals, resources, and interfaces can be more controlling."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "airside",
+    "term": "airside",
+    "pronunciation": "AIR-side",
+    "category": "roadworks",
+    "definition_en": "The restricted operational portion of an airport associated with aircraft movement, parking, servicing, and controlled vehicle access, as opposed to public landside areas.",
+    "explanation_ru": "Airside — контролируемая операционная зона аэропорта со стоянками/движением самолётов и service vehicles. Construction здесь обычно требует специального access, staging and operational coordination.",
+    "translation_ru": [
+      "аэродромная зона",
+      "операционная зона аэропорта"
+    ],
+    "translation_vi": [
+      "khu bay",
+      "khu vực airside"
+    ],
+    "example_en": "Coordinate all airside construction access with the airport operating requirements.",
+    "scenario": "Work takes place inside the restricted operational part of an airport near aircraft and service vehicles.",
+    "visual": "Airport plan split into public landside and restricted operational area with runway/apron.",
+    "related_terms": [
+      "airport-apron",
+      "headstand-road",
+      "temporary-detour"
+    ],
+    "common_mistakes": [
+      "Airside rules are airport-specific; do not infer access or safety requirements from another facility."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "airport-apron",
+    "term": "airport apron",
+    "pronunciation": "AIR-port AY-prun",
+    "category": "roadworks",
+    "definition_en": "A paved airport area used for aircraft parking, loading, unloading, fueling, servicing, and movement between stands and taxi routes.",
+    "explanation_ru": "Airport apron — перрон аэропорта, большая pavement area вокруг aircraft stands. Может быть PCC/asphalt and includes markings, service roads, equipment areas and strict restoration requirements.",
+    "translation_ru": [
+      "перрон аэропорта"
+    ],
+    "translation_vi": [
+      "sân đỗ máy bay",
+      "apron sân bay"
+    ],
+    "example_en": "Restore the airport apron panels and markings within the construction limits.",
+    "scenario": "Aircraft park and receive ground service on a large paved operational area beside terminal or support facilities.",
+    "visual": "Plan view of aircraft stands on a large paved apron with service lanes and markings.",
+    "related_terms": [
+      "airside",
+      "pcc-pavement",
+      "permanent-pavement-marking"
+    ],
+    "common_mistakes": [
+      "Apron geometry and pavement details are airport-specific."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "headstand-road",
+    "term": "headstand road",
+    "pronunciation": "HED-stand road",
+    "category": "roadworks",
+    "definition_en": "An airport-specific airside road serving or passing near aircraft stand/headstand operations; its exact function, alignment, and traffic controls depend on the airport drawings and operating plan.",
+    "explanation_ru": "Headstand road — специализированная airside road рядом с aircraft stand/headstand operations. Термин и точное назначение зависят от конкретного airport; для estimate всегда нужно смотреть drawings, staging and markings.",
+    "translation_ru": [
+      "служебная дорога у стоянок воздушных судов",
+      "airside headstand road"
+    ],
+    "translation_vi": [
+      "đường dịch vụ khu đỗ máy bay"
+    ],
+    "example_en": "Maintain the headstand road traffic arrangement while the adjacent construction area is active.",
+    "scenario": "Service vehicles use a roadway beside aircraft stand operations and must be rerouted when nearby work blocks the normal path.",
+    "visual": "Airport apron plan with service road passing around aircraft stand area and temporary reroute.",
+    "related_terms": [
+      "airside",
+      "airport-apron",
+      "temporary-detour"
+    ],
+    "common_mistakes": [
+      "Treat this as airport-specific terminology; do not assume the same meaning or road section at another airport."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "temporary-works",
+    "term": "temporary works",
+    "pronunciation": "TEM-puh-rair-ee works",
+    "category": "safety",
+    "definition_en": "Structures, systems, access, supports, facilities, or arrangements needed to enable construction but not normally forming part of the final permanent asset.",
+    "explanation_ru": "Temporary works — временные конструкции и системы, необходимые для выполнения permanent works: shoring, detours, access, falsework, temporary fencing, bypasses и т.п.",
+    "translation_ru": [
+      "временные работы",
+      "временные конструкции"
+    ],
+    "translation_vi": [
+      "công trình tạm",
+      "hạng mục tạm"
+    ],
+    "example_en": "Include the temporary works needed to support safe excavation, access, and bypass operations.",
+    "scenario": "Short-term structures and arrangements enable permanent construction and are removed or altered afterward.",
+    "visual": "Construction sequence showing temporary shoring/access around future permanent structure.",
+    "related_terms": [
+      "shoring",
+      "temporary-access-road",
+      "temporary-fencing"
+    ],
+    "common_mistakes": [
+      "Temporary does not mean unengineered; many temporary systems require design and review."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "precast-concrete",
+    "term": "precast concrete",
+    "pronunciation": "PREE-cast KON-kreet",
+    "category": "concrete",
+    "definition_en": "Concrete elements cast and cured away from their final installed position, then transported, lifted, and assembled on site.",
+    "explanation_ru": "Precast concrete — сборный железобетон/бетонные элементы заводского или площадочного изготовления. В estimate учитывают fabrication, delivery, crane/rigging, joints, grouting and installation tolerances.",
+    "translation_ru": [
+      "сборный бетон",
+      "сборный железобетон"
+    ],
+    "translation_vi": [
+      "bê tông đúc sẵn"
+    ],
+    "example_en": "Set the precast concrete elements on the prepared base using the required lifting plan.",
+    "scenario": "Structural units are manufactured before installation and later lifted into their final position on site.",
+    "visual": "Truck delivering precast chamber sections being lifted by crane into excavation.",
+    "related_terms": [
+      "concrete",
+      "crane-pad",
+      "utility-chamber"
+    ],
+    "common_mistakes": [
+      "Precast and cast-in-place concrete have different logistics, joints, tolerances, and production assumptions."
+    ],
+    "difficulty": 2
   }
 ]

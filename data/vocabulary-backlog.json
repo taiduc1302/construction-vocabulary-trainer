@@ -1,28 +1,8 @@
 [
   {
-    "id": "grade",
-    "priority": "high",
-    "reason": "Referenced by invert, benchmark, swale, and cut; useful for civil drawings and earthworks."
-  },
-  {
     "id": "connection",
     "priority": "low",
     "reason": "Referenced by tie-in; useful as a general utility relationship term."
-  },
-  {
-    "id": "asphalt",
-    "priority": "high",
-    "reason": "Referenced by milling and tack coat; common roadworks vocabulary."
-  },
-  {
-    "id": "pavement",
-    "priority": "high",
-    "reason": "Referenced by overlay; common roadworks and restoration vocabulary."
-  },
-  {
-    "id": "concrete",
-    "priority": "high",
-    "reason": "Referenced by curb/formwork/rebar/thrust-block concepts; common civil construction vocabulary."
   },
   {
     "id": "survey",
@@ -43,11 +23,6 @@
     "id": "utility-locate",
     "priority": "high",
     "reason": "Referenced by daylighting; common underground-utility workflow vocabulary."
-  },
-  {
-    "id": "pump-station",
-    "priority": "high",
-    "reason": "Referenced by force main and directly relevant to civil tender work."
   },
   {
     "id": "crew",
