@@ -414,7 +414,10 @@
       "aliases_en": [
         "dumping",
         "soil disposal",
-        "excavation disposal"
+        "excavation disposal",
+        "off-site disposal",
+        "haul-off",
+        "haul off"
       ]
     },
     "trucking": {
@@ -802,6 +805,280 @@
       "aliases_en": [
         "DB2 spacer",
         "DB2 duct spacer"
+      ]
+    },
+    "pump-station": {
+      "aliases_en": [
+        "pumping station"
+      ]
+    },
+    "sanitary-pump-station": {
+      "aliases_en": [
+        "sewage pump station",
+        "wastewater pump station",
+        "sanitary pumping station"
+      ],
+      "drawing_labels": [
+        "SPS"
+      ]
+    },
+    "wet-well": {
+      "aliases_en": [
+        "wetwell"
+      ]
+    },
+    "valve-chamber": {
+      "aliases_en": [
+        "valve vault",
+        "valve vault chamber"
+      ]
+    },
+    "bypass-pumping": {
+      "aliases_en": [
+        "temporary bypass pumping",
+        "sewer bypass pumping"
+      ]
+    },
+    "decommissioning": {
+      "aliases_en": [
+        "decommissioning works",
+        "decommission"
+      ]
+    },
+    "shutdown-window": {
+      "aliases_en": [
+        "tie-in window",
+        "cutover window",
+        "outage window",
+        "switching window"
+      ]
+    },
+    "sheet-pile": {
+      "aliases_en": [
+        "sheet piling",
+        "sheet pile wall",
+        "steel sheet pile"
+      ]
+    },
+    "cofferdam": {
+      "aliases_en": [
+        "sheet-pile cofferdam",
+        "sheet pile cofferdam"
+      ]
+    },
+    "hdpe-pipe": {
+      "aliases_en": [
+        "high-density polyethylene pipe",
+        "PE pipe",
+        "HDPE piping"
+      ],
+      "drawing_labels": [
+        "HDPE"
+      ]
+    },
+    "electrofusion-coupling": {
+      "aliases_en": [
+        "FRIATEC coupling",
+        "electrofusion fitting",
+        "EF coupling"
+      ]
+    },
+    "butt-fusion": {
+      "aliases_en": [
+        "HDPE butt fusion",
+        "butt-fusion welding"
+      ]
+    },
+    "pvc-drain-pipe": {
+      "aliases_en": [
+        "PVC drainage pipe",
+        "PVC drain"
+      ]
+    },
+    "copper-water-line": {
+      "aliases_en": [
+        "copper water pipe"
+      ]
+    },
+    "centerline-length": {
+      "aliases_en": [
+        "pipe centerline length",
+        "length along centerline",
+        "centreline length"
+      ]
+    },
+    "cable-tray": {
+      "aliases_en": [
+        "ladder tray",
+        "cable ladder"
+      ]
+    },
+    "cable-trough": {
+      "aliases_en": [
+        "cable channel",
+        "covered cable channel"
+      ]
+    },
+    "ventilation-duct": {
+      "aliases_en": [
+        "vent duct",
+        "ventilation ductwork"
+      ]
+    },
+    "pcc-pavement": {
+      "aliases_en": [
+        "Portland cement concrete pavement",
+        "concrete pavement"
+      ],
+      "drawing_labels": [
+        "PCC"
+      ]
+    },
+    "pavement-structure": {
+      "aliases_en": [
+        "road structure",
+        "pavement section",
+        "road section"
+      ]
+    },
+    "pavement-restoration": {
+      "aliases_en": [
+        "road restoration",
+        "surface restoration"
+      ]
+    },
+    "crushed-granular-base": {
+      "aliases_en": [
+        "granular base",
+        "CGB"
+      ],
+      "drawing_labels": [
+        "CGB"
+      ]
+    },
+    "cement-stabilized-base": {
+      "aliases_en": [
+        "cement stabilized base",
+        "cement-treated base",
+        "cement treated base",
+        "CSB"
+      ],
+      "drawing_labels": [
+        "CSB"
+      ]
+    },
+    "dowel-bar": {
+      "aliases_en": [
+        "pavement dowel",
+        "dowel"
+      ]
+    },
+    "pavement-joint": {
+      "aliases_en": [
+        "concrete pavement joint",
+        "slab joint"
+      ]
+    },
+    "temporary-access-road": {
+      "aliases_en": [
+        "temporary road",
+        "construction access road"
+      ]
+    },
+    "temporary-detour": {
+      "aliases_en": [
+        "detour road",
+        "temporary bypass road",
+        "temporary diversion"
+      ]
+    },
+    "temporary-pavement-marking": {
+      "aliases_en": [
+        "temporary road marking",
+        "temporary line marking"
+      ]
+    },
+    "permanent-pavement-marking": {
+      "aliases_en": [
+        "permanent road marking",
+        "permanent line marking"
+      ]
+    },
+    "marking-removal": {
+      "aliases_en": [
+        "pavement marking removal",
+        "line removal",
+        "paint removal"
+      ]
+    },
+    "contaminated-soil": {
+      "aliases_en": [
+        "contaminated material",
+        "impacted soil"
+      ]
+    },
+    "temporary-fencing": {
+      "aliases_en": [
+        "temporary fence",
+        "construction fence"
+      ]
+    },
+    "construction-gate": {
+      "aliases_en": [
+        "site gate",
+        "temporary gate"
+      ]
+    },
+    "prequalification": {
+      "aliases_en": [
+        "pre-qualification",
+        "prequal",
+        "pre-qual"
+      ]
+    },
+    "rfeoi": {
+      "aliases_en": [
+        "request for expressions of interest",
+        "request for expression of interest"
+      ]
+    },
+    "statement-of-qualifications": {
+      "aliases_en": [
+        "SOQ",
+        "statement of qualification"
+      ]
+    },
+    "gantt-schedule": {
+      "aliases_en": [
+        "Gantt chart",
+        "Gantt programme"
+      ]
+    },
+    "schedule-driver": {
+      "aliases_en": [
+        "schedule drivers"
+      ]
+    },
+    "airside": {
+      "aliases_en": [
+        "airside area"
+      ]
+    },
+    "airport-apron": {
+      "aliases_en": [
+        "aircraft apron",
+        "apron"
+      ]
+    },
+    "temporary-works": {
+      "aliases_en": [
+        "temporary construction works"
+      ]
+    },
+    "precast-concrete": {
+      "aliases_en": [
+        "precast",
+        "precast concrete element"
       ]
     }
   }
