@@ -5637,5 +5637,38 @@
       "Precast and cast-in-place concrete have different logistics, joints, tolerances, and production assumptions."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "spalling",
+    "term": "spalling",
+    "pronunciation": "SPAW-ling",
+    "category": "concrete",
+    "definition_en": "The breaking, flaking, or detachment of pieces from the surface of concrete, masonry, or similar brittle material, leaving a chipped, scaled, or locally missing surface.",
+    "explanation_ru": "Spalling — откалывание, отслаивание или выкрашивание поверхности бетона или кладки, когда куски материала отделяются и остаётся повреждённая зона. Это описание видимого дефекта, а не одна конкретная причина. Возможные причины включают коррозию арматуры и её расширение, freeze-thaw, удар, перегрев, плохое сцепление или другие механизмы, поэтому причину нужно диагностировать отдельно.",
+    "translation_ru": [
+      "отслаивание бетона",
+      "выкрашивание бетона",
+      "откол поверхности"
+    ],
+    "translation_vi": [
+      "bong tróc bê tông",
+      "vỡ bề mặt bê tông",
+      "tróc mảng bê tông"
+    ],
+    "example_en": "Repair the spalling at the exposed concrete edge after the cause and extent of the damage have been assessed.",
+    "scenario": "Pieces are breaking away from a concrete surface and a rough cavity is visible, with reinforcing steel exposed in some locations.",
+    "visual": "Concrete section showing an intact surface beside a damaged area where surface fragments have broken away and reinforcing steel is locally exposed.",
+    "related_terms": [
+      "rebar",
+      "concrete-slab",
+      "shotcrete",
+      "demolition"
+    ],
+    "common_mistakes": [
+      "Spalling describes the visible loss of material; it does not identify one universal root cause.",
+      "Exposed or corroding rebar can contribute to spalling, but freeze-thaw, impact, heat, poor bond, and other mechanisms can also cause similar damage.",
+      "Do not confuse spalling with a simple surface crack: spalling involves actual loss or detachment of material."
+    ],
+    "difficulty": 2
   }
 ]

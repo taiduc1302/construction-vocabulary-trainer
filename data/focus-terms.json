@@ -1188,6 +1188,12 @@
       "added_at": "2026-10-07",
       "last_requested_at": "2026-10-07",
       "request_count": 1
+    },
+    {
+      "id": "spalling",
+      "added_at": "2026-10-21",
+      "last_requested_at": "2026-10-21",
+      "request_count": 1
     }
   ]
 }
