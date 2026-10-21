@@ -1080,6 +1080,13 @@
         "precast",
         "precast concrete element"
       ]
+    },
+    "spalling": {
+      "aliases_en": [
+        "spall",
+        "concrete spalling",
+        "surface spalling"
+      ]
     }
   }
 }
