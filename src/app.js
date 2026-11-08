@@ -118,6 +118,7 @@ function updateProgress(id,correct){
   renderReviewLists();
   renderProgressView();
   if(viewActive('dictionary'))renderDictionary();
+  window.dispatchEvent(new CustomEvent('construction:vocab-progress-changed'));
 }
 
 function renderStats(){
@@ -163,6 +164,10 @@ function renderDictionary(){
   const tpl=document.querySelector('#termCardTemplate');
   filtered.forEach(t=>{
     const node=tpl.content.cloneNode(true);
+    const card=node.querySelector('.term-card');
+    card.dataset.termId=t.id;
+    const requested=new URLSearchParams(window.location.search).get('term');
+    if(requested===t.id)card.dataset.deepLinked='true';
     node.querySelector('.category-pill').textContent=categoryLabel(t.category);
     node.querySelector('.term-title').textContent=t.term;
     const pronunciation=node.querySelector('.pronunciation');
@@ -184,6 +189,34 @@ function renderDictionary(){
     node.querySelector('.mistakes-text').textContent=t.common_mistakes?.length?`Watch out: ${t.common_mistakes.join(' ')}`:'No common mistake note yet.';
     node.querySelector('.example-text').textContent=t.example_en;
     node.querySelector('.listen-btn').addEventListener('click',()=>speak(t.term));
+    const profile=loadLearnerProfile();
+    const termsFromPacks=packTermIds(profile,learningPacks);
+    const focusButton=node.querySelector('.focus-toggle');
+    if(profile.mode==='maintainer'){
+      focusButton.hidden=true;
+    }else if(termsFromPacks.has(t.id)){
+      focusButton.textContent='✓ In learning pack';
+      focusButton.classList.add('in-focus');
+      focusButton.disabled=true;
+    }else if(focusIds.has(t.id)){
+      focusButton.textContent='✓ My learning';
+      focusButton.classList.add('in-focus');
+      focusButton.addEventListener('click',function(){
+        const updated=toggleManualFocus(loadLearnerProfile(),t.id);
+        refreshFocusFromProfile();
+        window.dispatchEvent(new CustomEvent('construction:vocab-profile-saved',{detail:{profile:updated}}));
+        renderDictionary();
+      });
+    }else{
+      focusButton.textContent='+ My learning';
+      focusButton.addEventListener('click',function(){
+        const updated=toggleManualFocus(loadLearnerProfile(),t.id);
+        refreshFocusFromProfile();
+        window.dispatchEvent(new CustomEvent('construction:vocab-profile-saved',{detail:{profile:updated}}));
+        renderDictionary();
+      });
+    }
+    node.querySelector('.term-share')?.addEventListener('click',function(){shareTerm(t);});
     els.grid.appendChild(node);
   });
   if(!filtered.length)els.grid.innerHTML='<div class="empty">No terms match this filter.</div>';
