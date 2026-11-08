@@ -443,7 +443,8 @@ function startPackSession(packIds,packId='custom'){
     seenIds:new Set(),poolIds:pool.map(term=>term.id)
   };
   els.practiceMode.value='mixed';els.practiceScope.value='all';els.practiceCategory.value='all';
-  setSessionControlsLocked(true);switchView('practice');makeQuestion();return true;
+  currentQuestion=null;els.quiz.dataset.answered='yes';
+  setSessionControlsLocked(true);switchView('practice');return true;
 }
 
 function startQuickSession(){
