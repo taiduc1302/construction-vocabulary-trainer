@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v16';
+const CACHE='construction-vocab-v17';
 const ASSETS=[
   './',
   './index.html',
@@ -8,9 +8,12 @@ const ASSETS=[
   './src/ux.css',
   './src/dark.css',
   './src/onboarding.css',
+  './src/public-learner.css',
   './src/app.js',
   './src/ui-enhancements.js',
   './src/onboarding.js',
+  './src/public-learner.js',
+  './src/learner-profile.js',
   './src/vocab-inbox.js',
   './src/learning-state.js',
   './src/practice-engine.js',
@@ -27,6 +30,7 @@ const ASSETS=[
   './data/term-meta.json',
   './data/estimator-challenges.json',
   './data/categories.json',
+  './data/learning-packs.json',
   './manifest.webmanifest',
   './assets/app-icon.svg'
 ];
