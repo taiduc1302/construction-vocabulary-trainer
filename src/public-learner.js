@@ -265,7 +265,7 @@ function startPack(packId){
 }
 
 function normalizedSearch(value){
-  return String(value||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+  return String(value||'').toLocaleLowerCase().normalize('NFKC').replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 }
 
 function mergedAliases(term){
