@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#111923" />
-  <meta name="description" content="Multilingual civil construction vocabulary trainer with visual practice, estimator scenarios, drawing abbreviations and spaced review." />
+  <meta name="description" content="Learn construction English for real civil work with role-based packs, visual terms, drawing practice, estimator scenarios and spaced review." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Construction Vocab" />
-  <title>Construction Vocabulary Trainer</title>
+  <title>Civil Construction English Trainer</title>
   <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="src/styles.css" />
@@ -17,16 +17,17 @@
   <link rel="stylesheet" href="src/ux.css" />
   <link rel="stylesheet" href="src/dark.css" />
   <link rel="stylesheet" href="src/onboarding.css" />
+  <link rel="stylesheet" href="src/public-learner.css" />
 </head>
-<body>
+<body data-user-mode="learner">
   <header class="topbar">
     <div class="brand-block">
-      <p class="eyebrow">Personal civil construction trainer</p>
-      <h1>Construction Vocabulary</h1>
-      <p class="header-note">English · Русский · Tiếng Việt · visual learning</p>
+      <p class="eyebrow">Construction English for real work</p>
+      <h1>Civil Construction English</h1>
+      <p class="header-note">Learn terms from drawings, estimates and site work · English · Русский · Tiếng Việt</p>
     </div>
     <details class="data-menu">
-      <summary aria-label="Progress data menu">Data</summary>
+      <summary aria-label="Settings and progress data menu">Settings</summary>
       <div class="data-menu-popover">
         <button id="exportProgress" class="secondary">Export progress</button>
         <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" /></label>
@@ -50,11 +51,11 @@
     <section id="homeView" class="view active">
       <section class="home-hero" aria-labelledby="todayTitle">
         <p class="home-kicker">Today</p>
-        <h2 id="todayTitle">Learn the construction words you actually use.</h2>
-        <p>Start with ten adaptive questions, then spend extra time on the words you recently added from chat.</p>
+        <h2 id="todayTitle">Learn the construction English you actually use at work.</h2>
+        <p>Choose a role-based pack, learn ten at a time, and connect vocabulary to drawings, takeoffs and real civil scenarios.</p>
         <div class="home-hero-actions">
-          <button class="home-primary" data-quick-action="smart10">Start Smart 10</button>
-          <button class="home-secondary" data-quick-action="focus">Practice focus words</button>
+          <button class="home-primary" data-quick-action="smart10">Learn 10</button>
+          <button class="home-secondary" data-quick-action="focus">Practice My learning</button>
         </div>
       </section>
 
@@ -70,7 +71,7 @@
       <section id="dailyGoalCard" class="daily-goal-card" aria-label="Daily learning goal"></section>
       <section id="stats" class="stats-grid" aria-label="Learning statistics"></section>
 
-      <section class="chat-bridge" aria-labelledby="addWordTitle">
+      <section class="chat-bridge maintainer-only" aria-labelledby="addWordTitle">
         <div class="chat-bridge-head">
           <div>
             <p class="system-kicker">From work → ChatGPT → trainer</p>
@@ -136,7 +137,7 @@
 
       <div class="home-routine">
         <span aria-hidden="true">✓</span>
-        <span><strong>Simple routine:</strong> Smart 10 daily → focus words when you add something from work → Drawing or Estimator practice when you have another few minutes.</span>
+        <span><strong>Simple routine:</strong> Learn 10 daily → practice your current pack → use Drawing or Estimator practice when you have another few minutes.</span>
       </div>
     </section>
 
@@ -241,7 +242,7 @@
         <div><span class="category-pill"></span><h2 class="term-title"></h2><p class="pronunciation"></p></div>
         <span class="status-badge"></span>
       </div>
-      <div class="card-actions"><button class="listen-btn secondary" type="button">🔊 Listen</button></div>
+      <div class="card-actions"><button class="listen-btn secondary" type="button">🔊 Listen</button><button class="focus-toggle secondary" type="button">+ My learning</button><button class="term-share secondary" type="button">Share</button></div>
       <div class="visual-box"></div>
       <p class="definition"></p>
       <div class="translation-block"><strong>RU</strong><span class="ru-text"></span></div>
@@ -254,6 +255,7 @@
 
   <script type="module" src="src/app.js"></script>
   <script type="module" src="src/ui-enhancements.js"></script>
+  <script type="module" src="src/public-learner.js"></script>
   <script type="module" src="src/onboarding.js"></script>
   <script type="module" src="src/register-sw.js"></script>
 </body>
