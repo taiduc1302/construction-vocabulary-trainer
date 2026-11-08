@@ -88,18 +88,18 @@ function renderPathCard(){
     return;
   }
   const progress=progressForPack(pack);
-  host.innerHTML=\`
+  host.innerHTML=`
     <div class="path-copy">
       <p class="system-kicker">Your learning path</p>
-      <h2>\${escapeHtml(pack.icon)} \${escapeHtml(pack.title)}</h2>
-      <p>\${escapeHtml(ROLE_LABELS[profile.role]||'Learner')} · \${escapeHtml(LANGUAGE_LABELS[profile.supportLanguage]||'English')}</p>
-      <span>\${escapeHtml(pack.description)}</span>
-      \${progressMarkup(progress)}
+      <h2>${escapeHtml(pack.icon)} ${escapeHtml(pack.title)}</h2>
+      <p>${escapeHtml(ROLE_LABELS[profile.role]||'Learner')} · ${escapeHtml(LANGUAGE_LABELS[profile.supportLanguage]||'English')}</p>
+      <span>${escapeHtml(pack.description)}</span>
+      ${progressMarkup(progress)}
     </div>
     <div class="path-actions">
-      <button id="learnActivePack" type="button">\${progress.started?'Continue · Learn 10':'Start · Learn 10'}</button>
+      <button id="learnActivePack" type="button">${progress.started?'Continue · Learn 10':'Start · Learn 10'}</button>
       <button id="changeLearningPath" type="button" class="secondary">Change path</button>
-    </div>\`;
+    </div>`;
   document.querySelector('#learnActivePack')?.addEventListener('click',()=>usePack(pack,{start:true}));
   document.querySelector('#changeLearningPath')?.addEventListener('click',()=>openOnboarding(true));
 }
@@ -110,17 +110,17 @@ function renderPacks(){
   grid.innerHTML=packs.map(pack=>{
     const active=profile?.activePackId===pack.id;
     const progress=progressForPack(pack);
-    return \`<article class="pack-card \${active?'is-active':''}">
-      <div class="pack-card-head"><span class="pack-icon" aria-hidden="true">\${escapeHtml(pack.icon)}</span><span class="pack-level">\${escapeHtml(pack.level)}</span></div>
-      <h3>\${escapeHtml(pack.title)}</h3>
-      <p>\${escapeHtml(pack.description)}</p>
-      <div class="pack-meta">\${pack.term_ids.length} terms\${active?' · your active pack':''}</div>
-      \${progressMarkup(progress,{compact:true})}
+    return `<article class="pack-card ${active?'is-active':''}">
+      <div class="pack-card-head"><span class="pack-icon" aria-hidden="true">${escapeHtml(pack.icon)}</span><span class="pack-level">${escapeHtml(pack.level)}</span></div>
+      <h3>${escapeHtml(pack.title)}</h3>
+      <p>${escapeHtml(pack.description)}</p>
+      <div class="pack-meta">${pack.term_ids.length} terms${active?' · your active pack':''}</div>
+      ${progressMarkup(progress,{compact:true})}
       <div class="pack-actions">
-        <button type="button" data-pack-learn="\${escapeHtml(pack.id)}">\${progress.started?'Continue 10':'Learn 10'}</button>
-        <button type="button" class="secondary" data-pack-use="\${escapeHtml(pack.id)}">\${active?'Selected':'Use pack'}</button>
+        <button type="button" data-pack-learn="${escapeHtml(pack.id)}">${progress.started?'Continue 10':'Learn 10'}</button>
+        <button type="button" class="secondary" data-pack-use="${escapeHtml(pack.id)}">${active?'Selected':'Use pack'}</button>
       </div>
-    </article>\`;
+    </article>`;
   }).join('');
   grid.querySelectorAll('[data-pack-learn]').forEach(button=>button.addEventListener('click',()=>usePack(byId(button.dataset.packLearn),{start:true})));
   grid.querySelectorAll('[data-pack-use]').forEach(button=>button.addEventListener('click',()=>usePack(byId(button.dataset.packUse))));
@@ -231,7 +231,7 @@ function addTermToMyWords(term,{clearInput=true}={}){
   if(!term)return;
   savePersonalFocus(addCapturedFocus(loadPersonalFocus(),term.id));
   dispatchFocusChanged();
-  captureStatus(\`Added “\${term.term}” to My Words.\`,'success');
+  captureStatus(`Added “${term.term}” to My Words.`,'success');
   if(clearInput){
     const input=document.querySelector('#publicCaptureInput');
     if(input)input.value='';
@@ -248,19 +248,19 @@ function renderCaptureMatches(raw){
   const matches=searchLocalTerms(query);
   if(!matches.length){host.innerHTML='';return}
   const myWords=new Set(loadPersonalFocus().terms.map(item=>item.id));
-  host.innerHTML=matches.map(({term,match})=>\`
+  host.innerHTML=matches.map(({term,match})=>`
     <article class="capture-match">
       <div class="capture-match-copy">
-        <span>\${escapeHtml(match||term.category)}</span>
-        <strong>\${escapeHtml(term.term)}</strong>
-        <p>\${escapeHtml(term.definition_en)}</p>
-        <small>RU: \${escapeHtml((term.translation_ru||[]).join(', '))} · VI: \${escapeHtml((term.translation_vi||[]).join(', '))}</small>
+        <span>${escapeHtml(match||term.category)}</span>
+        <strong>${escapeHtml(term.term)}</strong>
+        <p>${escapeHtml(term.definition_en)}</p>
+        <small>RU: ${escapeHtml((term.translation_ru||[]).join(', '))} · VI: ${escapeHtml((term.translation_vi||[]).join(', '))}</small>
       </div>
       <div class="capture-match-actions">
-        <button type="button" data-capture-add="\${escapeHtml(term.id)}">\${myWords.has(term.id)?'✓ My Words':'+ My Words'}</button>
-        <a class="secondary capture-open-link" href="term.html?term=\${encodeURIComponent(term.id)}">Open</a>
+        <button type="button" data-capture-add="${escapeHtml(term.id)}">${myWords.has(term.id)?'✓ My Words':'+ My Words'}</button>
+        <a class="secondary capture-open-link" href="term.html?term=${encodeURIComponent(term.id)}">Open</a>
       </div>
-    </article>\`).join('');
+    </article>`).join('');
   host.querySelectorAll('[data-capture-add]').forEach(button=>button.addEventListener('click',()=>{
     const result=searchLocalTerms(query).find(item=>item.term.id===button.dataset.captureAdd);
     addTermToMyWords(result?.term,{clearInput:false});
@@ -285,7 +285,7 @@ async function explainWithChat(){
   const input=document.querySelector('#publicCaptureInput');
   const raw=input?.value.trim()||'';
   if(!raw){input?.focus();captureStatus('Type a construction term first.','error');return}
-  const prompt=\`Explain the construction term "\${raw}" in plain English. I work in civil construction. Tell me what it means, where I would see it on drawings/site, what an estimator should think about, and what it is commonly confused with.\`;
+  const prompt=`Explain the construction term "${raw}" in plain English. I work in civil construction. Tell me what it means, where I would see it on drawings/site, what an estimator should think about, and what it is commonly confused with.`;
   try{
     if(navigator.share){
       await navigator.share({title:'Explain construction term',text:prompt});
