@@ -340,7 +340,7 @@ function ensureRecentFocusCard(){
   const bridge=document.querySelector('.chat-bridge');
   if(!bridge)return null;
   bridge.insertAdjacentHTML('afterend',`
-    <section id="recentFocusCard" class="recent-focus-card" aria-labelledby="recentFocusTitle">
+    <section id="recentFocusCard" class="recent-focus-card maintainer-only" aria-labelledby="recentFocusTitle">
       <div class="recent-focus-head">
         <div>
           <p class="system-kicker">Sync check</p>
