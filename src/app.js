@@ -634,7 +634,7 @@ function switchView(view){
 }
 
 function exportProgress(){
-  const payload={...exportableState(learningState),exportedAt:new Date().toISOString()};
+  const payload={...exportableState(learningState),learnerProfile:exportLearnerProfile(loadLearnerProfile()),exportedAt:new Date().toISOString()};
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
   const a=document.createElement('a');
   const href=URL.createObjectURL(blob);
@@ -646,7 +646,10 @@ function importProgress(file){
   reader.onload=()=>{
     try{
       const data=JSON.parse(reader.result);
-      learningState=importLearningState(data);saveLearningState(learningState);
+      learningState=importLearningState(data.learningState||data);saveLearningState(learningState);
+      if(data.learnerProfile)importLearnerProfile(data.learnerProfile);
+      refreshFocusFromProfile();
+      window.dispatchEvent(new CustomEvent('construction:vocab-profile-saved',{detail:{profile:loadLearnerProfile()}}));
       renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();
       alert('Progress imported.');
     }catch{alert('Could not read that progress file.')}
@@ -666,14 +669,15 @@ async function fetchFocusData(){
 }
 
 async function init(){
-  const [coreTerms,expandedTerms,loadedCategories,loadedFillExamples,focusData,termMetadata,loadedEstimatorChallenges]=await Promise.all([
+  const [coreTerms,expandedTerms,loadedCategories,loadedFillExamples,focusData,termMetadata,loadedEstimatorChallenges,loadedLearningPacks]=await Promise.all([
     fetchJson('data/terms.json'),
     fetchJson('data/terms-expansion.json'),
     fetchJson('data/categories.json'),
     fetchJson('data/fill-examples.json'),
     fetchFocusData(),
     fetchJson('data/term-meta.json'),
-    fetchJson('data/estimator-challenges.json')
+    fetchJson('data/estimator-challenges.json'),
+    fetchJson('data/learning-packs.json')
   ]);
   terms=mergeTermMetadata([...coreTerms,...expandedTerms],termMetadata);categories=loadedCategories;
   drawingLabelNote=typeof termMetadata?.note==='string'&&termMetadata.note.trim()?termMetadata.note:drawingLabelNote;
@@ -685,15 +689,16 @@ async function init(){
   const rawFocus=Array.isArray(focusData?.terms)?focusData.terms:[];
   const missingFocus=rawFocus.filter(item=>!idSet.has(item.id));
   if(missingFocus.length)console.warn(`Ignoring focus IDs missing from current vocabulary: ${missingFocus.map(item=>item.id).join(', ')}`);
-  focusEntries=rawFocus.filter(item=>idSet.has(item.id));
-  focusIds=new Set(focusEntries.map(item=>item.id));
-  focusEntryById=new Map(focusEntries.map(item=>[item.id,item]));
+  ownerFocusEntries=rawFocus.filter(item=>idSet.has(item.id));
+  learningPacks=Array.isArray(loadedLearningPacks)?loadedLearningPacks:[];
+  refreshFocusFromProfile();
 
   categories.forEach(c=>{
     const option=`<option value="${c.id}">${escapeHtml(c.label)}</option>`;
     els.category.insertAdjacentHTML('beforeend',option);
     els.practiceCategory.insertAdjacentHTML('beforeend',option);
   });
+  learningPacks.forEach(pack=>els.practiceScope.insertAdjacentHTML('beforeend','<option value="pack:'+escapeHtml(pack.id)+'">Pack: '+escapeHtml(pack.title)+'</option>'));
   drawingScenes.forEach(scene=>els.drawingScene.insertAdjacentHTML('beforeend',`<option value="${scene.id}">${escapeHtml(scene.title)}</option>`));
 
   renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
@@ -709,6 +714,25 @@ async function init(){
   document.querySelector('#newDrawingQuestion').addEventListener('click',renderDrawingQuestion);
   document.querySelector('#exportProgress').addEventListener('click',exportProgress);
   document.querySelector('#importProgress').addEventListener('change',e=>e.target.files[0]&&importProgress(e.target.files[0]));
+
+  window.addEventListener('construction:vocab-profile-changed',()=>{
+    refreshFocusFromProfile();
+    renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
+  });
+  window.addEventListener('construction:vocab-start-pack',event=>{
+    if(session.active){switchView('practice');return}
+    const packId=event.detail?.packId;
+    if(!learningPacks.some(pack=>pack.id===packId))return;
+    els.practiceScope.value='pack:'+packId;
+    els.practiceCategory.value='all';
+    els.practiceMode.value='mixed';
+    startQuickSession();
+    switchView('practice');
+  });
+  window.addEventListener('construction:vocab-open-term',event=>openTermById(event.detail?.id));
+
+  const requestedTerm=new URLSearchParams(window.location.search).get('term');
+  if(requestedTerm)openTermById(requestedTerm);
 }
 
 init().catch(err=>{
