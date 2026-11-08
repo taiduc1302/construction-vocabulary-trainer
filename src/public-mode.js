@@ -61,6 +61,23 @@ function usePack(pack,{start=false}={}){
   }
 }
 
+function progressForPack(pack){
+  return trainer?.getProgressForIds?.(pack?.term_ids||[])||{
+    total:pack?.term_ids?.length||0,started:0,mastered:0,due:0,attempts:0,correct:0,accuracy:0
+  };
+}
+
+function progressMarkup(progress,{compact=false}={}){
+  const pct=progress.total?Math.round(progress.mastered/progress.total*100):0;
+  const details=compact
+    ?progress.mastered+' mastered · '+progress.started+' started'
+    :progress.mastered+' mastered · '+progress.started+' started · '+progress.due+' due';
+  return '<div class="pack-learning-progress">'+
+    '<div class="pack-progress-track" aria-label="'+pct+'% of pack mastered"><span style="width:'+pct+'%"></span></div>'+
+    '<div class="pack-progress-copy">'+details+(progress.attempts?' · '+progress.accuracy+'% accuracy':'')+'</div>'+
+  '</div>';
+}
+
 function renderPathCard(){
   const host=document.querySelector('#learnerPathCard');
   if(!host)return;
@@ -70,17 +87,19 @@ function renderPathCard(){
     document.querySelector('#startOnboarding')?.addEventListener('click',()=>openOnboarding());
     return;
   }
-  host.innerHTML=`
+  const progress=progressForPack(pack);
+  host.innerHTML=\`
     <div class="path-copy">
       <p class="system-kicker">Your learning path</p>
-      <h2>${escapeHtml(pack.icon)} ${escapeHtml(pack.title)}</h2>
-      <p>${escapeHtml(ROLE_LABELS[profile.role]||'Learner')} · ${escapeHtml(LANGUAGE_LABELS[profile.supportLanguage]||'English')}</p>
-      <span>${escapeHtml(pack.description)}</span>
+      <h2>\${escapeHtml(pack.icon)} \${escapeHtml(pack.title)}</h2>
+      <p>\${escapeHtml(ROLE_LABELS[profile.role]||'Learner')} · \${escapeHtml(LANGUAGE_LABELS[profile.supportLanguage]||'English')}</p>
+      <span>\${escapeHtml(pack.description)}</span>
+      \${progressMarkup(progress)}
     </div>
     <div class="path-actions">
-      <button id="learnActivePack" type="button">Learn 10</button>
+      <button id="learnActivePack" type="button">\${progress.started?'Continue · Learn 10':'Start · Learn 10'}</button>
       <button id="changeLearningPath" type="button" class="secondary">Change path</button>
-    </div>`;
+    </div>\`;
   document.querySelector('#learnActivePack')?.addEventListener('click',()=>usePack(pack,{start:true}));
   document.querySelector('#changeLearningPath')?.addEventListener('click',()=>openOnboarding(true));
 }
