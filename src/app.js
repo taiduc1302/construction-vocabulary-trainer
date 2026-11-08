@@ -9,6 +9,10 @@ import {
   adaptiveWeight,weightedPick,dailySummary,calculateStreak,setDailyGoal,recordSession,
   exportableState,importLearningState,localDateKey
 } from './learning-state.js';
+import {
+  loadLearnerProfile,focusEntriesForProfile,packTermIds,toggleManualFocus,
+  exportLearnerProfile,importLearnerProfile
+} from './learner-profile.js';
 
 const els={
   stats:document.querySelector('#stats'),
@@ -47,6 +51,8 @@ let fillExamples={};
 let focusEntries=[];
 let focusIds=new Set();
 let focusEntryById=new Map();
+let ownerFocusEntries=[];
+let learningPacks=[];
 let estimatorChallenges=[];
 let drawingLabelNote='Drawing abbreviations vary. Always verify the project legend.';
 let learningState=loadLearningState();
@@ -58,7 +64,44 @@ function progressRecord(id){return recordFor(learningState,id)}
 function termById(id){return terms.find(t=>t.id===id)}
 function categoryLabel(id){return categories.find(c=>c.id===id)?.label||id}
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function viewActive(name){return document.querySelector(`#${name}View`)?.classList.contains('active')}
+function viewActive(name){return document.querySelector('#'+name+'View')?.classList.contains('active')}
+
+function refreshFocusFromProfile(){
+  const profile=loadLearnerProfile();
+  focusEntries=profile.mode==='maintainer'?ownerFocusEntries:focusEntriesForProfile(profile,learningPacks);
+  const valid=new Set(terms.map(function(term){return term.id;}));
+  focusEntries=focusEntries.filter(function(item){return valid.has(item.id);});
+  focusIds=new Set(focusEntries.map(function(item){return item.id;}));
+  focusEntryById=new Map(focusEntries.map(function(item){return [item.id,item];}));
+}
+
+function shareTerm(term){
+  const url=new URL(window.location.href);
+  url.searchParams.set('term',term.id);
+  url.hash='';
+  const text=term.term+' — '+term.definition_en;
+  if(navigator.share){
+    navigator.share({title:term.term,text:text,url:url.toString()}).catch(function(error){
+      if(error?.name!=='AbortError')console.warn(error);
+    });
+    return;
+  }
+  navigator.clipboard?.writeText(url.toString()).catch(function(){});
+}
+
+function openTermById(id){
+  const term=termById(id);
+  if(!term)return false;
+  els.search.value=term.term;
+  els.category.value='all';
+  renderDictionary();
+  switchView('dictionary');
+  requestAnimationFrame(function(){
+    const card=document.querySelector('.term-card[data-term-id="'+CSS.escape(term.id)+'"]');
+    card?.scrollIntoView({block:'start',behavior:'smooth'});
+  });
+  return true;
+}
 
 function speak(text){
   if(!('speechSynthesis' in window))return;
