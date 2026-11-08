@@ -243,10 +243,27 @@ function selectedPool(){
   if(session.active&&session.poolIds.length){
     return session.poolIds.map(termById).filter(Boolean);
   }
+  const scope=els.practiceScope.value;
+  const category=els.practiceCategory.value;
+  const profile=loadLearnerProfile();
+
+  if(scope.startsWith('pack:')){
+    const pack=learningPacks.find(function(item){return item.id===scope.slice(5);});
+    let pool=pack?terms.filter(function(term){return pack.term_ids.includes(term.id);}):[];
+    if(category!=='all')pool=pool.filter(function(term){return term.category===category;});
+    return pool;
+  }
+
+  if(scope==='smart'&&profile.mode==='learner'&&focusIds.size){
+    let pool=terms.filter(function(term){return focusIds.has(term.id);});
+    if(category!=='all')pool=pool.filter(function(term){return term.category===category;});
+    return pool;
+  }
+
   return selectPracticePool({
     terms,
-    scope:els.practiceScope.value,
-    category:els.practiceCategory.value,
+    scope,
+    category,
     focusIds,
     recordFor:progressRecord,
     dueNow,
@@ -360,7 +377,8 @@ function scopeEmptyMessage(){
   const scope=els.practiceScope.value;
   const cat=els.practiceCategory.value;
   const suffix=cat==='all'?'':` in ${categoryLabel(cat)}`;
-  if(scope==='focus')return `No focus words${suffix}. Add a word from chat or change the category.`;
+  if(scope==='focus')return `No words in My learning${suffix}. Add a learning pack or save a term from the dictionary.`;
+  if(scope.startsWith('pack:'))return `No words match this learning pack${suffix}.`;
   if(scope==='due')return `No words are due${suffix}.`;
   if(scope==='weak')return `No weak words${suffix} yet.`;
   if(scope==='new')return `No new words${suffix}.`;
