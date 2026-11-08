@@ -109,16 +109,18 @@ function renderPacks(){
   if(!grid)return;
   grid.innerHTML=packs.map(pack=>{
     const active=profile?.activePackId===pack.id;
-    return `<article class="pack-card ${active?'is-active':''}">
-      <div class="pack-card-head"><span class="pack-icon" aria-hidden="true">${escapeHtml(pack.icon)}</span><span class="pack-level">${escapeHtml(pack.level)}</span></div>
-      <h3>${escapeHtml(pack.title)}</h3>
-      <p>${escapeHtml(pack.description)}</p>
-      <div class="pack-meta">${pack.term_ids.length} terms${active?' · your active pack':''}</div>
+    const progress=progressForPack(pack);
+    return \`<article class="pack-card \${active?'is-active':''}">
+      <div class="pack-card-head"><span class="pack-icon" aria-hidden="true">\${escapeHtml(pack.icon)}</span><span class="pack-level">\${escapeHtml(pack.level)}</span></div>
+      <h3>\${escapeHtml(pack.title)}</h3>
+      <p>\${escapeHtml(pack.description)}</p>
+      <div class="pack-meta">\${pack.term_ids.length} terms\${active?' · your active pack':''}</div>
+      \${progressMarkup(progress,{compact:true})}
       <div class="pack-actions">
-        <button type="button" data-pack-learn="${escapeHtml(pack.id)}">Learn 10</button>
-        <button type="button" class="secondary" data-pack-use="${escapeHtml(pack.id)}">${active?'Selected':'Use pack'}</button>
+        <button type="button" data-pack-learn="\${escapeHtml(pack.id)}">\${progress.started?'Continue 10':'Learn 10'}</button>
+        <button type="button" class="secondary" data-pack-use="\${escapeHtml(pack.id)}">\${active?'Selected':'Use pack'}</button>
       </div>
-    </article>`;
+    </article>\`;
   }).join('');
   grid.querySelectorAll('[data-pack-learn]').forEach(button=>button.addEventListener('click',()=>usePack(byId(button.dataset.packLearn),{start:true})));
   grid.querySelectorAll('[data-pack-use]').forEach(button=>button.addEventListener('click',()=>usePack(byId(button.dataset.packUse))));
