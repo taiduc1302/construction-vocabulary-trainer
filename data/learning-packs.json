@@ -1,0 +1,303 @@
+[
+  {
+    "id": "civil-starter",
+    "title": "Civil Starter",
+    "tagline": "The first 20 words every civil learner should recognize.",
+    "description": "Core excavation, drainage, utilities, roadworks and drawing language for new estimators, coordinators and field staff.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "field",
+      "civil-engineer",
+      "student"
+    ],
+    "interests": [
+      "general-civil"
+    ],
+    "term_ids": [
+      "excavation",
+      "backfill",
+      "grade",
+      "subgrade",
+      "subbase",
+      "aggregate",
+      "compaction",
+      "trench",
+      "bedding",
+      "invert",
+      "catch-basin",
+      "manhole",
+      "watermain",
+      "sanitary-sewer",
+      "storm-sewer",
+      "culvert",
+      "curb-and-gutter",
+      "asphalt",
+      "concrete",
+      "sawcut"
+    ]
+  },
+  {
+    "id": "estimator-starter",
+    "title": "Estimator Starter",
+    "tagline": "Read scopes, take off work and talk through pricing.",
+    "description": "Practical vocabulary for takeoffs, bid structure, subcontractor coverage, production and tender review.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "student"
+    ],
+    "interests": [
+      "estimating"
+    ],
+    "term_ids": [
+      "quantity-takeoff",
+      "bid-item",
+      "scope-of-work",
+      "allowance",
+      "contingency",
+      "unit-price",
+      "lump-sum",
+      "production-rate",
+      "subcontractor-quote",
+      "bid-leveling",
+      "carry-a-number",
+      "alternate-price",
+      "historical-pricing",
+      "escalation",
+      "price-validity",
+      "rfi",
+      "rfq",
+      "addendum",
+      "schedule-driver",
+      "gantt-schedule"
+    ]
+  },
+  {
+    "id": "earthworks",
+    "title": "Earthworks",
+    "tagline": "Excavation, fill, haul and volume language.",
+    "description": "For grading, mass excavation, disposal, trucking and earthwork quantity discussions.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "field",
+      "civil-engineer"
+    ],
+    "interests": [
+      "earthworks"
+    ],
+    "term_ids": [
+      "bulk-excavation",
+      "detailed-excavation",
+      "excavation",
+      "cut",
+      "fill",
+      "volumetric",
+      "grade",
+      "over-excavation",
+      "working-space",
+      "excavation-sloping",
+      "excavation-ramp",
+      "stockpile",
+      "disposal",
+      "trucking",
+      "haul-distance",
+      "swell-factor",
+      "bank-cubic-metre",
+      "loose-cubic-metre",
+      "unsuitable-material",
+      "soil-stabilization"
+    ]
+  },
+  {
+    "id": "underground-utilities",
+    "title": "Underground Utilities",
+    "tagline": "Water, sewer, drainage and trench vocabulary.",
+    "description": "A practical pack for utility takeoffs, site coordination and underground construction.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "field",
+      "civil-engineer"
+    ],
+    "interests": [
+      "underground-utilities"
+    ],
+    "term_ids": [
+      "watermain",
+      "sanitary-sewer",
+      "storm-sewer",
+      "force-main",
+      "service-connection",
+      "valve",
+      "hydrant",
+      "tie-in",
+      "bedding",
+      "haunching",
+      "backfill",
+      "trench",
+      "trench-box",
+      "dewatering",
+      "groundwater",
+      "daylighting",
+      "utility-conflict",
+      "thrust-block",
+      "pvc-drain-pipe",
+      "hdpe-pipe"
+    ]
+  },
+  {
+    "id": "duct-bank-electrical",
+    "title": "Duct Bank / Electrical",
+    "tagline": "The language around DB2, conduit, spacers and cable routes.",
+    "description": "For civil estimators and crews working around electrical and communications duct-bank scope.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "field",
+      "civil-engineer"
+    ],
+    "interests": [
+      "duct-bank"
+    ],
+    "term_ids": [
+      "duct-bank",
+      "conduit",
+      "pvc-db2",
+      "direct-burial",
+      "concrete-encasement",
+      "duct-spacer",
+      "base-spacer",
+      "interlock-spacer",
+      "monobloc-spacer",
+      "duct-coupling",
+      "integral-bell-end",
+      "conduit-cap-plug",
+      "conduit-adaptor",
+      "conduit-bend",
+      "conduit-stub-up",
+      "pull-string",
+      "pull-rope",
+      "mandrel-test",
+      "solvent-cement",
+      "pull-box"
+    ]
+  },
+  {
+    "id": "deep-excavation",
+    "title": "Deep Excavation & Shoring",
+    "tagline": "Support systems, groundwater and excavation risk.",
+    "description": "Temporary support and deep-excavation vocabulary for structures, chambers and constrained sites.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "field",
+      "civil-engineer"
+    ],
+    "interests": [
+      "deep-excavation"
+    ],
+    "term_ids": [
+      "shoring",
+      "sheet-pile",
+      "cofferdam",
+      "soldier-pile",
+      "lagging",
+      "waler",
+      "strut",
+      "raker",
+      "tieback-anchor",
+      "secant-pile-wall",
+      "shotcrete",
+      "underpinning",
+      "surcharge-load",
+      "dewatering",
+      "groundwater",
+      "excavation-sloping",
+      "zone-of-influence",
+      "working-space",
+      "bottom-of-excavation",
+      "sump-pumping"
+    ]
+  },
+  {
+    "id": "road-restoration",
+    "title": "Road & Concrete Restoration",
+    "tagline": "Pavement, curb, sidewalk and restoration vocabulary.",
+    "description": "For utility restoration, road reconstruction, concrete curb and pavement takeoffs.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "field",
+      "civil-engineer"
+    ],
+    "interests": [
+      "roadworks"
+    ],
+    "term_ids": [
+      "asphalt",
+      "pavement",
+      "pcc-pavement",
+      "pavement-structure",
+      "pavement-restoration",
+      "sawcut",
+      "milling",
+      "overlay",
+      "permanent-mill-and-overlay",
+      "tack-coat",
+      "base-course",
+      "crushed-granular-base",
+      "cement-stabilized-base",
+      "subbase",
+      "subgrade",
+      "curb-and-gutter",
+      "bullnose-curb",
+      "barrier-curb",
+      "mountable-curb",
+      "curb-return",
+      "curb-ramp",
+      "concrete-sidewalk",
+      "concrete-driveway",
+      "gutter-pan",
+      "permanent-pavement-marking"
+    ]
+  },
+  {
+    "id": "pump-station",
+    "title": "Pump Station",
+    "tagline": "Wet wells, force mains, bypass and deep structures.",
+    "description": "A focused pack for sanitary/wastewater pump-station civil scope and interfaces.",
+    "roles": [
+      "estimator",
+      "project-coordinator",
+      "field",
+      "civil-engineer"
+    ],
+    "interests": [
+      "pump-station"
+    ],
+    "term_ids": [
+      "pump-station",
+      "sanitary-pump-station",
+      "wet-well",
+      "valve-chamber",
+      "force-main",
+      "hdpe-pipe",
+      "electrofusion-coupling",
+      "butt-fusion",
+      "bypass-pumping",
+      "shutdown-window",
+      "decommissioning",
+      "sheet-pile",
+      "cofferdam",
+      "dewatering",
+      "groundwater",
+      "valve",
+      "utility-chamber",
+      "excavation",
+      "shoring",
+      "precast-concrete"
+    ]
+  }
+]
