@@ -14,6 +14,7 @@ body[data-support-language="vi"] .translation-ru{display:none}
 .public-capture-head h2,.public-capture-head p{margin:0}.public-capture-head{display:grid;gap:6px;margin-bottom:12px}.public-capture-head p{color:#65757f}
 .public-capture-form{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px}.public-capture-form input{min-height:46px}
 .public-capture-status{min-height:20px;margin:8px 0 0;color:#667680;font-size:.88rem}.public-capture-status[data-state="success"]{color:#1f7552}.public-capture-status[data-state="error"]{color:#a34747}
+.public-capture-matches{display:grid;gap:8px;margin-top:8px}.capture-match{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:12px;border:1px solid #dce5ea;border-radius:13px;background:#fff}.capture-match-copy{display:grid;gap:2px;min-width:0}.capture-match-copy>span{text-transform:uppercase;letter-spacing:.07em;font-size:.68rem;color:#77858d}.capture-match-copy>p{margin:2px 0;color:#42525b}.capture-match-copy>small{color:#6e7d85}.capture-match-actions{display:flex;gap:7px;flex:0 0 auto}.capture-match-actions button,.capture-open-link{min-height:44px;padding:8px 11px}.capture-open-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:10px;border:1px solid #cad5dd;color:inherit;background:#fff}
 
 .learning-packs-section{margin:22px 0}.learning-packs-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:12px}
 .learning-packs-head h2,.learning-packs-head p{margin:0}.learning-packs-head p{color:#65757f}
@@ -21,7 +22,7 @@ body[data-support-language="vi"] .translation-ru{display:none}
 .pack-card{border:1px solid #dce5ea;border-radius:18px;background:#fff;padding:16px;display:grid;gap:9px}
 .pack-card.is-active{outline:2px solid #267d61;outline-offset:0}.pack-card h3,.pack-card p{margin:0}.pack-card p{color:#65757f}
 .pack-card-head{display:flex;justify-content:space-between;align-items:center}.pack-icon{font-size:1.5rem}.pack-level,.pack-meta{font-size:.78rem;color:#6d7b84}
-.pack-actions{display:flex;gap:8px;margin-top:2px}.pack-actions button{min-height:44px}
+.pack-learning-progress{display:grid;gap:5px;margin-top:4px}.pack-progress-track{height:7px;border-radius:999px;background:#e6ecef;overflow:hidden}.pack-progress-track span{display:block;height:100%;background:#267d61;border-radius:inherit}.pack-progress-copy{font-size:.76rem;color:#6b7a83}.pack-actions{display:flex;gap:8px;margin-top:2px}.pack-actions button{min-height:44px}
 
 .learner-onboarding{position:fixed;inset:0;z-index:1000;background:rgba(10,18,24,.72);display:grid;place-items:center;padding:18px;overflow:auto}
 .onboarding-panel{width:min(920px,100%);max-height:calc(100vh - 36px);overflow:auto;background:#fff;border-radius:22px;padding:22px;box-shadow:0 20px 70px rgba(0,0,0,.28)}
@@ -38,6 +39,7 @@ body[data-support-language="vi"] .translation-ru{display:none}
 @media(max-width:720px){
   .learner-path-card{display:grid}.path-actions{display:grid;grid-template-columns:1fr 1fr}.path-actions button{width:100%}
   .public-capture-form{grid-template-columns:1fr 1fr}.public-capture-form input{grid-column:1/-1}
+  .capture-match{display:grid}.capture-match-actions{width:100%}.capture-match-actions>*{flex:1}
   .learning-pack-grid{grid-template-columns:1fr}
   .onboarding-grid,.onboarding-grid-focus{grid-template-columns:1fr}
   .onboarding-panel{padding:18px}
@@ -49,7 +51,8 @@ body[data-support-language="vi"] .translation-ru{display:none}
 @media(prefers-color-scheme:dark){
   .learner-path-card,.pack-card,.onboarding-panel{background:#151d24;border-color:#2d3942}
   .public-capture{background:#10171d;border-color:#2d3942}
-  .path-copy span,.public-capture-head p,.learning-packs-head p,.pack-card p,.pack-level,.pack-meta,.onboarding-choice span{color:#a8b5bc}
+  .path-copy span,.public-capture-head p,.learning-packs-head p,.pack-card p,.pack-level,.pack-meta,.pack-progress-copy,.onboarding-choice span,.capture-match-copy>p,.capture-match-copy>small{color:#a8b5bc}
   .onboarding-choice{background:#10171d;border-color:#34424c}.onboarding-choice.selected{background:#173329;border-color:#6bc59d}
   .onboarding-recommendation{background:#202b33}
+  .pack-progress-track{background:#2a3740}.capture-match{background:#151d24;border-color:#2d3942}.capture-open-link{background:#10171d;border-color:#34424c;color:#e5edf2}
 }
