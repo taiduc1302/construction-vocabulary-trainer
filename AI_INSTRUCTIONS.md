@@ -9,6 +9,7 @@ Vocabulary/data is intentionally modular:
 - `data/terms.json` — original/core vocabulary.
 - `data/terms-expansion.json` — expansion vocabulary and default location for new terms.
 - `data/categories.json` — controlled categories.
+- `data/learning-packs.json` — curated public starter packs composed only of existing canonical term IDs.
 - `data/focus-terms.json` — words the owner explicitly wants to learn now.
 - `data/term-meta.json` — optional English aliases and common drawing labels/abbreviations.
 - `data/estimator-challenges.json` — generic estimator decision exercises linked to vocabulary.
@@ -18,6 +19,24 @@ Vocabulary/data is intentionally modular:
 Treat all `data/terms*.json` files together as one vocabulary. Stable term IDs are the key linking cards, progress, focus, visuals, metadata and challenges.
 
 Before adding or editing vocabulary, read the relevant current data files and existing visuals. Do not create duplicates or casually rename an existing ID.
+
+## Public learner mode vs maintainer mode
+
+v2 has two deliberately separate audiences:
+
+- **Learner mode** is the public default. A learner's role, selected packs and manual My learning terms are local browser state in `src/learner-profile.js`. Never write a public user's local profile or progress to repository JSON.
+- **Maintainer mode** is for the repository owner. It exposes the existing ChatGPT/GitHub content workflow and uses repository `data/focus-terms.json` as the owner's learning intent.
+
+Rules:
+
+- Do not expose repository names, Actions, JSON maintenance or owner Focus metadata in ordinary learner UI.
+- `data/focus-terms.json` is maintainer/owner state; it is **not** the shared Focus list for all public users.
+- `data/learning-packs.json` is public content. Every pack ID must be unique and every `term_ids` entry must resolve to an existing canonical vocabulary ID.
+- Keep packs focused enough to be useful; prefer roughly 10–40 terms rather than copying the whole dictionary into one pack.
+- A term can belong to multiple packs. Pack overlap is expected and must not create duplicate local Focus entries.
+- Public learner state must remain safe when localStorage is blocked, malformed or unavailable.
+- Public Smart 10 should stay within the learner's selected/personal learning set when one exists.
+- Maintainer mode must preserve the owner's existing repository-backed workflow.
 
 ## What “add this word to my dictionary” means
 
@@ -244,6 +263,9 @@ For normal vocabulary work:
 12. During a deep audit, inspect uploaded audit logs instead of trusting only the green badge.
 
 For runtime changes, consider whether to add/extend:
+
+- `scripts/test-learner-profile.mjs`;
+- `scripts/validate-learning-packs.mjs`;
 
 - `scripts/test-learning-state.mjs`;
 - `scripts/test-practice-engine.mjs`;
