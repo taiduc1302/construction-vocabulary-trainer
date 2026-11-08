@@ -4,9 +4,9 @@ Public-first multilingual construction-English trainer for civil estimators, coo
 
 ## Current version
 
-Maintenance pulse: repository workflow re-checked on **2026-10-04**.
+Maintenance pulse: repository workflow re-checked on **2026-11-08**.
 
-**v2.0.0** introduces Public Learner Mode on top of the growing modular civil-construction vocabulary. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
+**v2.1.0** builds on Public Learner Mode with visible pack progress, multilingual/fuzzy work-term lookup, and portable learner-profile/My Words backup. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
 
 - English term and pronunciation;
 - plain-English definition;
@@ -38,14 +38,15 @@ The repository's global `data/focus-terms.json` is never used as another learner
 
 `data/learning-packs.json` groups the shared vocabulary into practical paths such as Civil Starter, Estimator Starter, Earthworks, Underground Utilities, Duct Bank, Road & Restoration, Concrete & Foundations, Deep Excavation, Pump Station, and Drawing English.
 
-Each pack launches the existing validated Quick/Smart practice engine against only that pack's term IDs; packs do not fork or duplicate vocabulary cards.
+Each pack launches the existing validated Quick/Smart practice engine against only that pack's term IDs; packs do not fork or duplicate vocabulary cards. Pack cards show **started, mastered, due and accuracy** signals from the same spaced-repetition records, so a learner can see meaningful progress and resume where they left off.
 
 ### Work-to-learning capture
 
 The public Today screen has a **Saw a term at work?** path:
 
-- if the term already exists, it is added to that learner's local **My Words**;
-- if it is missing, the app prepares a generic civil-construction explanation prompt that can be shared to ChatGPT;
+- exact terms, aliases and drawing labels can be added directly to local **My Words**;
+- partial English names, Russian/Vietnamese translations, aliases, drawing labels and definition matches produce selectable suggestions;
+- if nothing useful matches, the app prepares a generic civil-construction explanation prompt that can be shared to ChatGPT;
 - repository-aware add-word tooling remains Maintainer-only.
 
 ### Shareable term pages
@@ -109,7 +110,7 @@ v2 keeps the fast phone flow but makes the default experience learner-first:
 - Adaptive weak-word ranking and Due Review queue.
 - Configurable daily goal, streak, 7-day activity, hardest words and recent sessions.
 - **Drawing Challenge** with generic civil plan/section scenes; answers update the same term progress.
-- Export/import of browser learning state.
+- Export/import of browser learning state **plus learner path and personal My Words**, so a manual device transfer does not silently lose the public learner setup.
 - Installable PWA with network-first online refresh and offline fallback.
 
 ## Vocabulary Inbox

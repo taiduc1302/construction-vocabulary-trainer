@@ -61,6 +61,23 @@ function usePack(pack,{start=false}={}){
   }
 }
 
+function progressForPack(pack){
+  return trainer?.getProgressForIds?.(pack?.term_ids||[])||{
+    total:pack?.term_ids?.length||0,started:0,mastered:0,due:0,attempts:0,correct:0,accuracy:0
+  };
+}
+
+function progressMarkup(progress,{compact=false}={}){
+  const pct=progress.total?Math.round(progress.mastered/progress.total*100):0;
+  const details=compact
+    ?progress.mastered+' mastered · '+progress.started+' started'
+    :progress.mastered+' mastered · '+progress.started+' started · '+progress.due+' due';
+  return '<div class="pack-learning-progress">'+
+    '<div class="pack-progress-track" aria-label="'+pct+'% of pack mastered"><span style="width:'+pct+'%"></span></div>'+
+    '<div class="pack-progress-copy">'+details+(progress.attempts?' · '+progress.accuracy+'% accuracy':'')+'</div>'+
+  '</div>';
+}
+
 function renderPathCard(){
   const host=document.querySelector('#learnerPathCard');
   if(!host)return;
@@ -70,15 +87,17 @@ function renderPathCard(){
     document.querySelector('#startOnboarding')?.addEventListener('click',()=>openOnboarding());
     return;
   }
+  const progress=progressForPack(pack);
   host.innerHTML=`
     <div class="path-copy">
       <p class="system-kicker">Your learning path</p>
       <h2>${escapeHtml(pack.icon)} ${escapeHtml(pack.title)}</h2>
       <p>${escapeHtml(ROLE_LABELS[profile.role]||'Learner')} · ${escapeHtml(LANGUAGE_LABELS[profile.supportLanguage]||'English')}</p>
       <span>${escapeHtml(pack.description)}</span>
+      ${progressMarkup(progress)}
     </div>
     <div class="path-actions">
-      <button id="learnActivePack" type="button">Learn 10</button>
+      <button id="learnActivePack" type="button">${progress.started?'Continue · Learn 10':'Start · Learn 10'}</button>
       <button id="changeLearningPath" type="button" class="secondary">Change path</button>
     </div>`;
   document.querySelector('#learnActivePack')?.addEventListener('click',()=>usePack(pack,{start:true}));
@@ -90,13 +109,15 @@ function renderPacks(){
   if(!grid)return;
   grid.innerHTML=packs.map(pack=>{
     const active=profile?.activePackId===pack.id;
+    const progress=progressForPack(pack);
     return `<article class="pack-card ${active?'is-active':''}">
       <div class="pack-card-head"><span class="pack-icon" aria-hidden="true">${escapeHtml(pack.icon)}</span><span class="pack-level">${escapeHtml(pack.level)}</span></div>
       <h3>${escapeHtml(pack.title)}</h3>
       <p>${escapeHtml(pack.description)}</p>
       <div class="pack-meta">${pack.term_ids.length} terms${active?' · your active pack':''}</div>
+      ${progressMarkup(progress,{compact:true})}
       <div class="pack-actions">
-        <button type="button" data-pack-learn="${escapeHtml(pack.id)}">Learn 10</button>
+        <button type="button" data-pack-learn="${escapeHtml(pack.id)}">${progress.started?'Continue 10':'Learn 10'}</button>
         <button type="button" class="secondary" data-pack-use="${escapeHtml(pack.id)}">${active?'Selected':'Use pack'}</button>
       </div>
     </article>`;
@@ -198,19 +219,67 @@ function findLocalTerm(raw){
   if(!trainer)return null;
   return trainer.findTerm(raw);
 }
+function searchLocalTerms(raw){
+  if(!trainer?.searchTerms)return [];
+  return trainer.searchTerms(raw,5);
+}
+function clearCaptureMatches(){
+  const host=document.querySelector('#publicCaptureMatches');
+  if(host)host.innerHTML='';
+}
+function addTermToMyWords(term,{clearInput=true}={}){
+  if(!term)return;
+  savePersonalFocus(addCapturedFocus(loadPersonalFocus(),term.id));
+  dispatchFocusChanged();
+  captureStatus(`Added “${term.term}” to My Words.`,'success');
+  if(clearInput){
+    const input=document.querySelector('#publicCaptureInput');
+    if(input)input.value='';
+    clearCaptureMatches();
+  }else{
+    renderCaptureMatches(document.querySelector('#publicCaptureInput')?.value||'');
+  }
+}
+function renderCaptureMatches(raw){
+  const host=document.querySelector('#publicCaptureMatches');
+  if(!host)return;
+  const query=String(raw||'').trim();
+  if(query.length<2){host.innerHTML='';return}
+  const matches=searchLocalTerms(query);
+  if(!matches.length){host.innerHTML='';return}
+  const myWords=new Set(loadPersonalFocus().terms.map(item=>item.id));
+  host.innerHTML=matches.map(({term,match})=>`
+    <article class="capture-match">
+      <div class="capture-match-copy">
+        <span>${escapeHtml(match||term.category)}</span>
+        <strong>${escapeHtml(term.term)}</strong>
+        <p>${escapeHtml(term.definition_en)}</p>
+        <small>RU: ${escapeHtml((term.translation_ru||[]).join(', '))} · VI: ${escapeHtml((term.translation_vi||[]).join(', '))}</small>
+      </div>
+      <div class="capture-match-actions">
+        <button type="button" data-capture-add="${escapeHtml(term.id)}">${myWords.has(term.id)?'✓ My Words':'+ My Words'}</button>
+        <a class="secondary capture-open-link" href="term.html?term=${encodeURIComponent(term.id)}">Open</a>
+      </div>
+    </article>`).join('');
+  host.querySelectorAll('[data-capture-add]').forEach(button=>button.addEventListener('click',()=>{
+    const result=searchLocalTerms(query).find(item=>item.term.id===button.dataset.captureAdd);
+    addTermToMyWords(result?.term,{clearInput:false});
+  }));
+}
 function addExistingTerm(){
   const input=document.querySelector('#publicCaptureInput');
   const raw=input?.value.trim()||'';
   if(!raw){input?.focus();captureStatus('Type a construction term first.','error');return}
   const term=findLocalTerm(raw);
-  if(!term){
-    captureStatus('Not in the current library yet. Use “Explain with ChatGPT” to identify it, then a maintainer can add it to the public library.','error');
+  if(term){addTermToMyWords(term);return}
+  const matches=searchLocalTerms(raw);
+  if(matches.length){
+    renderCaptureMatches(raw);
+    captureStatus('No exact match. Choose the construction term you meant below.','neutral');
     return;
   }
-  savePersonalFocus(addCapturedFocus(loadPersonalFocus(),term.id));
-  dispatchFocusChanged();
-  captureStatus(`Added “${term.term}” to My Words.`,'success');
-  if(input)input.value='';
+  clearCaptureMatches();
+  captureStatus('Not in the current library yet. Use “Explain with ChatGPT” to identify it, then a maintainer can add it to the public library.','error');
 }
 async function explainWithChat(){
   const input=document.querySelector('#publicCaptureInput');
@@ -232,8 +301,14 @@ async function explainWithChat(){
 function bindPublicCapture(){
   document.querySelector('#addExistingTerm')?.addEventListener('click',addExistingTerm);
   document.querySelector('#explainTerm')?.addEventListener('click',explainWithChat);
-  document.querySelector('#publicCaptureInput')?.addEventListener('keydown',event=>{
+  const input=document.querySelector('#publicCaptureInput');
+  input?.addEventListener('keydown',event=>{
     if(event.key==='Enter'){event.preventDefault();addExistingTerm()}
+  });
+  input?.addEventListener('input',()=>{
+    renderCaptureMatches(input.value);
+    if(input.value.trim().length>=2)captureStatus('Matching terms appear below as you type.','neutral');
+    else captureStatus('','neutral');
   });
 }
 
@@ -292,6 +367,17 @@ async function initPublicMode(){
   }
   applyMaintainerMode();applySupportLanguage();bindMaintainerToggle();bindPublicSmart10();
   window.addEventListener('trainer-ready',event=>onTrainerReady(event.detail));
+  window.addEventListener('trainer-progress-changed',()=>{
+    renderPathCard();
+    renderPacks();
+  });
+  window.addEventListener('learner-profile-imported',()=>{
+    profile=loadProfile();
+    applySupportLanguage();
+    dispatchFocusChanged();
+    renderPathCard();
+    renderPacks();
+  });
   if(window.ConstructionTrainer)onTrainerReady(window.ConstructionTrainer);
 }
 

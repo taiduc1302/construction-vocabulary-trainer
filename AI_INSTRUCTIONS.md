@@ -35,7 +35,12 @@ Rules:
 - The public "Explain with ChatGPT" prompt is generic and must not instruct another user to modify this repository.
 - Learner support languages currently implemented are English-only, Russian support, and Vietnamese support. Do not offer untranslated languages as if full support exists.
 - Keep the public learner UX useful without authentication or a backend; account sync can be a later product layer.
-- Changes to public onboarding, packs, personal Focus, Maintainer separation, or term pages must pass `test-learning-packs.mjs`, `test-learner-profile.mjs`, and `validate-public-mode.mjs`.
+- Pack progress is derived from the canonical spaced-repetition state. Do not create a second progress store just for packs.
+- Public work-term lookup must remain multilingual and tolerant of partial input: canonical term, legitimate aliases, drawing labels, Russian/Vietnamese translations and definition text may be used for ranking. Exact matches should still win.
+- Search normalization must preserve Unicode letters/diacritics; do not regress to ASCII-only matching.
+- Progress export/import must carry learner profile and personal My Words in addition to quiz/spaced-repetition state, while remaining backward-compatible with older progress exports.
+- A learner answer should notify the public UI so visible pack progress updates without requiring a page reload.
+- Changes to public onboarding, packs, personal Focus, term search, Maintainer separation, or term pages must pass `test-learning-packs.mjs`, `test-learner-profile.mjs`, `test-term-search.mjs`, and `validate-public-mode.mjs`.
 
 ## What “add this word to my dictionary” means
 
