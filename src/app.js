@@ -9,6 +9,7 @@ import {
   adaptiveWeight,weightedPick,dailySummary,calculateStreak,setDailyGoal,recordSession,
   exportableState,importLearningState,localDateKey
 } from './learning-state.js';
+import {loadPersonalFocus,maintainerEnabled} from './learner-profile.js';
 
 const els={
   stats:document.querySelector('#stats'),
@@ -45,6 +46,7 @@ let terms=[];
 let categories=[];
 let fillExamples={};
 let focusEntries=[];
+let ownerFocusEntries=[];
 let focusIds=new Set();
 let focusEntryById=new Map();
 let estimatorChallenges=[];
@@ -59,6 +61,20 @@ function termById(id){return terms.find(t=>t.id===id)}
 function categoryLabel(id){return categories.find(c=>c.id===id)?.label||id}
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function viewActive(name){return document.querySelector(`#${name}View`)?.classList.contains('active')}
+function normalizeLookup(value){return String(value||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function findTerm(value){
+  const key=normalizeLookup(value);
+  return terms.find(t=>normalizeLookup(t.id)===key||normalizeLookup(t.term)===key||(t.aliases_en||[]).some(a=>normalizeLookup(a)===key)||(t.drawing_labels||[]).some(a=>normalizeLookup(a)===key))||null;
+}
+function applyFocusEntries(entries){
+  const idSet=new Set(terms.map(t=>t.id));
+  focusEntries=(Array.isArray(entries)?entries:[]).filter(item=>idSet.has(item.id));
+  focusIds=new Set(focusEntries.map(item=>item.id));
+  focusEntryById=new Map(focusEntries.map(item=>[item.id,item]));
+}
+function refreshFocusSource(){
+  applyFocusEntries(maintainerEnabled()?ownerFocusEntries:loadPersonalFocus().terms);
+}
 
 function speak(text){
   if(!('speechSynthesis' in window))return;
@@ -141,6 +157,7 @@ function renderDictionary(){
     node.querySelector('.mistakes-text').textContent=t.common_mistakes?.length?`Watch out: ${t.common_mistakes.join(' ')}`:'No common mistake note yet.';
     node.querySelector('.example-text').textContent=t.example_en;
     node.querySelector('.listen-btn').addEventListener('click',()=>speak(t.term));
+    const termLink=node.querySelector('.term-page-link');if(termLink)termLink.href=`term.html?term=${encodeURIComponent(t.id)}`;
     els.grid.appendChild(node);
   });
   if(!filtered.length)els.grid.innerHTML='<div class="empty">No terms match this filter.</div>';
@@ -188,7 +205,7 @@ function pickPracticeTerm(pool){
   if(!pool.length)return null;
   const candidates=session.active?preferUnseen(pool,session.seenIds):pool;
   const scope=session.active?session.scope:els.practiceScope.value;
-  if(scope==='smart'||scope==='focus')return weightedPick(candidates,practiceWeight);
+  if(scope==='smart'||scope==='focus'||String(scope).startsWith('pack:'))return weightedPick(candidates,practiceWeight);
   return candidates[Math.floor(Math.random()*candidates.length)];
 }
 
@@ -284,7 +301,7 @@ function scopeEmptyMessage(){
   const scope=els.practiceScope.value;
   const cat=els.practiceCategory.value;
   const suffix=cat==='all'?'':` in ${categoryLabel(cat)}`;
-  if(scope==='focus')return `No focus words${suffix}. Add a word from chat or change the category.`;
+  if(scope==='focus')return `No words in My Words${suffix}. Choose a learning pack or add a term from work.`;
   if(scope==='due')return `No words are due${suffix}.`;
   if(scope==='weak')return `No weak words${suffix} yet.`;
   if(scope==='new')return `No new words${suffix}.`;
@@ -416,6 +433,20 @@ function submitTypedAnswer(){
 }
 
 function nextQuestion(){makeQuestion()}
+function startPackSession(packIds,packId='custom'){
+  if(session.active){switchView('practice');return false}
+  const pool=[...new Set(packIds||[])].map(termById).filter(Boolean);
+  if(!pool.length){renderEmptyPractice('This learning pack has no available terms.');return false}
+  session={
+    active:true,total:Math.min(10,pool.length),done:0,correct:0,startedAt:new Date().toISOString(),
+    mode:'mixed',scope:`pack:${packId}`,category:'all',
+    seenIds:new Set(),poolIds:pool.map(term=>term.id)
+  };
+  els.practiceMode.value='mixed';els.practiceScope.value='all';els.practiceCategory.value='all';
+  currentQuestion=null;els.quiz.dataset.answered='yes';
+  setSessionControlsLocked(true);switchView('practice');return true;
+}
+
 function startQuickSession(){
   const initialPool=selectedPool();
   if(!initialPool.length){
@@ -433,7 +464,7 @@ function startQuickSession(){
 }
 function renderSessionStatus(){
   if(!session.active){
-    if(!els.sessionStatus.textContent)els.sessionStatus.textContent=`Smart review adapts to your mistakes. My focus list currently contains ${focusIds.size} word${focusIds.size===1?'':'s'} explicitly added from chat.`;
+    if(!els.sessionStatus.textContent)els.sessionStatus.textContent=`Smart review adapts to your mistakes. My Words currently contains ${focusIds.size} term${focusIds.size===1?'':'s'}.`;
     return;
   }
   els.sessionStatus.innerHTML=`Quick 10: <strong>${session.done}/${session.total}</strong> answered · score ${session.correct}/${session.done}`;
@@ -591,9 +622,8 @@ async function init(){
   const rawFocus=Array.isArray(focusData?.terms)?focusData.terms:[];
   const missingFocus=rawFocus.filter(item=>!idSet.has(item.id));
   if(missingFocus.length)console.warn(`Ignoring focus IDs missing from current vocabulary: ${missingFocus.map(item=>item.id).join(', ')}`);
-  focusEntries=rawFocus.filter(item=>idSet.has(item.id));
-  focusIds=new Set(focusEntries.map(item=>item.id));
-  focusEntryById=new Map(focusEntries.map(item=>[item.id,item]));
+  ownerFocusEntries=rawFocus.filter(item=>idSet.has(item.id));
+  refreshFocusSource();
 
   categories.forEach(c=>{
     const option=`<option value="${c.id}">${escapeHtml(c.label)}</option>`;
@@ -615,6 +645,22 @@ async function init(){
   document.querySelector('#newDrawingQuestion').addEventListener('click',renderDrawingQuestion);
   document.querySelector('#exportProgress').addEventListener('click',exportProgress);
   document.querySelector('#importProgress').addEventListener('change',e=>e.target.files[0]&&importProgress(e.target.files[0]));
+  window.addEventListener('learner-focus-changed',()=>{
+    refreshFocusSource();els.sessionStatus.textContent='';
+    renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
+  });
+
+  window.ConstructionTrainer={
+    startPackSession,
+    findTerm,
+    getTerms:()=>terms.map(term=>({...term})),
+    switchView,
+    showTermInDictionary(id){
+      const term=termById(id);if(!term)return false;
+      els.search.value=term.term;renderDictionary();switchView('dictionary');return true;
+    }
+  };
+  window.dispatchEvent(new CustomEvent('trainer-ready',{detail:window.ConstructionTrainer}));
 }
 
 init().catch(err=>{

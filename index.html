@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#111923" />
-  <meta name="description" content="Multilingual civil construction vocabulary trainer with visual practice, estimator scenarios, drawing abbreviations and spaced review." />
+  <meta name="description" content="Civil construction English for real work: role-based learning packs, visual terms, drawing practice, estimator scenarios, and spaced review." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Construction Vocab" />
-  <title>Construction Vocabulary Trainer</title>
+  <title>Civil Construction English Trainer</title>
   <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="src/styles.css" />
@@ -17,17 +17,20 @@
   <link rel="stylesheet" href="src/ux.css" />
   <link rel="stylesheet" href="src/dark.css" />
   <link rel="stylesheet" href="src/onboarding.css" />
+  <link rel="stylesheet" href="src/public-mode.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand-block">
-      <p class="eyebrow">Personal civil construction trainer</p>
-      <h1>Construction Vocabulary</h1>
-      <p class="header-note">English · Русский · Tiếng Việt · visual learning</p>
+      <p class="eyebrow">Civil construction English for real work</p>
+      <h1>Construction English</h1>
+      <p class="header-note">English · Русский · Tiếng Việt · drawings · estimating · field work</p>
     </div>
     <details class="data-menu">
       <summary aria-label="Progress data menu">Data</summary>
       <div class="data-menu-popover">
+        <button id="changeLearningPathMenu" class="secondary" type="button">Change learning path</button>
+        <button id="toggleMaintainerMode" class="secondary" type="button" aria-pressed="false">Maintainer mode: off</button>
         <button id="exportProgress" class="secondary">Export progress</button>
         <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" /></label>
       </div>
@@ -50,13 +53,15 @@
     <section id="homeView" class="view active">
       <section class="home-hero" aria-labelledby="todayTitle">
         <p class="home-kicker">Today</p>
-        <h2 id="todayTitle">Learn the construction words you actually use.</h2>
-        <p>Start with ten adaptive questions, then spend extra time on the words you recently added from chat.</p>
+        <h2 id="todayTitle">Construction English for real work.</h2>
+        <p>Learn the terms you see on civil drawings, estimates, site instructions, and subcontractor conversations — then practice them until they stick.</p>
         <div class="home-hero-actions">
           <button class="home-primary" data-quick-action="smart10">Start Smart 10</button>
-          <button class="home-secondary" data-quick-action="focus">Practice focus words</button>
+          <button class="home-secondary" data-quick-action="focus">Practice My Words</button>
         </div>
       </section>
+
+      <section id="learnerPathCard" class="learner-path-card" aria-label="Personal learning path"></section>
 
       <section id="installCard" class="install-card" hidden aria-labelledby="installTitle">
         <div class="install-icon" aria-hidden="true">↗</div>
@@ -70,7 +75,28 @@
       <section id="dailyGoalCard" class="daily-goal-card" aria-label="Daily learning goal"></section>
       <section id="stats" class="stats-grid" aria-label="Learning statistics"></section>
 
-      <section class="chat-bridge" aria-labelledby="addWordTitle">
+      <section class="public-capture" aria-labelledby="publicCaptureTitle">
+        <div class="public-capture-head">
+          <p class="system-kicker">From work → learning</p>
+          <h2 id="publicCaptureTitle">Saw a term at work?</h2>
+          <p>If it already exists in the library, add it to My Words. If not, prepare a plain-English ChatGPT explanation prompt.</p>
+        </div>
+        <div class="public-capture-form">
+          <input id="publicCaptureInput" type="text" autocomplete="off" placeholder="e.g. sheet pile, DB2, invert" aria-label="Construction term from work" />
+          <button id="addExistingTerm" type="button">Add to My Words</button>
+          <button id="explainTerm" type="button" class="secondary">Explain with ChatGPT</button>
+        </div>
+        <p id="publicCaptureStatus" class="public-capture-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="learning-packs-section" aria-labelledby="learningPacksTitle">
+        <div class="learning-packs-head">
+          <div><p class="system-kicker">Focused paths</p><h2 id="learningPacksTitle">Learning packs</h2><p>Pick the part of civil construction you actually work with.</p></div>
+        </div>
+        <div id="learningPackGrid" class="learning-pack-grid"></div>
+      </section>
+
+      <section class="chat-bridge maintainer-only" aria-labelledby="addWordTitle">
         <div class="chat-bridge-head">
           <div>
             <p class="system-kicker">From work → ChatGPT → trainer</p>
@@ -136,7 +162,7 @@
 
       <div class="home-routine">
         <span aria-hidden="true">✓</span>
-        <span><strong>Simple routine:</strong> Smart 10 daily → focus words when you add something from work → Drawing or Estimator practice when you have another few minutes.</span>
+        <span><strong>Simple routine:</strong> Learn 10 from your pack → review due words → use Drawing or Estimator practice when you have a few more minutes.</span>
       </div>
     </section>
 
@@ -241,12 +267,12 @@
         <div><span class="category-pill"></span><h2 class="term-title"></h2><p class="pronunciation"></p></div>
         <span class="status-badge"></span>
       </div>
-      <div class="card-actions"><button class="listen-btn secondary" type="button">🔊 Listen</button></div>
+      <div class="card-actions"><button class="listen-btn secondary" type="button">🔊 Listen</button><a class="term-page-link secondary" href="#">Open term page</a></div>
       <div class="visual-box"></div>
       <p class="definition"></p>
-      <div class="translation-block"><strong>RU</strong><span class="ru-text"></span></div>
-      <div class="translation-block"><strong>VI</strong><span class="vi-text"></span></div>
-      <details><summary>Russian explanation</summary><p class="ru-explanation"></p></details>
+      <div class="translation-block translation-ru"><strong>RU</strong><span class="ru-text"></span></div>
+      <div class="translation-block translation-vi"><strong>VI</strong><span class="vi-text"></span></div>
+      <details class="translation-ru"><summary>Russian explanation</summary><p class="ru-explanation"></p></details>
       <details><summary>Related terms & common mistakes</summary><p class="related-text"></p><p class="mistakes-text"></p></details>
       <div class="example-box"><strong>Example</strong><p class="example-text"></p></div>
     </article>
@@ -254,6 +280,7 @@
 
   <script type="module" src="src/app.js"></script>
   <script type="module" src="src/ui-enhancements.js"></script>
+  <script type="module" src="src/public-mode.js"></script>
   <script type="module" src="src/onboarding.js"></script>
   <script type="module" src="src/register-sw.js"></script>
 </body>
