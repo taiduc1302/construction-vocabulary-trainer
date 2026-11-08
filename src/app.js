@@ -9,7 +9,8 @@ import {
   adaptiveWeight,weightedPick,dailySummary,calculateStreak,setDailyGoal,recordSession,
   exportableState,importLearningState,localDateKey
 } from './learning-state.js';
-import {loadPersonalFocus,maintainerEnabled} from './learner-profile.js';
+import {loadProfile,saveProfile,loadPersonalFocus,savePersonalFocus,normalizePersonalFocus,maintainerEnabled} from './learner-profile.js';
+import {findExactVocabularyTerm,searchVocabulary} from './term-search.js';
 
 const els={
   stats:document.querySelector('#stats'),
@@ -61,10 +62,25 @@ function termById(id){return terms.find(t=>t.id===id)}
 function categoryLabel(id){return categories.find(c=>c.id===id)?.label||id}
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function viewActive(name){return document.querySelector(`#${name}View`)?.classList.contains('active')}
-function normalizeLookup(value){return String(value||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
-function findTerm(value){
-  const key=normalizeLookup(value);
-  return terms.find(t=>normalizeLookup(t.id)===key||normalizeLookup(t.term)===key||(t.aliases_en||[]).some(a=>normalizeLookup(a)===key)||(t.drawing_labels||[]).some(a=>normalizeLookup(a)===key))||null;
+function findTerm(value){return findExactVocabularyTerm(terms,value)}
+function searchTerms(value,limit=5){return searchVocabulary(terms,value,{limit})}
+function getProgressForIds(ids=[]){
+  const uniqueIds=[...new Set(ids)].filter(id=>termById(id));
+  const records=uniqueIds.map(id=>progressRecord(id));
+  const started=records.filter(record=>record.status!=='new').length;
+  const mastered=records.filter(record=>record.status==='mastered').length;
+  const due=records.filter(record=>record.status!=='new'&&dueNow(record)).length;
+  const attempts=records.reduce((sum,record)=>sum+(record.correct||0)+(record.wrong||0),0);
+  const correct=records.reduce((sum,record)=>sum+(record.correct||0),0);
+  return {
+    total:uniqueIds.length,
+    started,
+    mastered,
+    due,
+    attempts,
+    correct,
+    accuracy:attempts?Math.round(correct/attempts*100):0
+  };
 }
 function applyFocusEntries(entries){
   const idSet=new Set(terms.map(t=>t.id));
@@ -91,6 +107,7 @@ function updateProgress(id,correct){
   renderReviewLists();
   renderProgressView();
   if(viewActive('dictionary'))renderDictionary();
+  window.dispatchEvent(new CustomEvent('trainer-progress-changed'));
 }
 
 function renderStats(){
@@ -571,7 +588,7 @@ function switchView(view){
 }
 
 function exportProgress(){
-  const payload={...exportableState(learningState),exportedAt:new Date().toISOString()};
+  const payload={...exportableState(learningState),learnerProfile:loadProfile(),personalFocus:loadPersonalFocus(),exportedAt:new Date().toISOString()};
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
   const a=document.createElement('a');
   const href=URL.createObjectURL(blob);
@@ -583,9 +600,13 @@ function importProgress(file){
   reader.onload=()=>{
     try{
       const data=JSON.parse(reader.result);
-      learningState=importLearningState(data);saveLearningState(learningState);
-      renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();
-      alert('Progress imported.');
+      learningState=importLearningState(data.learningState||data);saveLearningState(learningState);
+      if(data.learnerProfile)saveProfile(data.learnerProfile);
+      if(data.personalFocus)savePersonalFocus(normalizePersonalFocus(data.personalFocus));
+      refreshFocusSource();
+      window.dispatchEvent(new CustomEvent('learner-profile-imported'));
+      renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
+      alert('Progress, learning path and My Words imported.');
     }catch{alert('Could not read that progress file.')}
   };
   reader.readAsText(file);
@@ -653,6 +674,8 @@ async function init(){
   window.ConstructionTrainer={
     startPackSession,
     findTerm,
+    searchTerms,
+    getProgressForIds,
     getTerms:()=>terms.map(term=>({...term})),
     switchView,
     showTermInDictionary(id){
