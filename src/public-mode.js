@@ -238,6 +238,7 @@ function bindPublicCapture(){
 }
 
 function bindMaintainerToggle(){
+  document.querySelector('#changeLearningPathMenu')?.addEventListener('click',()=>openOnboarding(true));
   const button=document.querySelector('#toggleMaintainerMode');
   button?.addEventListener('click',()=>{
     const next=!maintainerEnabled();
