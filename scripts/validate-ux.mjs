@@ -9,6 +9,9 @@ const dark=read('src/dark.css');
 const onboardingCss=read('src/onboarding.css');
 const ui=read('src/ui-enhancements.js');
 const onboarding=read('src/onboarding.js');
+const publicLearner=read('src/public-learner.js');
+const publicLearnerCss=read('src/public-learner.css');
+const learnerProfile=read('src/learner-profile.js');
 
 assert.match(index,/id="homeView" class="view active"/,'Today/Home must be the default active view');
 assert.match(index,/class="tab active" data-view="home"/,'Today tab must be the default active navigation item');
@@ -40,6 +43,27 @@ assert.match(index,/class="progress-shortcuts"/,'Due and Weak lists should remai
 assert.match(index,/From work → ChatGPT → trainer/,'Today screen should explain the chat-to-trainer flow');
 assert.match(index,/Vocabulary Inbox/,'Today should expose a local vocabulary capture inbox');
 assert.match(index,/stays only on this device/i,'Inbox UI must explain that captured words remain local before sharing');
+
+assert.ok(index.includes('src/public-learner.css'),'index.html must load public learner styles');
+assert.ok(index.includes('src/public-learner.js'),'index.html must load public learner behavior');
+assert.match(index,/<body data-user-mode="learner">/,'public learner mode must be the safe default before local profile hydration');
+assert.match(index,/class="chat-bridge maintainer-only"/,'owner ChatGPT/GitHub bridge must be hidden from ordinary learner mode');
+assert.match(index,/Practice My learning/,'public learner language should replace owner-specific focus wording');
+assert.match(index,/class="focus-toggle secondary"/,'dictionary cards need a personal My learning control');
+assert.match(index,/class="term-share secondary"/,'dictionary cards need a shareable term action');
+assert.ok(publicLearner.includes('What does this term mean?'),'public learner Today flow must include work-term lookup');
+assert.ok(publicLearner.includes('Build a learning path around your job.'),'first-run onboarding must explain role-based personalization');
+assert.ok(publicLearner.includes('recommendPackId'),'onboarding must recommend a starter pack');
+assert.ok(publicLearner.includes('construction:vocab-start-pack'),'pack cards must launch the existing practice engine');
+assert.ok(publicLearner.includes('construction:vocab-open-term'),'work lookup must open shareable dictionary terms');
+assert.ok(publicLearner.includes('Maintainer mode'),'owner tools must remain available behind an explicit mode switch');
+assert.ok(publicLearnerCss.includes('body[data-user-mode="learner"] .maintainer-only'),'learner mode must hide maintainer-only controls');
+assert.ok(publicLearnerCss.includes('body[data-user-mode="maintainer"] .learner-only'),'maintainer mode must hide public learner-only panels');
+assert.ok(publicLearnerCss.includes('.learning-pack-grid'),'learning packs need responsive card layout');
+assert.ok(publicLearnerCss.includes('min-height:44px'),'public learner controls must retain touch-sized targets');
+assert.ok(learnerProfile.includes('construction-vocab-learner-profile-v1'),'learner profile must use a dedicated local-storage namespace');
+assert.ok(learnerProfile.includes('focusEntriesForProfile'),'personal focus must be derived independently from repository owner Focus');
+
 
 assert.ok(ux.includes('safe-area-inset-bottom'),'mobile UX must account for iPhone safe-area bottom inset');
 assert.match(ux,/@media\(max-width:640px\)[\s\S]*\.tabs\{position:fixed/,'mobile navigation should remain reachable at the bottom of the screen');
@@ -99,4 +123,4 @@ assert.ok(onboarding.includes("display-mode: standalone"),'install guidance must
 assert.ok(onboarding.includes('/iphone|ipad|ipod/i'),'install guidance should target iOS browsers');
 assert.ok(onboarding.includes('INSTALL_RESHOW_MS'),'dismissed install help should reappear later instead of disappearing forever');
 
-console.log('UX contract OK: Today-first flow, five-tab mobile navigation, local Vocabulary Inbox, bounded ChatGPT batches, recent-focus sync confirmation, safe Quick 10 resume, inline next actions, compact dictionary, automatic dark mode, 44px touch targets and iPhone-safe layout.');
+console.log('UX contract OK: public role-based onboarding, local My learning, learning packs, shareable terms, maintainer isolation, Today-first navigation, safe Quick 10, compact dictionary, dark mode and 44px mobile controls.');
