@@ -1,7 +1,7 @@
 {
-  "name": "Construction Vocabulary Trainer",
-  "short_name": "Civil Words",
-  "description": "Multilingual construction vocabulary trainer for civil estimating and site work.",
+  "name": "Civil Construction English Trainer",
+  "short_name": "Civil English",
+  "description": "Learn construction English for real civil work with role-based packs, visuals, drawing practice and spaced review.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
