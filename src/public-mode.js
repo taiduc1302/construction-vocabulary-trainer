@@ -237,6 +237,17 @@ function bindPublicCapture(){
   });
 }
 
+function bindPublicSmart10(){
+  const button=document.querySelector('[data-quick-action="smart10"]');
+  button?.addEventListener('click',event=>{
+    if(maintainerEnabled())return;
+    const pack=byId(profile?.activePackId)||recommendedPack(profile?.role,profile?.focus);
+    if(!pack)return;
+    event.preventDefault();event.stopImmediatePropagation();
+    usePack(pack,{start:true});
+  },true);
+}
+
 function bindMaintainerToggle(){
   document.querySelector('#changeLearningPathMenu')?.addEventListener('click',()=>openOnboarding(true));
   const button=document.querySelector('#toggleMaintainerMode');
@@ -279,7 +290,7 @@ async function initPublicMode(){
   }catch(error){
     console.warn('Learning packs unavailable.',error);packs=[];
   }
-  applyMaintainerMode();applySupportLanguage();bindMaintainerToggle();
+  applyMaintainerMode();applySupportLanguage();bindMaintainerToggle();bindPublicSmart10();
   window.addEventListener('trainer-ready',event=>onTrainerReady(event.detail));
   if(window.ConstructionTrainer)onTrainerReady(window.ConstructionTrainer);
 }
