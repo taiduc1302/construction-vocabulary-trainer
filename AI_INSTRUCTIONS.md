@@ -19,6 +19,24 @@ Treat all `data/terms*.json` files together as one vocabulary. Stable term IDs a
 
 Before adding or editing vocabulary, read the relevant current data files and existing visuals. Do not create duplicates or casually rename an existing ID.
 
+## Public Learner Mode
+
+The default product experience is for public learners, not repository maintainers.
+
+Rules:
+
+- Public users must never need GitHub, Actions, JSON, repository names, or maintenance prompts to learn.
+- `data/focus-terms.json` remains **maintainer/global learning intent**, not public-user state.
+- Public personal Focus ("My Words") is local browser state managed by `src/learner-profile.js`.
+- Learning packs in `data/learning-packs.json` reference canonical term IDs; do not duplicate vocabulary content inside a pack.
+- Switching packs may replace prior pack-sourced My Words but must preserve terms explicitly captured by the learner.
+- Maintainer Mode may expose the repository-aware ChatGPT bridge, Vocabulary Inbox, and global Focus. These controls must remain hidden in default Learner Mode.
+- New public term pages must use generic educational content already stored in the vocabulary and must not expose confidential project context.
+- The public "Explain with ChatGPT" prompt is generic and must not instruct another user to modify this repository.
+- Learner support languages currently implemented are English-only, Russian support, and Vietnamese support. Do not offer untranslated languages as if full support exists.
+- Keep the public learner UX useful without authentication or a backend; account sync can be a later product layer.
+- Changes to public onboarding, packs, personal Focus, Maintainer separation, or term pages must pass `test-learning-packs.mjs`, `test-learner-profile.mjs`, and `validate-public-mode.mjs`.
+
 ## What “add this word to my dictionary” means
 
 It expresses learning intent, not merely “create a database row.”
