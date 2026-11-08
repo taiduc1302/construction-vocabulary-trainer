@@ -1,12 +1,12 @@
-# Construction Vocabulary Trainer
+# Civil Construction English Trainer
 
-Personal multilingual construction-vocabulary trainer for civil estimating and site work. It is designed to be maintained directly by **ChatGPT, Claude, or a human** without a database or backend.
+Public-first multilingual construction-English trainer for civil estimators, coordinators, field staff, engineers, and learners. GitHub remains the content backend; daily learners use role/work-area packs, personal Focus, visual practice, drawings, estimator scenarios, and spaced review.
 
 ## Current version
 
 Maintenance pulse: repository workflow re-checked on **2026-10-04**.
 
-**v1.1.0** uses a growing modular civil-construction vocabulary. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
+**v2.0.0** introduces Public Learner Mode on top of the growing modular civil-construction vocabulary. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
 
 - English term and pronunciation;
 - plain-English definition;
@@ -19,11 +19,44 @@ Maintenance pulse: repository workflow re-checked on **2026-10-04**.
 
 The vocabulary covers drainage, underground utilities, trench/pipe embedment, earthworks, roadworks, concrete, duct banks, drawings/survey, estimating and tendering.
 
+## Public Learner Mode
+
+v2 separates the product into two experiences:
+
+- **Learner Mode (default)** — no GitHub knowledge required. A first-run onboarding asks role, work area, and language support, then recommends a focused learning pack.
+- **Maintainer Mode** — preserves the owner workflow for ChatGPT/GitHub vocabulary maintenance, global Focus metadata, Vocabulary Inbox, and release QA.
+
+Public learner state stays local to the browser:
+
+- learner profile: role, work area, support language, active pack;
+- **My Words**: personal Focus generated from the active pack plus terms captured from work;
+- progress and spaced-repetition history.
+
+The repository's global `data/focus-terms.json` is never used as another learner's personal Focus unless Maintainer Mode is explicitly enabled.
+
+### Learning packs
+
+`data/learning-packs.json` groups the shared vocabulary into practical paths such as Civil Starter, Estimator Starter, Earthworks, Underground Utilities, Duct Bank, Road & Restoration, Concrete & Foundations, Deep Excavation, Pump Station, and Drawing English.
+
+Each pack launches the existing validated Quick/Smart practice engine against only that pack's term IDs; packs do not fork or duplicate vocabulary cards.
+
+### Work-to-learning capture
+
+The public Today screen has a **Saw a term at work?** path:
+
+- if the term already exists, it is added to that learner's local **My Words**;
+- if it is missing, the app prepares a generic civil-construction explanation prompt that can be shared to ChatGPT;
+- repository-aware add-word tooling remains Maintainer-only.
+
+### Shareable term pages
+
+`term.html?term=<term-id>` renders a public card with meaning, visual, Russian/Vietnamese support, work example, estimator/field caution notes, related terms, and an **Add to My Words** action.
+
 ## Intended user workflow
 
 GitHub is the maintenance backend, not the daily user interface.
 
-The normal owner workflow is deliberately only two surfaces:
+The maintainer workflow is deliberately only two surfaces:
 
 1. **ChatGPT** — identify or add a construction word. ChatGPT maintains GitHub, the Focus list, visuals and validation.
 2. **Trainer PWA** — learn the words from the Today screen, Practice, Dictionary, Drawing and Progress.
@@ -36,7 +69,7 @@ On iPhone, the web version also shows temporary first-run guidance for **Safari 
 
 ## Daily-use UX
 
-v1.1 is organized around fast phone use and a validation-gated ChatGPT → GitHub → trainer workflow:
+v2 keeps the fast phone flow but makes the default experience learner-first:
 
 - **Today** is the default screen, with the daily goal, learning stats and a primary **Smart 10** action.
 - One-tap shortcuts open Focus words, Due review, Estimator scenarios, Drawing abbreviations, Drawing Challenge, Dictionary and Progress.
@@ -65,7 +98,7 @@ v1.1 is organized around fast phone use and a validation-gated ChatGPT → GitHu
 - Definition, scenario, diagram and fill-in-the-blank questions.
 - Validated fill prompts through `data/fill-examples.json` where a natural example uses an inflected form.
 - **Similar terms** practice for confusing pairs such as `RFI / RFQ`, `cut / fill`, `subgrade / subbase`, `trench box / shoring`, `unit price / lump sum`, and `allowance / contingency`.
-- **My focus list** for words explicitly added from chat.
+- **My Words** for each learner's active pack and captured terms; the repository owner can still use the global chat-driven Focus list in Maintainer Mode.
 - Strict Focus / Due / Weak / New scopes: filters never silently substitute unrelated terms.
 - Category-focused practice.
 - Adaptive Smart Review using overdue time, error history, recent mistakes and mastery level.
@@ -174,6 +207,7 @@ Learning state is local to the browser and is **not committed to GitHub**. Use E
 
 ## Data files
 
+- `data/learning-packs.json` — role/work-area learning paths that reference canonical term IDs.
 - `data/terms.json` — original 31-term core.
 - `data/terms-expansion.json` — expansion vocabulary and default home for new terms.
 - `data/categories.json` — controlled categories.
@@ -188,7 +222,10 @@ The app combines the two term files into one live dictionary; its size grows as 
 
 ## Main modules
 
-- `src/app.js` — application orchestration and learning UI.
+- `src/app.js` — application orchestration, learning UI, personal Focus source selection and pack-session API.
+- `src/public-mode.js` — public onboarding, learning packs, work capture and Maintainer Mode separation.
+- `src/learner-profile.js` — local learner profile and personal Focus persistence.
+- `src/term-page.js` / `term.html` — public shareable term pages.
 - `src/ui-enhancements.js` — Today shortcuts, mobile routing, compact dictionary state, inline Next actions and UX safety around active Quick 10 sessions.
 - `src/onboarding.js` — iPhone install guidance, repository-aware ChatGPT prompts, recent Focus sync and Inbox UI behavior.
 - `src/vocab-inbox.js` — bounded local capture queue, deduplication, persistence and safe recovery from storage failures.
