@@ -367,6 +367,17 @@ async function initPublicMode(){
   }
   applyMaintainerMode();applySupportLanguage();bindMaintainerToggle();bindPublicSmart10();
   window.addEventListener('trainer-ready',event=>onTrainerReady(event.detail));
+  window.addEventListener('trainer-progress-changed',()=>{
+    renderPathCard();
+    renderPacks();
+  });
+  window.addEventListener('learner-profile-imported',()=>{
+    profile=loadProfile();
+    applySupportLanguage();
+    dispatchFocusChanged();
+    renderPathCard();
+    renderPacks();
+  });
   if(window.ConstructionTrainer)onTrainerReady(window.ConstructionTrainer);
 }
 
