@@ -219,25 +219,73 @@ function findLocalTerm(raw){
   if(!trainer)return null;
   return trainer.findTerm(raw);
 }
+function searchLocalTerms(raw){
+  if(!trainer?.searchTerms)return [];
+  return trainer.searchTerms(raw,5);
+}
+function clearCaptureMatches(){
+  const host=document.querySelector('#publicCaptureMatches');
+  if(host)host.innerHTML='';
+}
+function addTermToMyWords(term,{clearInput=true}={}){
+  if(!term)return;
+  savePersonalFocus(addCapturedFocus(loadPersonalFocus(),term.id));
+  dispatchFocusChanged();
+  captureStatus(\`Added “\${term.term}” to My Words.\`,'success');
+  if(clearInput){
+    const input=document.querySelector('#publicCaptureInput');
+    if(input)input.value='';
+    clearCaptureMatches();
+  }else{
+    renderCaptureMatches(document.querySelector('#publicCaptureInput')?.value||'');
+  }
+}
+function renderCaptureMatches(raw){
+  const host=document.querySelector('#publicCaptureMatches');
+  if(!host)return;
+  const query=String(raw||'').trim();
+  if(query.length<2){host.innerHTML='';return}
+  const matches=searchLocalTerms(query);
+  if(!matches.length){host.innerHTML='';return}
+  const myWords=new Set(loadPersonalFocus().terms.map(item=>item.id));
+  host.innerHTML=matches.map(({term,match})=>\`
+    <article class="capture-match">
+      <div class="capture-match-copy">
+        <span>\${escapeHtml(match||term.category)}</span>
+        <strong>\${escapeHtml(term.term)}</strong>
+        <p>\${escapeHtml(term.definition_en)}</p>
+        <small>RU: \${escapeHtml((term.translation_ru||[]).join(', '))} · VI: \${escapeHtml((term.translation_vi||[]).join(', '))}</small>
+      </div>
+      <div class="capture-match-actions">
+        <button type="button" data-capture-add="\${escapeHtml(term.id)}">\${myWords.has(term.id)?'✓ My Words':'+ My Words'}</button>
+        <a class="secondary capture-open-link" href="term.html?term=\${encodeURIComponent(term.id)}">Open</a>
+      </div>
+    </article>\`).join('');
+  host.querySelectorAll('[data-capture-add]').forEach(button=>button.addEventListener('click',()=>{
+    const result=searchLocalTerms(query).find(item=>item.term.id===button.dataset.captureAdd);
+    addTermToMyWords(result?.term,{clearInput:false});
+  }));
+}
 function addExistingTerm(){
   const input=document.querySelector('#publicCaptureInput');
   const raw=input?.value.trim()||'';
   if(!raw){input?.focus();captureStatus('Type a construction term first.','error');return}
   const term=findLocalTerm(raw);
-  if(!term){
-    captureStatus('Not in the current library yet. Use “Explain with ChatGPT” to identify it, then a maintainer can add it to the public library.','error');
+  if(term){addTermToMyWords(term);return}
+  const matches=searchLocalTerms(raw);
+  if(matches.length){
+    renderCaptureMatches(raw);
+    captureStatus('No exact match. Choose the construction term you meant below.','neutral');
     return;
   }
-  savePersonalFocus(addCapturedFocus(loadPersonalFocus(),term.id));
-  dispatchFocusChanged();
-  captureStatus(`Added “${term.term}” to My Words.`,'success');
-  if(input)input.value='';
+  clearCaptureMatches();
+  captureStatus('Not in the current library yet. Use “Explain with ChatGPT” to identify it, then a maintainer can add it to the public library.','error');
 }
 async function explainWithChat(){
   const input=document.querySelector('#publicCaptureInput');
   const raw=input?.value.trim()||'';
   if(!raw){input?.focus();captureStatus('Type a construction term first.','error');return}
-  const prompt=`Explain the construction term "${raw}" in plain English. I work in civil construction. Tell me what it means, where I would see it on drawings/site, what an estimator should think about, and what it is commonly confused with.`;
+  const prompt=\`Explain the construction term "\${raw}" in plain English. I work in civil construction. Tell me what it means, where I would see it on drawings/site, what an estimator should think about, and what it is commonly confused with.\`;
   try{
     if(navigator.share){
       await navigator.share({title:'Explain construction term',text:prompt});
@@ -253,8 +301,14 @@ async function explainWithChat(){
 function bindPublicCapture(){
   document.querySelector('#addExistingTerm')?.addEventListener('click',addExistingTerm);
   document.querySelector('#explainTerm')?.addEventListener('click',explainWithChat);
-  document.querySelector('#publicCaptureInput')?.addEventListener('keydown',event=>{
+  const input=document.querySelector('#publicCaptureInput');
+  input?.addEventListener('keydown',event=>{
     if(event.key==='Enter'){event.preventDefault();addExistingTerm()}
+  });
+  input?.addEventListener('input',()=>{
+    renderCaptureMatches(input.value);
+    if(input.value.trim().length>=2)captureStatus('Matching terms appear below as you type.','neutral');
+    else captureStatus('','neutral');
   });
 }
 
