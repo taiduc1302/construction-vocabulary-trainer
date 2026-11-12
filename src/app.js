@@ -55,6 +55,9 @@ let drawingLabelNote='Drawing abbreviations vary. Always verify the project lege
 let learningState=loadLearningState();
 let currentQuestion=null;
 let currentDrawingTarget=null;
+const DICTIONARY_PAGE_SIZE=24;
+let dictionaryVisibleCount=DICTIONARY_PAGE_SIZE;
+let dictionaryFilterKey='';
 let session={active:false,total:0,done:0,correct:0,startedAt:null,mode:null,scope:null,category:null,seenIds:new Set(),poolIds:[]};
 
 function progressRecord(id){return recordFor(learningState,id)}
@@ -148,7 +151,13 @@ function renderDictionary(){
   if(!terms.length)return;
   const q=els.search.value.trim().toLowerCase();
   const cat=els.category.value;
-  const filtered=terms.filter(t=>(cat==='all'||t.category===cat)&&(!q||JSON.stringify(t).toLowerCase().includes(q)));
+  const filterKey=JSON.stringify([q,cat]);
+  if(filterKey!==dictionaryFilterKey){
+    dictionaryVisibleCount=DICTIONARY_PAGE_SIZE;
+    dictionaryFilterKey=filterKey;
+  }
+  const matches=terms.filter(t=>(cat==='all'||t.category===cat)&&(!q||JSON.stringify(t).toLowerCase().includes(q)));
+  const filtered=matches.slice(0,dictionaryVisibleCount);
   els.grid.innerHTML='';
   const tpl=document.querySelector('#termCardTemplate');
   filtered.forEach(t=>{
@@ -178,6 +187,24 @@ function renderDictionary(){
     els.grid.appendChild(node);
   });
   if(!filtered.length)els.grid.innerHTML='<div class="empty">No terms match this filter.</div>';
+  const pagination=document.querySelector('#dictionaryLoadMore');
+  if(pagination){
+    pagination.replaceChildren();
+    const count=document.createElement('span');
+    count.textContent='Showing '+filtered.length+' of '+matches.length+' terms';
+    pagination.appendChild(count);
+    if(filtered.length<matches.length){
+      const more=document.createElement('button');
+      more.type='button';
+      more.className='secondary';
+      more.textContent='Show '+Math.min(DICTIONARY_PAGE_SIZE,matches.length-filtered.length)+' more terms';
+      more.addEventListener('click',()=>{
+        dictionaryVisibleCount+=DICTIONARY_PAGE_SIZE;
+        renderDictionary();
+      });
+      pagination.appendChild(more);
+    }
+  }
 }
 
 function shuffle(a){
