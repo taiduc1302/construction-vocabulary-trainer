@@ -41,4 +41,7 @@ assert.match(publicCss,/data-support-language/);
 assert.match(termHtml,/src\/term-page\.js/);
 assert.match(termJs,/Add to My Words/);
 assert.match(termJs,/renderTermVisual/);
+assert.match(termJs,/findExactVocabularyTerm/,'Public term pages should reuse validated multilingual lookup');
+assert.match(publicJs,/function resumeActiveSession\(/,'Pack switches must guard against active Quick 10 sessions');
+assert.match(app,/isSessionActive:\(\)=>session.active/,'Trainer API must expose session state without mutating it');
 console.log('Public learner UX contract OK: onboarding, pack progress, multilingual work-term search, personal Focus backup, maintainer separation and shareable term page.');
