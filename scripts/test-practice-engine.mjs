@@ -58,6 +58,8 @@ const challenges=[
 assert.deepEqual(estimatorChallengesForPool(challenges,[enriched[0]]).map(c=>c.id),['duct-cost']);
 assert.equal(pickEstimatorChallenge(challenges,[enriched[3]],()=>0).id,'culvert-check');
 assert.equal(pickEstimatorChallenge(challenges,[enriched[1]],()=>0),null);
+assert.equal(pickEstimatorChallenge(challenges,[enriched[0],enriched[3]],()=>0,new Set(['duct-bank'])).id,'culvert-check','Estimator selection must prefer unshown target terms');
+assert.equal(pickEstimatorChallenge(challenges,[enriched[0],enriched[3]],()=>0,new Set(['duct-bank','culvert'])).id,'duct-cost','After all eligible terms have been shown, repeats are allowed');
 
 assert.deepEqual(filterByCategory(terms,'drainage').map(t=>t.id),['ditch','culvert']);
 assert.deepEqual(selectPracticePool({terms,scope:'focus',category:'all',focusIds:new Set(['duct-bank']),recordFor,dueNow,weaknessScore}).map(t=>t.id),['duct-bank']);

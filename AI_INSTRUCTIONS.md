@@ -218,6 +218,9 @@ Rules:
 - Estimator mode must only use challenges whose linked term is inside the current practice pool.
 - Multiple-choice options must be unique and should provide four choices when possible.
 - Quick 10 freezes its starting term pool, avoids normal target repeats until the pool is exhausted, and locks scope/category/mode while active.
+- In mixed Quick 10, Estimator/Similar Terms/Drawing Abbreviation modes should not repeat a target while another eligible unshown target exists. If the current specialized mode has no unshown eligible target, prefer a general question rather than a premature repeat.
+- Do not silently change the selected learning pack while Quick 10 is active; resume/finish the running session first.
+- Render long dictionaries incrementally (currently 24 cards initially) rather than generating hundreds of SVG diagrams at application startup.
 - Keep pure logic in `practice-engine.js` rather than moving it into DOM-heavy code when it can reasonably be tested independently.
 
 If a new term has a useful confused counterpart, consider adding it to `confusablePairs` in `src/app.js`.
@@ -238,6 +241,10 @@ Normalize malformed counters/timestamps/partial imports and unavailable localSto
 Changing today's daily goal must not retroactively rewrite whether earlier days met their historical goals.
 
 Focus-list intent is separate from browser mastery. Never commit exported browser learning-state files.
+
+## Google AI Studio migration
+
+For web app experiments, follow `docs/GOOGLE_AI_STUDIO_HANDOFF.md`. Import only into an isolated proof of concept. Keep the validated GitHub Pages `main` untouched until a full content, behavior, persistence, offline and mobile regression has passed. Native Android requires a separate Kotlin/Compose client; do not claim a direct one-click conversion of this web source.
 
 ## PWA / cache rules
 

@@ -4,9 +4,9 @@ Public-first multilingual construction-English trainer for civil estimators, coo
 
 ## Current version
 
-Maintenance pulse: repository workflow re-checked on **2026-11-08**.
+Maintenance pulse: full source and Google AI Studio migration audit initiated on **2026-11-12**.
 
-**v2.1.0** builds on Public Learner Mode with visible pack progress, multilingual/fuzzy work-term lookup, and portable learner-profile/My Words backup. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
+**v2.1.1** builds on Public Learner Mode with visible pack progress, multilingual/fuzzy work-term lookup, and portable learner-profile/My Words backup. The Today screen and validation logs report the live term count, so documentation does not need manual count updates. Each vocabulary card includes:
 
 - English term and pronunciation;
 - plain-English definition;
@@ -18,6 +18,19 @@ Maintenance pulse: repository workflow re-checked on **2026-11-08**.
 - a dedicated educational SVG-style diagram.
 
 The vocabulary covers drainage, underground utilities, trench/pipe embedment, earthworks, roadworks, concrete, duct banks, drawings/survey, estimating and tendering.
+
+## Source audit and Google AI Studio readiness
+
+The trainer remains a **static, local-first PWA** and works without Google AI Studio, a Gemini API key or a backend.
+
+Reliability hardening in this release:
+- the Dictionary renders **24 term cards initially**, with an accessible Show more control; it no longer builds every term diagram during first load;
+- mixed Quick 10 favors unseen targets in Estimator, Similar Terms and Drawing Abbreviation questions;
+- active Quick 10 sessions cannot silently switch to a different learning pack;
+- repository-owner Focus synchronization no longer downloads the vocabulary a second time for ordinary learners;
+- public term pages reuse Unicode-aware canonical lookup.
+
+For a protected migration strategy, copy-ready AI Studio instructions and the acceptance checklist, see **[Google AI Studio Build handoff](docs/GOOGLE_AI_STUDIO_HANDOFF.md)**. The Google AI Studio proof of concept must live in a separate branch or repository and must not directly replace the validated GitHub Pages release.
 
 ## Public Learner Mode
 

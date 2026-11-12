@@ -62,3 +62,7 @@ main{margin-top:22px}
 }
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Keep the full dictionary browsable without rendering every SVG at startup. */
+.dictionary-pagination{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0 24px;color:var(--muted,#677987);font-size:.88rem}
+.dictionary-pagination button{min-height:44px}

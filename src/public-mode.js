@@ -39,8 +39,22 @@ function applyMaintainerMode(){
   }
 }
 
+function resumeActiveSession(){
+  if(!trainer?.isSessionActive?.())return false;
+  trainer.switchView('practice');
+  const status=document.querySelector('#sessionStatus');
+  if(status){
+    const notice=document.createElement('span');
+    notice.className='session-switch-note';
+    notice.textContent=' · Finish this Quick 10 before changing learning packs.';
+    if(!status.querySelector('.session-switch-note'))status.appendChild(notice);
+  }
+  return true;
+}
+
 function usePack(pack,{start=false}={}){
   if(!pack)return;
+  if(resumeActiveSession())return false;
   const now=new Date().toISOString();
   profile=saveProfile({
     ...(profile||{}),
@@ -133,6 +147,7 @@ function optionButtons(values,current,type){
 }
 
 function openOnboarding(edit=false){
+  if(resumeActiveSession())return;
   document.querySelector('#learnerOnboarding')?.remove();
   const current=profile||{};
   const role=current.role||'estimator';
@@ -352,6 +367,7 @@ function handleDeepLinks(){
 }
 
 function onTrainerReady(api){
+  if(trainer===api)return;
   trainer=api;
   renderPathCard();renderPacks();bindPublicCapture();handleDeepLinks();
   if(!profile)openOnboarding(false);

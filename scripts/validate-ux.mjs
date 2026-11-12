@@ -9,10 +9,16 @@ const dark=read('src/dark.css');
 const onboardingCss=read('src/onboarding.css');
 const ui=read('src/ui-enhancements.js');
 const onboarding=read('src/onboarding.js');
+const app=read('src/app.js');
 
 assert.match(index,/id="homeView" class="view active"/,'Today/Home must be the default active view');
 assert.match(index,/class="tab active" data-view="home"/,'Today tab must be the default active navigation item');
 assert.match(index,/id="dictionaryView" class="view"/,'Dictionary should remain available but not be the default landing view');
+assert.match(index,/id="dictionaryLoadMore"/,'Dictionary must have incremental browsing controls');
+assert.match(app,/DICTIONARY_PAGE_SIZE=24/,'Do not render every vocabulary diagram during initial load');
+assert.match(app,/dictionaryVisibleCount\+=DICTIONARY_PAGE_SIZE/,'Dictionary must expose additional pages');
+assert.match(app,/allowRepeatedTargets:!mixed/,'Mixed practice must prefer unseen targets across special question types');
+assert.match(onboarding,/if\(card&&enabled&&!wasMaintainerActive\)loadRecentFocus\(\)/,'Owner Focus fetch should be gated behind Maintainer Mode');
 
 const navBlock=index.match(/<nav class="tabs"[\s\S]*?<\/nav>/)?.[0]||'';
 const primaryViews=[...navBlock.matchAll(/data-view="([^"]+)"/g)].map(match=>match[1]);

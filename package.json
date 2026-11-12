@@ -1,7 +1,7 @@
 {
   "name": "construction-vocabulary-trainer",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.1.1",
   "type": "module",
   "scripts": {
     "test": "node scripts/test-learning-state.mjs && node scripts/test-practice-engine.mjs && node scripts/test-drawing-challenges.mjs && node scripts/test-learning-content.mjs && node scripts/test-vocab-inbox.mjs && node scripts/test-onboarding.mjs && node scripts/test-learning-packs.mjs && node scripts/test-learner-profile.mjs && node scripts/test-term-search.mjs && node scripts/validate-public-mode.mjs && node scripts/validate-ux.mjs && node scripts/validate-delivery.mjs",

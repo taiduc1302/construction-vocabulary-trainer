@@ -93,11 +93,14 @@ export function estimatorChallengesForPool(challenges=[],pool=[]){
   return challenges.filter(challenge=>challenge&&allowed.has(challenge.term_id)&&Array.isArray(challenge.options));
 }
 
-export function pickEstimatorChallenge(challenges,pool,random=Math.random){
+export function pickEstimatorChallenge(challenges,pool,random=Math.random,seenIds=[]){
   const eligible=estimatorChallengesForPool(challenges,pool);
   if(!eligible.length)return null;
+  const seen=seenIds instanceof Set?seenIds:new Set(seenIds);
+  const fresh=eligible.filter(challenge=>!seen.has(challenge.term_id));
+  const candidates=fresh.length?fresh:eligible;
   const value=Math.max(0,Math.min(.999999,Number(random())||0));
-  return eligible[Math.floor(value*eligible.length)];
+  return candidates[Math.floor(value*candidates.length)];
 }
 
 export function focusRecencyMultiplier(entry,nowMs=Date.now()){
