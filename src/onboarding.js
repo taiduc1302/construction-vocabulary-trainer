@@ -2,6 +2,7 @@ import {
   VOCAB_INBOX_LIMIT,normalizeRequestedTerms,addInboxTerms,removeInboxTerm,
   inboxTerms,loadInbox,saveInbox,clearInbox as clearStoredInbox
 } from './vocab-inbox.js';
+import {maintainerEnabled} from './learner-profile.js';
 
 export {normalizeRequestedTerms} from './vocab-inbox.js';
 export const REPO='taiduc1302/construction-vocabulary-trainer';
@@ -404,13 +405,17 @@ async function loadRecentFocus(){
   }
 }
 
+let wasMaintainerActive=false;
 function bindRecentFocus(){
   const card=ensureRecentFocusCard();
-  if(card)loadRecentFocus();
+  const enabled=maintainerEnabled();
+  if(card&&enabled&&!wasMaintainerActive)loadRecentFocus();
+  wasMaintainerActive=enabled;
 }
 
 if(typeof document!=='undefined'){
   bindInstallCard();
   bindWordBridge();
   bindRecentFocus();
+  window.addEventListener('learner-focus-changed',bindRecentFocus);
 }
