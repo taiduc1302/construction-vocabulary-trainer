@@ -1,20 +1,19 @@
 import {renderTermVisual} from './visuals-all.js';
 import {mergeTermMetadata} from './practice-engine.js';
+import {findExactVocabularyTerm} from './term-search.js';
 import {loadPersonalFocus,savePersonalFocus,addCapturedFocus} from './learner-profile.js';
 
 function escapeHtml(value=''){
   return String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 }
 async function fetchJson(path){const r=await fetch(path);if(!r.ok)throw new Error(`Could not load ${path}`);return r.json()}
-function normalize(value){return String(value||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
 async function init(){
   const [core,expanded,meta]=await Promise.all([
     fetchJson('data/terms.json'),fetchJson('data/terms-expansion.json'),fetchJson('data/term-meta.json')
   ]);
   const terms=mergeTermMetadata([...core,...expanded],meta);
   const query=new URLSearchParams(location.search).get('term')||'';
-  const key=normalize(query);
-  const term=terms.find(item=>normalize(item.id)===key||normalize(item.term)===key||(item.aliases_en||[]).some(alias=>normalize(alias)===key));
+  const term=findExactVocabularyTerm(terms,query);
   const host=document.querySelector('#termPage');
   if(!term){
     document.title='Term not found · Civil Construction English';
