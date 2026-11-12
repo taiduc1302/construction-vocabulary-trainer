@@ -2,7 +2,7 @@ import {renderTermVisual} from './visuals-all.js';
 import {getDrawingScenes,randomDrawingTarget,renderDrawingScene} from './drawing-challenges.js';
 import {
   recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions,mergeTermMetadata,
-  pickTypedPrompt,drawingLabelTerms,pickDrawingLabel,pickEstimatorChallenge,focusRecencyMultiplier
+  pickTypedPrompt,drawingLabelTerms,pickDrawingLabel,estimatorChallengesForPool,pickEstimatorChallenge,focusRecencyMultiplier
 } from './practice-engine.js';
 import {
   loadLearningState,saveLearningState,recordFor,dueNow,recordAnswer,weaknessScore,
@@ -255,13 +255,17 @@ function pickPracticeTerm(pool){
 
 function markSessionTerm(term){if(session.active&&term)session.seenIds.add(term.id)}
 
-function makeContrastQuestion(pool){
+function makeContrastQuestion(pool,{allowRepeatedTargets=true}={}){
   const allowed=new Set(pool.map(t=>t.id));
   const available=confusablePairs
     .map(([a,b])=>[termById(a),termById(b)])
     .filter(([a,b])=>a&&b&&(allowed.has(a.id)||allowed.has(b.id)));
   if(!available.length)return null;
-  const pair=available[Math.floor(Math.random()*available.length)];
+  const unseenInPool=session.active?pool.filter(t=>!session.seenIds.has(t.id)):[];
+  const freshPairs=session.active?available.filter(pair=>pair.some(t=>allowed.has(t.id)&&!session.seenIds.has(t.id))):[];
+  if(session.active&&!allowRepeatedTargets&&unseenInPool.length&&!freshPairs.length)return null;
+  const choices=freshPairs.length?freshPairs:available;
+  const pair=choices[Math.floor(Math.random()*choices.length)];
   const [first,second]=pair;
   let candidates=[first,second].filter(t=>allowed.has(t.id));
   if(session.active)candidates=preferUnseen(candidates,session.seenIds);
@@ -276,9 +280,10 @@ function makeContrastQuestion(pool){
   };
 }
 
-function makeDrawingLabelQuestion(pool){
+function makeDrawingLabelQuestion(pool,{allowRepeatedTargets=true}={}){
   const labeled=drawingLabelTerms(pool);
   if(!labeled.length)return null;
+  if(session.active&&!allowRepeatedTargets&&pool.some(t=>!session.seenIds.has(t.id))&&!labeled.some(t=>!session.seenIds.has(t.id)))return null;
   const target=pickPracticeTerm(labeled);
   const label=pickDrawingLabel(target);
   if(!target||!label)return null;
@@ -292,8 +297,10 @@ function makeDrawingLabelQuestion(pool){
   };
 }
 
-function makeEstimatorQuestion(pool){
-  const challenge=pickEstimatorChallenge(estimatorChallenges,pool);
+function makeEstimatorQuestion(pool,{allowRepeatedTargets=true}={}){
+  const remaining=session.active?pool.filter(t=>!session.seenIds.has(t.id)):[];
+  if(session.active&&!allowRepeatedTargets&&remaining.length&&!estimatorChallengesForPool(estimatorChallenges,remaining).length)return null;
+  const challenge=pickEstimatorChallenge(estimatorChallenges,pool,Math.random,session.active?session.seenIds:[]);
   if(!challenge)return null;
   const term=termById(challenge.term_id);
   const correct=challenge.options.find(option=>option.correct===true);
@@ -367,14 +374,14 @@ function makeQuestion(){
   }
 
   if(mode==='drawing-label'){
-    const q=makeDrawingLabelQuestion(pool);
+    const q=makeDrawingLabelQuestion(pool,{allowRepeatedTargets:!mixed});
     if(q){renderChoiceQuestion({t:q.term,prompt:q.prompt,answer:q.answer,mode,options:q.options,extra:q.extra});renderSessionStatus();return}
     if(!mixed){renderEmptyPractice('No drawing abbreviations exist for this practice selection. Broaden the scope or choose another mode.');return}
     mode='scenario';
   }
 
   if(mode==='estimator'){
-    const q=makeEstimatorQuestion(pool);
+    const q=makeEstimatorQuestion(pool,{allowRepeatedTargets:!mixed});
     if(q){renderChoiceQuestion({t:q.term,prompt:q.prompt,answer:q.answer,mode,options:q.options,extra:q.extra,estimatorExplanation:q.estimatorExplanation});renderSessionStatus();return}
     if(!mixed){renderEmptyPractice('No estimator scenario is linked to this practice selection yet. Broaden the scope or choose another mode.');return}
     mode='scenario';
@@ -382,7 +389,7 @@ function makeQuestion(){
 
   let t,prompt,answer,field,extra='',options=[],compareWith=null;
   if(mode==='contrast'){
-    const q=makeContrastQuestion(pool);
+    const q=makeContrastQuestion(pool,{allowRepeatedTargets:!mixed});
     if(!q){
       if(mixed)mode='scenario';
       else{renderEmptyPractice('No Similar terms pair exists for this practice selection. Choose another mode or broader scope.');return}
@@ -700,6 +707,7 @@ async function init(){
 
   window.ConstructionTrainer={
     startPackSession,
+    isSessionActive:()=>session.active,
     findTerm,
     searchTerms,
     getProgressForIds,
