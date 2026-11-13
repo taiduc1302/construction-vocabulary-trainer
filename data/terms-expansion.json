@@ -5670,5 +5670,66 @@
       "Do not confuse spalling with a simple surface crack: spalling involves actual loss or detachment of material."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "dolly-pad",
+    "term": "dolly pad",
+    "pronunciation": "DAH-lee pad",
+    "category": "concrete",
+    "definition_en": "A heavy-duty concrete strip or slab near a loading dock where a parked semi-trailer's landing gear rests, spreading concentrated leg loads into the ground instead of soft pavement.",
+    "explanation_ru": "Dolly pad — обычно усиленная бетонная площадка или полоса в зоне погрузочных доков, на которую опираются стояночные опоры полуприцепа (landing gear). Она распределяет сосредоточенную нагрузку, чтобы опоры не продавливали асфальт. Иногда этим же названием обозначают отдельную подкладку под опору — значение уточняют по чертежу.",
+    "translation_ru": [
+      "бетонная площадка под опоры полуприцепа",
+      "опорная плита под стояночные опоры прицепа"
+    ],
+    "translation_vi": [
+      "dải bê tông đỡ chân chống sơ mi rơ moóc",
+      "bệ đỡ chân chống rơ moóc"
+    ],
+    "example_en": "Pour the dolly pad beside the loading dock so the parked trailer's landing gear bears on concrete rather than asphalt.",
+    "scenario": "At an industrial yard, a parked trailer transfers a concentrated load through its support legs; a reinforced hardstanding area protects the pavement below.",
+    "visual": "Side view of a parked semi-trailer with extended landing-gear legs bearing on a highlighted concrete strip; surrounding asphalt is shown separately.",
+    "related_terms": [
+      "loading-dock",
+      "concrete-slab",
+      "pavement"
+    ],
+    "common_mistakes": [
+      "This is not a wheeled furniture dolly; in industrial sitework it usually means a load-bearing concrete area for trailer support legs.",
+      "The same wording can also refer to a portable support pad under a trailer leg. Read the civil plan, detail and specifications before pricing.",
+      "Do not assume a standard thickness, reinforcement, or extent without the project drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "loading-dock",
+    "term": "loading dock",
+    "pronunciation": "LOH-ding dok",
+    "category": "concrete",
+    "definition_en": "A designated platform or bay at a warehouse or industrial building where trucks or trailers are positioned for loading and unloading goods, often with an elevated floor at trailer-bed height.",
+    "explanation_ru": "Loading dock — погрузочно-разгрузочная платформа или зона у склада/промышленного здания, куда подают грузовик или полуприцеп. Обычно пол платформы приподнят примерно до уровня кузова; могут предусматриваться доклевеллер, ворота, защитные устройства и бетонная площадка перед доком.",
+    "translation_ru": [
+      "погрузочно-разгрузочная платформа",
+      "погрузочный док",
+      "зона погрузки и разгрузки"
+    ],
+    "translation_vi": [
+      "bến bốc dỡ hàng",
+      "sàn xuất nhập hàng tại kho",
+      "khu vực bốc xếp hàng"
+    ],
+    "example_en": "Coordinate the loading dock slab elevation and truck access before placing the exterior concrete.",
+    "scenario": "Delivery vehicles back up to an elevated warehouse platform so material-handling equipment can move goods between the building and the trailer.",
+    "visual": "Side elevation of a trailer backed against a raised warehouse platform, showing the dock face, aligned floor levels, and truck access.",
+    "related_terms": [
+      "dolly-pad",
+      "concrete-slab",
+      "trucking"
+    ],
+    "common_mistakes": [
+      "A loading dock is the overall truck-loading area or platform; a dock leveler is just the bridging device at the doorway.",
+      "Do not assume all truck bays are elevated or that dock geometry and access are identical across warehouses."
+    ],
+    "difficulty": 2
   }
 ]

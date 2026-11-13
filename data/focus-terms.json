@@ -1194,6 +1194,18 @@
       "added_at": "2026-10-21",
       "last_requested_at": "2026-10-21",
       "request_count": 1
+    },
+    {
+      "id": "dolly-pad",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "loading-dock",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
     }
   ]
 }
