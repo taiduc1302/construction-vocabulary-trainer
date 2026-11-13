@@ -1356,6 +1356,156 @@
       "added_at": "2026-11-13",
       "last_requested_at": "2026-11-13",
       "request_count": 1
+    },
+    {
+      "id": "dock-shelter-curtain",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "door-operator",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "safety-interlock",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-traffic-light",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-door-threshold",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "trailer-landing-gear",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "landing-gear-foot",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "kingpin",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "fifth-wheel",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "trailer-stand",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "wheel-chock",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "tandem-axle",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "tractor-trailer",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "yard-tractor",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "trailer-creep",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "truck-staging-area",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "trailer-parking",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "truck-turning-radius",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "backing-manoeuvre",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "swept-path-analysis",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "truck-route",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "vehicle-queue",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-assignment",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "trailer-spotting",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "bollard",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
     }
   ]
 }

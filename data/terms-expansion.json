@@ -6353,5 +6353,627 @@
       "Confirm the door type and clearance envelope rather than assuming all overhead doors have the same hardware."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "dock-shelter-curtain",
+    "term": "dock shelter curtain",
+    "pronunciation": "DOK SHEL-ter KUR-tin",
+    "category": "site-logistics",
+    "definition_en": "A flexible side or top fabric curtain on a dock shelter that contacts a trailer to block wind and rain.",
+    "explanation_ru": "Это сменная гибкая штора по краям укрытия; размер зависит от габаритов прицепов.",
+    "translation_ru": [
+      "гибкая штора докового укрытия"
+    ],
+    "translation_vi": [
+      "rèm chắn mềm bến bốc dỡ"
+    ],
+    "example_en": "Replace the torn dock shelter curtain before the rainy season.",
+    "scenario": "Flexible fabric around a warehouse doorway touches the rear of a parked trailer.",
+    "visual": "Side or plan view of dock shelter curtain at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "overhead-door"
+    ],
+    "common_mistakes": [
+      "Door models and control arrangements are not interchangeable; check the equipment schedule."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "door-operator",
+    "term": "door operator",
+    "pronunciation": "DOR OP-uh-ray-ter",
+    "category": "site-logistics",
+    "definition_en": "A motorized drive and control mechanism used to open and close an industrial loading door.",
+    "explanation_ru": "Электропривод ворот, который требует места для установки и обслуживания.",
+    "translation_ru": [
+      "электропривод ворот"
+    ],
+    "translation_vi": [
+      "bộ truyền động cửa công nghiệp"
+    ],
+    "example_en": "Allow service clearance around the door operator above the receiving opening.",
+    "scenario": "An electric motor raises a large warehouse door when a button is pressed.",
+    "visual": "Side or plan view of door operator at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "overhead-door",
+      "dock-shelter-curtain"
+    ],
+    "common_mistakes": [
+      "Door models and control arrangements are not interchangeable; check the equipment schedule."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "safety-interlock",
+    "term": "safety interlock",
+    "pronunciation": "SAYF-tee IN-ter-lok",
+    "category": "safety",
+    "definition_en": "A control connection that prevents dock equipment from operating until required safe conditions are met.",
+    "explanation_ru": "Блокировка, не позволяющая включать устройство, если другое не подтвердило безопасное состояние.",
+    "translation_ru": [
+      "защитная блокировка"
+    ],
+    "translation_vi": [
+      "khóa liên động an toàn"
+    ],
+    "example_en": "Test the safety interlock between the trailer restraint and the leveler.",
+    "scenario": "The bridging platform remains disabled until the trailer has been secured.",
+    "visual": "Side or plan view of safety interlock at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "overhead-door",
+      "door-operator"
+    ],
+    "common_mistakes": [
+      "Door models and control arrangements are not interchangeable; check the equipment schedule."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-traffic-light",
+    "term": "dock traffic light",
+    "pronunciation": "DOK TRAF-ik lyt",
+    "category": "site-logistics",
+    "definition_en": "A colored signal device communicating whether a truck can approach or leave a loading position.",
+    "explanation_ru": "Светофор сообщает водителю статус дока; значение цветов задаётся инструкцией конкретной системы.",
+    "translation_ru": [
+      "светофор погрузочного дока"
+    ],
+    "translation_vi": [
+      "đèn tín hiệu bến bốc dỡ"
+    ],
+    "example_en": "Coordinate the dock traffic light wiring with the restraint controls.",
+    "scenario": "Drivers see a signal that indicates whether departure is permitted.",
+    "visual": "Side or plan view of dock traffic light at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "overhead-door",
+      "safety-interlock"
+    ],
+    "common_mistakes": [
+      "Door models and control arrangements are not interchangeable; check the equipment schedule."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-door-threshold",
+    "term": "dock door threshold",
+    "pronunciation": "DOK dor THRESH-ohld",
+    "category": "site-logistics",
+    "definition_en": "The finished floor transition at the bottom of a warehouse loading-door opening.",
+    "explanation_ru": "Зона сопряжения пола, закладных деталей и проёма ворот; перепад отметок мешает тележкам.",
+    "translation_ru": [
+      "порог погрузочных ворот"
+    ],
+    "translation_vi": [
+      "ngưỡng cửa bốc dỡ"
+    ],
+    "example_en": "Detail the dock door threshold to eliminate a trip hazard for pallet jacks.",
+    "scenario": "A small step at the bottom of an opening catches the wheels of a loaded cart.",
+    "visual": "Side or plan view of dock door threshold at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "overhead-door",
+      "dock-traffic-light"
+    ],
+    "common_mistakes": [
+      "Door models and control arrangements are not interchangeable; check the equipment schedule."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trailer-landing-gear",
+    "term": "trailer landing gear",
+    "pronunciation": "TRAY-ler LAN-ding geer",
+    "category": "site-logistics",
+    "definition_en": "Retractable legs at the front of a semitrailer that support its weight after uncoupling from a tractor.",
+    "explanation_ru": "Выдвижные опоры полуприцепа передают нагрузку на покрытие или бетонный dolly pad.",
+    "translation_ru": [
+      "стояночные опоры полуприцепа"
+    ],
+    "translation_vi": [
+      "chân chống sơ mi rơ moóc"
+    ],
+    "example_en": "Position the trailer landing gear over the concrete pad before uncoupling.",
+    "scenario": "The front of a detached semitrailer rests on two adjustable support legs.",
+    "visual": "Side or plan view of trailer landing gear at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "landing-gear-foot",
+    "term": "landing gear foot",
+    "pronunciation": "LAN-ding geer foot",
+    "category": "site-logistics",
+    "definition_en": "The ground-contact plate at the bottom of a semitrailer landing-gear leg.",
+    "explanation_ru": "Нижняя опорная пята передаёт сосредоточенное усилие от стойки на основание.",
+    "translation_ru": [
+      "опорная пята полуприцепа"
+    ],
+    "translation_vi": [
+      "đế chân chống rơ moóc"
+    ],
+    "example_en": "Check where each landing gear foot bears on the new concrete strip.",
+    "scenario": "A small metal shoe presses onto the yard pavement beneath a trailer support leg.",
+    "visual": "Side or plan view of landing gear foot at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "trailer-landing-gear"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "kingpin",
+    "term": "kingpin",
+    "pronunciation": "KING-pin",
+    "category": "site-logistics",
+    "definition_en": "A steel pin beneath a semitrailer that locks into the tractor fifth-wheel coupling.",
+    "explanation_ru": "Шкворень соединяет полуприцеп с тягачом и не является стояночной опорой.",
+    "translation_ru": [
+      "сцепной шкворень полуприцепа"
+    ],
+    "translation_vi": [
+      "chốt kéo sơ mi rơ moóc"
+    ],
+    "example_en": "Inspect the kingpin before coupling the tractor to the trailer.",
+    "scenario": "A vertical steel pin engages the tractor's circular coupling plate.",
+    "visual": "Side or plan view of kingpin at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "landing-gear-foot"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "fifth-wheel",
+    "term": "fifth wheel",
+    "pronunciation": "FIFTH weel",
+    "category": "site-logistics",
+    "definition_en": "The plate-shaped coupling on a truck tractor that engages a semitrailer kingpin and supports part of its load.",
+    "explanation_ru": "Седло тягача принимает шкворень полуприцепа и передаёт его вес на тягач.",
+    "translation_ru": [
+      "седельно-сцепное устройство тягача"
+    ],
+    "translation_vi": [
+      "mâm kéo đầu kéo"
+    ],
+    "example_en": "Confirm the fifth wheel is fully locked before the tractor moves.",
+    "scenario": "A greased plate behind the cab connects a tractor to its semitrailer.",
+    "visual": "Side or plan view of fifth wheel at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "kingpin"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trailer-stand",
+    "term": "trailer stand",
+    "pronunciation": "TRAY-ler stand",
+    "category": "site-logistics",
+    "definition_en": "A separate support frame positioned beneath a trailer to increase stability where the loading procedure requires it.",
+    "explanation_ru": "Дополнительная опора при работе с отцепленным прицепом; применяется по условиям безопасной эксплуатации.",
+    "translation_ru": [
+      "дополнительная подставка под прицеп"
+    ],
+    "translation_vi": [
+      "giá đỡ phụ rơ moóc"
+    ],
+    "example_en": "Install a trailer stand if the approved loading procedure calls for extra front support.",
+    "scenario": "An additional steel support frame is placed beneath a trailer before heavy loading.",
+    "visual": "Side or plan view of trailer stand at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "fifth-wheel"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "wheel-chock",
+    "term": "wheel chock",
+    "pronunciation": "WEEL chok",
+    "category": "safety",
+    "definition_en": "A wedge placed against a vehicle tire to resist unintended rolling during loading or parking.",
+    "explanation_ru": "Клин под колесо, предотвращающий самопроизвольное качение, но не заменяющий все другие меры фиксации.",
+    "translation_ru": [
+      "противооткатный упор"
+    ],
+    "translation_vi": [
+      "chèn bánh xe"
+    ],
+    "example_en": "Place the wheel chock against the tire as required by the dock procedure.",
+    "scenario": "A wedge touches a parked trailer wheel to reduce the chance of rolling.",
+    "visual": "Side or plan view of wheel chock at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "trailer-stand"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "tandem-axle",
+    "term": "tandem axle",
+    "pronunciation": "TAN-dum AK-sul",
+    "category": "site-logistics",
+    "definition_en": "A pair of closely spaced axles that share the load beneath a truck or semitrailer.",
+    "explanation_ru": "Две близко расположенные оси распределяют вес прицепа и влияют на повороты и нагрузки на покрытие.",
+    "translation_ru": [
+      "двухосная тележка"
+    ],
+    "translation_vi": [
+      "cụm hai trục bánh"
+    ],
+    "example_en": "Check the tandem axle path in the site turning assessment.",
+    "scenario": "Two adjacent sets of wheels carry the rear portion of a long semitrailer.",
+    "visual": "Side or plan view of tandem axle at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "wheel-chock"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "tractor-trailer",
+    "term": "tractor trailer",
+    "pronunciation": "TRAK-ter TRAY-ler",
+    "category": "site-logistics",
+    "definition_en": "A freight vehicle combination consisting of a powered road tractor and a semitrailer.",
+    "explanation_ru": "Автопоезд из тягача и полуприцепа, габариты которого определяют размеры двора.",
+    "translation_ru": [
+      "седельный тягач с полуприцепом"
+    ],
+    "translation_vi": [
+      "xe đầu kéo và sơ mi rơ moóc"
+    ],
+    "example_en": "Use the design tractor trailer dimensions for the warehouse access review.",
+    "scenario": "A long articulated freight vehicle backs toward a loading platform.",
+    "visual": "Side or plan view of tractor trailer at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "tandem-axle"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "yard-tractor",
+    "term": "yard tractor",
+    "pronunciation": "YARD TRAK-ter",
+    "category": "site-logistics",
+    "definition_en": "A compact tractor designed for moving semitrailers short distances around industrial yards.",
+    "explanation_ru": "Короткобазный тягач для перестановки прицепов внутри склада или терминала.",
+    "translation_ru": [
+      "терминальный тягач"
+    ],
+    "translation_vi": [
+      "xe đầu kéo trong bãi"
+    ],
+    "example_en": "Reserve a space for the yard tractor near the trailer storage row.",
+    "scenario": "A compact terminal vehicle moves parked trailers from storage to loading bays.",
+    "visual": "Side or plan view of yard tractor at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "tractor-trailer"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trailer-creep",
+    "term": "trailer creep",
+    "pronunciation": "TRAY-ler kreep",
+    "category": "safety",
+    "definition_en": "Slow unintended movement of a parked trailer away from the dock due to repeated loading forces.",
+    "explanation_ru": "Небольшое самопроизвольное смещение прицепа при погрузке, создающее опасный зазор.",
+    "translation_ru": [
+      "постепенное смещение прицепа"
+    ],
+    "translation_vi": [
+      "rơ moóc trôi dần khỏi bến"
+    ],
+    "example_en": "Review the vehicle restraint to reduce the risk of trailer creep.",
+    "scenario": "Repeated forklift movements make a parked trailer inch away from the dock.",
+    "visual": "Side or plan view of trailer creep at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "dolly-pad",
+      "yard-tractor"
+    ],
+    "common_mistakes": [
+      "Verify trailer configuration and operating requirements rather than assuming every trailer is identical."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "truck-staging-area",
+    "term": "truck staging area",
+    "pronunciation": "TRUK STAY-jing AIR-ee-uh",
+    "category": "site-logistics",
+    "definition_en": "A designated place where trucks wait before receiving a loading position or entry clearance.",
+    "explanation_ru": "Отдельная площадка ожидания, которая не должна блокировать основной проезд или въезд.",
+    "translation_ru": [
+      "зона ожидания грузовиков"
+    ],
+    "translation_vi": [
+      "khu chờ xe tải"
+    ],
+    "example_en": "Keep the truck staging area clear of the emergency access route.",
+    "scenario": "Arriving drivers wait in marked parking positions until called forward.",
+    "visual": "Side or plan view of truck staging area at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trailer-parking",
+    "term": "trailer parking",
+    "pronunciation": "TRAY-ler PAR-king",
+    "category": "site-logistics",
+    "definition_en": "A yard area with designated spaces for storing detached loaded or empty semitrailers.",
+    "explanation_ru": "Участок двора для стоянки прицепов с опорами, покрытием и водоотводом.",
+    "translation_ru": [
+      "стоянка полуприцепов"
+    ],
+    "translation_vi": [
+      "bãi đỗ sơ mi rơ moóc"
+    ],
+    "example_en": "Set out the trailer parking stalls before painting the yard markings.",
+    "scenario": "Detached trailers stand in a row of numbered storage positions.",
+    "visual": "Side or plan view of trailer parking at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "truck-staging-area"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "truck-turning-radius",
+    "term": "truck turning radius",
+    "pronunciation": "TRUK TUR-ning RAY-dee-us",
+    "category": "site-logistics",
+    "definition_en": "The turning space required by a truck, depending on wheelbase, articulation and steering geometry.",
+    "explanation_ru": "Габаритный радиус манёвра грузового автомобиля; для фуры важна вся траектория автопоезда.",
+    "translation_ru": [
+      "радиус поворота грузовика"
+    ],
+    "translation_vi": [
+      "bán kính quay xe tải"
+    ],
+    "example_en": "Check the truck turning radius before moving the curb line outward.",
+    "scenario": "A long vehicle cannot round a sharp corner without crossing the curb.",
+    "visual": "Side or plan view of truck turning radius at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "trailer-parking"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "backing-manoeuvre",
+    "term": "backing manoeuvre",
+    "pronunciation": "BAK-ing muh-NOO-ver",
+    "category": "site-logistics",
+    "definition_en": "A controlled reversing movement used to place a truck or trailer in a loading bay.",
+    "explanation_ru": "Заезд фуры задним ходом к доку; необходимо учесть видимость и пешеходов.",
+    "translation_ru": [
+      "манёвр задним ходом"
+    ],
+    "translation_vi": [
+      "thao tác lùi xe"
+    ],
+    "example_en": "Illustrate the backing manoeuvre on the truck circulation drawing.",
+    "scenario": "A driver reverses an articulated freight vehicle into a narrow warehouse position.",
+    "visual": "Side or plan view of backing manoeuvre at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "truck-turning-radius"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "swept-path-analysis",
+    "term": "swept path analysis",
+    "pronunciation": "SWEPT path uh-NAL-uh-sis",
+    "category": "site-logistics",
+    "definition_en": "A geometric study of the full area swept by a vehicle body, wheels and overhangs while moving.",
+    "explanation_ru": "Проверка коридора движения всей машины, а не только радиуса колёс.",
+    "translation_ru": [
+      "анализ траектории движения"
+    ],
+    "translation_vi": [
+      "phân tích quỹ đạo quét của xe"
+    ],
+    "example_en": "Complete the swept path analysis for the proposed warehouse entrance.",
+    "scenario": "A drawing traces the outer edges of a long vehicle throughout a turn.",
+    "visual": "Side or plan view of swept path analysis at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "backing-manoeuvre"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "truck-route",
+    "term": "truck route",
+    "pronunciation": "TRUK root",
+    "category": "site-logistics",
+    "definition_en": "The designated path for trucks between site entry, loading positions and exit.",
+    "explanation_ru": "Плановый маршрут грузовиков по площадке с учётом ширины, габаритов и безопасности.",
+    "translation_ru": [
+      "маршрут грузового транспорта"
+    ],
+    "translation_vi": [
+      "tuyến đường xe tải"
+    ],
+    "example_en": "Mark the truck route separately from employee pedestrian access.",
+    "scenario": "Heavy vehicles follow a planned circulation path around a distribution centre.",
+    "visual": "Side or plan view of truck route at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "swept-path-analysis"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "vehicle-queue",
+    "term": "vehicle queue",
+    "pronunciation": "VEE-ih-kul kyoo",
+    "category": "site-logistics",
+    "definition_en": "A line of vehicles waiting to enter, receive clearance or reach a loading position.",
+    "explanation_ru": "Очередь машин перед воротами; при нехватке места может перекрыть общественную дорогу.",
+    "translation_ru": [
+      "очередь автомобилей"
+    ],
+    "translation_vi": [
+      "hàng xe chờ"
+    ],
+    "example_en": "Provide storage length for the vehicle queue inside the property.",
+    "scenario": "Several trucks line up waiting for a security booth to admit them.",
+    "visual": "Side or plan view of vehicle queue at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "truck-route"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-assignment",
+    "term": "dock assignment",
+    "pronunciation": "DOK uh-SYN-ment",
+    "category": "site-logistics",
+    "definition_en": "The allocation of a specific loading position to an arriving truck or trailer.",
+    "explanation_ru": "Диспетчерское распределение конкретного погрузочного поста прибывшему водителю.",
+    "translation_ru": [
+      "назначение дока"
+    ],
+    "translation_vi": [
+      "phân công cửa bốc dỡ"
+    ],
+    "example_en": "Show each dock assignment on the driver's arrival display.",
+    "scenario": "A dispatcher sends a truck to numbered bay seven instead of bay three.",
+    "visual": "Side or plan view of dock assignment at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "vehicle-queue"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trailer-spotting",
+    "term": "trailer spotting",
+    "pronunciation": "TRAY-ler SPOT-ing",
+    "category": "site-logistics",
+    "definition_en": "Moving and positioning a semitrailer at a specified warehouse loading bay or yard stall.",
+    "explanation_ru": "Перестановка прицепа в заданный пост или парковочное место с помощью тягача.",
+    "translation_ru": [
+      "расстановка полуприцепов"
+    ],
+    "translation_vi": [
+      "điều chuyển rơ moóc vào vị trí"
+    ],
+    "example_en": "Coordinate trailer spotting with the next shift's loading schedule.",
+    "scenario": "A terminal tractor moves a semitrailer from storage to a selected loading position.",
+    "visual": "Side or plan view of trailer spotting at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "dock-assignment"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "bollard",
+    "term": "bollard",
+    "pronunciation": "BOL-erd",
+    "category": "safety",
+    "definition_en": "A short robust post that protects pedestrians, doorways or equipment from accidental vehicle impact.",
+    "explanation_ru": "Стальной или бетонный защитный столбик у ворот; его фундамент зависит от проекта.",
+    "translation_ru": [
+      "защитный столбик"
+    ],
+    "translation_vi": [
+      "cột trụ chắn xe"
+    ],
+    "example_en": "Set the bollard locations before pouring concrete beside the loading doors.",
+    "scenario": "Strong short posts prevent vehicles from striking vulnerable corners.",
+    "visual": "Side or plan view of bollard at an industrial loading facility, with the relevant feature highlighted for recognition.",
+    "related_terms": [
+      "truck-court",
+      "trailer-spotting"
+    ],
+    "common_mistakes": [
+      "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
+    ],
+    "difficulty": 2
   }
 ]
