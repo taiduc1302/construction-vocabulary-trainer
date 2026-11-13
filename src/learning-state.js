@@ -1,5 +1,5 @@
 export const LEARNING_STATE_VERSION=3;
-const STATE_KEY='construction-vocab-state-v3';
+export const STATE_KEY='construction-vocab-state-v3';
 const PREVIOUS_STATE_KEY='construction-vocab-state-v2';
 const LEGACY_PROGRESS_KEY='construction-vocab-progress-v1';
 const DEFAULT_DAILY_GOAL=10;

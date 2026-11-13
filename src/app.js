@@ -7,9 +7,11 @@ import {
 import {
   loadLearningState,saveLearningState,recordFor,dueNow,recordAnswer,weaknessScore,
   adaptiveWeight,weightedPick,dailySummary,calculateStreak,setDailyGoal,recordSession,
-  exportableState,importLearningState,localDateKey
+  localDateKey
 } from './learning-state.js';
-import {loadProfile,saveProfile,loadPersonalFocus,savePersonalFocus,normalizePersonalFocus,maintainerEnabled} from './learner-profile.js';
+import {loadProfile,loadPersonalFocus,maintainerEnabled} from './learner-profile.js';
+import {createProgressBackup,parseProgressBackup,applyProgressBackup,hasPreImportSnapshot,undoLastProgressImport} from './progress-backup.js';
+import {saveActiveSession,loadActiveSession,clearActiveSession} from './active-session.js';
 import {findExactVocabularyTerm,searchVocabulary} from './term-search.js';
 
 const els={
@@ -58,7 +60,8 @@ let currentDrawingTarget=null;
 const DICTIONARY_PAGE_SIZE=24;
 let dictionaryVisibleCount=DICTIONARY_PAGE_SIZE;
 let dictionaryFilterKey='';
-let session={active:false,total:0,done:0,correct:0,startedAt:null,mode:null,scope:null,category:null,seenIds:new Set(),poolIds:[]};
+function blankSession(){return {active:false,total:0,done:0,correct:0,startedAt:null,mode:null,scope:null,category:null,seenIds:new Set(),poolIds:[]}}
+let session=blankSession();
 
 function progressRecord(id){return recordFor(learningState,id)}
 function termById(id){return terms.find(t=>t.id===id)}
@@ -442,6 +445,7 @@ function finishSessionIfNeeded(){
   recordSession(learningState,finished);
   const pct=Math.round(session.correct/session.total*100);
   session.active=false;
+  clearActiveSession();
   setSessionControlsLocked(false);
   els.sessionStatus.innerHTML=`Session complete: <strong>${session.correct}/${session.total}</strong> correct (${pct}%). Saved to Progress.`;
   renderProgressView();
@@ -468,6 +472,7 @@ function completeAnswer(correct,{button=null,userAnswer=''}={}){
   document.querySelector('.feedback-speak')?.addEventListener('click',()=>speak(currentQuestion.term.term));
   renderSessionStatus();
   const finished=finishSessionIfNeeded();
+  if(!finished&&session.active)saveActiveSession(session);
   if(!finished&&session.active){
     document.querySelector('#feedback').insertAdjacentHTML('beforeend','<button class="feedback-next" type="button">Next question</button>');
     document.querySelector('.feedback-next')?.addEventListener('click',nextQuestion);
@@ -495,7 +500,7 @@ function startPackSession(packIds,packId='custom'){
   };
   els.practiceMode.value='mixed';els.practiceScope.value='all';els.practiceCategory.value='all';
   currentQuestion=null;els.quiz.dataset.answered='yes';
-  setSessionControlsLocked(true);switchView('practice');return true;
+  setSessionControlsLocked(true);saveActiveSession(session);switchView('practice');return true;
 }
 
 function startQuickSession(){
@@ -511,6 +516,7 @@ function startQuickSession(){
   };
   els.practiceMode.value='mixed';
   setSessionControlsLocked(true);
+  saveActiveSession(session);
   makeQuestion();
 }
 function renderSessionStatus(){
@@ -621,29 +627,50 @@ function switchView(view){
   if(view==='review'||view==='weak')renderReviewLists();
 }
 
-function exportProgress(){
-  const payload={...exportableState(learningState),learnerProfile:loadProfile(),personalFocus:loadPersonalFocus(),exportedAt:new Date().toISOString()};
+function updateUndoControl(){
+  const button=document.querySelector('#undoProgressImport');
+  if(button)button.hidden=!hasPreImportSnapshot();
+}
+function downloadProgressFile(name,payload){
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
   const a=document.createElement('a');
   const href=URL.createObjectURL(blob);
-  a.href=href;a.download='construction-vocabulary-progress-v3.json';a.click();
+  a.href=href;a.download=name;a.click();
   setTimeout(()=>URL.revokeObjectURL(href),0);
 }
-function importProgress(file){
-  const reader=new FileReader();
-  reader.onload=()=>{
-    try{
-      const data=JSON.parse(reader.result);
-      learningState=importLearningState(data.learningState||data);saveLearningState(learningState);
-      if(data.learnerProfile)saveProfile(data.learnerProfile);
-      if(data.personalFocus)savePersonalFocus(normalizePersonalFocus(data.personalFocus));
-      refreshFocusSource();
-      window.dispatchEvent(new CustomEvent('learner-profile-imported'));
-      renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
-      alert('Progress, learning path and My Words imported.');
-    }catch{alert('Could not read that progress file.')}
-  };
-  reader.readAsText(file);
+function exportProgress(){
+  downloadProgressFile('construction-vocabulary-progress-v3.json',
+    createProgressBackup(learningState,loadProfile(),loadPersonalFocus()));
+}
+async function importProgress(file){
+  try{
+    if(file.size>5*1024*1024)throw new Error('Backup exceeds the 5 MB import limit.');
+    const parsed=parseProgressBackup(JSON.parse(await file.text()));
+    const currentCount=Object.keys(learningState.progress||{}).length;
+    const message='Import '+parsed.importedTerms+' term progress records?\n\n'+
+      'This will replace progress currently saved for '+currentCount+' terms on this device. '+
+      'A local restore point will be created so you can undo this import.';
+    if(!window.confirm(message))return;
+    applyProgressBackup(parsed);
+    alert('Progress imported. To restore the previous data, use Settings > Undo last import.');
+    window.location.reload();
+  }catch(error){
+    alert('Progress was NOT imported: '+(error?.message||'Invalid backup file.'));
+  }finally{
+    const picker=document.querySelector('#importProgress');
+    if(picker)picker.value='';
+    updateUndoControl();
+  }
+}
+function undoProgressImport(){
+  if(!window.confirm('Restore the progress saved before the last import? This will replace your current device progress.'))return;
+  try{
+    undoLastProgressImport();
+    window.location.reload();
+  }catch(error){
+    alert('Could not undo import: '+(error?.message||'Restore failed.'));
+    updateUndoControl();
+  }
 }
 
 async function fetchJson(path){
@@ -700,10 +727,22 @@ async function init(){
   document.querySelector('#newDrawingQuestion').addEventListener('click',renderDrawingQuestion);
   document.querySelector('#exportProgress').addEventListener('click',exportProgress);
   document.querySelector('#importProgress').addEventListener('change',e=>e.target.files[0]&&importProgress(e.target.files[0]));
+  document.querySelector('#undoProgressImport').addEventListener('click',undoProgressImport);
+  updateUndoControl();
   window.addEventListener('learner-focus-changed',()=>{
     refreshFocusSource();els.sessionStatus.textContent='';
     renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
   });
+
+  const resumed=loadActiveSession(ids);
+  if(resumed){
+    session=resumed;
+    els.practiceMode.value='mixed';
+    els.practiceScope.value=resumed.scope.startsWith('pack:')?'all':resumed.scope;
+    els.practiceCategory.value=resumed.category;
+    setSessionControlsLocked(true);
+    switchView('practice');
+  }
 
   window.ConstructionTrainer={
     startPackSession,
