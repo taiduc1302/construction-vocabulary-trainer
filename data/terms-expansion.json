@@ -5731,5 +5731,627 @@
       "Do not assume all truck bays are elevated or that dock geometry and access are identical across warehouses."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "truck-court",
+    "term": "truck court",
+    "pronunciation": "TRUK kort",
+    "category": "site-logistics",
+    "definition_en": "The paved area in front of warehouse loading positions where tractor-trailers maneuver, reverse and line up with dock doors.",
+    "explanation_ru": "Это общая маневровая зона для фур перед рампами; при проектировании проверяют радиусы поворотов, уклоны и покрытие.",
+    "translation_ru": [
+      "маневровая площадка для грузовиков"
+    ],
+    "translation_vi": [
+      "sân quay đầu và điều động xe tải"
+    ],
+    "example_en": "Allow enough truck court depth for trailers to back into the loading bays without crossing the pedestrian route.",
+    "scenario": "A site plan needs sufficient open pavement for large vehicles to reverse into several warehouse doors.",
+    "visual": "A clean dock-side educational schematic highlighting the truck court in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-apron",
+    "term": "dock apron",
+    "pronunciation": "DOK AY-prun",
+    "category": "site-logistics",
+    "definition_en": "The paved approach surface directly adjacent to loading-dock positions, often designed for repeated heavy truck traffic.",
+    "explanation_ru": "Это покрытие непосредственно перед доком, где стоят и маневрируют прицепы; важно не путать с общим грузовым двором.",
+    "translation_ru": [
+      "площадка непосредственно перед погрузочным доком"
+    ],
+    "translation_vi": [
+      "sân tiếp cận sát bến bốc dỡ"
+    ],
+    "example_en": "Check the dock apron thickness and drainage before finalizing the concrete takeoff.",
+    "scenario": "The pavement immediately outside the warehouse loading doors must withstand frequent trailer movements.",
+    "visual": "A clean dock-side educational schematic highlighting the dock apron in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "truck-court"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-face",
+    "term": "dock face",
+    "pronunciation": "DOK fays",
+    "category": "site-logistics",
+    "definition_en": "The vertical exterior surface of the raised loading platform against which the trailer is positioned.",
+    "explanation_ru": "Это вертикальная стенка дока; на ней закрепляют отбойники и иногда ограничители движения прицепов.",
+    "translation_ru": [
+      "фронтальная стенка погрузочного дока"
+    ],
+    "translation_vi": [
+      "mặt trước bến bốc dỡ"
+    ],
+    "example_en": "Confirm the dock face elevation and bumper locations on the structural drawings.",
+    "scenario": "A trailer reverses toward the vertical front wall of the elevated warehouse platform.",
+    "visual": "A clean dock-side educational schematic highlighting the dock face in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-apron"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-height",
+    "term": "dock height",
+    "pronunciation": "DOK hyt",
+    "category": "site-logistics",
+    "definition_en": "The vertical distance from the exterior approach grade to the finished loading-platform floor.",
+    "explanation_ru": "Высота от поверхности двора до уровня пола платформы; влияет на сопряжение с кузовом и уклон подъезда.",
+    "translation_ru": [
+      "высота погрузочной платформы"
+    ],
+    "translation_vi": [
+      "chiều cao bến bốc dỡ"
+    ],
+    "example_en": "Verify the dock height against the trailers expected to service the facility.",
+    "scenario": "The design team compares warehouse floor level with truck-bed levels to select the loading interface.",
+    "visual": "A clean dock-side educational schematic highlighting the dock height in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-face"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-bay",
+    "term": "dock bay",
+    "pronunciation": "DOK bay",
+    "category": "site-logistics",
+    "definition_en": "One designated truck-loading position at a warehouse, typically associated with a door and dock equipment.",
+    "explanation_ru": "Это отдельное место для одного грузовика у склада, не вся погрузочная площадка целиком.",
+    "translation_ru": [
+      "погрузочный пост"
+    ],
+    "translation_vi": [
+      "ô cửa bốc dỡ hàng"
+    ],
+    "example_en": "Label each dock bay on the site layout so the equipment schedule matches the civil drawings.",
+    "scenario": "A distribution centre has several individually numbered vehicle positions along one wall.",
+    "visual": "A clean dock-side educational schematic highlighting the dock bay in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-height"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-pit",
+    "term": "dock pit",
+    "pronunciation": "DOK pit",
+    "category": "site-logistics",
+    "definition_en": "A recessed opening in the warehouse floor built to house a pit-mounted dock leveler.",
+    "explanation_ru": "Это локальное углубление в бетоне пола под доклевеллер с заданными размерами и стальными закладными.",
+    "translation_ru": [
+      "приямок под доклевеллер"
+    ],
+    "translation_vi": [
+      "hố lắp bàn nâng cân bằng sàn bốc dỡ"
+    ],
+    "example_en": "Coordinate the dock pit dimensions and embedded steel before the slab pour.",
+    "scenario": "The slab detail shows a rectangular recess that will receive a hinged bridging platform.",
+    "visual": "A clean dock-side educational schematic highlighting the dock pit in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-bay"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-ramp",
+    "term": "dock ramp",
+    "pronunciation": "DOK ramp",
+    "category": "site-logistics",
+    "definition_en": "A sloped access route connecting different floor or yard elevations for vehicles or material-handling equipment.",
+    "explanation_ru": "Это пандус между уровнями; его уклон и нагрузочная способность определяются проектом, а не названием.",
+    "translation_ru": [
+      "пандус погрузочного дока"
+    ],
+    "translation_vi": [
+      "đường dốc lên bến bốc dỡ"
+    ],
+    "example_en": "Measure the dock ramp length and finished slope separately from the leveler opening.",
+    "scenario": "A forklift must travel between a lower yard elevation and a higher loading area along a fixed incline.",
+    "visual": "A clean dock-side educational schematic highlighting the dock ramp in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-pit"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-approach",
+    "term": "dock approach",
+    "pronunciation": "DOK uh-PROHCH",
+    "category": "site-logistics",
+    "definition_en": "The portion of the yard driveway used as a truck lines up and backs toward a loading position.",
+    "explanation_ru": "Это участок подъезда к доку; проверяют уклон, обзор, зазоры под прицепом и дренаж.",
+    "translation_ru": [
+      "подъезд к погрузочному доку"
+    ],
+    "translation_vi": [
+      "lối xe tiếp cận bến bốc dỡ"
+    ],
+    "example_en": "Review the dock approach grade to avoid trailer clearance problems.",
+    "scenario": "The driveway slope and alignment affect whether a long trailer can reach the warehouse platform safely.",
+    "visual": "A clean dock-side educational schematic highlighting the dock approach in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-ramp"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "recessed-dock",
+    "term": "recessed dock",
+    "pronunciation": "ri-SEST dok",
+    "category": "site-logistics",
+    "definition_en": "A loading position set into a recess of the building or loading area instead of lying flush with a straight exterior facade.",
+    "explanation_ru": "Это погрузочный пост в нише здания или заглублённой зоне; его геометрию надо читать по плану и разрезу.",
+    "translation_ru": [
+      "утопленный погрузочный док"
+    ],
+    "translation_vi": [
+      "bến bốc dỡ đặt lùi vào trong"
+    ],
+    "example_en": "Check the recessed dock wall returns and drainage before pricing the concrete.",
+    "scenario": "The truck position sits back inside a niche instead of against a continuous straight building front.",
+    "visual": "A clean dock-side educational schematic highlighting the recessed dock in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-approach"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "sawtooth-dock",
+    "term": "sawtooth dock",
+    "pronunciation": "SAW-tooth dok",
+    "category": "site-logistics",
+    "definition_en": "A row of angled loading bays arranged like saw teeth to change the direction of truck backing movements.",
+    "explanation_ru": "Это схема доков с косыми фасадами, упрощающая некоторые манёвры; каждый угол и габарит зависит от плана.",
+    "translation_ru": [
+      "погрузочные посты под углом"
+    ],
+    "translation_vi": [
+      "dãy bến bốc dỡ bố trí răng cưa"
+    ],
+    "example_en": "Lay out the sawtooth dock geometry before measuring curb lines and pavement areas.",
+    "scenario": "Warehouse loading positions are angled along the facade rather than perpendicular to one straight wall.",
+    "visual": "A clean dock-side educational schematic highlighting the sawtooth dock in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "recessed-dock"
+    ],
+    "common_mistakes": [
+      "Do not assume dock layout or approach dimensions; read the civil and architectural plans."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-leveler",
+    "term": "dock leveler",
+    "pronunciation": "DOK LEV-uh-ler",
+    "category": "site-logistics",
+    "definition_en": "A movable bridging platform that accommodates height differences between the warehouse floor and trailer bed.",
+    "explanation_ru": "Это подвижная переходная платформа между полом склада и кузовом; бывает механической или гидравлической.",
+    "translation_ru": [
+      "доклевеллер, выравнивающая платформа"
+    ],
+    "translation_vi": [
+      "bàn nâng cân bằng sàn bốc dỡ"
+    ],
+    "example_en": "Verify the dock leveler model and pit requirements before releasing the concrete drawings.",
+    "scenario": "A powered plate changes its angle to bridge the gap between two floor elevations.",
+    "visual": "A clean dock-side educational schematic highlighting the dock leveler in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "edge-of-dock-leveler",
+    "term": "edge-of-dock leveler",
+    "pronunciation": "EJ-uv-DOK LEV-uh-ler",
+    "category": "site-logistics",
+    "definition_en": "A hinged leveling device mounted at the dock edge rather than recessed into a floor pit.",
+    "explanation_ru": "Это компактный доклевеллер на кромке, в отличие от модели с приямком; диапазон высот и крепление зависят от производителя.",
+    "translation_ru": [
+      "доклевеллер на кромке платформы"
+    ],
+    "translation_vi": [
+      "bàn cân bằng gắn mép sàn bốc dỡ"
+    ],
+    "example_en": "Use the edge-of-dock leveler detail instead of assuming a recessed pit is required.",
+    "scenario": "A short hinged bridge attaches to the platform front without a large floor recess.",
+    "visual": "A clean dock-side educational schematic highlighting the edge-of-dock leveler in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-leveler"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-board",
+    "term": "dock board",
+    "pronunciation": "DOK bord",
+    "category": "site-logistics",
+    "definition_en": "A portable heavy-duty bridge used between a loading platform and vehicle bed, often equipped with side curbs for guided equipment travel.",
+    "explanation_ru": "Это переносной грузовой мостик между платформой и прицепом; тип, наличие бортиков и допустимую нагрузку уточняют по изделию.",
+    "translation_ru": [
+      "переносной мостик для погрузки"
+    ],
+    "translation_vi": [
+      "tấm cầu nối bến bốc dỡ di động"
+    ],
+    "example_en": "Inspect the dock board capacity before allowing a loaded forklift to cross.",
+    "scenario": "A removable bridging assembly spans the gap when no built-in leveling device is installed.",
+    "visual": "A clean dock-side educational schematic highlighting the dock board in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "edge-of-dock-leveler"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-plate",
+    "term": "dock plate",
+    "pronunciation": "DOK playt",
+    "category": "site-logistics",
+    "definition_en": "A removable metal plate placed across a small gap between a platform and trailer floor, typically for lighter material-handling applications than a heavy dock board.",
+    "explanation_ru": "Это переносной металлический лист для преодоления зазора; не следует считать его заменой доклевеллера или тяжёлого мостика.",
+    "translation_ru": [
+      "погрузочный переходной лист"
+    ],
+    "translation_vi": [
+      "tấm cầu nối sàn bốc dỡ"
+    ],
+    "example_en": "Select the dock plate only after checking the load and equipment requirements.",
+    "scenario": "Workers place a small metal bridge over a gap for moving goods on wheeled equipment.",
+    "visual": "A clean dock-side educational schematic highlighting the dock plate in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-board"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-bumper",
+    "term": "dock bumper",
+    "pronunciation": "DOK BUM-per",
+    "category": "site-logistics",
+    "definition_en": "A resilient impact pad mounted at the platform front to protect the structure and vehicle during docking.",
+    "explanation_ru": "Это защитный резиновый упор на стенке дока; его вылет влияет на положение кузова и уплотнение ворот.",
+    "translation_ru": [
+      "резиновый отбойник погрузочного дока"
+    ],
+    "translation_vi": [
+      "đệm chống va đập bến bốc dỡ"
+    ],
+    "example_en": "Include the dock bumper projection in the truck-to-building clearance check.",
+    "scenario": "Rubber blocks take contact when a reversing trailer reaches the platform front.",
+    "visual": "A clean dock-side educational schematic highlighting the dock bumper in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-plate"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-seal",
+    "term": "dock seal",
+    "pronunciation": "DOK seel",
+    "category": "site-logistics",
+    "definition_en": "A compressible perimeter seal around a loading opening that contacts a backed-in trailer to reduce weather and air infiltration.",
+    "explanation_ru": "Это сжимаемые уплотнительные элементы по периметру ворот; эффективность зависит от формы и высоты прицепа.",
+    "translation_ru": [
+      "уплотнение проёма погрузочного дока"
+    ],
+    "translation_vi": [
+      "đệm kín cửa bốc dỡ"
+    ],
+    "example_en": "Coordinate the dock seal size with the opening and expected trailer types.",
+    "scenario": "Compressible pads contact the rear of a parked trailer to reduce drafts and rain entry.",
+    "visual": "A clean dock-side educational schematic highlighting the dock seal in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-bumper"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-shelter",
+    "term": "dock shelter",
+    "pronunciation": "DOK SHEL-ter",
+    "category": "site-logistics",
+    "definition_en": "A flexible framed enclosure with curtains surrounding the rear of a trailer at a warehouse door to provide weather protection.",
+    "explanation_ru": "Это навес-укрытие с гибкими шторами вокруг задней части прицепа, отличное от плотного пенопластового уплотнения.",
+    "translation_ru": [
+      "укрытие погрузочного дока"
+    ],
+    "translation_vi": [
+      "mái che và rèm chắn bến bốc dỡ"
+    ],
+    "example_en": "Check the dock shelter projection and mounting supports on the facade.",
+    "scenario": "Flexible side curtains surround different trailer sizes while the vehicle is being unloaded.",
+    "visual": "A clean dock-side educational schematic highlighting the dock shelter in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-seal"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "vehicle-restraint",
+    "term": "vehicle restraint",
+    "pronunciation": "VEE-ih-kul ri-STRAYNT",
+    "category": "site-logistics",
+    "definition_en": "A docking safety device that mechanically engages a trailer to help prevent unintended movement or early departure during loading.",
+    "explanation_ru": "Это механический фиксатор прицепа у рампы; он не тождественен противооткатному упору.",
+    "translation_ru": [
+      "фиксатор прицепа у дока"
+    ],
+    "translation_vi": [
+      "thiết bị giữ cố định rơ moóc tại bến"
+    ],
+    "example_en": "Confirm the vehicle restraint interface with dock controls and trailer geometry.",
+    "scenario": "A locking device engages the trailer so it cannot be moved unexpectedly while workers are inside.",
+    "visual": "A clean dock-side educational schematic highlighting the vehicle restraint in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-shelter"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-light",
+    "term": "dock light",
+    "pronunciation": "DOK lyt",
+    "category": "site-logistics",
+    "definition_en": "A light fixture arranged to illuminate the loading opening or the inside of a parked trailer.",
+    "explanation_ru": "Это светильник дока для освещения проёма и кузова; расположение согласуют с воротами и оборудованием.",
+    "translation_ru": [
+      "светильник погрузочного дока"
+    ],
+    "translation_vi": [
+      "đèn chiếu sáng bến bốc dỡ"
+    ],
+    "example_en": "Position the dock light so it illuminates the trailer without obstructing the door.",
+    "scenario": "Staff need focused light inside a parked trailer during early-morning unloading.",
+    "visual": "A clean dock-side educational schematic highlighting the dock light in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "vehicle-restraint"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "dock-control-panel",
+    "term": "dock control panel",
+    "pronunciation": "DOK kun-TROHL PAN-ul",
+    "category": "site-logistics",
+    "definition_en": "A local control station used to operate or monitor dock equipment such as levelers, restraints and doors.",
+    "explanation_ru": "Это местный пульт управления; схемы блокировок и питание разных устройств нужно согласовать.",
+    "translation_ru": [
+      "пульт управления оборудованием дока"
+    ],
+    "translation_vi": [
+      "bảng điều khiển thiết bị bến bốc dỡ"
+    ],
+    "example_en": "Locate the dock control panel where staff can see the door and trailer position.",
+    "scenario": "An operator presses controls that coordinate the bridge, door and restraint status.",
+    "visual": "A clean dock-side educational schematic highlighting the dock control panel in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "dock-light"
+    ],
+    "common_mistakes": [
+      "Do not treat different dock devices as interchangeable; confirm capacity, mounting and operating limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "overhead-door",
+    "term": "overhead door",
+    "pronunciation": "OH-ver-hed dor",
+    "category": "site-logistics",
+    "definition_en": "A large door moving upward above an opening to provide access for goods and vehicles at a warehouse.",
+    "explanation_ru": "Это общее название подъёмных ворот; конструкция может быть секционной или другой.",
+    "translation_ru": [
+      "подъёмные промышленные ворота"
+    ],
+    "translation_vi": [
+      "cửa nâng công nghiệp"
+    ],
+    "example_en": "Check the overhead door opening dimensions before installing dock equipment.",
+    "scenario": "A large vertical opening is closed by a panel that travels upward during deliveries.",
+    "visual": "A clean dock-side educational schematic highlighting the overhead door in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock"
+    ],
+    "common_mistakes": [
+      "Confirm the door type and clearance envelope rather than assuming all overhead doors have the same hardware."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "sectional-door",
+    "term": "sectional door",
+    "pronunciation": "SEK-shuh-nul dor",
+    "category": "site-logistics",
+    "definition_en": "An overhead door made of connected horizontal panels that travel along tracks as the door opens.",
+    "explanation_ru": "Это ворота из соединённых горизонтальных секций, которые уходят по направляющим под потолок.",
+    "translation_ru": [
+      "секционные подъёмные ворота"
+    ],
+    "translation_vi": [
+      "cửa nâng phân đoạn"
+    ],
+    "example_en": "Allow clearance for the sectional door tracks and springs above the loading bay.",
+    "scenario": "Several hinged door panels rise together and curve along ceiling-mounted guides.",
+    "visual": "A clean dock-side educational schematic highlighting the sectional door in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "overhead-door"
+    ],
+    "common_mistakes": [
+      "Confirm the door type and clearance envelope rather than assuming all overhead doors have the same hardware."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "rolling-steel-door",
+    "term": "rolling steel door",
+    "pronunciation": "ROH-ling steel dor",
+    "category": "site-logistics",
+    "definition_en": "A door formed from linked steel slats that roll around a drum above the opening when raised.",
+    "explanation_ru": "Это стальные рулонные ворота, полотно сворачивается на вал; требуется место под короб или барабан.",
+    "translation_ru": [
+      "рулонные стальные ворота"
+    ],
+    "translation_vi": [
+      "cửa cuốn thép"
+    ],
+    "example_en": "Coordinate the rolling steel door hood with structural and electrical services.",
+    "scenario": "Narrow metal slats coil onto a shaft instead of sliding beneath the ceiling.",
+    "visual": "A clean dock-side educational schematic highlighting the rolling steel door in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "sectional-door"
+    ],
+    "common_mistakes": [
+      "Confirm the door type and clearance envelope rather than assuming all overhead doors have the same hardware."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "high-speed-door",
+    "term": "high-speed door",
+    "pronunciation": "HY-speed dor",
+    "category": "site-logistics",
+    "definition_en": "A powered door designed to open and close quickly to reduce waiting time and air exchange in high-traffic openings.",
+    "explanation_ru": "Это скоростные ворота для частых циклов и снижения потерь тепла; скорость и безопасность зависят от модели.",
+    "translation_ru": [
+      "быстродействующие промышленные ворота"
+    ],
+    "translation_vi": [
+      "cửa công nghiệp tốc độ cao"
+    ],
+    "example_en": "Confirm the high-speed door sensor locations at the busy receiving entrance.",
+    "scenario": "A frequently used opening closes rapidly between forklift trips to reduce drafts.",
+    "visual": "A clean dock-side educational schematic highlighting the high-speed door in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "rolling-steel-door"
+    ],
+    "common_mistakes": [
+      "Confirm the door type and clearance envelope rather than assuming all overhead doors have the same hardware."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-door-track",
+    "term": "dock door track",
+    "pronunciation": "DOK dor trak",
+    "category": "site-logistics",
+    "definition_en": "The guide rails and support hardware that control movement of a sectional or similar warehouse door.",
+    "explanation_ru": "Это направляющие ворот, под которые надо оставить свободную зону при монтаже инженерных сетей.",
+    "translation_ru": [
+      "направляющая погрузочных ворот"
+    ],
+    "translation_vi": [
+      "ray dẫn hướng cửa bốc dỡ"
+    ],
+    "example_en": "Keep the dock door track clear of lights and other suspended equipment.",
+    "scenario": "The moving door panels need rails along the jamb and above the opening.",
+    "visual": "A clean dock-side educational schematic highlighting the dock door track in relation to the trailer, warehouse and operating surface.",
+    "related_terms": [
+      "loading-dock",
+      "high-speed-door"
+    ],
+    "common_mistakes": [
+      "Confirm the door type and clearance envelope rather than assuming all overhead doors have the same hardware."
+    ],
+    "difficulty": 2
   }
 ]

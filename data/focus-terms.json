@@ -1206,6 +1206,156 @@
       "added_at": "2026-11-13",
       "last_requested_at": "2026-11-13",
       "request_count": 1
+    },
+    {
+      "id": "truck-court",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-apron",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-face",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-height",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-bay",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-pit",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-ramp",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-approach",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "recessed-dock",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "sawtooth-dock",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-leveler",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "edge-of-dock-leveler",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-board",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-plate",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-bumper",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-seal",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-shelter",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "vehicle-restraint",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-light",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-control-panel",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "overhead-door",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "sectional-door",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "rolling-steel-door",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "high-speed-door",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
+    },
+    {
+      "id": "dock-door-track",
+      "added_at": "2026-11-13",
+      "last_requested_at": "2026-11-13",
+      "request_count": 1
     }
   ]
 }
