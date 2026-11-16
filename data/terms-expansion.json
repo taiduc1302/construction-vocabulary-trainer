@@ -6975,5 +6975,627 @@
       "Check site geometry and truck movement paths rather than guessing clearances or traffic patterns."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "truck-court-grading",
+    "term": "truck court grading",
+    "pronunciation": "TRUK kort GRAY-ding",
+    "category": "earthworks",
+    "definition_en": "Shaping and setting finished elevations of the truck court to provide truck access and drainage.",
+    "explanation_ru": "Вертикальная планировка площадки под грузовые машины с учётом длинных прицепов и стока воды.",
+    "translation_ru": [
+      "вертикальная планировка грузового двора"
+    ],
+    "translation_vi": [
+      "san nền và tạo dốc sân xe tải"
+    ],
+    "example_en": "Check the truck court grading plan for low points near loading bays.",
+    "scenario": "The civil crew adjusts yard elevations so trucks can move and rainwater drains away.",
+    "visual": "Educational yard-drainage section highlighting the location or action of truck court grading.",
+    "related_terms": [
+      "truck-court"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "finish-grade",
+    "term": "finish grade",
+    "pronunciation": "FIN-ish grayd",
+    "category": "earthworks",
+    "definition_en": "The specified final elevation of a constructed ground or pavement surface.",
+    "explanation_ru": "Финишная отметка покрытия или земли после завершения всех слоёв, а не отметка основания.",
+    "translation_ru": [
+      "проектная отметка готовой поверхности"
+    ],
+    "translation_vi": [
+      "cao độ hoàn thiện"
+    ],
+    "example_en": "Confirm the finish grade at each loading-door threshold.",
+    "scenario": "Surveyors check the final yard surface elevation against the approved design.",
+    "visual": "Educational yard-drainage section highlighting the location or action of finish grade.",
+    "related_terms": [
+      "truck-court",
+      "truck-court-grading"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "grade-break",
+    "term": "grade break",
+    "pronunciation": "GRAYD brayk",
+    "category": "roadworks",
+    "definition_en": "A location where the longitudinal slope of a surface changes between two gradients.",
+    "explanation_ru": "Перелом уклона на проезде; резкое изменение может вызвать касание днищем длинного прицепа.",
+    "translation_ru": [
+      "перелом продольного уклона"
+    ],
+    "translation_vi": [
+      "điểm đổi độ dốc"
+    ],
+    "example_en": "Review each grade break on the truck approach profile.",
+    "scenario": "A long low trailer may scrape where a driveway changes abruptly from one slope to another.",
+    "visual": "Educational yard-drainage section highlighting the location or action of grade break.",
+    "related_terms": [
+      "truck-court",
+      "finish-grade"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "positive-drainage",
+    "term": "positive drainage",
+    "pronunciation": "POZ-ih-tiv DRAY-nij",
+    "category": "drainage",
+    "definition_en": "Surface grading arranged so water flows toward a planned collection point instead of ponding.",
+    "explanation_ru": "Уклоны поверхности направляют воду к лоткам или водоприёмникам, не допуская луж у рамп.",
+    "translation_ru": [
+      "обеспеченный самотёчный водоотвод"
+    ],
+    "translation_vi": [
+      "thoát nước theo độ dốc chủ động"
+    ],
+    "example_en": "Maintain positive drainage away from the loading dock door openings.",
+    "scenario": "Rainwater flows toward a drain rather than pooling against the warehouse wall.",
+    "visual": "Educational yard-drainage section highlighting the location or action of positive drainage.",
+    "related_terms": [
+      "truck-court",
+      "grade-break"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "surface-runoff",
+    "term": "surface runoff",
+    "pronunciation": "SUR-fis RUN-off",
+    "category": "drainage",
+    "definition_en": "Rainfall or snowmelt water that flows across the ground or paved surfaces without entering the soil.",
+    "explanation_ru": "Дождевая или талая вода, текущая по поверхности двора к системе водоотвода.",
+    "translation_ru": [
+      "поверхностный сток"
+    ],
+    "translation_vi": [
+      "dòng chảy tràn bề mặt"
+    ],
+    "example_en": "Direct surface runoff away from the loading bay and pedestrian route.",
+    "scenario": "Rainwater moves over the asphalt after a storm before reaching an inlet.",
+    "visual": "Educational yard-drainage section highlighting the location or action of surface runoff.",
+    "related_terms": [
+      "truck-court",
+      "positive-drainage"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trench-drain",
+    "term": "trench drain",
+    "pronunciation": "TRENCH drayn",
+    "category": "drainage",
+    "definition_en": "A long narrow drainage channel, often with a grate, that intercepts water across a pavement or doorway.",
+    "explanation_ru": "Линейный дренажный лоток с решёткой, часто расположенный поперёк проезда.",
+    "translation_ru": [
+      "линейный водоотводный лоток"
+    ],
+    "translation_vi": [
+      "rãnh thu nước tuyến tính có nắp"
+    ],
+    "example_en": "Place the trench drain upstream of the recessed loading dock.",
+    "scenario": "A grated channel spans a driveway to collect water across its full width.",
+    "visual": "Educational yard-drainage section highlighting the location or action of trench drain.",
+    "related_terms": [
+      "truck-court",
+      "surface-runoff"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "slot-drain",
+    "term": "slot drain",
+    "pronunciation": "SLOT drayn",
+    "category": "drainage",
+    "definition_en": "A linear drainage system with a narrow surface opening instead of a conventional broad grate.",
+    "explanation_ru": "Узкощелевой линейный водоотвод, который выглядит как продольная щель в покрытии.",
+    "translation_ru": [
+      "щелевой дренажный лоток"
+    ],
+    "translation_vi": [
+      "rãnh thoát nước khe hẹp"
+    ],
+    "example_en": "Set the slot drain elevation flush with the surrounding concrete apron.",
+    "scenario": "Water enters a thin continuous surface slit rather than an open grate.",
+    "visual": "Educational yard-drainage section highlighting the location or action of slot drain.",
+    "related_terms": [
+      "truck-court",
+      "trench-drain"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "catch-basin-lead",
+    "term": "catch basin lead",
+    "pronunciation": "KATCH BAY-sun leed",
+    "category": "drainage",
+    "definition_en": "A connecting pipe carrying collected water from a catch basin to a downstream storm sewer or drainage structure.",
+    "explanation_ru": "Это труба-отвод от дождеприёмного колодца к сети ливневой канализации, а не сам дождеприёмник.",
+    "translation_ru": [
+      "отводящая труба от дождеприёмника"
+    ],
+    "translation_vi": [
+      "ống nhánh thoát nước từ hố thu"
+    ],
+    "example_en": "Measure the catch basin lead from the inlet outlet to the storm main connection.",
+    "scenario": "A short buried pipe connects a surface water inlet to the main storm line.",
+    "visual": "Educational yard-drainage section highlighting the location or action of catch basin lead.",
+    "related_terms": [
+      "truck-court",
+      "slot-drain"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "oil-water-separator",
+    "term": "oil water separator",
+    "pronunciation": "OYL WAW-ter SEP-uh-ray-ter",
+    "category": "drainage",
+    "definition_en": "A treatment device that separates free oil and certain hydrocarbons from stormwater or wash water before discharge.",
+    "explanation_ru": "Сооружение для отделения свободных нефтепродуктов из стока; выбор зависит от проекта и требований к сбросу.",
+    "translation_ru": [
+      "нефтеуловитель, маслоотделитель"
+    ],
+    "translation_vi": [
+      "bể tách dầu nước"
+    ],
+    "example_en": "Coordinate the oil water separator installation with the storm drain elevations.",
+    "scenario": "Runoff from a truck-service area passes through a treatment chamber before discharge.",
+    "visual": "Educational yard-drainage section highlighting the location or action of oil water separator.",
+    "related_terms": [
+      "truck-court",
+      "catch-basin-lead"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "outfall",
+    "term": "outfall",
+    "pronunciation": "OUT-fawl",
+    "category": "drainage",
+    "definition_en": "The point where a drainage pipe or channel discharges into a receiving ditch, watercourse or other approved outlet.",
+    "explanation_ru": "Конечный выпуск системы водоотвода, часто требующий укрепления от размыва и согласования.",
+    "translation_ru": [
+      "выпуск водоотводной системы"
+    ],
+    "translation_vi": [
+      "cửa xả thoát nước"
+    ],
+    "example_en": "Confirm the outfall elevation and erosion protection on the drainage drawings.",
+    "scenario": "Water leaves the site pipe network at a downstream discharge point.",
+    "visual": "Educational yard-drainage section highlighting the location or action of outfall.",
+    "related_terms": [
+      "truck-court",
+      "oil-water-separator"
+    ],
+    "common_mistakes": [
+      "Do not assume design elevations, flow capacity or discharge requirements without the civil drainage drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "heavy-duty-pavement",
+    "term": "heavy duty pavement",
+    "pronunciation": "HEV-ee DYOO-tee PAYV-ment",
+    "category": "roadworks",
+    "definition_en": "A pavement structure designed for frequent heavy axle loads and demanding vehicle movements.",
+    "explanation_ru": "Усиленное покрытие под фуры; состав слоёв и толщина зависят от расчётной нагрузки и основания.",
+    "translation_ru": [
+      "усиленное дорожное покрытие"
+    ],
+    "translation_vi": [
+      "kết cấu mặt đường chịu tải nặng"
+    ],
+    "example_en": "Price the heavy duty pavement section separately from the staff parking lot.",
+    "scenario": "The truck court uses a stronger pavement structure than the light-vehicle parking area.",
+    "visual": "Educational concrete pavement section highlighting the location or action of heavy duty pavement.",
+    "related_terms": [
+      "concrete-slab"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-apron",
+    "term": "concrete apron",
+    "pronunciation": "KON-kreet AY-prun",
+    "category": "concrete",
+    "definition_en": "A paved slab of concrete located immediately outside a building, door or loading area for vehicle access and loading.",
+    "explanation_ru": "Это бетонная площадка перед проёмом или доком; её толщина и швы учитывают по проекту.",
+    "translation_ru": [
+      "бетонная подъездная площадка"
+    ],
+    "translation_vi": [
+      "sân bê tông trước bến bốc dỡ"
+    ],
+    "example_en": "Form the concrete apron so it slopes away from the warehouse threshold.",
+    "scenario": "A cast concrete paved area supports trucks directly outside the loading doors.",
+    "visual": "Educational concrete pavement section highlighting the location or action of concrete apron.",
+    "related_terms": [
+      "concrete-slab",
+      "heavy-duty-pavement"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "reinforced-concrete-pavement",
+    "term": "reinforced concrete pavement",
+    "pronunciation": "ree-in-FORST KON-kreet PAYV-ment",
+    "category": "concrete",
+    "definition_en": "A concrete pavement slab incorporating steel reinforcement to help control cracking and carry design actions.",
+    "explanation_ru": "Это бетонное дорожное покрытие с арматурой; армирование не исключает необходимости швов и правильного основания.",
+    "translation_ru": [
+      "армобетонное покрытие"
+    ],
+    "translation_vi": [
+      "mặt đường bê tông cốt thép"
+    ],
+    "example_en": "Check the reinforced concrete pavement schedule for bar spacing and cover.",
+    "scenario": "Steel reinforcement is arranged inside a vehicle pavement slab before the concrete is placed.",
+    "visual": "Educational concrete pavement section highlighting the location or action of reinforced concrete pavement.",
+    "related_terms": [
+      "concrete-slab",
+      "concrete-apron"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dowel-basket",
+    "term": "dowel basket",
+    "pronunciation": "DOW-ul BAS-ket",
+    "category": "concrete",
+    "definition_en": "A fabricated support assembly holding pavement dowel bars at the required alignment across a planned joint.",
+    "explanation_ru": "Это корзина для позиционирования штырей передачи нагрузки в бетонном покрытии.",
+    "translation_ru": [
+      "корзина фиксаторов штырей в шве"
+    ],
+    "translation_vi": [
+      "giá giữ thanh truyền lực tại khe nối"
+    ],
+    "example_en": "Set each dowel basket on the prepared base before placing concrete.",
+    "scenario": "Steel dowel bars are held in alignment by a wire frame spanning a planned pavement joint.",
+    "visual": "Educational concrete pavement section highlighting the location or action of dowel basket.",
+    "related_terms": [
+      "concrete-slab",
+      "reinforced-concrete-pavement"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "contraction-joint",
+    "term": "contraction joint",
+    "pronunciation": "kun-TRAK-shun joynt",
+    "category": "concrete",
+    "definition_en": "A planned weakened plane in concrete that encourages shrinkage cracking to occur at a controlled location.",
+    "explanation_ru": "Усадочный шов задаёт место раскрытия трещины при усадке; чаще выполняется нарезкой по схеме.",
+    "translation_ru": [
+      "усадочный шов бетона"
+    ],
+    "translation_vi": [
+      "khe co ngót bê tông"
+    ],
+    "example_en": "Sawcut the contraction joint at the timing specified in the concrete plan.",
+    "scenario": "A shallow cut guides where a curing concrete slab will crack as it shrinks.",
+    "visual": "Educational concrete pavement section highlighting the location or action of contraction joint.",
+    "related_terms": [
+      "concrete-slab",
+      "dowel-basket"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "expansion-joint",
+    "term": "expansion joint",
+    "pronunciation": "ek-SPAN-shun joynt",
+    "category": "concrete",
+    "definition_en": "A movement joint that provides space for expansion between adjacent concrete elements or structures.",
+    "explanation_ru": "Шов со сжимаемым заполнителем, позволяющий соседним элементам расширяться без упора друг в друга.",
+    "translation_ru": [
+      "температурный деформационный шов"
+    ],
+    "translation_vi": [
+      "khe giãn nở"
+    ],
+    "example_en": "Install the expansion joint filler between the slab and the fixed structure.",
+    "scenario": "Compressible material separates adjoining concrete elements so they can move without crushing each other.",
+    "visual": "Educational concrete pavement section highlighting the location or action of expansion joint.",
+    "related_terms": [
+      "concrete-slab",
+      "contraction-joint"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "isolation-joint",
+    "term": "isolation joint",
+    "pronunciation": "eye-suh-LAY-shun joynt",
+    "category": "concrete",
+    "definition_en": "A full-depth separation between a concrete slab and a fixed element so the two can move independently.",
+    "explanation_ru": "Полноразмерный разделительный шов вокруг колонны, стены или фундамента, исключающий жёсткое сцепление.",
+    "translation_ru": [
+      "разделительный шов примыкания"
+    ],
+    "translation_vi": [
+      "khe cách ly kết cấu"
+    ],
+    "example_en": "Provide an isolation joint where the apron slab meets the dock wall.",
+    "scenario": "A new slab is separated from a rigid building wall by a full-depth compressible strip.",
+    "visual": "Educational concrete pavement section highlighting the location or action of isolation joint.",
+    "related_terms": [
+      "concrete-slab",
+      "expansion-joint"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-curing",
+    "term": "concrete curing",
+    "pronunciation": "KON-kreet KYOOR-ing",
+    "category": "concrete",
+    "definition_en": "Maintaining suitable moisture and temperature conditions after placement so concrete develops intended properties.",
+    "explanation_ru": "Уход за свежеуложенным бетоном: сохранение влаги и температурного режима в период набора прочности.",
+    "translation_ru": [
+      "уход за бетоном при твердении"
+    ],
+    "translation_vi": [
+      "bảo dưỡng bê tông"
+    ],
+    "example_en": "Plan concrete curing before opening the truck apron to construction traffic.",
+    "scenario": "A freshly poured slab is protected from rapid moisture loss while it gains strength.",
+    "visual": "Educational concrete pavement section highlighting the location or action of concrete curing.",
+    "related_terms": [
+      "concrete-slab",
+      "isolation-joint"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "curing-compound",
+    "term": "curing compound",
+    "pronunciation": "KYOOR-ing KOM-pound",
+    "category": "concrete",
+    "definition_en": "A liquid product applied to fresh concrete to form a film that reduces moisture loss during curing.",
+    "explanation_ru": "Это специальный состав, создающий плёнку на поверхности свежего бетона; совместимость с последующей отделкой проверяют.",
+    "translation_ru": [
+      "плёнкообразующий состав для ухода за бетоном"
+    ],
+    "translation_vi": [
+      "hợp chất bảo dưỡng bê tông"
+    ],
+    "example_en": "Apply the specified curing compound after finishing the apron slab.",
+    "scenario": "A sprayed liquid coating helps retain moisture in newly placed concrete.",
+    "visual": "Educational concrete pavement section highlighting the location or action of curing compound.",
+    "related_terms": [
+      "concrete-slab",
+      "concrete-curing"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "joint-sealant",
+    "term": "joint sealant",
+    "pronunciation": "JOYNT SEE-lunt",
+    "category": "concrete",
+    "definition_en": "A flexible material installed within a joint to limit entry of water, dirt and incompressible debris.",
+    "explanation_ru": "Эластичный герметик шва, предотвращающий попадание воды и мусора в раскрытие.",
+    "translation_ru": [
+      "герметик для швов"
+    ],
+    "translation_vi": [
+      "vật liệu trám kín khe nối"
+    ],
+    "example_en": "Install the joint sealant after the concrete edges are prepared and clean.",
+    "scenario": "A flexible bead fills the routed groove between adjacent concrete pavement panels.",
+    "visual": "Educational concrete pavement section highlighting the location or action of joint sealant.",
+    "related_terms": [
+      "concrete-slab",
+      "curing-compound"
+    ],
+    "common_mistakes": [
+      "Joint details and pavement loads vary by project; verify design rather than applying generic dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-wall",
+    "term": "dock wall",
+    "pronunciation": "DOK wawl",
+    "category": "concrete",
+    "definition_en": "A structural wall forming the front or sides of a raised loading platform and retaining the platform fill or slab edge.",
+    "explanation_ru": "Это несущая стена дока, удерживающая засыпку или край плиты; не вся фасадная стена здания.",
+    "translation_ru": [
+      "стена погрузочной платформы"
+    ],
+    "translation_vi": [
+      "tường bến bốc dỡ"
+    ],
+    "example_en": "Coordinate the dock wall footing and slab connection in the concrete estimate.",
+    "scenario": "A vertical concrete structure supports the raised edge of a warehouse loading platform.",
+    "visual": "Educational loading-dock structural section highlighting the location or action of dock wall.",
+    "related_terms": [
+      "loading-dock"
+    ],
+    "common_mistakes": [
+      "Check the structural detail and embedded-equipment coordination before taking off this component."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-edge-angle",
+    "term": "dock edge angle",
+    "pronunciation": "DOK ej AN-gul",
+    "category": "concrete",
+    "definition_en": "A steel angle protecting or reinforcing the exposed concrete edge of a loading dock, sometimes providing attachment points for equipment.",
+    "explanation_ru": "Защитный стальной уголок на кромке бетона дока, часто закладной под оборудование.",
+    "translation_ru": [
+      "уголок на кромке дока"
+    ],
+    "translation_vi": [
+      "thép góc bảo vệ mép sàn bốc dỡ"
+    ],
+    "example_en": "Check the dock edge angle size before finalizing the leveler interface detail.",
+    "scenario": "A steel L-section caps the exposed upper corner of a concrete loading platform.",
+    "visual": "Educational loading-dock structural section highlighting the location or action of dock edge angle.",
+    "related_terms": [
+      "loading-dock",
+      "dock-wall"
+    ],
+    "common_mistakes": [
+      "Check the structural detail and embedded-equipment coordination before taking off this component."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "embedded-angle",
+    "term": "embedded angle",
+    "pronunciation": "em-BED-id AN-gul",
+    "category": "concrete",
+    "definition_en": "A structural L-shaped steel section cast into concrete to provide durable edging or connections.",
+    "explanation_ru": "Стальной закладной уголок, который устанавливают в опалубку до бетонирования для защиты края или крепления.",
+    "translation_ru": [
+      "закладной стальной уголок"
+    ],
+    "translation_vi": [
+      "thép góc chôn sẵn trong bê tông"
+    ],
+    "example_en": "Set the embedded angle before the dock pit concrete is poured.",
+    "scenario": "An L-shaped metal section is fixed in the formwork and becomes anchored in the slab.",
+    "visual": "Educational loading-dock structural section highlighting the location or action of embedded angle.",
+    "related_terms": [
+      "loading-dock",
+      "dock-edge-angle"
+    ],
+    "common_mistakes": [
+      "Check the structural detail and embedded-equipment coordination before taking off this component."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "anchor-bolt",
+    "term": "anchor bolt",
+    "pronunciation": "AN-ker bohlt",
+    "category": "concrete",
+    "definition_en": "A bolt fixed into concrete or masonry to secure equipment, base plates or structural components.",
+    "explanation_ru": "Анкерный болт соединяет металлоконструкцию или оборудование с бетоном; тип и глубину задаёт проект.",
+    "translation_ru": [
+      "анкерный болт"
+    ],
+    "translation_vi": [
+      "bu lông neo"
+    ],
+    "example_en": "Verify the anchor bolt pattern against the dock equipment shop drawings.",
+    "scenario": "A steel fastener transfers forces from a mounted plate into the supporting concrete.",
+    "visual": "Educational loading-dock structural section highlighting the location or action of anchor bolt.",
+    "related_terms": [
+      "loading-dock",
+      "embedded-angle"
+    ],
+    "common_mistakes": [
+      "Check the structural detail and embedded-equipment coordination before taking off this component."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-pedestal",
+    "term": "concrete pedestal",
+    "pronunciation": "KON-kreet PED-ih-stul",
+    "category": "concrete",
+    "definition_en": "A short raised concrete block or support used beneath a column, piece of equipment or structural connection.",
+    "explanation_ru": "Небольшой выступающий бетонный постамент для опирания или крепления конструкции и оборудования.",
+    "translation_ru": [
+      "бетонная тумба-основание"
+    ],
+    "translation_vi": [
+      "bệ đỡ bê tông"
+    ],
+    "example_en": "Check the concrete pedestal heights beside the dock service equipment.",
+    "scenario": "A raised cast concrete block supports an equipment base above the surrounding slab.",
+    "visual": "Educational loading-dock structural section highlighting the location or action of concrete pedestal.",
+    "related_terms": [
+      "loading-dock",
+      "anchor-bolt"
+    ],
+    "common_mistakes": [
+      "Check the structural detail and embedded-equipment coordination before taking off this component."
+    ],
+    "difficulty": 2
   }
 ]
