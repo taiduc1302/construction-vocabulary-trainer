@@ -1656,6 +1656,156 @@
       "added_at": "2026-11-13",
       "last_requested_at": "2026-11-13",
       "request_count": 1
+    },
+    {
+      "id": "forklift",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "pallet-jack",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "electric-pallet-jack",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "reach-truck",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "pallet",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "unit-load",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "rated-capacity",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "axle-load",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "load-distribution",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "freight-handling",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "load-securement",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "stretch-wrap",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "dock-to-truck-transfer",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "cross-docking",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "receiving-bay",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "shipping-bay",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "bill-of-lading",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "delivery-appointment",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "unloading-sequence",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "dock-inspection",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "pedestrian-walkway",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "exclusion-zone",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "spotter",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "dock-edge-protection",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "yard-coordinator",
+      "added_at": "2026-11-15",
+      "last_requested_at": "2026-11-15",
+      "request_count": 1
     }
   ]
 }

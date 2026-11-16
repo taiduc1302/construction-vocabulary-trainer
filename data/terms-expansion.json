@@ -7597,5 +7597,627 @@
       "Check the structural detail and embedded-equipment coordination before taking off this component."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "forklift",
+    "term": "forklift",
+    "pronunciation": "FORK-lift",
+    "category": "site-logistics",
+    "definition_en": "A powered industrial truck fitted with forks used to lift and move pallets and other loads over short distances.",
+    "explanation_ru": "Вилочный погрузчик перемещает паллеты по складу и через док; при оценке проходов учитывают радиус поворота и нагрузку на пол.",
+    "translation_ru": [
+      "вилочный погрузчик"
+    ],
+    "translation_vi": [
+      "xe nâng hàng"
+    ],
+    "example_en": "Keep the forklift travel path clear while the trailer is being unloaded.",
+    "scenario": "A powered vehicle lifts a loaded pallet using two projecting forks.",
+    "visual": "Educational loading facility warehouse handling sketch showing the forklift as a highlighted feature.",
+    "related_terms": [
+      "loading-dock"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pallet-jack",
+    "term": "pallet jack",
+    "pronunciation": "PAL-it jak",
+    "category": "site-logistics",
+    "definition_en": "A low-profile wheeled device with forks used to raise a pallet slightly and move it across a floor.",
+    "explanation_ru": "Ручная рохля поднимает паллету на небольшую высоту и перемещает её по ровному основанию.",
+    "translation_ru": [
+      "ручная гидравлическая тележка"
+    ],
+    "translation_vi": [
+      "xe nâng tay"
+    ],
+    "example_en": "Check the dock plate suitability before crossing with a pallet jack.",
+    "scenario": "A worker pumps a handle and rolls a pallet without using a powered lift truck.",
+    "visual": "Educational loading facility warehouse handling sketch showing the pallet jack as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "forklift"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "electric-pallet-jack",
+    "term": "electric pallet jack",
+    "pronunciation": "ee-LEK-trik PAL-it jak",
+    "category": "site-logistics",
+    "definition_en": "A powered pallet-moving truck with low forks for lifting and transporting unit loads over short distances.",
+    "explanation_ru": "Электрическая тележка для паллет, обычно компактнее вилочного погрузчика; допустимый уклон зависит от модели.",
+    "translation_ru": [
+      "электрическая гидравлическая тележка"
+    ],
+    "translation_vi": [
+      "xe nâng tay điện"
+    ],
+    "example_en": "Verify the electric pallet jack capacity for the shipment's heaviest pallet.",
+    "scenario": "A compact motor-driven device moves pallet loads through a warehouse aisle.",
+    "visual": "Educational loading facility warehouse handling sketch showing the electric pallet jack as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "pallet-jack"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "reach-truck",
+    "term": "reach truck",
+    "pronunciation": "REECH truk",
+    "category": "site-logistics",
+    "definition_en": "A warehouse lift truck designed to reach into storage racks and handle pallets in relatively narrow aisles.",
+    "explanation_ru": "Ричтрак работает на стеллажах и в узких проходах склада; не всякий рассчитан на работу на уличной площадке.",
+    "translation_ru": [
+      "узкопроходный штабелёр-ричтрак"
+    ],
+    "translation_vi": [
+      "xe nâng tầm cao trong lối hẹp"
+    ],
+    "example_en": "Keep the reach truck operating area separate from the exterior truck court.",
+    "scenario": "A narrow-aisle lift truck extends its forks into a high pallet rack.",
+    "visual": "Educational loading facility warehouse handling sketch showing the reach truck as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "electric-pallet-jack"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pallet",
+    "term": "pallet",
+    "pronunciation": "PAL-it",
+    "category": "site-logistics",
+    "definition_en": "A flat load platform that allows materials to be moved, stacked or stored by forklift or pallet jack.",
+    "explanation_ru": "Паллет или поддон объединяет груз для механизированного перемещения; состояние поддона важно для безопасной работы.",
+    "translation_ru": [
+      "грузовой поддон"
+    ],
+    "translation_vi": [
+      "pa-lét kê hàng"
+    ],
+    "example_en": "Inspect each pallet before placing the shipment on the dock.",
+    "scenario": "Goods are stacked on a wooden platform that a lift truck can pick up from below.",
+    "visual": "Educational loading facility warehouse handling sketch showing the pallet as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "reach-truck"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "unit-load",
+    "term": "unit load",
+    "pronunciation": "YOO-nit lohd",
+    "category": "site-logistics",
+    "definition_en": "Several packages or items secured together so they can be handled as one load.",
+    "explanation_ru": "Объединённая грузовая единица, например паллета с коробками под стрейч-плёнкой; она перемещается как один груз.",
+    "translation_ru": [
+      "укрупнённая грузовая единица"
+    ],
+    "translation_vi": [
+      "đơn vị hàng hóa gom kiện"
+    ],
+    "example_en": "Check the unit load stability before moving it across the leveler.",
+    "scenario": "Several cartons are grouped together on one platform for a single lift.",
+    "visual": "Educational loading facility warehouse handling sketch showing the unit load as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "pallet"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "rated-capacity",
+    "term": "rated capacity",
+    "pronunciation": "RAY-tid kuh-PAS-ih-tee",
+    "category": "site-logistics",
+    "definition_en": "The maximum load that equipment is rated to handle under specified manufacturer conditions.",
+    "explanation_ru": "Номинальная грузоподъёмность оборудования действует только при заданных условиях, включая центр тяжести и конфигурацию.",
+    "translation_ru": [
+      "номинальная грузоподъёмность"
+    ],
+    "translation_vi": [
+      "tải trọng định mức"
+    ],
+    "example_en": "Confirm the rated capacity of the dock leveler and handling equipment.",
+    "scenario": "A manufacturer's plate states the allowable load for a device under specified conditions.",
+    "visual": "Educational loading facility warehouse handling sketch showing the rated capacity as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "unit-load"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "axle-load",
+    "term": "axle load",
+    "pronunciation": "AK-sul lohd",
+    "category": "site-logistics",
+    "definition_en": "The portion of vehicle weight transmitted to the surface through a particular axle or axle group.",
+    "explanation_ru": "Нагрузка на ось грузовика влияет на расчёт покрытия, но её нельзя заменять общей массой машины.",
+    "translation_ru": [
+      "нагрузка на ось"
+    ],
+    "translation_vi": [
+      "tải trọng trục xe"
+    ],
+    "example_en": "Use the design axle load when checking the heavy-duty pavement section.",
+    "scenario": "A fully loaded trailer places concentrated wheel forces on the concrete approach pavement.",
+    "visual": "Educational loading facility warehouse handling sketch showing the axle load as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "rated-capacity"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "load-distribution",
+    "term": "load distribution",
+    "pronunciation": "LOHD dis-tri-BYOO-shun",
+    "category": "site-logistics",
+    "definition_en": "The way the weight of cargo or equipment is spread over a floor, pallet, vehicle or support surface.",
+    "explanation_ru": "Распределение веса по поверхности; неправильное размещение груза может перегрузить одну ось или участок настила.",
+    "translation_ru": [
+      "распределение нагрузки"
+    ],
+    "translation_vi": [
+      "phân bố tải trọng"
+    ],
+    "example_en": "Check load distribution before moving heavy equipment into the trailer.",
+    "scenario": "Cargo is arranged so no single area of the floor carries an excessive share of the weight.",
+    "visual": "Educational loading facility warehouse handling sketch showing the load distribution as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "axle-load"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "freight-handling",
+    "term": "freight handling",
+    "pronunciation": "FRAYT HAN-dling",
+    "category": "site-logistics",
+    "definition_en": "The physical movement, sorting, loading, unloading and short-term handling of shipped goods.",
+    "explanation_ru": "Это весь процесс приёма, перемещения, сортировки и выдачи грузов, не только транспортировка машиной.",
+    "translation_ru": [
+      "погрузочно-разгрузочная обработка грузов"
+    ],
+    "translation_vi": [
+      "xử lý hàng hóa vận tải"
+    ],
+    "example_en": "Allow adequate space for freight handling between the dock and storage racks.",
+    "scenario": "Workers and equipment move shipped products from trailers to the warehouse sorting area.",
+    "visual": "Educational loading facility warehouse handling sketch showing the freight handling as a highlighted feature.",
+    "related_terms": [
+      "loading-dock",
+      "load-distribution"
+    ],
+    "common_mistakes": [
+      "Verify manufacturer's capacity and suitability before operating or selecting equipment."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "load-securement",
+    "term": "load securement",
+    "pronunciation": "LOHD si-KYOOR-ment",
+    "category": "site-logistics",
+    "definition_en": "The use of restraints and approved methods to prevent cargo from shifting during transport or handling.",
+    "explanation_ru": "Крепление груза ремнями, цепями или другим подходящим способом, чтобы он не смещался в пути.",
+    "translation_ru": [
+      "крепление перевозимого груза"
+    ],
+    "translation_vi": [
+      "chằng buộc và cố định hàng hóa"
+    ],
+    "example_en": "Inspect the load securement before the trailer leaves the shipping bay.",
+    "scenario": "Straps and other restraints prevent cargo from sliding when a truck brakes.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the load securement as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "stretch-wrap",
+    "term": "stretch wrap",
+    "pronunciation": "STRETCH rap",
+    "category": "site-logistics",
+    "definition_en": "A stretchable plastic film wrapped around a palletized load to help hold packages together.",
+    "explanation_ru": "Плёнка для обмотки паллетного груза; сама по себе не заменяет крепление прицепного груза.",
+    "translation_ru": [
+      "стрейч-плёнка для паллет"
+    ],
+    "translation_vi": [
+      "màng quấn co giãn cố định kiện hàng"
+    ],
+    "example_en": "Apply stretch wrap around the carton stack before moving the pallet.",
+    "scenario": "A transparent flexible film holds several boxes together on one shipping platform.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the stretch wrap as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "load-securement"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-to-truck-transfer",
+    "term": "dock-to-truck transfer",
+    "pronunciation": "DOK-too-TRUK TRANS-fer",
+    "category": "site-logistics",
+    "definition_en": "The movement of goods across the interface between a warehouse loading platform and a truck or trailer.",
+    "explanation_ru": "Это непосредственный переход груза через мостик или доклевеллер между складом и прицепом.",
+    "translation_ru": [
+      "перемещение груза между доком и кузовом"
+    ],
+    "translation_vi": [
+      "chuyển hàng giữa sàn bốc dỡ và thùng xe"
+    ],
+    "example_en": "Confirm the leveler is secured before starting dock-to-truck transfer.",
+    "scenario": "A loaded pallet crosses the bridge between the warehouse floor and trailer bed.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the dock-to-truck transfer as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "stretch-wrap"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "cross-docking",
+    "term": "cross-docking",
+    "pronunciation": "KROSS DOK-ing",
+    "category": "site-logistics",
+    "definition_en": "A logistics process in which incoming goods are transferred to outgoing transport with little or no long-term storage.",
+    "explanation_ru": "Груз прибывает на входящий док и почти сразу перегружается на исходящий, минуя длительное хранение.",
+    "translation_ru": [
+      "кросс-докинг, перегрузка без длительного хранения"
+    ],
+    "translation_vi": [
+      "trung chuyển hàng trực tiếp qua kho"
+    ],
+    "example_en": "Design the cross-docking flow to reduce travel distance between receiving and shipping.",
+    "scenario": "Goods from an inbound trailer are sorted and loaded directly into outbound trailers.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the cross-docking as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "dock-to-truck-transfer"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "receiving-bay",
+    "term": "receiving bay",
+    "pronunciation": "ri-SEE-ving bay",
+    "category": "site-logistics",
+    "definition_en": "A designated warehouse position where inbound trucks unload goods for inspection or processing.",
+    "explanation_ru": "Погрузочный пост для поступающих поставок, в отличие от места отправки товара.",
+    "translation_ru": [
+      "пост приёмки грузов"
+    ],
+    "translation_vi": [
+      "ô tiếp nhận hàng"
+    ],
+    "example_en": "Reserve a receiving bay for the scheduled inbound material delivery.",
+    "scenario": "An arriving supplier trailer backs to a numbered door where its goods are accepted.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the receiving bay as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "cross-docking"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "shipping-bay",
+    "term": "shipping bay",
+    "pronunciation": "SHIP-ing bay",
+    "category": "site-logistics",
+    "definition_en": "A designated loading position where prepared outbound goods are loaded onto trucks or trailers.",
+    "explanation_ru": "Пост отгрузки готовых к отправке товаров в автотранспорт; его расположение влияет на движение по складу.",
+    "translation_ru": [
+      "пост отправки грузов"
+    ],
+    "translation_vi": [
+      "ô xuất hàng"
+    ],
+    "example_en": "Keep the shipping bay ready for the afternoon outbound trailer.",
+    "scenario": "Packed orders are loaded onto departing trucks from a dedicated warehouse position.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the shipping bay as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "receiving-bay"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "bill-of-lading",
+    "term": "bill of lading",
+    "pronunciation": "BIL-uv-LAY-ding",
+    "category": "site-logistics",
+    "definition_en": "A transport document that records shipment details and serves as evidence of goods received for carriage under applicable terms.",
+    "explanation_ru": "Транспортный документ с данными груза и перевозки; содержание и юридическая роль зависят от условий и юрисдикции.",
+    "translation_ru": [
+      "транспортная накладная на груз"
+    ],
+    "translation_vi": [
+      "vận đơn đường bộ"
+    ],
+    "example_en": "Match the bill of lading to the pallets loaded before releasing the driver.",
+    "scenario": "A freight document lists the cargo, origin, destination and carrier information.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the bill of lading as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "shipping-bay"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "delivery-appointment",
+    "term": "delivery appointment",
+    "pronunciation": "di-LIV-uh-ree uh-POINT-ment",
+    "category": "site-logistics",
+    "definition_en": "A scheduled time slot assigned to a truck for arriving at a facility to load or unload.",
+    "explanation_ru": "Заранее назначенное окно прибытия грузовика, позволяющее избегать очередей у дока.",
+    "translation_ru": [
+      "согласованное время прибытия для доставки"
+    ],
+    "translation_vi": [
+      "lịch hẹn giao hàng"
+    ],
+    "example_en": "Confirm the delivery appointment before dispatching the carrier to the site.",
+    "scenario": "A driver is instructed to arrive at a particular warehouse door at a scheduled time.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the delivery appointment as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "bill-of-lading"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "unloading-sequence",
+    "term": "unloading sequence",
+    "pronunciation": "un-LOH-ding SEE-kwens",
+    "category": "site-logistics",
+    "definition_en": "The planned order in which goods are removed from a vehicle to maintain safety and workflow.",
+    "explanation_ru": "Порядок выгрузки грузовых единиц, который учитывает устойчивость оставшегося груза и доступ для техники.",
+    "translation_ru": [
+      "очерёдность разгрузки"
+    ],
+    "translation_vi": [
+      "trình tự dỡ hàng"
+    ],
+    "example_en": "Review the unloading sequence for the mixed heavy and light pallets.",
+    "scenario": "Workers remove freight in a planned order so the remaining cargo stays stable.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the unloading sequence as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "delivery-appointment"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-inspection",
+    "term": "dock inspection",
+    "pronunciation": "DOK in-SPEK-shun",
+    "category": "site-logistics",
+    "definition_en": "A routine check of the loading position, equipment and immediate travel surfaces for damage and unsafe conditions.",
+    "explanation_ru": "Осмотр дока перед работой: ворота, мостик, фиксаторы, состояние покрытия, освещение и зазоры.",
+    "translation_ru": [
+      "осмотр погрузочного поста"
+    ],
+    "translation_vi": [
+      "kiểm tra bến bốc dỡ"
+    ],
+    "example_en": "Complete the dock inspection before the first scheduled trailer arrives.",
+    "scenario": "Staff check the bridge, restraints, bumpers and floor for defects before work begins.",
+    "visual": "Educational loading facility warehouse-to-trailer section showing the dock inspection as a highlighted feature.",
+    "related_terms": [
+      "dock-leveler",
+      "unloading-sequence"
+    ],
+    "common_mistakes": [
+      "Do not assume one handling arrangement or load limit is suitable for every facility; verify equipment specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pedestrian-walkway",
+    "term": "pedestrian walkway",
+    "pronunciation": "puh-DES-tree-un WAWK-way",
+    "category": "safety",
+    "definition_en": "A designated walking route separated or marked to help people move safely through a vehicle operating area.",
+    "explanation_ru": "Выделенный путь для пешеходов, который по возможности физически отделяют от движения фур и погрузчиков.",
+    "translation_ru": [
+      "пешеходная дорожка"
+    ],
+    "translation_vi": [
+      "lối đi dành cho người đi bộ"
+    ],
+    "example_en": "Keep the pedestrian walkway free of stored pallets and parked trucks.",
+    "scenario": "People follow a marked path through the yard rather than walking among reversing trailers.",
+    "visual": "Educational loading facility site-plan safety view showing the pedestrian walkway as a highlighted feature.",
+    "related_terms": [
+      "truck-route"
+    ],
+    "common_mistakes": [
+      "Follow the facility-specific traffic and safety plan; this diagram is not a substitute for an approved procedure."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "exclusion-zone",
+    "term": "exclusion zone",
+    "pronunciation": "ek-SKLOO-zhun zohn",
+    "category": "safety",
+    "definition_en": "A controlled area from which unauthorized people are kept away during hazardous operations.",
+    "explanation_ru": "Ограждённая или обозначенная опасная зона во время манёвра, погрузки либо работы техники.",
+    "translation_ru": [
+      "опасная зона с ограниченным доступом"
+    ],
+    "translation_vi": [
+      "vùng cấm tiếp cận"
+    ],
+    "example_en": "Establish an exclusion zone while the truck is backing into the dock.",
+    "scenario": "Workers stay outside a marked boundary while a heavy vehicle moves backward.",
+    "visual": "Educational loading facility site-plan safety view showing the exclusion zone as a highlighted feature.",
+    "related_terms": [
+      "truck-route",
+      "pedestrian-walkway"
+    ],
+    "common_mistakes": [
+      "Follow the facility-specific traffic and safety plan; this diagram is not a substitute for an approved procedure."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "spotter",
+    "term": "spotter",
+    "pronunciation": "SPOT-er",
+    "category": "safety",
+    "definition_en": "A designated person who guides a vehicle or equipment operator where visibility or clearance is restricted.",
+    "explanation_ru": "Сигнальщик помогает водителю при ограниченном обзоре, используя согласованные команды и безопасную позицию.",
+    "translation_ru": [
+      "сигнальщик, наблюдающий за манёвром"
+    ],
+    "translation_vi": [
+      "người hướng dẫn xe lùi"
+    ],
+    "example_en": "Assign a spotter if the site traffic plan requires assistance for blind reversing.",
+    "scenario": "A worker stands in a safe visible position and directs a driver around an obstruction.",
+    "visual": "Educational loading facility site-plan safety view showing the spotter as a highlighted feature.",
+    "related_terms": [
+      "truck-route",
+      "exclusion-zone"
+    ],
+    "common_mistakes": [
+      "Follow the facility-specific traffic and safety plan; this diagram is not a substitute for an approved procedure."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "dock-edge-protection",
+    "term": "dock edge protection",
+    "pronunciation": "DOK EJ pro-TEK-shun",
+    "category": "safety",
+    "definition_en": "A guard, barrier or other controlled measure intended to reduce fall and roll-off hazards at an exposed loading-platform edge.",
+    "explanation_ru": "Защита открытого края дока от падения людей и съезда техники; решение зависит от оборудования и режима работы.",
+    "translation_ru": [
+      "защита края погрузочной платформы"
+    ],
+    "translation_vi": [
+      "biện pháp bảo vệ mép sàn bốc dỡ"
+    ],
+    "example_en": "Confirm the dock edge protection requirements when no trailer is positioned at the door.",
+    "scenario": "A barrier or guarded arrangement keeps people and equipment from falling off an exposed platform.",
+    "visual": "Educational loading facility site-plan safety view showing the dock edge protection as a highlighted feature.",
+    "related_terms": [
+      "truck-route",
+      "spotter"
+    ],
+    "common_mistakes": [
+      "Follow the facility-specific traffic and safety plan; this diagram is not a substitute for an approved procedure."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "yard-coordinator",
+    "term": "yard coordinator",
+    "pronunciation": "YARD koh-OR-din-ay-ter",
+    "category": "safety",
+    "definition_en": "A person responsible for coordinating truck arrivals, trailer positions and yard movement at a facility.",
+    "explanation_ru": "Диспетчер двора распределяет машины и прицепы, регулируя последовательность подъездов и загруженность доков.",
+    "translation_ru": [
+      "диспетчер грузового двора"
+    ],
+    "translation_vi": [
+      "điều phối viên bãi xe"
+    ],
+    "example_en": "Have the yard coordinator confirm an available loading position before sending the next truck.",
+    "scenario": "A staff member allocates gates and doors while managing a busy queue of arriving vehicles.",
+    "visual": "Educational loading facility site-plan safety view showing the yard coordinator as a highlighted feature.",
+    "related_terms": [
+      "truck-route",
+      "dock-edge-protection"
+    ],
+    "common_mistakes": [
+      "Follow the facility-specific traffic and safety plan; this diagram is not a substitute for an approved procedure."
+    ],
+    "difficulty": 2
   }
 ]
