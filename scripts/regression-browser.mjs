@@ -1,11 +1,15 @@
 import assert from 'node:assert/strict';
 import {readFile, mkdir} from 'node:fs/promises';
+import {existsSync} from 'node:fs';
 import {chromium} from 'playwright';
 
 const origin=process.env.E2E_BASE_URL||'http://127.0.0.1:4173';
 const output=process.env.E2E_OUTPUT_DIR||'audit-logs/browser';
 await mkdir(output,{recursive:true});
-const browser=await chromium.launch({headless:true});
+const chromePaths=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/opt/google/chrome/chrome','/usr/bin/chromium'];
+const executablePath=chromePaths.find(existsSync);
+console.log('Browser executable: '+(executablePath||'Playwright-managed Chromium'));
+const browser=await chromium.launch({headless:true,...(executablePath?{executablePath}:{}),args:['--no-sandbox']});
 let passed=0;
 let failed=0;
 const results=[];

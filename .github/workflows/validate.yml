@@ -180,6 +180,7 @@ jobs:
             node --check src/visuals-all.js
             node --check src/register-sw.js
             node --check sw.js
+            node --check scripts/regression-browser.mjs
           } 2>&1 | tee audit-logs/syntax.txt
 
       - name: Validate manifest JSON
@@ -241,8 +242,15 @@ jobs:
           node-version: 22
       - name: Install browser test dependency
         run: npm install --no-save --no-package-lock playwright@1.56.1
-      - name: Install Chromium for Playwright
-        run: npx playwright install --with-deps chromium
+      - name: Use preinstalled Chrome or download browser
+        run: |
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+          elif command -v chromium >/dev/null 2>&1; then
+            chromium --version
+          else
+            npx playwright install chromium
+          fi
       - name: Run real-browser smoke and regression scenarios
         run: |
           set -o pipefail
