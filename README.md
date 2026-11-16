@@ -53,6 +53,17 @@ The repository's global `data/focus-terms.json` is never used as another learner
 
 Each pack launches the existing validated Quick/Smart practice engine against only that pack's term IDs; packs do not fork or duplicate vocabulary cards. Pack cards show **started, mastered, due and accuracy** signals from the same spaced-repetition records, so a learner can see meaningful progress and resume where they left off.
 
+### Loading dock learning paths
+
+Four optional public learning packs cover the end-to-end workflow at warehouses and industrial loading areas. They share the canonical dictionary and spaced-repetition engine rather than creating a second word database:
+
+- **Loading Dock Design & Equipment** — 32 words covering loading-dock layout, dolly pads, levelers, doors, bumpers, seals, restraints and thresholds.
+- **Trailers & Truck Yard** — 20 words covering trailer support, coupling, parking, backing and traffic flow.
+- **Truck Court Civil Works** — 25 words covering grading, surface drainage, concrete pavement, joints and dock structures.
+- **Dock Operations & Safety** — 25 words covering material handling, shipping, receiving, load control and safe truck-yard operations.
+
+The new packs teach 100 additional terms plus the two existing anchor terms `dolly pad` and `loading dock`. New term cards include English/Russian/Vietnamese content and a keyed educational SVG. All 100 additions also appear in the maintainer's global Focus list. The dedicated `scripts/test-dock-vocabulary.mjs` check guards the pack coverage, multilingual fields, focus linkage, diagram rendering and quiz answer masking.
+
 ### Work-to-learning capture
 
 The public Today screen has a **Saw a term at work?** path:
