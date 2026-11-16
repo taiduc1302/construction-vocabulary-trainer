@@ -27,7 +27,7 @@ function backup(progress,extra={}){
 function termRecord(correct=1){return {status:'review',level:2,correct,wrong:0,lastReviewed:'2026-11-13T12:00:00.000Z',due:'2026-12-13T12:00:00.000Z',recentResults:[true]}}
 async function openApp(page,{onboard=true}={}){
   await page.goto(origin+'/',{waitUntil:'domcontentloaded'});
-  await page.locator('#categoryFilter option').nth(1).waitFor({timeout:20000});
+  await page.waitForFunction(()=>document.querySelector('#categoryFilter')?.options.length>1,null,{timeout:20000});
   if(onboard&&await page.locator('#learnerOnboarding').count()){
     await page.locator('#finishOnboarding').click();
     await page.locator('#learnerOnboarding').waitFor({state:'detached'});
