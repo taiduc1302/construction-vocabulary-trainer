@@ -18,6 +18,7 @@ const ASSETS=[
   './src/visuals.js',
   './src/visuals-extra.js',
   './src/visuals-chat.js',
+  './src/visuals-loading.js',
   './src/visuals-all.js',
   './src/register-sw.js',
   './data/terms.json',
