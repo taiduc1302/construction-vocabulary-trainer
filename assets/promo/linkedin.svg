@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="promoTitle promoDesc">
+  <title id="promoTitle">Construction English — Civil terms. Clearer work.</title><desc id="promoDesc">An illustrated promotional layout built from actual Construction Vocabulary Trainer labels and its canonical SVG term diagram. Featured entry: duct bank. A grouped system of conduits, usually encased in concrete, installed underground for electrical or communication cables. This is not a screen capture.</desc>
+  <style>
+  .promo-white{fill:#fff}.promo-muted{fill:#b9c7d1}
+  @media (prefers-reduced-motion: reduce) { * {animation:none!important;transition:none!important;} }
+</style><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111923"/><stop offset="1" stop-color="#203f3b"/></linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#4b947d" stop-opacity=".22"/><stop offset="1" stop-color="#4b947d" stop-opacity="0"/></radialGradient>
+  </defs><rect x="0" y="0" width="1200" height="627" rx="0" fill="url(#bg)" />
+  <circle cx="960" cy="326.04" r="560" fill="url(#glow)"/>
+  <g stroke="white" stroke-opacity=".04" stroke-width="2"><line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="42" x2="1200" y2="42" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="84" x2="1200" y2="84" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="125" x2="1200" y2="125" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="167" x2="1200" y2="167" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="209" x2="1200" y2="209" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="251" x2="1200" y2="251" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="293" x2="1200" y2="293" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="334" x2="1200" y2="334" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="376" x2="1200" y2="376" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="418" x2="1200" y2="418" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="460" x2="1200" y2="460" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="502" x2="1200" y2="502" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="543" x2="1200" y2="543" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="585" x2="1200" y2="585" stroke="white" stroke-width="1" stroke-opacity=".055"/><line x1="0" y1="627" x2="1200" y2="627" stroke="white" stroke-width="1" stroke-opacity=".055"/></g>
+    <g transform="translate(64 55) scale(0.8611111111111112)">
+    <rect x="0" y="0" width="72" height="72" rx="17" fill="#111923" />
+    <path d="M12 48h48v8H12z" fill="#d7a553"/>
+    <path d="M18 40h36l-5-18H23z" fill="#eef3f1"/>
+    <path d="M26 48V38c0-7 4-11 10-11s10 4 10 11v10h-7V38c0-3-1-4-3-4s-3 1-3 4v10z" fill="#1c6b52"/>
+    <path d="M17 17h38" stroke="#d7a553" stroke-width="3.5" stroke-linecap="round"/>
+  </g><text x="142" y="99" font-family="Inter,Arial,sans-serif" font-size="24" fill="#f4f7f6" font-weight="700" >Construction English</text>
+    <text x="66" y="230" font-family="Inter,Arial,sans-serif" font-size="51" fill="#fff" font-weight="800" >Civil terms. Clearer</text><text x="66" y="296" font-family="Inter,Arial,sans-serif" font-size="51" fill="#fff" font-weight="800" >work.</text>
+    <text x="70" y="345" font-family="Inter,Arial,sans-serif" font-size="19" fill="#b9c7d1" font-weight="400" >Visual practice for drawings,</text><text x="70" y="376" font-family="Inter,Arial,sans-serif" font-size="19" fill="#b9c7d1" font-weight="400" >estimating and field work.</text>
+    <rect x="68" y="507" width="186" height="42" rx="21" fill="#2b554b" /><text x="86" y="535" font-family="Inter,Arial,sans-serif" font-size="19" fill="#e7f4ed" font-weight="600" >EN / RU / VI</text><rect x="264" y="507" width="241" height="42" rx="21" fill="#2b554b" /><text x="282" y="535" font-family="Inter,Arial,sans-serif" font-size="19" fill="#e7f4ed" font-weight="600" >Visual dictionary</text><rect x="515" y="507" width="150" height="42" rx="21" fill="#2b554b" /><text x="533" y="535" font-family="Inter,Arial,sans-serif" font-size="19" fill="#e7f4ed" font-weight="600" >Smart 10</text>
+    <rect x="685" y="145" width="465" height="420" rx="22" fill="#fff" stroke="#dfe6eb" stroke-width="2"/>
+    <path d="M707 145h421q22 0 22 22v28H685V167q0-22 22-22" fill="#edf3f0"/>
+    <circle cx="708" cy="170" r="5" fill="#e7b098"/><circle cx="728" cy="170" r="5" fill="#dfc589"/><circle cx="748" cy="170" r="5" fill="#9dcabc"/>
+    <text x="917.5" y="176" font-family="Inter,Arial,sans-serif" font-size="14" fill="#18212b" font-weight="700" text-anchor="middle">Construction English</text>
+    <line x1="685" y1="195" x2="1150" y2="195" stroke="#dfe6eb" stroke-width="1" />
+    <text x="711" y="230" font-family="Inter,Arial,sans-serif" font-size="11" fill="#1c6b52" font-weight="750" letter-spacing="1.2">DICTIONARY  /  VISUAL LEARNING</text>
+    <text x="711" y="264" font-family="Inter,Arial,sans-serif" font-size="20" fill="#18212b" font-weight="750" >duct bank</text>
+    <rect x="711" y="280" width="413" height="168" rx="16" fill="#edf5f1" />
+    <svg x="721" y="290" width="393" height="148" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet"><style>.tv-label{font:700 11px system-ui,sans-serif;fill:#244f42;letter-spacing:.03em}
+.tv-small{font:600 8px system-ui,sans-serif;fill:#536c64}
+.tv-ground{fill:#d9d1bd}
+.tv-concrete{fill:#d8d8d4;stroke:#777c79;stroke-width:2}
+.tv-conduit circle,.tv-conduit-big{fill:#f7faf9;stroke:#4e7567;stroke-width:4}</style><path class="tv-ground" d="M0 28h320v132H0z"/><rect class="tv-concrete" x="78" y="52" width="164" height="88" rx="3"/><g class="tv-conduit"><circle cx="112" cy="82" r="14"/><circle cx="160" cy="82" r="14"/><circle cx="208" cy="82" r="14"/><circle cx="112" cy="116" r="14"/><circle cx="160" cy="116" r="14"/><circle cx="208" cy="116" r="14"/></g><text class="tv-label" x="118" y="42">DUCT BANK</text><text class="tv-small" x="104" y="158">CONCRETE ENCASEMENT</text></svg>
+    <text x="711" y="479" font-family="Inter,Arial,sans-serif" font-size="11" fill="#1c6b52" font-weight="750" letter-spacing="1">WHAT IT MEANS</text>
+    <text x="711" y="508" font-family="Inter,Arial,sans-serif" font-size="13" fill="#18212b" font-weight="400" >A grouped system of conduits,</text><text x="711" y="527" font-family="Inter,Arial,sans-serif" font-size="13" fill="#18212b" font-weight="400" >usually encased in concrete,</text><text x="711" y="546" font-family="Inter,Arial,sans-serif" font-size="13" fill="#18212b" font-weight="400" >installed underground for…</text>
+  
+    <text x="68" y="592" font-family="Inter,Arial,sans-serif" font-size="14" fill="#b9c7d1" font-weight="620" letter-spacing="1.0">FREE  •  BROWSER-BASED  •  WORKS OFFLINE</text>
+  
+</svg>
