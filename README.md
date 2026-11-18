@@ -45,7 +45,7 @@ Reliability hardening in this release:
 - repository-owner Focus synchronization no longer downloads the vocabulary a second time for ordinary learners;
 - public term pages reuse Unicode-aware canonical lookup.
 
-For a protected migration strategy, copy-ready AI Studio instructions and the acceptance checklist, see **[Google AI Studio Build handoff](docs/GOOGLE_AI_STUDIO_HANDOFF.md)**. The Google AI Studio proof of concept must live in a separate branch or repository and must not directly replace the validated GitHub Pages release.
+For a protected migration strategy, copy-ready AI Studio instructions and the acceptance checklist, see **[Google AI Studio Build handoff](docs/GOOGLE_AI_STUDIO_HANDOFF.md)**. For testing on an iPhone, use the **[Google AI Studio → iPhone pilot and physical-device checklist](docs/AI_STUDIO_IPHONE_PILOT.md)**; the existing PWA already supports Safari Add to Home Screen. The Google AI Studio proof of concept must live in a separate branch or repository and must not directly replace the validated GitHub Pages release.
 
 ## Public Learner Mode
 
