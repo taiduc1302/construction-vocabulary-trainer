@@ -8219,5 +8219,193 @@
       "Follow the facility-specific traffic and safety plan; this diagram is not a substitute for an approved procedure."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "saddle-connection",
+    "term": "saddle connection",
+    "pronunciation": "SAD-ul kuh-NEK-shun",
+    "category": "drainage",
+    "definition_en": "An approved saddle-type branch fitting attached around an opening in an existing sewer main so a smaller lateral pipe can connect without replacing a full section of the main.",
+    "explanation_ru": "Седловая врезка (saddle connection) — специальный фасонный элемент для присоединения боковой трубы к существующей ливневой или канализационной магистрали через подготовленное отверстие. Применение, герметизация и крепление определяются проектом и требованиями муниципалитета.",
+    "translation_ru": [
+      "седловая врезка",
+      "седловой отвод",
+      "седловой соединитель"
+    ],
+    "translation_vi": [
+      "đầu nối yên ngựa",
+      "khớp nối nhánh dạng yên ngựa"
+    ],
+    "example_en": "Use an approved saddle connection only where the new storm main detail permits a field-installed branch.",
+    "scenario": "An existing catch basin lead needs to discharge into a larger buried pipe through a branch opening; the engineer must approve the fitting and connection method.",
+    "visual": "Schematic section showing a small vertical branch sealed into a prepared opening at the crown of a larger sewer main using a saddle assembly.",
+    "related_terms": [
+      "catch-basin-lead",
+      "wye-fitting",
+      "storm-sewer",
+      "tie-in"
+    ],
+    "common_mistakes": [
+      "A saddle and a manufactured wye are not interchangeable by default; some municipalities restrict or prohibit saddles on new PVC mains.",
+      "Do not cut or core the main or select a saddle before checking pipe material, diameter, position, connection detail, and approvals."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "wye-fitting",
+    "term": "wye fitting",
+    "pronunciation": "WYE FIT-ing",
+    "category": "drainage",
+    "definition_en": "A manufactured Y-shaped pipe fitting incorporated into a sewer main run to accept a side branch at an angle while maintaining a continuous main flow path.",
+    "explanation_ru": "Косой тройник (wye fitting) — заводской Y-образный фитинг на магистральной трубе для подключения бокового отвода под углом. В существующей магистрали его монтаж может требовать вырезки участка трубы и соединительных муфт.",
+    "translation_ru": [
+      "косой тройник",
+      "Y-образный тройник",
+      "разветвительный тройник"
+    ],
+    "translation_vi": [
+      "tê chữ Y",
+      "tê nhánh xiên",
+      "phụ kiện nối nhánh chữ Y"
+    ],
+    "example_en": "Install the specified wye fitting in the new storm main to receive the existing catch basin lead.",
+    "scenario": "A branch from a surface-water inlet must join a new gravity sewer through a factory-made angled junction in the main pipe.",
+    "visual": "Plan-style schematic of a straight storm main incorporating a Y-shaped angled branch fitting and flow arrows.",
+    "related_terms": [
+      "saddle-connection",
+      "catch-basin-lead",
+      "pipe-coupling",
+      "storm-sewer"
+    ],
+    "common_mistakes": [
+      "A factory-manufactured wye is not the same as a field-installed saddle on the pipe wall.",
+      "Replacing a section of existing main with a wye may require additional couplings, bedding, and temporary flow control; verify the contract detail."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-coupling",
+    "term": "pipe coupling",
+    "pronunciation": "PYPE KUP-ling",
+    "category": "drainage",
+    "definition_en": "A fitting or sleeve that joins the ends of two compatible pipe sections, such as an existing catch basin lead and a new short pipe piece.",
+    "explanation_ru": "Соединительная муфта для труб (pipe coupling) стыкует концы двух совместимых участков труб. Тип соединения подбирают по материалу, наружному диаметру, допускам и требованиям к заглублённым соединениям.",
+    "translation_ru": [
+      "соединительная муфта для труб",
+      "трубная муфта"
+    ],
+    "translation_vi": [
+      "măng sông nối ống",
+      "khớp nối hai đoạn ống"
+    ],
+    "example_en": "Include a pipe coupling at the cut end of the existing CB lead where the approved detail requires one.",
+    "scenario": "Two cut pipe ends must be connected in line at a drainage tie-in; both their joint type and outside diameters must be checked.",
+    "visual": "Two aligned pipe ends joined by a wider coupling sleeve over the joint, with alignment and sealing surfaces indicated.",
+    "related_terms": [
+      "short-pipe-section",
+      "transition-coupling",
+      "catch-basin-lead",
+      "tie-in"
+    ],
+    "common_mistakes": [
+      "A coupling joins pipe ends; it does not create a new branch into the main like a wye or saddle.",
+      "Do not assume a generic duct coupling is approved for buried storm-sewer service; check the pipe system, shear protection, and specifications."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "short-pipe-section",
+    "term": "short pipe section",
+    "pronunciation": "SHORT PYPE SEK-shun",
+    "category": "drainage",
+    "definition_en": "A short, cut-to-length piece of pipe used to close a measured gap between an existing drainage lead and a new connection fitting or pipe run.",
+    "explanation_ru": "Короткая трубная вставка (short pipe section) — отрезок трубы нужной длины, которым соединяют существующий отвод дождеприёмника с новым узлом подключения. Дополнительно могут понадобиться муфты, уплотнения или отводы.",
+    "translation_ru": [
+      "короткий участок трубы",
+      "трубная вставка",
+      "короткий патрубок"
+    ],
+    "translation_vi": [
+      "đoạn ống ngắn",
+      "đoạn ống nối bổ sung"
+    ],
+    "example_en": "Allow for a short pipe section and approved joints if the existing catch basin lead stops short of the new wye.",
+    "scenario": "The old inlet outlet does not reach the new branch fitting, so the crew measures the missing length and installs a matching segment.",
+    "visual": "Side-view schematic with an existing inlet lead, a highlighted short extension piece, end joints, and the receiving branch fitting.",
+    "related_terms": [
+      "pipe-coupling",
+      "catch-basin-lead",
+      "wye-fitting",
+      "invert"
+    ],
+    "common_mistakes": [
+      "A short extension alone cannot correct incompatible invert elevations or an unacceptable pipe slope; the alignment may require a designed bend or revised grade.",
+      "Measure actual gap and joint allowances before deciding the cut length or counting fittings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-reducer",
+    "term": "pipe reducer",
+    "pronunciation": "PYPE ree-DOO-ser",
+    "category": "drainage",
+    "definition_en": "A fitting that transitions between two different pipe diameters, connecting a larger pipe to a smaller one or vice versa in an approved system.",
+    "explanation_ru": "Переход по диаметру трубы (pipe reducer) соединяет трубопроводы разных номинальных диаметров. Он может быть концентрическим или эксцентрическим; в самотечной сети необходимо проверить положение лотка, уклон и допустимость перехода.",
+    "translation_ru": [
+      "переход с диаметра на диаметр",
+      "редукционный переход",
+      "переходник по диаметру"
+    ],
+    "translation_vi": [
+      "côn thu ống",
+      "đầu giảm đường kính ống",
+      "đầu nối chuyển cỡ ống"
+    ],
+    "example_en": "Check whether a pipe reducer is required where the existing 150 mm CB lead meets a specified larger connection.",
+    "scenario": "A smaller drainage lateral meets a different-diameter pipe run, and the approved detail calls for a diameter-changing fitting.",
+    "visual": "Longitudinal section of a larger pipe narrowing through a tapered fitting to a smaller pipe, with two different diameter dimensions.",
+    "related_terms": [
+      "transition-coupling",
+      "pipe-coupling",
+      "invert",
+      "catch-basin-lead"
+    ],
+    "common_mistakes": [
+      "A reducer changes nominal size; a transition coupling can accommodate different pipe materials or outside diameters without necessarily reducing nominal size.",
+      "A concentric reducer can create an internal invert step; check the specified gravity sewer fitting geometry and elevation."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "transition-coupling",
+    "term": "transition coupling",
+    "pronunciation": "tran-ZISH-un KUP-ling",
+    "category": "drainage",
+    "definition_en": "A specified joining coupling that connects pipe ends with different materials, outside diameters, or joint configurations while providing a compatible sealed transition.",
+    "explanation_ru": "Переходная муфта (transition coupling) соединяет трубы разных материалов, наружных диаметров или типов соединения. В подземной самотечной сети важны герметичность, соосность, защита от сдвига и разрешённая система муфт.",
+    "translation_ru": [
+      "переходная муфта",
+      "муфта для труб разных материалов",
+      "соединительный переход"
+    ],
+    "translation_vi": [
+      "măng sông chuyển tiếp",
+      "khớp nối chuyển loại ống",
+      "khớp nối chuyển vật liệu ống"
+    ],
+    "example_en": "Select an approved transition coupling where the existing concrete CB lead connects to new PVC drainage pipe.",
+    "scenario": "Two buried drainage sections have incompatible pipe-end materials or outside diameters and require a purpose-made sealed connector.",
+    "visual": "Two different pipe materials meeting under a labelled flexible transition sleeve with clamps and aligned inverts.",
+    "related_terms": [
+      "pipe-coupling",
+      "pipe-reducer",
+      "short-pipe-section",
+      "catch-basin-lead"
+    ],
+    "common_mistakes": [
+      "Nominal diameter alone is not enough to select a coupling; measure and verify each pipe's outside diameter and material.",
+      "A flexible coupling is not automatically acceptable in every buried location; verify shield, shear resistance, approvals and manufacturer limits."
+    ],
+    "difficulty": 3
   }
 ]
