@@ -1,8 +1,11 @@
 # Google AI Studio Build handoff and migration gate
 
-Updated: 2026-11-12. Product: **Civil Construction English Trainer**.
+Updated: 2026-11-18. Product: **Civil Construction English Trainer**.
 
 ## Decision
+
+**New iPhone pilot guide:** [Google AI Studio → iPhone web-app pilot](AI_STUDIO_IPHONE_PILOT.md). Start with a Safari Home Screen install of the current PWA; keep AI Studio experiments isolated. The original handoff below has been updated with the current corpus counts. Any AI Studio build still needs a new compatibility check and physical-device testing.
+
 
 **Ready to import as a controlled WEB prototype, not ready to replace the production PWA or ship a native mobile app without further work.**
 
@@ -21,7 +24,7 @@ Official product documentation:
 2. Use a **separate proof-of-concept repository** or an isolated branch and pull requests. Capture a backup export of progress before testing on real devices.
 3. Read `AI_INSTRUCTIONS.md`, `README.md`, `data/term.schema.json`, and every existing validator before restructuring. Treat `npm run validate` as a release gate.
 4. Do not alter canonical term IDs, category IDs, learning-pack IDs, drawing labels or metadata semantics; imported learner progress uses those IDs.
-5. Preserve the 229 validated vocabulary cards, ten learning packs, their diagrams, EN/RU/VI content, spaced repetition, estimator and drawing challenges, and visual answer-hiding rules.
+5. Preserve the **331 unique vocabulary cards and 14 learning packs**, their diagrams (including three optional construction-sequence animations), EN/RU/VI content, spaced repetition, estimator and drawing challenges, and visual answer-hiding rules. Preserve safe progress import/Undo and interrupted Quick 10 recovery.
 6. Keep public personal My Words separate from the maintainer repository Focus file. Maintainer Mode is a local UI preference, not authentication.
 7. No invented construction standards, live project drawings, company tender data, fake stats, account details, API keys or embedded private documents.
 8. Do not introduce Gemini calls simply to render existing, deterministic vocabulary. Adding AI is a separate opt-in feature.
@@ -44,7 +47,7 @@ If the imported app requires a React/Vite project, migrate in layers:
 - Reuse pure, testable logic from `src/learning-state.js`, `src/practice-engine.js`, `src/learner-profile.js`, `src/term-search.js`, and `src/vocab-inbox.js`.
 - Wrap existing drawing/term SVG renderers, preserving the quiz answer-hiding contract.
 - Recreate Today, Practice, Dictionary, Drawing and Progress screens incrementally.
-- Reuse localStorage keys and backward-compatible progress import/export; do NOT silently change the progress data model.
+- Reuse localStorage keys, validated backup/import/Undo and active Quick 10 persistence; do NOT silently change the progress data model.
 - Preserve dictionary incremental rendering (24 cards initially) and the active-session pack-switch guard.
 - Only retire the existing service worker after an equivalent tested offline-cache strategy is in place.
 
@@ -52,7 +55,7 @@ If the imported app requires a React/Vite project, migrate in layers:
 
 Verify:
 - First-time public onboarding; edit role/focus/language; no GitHub knowledge needed.
-- 10 packs with correct term IDs; pack switch does not interrupt an ongoing Quick 10.
+- 14 packs with correct term IDs; pack switch does not interrupt an ongoing Quick 10.
 - Quick 10 never repeats an eligible target before it has exhausted available terms; special Estimator/Similar Terms questions do not bypass this intent.
 - EN/RU/VI, diacritics, abbreviations and aliases resolve; `DB2`, `CB`, `sheet pile`, `шпунт` and Vietnamese examples behave correctly.
 - Every canonical term's public link loads, displays the proper diagram, and can be shared.
@@ -77,7 +80,7 @@ For a web app, perform Gemini API calls **server-side only**, with the key in AI
 
 AI Studio's Android generator creates Kotlin and Jetpack Compose code. That is a **new client implementation**, not a one-click compilation of the web PWA; sharing canonical JSON and expected behaviors is realistic, sharing all UI/runtime JS unchanged is not.
 
-Google AI Studio does not supply an equivalent native iOS generator in the current Android documentation. For iPhone, prioritize the existing installable Safari PWA unless a validated iOS-specific distribution requirement arises.
+Google AI Studio does not supply an equivalent native iOS generator in the current official Build documentation. For iPhone, first test the existing installable Safari PWA, then an isolated AI Studio **web** prototype; a stable HTTPS host plus PWA-specific checks are required for reliable Home Screen/offline behavior.
 
 ## Initial Google AI Studio prompt (copy only after importing a protected repo)
 
@@ -87,7 +90,7 @@ Google AI Studio does not supply an equivalent native iOS generator in the curre
 >
 > Goal: build a clean, accessible, responsive **web** proof of concept using the existing approved vocabulary data and learning logic, keeping the original GitHub Pages app untouched.
 >
-> Preserve the exact term IDs, 229 vocabulary cards, ten packs, illustrations, RU/VI translations, typed recall, spaced repetition, estimator/drawing challenges, My Words, backup/import and shareable links. Implement incremental dictionary rendering, unseen-question preference and active-session pack-switch protection. The UI should feel like a clear learning product for estimators, coordinators, field staff, engineers and students, not a maintainer dashboard.
+> Preserve the exact term IDs, 331 vocabulary cards, 14 packs, illustrations, RU/VI translations, typed recall, spaced repetition, estimator/drawing challenges, My Words, backup/import and shareable links. Implement incremental dictionary rendering, unseen-question preference and active-session pack-switch protection. The UI should feel like a clear learning product for estimators, coordinators, field staff, engineers and students, not a maintainer dashboard.
 >
 > Reuse pure JavaScript modules and existing tests where possible. If React is required, migrate one screen at a time and explain any semantic or persistence changes. No direct pushes to production main, no hidden paid services, no browser-exposed API keys, no fabricated data. Keep the app usable without Gemini, authentication or a backend.
 >
@@ -99,7 +102,7 @@ Google AI Studio does not supply an equivalent native iOS generator in the curre
 | --- | --- |
 | Current static app and content are importable source files | Ready |
 | Canonical term/pack IDs, diagrams, data and JS learning logic | Available |
-| PWA and local progress export/import | Available in current web version |
+| PWA, safe progress export/import/Undo and interrupted Quick 10 recovery | Available in current web version |
 | Automated content, learning, PWA, UX and release contracts | Available; must also run for migrated code |
 | React/Vite / AI Studio runtime compatibility | **Not yet demonstrated** |
 | Google AI Studio project, linked repository and preview | **Not created or verified** |
