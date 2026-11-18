@@ -292,6 +292,60 @@ await scenario('390px mobile process diagram: no horizontal overflow, buttons re
   assert.equal(await demo.getAttribute('data-step'),'1');
 },{mobile:true});
 
+
+await scenario('Unicode dictionary search supports Russian, Vietnamese, aliases and punctuation',async({page})=>{
+  await openApp(page);
+  await page.locator('.tabs .tab[data-view="dictionary"]').click();
+  const input=page.locator('#searchInput');
+  await input.fill('шпунт');
+  await page.waitForFunction(()=>document.querySelector('#dictionaryGrid')?.textContent?.toLowerCase().includes('sheet pile'));
+  await input.fill('ống nhựa');
+  await page.waitForFunction(()=>document.querySelector('#dictionaryGrid')?.textContent?.includes('PVC DB2'));
+  await input.fill('DB-2');
+  await page.waitForFunction(()=>document.querySelector('#dictionaryGrid')?.textContent?.includes('PVC DB2'));
+});
+await scenario('Russian feedback appears only after choosing RU learner support',async({page})=>{
+  await openApp(page,{onboard:false});
+  await page.locator('[data-choice-type="supportLanguage"][data-choice-value="ru"]').click();
+  await page.locator('#finishOnboarding').click();
+  await page.locator('.tabs .tab[data-view="practice"]').click();
+  await page.locator('.practice-settings summary').click();
+  await page.locator('#practiceScope').selectOption('all');
+  await page.locator('#practiceMode').selectOption('visual');
+  await page.locator('#quizCard[data-answered="no"]').waitFor();
+  await page.locator('#quizCard .quiz-option').first().click();
+  const feedback=await page.locator('#feedback').innerText();
+  assert.match(feedback,/RU:/,'RU learners should see Russian supplementary explanation');
+  assert.doesNotMatch(feedback,/VI:/,'RU learners should not get duplicate Vietnamese feedback');
+});
+await scenario('Vietnamese feedback appears only after choosing VI learner support',async({page})=>{
+  await openApp(page,{onboard:false});
+  await page.locator('[data-choice-type="supportLanguage"][data-choice-value="vi"]').click();
+  await page.locator('#finishOnboarding').click();
+  await page.locator('.tabs .tab[data-view="practice"]').click();
+  await page.locator('.practice-settings summary').click();
+  await page.locator('#practiceScope').selectOption('all');
+  await page.locator('#practiceMode').selectOption('visual');
+  await page.locator('#quizCard[data-answered="no"]').waitFor();
+  await page.locator('#quizCard .quiz-option').first().click();
+  const feedback=await page.locator('#feedback').innerText();
+  assert.match(feedback,/VI:/,'VI learners should see Vietnamese support');
+  assert.doesNotMatch(feedback,/RU:/,'VI learners should not see Russian by default');
+});
+await scenario('English-only learners see no duplicate translation blocks',async({page})=>{
+  await openApp(page,{onboard:false});
+  await page.locator('[data-choice-type="supportLanguage"][data-choice-value="en"]').click();
+  await page.locator('#finishOnboarding').click();
+  await page.locator('.tabs .tab[data-view="practice"]').click();
+  await page.locator('.practice-settings summary').click();
+  await page.locator('#practiceScope').selectOption('all');
+  await page.locator('#practiceMode').selectOption('visual');
+  await page.locator('#quizCard[data-answered="no"]').waitFor();
+  await page.locator('#quizCard .quiz-option').first().click();
+  const feedback=await page.locator('#feedback').innerText();
+  assert.doesNotMatch(feedback,/\b(?:RU|VI):/,'English-only answers should focus on English');
+});
+
 await browser.close();
 console.log('BROWSER REGRESSION SUMMARY '+passed+' passed, '+failed+' failed');
 await import('node:fs/promises').then(fs=>fs.writeFile(output+'/results.json',JSON.stringify({passed,failed,results},null,2)));
