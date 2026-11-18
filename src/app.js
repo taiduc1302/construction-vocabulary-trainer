@@ -333,7 +333,7 @@ function renderChoiceQuestion({t,prompt,answer,mode,options,extra='',compareWith
   els.quiz.dataset.answered='no';
   const canSpeakBeforeAnswer=mode==='en-ru';
   const speakButton=canSpeakBeforeAnswer?'<button class="speak-question secondary" type="button">🔊 Listen</button>':'';
-  els.quiz.innerHTML=`${extra}<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span>${speakButton}</div><div class="quiz-question">${escapeHtml(prompt)}</div><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback"></div>`;
+  els.quiz.innerHTML=`${extra}<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span>${speakButton}</div><h2 class="quiz-question">${escapeHtml(prompt)}</h2><div class="quiz-options">${options.map(o=>`<button class="quiz-option" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div><div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>`;
   if(canSpeakBeforeAnswer)els.quiz.querySelector('.speak-question').addEventListener('click',()=>speak(t.term));
   els.quiz.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',()=>answerQuestion(b)));
 }
@@ -346,7 +346,7 @@ function renderTypedQuestion(t){
   const hint=recallPrompt.kind==='drawing-label'
     ?`Write the full term, not just the abbreviation. ${drawingLabelNote}`
     :'Hyphens, spaces and capitalization are normalized. Legitimate English aliases are accepted.';
-  els.quiz.innerHTML=`<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><span class="recall-badge">Active recall · ${escapeHtml(recallPrompt.kind)}</span></div><div class="quiz-question">${escapeHtml(recallPrompt.prompt)}</div><div class="typed-answer-row"><input id="typedAnswer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English term" /><button id="checkTypedAnswer" type="button">Check answer</button></div><div class="small-muted typed-hint">${escapeHtml(hint)}</div><div id="feedback"></div>`;
+  els.quiz.innerHTML=`<div class="quiz-meta"><span>${escapeHtml(categoryLabel(t.category))}</span><span class="recall-badge">Active recall · ${escapeHtml(recallPrompt.kind)}</span></div><h2 class="quiz-question">${escapeHtml(recallPrompt.prompt)}</h2><div class="typed-answer-row"><input id="typedAnswer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the English term" /><button id="checkTypedAnswer" type="button">Check answer</button></div><div class="small-muted typed-hint">${escapeHtml(hint)}</div><div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>`;
   const input=document.querySelector('#typedAnswer');
   document.querySelector('#checkTypedAnswer').addEventListener('click',submitTypedAnswer);
   input.addEventListener('keydown',e=>{if(e.key==='Enter')submitTypedAnswer()});
@@ -356,7 +356,7 @@ function renderTypedQuestion(t){
 function renderEmptyPractice(message){
   currentQuestion=null;
   els.quiz.dataset.answered='yes';
-  els.quiz.innerHTML=`<div class="empty">${escapeHtml(message)}</div>`;
+  els.quiz.innerHTML=`<div class="empty" role="status">${escapeHtml(message)}</div>`;
   renderSessionStatus();
 }
 
@@ -611,9 +611,9 @@ function renderDrawingQuestion(){
     ${renderDrawingScene(scene)}
     <div class="drawing-question-card">
       <div class="quiz-meta"><span>${escapeHtml(scene.title)}</span><span class="recall-badge">Drawing reading</span></div>
-      <div class="quiz-question">Which callout identifies <strong>${escapeHtml(term.term)}</strong>?</div>
+      <h2 class="quiz-question">Which callout identifies <strong>${escapeHtml(term.term)}</strong>?</h2>
       <div class="drawing-options">${labels.map(label=>`<button class="drawing-option" data-label="${label}">${label}</button>`).join('')}</div>
-      <div id="drawingFeedback"></div>
+      <div id="drawingFeedback" role="status" aria-live="polite" aria-atomic="true"></div>
     </div>`;
   els.drawingChallenge.querySelectorAll('.drawing-option').forEach(btn=>btn.addEventListener('click',()=>answerDrawingQuestion(btn,term)));
 }
@@ -773,10 +773,21 @@ async function init(){
       els.search.value=term.term;renderDictionary();switchView('dictionary');return true;
     }
   };
+  const loadStatus=document.querySelector('#appLoadStatus');
+  if(loadStatus)loadStatus.hidden=true;
   window.dispatchEvent(new CustomEvent('trainer-ready',{detail:window.ConstructionTrainer}));
 }
 
 init().catch(err=>{
-  document.body.insertAdjacentHTML('beforeend',`<div class="empty fatal-error">App failed to load: ${escapeHtml(err.message)}. Run it through a local web server.</div>`);
+  const status=document.querySelector('#appLoadStatus');
+  if(status){
+    status.hidden=false;
+    status.dataset.state='error';
+    status.setAttribute('role','alert');
+    status.innerHTML=`<strong>Vocabulary could not load:</strong> ${escapeHtml(err.message)}. <button id="retryAppLoad" type="button">Retry loading</button>`;
+    status.querySelector('#retryAppLoad')?.addEventListener('click',()=>window.location.reload());
+  }else{
+    document.querySelector('main')?.insertAdjacentHTML('afterbegin',`<div class="empty fatal-error" role="alert">App failed to load: ${escapeHtml(err.message)}.</div>`);
+  }
   console.error(err);
 });

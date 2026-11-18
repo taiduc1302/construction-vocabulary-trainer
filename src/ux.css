@@ -10,8 +10,14 @@
 
 button,select,input,.file-label,summary{min-height:44px}
 button,select,input,.file-label,summary{-webkit-tap-highlight-color:transparent}
-button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid rgba(28,107,82,.28);outline-offset:2px}
+:where(button,select,input,summary,a):focus-visible,.file-label:focus-within{outline:3px solid #0b6e4e;outline-offset:3px}
 button:disabled{opacity:.58;cursor:not-allowed}
+.skip-link{position:fixed;left:12px;top:-120px;z-index:2000;padding:10px 16px;border:2px solid #0b6e4e;border-radius:10px;background:#fff;color:#12392c;font-weight:700;text-decoration:none}
+.skip-link:focus{top:12px}
+.app-load-status{margin:12px 0;padding:12px 14px;border:1px solid #b8d0c4;border-radius:12px;background:#eaf4ee;color:#174b38}
+.app-load-status[hidden]{display:none}
+.app-load-status[data-state="error"]{background:#fff4f2;border-color:#d6a09b;color:#782c28}
+.app-load-status button{margin-left:10px}
 
 .topbar{padding:18px clamp(18px,5vw,64px)}
 .brand-block{min-width:0}.brand-block h1{line-height:1.12}.brand-block .header-note{max-width:620px}
@@ -66,3 +72,17 @@ main{margin-top:22px}
 /* Keep the full dictionary browsable without rendering every SVG at startup. */
 .dictionary-pagination{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0 24px;color:var(--muted,#677987);font-size:.88rem}
 .dictionary-pagination button{min-height:44px}
+
+/* Color is not the only signifier of selection or validation in forced-colors mode. */
+@media(prefers-color-scheme:dark){
+  :where(button,select,input,summary,a):focus-visible,.file-label:focus-within{outline-color:#8be1b9}
+  .app-load-status{background:#163629;border-color:#39745d;color:#e0f5e9}
+  .app-load-status[data-state="error"]{background:#392322;border-color:#985b56;color:#ffd9d5}
+}
+@media(forced-colors:active){
+  .tab.active,.onboarding-choice.selected,.pack-card.is-active,.density-toggle[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:-2px}
+  .quiz-option.correct,.drawing-option.correct{outline:3px solid Highlight}
+  .quiz-option.wrong,.drawing-option.wrong{outline:3px dashed CanvasText}
+  :where(button,select,input,summary,a):focus-visible,.file-label:focus-within{outline:3px solid Highlight;outline-offset:3px}
+  .skip-link,.app-load-status,.app-load-status[data-state="error"]{background:Canvas;color:CanvasText;border-color:CanvasText}
+}

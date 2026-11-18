@@ -148,7 +148,8 @@ function optionButtons(values,current,type){
 
 function openOnboarding(edit=false){
   if(resumeActiveSession())return;
-  document.querySelector('#learnerOnboarding')?.remove();
+  if(document.querySelector('#learnerOnboarding'))return;
+  const returnFocus=document.activeElement;
   const current=profile||{};
   const role=current.role||'estimator';
   const focus=current.focus||'estimating';
@@ -178,11 +179,11 @@ function openOnboarding(edit=false){
     {id:'vi',label:'Vietnamese support',note:'Show Vietnamese translation while learning'}
   ];
   document.body.insertAdjacentHTML('beforeend',`
-    <div id="learnerOnboarding" class="learner-onboarding" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
+    <div id="learnerOnboarding" class="learner-onboarding" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle" aria-describedby="onboardingDescription">
       <form class="onboarding-panel">
         <div class="onboarding-head">
-          <div><p class="system-kicker">Construction English for real work</p><h2 id="onboardingTitle">${edit?'Change your learning path':'Build your first learning pack'}</h2><p>Three quick choices. You can change them anytime.</p></div>
-          ${edit?'<button id="closeOnboarding" type="button" class="icon-button" aria-label="Close">×</button>':''}
+          <div><p class="system-kicker">Construction English for real work</p><h2 id="onboardingTitle">${edit?'Change your learning path':'Build your first learning pack'}</h2><p id="onboardingDescription">Three quick choices. You can change them anytime.</p></div>
+          <button id="closeOnboarding" type="button" class="icon-button" aria-label="Close learning path setup">×</button>
         </div>
         <fieldset><legend>1. What do you do?</legend><div class="onboarding-grid" data-choice-group="role">${optionButtons(roleOptions,role,'role')}</div></fieldset>
         <fieldset><legend>2. What do you work with most?</legend><div class="onboarding-grid onboarding-grid-focus" data-choice-group="focus">${optionButtons(focusOptions,focus,'focus')}</div></fieldset>
@@ -192,6 +193,33 @@ function openOnboarding(edit=false){
       </form>
     </div>`);
   const overlay=document.querySelector('#learnerOnboarding');
+  const backgroundNodes=[document.querySelector('.topbar'),document.querySelector('main')].filter(Boolean);
+  const originalInert=backgroundNodes.map(node=>node.inert);
+  backgroundNodes.forEach(node=>{node.inert=true;});
+  const dialogTitle=overlay.querySelector('#onboardingTitle');
+  dialogTitle.tabIndex=-1;
+  const closeDialog=()=>{
+    overlay.remove();
+    backgroundNodes.forEach((node,index)=>{node.inert=originalInert[index];});
+    if(returnFocus&&returnFocus!==document.body&&returnFocus.isConnected&&typeof returnFocus.focus==='function'){
+      returnFocus.focus();
+    }else{
+      document.querySelector('.tabs .tab[data-view="home"]')?.focus();
+    }
+  };
+  overlay.addEventListener('keydown',event=>{
+    if(event.key==='Escape'){event.preventDefault();closeDialog();return;}
+    if(event.key!=='Tab')return;
+    const focusables=[...overlay.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+      .filter(node=>node.getClientRects().length>0);
+    const first=focusables[0];
+    const last=focusables.at(-1);
+    if(!first){event.preventDefault();dialogTitle.focus();return;}
+    if(document.activeElement===dialogTitle){event.preventDefault();(event.shiftKey?last:first).focus();return;}
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+  });
+  dialogTitle.focus();
   const selection={role,focus,supportLanguage:language};
   const refreshRecommendation=()=>{
     const pack=recommendedPack(selection.role,selection.focus);
@@ -209,13 +237,13 @@ function openOnboarding(edit=false){
     });
     refreshRecommendation();
   }));
-  document.querySelector('#closeOnboarding')?.addEventListener('click',()=>overlay.remove());
+  document.querySelector('#closeOnboarding')?.addEventListener('click',closeDialog);
   overlay.querySelector('form').addEventListener('submit',event=>{
     event.preventDefault();
     const pack=recommendedPack(selection.role,selection.focus);
     profile=saveProfile({...profile,...selection,activePackId:pack?.id||'',createdAt:profile?.createdAt});
     if(pack)savePersonalFocus(applyPackToFocus(loadPersonalFocus(),pack.term_ids));
-    overlay.remove();
+    closeDialog();
     applySupportLanguage();dispatchFocusChanged();renderPathCard();renderPacks();
   });
   refreshRecommendation();
