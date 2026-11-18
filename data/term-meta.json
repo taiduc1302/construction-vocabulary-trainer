@@ -1087,6 +1087,61 @@
         "concrete spalling",
         "surface spalling"
       ]
+    },
+    "saddle-connection": {
+      "aliases_en": [
+        "sewer saddle",
+        "tap saddle",
+        "saddle fitting",
+        "service saddle"
+      ]
+    },
+    "wye-fitting": {
+      "aliases_en": [
+        "wye",
+        "Y fitting",
+        "Y-branch fitting",
+        "manufactured wye"
+      ]
+    },
+    "pipe-coupling": {
+      "aliases_en": [
+        "sewer pipe coupling",
+        "repair coupling",
+        "joint coupling"
+      ]
+    },
+    "short-pipe-section": {
+      "aliases_en": [
+        "short pipe insert",
+        "pipe extension piece",
+        "short pipe spool",
+        "coupling and short pipe section"
+      ]
+    },
+    "pipe-reducer": {
+      "aliases_en": [
+        "reducer",
+        "reducing fitting",
+        "reducer fitting",
+        "pipe diameter reducer"
+      ]
+    },
+    "transition-coupling": {
+      "aliases_en": [
+        "reducing coupling",
+        "pipe transition coupling",
+        "transition fitting",
+        "reducer / transition coupling"
+      ]
+    },
+    "catch-basin-lead": {
+      "aliases_en": [
+        "CB lead",
+        "CB lateral",
+        "catch basin lateral",
+        "CB outlet lead"
+      ]
     }
   }
 }
