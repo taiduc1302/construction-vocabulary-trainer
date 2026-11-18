@@ -57,12 +57,12 @@ async function upload(page,contents,name='progress.json'){
     name,mimeType:'application/json',buffer:Buffer.from(contents,'utf8')
   });
 }
-async function scenario(name,fn,{mobile=false}={}){
+async function scenario(name,fn,{mobile=false,reducedMotion='no-preference'}={}){
   const context=await browser.newContext({
     viewport:mobile?{width:390,height:844}:{width:1280,height:800},
     deviceScaleFactor:mobile?3:1,
     isMobile:mobile,hasTouch:mobile,acceptDownloads:true,
-    serviceWorkers:'allow'
+    reducedMotion,serviceWorkers:'allow'
   });
   const page=await context.newPage();
   const errors=[];
@@ -225,6 +225,70 @@ await scenario('390px mobile navigation, touch targets and data controls',async(
   await page.locator('#dictionaryView.active').waitFor();
   await page.locator('#searchInput').fill('duct bank');
   assert.ok((await page.locator('#dictionaryLoadMore').innerText()).includes('Showing'));
+},{mobile:true});
+
+
+await scenario('Dictionary process sequence: play, pause, manual next and replay',async({page})=>{
+  await openApp(page);
+  await page.locator('.tabs .tab[data-view="dictionary"]').click();
+  await page.locator('#searchInput').fill('duct bank');
+  const demo=page.locator('.construction-sequence[data-sequence-id="duct-bank"]');
+  await demo.waitFor();
+  assert.equal(await demo.getAttribute('data-step'),'0');
+  assert.equal(await demo.getAttribute('data-state'),'idle');
+  await demo.locator('[data-sequence-action="play"]').click();
+  await page.waitForFunction(()=>document.querySelector('.construction-sequence[data-sequence-id="duct-bank"]')?.dataset.step==='1',null,{timeout:7500});
+  await demo.locator('[data-sequence-action="pause"]').click();
+  assert.equal(await demo.getAttribute('data-state'),'paused');
+  await page.waitForTimeout(2350);
+  assert.equal(await demo.getAttribute('data-step'),'1','Pause must freeze the sequence');
+  await demo.locator('[data-sequence-action="next"]').click();
+  assert.equal(await demo.getAttribute('data-step'),'2');
+  await demo.locator('[data-sequence-action="replay"]').click();
+  assert.equal(await demo.getAttribute('data-step'),'0');
+  assert.equal(await demo.getAttribute('data-state'),'playing');
+});
+
+await scenario('Public term pages: all three construction processes and safe quiz separation',async({page})=>{
+  for(const id of ['culvert','duct-bank','trench-box']){
+    await page.goto(origin+'/term.html?term='+id,{waitUntil:'domcontentloaded'});
+    const demo=page.locator('.construction-sequence[data-sequence-id="'+id+'"]');
+    await demo.waitFor();
+    assert.equal(await demo.locator('.sequence-status').count(),1);
+    assert.ok((await demo.locator('.sequence-caution').innerText()).length>50);
+    assert.equal(await demo.locator('[data-sequence-action]').count(),4);
+    assert.equal(await demo.locator('svg[role="img"]').count(),1);
+  }
+  await openApp(page);
+  await page.locator('.tabs .tab[data-view="practice"]').click();
+  await page.locator('#practiceMode').selectOption('visual');
+  await page.locator('#quizCard[data-answered="no"]').waitFor();
+  assert.equal(await page.locator('#quizCard .construction-sequence').count(),0,'Quiz must never show the learning sequences');
+  assert.equal(await page.locator('#quizCard svg text').count(),0,'Static diagram must not reveal labels');
+});
+
+await scenario('Reduced-motion preference: Play produces an immediate complete static illustration',async({page})=>{
+  await page.goto(origin+'/term.html?term=duct-bank',{waitUntil:'domcontentloaded'});
+  const demo=page.locator('.construction-sequence[data-sequence-id="duct-bank"]');
+  await demo.waitFor();
+  await demo.locator('[data-sequence-action="play"]').click();
+  assert.equal(await demo.getAttribute('data-step'),'3');
+  assert.equal(await demo.getAttribute('data-state'),'finished');
+  assert.equal(await demo.locator('[data-sequence-action="pause"]').isDisabled(),true);
+},{reducedMotion:'reduce'});
+
+await scenario('390px mobile process diagram: no horizontal overflow, buttons remain usable',async({page})=>{
+  await page.goto(origin+'/term.html?term=culvert',{waitUntil:'domcontentloaded'});
+  const demo=page.locator('.construction-sequence[data-sequence-id="culvert"]');
+  await demo.waitFor();
+  const bounds=await page.evaluate(()=>({
+    width:window.innerWidth,scroll:document.documentElement.scrollWidth,
+    buttons:[...document.querySelectorAll('.construction-sequence button')].map(b=>b.getBoundingClientRect().height)
+  }));
+  assert.ok(bounds.scroll<=bounds.width+2,'Mobile process lesson overflows: '+JSON.stringify(bounds));
+  assert.ok(bounds.buttons.every(h=>h>=44),'Sequence button touch targets too small');
+  await demo.locator('[data-sequence-action="next"]').click();
+  assert.equal(await demo.getAttribute('data-step'),'1');
 },{mobile:true});
 
 await browser.close();
