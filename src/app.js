@@ -1,4 +1,5 @@
 import {renderTermVisual} from './visuals-all.js';
+import {renderConstructionSequence,installSequenceControls} from './visual-sequences.js';
 import {getDrawingScenes,randomDrawingTarget,renderDrawingScene} from './drawing-challenges.js';
 import {
   recallMatches,selectPracticePool,preferUnseen,buildUniqueOptions,mergeTermMetadata,
@@ -177,7 +178,14 @@ function renderDictionary(){
     }
     const status=progressRecord(t.id).status;
     node.querySelector('.status-badge').textContent=focusIds.has(t.id)?`${status} · focus`:status;
-    node.querySelector('.visual-box').innerHTML=renderTermVisual(t);
+    const visualBox=node.querySelector('.visual-box');
+    visualBox.innerHTML=renderTermVisual(t);
+    const sequenceMarkup=renderConstructionSequence(t.id);
+    if(sequenceMarkup){
+      const host=document.createElement('div');
+      host.innerHTML=sequenceMarkup;
+      visualBox.after(host.firstElementChild);
+    }
     node.querySelector('.definition').textContent=t.definition_en;
     node.querySelector('.ru-text').textContent=t.translation_ru.join(', ');
     node.querySelector('.vi-text').textContent=t.translation_vi.join(', ');
@@ -715,6 +723,7 @@ async function init(){
   drawingScenes.forEach(scene=>els.drawingScene.insertAdjacentHTML('beforeend',`<option value="${scene.id}">${escapeHtml(scene.title)}</option>`));
 
   renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
+  installSequenceControls(document);
   document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchView(t.dataset.view)));
   els.search.addEventListener('input',renderDictionary);
   els.category.addEventListener('change',renderDictionary);

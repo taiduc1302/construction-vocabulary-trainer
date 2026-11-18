@@ -1,8 +1,9 @@
-const CACHE='construction-vocab-v21';
+const CACHE='construction-vocab-v22';
 const ASSETS=[
   './',
   './index.html',
   './src/styles.css',
+  './src/visual-sequences.css',
   './src/quiz.css',
   './src/progress.css',
   './src/ux.css',
@@ -22,6 +23,7 @@ const ASSETS=[
   './src/visuals-chat.js',
   './src/visuals-loading.js',
   './src/visuals-all.js',
+  './src/visual-sequences.js',
   './src/register-sw.js',
   './data/terms.json',
   './data/terms-expansion.json',
