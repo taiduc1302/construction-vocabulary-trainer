@@ -38,7 +38,7 @@ assert.ok(utilityPack,'the existing underground utilities pack remains available
 for(const id of ['catch-basin-lead',...ids])assert.ok(utilityPack.term_ids.includes(id),`pack should include ${id}`);
 const vocabulary=entries.map(t=>({...t,...(meta[t.id]||{})}));
 for(const [query,wanted] of [
-  ['saddle','saddle-connection'],['tap saddle','saddle-connection'],
+  ['saddle connection','saddle-connection'],['tap saddle','saddle-connection'],
   ['manufactured wye','wye-fitting'],['Y fitting','wye-fitting'],
   ['pipe coupling','pipe-coupling'],['repair coupling','pipe-coupling'],
   ['short pipe insert','short-pipe-section'],['short pipe section','short-pipe-section'],
@@ -50,6 +50,7 @@ for(const [query,wanted] of [
   assert.equal(findExactVocabularyTerm(vocabulary,query)?.id,wanted,`exact lookup should resolve ${query}`);
   assert.equal(searchVocabulary(vocabulary,query)[0]?.term.id,wanted,`search should prefer ${wanted} for ${query}`);
 }
+assert.equal(searchVocabulary(vocabulary,'saddle')[0]?.term.id,'saddle-connection','partial query finds the lateral fitting');
 assert.ok(/existing sewer main/i.test(byId.get('saddle-connection').definition_en));
 assert.ok(/manufactured Y-shaped/i.test(byId.get('wye-fitting').definition_en));
 assert.ok(/joins the ends of two compatible pipe sections/i.test(byId.get('pipe-coupling').definition_en));
