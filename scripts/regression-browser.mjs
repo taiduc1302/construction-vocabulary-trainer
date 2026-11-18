@@ -261,6 +261,7 @@ await scenario('Public term pages: all three construction processes and safe qui
   }
   await openApp(page);
   await page.locator('.tabs .tab[data-view="practice"]').click();
+  await page.locator('.practice-settings summary').click();
   await page.locator('#practiceMode').selectOption('visual');
   await page.locator('#quizCard[data-answered="no"]').waitFor();
   assert.equal(await page.locator('#quizCard .construction-sequence').count(),0,'Quiz must never show the learning sequences');
