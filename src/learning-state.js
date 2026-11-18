@@ -165,9 +165,12 @@ export function recordAnswer(state,id,correct,intervals,now=new Date()){
   if(!state.settings||typeof state.settings!=='object')state.settings={dailyGoal:DEFAULT_DAILY_GOAL};
 
   const r={...recordFor(state,id)};
+  // A correct answer counts as practice, but only a DUE review promotes mastery.
+  // Otherwise repetitions during the same session would act like spaced reviews.
+  const reviewIsDue=dueNow(r,timestamp);
   if(correct){
     r.correct+=1;
-    r.level=Math.min(r.level+1,schedule.length-1);
+    if(reviewIsDue)r.level=Math.min(r.level+1,schedule.length-1);
     r.status=r.level>=5?'mastered':r.level>=2?'review':'learning';
   }else{
     r.wrong+=1;
@@ -176,8 +179,11 @@ export function recordAnswer(state,id,correct,intervals,now=new Date()){
   }
   r.recentResults=[...r.recentResults,Boolean(correct)].slice(-MAX_RECENT_RESULTS);
   r.lastReviewed=timestamp.toISOString();
-  const days=correct?Math.max(0,Number(schedule[r.level])||0):0;
-  r.due=new Date(timestamp.getTime()+days*86400000).toISOString();
+  // Early correct practice must not postpone a scheduled review.
+  if(!correct||reviewIsDue){
+    const days=correct?Math.max(0,Number(schedule[r.level])||0):0;
+    r.due=new Date(timestamp.getTime()+days*86400000).toISOString();
+  }
   state.progress[id]=r;
 
   const today=localDateKey(timestamp);

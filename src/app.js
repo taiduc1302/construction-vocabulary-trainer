@@ -14,6 +14,7 @@ import {loadProfile,loadPersonalFocus,maintainerEnabled} from './learner-profile
 import {createProgressBackup,parseProgressBackup,applyProgressBackup,hasPreImportSnapshot,undoLastProgressImport} from './progress-backup.js';
 import {saveActiveSession,loadActiveSession,clearActiveSession} from './active-session.js';
 import {findExactVocabularyTerm,searchVocabulary} from './term-search.js';
+import {matchesDictionaryTerm,maskDefinitionAnswer,selectedFeedbackLanguage} from './learning-quality.js';
 
 const els={
   stats:document.querySelector('#stats'),
@@ -153,14 +154,14 @@ function renderDailyGoal(){
 
 function renderDictionary(){
   if(!terms.length)return;
-  const q=els.search.value.trim().toLowerCase();
+  const q=els.search.value.trim();
   const cat=els.category.value;
   const filterKey=JSON.stringify([q,cat]);
   if(filterKey!==dictionaryFilterKey){
     dictionaryVisibleCount=DICTIONARY_PAGE_SIZE;
     dictionaryFilterKey=filterKey;
   }
-  const matches=terms.filter(t=>(cat==='all'||t.category===cat)&&(!q||JSON.stringify(t).toLowerCase().includes(q)));
+  const matches=terms.filter(t=>(cat==='all'||t.category===cat)&&matchesDictionaryTerm(t,q));
   const filtered=matches.slice(0,dictionaryVisibleCount);
   els.grid.innerHTML='';
   const tpl=document.querySelector('#termCardTemplate');
@@ -414,7 +415,7 @@ function makeQuestion(){
     if(mode==='en-ru'){prompt=`What does “${t.term}” mean in Russian?`;answer=t.translation_ru[0];field=x=>x.translation_ru[0]}
     else if(mode==='ru-en'){prompt=`What is the English term for “${t.translation_ru[0]}”?`;answer=t.term;field=x=>x.term}
     else if(mode==='vi-en'){prompt=`What is the English construction term for “${t.translation_vi[0]}”?`;answer=t.term;field=x=>x.term}
-    else if(mode==='definition'){prompt=t.definition_en;answer=t.term;field=x=>x.term}
+    else if(mode==='definition'){prompt=maskDefinitionAnswer(t);answer=t.term;field=x=>x.term}
     else if(mode==='scenario'){prompt=t.scenario;answer=t.term;field=x=>x.term}
     else if(mode==='visual'){prompt='Identify the construction term shown by this diagram.';answer=t.term;field=x=>x.term;extra=renderTermVisual(t,{quiz:true})}
     else{prompt=`Complete the sentence: ${blankExample(t)}`;answer=t.term;field=x=>x.term}
@@ -427,6 +428,12 @@ function makeQuestion(){
   renderSessionStatus();
 }
 
+function answerLanguageMarkup(term){
+  const support=selectedFeedbackLanguage(term,loadProfile()?.supportLanguage||'en');
+  if(!support)return '';
+  return '<div class="small-muted">'+escapeHtml(support.label)+': '+escapeHtml(support.text)+'</div>';
+}
+
 function feedbackMarkup(correct,userAnswer=''){
   const contrast=currentQuestion.compareWith?`<div class="contrast-note"><strong>Compare with ${escapeHtml(currentQuestion.compareWith.term)}:</strong> ${escapeHtml(currentQuestion.compareWith.definition_en)}</div>`:'';
   const caution=currentQuestion.term.common_mistakes?.length?`<div class="contrast-note"><strong>Watch out:</strong> ${escapeHtml(currentQuestion.term.common_mistakes.join(' '))}</div>`:'';
@@ -434,7 +441,7 @@ function feedbackMarkup(correct,userAnswer=''){
   const drawingLabels=currentQuestion.term.drawing_labels?.length?`<div class="small-muted">Common drawing label(s): ${escapeHtml(currentQuestion.term.drawing_labels.join(', '))} · verify the project legend.</div>`:'';
   const estimator=currentQuestion.estimatorExplanation?`<div class="contrast-note"><strong>Estimator reasoning:</strong> ${escapeHtml(currentQuestion.estimatorExplanation)}</div>`:'';
   const yourAnswer=userAnswer&&!correct?`<div class="small-muted">Your answer: ${escapeHtml(userAnswer)}</div>`:'';
-  return `<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}${yourAnswer}${aliases}${drawingLabels}<br><span class="small-muted">RU: ${escapeHtml(currentQuestion.term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(currentQuestion.term.translation_vi.join(', '))}</span>${estimator}${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
+  return `<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> <strong>${escapeHtml(currentQuestion.term.term)}</strong> — ${escapeHtml(currentQuestion.term.definition_en)}${yourAnswer}${aliases}${drawingLabels}${answerLanguageMarkup(currentQuestion.term)}${estimator}${contrast}${caution}<button class="feedback-speak secondary" type="button">🔊 Listen to ${escapeHtml(currentQuestion.term.term)}</button></div>`;
 }
 
 function setSessionControlsLocked(locked){
@@ -621,7 +628,7 @@ function answerDrawingQuestion(button,term){
     else if(btn===button)btn.classList.add('wrong');
     btn.disabled=true;
   });
-  document.querySelector('#drawingFeedback').innerHTML=`<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> Callout <strong>${currentDrawingTarget.label}</strong> is ${escapeHtml(term.term)} — ${escapeHtml(term.definition_en)}<br><span class="small-muted">RU: ${escapeHtml(term.explanation_ru)}</span><br><span class="small-muted">VI: ${escapeHtml(term.translation_vi.join(', '))}</span><button class="drawing-speak secondary" type="button">🔊 Listen</button></div>`;
+  document.querySelector('#drawingFeedback').innerHTML=`<div class="feedback"><strong>${correct?'Correct':'Not quite'}.</strong> Callout <strong>${currentDrawingTarget.label}</strong> is ${escapeHtml(term.term)} — ${escapeHtml(term.definition_en)}${answerLanguageMarkup(term)}<button class="drawing-speak secondary" type="button">🔊 Listen</button></div>`;
   document.querySelector('.drawing-speak')?.addEventListener('click',()=>speak(term.term));
 }
 

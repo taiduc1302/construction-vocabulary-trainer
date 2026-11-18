@@ -232,8 +232,8 @@ jobs:
           fi
 
   browser_regression:
-    name: Browser regression (PR #27)
-    if: github.event_name == 'pull_request' && github.event.pull_request.number == 27
+    name: Browser regression (PR #30)
+    if: github.event_name == 'pull_request' && github.event.pull_request.number == 30
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
