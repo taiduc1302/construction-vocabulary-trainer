@@ -1,9 +1,17 @@
 # Civil Construction English Trainer
 
-<a href="https://taiduc1302.github.io/construction-vocabulary-trainer/"><img src="assets/promo/readme.svg" width="100%" alt="Construction English promotional illustration: a real duct-bank technical diagram in the vocabulary trainer, with multilingual and Smart 10 learning features."/></a>
+<a href="https://taiduc1302.github.io/construction-vocabulary-trainer/"><img src="assets/visuals/readme-demo.svg" width="100%" alt="Construction English learning flow: select Duct Bank / Electrical, view the actual duct bank diagram, then practice with Smart 10. Animated highlighting, with a static reduced-motion view."/></a>
+
+<sub>[Static illustration](assets/promo/readme.svg) · [Build and validation notes](docs/README_ANIMATION.md)</sub>
 
 
 Public-first multilingual construction-English trainer for civil estimators, coordinators, field staff, engineers, and learners. GitHub remains the content backend; daily learners use role/work-area packs, personal Focus, visual practice, drawings, estimator scenarios, and spaced review.
+
+## Animated, source-backed README walkthrough
+
+The banner above is a standalone, GitHub-compatible SVG with three real application stages: choosing the **Duct Bank / Electrical** pack, studying its actual conduit diagram, and starting Smart 10 practice. It is rebuilt from `data/learning-packs.json`, `data/terms.json` and `src/visuals.js` rather than a manually redrawn fake screenshot. Its CSS animation requires no scripts, external fonts or backend and displays a complete still frame with reduced motion.
+
+Regenerate and verify: `node scripts/build-readme-demo.mjs && node scripts/test-readme-demo.mjs`. See [the README animation guide](docs/README_ANIMATION.md) for constraints and validation.
 
 ## Reproducible visual assets
 
