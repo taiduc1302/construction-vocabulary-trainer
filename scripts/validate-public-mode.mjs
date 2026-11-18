@@ -7,6 +7,7 @@ const publicCss=fs.readFileSync(new URL('../src/public-mode.css',import.meta.url
 const termHtml=fs.readFileSync(new URL('../term.html',import.meta.url),'utf8');
 const termJs=fs.readFileSync(new URL('../src/term-page.js',import.meta.url),'utf8');
 const app=fs.readFileSync(new URL('../src/app.js',import.meta.url),'utf8');
+const backup=fs.readFileSync(new URL('../src/progress-backup.js',import.meta.url),'utf8');
 
 for(const id of ['learnerPathCard','learningPackGrid','publicCaptureInput','publicCaptureMatches','addExistingTerm','explainTerm','toggleMaintainerMode']){
   assert.ok(index.includes(`id="${id}"`),`index missing public learner control ${id}`);
@@ -26,9 +27,11 @@ assert.match(publicJs,/Explain the construction term/);
 
 assert.match(app,/searchTerms/,'trainer API must expose multilingual fuzzy search');
 assert.match(app,/getProgressForIds/,'trainer API must expose pack progress');
-assert.match(app,/learnerProfile:loadProfile\(\)/,'progress export must include the learner path');
-assert.match(app,/personalFocus:loadPersonalFocus\(\)/,'progress export must include personal My Words');
-assert.match(app,/learner-profile-imported/,'profile import must notify public mode');
+assert.match(app,/createProgressBackup\(learningState,loadProfile\(\),loadPersonalFocus\(\)\)/,'progress export must include profile and personal words');
+assert.match(backup,/learnerProfile:profile\?\?null/,'backup must include the learner profile');
+assert.match(backup,/personalFocus:normalizePersonalFocus\(focus\)/,'backup must include personal My Words');
+assert.match(app,/applyProgressBackup\(parsed\)/,'import must use validated transactional backup');
+assert.match(index,/id="undoProgressImport"/,'users need a visible path to undo the last import');
 assert.match(publicJs,/progressForPack/,'learning packs must show measurable learner progress');
 assert.match(publicJs,/trainer-progress-changed/,'pack progress must refresh after answers');
 assert.match(publicJs,/searchLocalTerms/,'work capture must use fuzzy search suggestions');
