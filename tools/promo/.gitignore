@@ -1,0 +1,4 @@
+# Never accidentally commit private screens or ad-hoc exports.
+screenshots/
+out/
+node_modules/

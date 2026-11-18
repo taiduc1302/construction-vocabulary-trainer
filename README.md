@@ -1,6 +1,13 @@
 # Civil Construction English Trainer
 
+<a href="https://taiduc1302.github.io/construction-vocabulary-trainer/"><img src="assets/promo/readme.svg" width="100%" alt="Construction English promotional illustration: a real duct-bank technical diagram in the vocabulary trainer, with multilingual and Smart 10 learning features."/></a>
+
+
 Public-first multilingual construction-English trainer for civil estimators, coordinators, field staff, engineers, and learners. GitHub remains the content backend; daily learners use role/work-area packs, personal Focus, visual practice, drawings, estimator scenarios, and spaced review.
+
+## Reproducible visual assets
+
+The [promo-artwork pipeline](docs/PROMO_ASSETS.md) generates README, Open Graph, LinkedIn and Instagram SVGs from the **real dictionary schema and existing technical drawings**. These are labeled illustrations, not screenshots or fabricated learning results. Generate with `node tools/promo/generate.mjs`, verify with `node tools/promo/test.mjs`. Optional local-only PNG export does not add production website dependencies.
 
 ## Current version
 
