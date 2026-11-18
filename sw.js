@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v22';
+const CACHE='construction-vocab-v23';
 const ASSETS=[
   './',
   './index.html',
@@ -36,6 +36,7 @@ const ASSETS=[
   './src/public-mode.js',
   './src/learner-profile.js',
   './src/term-search.js',
+  './src/learning-quality.js',
   './term.html',
   './src/term-page.js',
   './src/term-page.css',

@@ -123,4 +123,28 @@ globalThis.localStorage=new MemoryStorage();
   globalThis.localStorage=previous;
 }
 
+{
+  // Spaced repetition must require time to pass, not five quick correct answers.
+  const state=normalizeLearningState({});
+  const first=recordAnswer(state,'duct-bank',true,intervals,now);
+  const nextReview=first.due;
+  for(let i=1;i<5;i++){
+    const early=new Date(now.getTime()+i*60_000);
+    const result=recordAnswer(state,'duct-bank',true,intervals,early);
+    assert.equal(result.level,1,'Early practice must not promote mastery');
+    assert.equal(result.status,'learning','Five same-session correct answers are NOT spaced mastery');
+    assert.equal(result.due,nextReview,'Early answers must not postpone the real review date');
+  }
+  assert.equal(recordFor(state,'duct-bank').correct,5,'Early correct answers still count as practice');
+  const second=recordAnswer(state,'duct-bank',true,intervals,new Date(nextReview));
+  assert.equal(second.level,2,'Due review must promote one level');
+  assert.equal(second.due,'2026-09-19T12:00:00.000Z','Due review follows interval schedule');
+  const again=recordAnswer(state,'duct-bank',true,intervals,new Date('2026-09-16T14:00:00.000Z'));
+  assert.equal(again.level,2,'Repeated same-day correct cannot increase review level');
+  assert.equal(again.due,second.due);
+  const wrong=recordAnswer(state,'duct-bank',false,intervals,new Date('2026-09-16T15:00:00.000Z'));
+  assert.equal(wrong.level,1,'Wrong answer still lowers level immediately');
+  assert.equal(wrong.due,'2026-09-16T15:00:00.000Z','Wrong answers are due for immediate relearning');
+}
+
 console.log('Learning-state tests OK: migration, sanitization, scheduling, adaptive weighting, daily goals, streaks and sessions.');
