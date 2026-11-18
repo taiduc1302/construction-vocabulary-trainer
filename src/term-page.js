@@ -1,4 +1,5 @@
 import {renderTermVisual} from './visuals-all.js';
+import {renderConstructionSequence,installSequenceControls} from './visual-sequences.js';
 import {mergeTermMetadata} from './practice-engine.js';
 import {findExactVocabularyTerm} from './term-search.js';
 import {loadPersonalFocus,savePersonalFocus,addCapturedFocus} from './learner-profile.js';
@@ -29,6 +30,7 @@ async function init(){
         <button id="addTermToWords" type="button">+ Add to My Words</button>
       </div>
       <div class="term-public-visual">${renderTermVisual(term)}</div>
+      ${renderConstructionSequence(term.id)}
       <section><h2>What it means</h2><p>${escapeHtml(term.definition_en)}</p></section>
       <div class="term-language-grid">
         <section><h2>Russian</h2><p><strong>${escapeHtml((term.translation_ru||[]).join(', '))}</strong></p><p>${escapeHtml(term.explanation_ru||'')}</p></section>
@@ -42,6 +44,7 @@ async function init(){
         <button id="shareTerm" type="button" class="secondary">Share</button>
       </div>
     </article>`;
+  installSequenceControls(document);
   document.querySelector('#addTermToWords').addEventListener('click',event=>{
     savePersonalFocus(addCapturedFocus(loadPersonalFocus(),term.id));
     event.currentTarget.textContent='✓ Added to My Words';event.currentTarget.disabled=true;

@@ -1,0 +1,20 @@
+/* Optional visual learning, never active inside quiz cards. */
+.construction-sequence{width:100%;padding:14px;border-radius:14px;border:1px solid #c9d9d3;background:#f8faf9;color:#18212b;display:grid;gap:10px}
+.sequence-intro{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.sequence-intro strong{font-size:1.04rem;color:#185b45}
+.sequence-intro span{font-size:.78rem;color:#567268}
+.construction-sequence>svg{width:100%;height:auto;max-height:240px;border-radius:10px;background:#eef5f2}
+.construction-sequence .sequence-layer{opacity:0;transition:opacity .3s ease}
+.construction-sequence[data-step="1"] .seq-at-1,
+.construction-sequence[data-step="2"] .seq-at-1,
+.construction-sequence[data-step="2"] .seq-at-2,
+.construction-sequence[data-step="3"] .seq-at-1,
+.construction-sequence[data-step="3"] .seq-at-2,
+.construction-sequence[data-step="3"] .seq-at-3{opacity:1}
+.sequence-status{font-size:.9rem;color:#28443b;min-height:2.4em;margin:0}
+.sequence-caution{font-size:.77rem;line-height:1.45;color:#5e6d69;margin:0}
+.sequence-controls{display:flex;flex-wrap:wrap;gap:7px}
+.sequence-controls button{font-size:.84rem;min-height:44px;padding:7px 10px}
+.sequence-controls button:disabled{opacity:.5;cursor:not-allowed}
+@media(prefers-color-scheme:dark){.construction-sequence{background:#16221e;border-color:#34574a;color:#e5f2ec}.sequence-intro strong{color:#9de0c0}.sequence-intro span,.sequence-caution{color:#b9cac3}.sequence-status{color:#c4e5d6}}
+@media(prefers-reduced-motion:reduce){.construction-sequence .sequence-layer{transition:none!important}}
