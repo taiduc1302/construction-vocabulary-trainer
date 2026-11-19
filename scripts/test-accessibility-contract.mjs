@@ -29,7 +29,7 @@ assert.match(app,/status\.setAttribute\('role','alert'\)/,'loading errors must b
 assert.match(app,/id="retryAppLoad"/,'failed load must have a retry control');
 assert.match(onboarding,/aria-modal="true"[^>]*aria-describedby="onboardingDescription"/);
 assert.match(onboarding,/backgroundNodes\.forEach\(node=>\{node\.inert=true;\}\)/,'background must not be focusable while modal is open');
-assert.match(onboarding,/event\.key==='Tab'/,'modal must contain keyboard focus');
+assert.match(onboarding,/if\(event\.key!=='Tab'\)return;/,'modal must handle keyboard Tab navigation');
 assert.match(onboarding,/event\.key==='Escape'/,'modal should support Escape');
 assert.match(onboarding,/returnFocus\.isConnected/,'closing a modal must restore focus when possible');
 assert.match(onboarding,/closeDialog\(\);\s*applySupportLanguage\(\)/,'submit should close the modal safely');
