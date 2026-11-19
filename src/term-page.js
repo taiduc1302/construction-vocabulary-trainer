@@ -58,5 +58,7 @@ async function init(){
   });
 }
 init().catch(error=>{
-  document.querySelector('#termPage').innerHTML=`<div class="term-not-found">Could not load this term: ${escapeHtml(error.message)}</div>`;
+  const host=document.querySelector('#termPage');
+  host.innerHTML=`<section class="term-not-found" role="alert"><h1>Could not load this term</h1><p>${escapeHtml(error.message)}</p><button id="retryTermPage" type="button">Retry loading</button> <a href="./">Open dictionary</a></section>`;
+  host.querySelector('#retryTermPage')?.addEventListener('click',()=>location.reload());
 });

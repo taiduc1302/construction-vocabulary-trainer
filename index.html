@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="src/public-mode.css" />
 </head>
 <body>
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
   <header class="topbar">
     <div class="brand-block">
       <p class="eyebrow">Civil construction English for real work</p>
@@ -48,13 +49,13 @@
         <button id="changeLearningPathMenu" class="secondary" type="button">Change learning path</button>
         <button id="toggleMaintainerMode" class="secondary" type="button" aria-pressed="false">Maintainer mode: off</button>
         <button id="exportProgress" class="secondary">Export progress</button>
-        <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" /></label>
+        <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" aria-label="Import progress JSON file" /></label>
         <button id="undoProgressImport" class="secondary" type="button" hidden>Undo last import</button>
       </div>
     </details>
   </header>
 
-  <main>
+  <main id="mainContent" tabindex="-1">
     <nav class="tabs" aria-label="Main sections">
       <button class="tab active" data-view="home"><span class="tab-icon" aria-hidden="true">⌂</span><span class="tab-label">Today</span></button>
       <button class="tab" data-view="practice"><span class="tab-icon" aria-hidden="true">▶</span><span class="tab-label">Practice</span></button>
@@ -62,6 +63,7 @@
       <button class="tab" data-view="drawing"><span class="tab-icon" aria-hidden="true">⌗</span><span class="tab-label">Drawing</span></button>
       <button class="tab" data-view="progress"><span class="tab-icon" aria-hidden="true">↗</span><span class="tab-label">Progress</span></button>
     </nav>
+    <div id="appLoadStatus" class="app-load-status" role="status" aria-live="polite">Loading vocabulary…</div>
     <div class="view-router-only" aria-hidden="true">
       <button class="tab" data-view="review" tabindex="-1">Due</button>
       <button class="tab" data-view="weak" tabindex="-1">Weak</button>

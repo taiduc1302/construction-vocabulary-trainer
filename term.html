@@ -30,11 +30,12 @@
   <link rel="stylesheet" href="src/term-page.css" />
 </head>
 <body class="term-page-body">
+  <a class="skip-link" href="#termPage">Skip to term content</a>
   <header class="term-page-topbar">
     <a href="./" class="term-back">← Construction English</a>
   </header>
-  <main id="termPage" class="term-page">
-    <div class="term-page-loading">Loading construction term…</div>
+  <main id="termPage" class="term-page" tabindex="-1">
+    <div class="term-page-loading" role="status" aria-live="polite">Loading construction term…</div>
   </main>
   <script type="module" src="src/term-page.js"></script>
   <script type="module" src="src/register-sw.js"></script>
