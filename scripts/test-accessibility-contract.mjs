@@ -32,7 +32,7 @@ assert.match(onboarding,/backgroundNodes\.forEach\(node=>\{node\.inert=true;\}\)
 assert.match(onboarding,/if\(event\.key!=='Tab'\)return;/,'modal must handle keyboard Tab navigation');
 assert.match(onboarding,/event\.key==='Escape'/,'modal should support Escape');
 assert.match(onboarding,/returnFocus\.isConnected/,'closing a modal must restore focus when possible');
-assert.match(onboarding,/closeDialog\(\);\s*applySupportLanguage\(\)/,'submit should close the modal safely');
+assert.match(onboarding,/applySupportLanguage\(\);dispatchFocusChanged\(\);renderPathCard\(\);renderPacks\(\);\s*closeDialog\(\)/,'submit restores focus after refreshing the path UI');
 assert.equal((app.match(/id="feedback" role="status" aria-live="polite" aria-atomic="true"/g)||[]).length,2,'quiz feedback in both question modes must be announced');
 assert.match(app,/id="drawingFeedback" role="status" aria-live="polite"/);
 assert.match(app,/<h2 class="quiz-question">/,'quiz needs a semantic question heading');
