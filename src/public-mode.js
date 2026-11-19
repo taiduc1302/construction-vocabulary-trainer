@@ -243,8 +243,8 @@ function openOnboarding(edit=false){
     const pack=recommendedPack(selection.role,selection.focus);
     profile=saveProfile({...profile,...selection,activePackId:pack?.id||'',createdAt:profile?.createdAt});
     if(pack)savePersonalFocus(applyPackToFocus(loadPersonalFocus(),pack.term_ids));
-    closeDialog();
     applySupportLanguage();dispatchFocusChanged();renderPathCard();renderPacks();
+    closeDialog();
   });
   refreshRecommendation();
 }
