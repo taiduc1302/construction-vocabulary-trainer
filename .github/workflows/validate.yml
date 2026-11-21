@@ -1,6 +1,7 @@
 name: Validate vocabulary
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -181,7 +182,7 @@ jobs:
             node --check src/register-sw.js
             node --check sw.js
             node --check scripts/regression-browser.mjs
-            node --check scripts/regression-browser.mjs
+            node --check scripts/a11y-browser.mjs
           } 2>&1 | tee audit-logs/syntax.txt
 
       - name: Validate manifest JSON
@@ -232,8 +233,10 @@ jobs:
           fi
 
   browser_regression:
-    name: Browser regression (PR #30)
-    if: github.event_name == 'pull_request' && github.event.pull_request.number == 30
+    name: Browser regression (PWA release)
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && startsWith(github.head_ref, 'fix/pwa-beta-'))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -259,12 +262,16 @@ jobs:
           python3 -m http.server 4173 --bind 127.0.0.1 >audit-logs/browser/server.txt 2>&1 &
           sleep 2
           node scripts/regression-browser.mjs 2>&1 | tee audit-logs/browser/report.txt
+          mkdir -p audit-logs/a11y
+          node scripts/a11y-browser.mjs 2>&1 | tee audit-logs/a11y/report.txt
       - name: Upload browser evidence
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: browser-regression-${{ github.run_id }}
-          path: audit-logs/browser/
+          path: |
+            audit-logs/browser/
+            audit-logs/a11y/
           if-no-files-found: warn
           retention-days: 7
 

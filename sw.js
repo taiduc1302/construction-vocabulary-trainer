@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v23';
+const CACHE='construction-vocab-v24';
 const ASSETS=[
   './',
   './index.html',
@@ -42,7 +42,10 @@ const ASSETS=[
   './src/term-page.css',
   './data/learning-packs.json',
   './manifest.webmanifest',
-  './assets/app-icon.svg'
+  './assets/app-icon.svg',
+  './assets/icons/apple-touch-icon.png',
+  './assets/icons/icon-192.png',
+  './assets/icons/icon-512.png'
 ];
 
 function shouldUseNetworkFirst(request,url){
@@ -57,7 +60,11 @@ async function putInCache(request,response){
 }
 
 async function networkFirst(request){
-  const cached=await caches.match(request);
+  // A public term URL carries ?term=<id>, but the precached HTML has no query.
+  // Match only the same path with its search ignored; never fall back to the
+  // home page for a cached term page.
+  const cached=(await caches.match(request))||
+    (request.mode==='navigate'?await caches.match(request,{ignoreSearch:true}):null);
   try{
     const response=await fetch(request);
     if(response.ok){

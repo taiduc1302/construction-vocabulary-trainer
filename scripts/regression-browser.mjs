@@ -208,6 +208,12 @@ await scenario('Offline PWA reload retains shell and dictionary',async({page,con
   await page.locator('#homeView.active #todayTitle').waitFor({timeout:15000});
   await page.locator('.tabs .tab[data-view="dictionary"]').click();
   await page.locator('#dictionaryView.active .card-grid .term-card').first().waitFor({timeout:15000});
+  // A term's query-bearing URL must resolve its precached HTML, not the home shell.
+  await page.goto(origin+'/term.html?term=duct-bank',{waitUntil:'domcontentloaded',timeout:15000});
+  await page.locator('#termPage h1').waitFor({timeout:15000});
+  assert.match(await page.locator('#termPage h1').innerText(),/duct bank/i);
+  await page.goto(origin+'/?learn=culvert',{waitUntil:'domcontentloaded',timeout:15000});
+  await page.locator('#categoryFilter').waitFor({timeout:15000});
 });
 
 await scenario('390px mobile navigation, touch targets and data controls',async({page})=>{
