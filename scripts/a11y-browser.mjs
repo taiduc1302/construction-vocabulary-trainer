@@ -61,6 +61,8 @@ await scenario('Settings file picker keyboard access and navigation',{},async pa
   await page.locator('.tabs .tab[data-view="dictionary"]').focus();
   await page.keyboard.press('Enter');
   await page.locator('#dictionaryView.active').waitFor();
+  // aria-current is updated in a queued microtask after the view switch.
+  await page.waitForFunction(()=>document.querySelector('.tabs .tab[data-view="dictionary"]')?.getAttribute('aria-current')==='page',{},{timeout:5000});
   assert.equal(await page.locator('.tabs .tab[data-view="dictionary"]').getAttribute('aria-current'),'page');
 });
 await scenario('320px reflow and empty dictionary',{viewport:{width:320,height:700}},async page=>{
