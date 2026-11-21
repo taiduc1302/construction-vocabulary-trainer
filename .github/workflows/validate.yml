@@ -261,9 +261,17 @@ jobs:
           mkdir -p audit-logs/browser
           python3 -m http.server 4173 --bind 127.0.0.1 >audit-logs/browser/server.txt 2>&1 &
           sleep 2
-          node scripts/regression-browser.mjs 2>&1 | tee audit-logs/browser/report.txt
           mkdir -p audit-logs/a11y
+          # Run BOTH suites and retain both outcomes even if the first one fails.
+          set +e
+          node scripts/regression-browser.mjs 2>&1 | tee audit-logs/browser/report.txt
+          regression_exit=${PIPESTATUS[0]}
           node scripts/a11y-browser.mjs 2>&1 | tee audit-logs/a11y/report.txt
+          accessibility_exit=${PIPESTATUS[0]}
+          set -e
+          if [ "$regression_exit" -ne 0 ] || [ "$accessibility_exit" -ne 0 ]; then
+            exit 1
+          fi
       - name: Upload browser evidence
         if: always()
         uses: actions/upload-artifact@v7

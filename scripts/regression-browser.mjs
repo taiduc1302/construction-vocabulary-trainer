@@ -158,7 +158,7 @@ await scenario('Valid import creates restore point, Undo restores profile and ac
   await page.waitForFunction(()=>JSON.parse(localStorage.getItem('construction-vocab-state-v3')||'{}').progress?.['duct-bank']?.correct===19);
   assert.ok(await page.evaluate(()=>localStorage.getItem('construction-vocab-pre-import-snapshot-v1')));
   const button=page.locator('#undoProgressImport');
-  await button.waitFor({state:'attached'});
+  await page.waitForFunction(()=>Boolean(window.ConstructionTrainer)&&!document.querySelector('#undoProgressImport')?.hidden,null,{timeout:15000});
   assert.equal(await button.getAttribute('hidden'),null);
   await page.locator('summary[aria-label="Learning settings and progress data menu"]').click();
   const undoReload=page.waitForEvent('framenavigated',{predicate:frame=>frame===page.mainFrame()});
