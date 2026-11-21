@@ -633,7 +633,13 @@ function answerDrawingQuestion(button,term){
 }
 
 function switchView(view){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));
+  document.querySelectorAll('.tab').forEach(tab=>{
+    const active=tab.dataset.view===view;
+    tab.classList.toggle('active',active);
+    // Keep keyboard and assistive-technology navigation in sync immediately.
+    if(active)tab.setAttribute('aria-current','page');
+    else tab.removeAttribute('aria-current');
+  });
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelector(`#${view}View`).classList.add('active');
   if(view==='practice'&&(!currentQuestion||els.quiz.dataset.answered==='yes'))nextQuestion();

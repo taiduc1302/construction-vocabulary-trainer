@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import assert from 'node:assert/strict';
 
 const root=new URL('../',import.meta.url);
 const read=file=>fs.readFileSync(new URL(file,root),'utf8');
@@ -69,6 +70,43 @@ if(!assetBlock){
     if(asset==='./')continue;
     if(!exists(asset))errors.push(`sw.js precache references missing file ${asset}`);
   }
+}
+
+
+const manifest=JSON.parse(read('manifest.webmanifest'));
+const iconSpecs=[
+  ['assets/icons/icon-192.png',192],['assets/icons/icon-512.png',512],
+  ['assets/icons/apple-touch-icon.png',180]
+];
+const htmlTerm=read('term.html');
+for(const [file,size] of iconSpecs){
+  if(!exists(file)){errors.push('missing mobile app icon '+file);continue;}
+  const bytes=fs.readFileSync(new URL(file,root));
+  const pngSignature=Buffer.from([137,80,78,71,13,10,26,10]);
+  if(!bytes.subarray(0,8).equals(pngSignature)||bytes.length<24){
+    errors.push('invalid PNG signature '+file);continue;
+  }
+  if(bytes.readUInt32BE(16)!==size||bytes.readUInt32BE(20)!==size){
+    errors.push('wrong PNG size '+file+' (expected '+size+'x'+size+')');
+  }
+  if(!sw.includes("'./"+file+"'"))errors.push('mobile app icon not precached: '+file);
+}
+for(const size of [192,512]){
+  const filename='assets/icons/icon-'+size+'.png';
+  if(!manifest.icons?.some(icon=>icon.src===filename&&icon.type==='image/png'&&icon.sizes===size+'x'+size)){
+    errors.push('manifest missing PNG icon '+filename);
+  }
+}
+for(const [page,html] of [['index.html',index],['term.html',htmlTerm]]){
+  if(!html.includes('rel="apple-touch-icon"')||!html.includes('assets/icons/apple-touch-icon.png')){
+    errors.push(page+' missing Apple touch icon');
+  }
+}
+if(manifest.display!=='standalone'||manifest.start_url!=='./'||manifest.scope!=='./'){
+  errors.push('manifest scope, start_url or standalone display changed unexpectedly');
+}
+if(!sw.includes("caches.match(request,{ignoreSearch:true})")){
+  errors.push('offline navigation must support query-bearing term URLs');
 }
 
 for(const ext of ['.html','.js','.css','.json','.webmanifest']){

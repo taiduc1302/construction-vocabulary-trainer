@@ -357,6 +357,8 @@ This prevents incomplete multi-commit states from briefly appearing in the live 
 
 After the Pages site is live and opened once online:
 
+For free beta testing, follow the [PWA beta install and feedback guide](docs/PWA_BETA_GUIDE.md). No app-store account, subscription or native installer is required. Progress lives on the local device — export a backup before reinstalling or changing browser.
+
 - iPhone/iPad: Safari → Share → Add to Home Screen.
 - Android/Chrome: browser menu → Install app / Add to Home screen.
 

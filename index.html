@@ -25,6 +25,7 @@
   <meta name="apple-mobile-web-app-title" content="Construction Vocab" />
   <title>Civil Construction English Trainer</title>
   <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="src/styles.css" />
   <link rel="stylesheet" href="src/visual-sequences.css" />
@@ -48,6 +49,7 @@
       <div class="data-menu-popover">
         <button id="changeLearningPathMenu" class="secondary" type="button">Change learning path</button>
         <button id="toggleMaintainerMode" class="secondary" type="button" aria-pressed="false">Maintainer mode: off</button>
+        <p class="small-muted">Progress stays on this device. Export a JSON backup before reinstalling, clearing data, or switching browsers.</p>
         <button id="exportProgress" class="secondary">Export progress</button>
         <label class="secondary file-label">Import progress<input id="importProgress" type="file" accept="application/json" aria-label="Import progress JSON file" /></label>
         <button id="undoProgressImport" class="secondary" type="button" hidden>Undo last import</button>

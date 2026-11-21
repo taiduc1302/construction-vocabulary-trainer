@@ -152,14 +152,18 @@ await scenario('Valid import creates restore point, Undo restores profile and ac
     profile:localStorage.getItem('construction-vocab-learner-profile-v1'),
     session:localStorage.getItem('construction-vocab-active-session-v1')
   }));
+  const importedReload=page.waitForEvent('framenavigated',{predicate:frame=>frame===page.mainFrame()});
   await upload(page,JSON.stringify(backup({'duct-bank':termRecord(19)})));
+  await importedReload;
   await page.waitForFunction(()=>JSON.parse(localStorage.getItem('construction-vocab-state-v3')||'{}').progress?.['duct-bank']?.correct===19);
   assert.ok(await page.evaluate(()=>localStorage.getItem('construction-vocab-pre-import-snapshot-v1')));
   const button=page.locator('#undoProgressImport');
-  await button.waitFor({state:'attached'});
+  await page.waitForFunction(()=>Boolean(window.ConstructionTrainer)&&!document.querySelector('#undoProgressImport')?.hidden,null,{timeout:15000});
   assert.equal(await button.getAttribute('hidden'),null);
   await page.locator('summary[aria-label="Learning settings and progress data menu"]').click();
+  const undoReload=page.waitForEvent('framenavigated',{predicate:frame=>frame===page.mainFrame()});
   await button.click();
+  await undoReload;
   await page.waitForFunction(()=>JSON.parse(localStorage.getItem('construction-vocab-state-v3')||'{}').progress?.['duct-bank']?.correct!==19);
   assert.equal(await page.evaluate(()=>localStorage.getItem('construction-vocab-state-v3')),old.progress);
   assert.equal(await page.evaluate(()=>localStorage.getItem('construction-vocab-learner-profile-v1')),old.profile);
@@ -208,6 +212,12 @@ await scenario('Offline PWA reload retains shell and dictionary',async({page,con
   await page.locator('#homeView.active #todayTitle').waitFor({timeout:15000});
   await page.locator('.tabs .tab[data-view="dictionary"]').click();
   await page.locator('#dictionaryView.active .card-grid .term-card').first().waitFor({timeout:15000});
+  // A term's query-bearing URL must resolve its precached HTML, not the home shell.
+  await page.goto(origin+'/term.html?term=duct-bank',{waitUntil:'domcontentloaded',timeout:15000});
+  await page.locator('#termPage h1').waitFor({timeout:15000});
+  assert.match(await page.locator('#termPage h1').innerText(),/duct bank/i);
+  await page.goto(origin+'/?learn=culvert',{waitUntil:'domcontentloaded',timeout:15000});
+  await page.waitForFunction(()=>Boolean(window.ConstructionTrainer),null,{timeout:15000});
 });
 
 await scenario('390px mobile navigation, touch targets and data controls',async({page})=>{
