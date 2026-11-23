@@ -130,8 +130,8 @@
     {
       "id": "conduit",
       "added_at": "2026-09-22",
-      "last_requested_at": "2026-10-07",
-      "request_count": 3
+      "last_requested_at": "2026-11-23",
+      "request_count": 4
     },
     {
       "id": "integral-bell-end",
@@ -310,8 +310,8 @@
     {
       "id": "strip-footing",
       "added_at": "2026-09-28",
-      "last_requested_at": "2026-09-28",
-      "request_count": 1
+      "last_requested_at": "2026-11-23",
+      "request_count": 2
     },
     {
       "id": "core-footing",
@@ -1805,6 +1805,306 @@
       "id": "yard-coordinator",
       "added_at": "2026-11-15",
       "last_requested_at": "2026-11-15",
+      "request_count": 1
+    },
+    {
+      "id": "suspended-slab",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "one-way-slab",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "two-way-slab",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "flat-plate",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "flat-slab",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "slab-soffit",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "slab-edge",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "drop-panel",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "slab-thickening",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "composite-slab",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "post-tensioned-slab",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "metal-deck",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "slab-formwork",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "falsework",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "reshoring",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "pour-strip",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "construction-joint",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "cold-joint",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "topping-slab",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "bonded-topping",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "unbonded-topping",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "floor-screed",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "screeding",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "power-trowel",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "float-finish",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "broom-finish",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "concrete-bonding-agent",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "rebar-chair",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "concrete-cover",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "lap-splice",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "rebar-dowel",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "welded-wire-mesh",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "punching-shear",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "shear-stud",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "embedded-conduit",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "conduit-sleeve",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "slab-penetration",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "slab-blockout",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "electrical-floor-box",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "electrical-rough-in",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "conduit-offset",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "pipe-sleeve",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "stepped-footing",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "footing-reinforcement",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "foundation-wall",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "stem-wall",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "footing-keyway",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "under-slab-vapour-barrier",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "slab-depression",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
+      "request_count": 1
+    },
+    {
+      "id": "concrete-vibration",
+      "added_at": "2026-11-23",
+      "last_requested_at": "2026-11-23",
       "request_count": 1
     }
   ]

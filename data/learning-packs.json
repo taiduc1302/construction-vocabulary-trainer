@@ -282,7 +282,18 @@
       "sump-pit",
       "bearing-elevation",
       "working-space",
-      "spalling"
+      "spalling",
+      "stepped-footing",
+      "footing-reinforcement",
+      "foundation-wall",
+      "stem-wall",
+      "footing-keyway",
+      "rebar-chair",
+      "concrete-cover",
+      "rebar-dowel",
+      "lap-splice",
+      "under-slab-vapour-barrier",
+      "slab-depression"
     ]
   },
   {
@@ -570,6 +581,93 @@
       "spotter",
       "dock-edge-protection",
       "yard-coordinator"
+    ]
+  },
+  {
+    "id": "structural-slabs",
+    "title": "Structural Slabs & Shoring",
+    "icon": "🏢",
+    "level": "Advanced",
+    "description": "Suspended slabs, load paths, one-way/two-way systems, deck support, joints, post-tensioning and reinforcement.",
+    "roles": [
+      "estimator",
+      "coordinator",
+      "field",
+      "engineer",
+      "student"
+    ],
+    "focus": "concrete",
+    "featured": false,
+    "term_ids": [
+      "concrete-slab",
+      "suspended-slab",
+      "one-way-slab",
+      "two-way-slab",
+      "flat-plate",
+      "flat-slab",
+      "slab-soffit",
+      "slab-edge",
+      "slab-thickening",
+      "drop-panel",
+      "post-tensioned-slab",
+      "composite-slab",
+      "metal-deck",
+      "slab-formwork",
+      "falsework",
+      "reshoring",
+      "pour-strip",
+      "construction-joint",
+      "cold-joint",
+      "rebar",
+      "rebar-chair",
+      "concrete-cover",
+      "lap-splice",
+      "rebar-dowel",
+      "welded-wire-mesh",
+      "punching-shear",
+      "shear-stud"
+    ]
+  },
+  {
+    "id": "concrete-toppings-and-embeds",
+    "title": "Toppings & Embedded Services",
+    "icon": "🏗️",
+    "level": "Core",
+    "description": "Concrete topping and floor finish methods, slab openings, electrical conduits, sleeves and pre-pour coordination.",
+    "roles": [
+      "estimator",
+      "coordinator",
+      "field",
+      "engineer",
+      "student"
+    ],
+    "focus": "concrete",
+    "featured": false,
+    "term_ids": [
+      "topping-slab",
+      "bonded-topping",
+      "unbonded-topping",
+      "floor-screed",
+      "screeding",
+      "power-trowel",
+      "float-finish",
+      "broom-finish",
+      "concrete-bonding-agent",
+      "embedded-conduit",
+      "conduit-sleeve",
+      "slab-penetration",
+      "slab-blockout",
+      "electrical-floor-box",
+      "electrical-rough-in",
+      "conduit-offset",
+      "pipe-sleeve",
+      "slab-depression",
+      "under-slab-vapour-barrier",
+      "concrete-vibration",
+      "slab-on-grade",
+      "conduit",
+      "concrete-curing",
+      "concrete-slab"
     ]
   }
 ]
