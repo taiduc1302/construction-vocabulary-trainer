@@ -92,6 +92,8 @@ The public Today screen has a **Saw a term at work?** path:
 
 `term.html?term=<term-id>` renders a public card with meaning, visual, Russian/Vietnamese support, work example, estimator/field caution notes, related terms, and an **Add to My Words** action.
 
+**Concept trees:** Starting with `concrete slab`, `footing`, `conduit` and `topping slab`, the term page also shows a navigable tree of types/design variations and separate links for physical parts, optional layers, temporary works and coordinated services. Learn the distinctions instead of treating every related item as a subtype. See [Curated concept tree guide](docs/TERM_TREES.md). The Today screen links directly to these trees and to **suspended slab**. Typing in Dictionary now searches all categories by default and ranks exact terms before broader matches.
+
 ## Intended user workflow
 
 GitHub is the maintenance backend, not the daily user interface.

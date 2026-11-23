@@ -2,6 +2,7 @@ import {renderTermVisual} from './visuals-all.js';
 import {renderConstructionSequence,installSequenceControls} from './visual-sequences.js';
 import {mergeTermMetadata} from './practice-engine.js';
 import {findExactVocabularyTerm} from './term-search.js';
+import {renderTermTrees} from './term-tree.js';
 import {loadPersonalFocus,savePersonalFocus,addCapturedFocus} from './learner-profile.js';
 
 function escapeHtml(value=''){
@@ -9,8 +10,9 @@ function escapeHtml(value=''){
 }
 async function fetchJson(path){const r=await fetch(path);if(!r.ok)throw new Error(`Could not load ${path}`);return r.json()}
 async function init(){
-  const [core,expanded,meta]=await Promise.all([
-    fetchJson('data/terms.json'),fetchJson('data/terms-expansion.json'),fetchJson('data/term-meta.json')
+  const [core,expanded,meta,treeData]=await Promise.all([
+    fetchJson('data/terms.json'),fetchJson('data/terms-expansion.json'),fetchJson('data/term-meta.json'),
+    fetchJson('data/term-trees.json').catch(error=>{console.warn('Term trees unavailable; showing standard term page.',error);return null})
   ]);
   const terms=mergeTermMetadata([...core,...expanded],meta);
   const query=new URLSearchParams(location.search).get('term')||'';
@@ -23,6 +25,9 @@ async function init(){
   }
   document.title=`${term.term} — construction meaning · Civil Construction English`;
   const related=term.related_terms?.map(id=>terms.find(item=>item.id===id)).filter(Boolean).slice(0,8)||[];
+  let treeMarkup='';
+  try{if(treeData)treeMarkup=renderTermTrees(treeData,terms,term.id)}
+  catch(error){console.warn('Cannot render term tree; keeping term card visible.',error)}
   host.innerHTML=`
     <article class="term-public-card">
       <div class="term-public-head">
@@ -32,6 +37,7 @@ async function init(){
       <div class="term-public-visual">${renderTermVisual(term)}</div>
       ${renderConstructionSequence(term.id)}
       <section><h2>What it means</h2><p>${escapeHtml(term.definition_en)}</p></section>
+      ${treeMarkup}
       <div class="term-language-grid">
         <section><h2>Russian</h2><p><strong>${escapeHtml((term.translation_ru||[]).join(', '))}</strong></p><p>${escapeHtml(term.explanation_ru||'')}</p></section>
         <section><h2>Vietnamese</h2><p><strong>${escapeHtml((term.translation_vi||[]).join(', '))}</strong></p></section>

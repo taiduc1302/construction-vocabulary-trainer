@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v24';
+const CACHE='construction-vocab-v25';
 const ASSETS=[
   './',
   './index.html',
@@ -39,8 +39,11 @@ const ASSETS=[
   './src/learning-quality.js',
   './term.html',
   './src/term-page.js',
+  './src/term-tree.js',
   './src/term-page.css',
+  './src/term-tree.css',
   './data/learning-packs.json',
+  './data/term-trees.json',
   './manifest.webmanifest',
   './assets/app-icon.svg',
   './assets/icons/apple-touch-icon.png',

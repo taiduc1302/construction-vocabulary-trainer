@@ -1,0 +1,60 @@
+/* A readable, keyboard-navigable concept tree; the branches are plain links on every screen size. */
+.term-tree-explorer{display:grid;gap:16px;padding:20px;border:1px solid #dce5ea;border-radius:18px;background:#f8fafb}
+.term-tree-explorer h2,.term-tree-explorer h3,.term-tree-explorer h4,.term-tree-explorer p{margin:0}
+.term-tree-explorer h2{font-size:1.18rem}
+.term-tree-intro,.term-tree-description,.term-tree-caution{color:#52636b;font-size:.9rem;line-height:1.55}
+.term-tree-family{display:grid;gap:12px;padding:16px!important;border:1px solid #cfdae0;border-radius:16px;background:#fff}
+.term-tree-family h3{font-size:1.05rem}
+.term-tree-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;padding:6px 4px}
+.term-tree-branches{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.term-tree-branches .term-tree-branches{margin:8px 0 0 14px;padding-inline-start:17px;border-inline-start:2px solid #cbdcd4}
+.term-tree-item{position:relative;min-width:0}
+.term-tree-branches .term-tree-branches>.term-tree-item:before{content:"";position:absolute;top:20px;inset-inline-start:-17px;width:14px;border-top:2px solid #cbdcd4}
+.term-tree-node{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:9px 12px;border:1px solid #d4e2dc;background:#f8fbf9;border-radius:11px;max-width:100%;min-width:0}
+.term-tree-node.is-current{border:2px solid #24785b;background:#ecf7f0;padding:8px 11px}
+.term-tree-node a{font-weight:750;color:#145d44;text-decoration:none;overflow-wrap:anywhere}
+.term-tree-node a:hover,.term-tree-connection-list a:hover{text-decoration:underline}
+.term-tree-node a:focus-visible,.term-tree-connection-list a:focus-visible{outline:3px solid #1b7261;outline-offset:3px;border-radius:3px}
+.term-tree-facet{font-size:.77rem;color:#52656d;flex:0 1 auto}
+.term-tree-connections{display:grid;gap:10px;border-top:1px solid #d9e3e0;padding-top:14px}
+.term-tree-connections h3{font-size:1rem}
+.term-tree-connection-group h4{font-size:.83rem;color:#455964;margin-bottom:7px}
+.term-tree-connection-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:8px}
+.term-tree-connection-list li{display:grid;gap:3px;padding:10px 11px;border:1px solid #dce4e6;background:#fafcfc;border-radius:10px;min-width:0}
+.term-tree-connection-list li.is-current{border:2px solid #24785b;background:#ecf7f0;padding:9px 10px}
+.term-tree-connection-list a{font-weight:700;color:#145d44;text-decoration:none;overflow-wrap:anywhere}
+.term-tree-connection-list span{font-size:.78rem;color:#536771;line-height:1.45}
+.term-tree-caution{padding-top:9px;border-top:1px solid #dbe4e6}
+.term-tree-home{padding:18px;border:1px solid #d6e2df;border-radius:18px;background:#f6faf8;margin:16px 0}
+.term-tree-home h2,.term-tree-home p{margin:0 0 9px}
+.term-tree-home p{color:#52636b}
+.term-tree-home-links{display:flex;flex-wrap:wrap;gap:9px}
+.term-tree-home-links a{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;min-height:44px;border:1px solid #b8d2c5;border-radius:11px;background:#fff;color:#145d44;text-decoration:none;font-weight:650}
+.term-tree-home-links a:hover{text-decoration:underline}
+.term-tree-home-links a:focus-visible{outline:3px solid #1b7261;outline-offset:3px}
+@media(max-width:480px){
+  .term-tree-explorer{padding:12px;gap:12px}
+  .term-tree-family{padding:11px!important}
+  .term-tree-branches .term-tree-branches{margin-inline-start:6px;padding-inline-start:11px}
+  .term-tree-branches .term-tree-branches>.term-tree-item:before{inset-inline-start:-11px;width:9px}
+  .term-tree-node{padding:9px;gap:5px}
+  .term-tree-node.is-current{padding:8px}
+  .term-tree-home-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .term-tree-home-links a{min-width:0;text-align:center;font-size:.87rem}
+}
+@media(prefers-color-scheme:dark){
+  .term-tree-explorer,.term-tree-home{background:#10191b;border-color:#31443b}
+  .term-tree-family{background:#151f24;border-color:#35433e}
+  .term-tree-node{background:#1a2a27;border-color:#3a594b}
+  .term-tree-node.is-current,.term-tree-connection-list li.is-current{background:#18382a;border-color:#78cba5}
+  .term-tree-node a,.term-tree-connection-list a,.term-tree-home-links a{color:#9ee2c5}
+  .term-tree-connection-list li{background:#171f22;border-color:#344540}
+  .term-tree-facet,.term-tree-intro,.term-tree-description,.term-tree-caution,.term-tree-connection-list span,.term-tree-home p{color:#bac9cc}
+  .term-tree-home-links a{background:#173328;border-color:#496b58}
+  .term-tree-branches .term-tree-branches,.term-tree-branches .term-tree-branches>.term-tree-item:before{border-color:#547565}
+}
+@media(forced-colors:active){
+  .term-tree-node.is-current,.term-tree-connection-list li.is-current{outline:2px solid Highlight}
+  .term-tree-branches .term-tree-branches{border-color:CanvasText}
+  .term-tree-home-links a,.term-tree-node,.term-tree-connection-list li{border-color:CanvasText}
+}
