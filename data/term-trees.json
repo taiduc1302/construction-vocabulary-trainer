@@ -1,0 +1,416 @@
+{
+  "version": 1,
+  "note": "The branches organize vocabulary for learning. Some structural variations can overlap. Connections indicate optional parts, features, work methods or coordination items as described; use approved project structural details.",
+  "families": [
+    {
+      "id": "slabs",
+      "title": "Concrete slab systems",
+      "root": "concrete-slab",
+      "description": "Explore slab support and design approaches. A single slab can fit more than one design category; these branches are learning groupings, not mutually exclusive construction types.",
+      "nodes": [
+        {
+          "id": "concrete-slab",
+          "parent": null,
+          "facet": "General term"
+        },
+        {
+          "id": "slab-on-grade",
+          "parent": "concrete-slab",
+          "facet": "Ground-supported"
+        },
+        {
+          "id": "suspended-slab",
+          "parent": "concrete-slab",
+          "facet": "Spans between supports"
+        },
+        {
+          "id": "one-way-slab",
+          "parent": "suspended-slab",
+          "facet": "Load path"
+        },
+        {
+          "id": "two-way-slab",
+          "parent": "suspended-slab",
+          "facet": "Load path"
+        },
+        {
+          "id": "flat-plate",
+          "parent": "suspended-slab",
+          "facet": "Column-supported form"
+        },
+        {
+          "id": "flat-slab",
+          "parent": "suspended-slab",
+          "facet": "Column-supported form"
+        },
+        {
+          "id": "post-tensioned-slab",
+          "parent": "suspended-slab",
+          "facet": "Reinforcement approach"
+        },
+        {
+          "id": "composite-slab",
+          "parent": "suspended-slab",
+          "facet": "Floor system"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "concrete-slab",
+          "id": "rebar",
+          "group": "parts",
+          "label": "Reinforcement, where designed"
+        },
+        {
+          "owner": "concrete-slab",
+          "id": "concrete-cover",
+          "group": "parts",
+          "label": "Cover requirement for embedded steel"
+        },
+        {
+          "owner": "concrete-slab",
+          "id": "slab-edge",
+          "group": "parts",
+          "label": "Edge detail"
+        },
+        {
+          "owner": "concrete-slab",
+          "id": "topping-slab",
+          "group": "parts",
+          "label": "Optional added top layer"
+        },
+        {
+          "owner": "concrete-slab",
+          "id": "embedded-conduit",
+          "group": "coordination",
+          "label": "Optional cast-in electrical route"
+        },
+        {
+          "owner": "concrete-slab",
+          "id": "slab-penetration",
+          "group": "coordination",
+          "label": "Coordinated service opening"
+        },
+        {
+          "owner": "slab-on-grade",
+          "id": "under-slab-vapour-barrier",
+          "group": "parts",
+          "label": "Specified moisture control layer"
+        },
+        {
+          "owner": "slab-on-grade",
+          "id": "slab-preparation",
+          "group": "methods",
+          "label": "Base preparation"
+        },
+        {
+          "owner": "suspended-slab",
+          "id": "slab-soffit",
+          "group": "parts",
+          "label": "Underside / soffit"
+        },
+        {
+          "owner": "suspended-slab",
+          "id": "slab-formwork",
+          "group": "methods",
+          "label": "Temporary forms for cast-in-place work"
+        },
+        {
+          "owner": "suspended-slab",
+          "id": "falsework",
+          "group": "methods",
+          "label": "Engineered temporary support if required"
+        },
+        {
+          "owner": "suspended-slab",
+          "id": "reshoring",
+          "group": "methods",
+          "label": "Temporary support after stripping if required"
+        },
+        {
+          "owner": "suspended-slab",
+          "id": "welded-wire-mesh",
+          "group": "parts",
+          "label": "One possible specified reinforcing system"
+        },
+        {
+          "owner": "flat-slab",
+          "id": "drop-panel",
+          "group": "parts",
+          "label": "Local thickening where detailed"
+        },
+        {
+          "owner": "flat-plate",
+          "id": "punching-shear",
+          "group": "coordination",
+          "label": "Critical structural design check"
+        },
+        {
+          "owner": "composite-slab",
+          "id": "metal-deck",
+          "group": "parts",
+          "label": "Profiled steel deck"
+        },
+        {
+          "owner": "composite-slab",
+          "id": "shear-stud",
+          "group": "parts",
+          "label": "Beam connectors where designed"
+        },
+        {
+          "owner": "post-tensioned-slab",
+          "id": "pour-strip",
+          "group": "methods",
+          "label": "Possible closure sequencing detail"
+        }
+      ]
+    },
+    {
+      "id": "footings",
+      "title": "Foundations and footings",
+      "root": "footing",
+      "description": "A footing transfers loads into the supporting ground. Continuous, isolated, mat and stepped layouts describe different shapes or ground-level arrangements.",
+      "nodes": [
+        {
+          "id": "footing",
+          "parent": null,
+          "facet": "General footing"
+        },
+        {
+          "id": "strip-footing",
+          "parent": "footing",
+          "facet": "Continuous under a wall"
+        },
+        {
+          "id": "pad-footing",
+          "parent": "footing",
+          "facet": "Isolated support"
+        },
+        {
+          "id": "mat-foundation",
+          "parent": "footing",
+          "facet": "Shared raft foundation"
+        },
+        {
+          "id": "stepped-footing",
+          "parent": "strip-footing",
+          "facet": "Possible change in bearing level"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "footing",
+          "id": "footing-excavation",
+          "group": "methods",
+          "label": "Excavation and bearing preparation"
+        },
+        {
+          "owner": "footing",
+          "id": "footing-reinforcement",
+          "group": "parts",
+          "label": "Specified reinforcing steel"
+        },
+        {
+          "owner": "footing",
+          "id": "concrete-cover",
+          "group": "parts",
+          "label": "Required reinforcing cover"
+        },
+        {
+          "owner": "footing",
+          "id": "mud-slab",
+          "group": "methods",
+          "label": "Optional lean concrete working layer"
+        },
+        {
+          "owner": "strip-footing",
+          "id": "rebar-dowel",
+          "group": "parts",
+          "label": "Starter bars for supported wall"
+        },
+        {
+          "owner": "strip-footing",
+          "id": "footing-keyway",
+          "group": "parts",
+          "label": "Specified shear-key detail"
+        },
+        {
+          "owner": "strip-footing",
+          "id": "foundation-wall",
+          "group": "coordination",
+          "label": "Supported wall above footing"
+        },
+        {
+          "owner": "strip-footing",
+          "id": "pipe-sleeve",
+          "group": "coordination",
+          "label": "Approved service crossing, if detailed"
+        },
+        {
+          "owner": "stepped-footing",
+          "id": "bearing-elevation",
+          "group": "coordination",
+          "label": "Different bearing elevations"
+        }
+      ]
+    },
+    {
+      "id": "conduits",
+      "title": "Electrical conduit systems",
+      "root": "conduit",
+      "description": "A conduit is a raceway, while bends, sleeves and boxes are fittings or associated components. Installation methods are not automatically different conduit types.",
+      "nodes": [
+        {
+          "id": "conduit",
+          "parent": null,
+          "facet": "Protective raceway"
+        },
+        {
+          "id": "pvc-db2",
+          "parent": "conduit",
+          "facet": "PVC duct type"
+        },
+        {
+          "id": "embedded-conduit",
+          "parent": "conduit",
+          "facet": "Installation condition"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "conduit",
+          "id": "conduit-bend",
+          "group": "parts",
+          "label": "Route bend / elbow"
+        },
+        {
+          "owner": "conduit",
+          "id": "conduit-adaptor",
+          "group": "parts",
+          "label": "Joining adaptor"
+        },
+        {
+          "owner": "conduit",
+          "id": "conduit-cap-plug",
+          "group": "parts",
+          "label": "Temporary end cap or plug"
+        },
+        {
+          "owner": "conduit",
+          "id": "conduit-offset",
+          "group": "coordination",
+          "label": "Designed change in route"
+        },
+        {
+          "owner": "conduit",
+          "id": "pull-box",
+          "group": "coordination",
+          "label": "Access point for cable installation"
+        },
+        {
+          "owner": "conduit",
+          "id": "mandrel-test",
+          "group": "methods",
+          "label": "Duct proofing if specified"
+        },
+        {
+          "owner": "embedded-conduit",
+          "id": "conduit-sleeve",
+          "group": "coordination",
+          "label": "Protected passage through concrete"
+        },
+        {
+          "owner": "embedded-conduit",
+          "id": "electrical-floor-box",
+          "group": "parts",
+          "label": "Floor outlet / connection box"
+        },
+        {
+          "owner": "embedded-conduit",
+          "id": "electrical-rough-in",
+          "group": "methods",
+          "label": "Pre-pour set-out and inspection"
+        },
+        {
+          "owner": "embedded-conduit",
+          "id": "concrete-cover",
+          "group": "coordination",
+          "label": "Check clearances and concrete cover"
+        }
+      ]
+    },
+    {
+      "id": "toppings",
+      "title": "Concrete toppings and finishes",
+      "root": "topping-slab",
+      "description": "Topping is a separate course over a substrate. Bonded and unbonded construction are distinct; floor screed and final finishes are related methods, not necessarily slab components.",
+      "nodes": [
+        {
+          "id": "topping-slab",
+          "parent": null,
+          "facet": "Additional concrete course"
+        },
+        {
+          "id": "bonded-topping",
+          "parent": "topping-slab",
+          "facet": "Bonded to substrate"
+        },
+        {
+          "id": "unbonded-topping",
+          "parent": "topping-slab",
+          "facet": "Separated from substrate"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "topping-slab",
+          "id": "welded-wire-mesh",
+          "group": "parts",
+          "label": "Reinforcement if detailed"
+        },
+        {
+          "owner": "topping-slab",
+          "id": "floor-screed",
+          "group": "coordination",
+          "label": "Related leveling layer, not always the same system"
+        },
+        {
+          "owner": "topping-slab",
+          "id": "screeding",
+          "group": "methods",
+          "label": "Leveling during placement"
+        },
+        {
+          "owner": "topping-slab",
+          "id": "float-finish",
+          "group": "methods",
+          "label": "Possible specified surface finish"
+        },
+        {
+          "owner": "topping-slab",
+          "id": "power-trowel",
+          "group": "methods",
+          "label": "Machine finish if required"
+        },
+        {
+          "owner": "topping-slab",
+          "id": "broom-finish",
+          "group": "methods",
+          "label": "Textured finish if required"
+        },
+        {
+          "owner": "bonded-topping",
+          "id": "concrete-bonding-agent",
+          "group": "parts",
+          "label": "Bonding treatment only when required by system"
+        },
+        {
+          "owner": "unbonded-topping",
+          "id": "concrete-slab",
+          "group": "coordination",
+          "label": "Supporting substrate below separation layer"
+        }
+      ]
+    }
+  ]
+}

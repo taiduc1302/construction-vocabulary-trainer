@@ -1,3 +1,4 @@
+import './test-term-trees.mjs';
 import './test-structural-vocabulary.mjs';
 import './test-storm-tie-in-vocabulary.mjs';
 import fs from 'node:fs';

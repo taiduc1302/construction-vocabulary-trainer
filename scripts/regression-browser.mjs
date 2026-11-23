@@ -356,6 +356,32 @@ await scenario('English-only learners see no duplicate translation blocks',async
   assert.doesNotMatch(feedback,/\b(?:RU|VI):/,'English-only answers should focus on English');
 });
 
+
+await scenario('Suspended slab is discoverable from Today and Dictionary and shows typed concept trees',async({page})=>{
+  await openApp(page);
+  const card=page.locator('.term-tree-home a[href="term.html?term=suspended-slab"]');
+  await card.waitFor();
+  await card.click();
+  await page.locator('#termPage h1').waitFor();
+  assert.match(await page.locator('#termPage h1').innerText(),/suspended slab/i);
+  const tree=page.locator('.term-tree-explorer');
+  await tree.waitFor();
+  assert.ok(await tree.locator('a[href="term.html?term=one-way-slab"]').count());
+  assert.ok(await tree.locator('a[href="term.html?term=two-way-slab"]').count());
+  assert.ok(await tree.locator('a[href="term.html?term=slab-formwork"]').count());
+  assert.match(await tree.innerText(),/Construction and temporary works/i);
+  await tree.locator('a[href="term.html?term=flat-plate"]').click();
+  assert.match(await page.locator('#termPage h1').innerText(),/flat plate/i);
+  await page.goto(origin+'/',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>Boolean(window.ConstructionTrainer),null,{timeout:15000});
+  await page.locator('.tabs .tab[data-view="dictionary"]').click();
+  await page.locator('#categoryFilter').selectOption('electrical');
+  await page.locator('#searchInput').fill('suspended slab');
+  assert.equal(await page.locator('#categoryFilter').inputValue(),'all','typing should reset stale category restriction');
+  assert.match(await page.locator('#dictionaryGrid .term-title').first().innerText(),/suspended slab/i);
+  assert.ok((await page.locator('#dictionaryLoadMore').innerText()).includes('Showing'));
+},{mobile:true});
+
 await browser.close();
 console.log('BROWSER REGRESSION SUMMARY '+passed+' passed, '+failed+' failed');
 await import('node:fs/promises').then(fs=>fs.writeFile(output+'/results.json',JSON.stringify({passed,failed,results},null,2)));

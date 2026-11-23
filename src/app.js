@@ -162,6 +162,10 @@ function renderDictionary(){
     dictionaryFilterKey=filterKey;
   }
   const matches=terms.filter(t=>(cat==='all'||t.category===cat)&&matchesDictionaryTerm(t,q));
+  if(q){
+    const ranking=new Map(searchVocabulary(matches,q,{limit:20}).map((item,index)=>[item.term.id,index]));
+    matches.sort((a,b)=>(ranking.get(a.id)??Number.POSITIVE_INFINITY)-(ranking.get(b.id)??Number.POSITIVE_INFINITY));
+  }
   const filtered=matches.slice(0,dictionaryVisibleCount);
   els.grid.innerHTML='';
   const tpl=document.querySelector('#termCardTemplate');
@@ -198,7 +202,10 @@ function renderDictionary(){
     const termLink=node.querySelector('.term-page-link');if(termLink)termLink.href=`term.html?term=${encodeURIComponent(t.id)}`;
     els.grid.appendChild(node);
   });
-  if(!filtered.length)els.grid.innerHTML='<div class="empty">No terms match this filter.</div>';
+  if(!filtered.length){
+    els.grid.innerHTML='<div class="empty">No matching terms. Try another spelling or reconnect online and refresh the installed app to load new vocabulary.</div>';
+    if(q&&cat!=='all'&&terms.some(t=>matchesDictionaryTerm(t,q)))els.grid.innerHTML='<div class="empty">This term is outside the selected category. Search across All categories to find it.</div>';
+  }
   const pagination=document.querySelector('#dictionaryLoadMore');
   if(pagination){
     pagination.replaceChildren();
@@ -738,7 +745,11 @@ async function init(){
   renderStats();renderDailyGoal();renderDictionary();renderReviewLists();renderProgressView();renderSessionStatus();
   installSequenceControls(document);
   document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchView(t.dataset.view)));
-  els.search.addEventListener('input',renderDictionary);
+  els.search.addEventListener('input',()=>{
+    // Typing a new dictionary query searches the entire vocabulary; category filters are for browsing.
+    if(els.search.value.trim())els.category.value='all';
+    renderDictionary();
+  });
   els.category.addEventListener('change',renderDictionary);
   document.querySelector('#newQuestion').addEventListener('click',nextQuestion);
   document.querySelector('#quickSession').addEventListener('click',startQuickSession);
