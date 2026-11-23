@@ -26,9 +26,12 @@ function runtimeDependencies(){
   for(const match of index.matchAll(/(?:href|src)=['"]([^'"#]+)['"]/g)){
     const value=match[1];
     if(/^(?:https?:|data:|#)/.test(value))continue;
-    const asset=relativeAsset(value);
+    // A public term URL (?term=...) is the same HTML asset, not a separate precache file.
+    const pathOnly=value.split(/[?#]/,1)[0];
+    if(!pathOnly)continue;
+    const asset=relativeAsset(pathOnly);
     required.add(asset);
-    if(value.endsWith('.js'))queue.push(value.replace(/^\.\//,''));
+    if(pathOnly.endsWith('.js'))queue.push(pathOnly.replace(/^\.\//,''));
   }
 
   const visited=new Set();

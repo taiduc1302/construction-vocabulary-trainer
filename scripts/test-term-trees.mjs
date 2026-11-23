@@ -67,7 +67,7 @@ assert.ok(familiesForTerm(graph,'topping-slab').some(f=>f.id==='slabs'));
 assert.ok(familiesForTerm(graph,'topping-slab').some(f=>f.id==='toppings'),'topping is both an optional layer and a category root');
 assert.ok(familiesForTerm(graph,'slab-formwork').some(f=>f.id==='slabs'),'associated method has family navigation');
 assert.equal(renderTermTrees(graph,terms,'storm-sewer'),'','unmapped terms should retain their original page');
-assert.ok(renderTermTrees(graph,terms,'strip-footing').includes('Footing'),'footings show family tree');
+assert.ok(renderTermTrees(graph,terms,'strip-footing').includes('Foundations and footings'),'footings show family tree');
 assert.ok(renderTermTrees(graph,terms,'embedded-conduit').includes('Electrical conduit systems'));
 
 const corrupted=structuredClone(graph);
