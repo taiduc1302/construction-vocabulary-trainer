@@ -80,7 +80,10 @@
       ],
       "aliases_en": [
         "duct",
-        "electrical duct"
+        "electrical duct",
+        "conduits",
+        "electrical conduits",
+        "electrical raceway"
       ]
     },
     "backfill": {
@@ -402,7 +405,9 @@
     "concrete-slab": {
       "aliases_en": [
         "slab",
-        "concrete floor slab"
+        "concrete floor slab",
+        "slab of concrete",
+        "cast concrete slab"
       ]
     },
     "select-backfill": {
@@ -1141,6 +1146,362 @@
         "CB lateral",
         "catch basin lateral",
         "CB outlet lead"
+      ]
+    },
+    "suspended-slab": {
+      "aliases_en": [
+        "structural slab",
+        "raised concrete slab",
+        "elevated concrete slab"
+      ]
+    },
+    "one-way-slab": {
+      "aliases_en": [
+        "one way slab",
+        "one-direction slab"
+      ]
+    },
+    "two-way-slab": {
+      "aliases_en": [
+        "two way slab",
+        "two-direction slab"
+      ]
+    },
+    "flat-plate": {
+      "aliases_en": [
+        "beamless flat plate",
+        "uniform flat slab"
+      ]
+    },
+    "flat-slab": {
+      "aliases_en": [
+        "flat slab with drop panels",
+        "column-supported slab"
+      ]
+    },
+    "slab-soffit": {
+      "aliases_en": [
+        "underside of slab",
+        "bottom of slab",
+        "slab underside"
+      ]
+    },
+    "slab-edge": {
+      "aliases_en": [
+        "slab perimeter",
+        "slab edge form",
+        "edge of slab"
+      ]
+    },
+    "drop-panel": {
+      "aliases_en": [
+        "column drop panel",
+        "slab drop"
+      ]
+    },
+    "slab-thickening": {
+      "aliases_en": [
+        "thickened slab",
+        "local slab thickening"
+      ]
+    },
+    "composite-slab": {
+      "aliases_en": [
+        "composite concrete slab",
+        "composite deck slab"
+      ]
+    },
+    "post-tensioned-slab": {
+      "aliases_en": [
+        "PT slab",
+        "post tension slab",
+        "post-tension concrete"
+      ]
+    },
+    "metal-deck": {
+      "aliases_en": [
+        "steel deck",
+        "steel decking",
+        "profiled metal deck"
+      ]
+    },
+    "slab-formwork": {
+      "aliases_en": [
+        "floor formwork",
+        "soffit formwork",
+        "form deck"
+      ]
+    },
+    "falsework": {
+      "aliases_en": [
+        "temporary falsework",
+        "temporary support frame"
+      ]
+    },
+    "reshoring": {
+      "aliases_en": [
+        "re-shoring",
+        "backpropping",
+        "back propping"
+      ]
+    },
+    "pour-strip": {
+      "aliases_en": [
+        "closure strip",
+        "slab closure pour",
+        "closure pour strip"
+      ]
+    },
+    "construction-joint": {
+      "aliases_en": [
+        "daywork joint",
+        "planned pour joint"
+      ]
+    },
+    "cold-joint": {
+      "aliases_en": [
+        "unplanned cold joint",
+        "concrete cold joint"
+      ]
+    },
+    "topping-slab": {
+      "aliases_en": [
+        "concrete topping",
+        "topping concrete",
+        "floor topping",
+        "topping"
+      ]
+    },
+    "bonded-topping": {
+      "aliases_en": [
+        "bonded concrete topping",
+        "bonded overlay"
+      ]
+    },
+    "unbonded-topping": {
+      "aliases_en": [
+        "unbonded concrete topping",
+        "floating topping"
+      ]
+    },
+    "floor-screed": {
+      "aliases_en": [
+        "screed layer",
+        "cement screed",
+        "floor leveling screed"
+      ]
+    },
+    "screeding": {
+      "aliases_en": [
+        "strike off",
+        "strike-off",
+        "concrete screeding"
+      ]
+    },
+    "power-trowel": {
+      "aliases_en": [
+        "power troweling",
+        "machine trowel",
+        "power float"
+      ]
+    },
+    "float-finish": {
+      "aliases_en": [
+        "floated finish",
+        "bull float finish"
+      ]
+    },
+    "broom-finish": {
+      "aliases_en": [
+        "broomed finish",
+        "brush finish",
+        "non-slip broom finish"
+      ]
+    },
+    "concrete-bonding-agent": {
+      "aliases_en": [
+        "bond coat",
+        "bonding slurry",
+        "concrete primer"
+      ]
+    },
+    "rebar-chair": {
+      "aliases_en": [
+        "bar chair",
+        "rebar spacer",
+        "reinforcement chair"
+      ]
+    },
+    "concrete-cover": {
+      "aliases_en": [
+        "rebar cover",
+        "clear cover",
+        "cover to reinforcement"
+      ]
+    },
+    "lap-splice": {
+      "aliases_en": [
+        "rebar lap",
+        "overlap splice",
+        "bar lap"
+      ]
+    },
+    "rebar-dowel": {
+      "aliases_en": [
+        "starter bar",
+        "rebar starter",
+        "reinforcement dowel"
+      ]
+    },
+    "welded-wire-mesh": {
+      "aliases_en": [
+        "WWM",
+        "WWR",
+        "welded wire reinforcement",
+        "wire mesh"
+      ]
+    },
+    "punching-shear": {
+      "aliases_en": [
+        "two-way shear",
+        "column punching"
+      ]
+    },
+    "shear-stud": {
+      "aliases_en": [
+        "headed shear stud",
+        "shear connector stud"
+      ]
+    },
+    "embedded-conduit": {
+      "aliases_en": [
+        "cast-in conduit",
+        "conduit in slab",
+        "slab conduit"
+      ]
+    },
+    "conduit-sleeve": {
+      "aliases_en": [
+        "electrical sleeve",
+        "conduit wall sleeve"
+      ]
+    },
+    "slab-penetration": {
+      "aliases_en": [
+        "floor penetration",
+        "slab opening",
+        "service penetration"
+      ]
+    },
+    "slab-blockout": {
+      "aliases_en": [
+        "formed opening",
+        "blockout box",
+        "slab block-out"
+      ]
+    },
+    "electrical-floor-box": {
+      "aliases_en": [
+        "floor outlet box",
+        "recessed floor box",
+        "floor poke-through box"
+      ]
+    },
+    "electrical-rough-in": {
+      "aliases_en": [
+        "electrical first fix",
+        "electrical pre-pour",
+        "rough-in conduits"
+      ]
+    },
+    "conduit-offset": {
+      "aliases_en": [
+        "offset bend",
+        "conduit dogleg",
+        "duct offset"
+      ]
+    },
+    "pipe-sleeve": {
+      "aliases_en": [
+        "plumbing sleeve",
+        "wall pipe sleeve",
+        "slab pipe sleeve"
+      ]
+    },
+    "stepped-footing": {
+      "aliases_en": [
+        "step footing",
+        "stepped strip footing",
+        "footing steps"
+      ]
+    },
+    "footing-reinforcement": {
+      "aliases_en": [
+        "footing rebar",
+        "foundation reinforcement",
+        "footing steel"
+      ]
+    },
+    "foundation-wall": {
+      "aliases_en": [
+        "basement foundation wall",
+        "concrete foundation wall"
+      ]
+    },
+    "stem-wall": {
+      "aliases_en": [
+        "foundation stem wall",
+        "short foundation wall"
+      ]
+    },
+    "footing-keyway": {
+      "aliases_en": [
+        "shear key",
+        "footing shear key",
+        "keyed footing"
+      ]
+    },
+    "under-slab-vapour-barrier": {
+      "aliases_en": [
+        "vapor barrier",
+        "vapour retarder",
+        "under slab vapor barrier",
+        "poly under slab"
+      ]
+    },
+    "slab-depression": {
+      "aliases_en": [
+        "depressed slab",
+        "slab recess",
+        "recessed slab"
+      ]
+    },
+    "concrete-vibration": {
+      "aliases_en": [
+        "concrete consolidation",
+        "internal vibrator",
+        "poker vibrator"
+      ]
+    },
+    "strip-footing": {
+      "aliases_en": [
+        "continuous footing",
+        "continuous strip footing",
+        "wall footing",
+        "wall strip footing"
+      ]
+    },
+    "rebar": {
+      "aliases_en": [
+        "reinforcing bar",
+        "reinforcing steel",
+        "reinforcement bar"
+      ]
+    },
+    "concrete-curing": {
+      "aliases_en": [
+        "curing concrete",
+        "curing of concrete"
       ]
     }
   }

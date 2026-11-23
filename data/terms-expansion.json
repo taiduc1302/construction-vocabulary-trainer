@@ -8407,5 +8407,1306 @@
       "A flexible coupling is not automatically acceptable in every buried location; verify shield, shear resistance, approvals and manufacturer limits."
     ],
     "difficulty": 3
+  },
+  {
+    "id": "suspended-slab",
+    "term": "suspended slab",
+    "pronunciation": "suh-SPEN-did SLAB",
+    "category": "concrete",
+    "definition_en": "A structural concrete slab spanning between beams, walls or columns rather than bearing directly on the ground.",
+    "explanation_ru": "Несущая плита перекрытия опирается на балки, стены или колонны и работает на изгиб между опорами; не путать с плитой по грунту.",
+    "translation_ru": [
+      "подвесная (межэтажная) железобетонная плита"
+    ],
+    "translation_vi": [
+      "sàn bê tông cốt thép treo"
+    ],
+    "example_en": "Allow for formwork, rebar and temporary support below the suspended slab.",
+    "scenario": "A floor is cast above the ground level with an open space under it and must transfer loads to structural supports.",
+    "visual": "Section showing elevated concrete floor supported by two columns and open space below.",
+    "related_terms": [
+      "concrete-slab",
+      "slab-on-grade",
+      "slab-formwork",
+      "reshoring"
+    ],
+    "common_mistakes": [
+      "Do not measure suspended floor concrete from the ground slab schedule; review thickness, spans and support details."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "one-way-slab",
+    "term": "one-way slab",
+    "pronunciation": "WUN-way SLAB",
+    "category": "concrete",
+    "definition_en": "A slab system designed to transfer most bending load in one principal direction between parallel support lines.",
+    "explanation_ru": "Плита передаёт основную изгибающую нагрузку между двумя линиями опирания; направление рабочей арматуры определяют расчётом и чертежами.",
+    "translation_ru": [
+      "плита, работающая преимущественно в одном направлении"
+    ],
+    "translation_vi": [
+      "sàn bê tông làm việc một phương"
+    ],
+    "example_en": "Identify the one-way slab reinforcement direction before preparing the bar takeoff.",
+    "scenario": "A rectangular floor panel spans mainly between two opposite walls with primary bars across the shorter span.",
+    "visual": "Plan showing two support lines, primary reinforcement across the span and secondary distribution bars.",
+    "related_terms": [
+      "suspended-slab",
+      "two-way-slab",
+      "rebar"
+    ],
+    "common_mistakes": [
+      "Do not determine reinforcement direction from panel shape alone; follow structural design."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "two-way-slab",
+    "term": "two-way slab",
+    "pronunciation": "TOO-way SLAB",
+    "category": "concrete",
+    "definition_en": "A slab supported so that bending and load transfer occur significantly in two perpendicular directions.",
+    "explanation_ru": "Плита работает на изгиб по двум направлениям; сетка и верхняя/нижняя арматура назначаются инженером.",
+    "translation_ru": [
+      "плита, работающая в двух направлениях"
+    ],
+    "translation_vi": [
+      "sàn bê tông làm việc hai phương"
+    ],
+    "example_en": "Check top and bottom bars in both directions for the two-way slab.",
+    "scenario": "A supported floor panel distributes load to surrounding supports along both orthogonal axes.",
+    "visual": "Plan of four-sided supported slab with perpendicular reinforcing directions.",
+    "related_terms": [
+      "suspended-slab",
+      "one-way-slab",
+      "flat-plate"
+    ],
+    "common_mistakes": [
+      "Not every four-sided slab is automatically two-way; geometry, supports and analysis control."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "flat-plate",
+    "term": "flat plate",
+    "pronunciation": "FLAT PLAYT",
+    "category": "concrete",
+    "definition_en": "A reinforced concrete slab of generally uniform thickness supported directly on columns without beams or drop panels.",
+    "explanation_ru": "Безбалочная плита обычно одинаковой толщины опирается непосредственно на колонны; проверяют продавливание вокруг колонн.",
+    "translation_ru": [
+      "безбалочная плита постоянной толщины без капителей"
+    ],
+    "translation_vi": [
+      "sàn phẳng không dầm không mũ cột"
+    ],
+    "example_en": "Review column punching shear reinforcement for the flat plate.",
+    "scenario": "An elevated floor bears directly on columns and has no thickened areas beneath the slab at those supports.",
+    "visual": "Section of uniform-thickness floor resting directly on columns.",
+    "related_terms": [
+      "flat-slab",
+      "punching-shear",
+      "suspended-slab"
+    ],
+    "common_mistakes": [
+      "Flat plate is not the same as flat slab with drop panels."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "flat-slab",
+    "term": "flat slab",
+    "pronunciation": "FLAT SLAB",
+    "category": "concrete",
+    "definition_en": "A two-way slab supported directly on columns, commonly using drop panels or column capitals to improve performance.",
+    "explanation_ru": "Безбалочное перекрытие может иметь утолщения вокруг колонн; в терминологии ACI это отличается от flat plate без утолщений.",
+    "translation_ru": [
+      "безбалочная плита с капителями или утолщениями у колонн"
+    ],
+    "translation_vi": [
+      "sàn phẳng có mũ cột hoặc phần dày tăng cường"
+    ],
+    "example_en": "Measure the drop panels separately from the nominal flat slab thickness.",
+    "scenario": "The slab above a column becomes thicker around its support to reduce shear demand.",
+    "visual": "Section of floor with local drop panel over column.",
+    "related_terms": [
+      "flat-plate",
+      "drop-panel",
+      "punching-shear"
+    ],
+    "common_mistakes": [
+      "Do not assume identical slab depth over the full floor if drop panels are indicated."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "slab-soffit",
+    "term": "slab soffit",
+    "pronunciation": "SLAB SOF-it",
+    "category": "concrete",
+    "definition_en": "The underside of a concrete slab, used for formwork, finishing, clearance and elevation references.",
+    "explanation_ru": "Soffit — нижняя плоскость бетонной плиты; её отметка часто отличается от отметки верха на толщину плиты.",
+    "translation_ru": [
+      "нижняя поверхность плиты перекрытия"
+    ],
+    "translation_vi": [
+      "mặt dưới sàn bê tông"
+    ],
+    "example_en": "Confirm the slab soffit elevation before setting overhead conduit hangers.",
+    "scenario": "A worker measures the elevation beneath a raised floor where temporary forms are to be stripped.",
+    "visual": "Cross section with an arrow to the underside of a suspended floor.",
+    "related_terms": [
+      "suspended-slab",
+      "slab-formwork",
+      "slab-edge"
+    ],
+    "common_mistakes": [
+      "Do not confuse soffit elevation with top of slab elevation."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "slab-edge",
+    "term": "slab edge",
+    "pronunciation": "SLAB EJ",
+    "category": "concrete",
+    "definition_en": "The perimeter or exposed boundary of a concrete floor slab, often requiring edge forms, reinforcement and details.",
+    "explanation_ru": "Край плиты требует торцевой опалубки, проверки арматуры, положения закладных и геометрии свеса.",
+    "translation_ru": [
+      "торец или край бетонной плиты"
+    ],
+    "translation_vi": [
+      "mép sàn bê tông"
+    ],
+    "example_en": "Include slab edge formwork along exposed balconies and openings.",
+    "scenario": "The floor ends at a free perimeter where concrete must be contained by an edge form.",
+    "visual": "Section showing concrete slab terminating at an edge with a vertical perimeter form.",
+    "related_terms": [
+      "suspended-slab",
+      "slab-formwork",
+      "concrete-cover"
+    ],
+    "common_mistakes": [
+      "A slab edge is not automatically a thickened edge; measure per structural detail."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "drop-panel",
+    "term": "drop panel",
+    "pronunciation": "DROP PAN-ul",
+    "category": "concrete",
+    "definition_en": "A local thickening of a flat slab around a column that helps resist bending and punching shear.",
+    "explanation_ru": "Утолщение плиты вокруг колонны повышает жёсткость и сопротивление продавливанию; объём и опалубку считают по конкретному узлу.",
+    "translation_ru": [
+      "локальное утолщение плиты у колонны"
+    ],
+    "translation_vi": [
+      "vùng sàn dày tăng cường quanh cột"
+    ],
+    "example_en": "Include the extra concrete volume and soffit formwork for each drop panel.",
+    "scenario": "A square thickened area projects below the surrounding floor close to a column.",
+    "visual": "Column and slab section with a rectangular thickened panel beneath the slab.",
+    "related_terms": [
+      "flat-slab",
+      "flat-plate",
+      "punching-shear"
+    ],
+    "common_mistakes": [
+      "Do not count a drop panel twice in the base slab concrete volume."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "slab-thickening",
+    "term": "slab thickening",
+    "pronunciation": "SLAB THIK-uh-ning",
+    "category": "concrete",
+    "definition_en": "A local increase in slab depth at an edge, support, equipment area or other location shown on the structural drawings.",
+    "explanation_ru": "Локально увеличенная толщина плиты у края, опоры или нагрузки; учитывать разницу объёма, опалубку и арматуру.",
+    "translation_ru": [
+      "локальное утолщение бетонной плиты"
+    ],
+    "translation_vi": [
+      "phần sàn bê tông tăng chiều dày"
+    ],
+    "example_en": "Check the slab thickening under the equipment base against the typical slab depth.",
+    "scenario": "One region of a floor is deeper than adjacent areas to accommodate a concentrated load.",
+    "visual": "Section of floor with a short thicker zone and unchanged top elevation.",
+    "related_terms": [
+      "concrete-slab",
+      "drop-panel",
+      "slab-edge"
+    ],
+    "common_mistakes": [
+      "Thickening is not necessarily a drop panel and is not measured as a second full slab."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "composite-slab",
+    "term": "composite slab",
+    "pronunciation": "kum-POZ-it SLAB",
+    "category": "concrete",
+    "definition_en": "A concrete floor slab acting together with a profiled steel deck or another structural component through a designed composite mechanism.",
+    "explanation_ru": "В композитном перекрытии бетон и стальной профнастил работают совместно согласно проекту; профиль настила влияет на расход бетона.",
+    "translation_ru": [
+      "композитная плита по профилированному металлическому настилу"
+    ],
+    "translation_vi": [
+      "sàn liên hợp bê tông và tôn định hình"
+    ],
+    "example_en": "Confirm deck profile and slab thickness when calculating the composite slab concrete volume.",
+    "scenario": "Fresh concrete is placed on profiled decking which participates in the designed floor system.",
+    "visual": "Section showing concrete above corrugated steel deck, with supports below.",
+    "related_terms": [
+      "metal-deck",
+      "shear-stud",
+      "suspended-slab"
+    ],
+    "common_mistakes": [
+      "A metal deck used only as stay-in-place formwork does not automatically act compositely."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "post-tensioned-slab",
+    "term": "post-tensioned slab",
+    "pronunciation": "POST TEN-shund SLAB",
+    "category": "concrete",
+    "definition_en": "A concrete slab reinforced with tendons tensioned after concrete gains specified strength to introduce compressive force.",
+    "explanation_ru": "В постнапряжённой плите канаты напрягают после набора заданной прочности бетона; анкеры и трассы канатов нельзя повреждать.",
+    "translation_ru": [
+      "постнапряжённая железобетонная плита"
+    ],
+    "translation_vi": [
+      "sàn bê tông dự ứng lực căng sau"
+    ],
+    "example_en": "Allow for tendon stressing and special pour-strip coordination in the post-tensioned slab.",
+    "scenario": "High-strength steel tendons follow a designed profile inside a supported concrete floor and are stressed after casting.",
+    "visual": "Section showing draped tendons across a suspended floor and anchored slab ends.",
+    "related_terms": [
+      "suspended-slab",
+      "pour-strip",
+      "construction-joint"
+    ],
+    "common_mistakes": [
+      "Never drill, core or cut a post-tensioned floor without locating tendons and authorization."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "metal-deck",
+    "term": "metal deck",
+    "pronunciation": "MET-ul DEK",
+    "category": "concrete",
+    "definition_en": "Profiled steel decking that supports wet concrete during placement and may form part of a designed composite floor system.",
+    "explanation_ru": "Профилированный стальной настил поддерживает свежеуложенный бетон; несущая роль после твердения зависит от расчёта и узла.",
+    "translation_ru": [
+      "металлический профилированный настил перекрытия"
+    ],
+    "translation_vi": [
+      "tôn sàn định hình"
+    ],
+    "example_en": "Include metal deck area, closures and supports in the elevated slab estimate.",
+    "scenario": "Ribbed steel sheets span between beams and receive fresh concrete before floor finishing.",
+    "visual": "Profiled steel deck shown as repeated ribs under a concrete layer.",
+    "related_terms": [
+      "composite-slab",
+      "slab-formwork",
+      "shear-stud"
+    ],
+    "common_mistakes": [
+      "Do not treat all corrugated decking as composite or ignore temporary pour-stage capacity."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "slab-formwork",
+    "term": "slab formwork",
+    "pronunciation": "SLAB FORM-wurk",
+    "category": "concrete",
+    "definition_en": "Temporary forms and panels that shape and support cast-in-place concrete slabs until they can carry the specified loads.",
+    "explanation_ru": "Опалубка перекрытия включает щиты, балки и подпорки; сроки снятия и последовательность зависят от прочности и проекта.",
+    "translation_ru": [
+      "опалубка плиты перекрытия"
+    ],
+    "translation_vi": [
+      "ván khuôn sàn bê tông"
+    ],
+    "example_en": "Price the slab formwork area including drops, openings and edges.",
+    "scenario": "Plywood form panels and props support a raised concrete floor during placement.",
+    "visual": "Section showing temporary soffit form deck carried by vertical props.",
+    "related_terms": [
+      "suspended-slab",
+      "falsework",
+      "reshoring"
+    ],
+    "common_mistakes": [
+      "Formwork stripping dates are structural decisions, not simply a fixed number of days."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "falsework",
+    "term": "falsework",
+    "pronunciation": "FAWLS-wurk",
+    "category": "concrete",
+    "definition_en": "Temporary structural support erected to carry permanent works, formwork or partially completed construction until self-supporting.",
+    "explanation_ru": "Временные опоры и несущая система для опалубки либо незавершённых конструкций; требуют расчёта и контроля монтажа.",
+    "translation_ru": [
+      "временные поддерживающие конструкции (ложные опоры)"
+    ],
+    "translation_vi": [
+      "hệ chống đỡ tạm cho kết cấu"
+    ],
+    "example_en": "Include engineered falsework and its removal for the elevated concrete pour.",
+    "scenario": "A temporary tower frame carries a slab form system above a cleared work area.",
+    "visual": "Section showing braced temporary tower supporting slab forms.",
+    "related_terms": [
+      "slab-formwork",
+      "reshoring",
+      "suspended-slab"
+    ],
+    "common_mistakes": [
+      "Falsework must not be assumed safe based only on scaffold appearance; follow temporary works design."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "reshoring",
+    "term": "reshoring",
+    "pronunciation": "ree-SHOR-ing",
+    "category": "concrete",
+    "definition_en": "Temporary support placed under concrete floors after initial formwork is stripped to control construction-stage loads and load transfer.",
+    "explanation_ru": "После снятия первоначальной опалубки устанавливают временные стойки под плитой для распределения строительной нагрузки между этажами.",
+    "translation_ru": [
+      "повторная установка стоек под перекрытием"
+    ],
+    "translation_vi": [
+      "chống lại sàn sau tháo cốp pha"
+    ],
+    "example_en": "Check reshoring requirements before sequencing the next floor pour.",
+    "scenario": "Lower-level floors receive temporary posts after their original forms are removed so upper-level construction can continue.",
+    "visual": "Two stacked floors with temporary props between them.",
+    "related_terms": [
+      "falsework",
+      "suspended-slab",
+      "slab-formwork"
+    ],
+    "common_mistakes": [
+      "Reshoring is not interchangeable with first-pour formwork; confirm the engineer's sequence and capacities."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pour-strip",
+    "term": "pour strip",
+    "pronunciation": "POR STRIP",
+    "category": "concrete",
+    "definition_en": "A deliberately left gap between staged slab pours, later closed with concrete after specified movement, stressing or sequencing.",
+    "explanation_ru": "Полоса в перекрытии, оставляемая открытой между захватками и бетонируемая позже согласно последовательности и проекту.",
+    "translation_ru": [
+      "полоса замоноличивания между этапами бетонирования"
+    ],
+    "translation_vi": [
+      "dải bê tông đổ bù sau"
+    ],
+    "example_en": "Schedule the pour strip closure after the specified stressing or movement period.",
+    "scenario": "Two adjacent concrete floor placements are separated by a narrow temporary gap that is filled later.",
+    "visual": "Plan of slab showing two pours with an unfilled narrow strip and later closure.",
+    "related_terms": [
+      "post-tensioned-slab",
+      "construction-joint",
+      "suspended-slab"
+    ],
+    "common_mistakes": [
+      "A pour strip is not an accidental cold joint; closure timing and reinforcing details must be designed."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "construction-joint",
+    "term": "construction joint",
+    "pronunciation": "kun-STRUK-shun JOYNT",
+    "category": "concrete",
+    "definition_en": "An intentional interface between concrete placements formed to permit staged construction at a designed location.",
+    "explanation_ru": "Запланированная граница между этапами бетонирования; требования к передаче усилий, подготовке поверхности и арматуре задают чертежи.",
+    "translation_ru": [
+      "рабочий шов бетонирования"
+    ],
+    "translation_vi": [
+      "mạch ngừng thi công bê tông"
+    ],
+    "example_en": "Locate each construction joint as indicated on the structural pour sequence.",
+    "scenario": "The crew stops a slab pour at a formed boundary and resumes against the hardened concrete later.",
+    "visual": "Section of two concrete pours separated by a deliberate vertical joint with connecting bars.",
+    "related_terms": [
+      "cold-joint",
+      "pour-strip",
+      "contraction-joint"
+    ],
+    "common_mistakes": [
+      "A construction joint is not automatically an expansion or isolation joint."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "cold-joint",
+    "term": "cold joint",
+    "pronunciation": "KOHLD JOYNT",
+    "category": "concrete",
+    "definition_en": "An interface where a delay between concrete placements prevents the fresh portions from merging normally into one continuous mass.",
+    "explanation_ru": "Холодный шов возникает при чрезмерном перерыве в укладке; его состояние и восстановление должны оцениваться по требованиям проекта.",
+    "translation_ru": [
+      "холодный шов бетонирования"
+    ],
+    "translation_vi": [
+      "mạch ngừng nguội bê tông"
+    ],
+    "example_en": "Report an unintended cold joint if concrete placement was interrupted beyond the permitted interval.",
+    "scenario": "A delayed second batch is placed against material that has already begun setting before the planned placement is complete.",
+    "visual": "Section highlighting an unplanned boundary between two lifts of concrete.",
+    "related_terms": [
+      "construction-joint",
+      "concrete-curing",
+      "concrete"
+    ],
+    "common_mistakes": [
+      "Do not call every planned construction joint a defect; cold joints depend on placement timing and bond."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "topping-slab",
+    "term": "topping slab",
+    "pronunciation": "TOP-ing SLAB",
+    "category": "concrete",
+    "definition_en": "A separate concrete layer placed over a base slab or precast floor, often to achieve finish, levels, slope or a specified composite action.",
+    "explanation_ru": "Дополнительный слой бетона поверх основания; может быть связанным с нижней плитой или отделённым от неё, а конструктивную роль определяет проект.",
+    "translation_ru": [
+      "верхний слой бетона поверх несущей плиты"
+    ],
+    "translation_vi": [
+      "lớp bê tông phủ mặt sàn"
+    ],
+    "example_en": "Measure the topping slab separately from the supporting structural slab.",
+    "scenario": "A relatively thin second concrete layer is placed over a cured base floor to create a finished elevation.",
+    "visual": "Section showing a distinct upper concrete layer over a base slab.",
+    "related_terms": [
+      "concrete-slab",
+      "bonded-topping",
+      "unbonded-topping"
+    ],
+    "common_mistakes": [
+      "Do not assume topping is structural or monolithic with the base; check bond, thickness, reinforcement and joints."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "bonded-topping",
+    "term": "bonded topping",
+    "pronunciation": "BON-did TOP-ing",
+    "category": "concrete",
+    "definition_en": "A topping layer intentionally bonded to prepared underlying concrete to act together at their interface.",
+    "explanation_ru": "Слой topping, связанный с подготовленной бетонной основой; сцепление зависит от подготовки, состояния поверхности и материалов.",
+    "translation_ru": [
+      "сцепленный верхний слой бетона"
+    ],
+    "translation_vi": [
+      "lớp bê tông phủ bám dính nền"
+    ],
+    "example_en": "Allow for surface preparation and bonding work below the bonded topping.",
+    "scenario": "A cleaned roughened floor receives a second pour intended to adhere firmly to the base concrete.",
+    "visual": "Section of two concrete layers bonded across a textured contact surface.",
+    "related_terms": [
+      "topping-slab",
+      "concrete-bonding-agent",
+      "unbonded-topping"
+    ],
+    "common_mistakes": [
+      "Bond strength is not guaranteed by adding a bonding product; follow the specified substrate preparation and testing."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "unbonded-topping",
+    "term": "unbonded topping",
+    "pronunciation": "un-BON-did TOP-ing",
+    "category": "concrete",
+    "definition_en": "A topping slab separated from its base by a bond-breaking or isolating layer so the layers can move independently.",
+    "explanation_ru": "Topping по разделительному слою не сцепляется с нижней плитой; собственная толщина, армирование и швы критичны.",
+    "translation_ru": [
+      "несцепленный верхний слой бетона"
+    ],
+    "translation_vi": [
+      "lớp bê tông phủ tách lớp nền"
+    ],
+    "example_en": "Include the specified separation membrane below the unbonded topping.",
+    "scenario": "A second concrete layer is placed over a slip sheet rather than bonded directly to the supporting slab.",
+    "visual": "Section showing topping separated from base slab by a thin membrane.",
+    "related_terms": [
+      "topping-slab",
+      "bonded-topping",
+      "under-slab-vapour-barrier"
+    ],
+    "common_mistakes": [
+      "Do not design or estimate unbonded topping using thickness rules for bonded topping."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "floor-screed",
+    "term": "floor screed",
+    "pronunciation": "FLOR SKREED",
+    "category": "concrete",
+    "definition_en": "A cementitious or proprietary leveling layer applied to a floor substrate to achieve specified elevation or flatness before a finish.",
+    "explanation_ru": "Стяжка пола служит для выравнивания и формирования нужной отметки; не всегда является несущей бетонной плитой.",
+    "translation_ru": [
+      "выравнивающая цементная стяжка пола"
+    ],
+    "translation_vi": [
+      "lớp vữa cán phẳng sàn"
+    ],
+    "example_en": "Allow for floor screed thickness variations at door thresholds.",
+    "scenario": "A thin leveling material is spread across a base floor before tiles or other finishes are installed.",
+    "visual": "Section showing a leveling layer over a rough base slab beneath floor finish.",
+    "related_terms": [
+      "topping-slab",
+      "screeding",
+      "concrete-slab"
+    ],
+    "common_mistakes": [
+      "Floor screed is not automatically a structural concrete topping or the final wear surface."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "screeding",
+    "term": "screeding",
+    "pronunciation": "SKREE-ding",
+    "category": "concrete",
+    "definition_en": "The operation of striking off freshly placed concrete or screed to the required level and profile with a straightedge or screed machine.",
+    "explanation_ru": "Разравнивание свежей смеси правилом или виброрейкой по маякам и отметкам до окончательной отделки.",
+    "translation_ru": [
+      "разравнивание бетона или стяжки по отметке"
+    ],
+    "translation_vi": [
+      "cán phẳng mặt bê tông"
+    ],
+    "example_en": "Include screeding labor when pricing a large exposed floor pour.",
+    "scenario": "Workers move a straightedge across fresh material to bring its upper surface to the specified line.",
+    "visual": "Fresh slab showing a straightedge and arrows along the top surface.",
+    "related_terms": [
+      "floor-screed",
+      "concrete-slab",
+      "float-finish"
+    ],
+    "common_mistakes": [
+      "Screeding establishes profile; it does not replace finishing, curing or flatness checks."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "power-trowel",
+    "term": "power trowel",
+    "pronunciation": "POW-er TROW-ul",
+    "category": "concrete",
+    "definition_en": "A rotating-blade finishing machine used to smooth and densify concrete floor surfaces after the mix reaches suitable finishing condition.",
+    "explanation_ru": "Машина с вращающимися лопастями для затирки бетона; момент начала обработки и число проходов зависят от смеси и требований.",
+    "translation_ru": [
+      "затирочная машина для бетона"
+    ],
+    "translation_vi": [
+      "máy xoa nền bê tông"
+    ],
+    "example_en": "Include power trowel finishing where the schedule calls for a machine-troweled surface.",
+    "scenario": "An operator guides a rotating finishing machine over hardening concrete to achieve a smoother top.",
+    "visual": "Top-view schematic of a four-blade concrete finishing machine on a floor.",
+    "related_terms": [
+      "float-finish",
+      "broom-finish",
+      "concrete-curing"
+    ],
+    "common_mistakes": [
+      "A power-troweled surface can be too smooth for exposed wet walkways or adhesion-sensitive overlays."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "float-finish",
+    "term": "float finish",
+    "pronunciation": "FLOHT FIN-ish",
+    "category": "concrete",
+    "definition_en": "A concrete surface finish obtained by floating to embed aggregate and smooth irregularities without the dense sheen of hard troweling.",
+    "explanation_ru": "Затирка гладилкой выравнивает верхний растворный слой без жёсткой стальной полировки; тип инструмента задают спецификации.",
+    "translation_ru": [
+      "затирка поверхности гладилкой"
+    ],
+    "translation_vi": [
+      "xoa phẳng mặt bê tông bằng bàn xoa"
+    ],
+    "example_en": "Apply a float finish to the concrete substrate before the final topping where specified.",
+    "scenario": "A flat float is drawn over fresh concrete leaving a relatively uniform non-polished surface.",
+    "visual": "Plan of flat tool passing over a fresh concrete slab.",
+    "related_terms": [
+      "screeding",
+      "power-trowel",
+      "broom-finish"
+    ],
+    "common_mistakes": [
+      "Float finish, trowel finish and broom finish are not interchangeable surface textures."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "broom-finish",
+    "term": "broom finish",
+    "pronunciation": "BROOM FIN-ish",
+    "category": "concrete",
+    "definition_en": "A concrete finish produced by drawing a broom across the surface to create shallow grooves for traction.",
+    "explanation_ru": "Поверхность бетона проходят жёсткой щёткой, оставляя текстурные бороздки для сцепления обуви или шин.",
+    "translation_ru": [
+      "шероховатая отделка бетона щёткой"
+    ],
+    "translation_vi": [
+      "hoàn thiện mặt bê tông bằng chổi tạo nhám"
+    ],
+    "example_en": "Specify the direction of broom finish on the exterior landing and ramp.",
+    "scenario": "Fresh concrete receives parallel shallow brush marks rather than a polished surface.",
+    "visual": "Top view showing a textured slab with multiple parallel broom grooves.",
+    "related_terms": [
+      "float-finish",
+      "power-trowel",
+      "concrete-apron"
+    ],
+    "common_mistakes": [
+      "Do not assume brooming direction or roughness; follow the accessibility and finish detail."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-bonding-agent",
+    "term": "concrete bonding agent",
+    "pronunciation": "KON-kreet BON-ding AY-jent",
+    "category": "concrete",
+    "definition_en": "A specified adhesive or bonding material applied to a prepared concrete substrate before an overlay or repair where the system requires it.",
+    "explanation_ru": "Адгезионный состав для сцепления нового бетона или ремонтного слоя с подготовленной основой; применяют только предусмотренную систему.",
+    "translation_ru": [
+      "состав для сцепления старого и нового бетона"
+    ],
+    "translation_vi": [
+      "chất kết dính bê tông cũ và mới"
+    ],
+    "example_en": "Use the approved concrete bonding agent under the repair topping if required.",
+    "scenario": "A prepared old floor receives a thin bonding treatment shortly before fresh concrete is placed.",
+    "visual": "Section showing rough substrate and thin bonding interface beneath new concrete.",
+    "related_terms": [
+      "bonded-topping",
+      "topping-slab",
+      "spalling"
+    ],
+    "common_mistakes": [
+      "Bonding agent alone does not compensate for contamination, weak substrate or inadequate surface preparation."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "rebar-chair",
+    "term": "rebar chair",
+    "pronunciation": "REE-bar CHAIR",
+    "category": "concrete",
+    "definition_en": "A small chair or bar support that holds reinforcing steel at the specified elevation during concrete placement.",
+    "explanation_ru": "Фиксатор арматуры поддерживает сетку или стержни на проектной высоте; размер и тип выбирают по защитному слою.",
+    "translation_ru": [
+      "фиксатор арматуры для защитного слоя"
+    ],
+    "translation_vi": [
+      "con kê thép trong bê tông"
+    ],
+    "example_en": "Count rebar chair supports according to the reinforcement installation detail.",
+    "scenario": "A bent wire or plastic support holds rebar above the form deck before the pour.",
+    "visual": "Cross-section of a reinforcing bar resting on a small chair above formwork.",
+    "related_terms": [
+      "rebar",
+      "concrete-cover",
+      "welded-wire-mesh"
+    ],
+    "common_mistakes": [
+      "Do not confuse bar chairs with electrical duct spacers or assume any chair height suits every cover."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-cover",
+    "term": "concrete cover",
+    "pronunciation": "KON-kreet KUV-er",
+    "category": "concrete",
+    "definition_en": "The distance from the concrete surface to the nearest surface of embedded reinforcement, required for durability and bond.",
+    "explanation_ru": "Защитный слой от поверхности бетона до ближайшей стали обеспечивает долговечность и сцепление; значения задаёт проект и условия.",
+    "translation_ru": [
+      "защитный слой бетона до арматуры"
+    ],
+    "translation_vi": [
+      "lớp bê tông bảo vệ cốt thép"
+    ],
+    "example_en": "Verify concrete cover at the footing sides before the pour.",
+    "scenario": "Reinforcing steel is positioned inside a concrete cross-section with a dimension line to the outer concrete face.",
+    "visual": "Section showing a rebar near an edge and a dimension to the concrete surface.",
+    "related_terms": [
+      "rebar",
+      "rebar-chair",
+      "footing-reinforcement"
+    ],
+    "common_mistakes": [
+      "Concrete cover is measured to the outer face of steel including ties, not to a bar centerline."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "lap-splice",
+    "term": "lap splice",
+    "pronunciation": "LAP SPLICE",
+    "category": "concrete",
+    "definition_en": "A reinforcement connection made by overlapping two bars for a specified development length so force transfers by bond.",
+    "explanation_ru": "Соединение арматуры внахлёст, передающее усилие через сцепление с бетоном; длина и расположение зависят от проекта.",
+    "translation_ru": [
+      "нахлёсточное соединение арматуры"
+    ],
+    "translation_vi": [
+      "nối chồng cốt thép"
+    ],
+    "example_en": "Measure required lap splice lengths rather than counting the clear span only.",
+    "scenario": "Two reinforcing bars overlap side by side over a designed distance within a beam or slab.",
+    "visual": "Section showing parallel overlapping rebar with a dimensioned overlap length.",
+    "related_terms": [
+      "rebar",
+      "concrete-cover",
+      "rebar-dowel"
+    ],
+    "common_mistakes": [
+      "Do not use one universal splice length or place all splices at the same critical section without checking the schedule."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "rebar-dowel",
+    "term": "rebar dowel",
+    "pronunciation": "REE-bar DOW-ul",
+    "category": "concrete",
+    "definition_en": "A reinforcing bar projecting from one concrete placement into another to create a designed structural connection.",
+    "explanation_ru": "Арматурный выпуск связывает последовательные заливки или элементы; его анкеровка, длина и положение задаются проектом.",
+    "translation_ru": [
+      "арматурный выпуск, анкерный стержень"
+    ],
+    "translation_vi": [
+      "thép chờ liên kết bê tông"
+    ],
+    "example_en": "Install each rebar dowel projecting from the strip footing into the foundation wall.",
+    "scenario": "Vertical bars extend upward from a cast footing to reinforce the wall that will be poured afterward.",
+    "visual": "Footing section showing vertical reinforcement bars projecting into a future wall.",
+    "related_terms": [
+      "strip-footing",
+      "foundation-wall",
+      "lap-splice"
+    ],
+    "common_mistakes": [
+      "A smooth pavement dowel is not necessarily equivalent to a deformed reinforcement starter bar."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "welded-wire-mesh",
+    "term": "welded wire mesh",
+    "pronunciation": "WEL-did WIRE MESH",
+    "category": "concrete",
+    "definition_en": "A factory-welded grid of steel wires or bars used as distributed reinforcement where specified in concrete slabs.",
+    "explanation_ru": "Заводская сварная сетка служит распределённой арматурой; диаметр, шаг и нахлёст выбирают по ведомости.",
+    "translation_ru": [
+      "сварная арматурная сетка"
+    ],
+    "translation_vi": [
+      "lưới thép hàn gia cường bê tông"
+    ],
+    "example_en": "Check welded wire mesh sheet sizes and overlaps for the topping slab.",
+    "scenario": "A regular square steel grid is placed over chairs within a floor before concrete placement.",
+    "visual": "Plan of orthogonal steel wire mesh with welded intersections.",
+    "related_terms": [
+      "rebar",
+      "rebar-chair",
+      "topping-slab"
+    ],
+    "common_mistakes": [
+      "Do not leave specified mesh on the bottom formwork; it must be supported at the correct elevation."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "punching-shear",
+    "term": "punching shear",
+    "pronunciation": "PUN-ching SHEER",
+    "category": "concrete",
+    "definition_en": "A localized two-way shear failure mode near a concentrated column or support load in a slab or footing.",
+    "explanation_ru": "Продавливание — локальная опасная работа плиты вокруг колонны или опоры; проверяют расчёт, толщину и специальные элементы армирования.",
+    "translation_ru": [
+      "продавливание плиты колонной"
+    ],
+    "translation_vi": [
+      "cắt xuyên thủng sàn quanh cột"
+    ],
+    "example_en": "Review the punching shear detail before changing slab openings near columns.",
+    "scenario": "A column supporting a floor creates high localized shear around its perimeter.",
+    "visual": "Plan of slab around a column with a marked critical perimeter.",
+    "related_terms": [
+      "flat-plate",
+      "drop-panel",
+      "slab-penetration"
+    ],
+    "common_mistakes": [
+      "Punching shear is not the same as ordinary one-way shear or general slab flexure."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "shear-stud",
+    "term": "shear stud",
+    "pronunciation": "SHEER STUD",
+    "category": "concrete",
+    "definition_en": "A welded steel connector used to transfer horizontal shear between a steel beam and concrete slab in composite construction.",
+    "explanation_ru": "Сдвиговой упор, привариваемый к стальной балке, обеспечивает совместную работу балки и бетонной плиты по проекту.",
+    "translation_ru": [
+      "сдвиговой упор (шпилька) композитной балки"
+    ],
+    "translation_vi": [
+      "đinh chống cắt liên hợp dầm thép"
+    ],
+    "example_en": "Count shear stud connectors by beam layout and stud schedule.",
+    "scenario": "Small welded studs protrude above a steel beam flange into fresh concrete placed over metal decking.",
+    "visual": "Section showing stud connectors rising from a steel flange through a deck into concrete.",
+    "related_terms": [
+      "metal-deck",
+      "composite-slab",
+      "rebar"
+    ],
+    "common_mistakes": [
+      "Do not confuse beam shear connectors with punching-shear studs or assume every beam requires the same spacing."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "embedded-conduit",
+    "term": "embedded conduit",
+    "pronunciation": "em-BED-id KON-doo-it",
+    "category": "electrical",
+    "definition_en": "An electrical raceway intentionally cast within a concrete slab, wall or beam at an approved location.",
+    "explanation_ru": "Кабельная труба, заранее уложенная в арматурный каркас или опалубку перед бетонированием; её трассу и защитный слой нужно согласовать.",
+    "translation_ru": [
+      "кабельная труба, замоноличенная в бетоне"
+    ],
+    "translation_vi": [
+      "ống luồn dây chôn trong bê tông"
+    ],
+    "example_en": "Coordinate each embedded conduit before the suspended slab reinforcement inspection.",
+    "scenario": "A protective electrical tube runs inside the depth of a reinforced concrete floor rather than below the slab.",
+    "visual": "Cross-section showing a small conduit fully surrounded by concrete between reinforcing layers.",
+    "related_terms": [
+      "conduit",
+      "concrete-cover",
+      "slab-penetration"
+    ],
+    "common_mistakes": [
+      "Do not assume any diameter or bundle may be embedded; check structural limits, cover, spacing and electrical code."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "conduit-sleeve",
+    "term": "conduit sleeve",
+    "pronunciation": "KON-doo-it SLEEV",
+    "category": "electrical",
+    "definition_en": "A protective passage or sleeve formed through a concrete element so electrical conduit can cross without being rigidly bonded to it.",
+    "explanation_ru": "Гильза создаёт проход для кабельного conduit через плиту или стену; её размеры, герметизация и огнезащита определяются узлом.",
+    "translation_ru": [
+      "защитная гильза для прохода кабельной трубы"
+    ],
+    "translation_vi": [
+      "ống lồng bảo vệ ống luồn dây điện"
+    ],
+    "example_en": "Set the conduit sleeve position before pouring the foundation wall.",
+    "scenario": "An electrical raceway passes through a slightly larger protected opening cast in a concrete wall.",
+    "visual": "Wall section showing conduit passing through a larger sleeve with annular space.",
+    "related_terms": [
+      "conduit",
+      "slab-penetration",
+      "pipe-sleeve"
+    ],
+    "common_mistakes": [
+      "A sleeve is not the same as a conduit fitting that joins lengths; fire and water seals may be required."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "slab-penetration",
+    "term": "slab penetration",
+    "pronunciation": "SLAB pen-i-TRAY-shun",
+    "category": "concrete",
+    "definition_en": "An opening through a floor slab for a pipe, conduit, duct, drain or other service, normally coordinated with structural detailing.",
+    "explanation_ru": "Сквозной проход через плиту под инженерные системы; расположение, армирование вокруг отверстия и огнезащиту согласовывают.",
+    "translation_ru": [
+      "отверстие или проход через плиту"
+    ],
+    "translation_vi": [
+      "lỗ xuyên sàn bê tông"
+    ],
+    "example_en": "Check every slab penetration against the approved structural opening plan.",
+    "scenario": "A round service pipe crosses vertically through a cut or cast opening in a raised concrete floor.",
+    "visual": "Section showing a vertical service tube passing through a floor opening.",
+    "related_terms": [
+      "slab-blockout",
+      "pipe-sleeve",
+      "suspended-slab"
+    ],
+    "common_mistakes": [
+      "Drilling or coring a structural slab can cut reinforcement or PT tendons; approval and scans may be needed."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "slab-blockout",
+    "term": "slab blockout",
+    "pronunciation": "SLAB BLOK-owt",
+    "category": "concrete",
+    "definition_en": "A deliberately formed void left unpoured within a slab to accommodate future equipment, services or a planned concrete infill.",
+    "explanation_ru": "Временным коробом или вставкой оставляют проём в бетоне для оборудования и труб; позднее его могут замонолитить.",
+    "translation_ru": [
+      "технологический проём в плите, оставленный опалубкой"
+    ],
+    "translation_vi": [
+      "lỗ chừa sẵn trong sàn bê tông"
+    ],
+    "example_en": "Include the slab blockout dimensions and rebar trim details on the slab takeoff.",
+    "scenario": "A rectangular form box prevents fresh concrete from filling one designated opening.",
+    "visual": "Plan of concrete floor with a rectangular boxed void and perimeter form.",
+    "related_terms": [
+      "slab-penetration",
+      "slab-formwork",
+      "construction-joint"
+    ],
+    "common_mistakes": [
+      "Not every blockout is a permanent hole; check whether and when it must be filled."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "electrical-floor-box",
+    "term": "electrical floor box",
+    "pronunciation": "ee-LEK-tri-kul FLOR BOKS",
+    "category": "electrical",
+    "definition_en": "An electrical enclosure set into or flush with a floor to provide power, data or communication connections.",
+    "explanation_ru": "Напольная коробка для электрических/слаботочных выводов; её глубину, привязку и крышку согласуют с толщиной плиты и покрытием.",
+    "translation_ru": [
+      "напольная монтажная коробка электроснабжения"
+    ],
+    "translation_vi": [
+      "hộp điện âm sàn"
+    ],
+    "example_en": "Position every electrical floor box to match the final topping slab elevation.",
+    "scenario": "A recessed box is fixed within the slab zone and finished flush with the walking surface.",
+    "visual": "Section showing a box set into concrete with a flush removable cover.",
+    "related_terms": [
+      "embedded-conduit",
+      "topping-slab",
+      "electrical-rough-in"
+    ],
+    "common_mistakes": [
+      "A floor box must be listed for the environment and coordinated with slab thickness, moisture and finish."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "electrical-rough-in",
+    "term": "electrical rough-in",
+    "pronunciation": "ee-LEK-tri-kul RUF-in",
+    "category": "electrical",
+    "definition_en": "The installation of electrical conduits, boxes and routes before concrete placement or closing walls and ceilings.",
+    "explanation_ru": "Черновой монтаж труб, коробок и вводов до бетонирования и отделки; обычно требуется проверка положения и согласование с арматурой.",
+    "translation_ru": [
+      "черновой монтаж электрики до закрытия конструкций"
+    ],
+    "translation_vi": [
+      "thi công lắp đặt điện âm trước khi đổ bê tông"
+    ],
+    "example_en": "Complete the electrical rough-in inspection before the slab concrete pour.",
+    "scenario": "Conduit and boxes are fixed in place within forms while the reinforcing work is still exposed.",
+    "visual": "Construction-stage section of slab forms with conduits and boxes positioned before concrete placement.",
+    "related_terms": [
+      "embedded-conduit",
+      "electrical-floor-box",
+      "conduit"
+    ],
+    "common_mistakes": [
+      "Do not pour over uncoordinated raceways, missing box supports or required inspection hold points."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "conduit-offset",
+    "term": "conduit offset",
+    "pronunciation": "KON-doo-it OFF-set",
+    "category": "electrical",
+    "definition_en": "A pair of bends or shaped conduit section that shifts a raceway to a parallel alignment to clear an obstruction.",
+    "explanation_ru": "Смещение трассы conduit с помощью согласованных изгибов для обхода препятствия; учитывают радиус, возможность протяжки кабеля и защитный слой.",
+    "translation_ru": [
+      "смещение трассы кабельной трубы с отводами"
+    ],
+    "translation_vi": [
+      "đoạn ống điện uốn lệch tuyến"
+    ],
+    "example_en": "Show the conduit offset where the raceway clears the dropped beam.",
+    "scenario": "A raceway shifts sideways around a deepened structural zone and returns to its prior direction.",
+    "visual": "Side-view of conduit with two smooth bends offsetting it around an obstruction.",
+    "related_terms": [
+      "conduit-bend",
+      "embedded-conduit",
+      "slab-thickening"
+    ],
+    "common_mistakes": [
+      "Do not bend conduit arbitrarily inside a slab or reduce the designed concrete cover."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-sleeve",
+    "term": "pipe sleeve",
+    "pronunciation": "PYPE SLEEV",
+    "category": "utilities",
+    "definition_en": "A tubular liner installed through a concrete slab or wall to allow a mechanical or plumbing pipe to pass with specified clearance.",
+    "explanation_ru": "Проходная гильза большего диаметра для водопровода или канализации через бетон; зазор, защита от воды и огня задаются спецификацией.",
+    "translation_ru": [
+      "гильза для прохода трубопровода"
+    ],
+    "translation_vi": [
+      "ống lồng xuyên tường hoặc sàn"
+    ],
+    "example_en": "Allow for the pipe sleeve through the strip footing only if shown on the approved detail.",
+    "scenario": "A plumbing pipe crosses a reinforced concrete wall through an oversized lined opening.",
+    "visual": "Wall section with a service pipe inside a larger sleeve and annular seal.",
+    "related_terms": [
+      "slab-penetration",
+      "conduit-sleeve",
+      "foundation-wall"
+    ],
+    "common_mistakes": [
+      "A sleeve is not a general permission to cut reinforcing steel or a footing."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "stepped-footing",
+    "term": "stepped footing",
+    "pronunciation": "STEPT FOOT-ing",
+    "category": "concrete",
+    "definition_en": "A foundation footing whose bearing elevation changes by discrete steps along its length to follow ground levels or design requirements.",
+    "explanation_ru": "Ленточный фундамент с изменением отметки подошвы ступенями; длину, высоту и арматуру переходов берут из разрезов.",
+    "translation_ru": [
+      "ступенчатый ленточный фундамент"
+    ],
+    "translation_vi": [
+      "móng bậc cấp"
+    ],
+    "example_en": "Take off each stepped footing level separately from the foundation sections.",
+    "scenario": "A continuous wall foundation drops down in two discrete levels over sloping ground.",
+    "visual": "Section of continuous footing with two horizontal benches connected by a vertical step.",
+    "related_terms": [
+      "strip-footing",
+      "footing",
+      "footing-excavation"
+    ],
+    "common_mistakes": [
+      "Do not assume the step height or reinforcement continuation from a general footing schedule."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "footing-reinforcement",
+    "term": "footing reinforcement",
+    "pronunciation": "FOOT-ing ree-in-FORS-ment",
+    "category": "concrete",
+    "definition_en": "Reinforcing steel placed in a concrete footing, including bottom bars, top steel, stirrups or dowels as specified.",
+    "explanation_ru": "Арматура внутри фундамента воспринимает растяжение и связывает фундамент со стеной/колонной; количество зависит от ведомости и деталей.",
+    "translation_ru": [
+      "армирование фундамента"
+    ],
+    "translation_vi": [
+      "cốt thép móng"
+    ],
+    "example_en": "Measure footing reinforcement by bar mark, length and overlap, not just footing volume.",
+    "scenario": "A concrete footing contains orthogonal reinforcing bars supported above its bottom face.",
+    "visual": "Footing cross-section showing bottom reinforcing mat and vertical starter bars.",
+    "related_terms": [
+      "strip-footing",
+      "rebar",
+      "rebar-dowel"
+    ],
+    "common_mistakes": [
+      "Bottom bars must maintain designed cover; use correct supports and verify hooked ends and splice rules."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "foundation-wall",
+    "term": "foundation wall",
+    "pronunciation": "fown-DAY-shun WAWL",
+    "category": "concrete",
+    "definition_en": "A structural wall supported by footings or other foundations that transfers building loads and may retain surrounding earth.",
+    "explanation_ru": "Стена фундамента передаёт нагрузки здания в основание, иногда одновременно удерживает грунт подвала; бетон и армирование задают отдельно.",
+    "translation_ru": [
+      "фундаментная стена"
+    ],
+    "translation_vi": [
+      "tường móng"
+    ],
+    "example_en": "Measure foundation wall concrete from top of footing to underside of supported floor.",
+    "scenario": "A reinforced concrete vertical wall sits on a continuous foundation strip below the first suspended floor.",
+    "visual": "Section showing reinforced wall rising from continuous footing.",
+    "related_terms": [
+      "strip-footing",
+      "stem-wall",
+      "rebar-dowel"
+    ],
+    "common_mistakes": [
+      "Do not treat all foundation walls as retaining walls; verify earth pressure and waterproofing details."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "stem-wall",
+    "term": "stem wall",
+    "pronunciation": "STEM WAWL",
+    "category": "concrete",
+    "definition_en": "A relatively short foundation wall above a footing that supports the floor or superstructure and establishes the required grade transition.",
+    "explanation_ru": "Невысокая стенка над подошвой фундамента поднимает конструкцию до уровня пола и передаёт нагрузку в фундамент.",
+    "translation_ru": [
+      "цокольная стенка над фундаментной лентой"
+    ],
+    "translation_vi": [
+      "tường cổ móng"
+    ],
+    "example_en": "Include the stem wall between strip footing and slab-on-grade where detailed.",
+    "scenario": "A short reinforced wall extends from a footing up to the floor edge above adjacent soil.",
+    "visual": "Section showing short foundation stem topped by edge of slab.",
+    "related_terms": [
+      "foundation-wall",
+      "strip-footing",
+      "slab-on-grade"
+    ],
+    "common_mistakes": [
+      "A stem wall is not the same as the footing below it; measure formwork and concrete separately."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "footing-keyway",
+    "term": "footing keyway",
+    "pronunciation": "FOOT-ing KEE-way",
+    "category": "concrete",
+    "definition_en": "A formed recess or groove at a concrete footing joint intended to improve shear transfer or alignment with a later wall pour.",
+    "explanation_ru": "Шпонка-паз в верхней поверхности фундамента служит для конструктивного сопряжения с последующей стеной по проекту.",
+    "translation_ru": [
+      "шпонка или паз в верхней плоскости фундамента"
+    ],
+    "translation_vi": [
+      "rãnh khóa cắt trên mặt móng"
+    ],
+    "example_en": "Form the footing keyway in the location and dimensions shown on the foundation detail.",
+    "scenario": "The top of a newly cast footing includes a recessed groove beneath a future concrete wall.",
+    "visual": "Section of footing with formed recess and later wall above.",
+    "related_terms": [
+      "strip-footing",
+      "foundation-wall",
+      "construction-joint"
+    ],
+    "common_mistakes": [
+      "A keyway does not replace required reinforcing dowels, waterstops or approved joint detailing."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "under-slab-vapour-barrier",
+    "term": "under-slab vapour barrier",
+    "pronunciation": "UN-der SLAB VAY-per BA-ree-er",
+    "category": "concrete",
+    "definition_en": "A specified sheet membrane or vapour retarder installed below a concrete slab to limit moisture vapour transmission from the ground.",
+    "explanation_ru": "Пароизоляционная или пароограничивающая мембрана под плитой препятствует движению влаги из грунта; швы и проходки герметизируют согласно системе.",
+    "translation_ru": [
+      "пароизоляционная мембрана под плитой"
+    ],
+    "translation_vi": [
+      "màng ngăn hơi ẩm dưới sàn bê tông"
+    ],
+    "example_en": "Include the under-slab vapour barrier and sealed overlaps under the interior slab on grade.",
+    "scenario": "A continuous thin sheet is placed on the prepared base before reinforcement and concrete are installed.",
+    "visual": "Section showing slab above thin membrane and compacted granular base.",
+    "related_terms": [
+      "slab-on-grade",
+      "slab-preparation",
+      "slab-penetration"
+    ],
+    "common_mistakes": [
+      "Not every polyethylene sheet is an adequate rated vapour barrier; check material, placement and penetrations."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "slab-depression",
+    "term": "slab depression",
+    "pronunciation": "SLAB di-PRESH-un",
+    "category": "concrete",
+    "definition_en": "An intentionally lowered area or reduced top elevation within a concrete slab to accommodate waterproofing, drains, slopes or a floor finish build-up.",
+    "explanation_ru": "Локально пониженный участок плиты под санузлы, трапы или покрытие; отметка и толщина определяются чертежом.",
+    "translation_ru": [
+      "понижение отметки участка плиты"
+    ],
+    "translation_vi": [
+      "khu vực sàn hạ cốt"
+    ],
+    "example_en": "Coordinate the slab depression at the shower floor with plumbing and topping elevations.",
+    "scenario": "A small portion of the structural floor top surface is set lower than surrounding areas before finishes.",
+    "visual": "Section showing shallow step down in slab top, with floor drain and topping above.",
+    "related_terms": [
+      "topping-slab",
+      "concrete-slab",
+      "slab-thickening"
+    ],
+    "common_mistakes": [
+      "A recessed surface is not automatically reduced structural thickness; check soffit and reinforcement elevations."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "concrete-vibration",
+    "term": "concrete vibration",
+    "pronunciation": "KON-kreet vy-BRAY-shun",
+    "category": "concrete",
+    "definition_en": "The controlled consolidation of freshly placed concrete using vibration to reduce trapped air and help the mix fill formwork around reinforcement.",
+    "explanation_ru": "Вибрирование свежей смеси удаляет избыточные воздушные полости, помогает заполнить форму; время и метод зависят от смеси и арматуры.",
+    "translation_ru": [
+      "уплотнение бетонной смеси вибратором"
+    ],
+    "translation_vi": [
+      "đầm rung bê tông"
+    ],
+    "example_en": "Include concrete vibration labor for heavily reinforced footings and walls.",
+    "scenario": "A worker inserts an internal poker vibrator into newly placed concrete within reinforced formwork.",
+    "visual": "Concrete form section with vibrating tool inserted between reinforcing bars.",
+    "related_terms": [
+      "foundation-wall",
+      "footing-reinforcement",
+      "concrete-curing"
+    ],
+    "common_mistakes": [
+      "Over-vibration, under-vibration or striking embedded services can damage placement quality; follow the placing procedure."
+    ],
+    "difficulty": 2
   }
 ]
