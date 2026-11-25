@@ -244,7 +244,13 @@
       "concrete-driveway",
       "temporary-pavement-marking",
       "permanent-pavement-marking",
-      "marking-removal"
+      "marking-removal",
+      "letdown-fan",
+      "driveway-letdown",
+      "curb-ramp-landing",
+      "running-slope",
+      "cross-slope",
+      "detectable-warning-surface"
     ]
   },
   {

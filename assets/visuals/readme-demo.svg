@@ -40,11 +40,14 @@
    <text x="555" y="194" fill="#4b615c" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="450" >Diagram from the actual vocabulary</text>
    
  <rect x="552" y="211" width="396" height="180" rx="16" fill="#eaf4f1" />
- <svg x="584" y="223" width="331" height="141" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet"><style>.tv-ground{fill:#d9d1bd}
+ <svg x="584" y="223" width="331" height="141" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet"><style>.tv-label{font:700 11px system-ui,sans-serif;fill:#244f42;letter-spacing:.03em}
+.tv-small{font:600 8px system-ui,sans-serif;fill:#536c64}
+.tv-ground-line{fill:none;stroke:#6b7d70;stroke-width:3}
+.tv-ground{fill:#d9d1bd}
+.tv-pipe-ring,.tv-conduit-big{fill:#f8faf9;stroke:#566a63;stroke-width:5}
 .tv-concrete{fill:#d8d8d4;stroke:#777c79;stroke-width:2}
 .tv-conduit circle,.tv-conduit-big{fill:#f7faf9;stroke:#4e7567;stroke-width:4}
-.tv-label{font:700 11px system-ui,sans-serif;fill:#244f42;letter-spacing:.03em}
-.tv-small{font:600 8px system-ui,sans-serif;fill:#536c64}</style><path class="tv-ground" d="M0 28h320v132H0z"/><rect class="tv-concrete" x="78" y="52" width="164" height="88" rx="3"/><g class="tv-conduit"><circle cx="112" cy="82" r="14"/><circle cx="160" cy="82" r="14"/><circle cx="208" cy="82" r="14"/><circle cx="112" cy="116" r="14"/><circle cx="160" cy="116" r="14"/><circle cx="208" cy="116" r="14"/></g><text class="tv-label" x="118" y="42">DUCT BANK</text><text class="tv-small" x="104" y="158">CONCRETE ENCASEMENT</text></svg>
+.tv-concrete-profile{fill:#c8c9c5;stroke:#696e6c;stroke-width:2}</style><path class="tv-ground" d="M0 28h320v132H0z"/><rect class="tv-concrete" x="78" y="52" width="164" height="88" rx="3"/><g class="tv-conduit"><circle cx="112" cy="82" r="14"/><circle cx="160" cy="82" r="14"/><circle cx="208" cy="82" r="14"/><circle cx="112" cy="116" r="14"/><circle cx="160" cy="116" r="14"/><circle cx="208" cy="116" r="14"/></g><text class="tv-label" x="118" y="42">DUCT BANK</text><text class="tv-small" x="104" y="158">CONCRETE ENCASEMENT</text></svg>
  <text x="568" y="418" fill="#1b5d4d" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" >duct bank</text>
 
  </g>
