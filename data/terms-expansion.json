@@ -9708,5 +9708,143 @@
       "Over-vibration, under-vibration or striking embedded services can damage placement quality; follow the placing procedure."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "letdown-fan",
+    "term": "letdown fan",
+    "pronunciation": "LET-down fan",
+    "category": "concrete",
+    "definition_en": "A sloped side panel that ties the lowered part of a curb crossing back into the adjacent sidewalk or curb.",
+    "explanation_ru": "На плане найди боковую наклонную панель у понижения. В ведомости уточни, входит ли её площадь в основную позицию.",
+    "translation_ru": [
+      "боковое крыло понижения бордюра"
+    ],
+    "translation_vi": [
+      "cánh chuyển tiếp bên đoạn hạ bó vỉa"
+    ],
+    "example_en": "Measure each letdown fan separately and add its area to the driveway takeoff.",
+    "scenario": "The takeoff covers the middle panel, but leaves out the triangular concrete on either side.",
+    "visual": "Plan showing the two side flares beside the central panel.",
+    "related_terms": [
+      "curb-ramp",
+      "driveway-letdown"
+    ],
+    "common_mistakes": [],
+    "difficulty": 2
+  },
+  {
+    "id": "driveway-letdown",
+    "term": "driveway letdown",
+    "pronunciation": "DRIVE-way LET-down",
+    "category": "concrete",
+    "definition_en": "A lowered section of curb that lets vehicles cross from the roadway into a driveway.",
+    "explanation_ru": "На въезде отметь границы понижения и переходов к обычной высоте бордюра.",
+    "translation_ru": [
+      "понижение бордюра на въезде"
+    ],
+    "translation_vi": [
+      "đoạn hạ bó vỉa tại lối xe vào"
+    ],
+    "example_en": "Check the width of the driveway letdown against the access detail.",
+    "scenario": "Vehicles need to cross the curb line at the entrance to a property.",
+    "visual": "Curb elevation showing the lowered entrance between two transitions.",
+    "related_terms": [
+      "curb-ramp",
+      "letdown-fan"
+    ],
+    "common_mistakes": [],
+    "difficulty": 2
+  },
+  {
+    "id": "curb-ramp-landing",
+    "term": "curb ramp landing",
+    "pronunciation": "CURB ramp LAN-ding",
+    "category": "concrete",
+    "definition_en": "A relatively level area adjoining a pedestrian curb ramp where users can stop or change direction.",
+    "explanation_ru": "На плане перехода выдели площадку отдельно от наклонной части пандуса.",
+    "translation_ru": [
+      "площадка бордюрного пандуса"
+    ],
+    "translation_vi": [
+      "chiếu nghỉ dốc vỉa hè"
+    ],
+    "example_en": "Keep the curb ramp landing clear of the signpost.",
+    "scenario": "A wheelchair user needs room to turn at the top of the ramp.",
+    "visual": "Plan highlighting the turning area above the ramp.",
+    "related_terms": [
+      "curb-ramp",
+      "letdown-fan"
+    ],
+    "common_mistakes": [],
+    "difficulty": 2
+  },
+  {
+    "id": "running-slope",
+    "term": "running slope",
+    "pronunciation": "RUN-ing slope",
+    "category": "concrete",
+    "definition_en": "The change in elevation per unit of horizontal distance measured along the direction of travel.",
+    "explanation_ru": "На пандусе измеряется вдоль пути от тротуара к проезжей части.",
+    "translation_ru": [
+      "продольный уклон по ходу движения"
+    ],
+    "translation_vi": [
+      "độ dốc dọc theo hướng đi"
+    ],
+    "example_en": "Check the running slope from the upper grade break to the gutter.",
+    "scenario": "The inspector places a level parallel to the pedestrian route.",
+    "visual": "Arrow follows travel down the ramp in plan.",
+    "related_terms": [
+      "curb-ramp",
+      "letdown-fan"
+    ],
+    "common_mistakes": [],
+    "difficulty": 2
+  },
+  {
+    "id": "cross-slope",
+    "term": "cross slope",
+    "pronunciation": "CROSS slope",
+    "category": "concrete",
+    "definition_en": "The change in elevation per unit of horizontal distance measured perpendicular to the direction of travel.",
+    "explanation_ru": "Если пешеход идёт вниз по пандусу, этот уклон измеряют поперёк его пути.",
+    "translation_ru": [
+      "поперечный уклон"
+    ],
+    "translation_vi": [
+      "độ dốc ngang"
+    ],
+    "example_en": "Measure the cross slope across the ramp at the grade break.",
+    "scenario": "The inspector turns the level sideways across the walking route.",
+    "visual": "Arrow crosses the ramp width in plan.",
+    "related_terms": [
+      "curb-ramp",
+      "letdown-fan"
+    ],
+    "common_mistakes": [],
+    "difficulty": 2
+  },
+  {
+    "id": "detectable-warning-surface",
+    "term": "detectable warning surface",
+    "pronunciation": "di-TEK-tuh-bul WARN-ing SUR-fis",
+    "category": "concrete",
+    "definition_en": "A textured surface with raised indicators that pedestrians can detect underfoot or with a cane when approaching a hazard.",
+    "explanation_ru": "На детали перехода проверь размеры и положение тактильной полосы у выхода на проезжую часть.",
+    "translation_ru": [
+      "тактильная предупреждающая поверхность"
+    ],
+    "translation_vi": [
+      "bề mặt cảnh báo xúc giác"
+    ],
+    "example_en": "Show the detectable warning surface separately on the curb ramp takeoff.",
+    "scenario": "A pedestrian approaching the street feels a band of raised domes underfoot.",
+    "visual": "Plan highlighting the tactile strip at the street edge.",
+    "related_terms": [
+      "curb-ramp",
+      "letdown-fan"
+    ],
+    "common_mistakes": [],
+    "difficulty": 2
   }
 ]

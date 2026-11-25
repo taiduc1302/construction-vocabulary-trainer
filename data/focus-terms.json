@@ -112,14 +112,14 @@
     {
       "id": "curb-and-gutter",
       "added_at": "2026-09-21",
-      "last_requested_at": "2026-10-05",
-      "request_count": 2
+      "last_requested_at": "2026-11-25",
+      "request_count": 3
     },
     {
       "id": "concrete-sidewalk",
       "added_at": "2026-09-21",
-      "last_requested_at": "2026-10-05",
-      "request_count": 2
+      "last_requested_at": "2026-11-25",
+      "request_count": 3
     },
     {
       "id": "kerb",
@@ -778,20 +778,20 @@
     {
       "id": "curb-ramp",
       "added_at": "2026-10-05",
-      "last_requested_at": "2026-10-05",
-      "request_count": 1
+      "last_requested_at": "2026-11-25",
+      "request_count": 2
     },
     {
       "id": "concrete-driveway",
       "added_at": "2026-10-05",
-      "last_requested_at": "2026-10-05",
-      "request_count": 1
+      "last_requested_at": "2026-11-25",
+      "request_count": 2
     },
     {
       "id": "gutter-pan",
       "added_at": "2026-10-05",
-      "last_requested_at": "2026-10-05",
-      "request_count": 1
+      "last_requested_at": "2026-11-25",
+      "request_count": 2
     },
     {
       "id": "pvc-db2",
@@ -1522,8 +1522,8 @@
     {
       "id": "grade-break",
       "added_at": "2026-11-13",
-      "last_requested_at": "2026-11-13",
-      "request_count": 1
+      "last_requested_at": "2026-11-25",
+      "request_count": 2
     },
     {
       "id": "positive-drainage",
@@ -2106,6 +2106,42 @@
       "added_at": "2026-11-23",
       "last_requested_at": "2026-11-23",
       "request_count": 1
+    },
+    {
+      "id": "letdown-fan",
+      "added_at": "2026-11-25",
+      "request_count": 1,
+      "last_requested_at": "2026-11-25"
+    },
+    {
+      "id": "driveway-letdown",
+      "added_at": "2026-11-25",
+      "request_count": 1,
+      "last_requested_at": "2026-11-25"
+    },
+    {
+      "id": "curb-ramp-landing",
+      "added_at": "2026-11-25",
+      "request_count": 1,
+      "last_requested_at": "2026-11-25"
+    },
+    {
+      "id": "running-slope",
+      "added_at": "2026-11-25",
+      "request_count": 1,
+      "last_requested_at": "2026-11-25"
+    },
+    {
+      "id": "cross-slope",
+      "added_at": "2026-11-25",
+      "request_count": 1,
+      "last_requested_at": "2026-11-25"
+    },
+    {
+      "id": "detectable-warning-surface",
+      "added_at": "2026-11-25",
+      "request_count": 1,
+      "last_requested_at": "2026-11-25"
     }
   ]
 }

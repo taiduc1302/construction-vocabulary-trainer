@@ -28,9 +28,12 @@
     <rect x="941" y="288" width="558" height="226" rx="16" fill="#edf5f1" />
     <svg x="951" y="298" width="538" height="206" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet"><style>.tv-label{font:700 11px system-ui,sans-serif;fill:#244f42;letter-spacing:.03em}
 .tv-small{font:600 8px system-ui,sans-serif;fill:#536c64}
+.tv-ground-line{fill:none;stroke:#6b7d70;stroke-width:3}
 .tv-ground{fill:#d9d1bd}
+.tv-pipe-ring,.tv-conduit-big{fill:#f8faf9;stroke:#566a63;stroke-width:5}
 .tv-concrete{fill:#d8d8d4;stroke:#777c79;stroke-width:2}
-.tv-conduit circle,.tv-conduit-big{fill:#f7faf9;stroke:#4e7567;stroke-width:4}</style><path class="tv-ground" d="M0 28h320v132H0z"/><rect class="tv-concrete" x="78" y="52" width="164" height="88" rx="3"/><g class="tv-conduit"><circle cx="112" cy="82" r="14"/><circle cx="160" cy="82" r="14"/><circle cx="208" cy="82" r="14"/><circle cx="112" cy="116" r="14"/><circle cx="160" cy="116" r="14"/><circle cx="208" cy="116" r="14"/></g><text class="tv-label" x="118" y="42">DUCT BANK</text><text class="tv-small" x="104" y="158">CONCRETE ENCASEMENT</text></svg>
+.tv-conduit circle,.tv-conduit-big{fill:#f7faf9;stroke:#4e7567;stroke-width:4}
+.tv-concrete-profile{fill:#c8c9c5;stroke:#696e6c;stroke-width:2}</style><path class="tv-ground" d="M0 28h320v132H0z"/><rect class="tv-concrete" x="78" y="52" width="164" height="88" rx="3"/><g class="tv-conduit"><circle cx="112" cy="82" r="14"/><circle cx="160" cy="82" r="14"/><circle cx="208" cy="82" r="14"/><circle cx="112" cy="116" r="14"/><circle cx="160" cy="116" r="14"/><circle cx="208" cy="116" r="14"/></g><text class="tv-label" x="118" y="42">DUCT BANK</text><text class="tv-small" x="104" y="158">CONCRETE ENCASEMENT</text></svg>
     <text x="941" y="545" font-family="Inter,Arial,sans-serif" font-size="12" fill="#1c6b52" font-weight="750" letter-spacing="1">WHAT IT MEANS</text>
     <text x="941" y="574" font-family="Inter,Arial,sans-serif" font-size="16" fill="#18212b" font-weight="400" >A grouped system of conduits, usually</text><text x="941" y="599" font-family="Inter,Arial,sans-serif" font-size="16" fill="#18212b" font-weight="400" >encased in concrete, installed underground</text><text x="941" y="624" font-family="Inter,Arial,sans-serif" font-size="16" fill="#18212b" font-weight="400" >for electrical or communication cables.</text>
   
