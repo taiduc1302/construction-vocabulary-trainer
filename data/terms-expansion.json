@@ -9708,5 +9708,3363 @@
       "Over-vibration, under-vibration or striking embedded services can damage placement quality; follow the placing procedure."
     ],
     "difficulty": 2
+  },
+  {
+    "id": "pipe-section",
+    "term": "pipe section",
+    "pronunciation": "PYPE SEK-shun",
+    "category": "drainage",
+    "definition_en": "An individual manufactured length of pipe supplied for installation between joints.",
+    "explanation_ru": "Отдельное заводское звено трубопровода, которое соединяют с соседними звеньями.",
+    "translation_ru": [
+      "секция трубы"
+    ],
+    "translation_vi": [
+      "đoạn ống"
+    ],
+    "example_en": "Check the pipe section length before counting delivery pieces.",
+    "scenario": "Check the the specified item length before counting delivery pieces.",
+    "visual": "A straight barrel with end joints and length dimension.",
+    "related_terms": [
+      "pipe-cut-length",
+      "pipe-coupling",
+      "short-pipe-section"
+    ],
+    "common_mistakes": [
+      "A pipe section is not the same as one metre of installed pipe."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "gravity-pipe",
+    "term": "gravity pipe",
+    "pronunciation": "GRAV-i-tee PYPE",
+    "category": "drainage",
+    "definition_en": "A pipe conveying fluid mainly by gravity along a designed downward gradient.",
+    "explanation_ru": "Самотечная труба работает за счёт продольного уклона; проверяют отметки лотка.",
+    "translation_ru": [
+      "самотечная труба"
+    ],
+    "translation_vi": [
+      "ống thoát nước tự chảy"
+    ],
+    "example_en": "Verify gravity pipe slope between the upstream and downstream manholes.",
+    "scenario": "Verify the specified item slope between the upstream and downstream manholes.",
+    "visual": "Sloping pipe between chambers with flow direction.",
+    "related_terms": [
+      "storm-sewer",
+      "sanitary-sewer",
+      "pipe-gradient"
+    ],
+    "common_mistakes": [
+      "Gravity sewer segments may sometimes surcharge; gravity describes the design system."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pressure-pipe",
+    "term": "pressure pipe",
+    "pronunciation": "PRESH-er PYPE",
+    "category": "utilities",
+    "definition_en": "A pipe designed to carry fluid under internal pressure using rated materials and joints.",
+    "explanation_ru": "Напорная труба и стыки рассчитываются на давление и испытания соответствующей сети.",
+    "translation_ru": [
+      "напорная труба"
+    ],
+    "translation_vi": [
+      "ống chịu áp lực"
+    ],
+    "example_en": "Check the pressure pipe rating before pricing a watermain connection.",
+    "scenario": "Check the the specified item rating before pricing a watermain connection.",
+    "visual": "Closed pressurized pipe with a pressure gauge.",
+    "related_terms": [
+      "watermain",
+      "force-main",
+      "hydrostatic-pressure-test"
+    ],
+    "common_mistakes": [
+      "Material alone does not establish the entire system pressure rating."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "reinforced-concrete-pipe",
+    "term": "reinforced concrete pipe",
+    "pronunciation": "ree-in-FORST KON-kreet PYPE",
+    "category": "drainage",
+    "definition_en": "Factory-made concrete pipe with embedded steel reinforcement used for approved drainage or culvert designs.",
+    "explanation_ru": "Заводская железобетонная труба с каркасом, класс прочности и стык определяют проектом.",
+    "translation_ru": [
+      "железобетонная труба (RCP)"
+    ],
+    "translation_vi": [
+      "ống bê tông cốt thép"
+    ],
+    "example_en": "Price reinforced concrete pipe by diameter, class and joint type.",
+    "scenario": "Price the specified item by diameter, class and joint type.",
+    "visual": "Concrete pipe wall with an internal reinforcement ring.",
+    "related_terms": [
+      "culvert",
+      "pipe-class",
+      "bell-and-spigot-joint"
+    ],
+    "common_mistakes": [
+      "RCP pipe strength and support conditions must be checked, not guessed from diameter."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "non-reinforced-concrete-pipe",
+    "term": "non-reinforced concrete pipe",
+    "pronunciation": "non-ree-in-FORST KON-kreet PYPE",
+    "category": "drainage",
+    "definition_en": "Precast concrete pipe made without steel reinforcement for approved applications and strength classes.",
+    "explanation_ru": "Бетонная труба без стального каркаса применяется только там, где допускает проект.",
+    "translation_ru": [
+      "бетонная труба без арматуры"
+    ],
+    "translation_vi": [
+      "ống bê tông không cốt thép"
+    ],
+    "example_en": "Confirm non-reinforced concrete pipe class before placing the order.",
+    "scenario": "Confirm the specified item class before placing the order.",
+    "visual": "Plain concrete wall in circular pipe section.",
+    "related_terms": [
+      "reinforced-concrete-pipe",
+      "pipe-class",
+      "pipe-cover-depth"
+    ],
+    "common_mistakes": [
+      "Plain concrete pipe is not automatically interchangeable with reinforced concrete pipe."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "ductile-iron-pipe",
+    "term": "ductile iron pipe",
+    "pronunciation": "DUK-til EYE-ern PYPE",
+    "category": "utilities",
+    "definition_en": "Pipe made of ductile iron for approved pressurized or gravity systems, with specified lining and joints.",
+    "explanation_ru": "Труба из высокопрочного чугуна с защитным покрытием и выбранными проектом стыками.",
+    "translation_ru": [
+      "труба из высокопрочного чугуна (DIP)"
+    ],
+    "translation_vi": [
+      "ống gang dẻo"
+    ],
+    "example_en": "Confirm ductile iron pipe lining and restrained joint requirements.",
+    "scenario": "Confirm the specified item lining and restrained joint requirements.",
+    "visual": "Metal pipe section with lining and socket end.",
+    "related_terms": [
+      "pressure-pipe",
+      "mechanical-joint",
+      "restrained-joint"
+    ],
+    "common_mistakes": [
+      "Ductile iron is different from older grey cast iron and needs corrosion protection details."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "corrugated-hdpe-pipe",
+    "term": "corrugated HDPE pipe",
+    "pronunciation": "KOR-uh-gay-tid H-D-P-E PYPE",
+    "category": "drainage",
+    "definition_en": "HDPE pipe having an external ribbed or profiled wall and a specified stiffness for gravity drainage.",
+    "explanation_ru": "Профилированная ПНД-труба зависит от правильно уплотнённой боковой обсыпки.",
+    "translation_ru": [
+      "гофрированная полиэтиленовая труба"
+    ],
+    "translation_vi": [
+      "ống HDPE gân sóng"
+    ],
+    "example_en": "Check corrugated HDPE pipe stiffness and connection details.",
+    "scenario": "Check the specified item stiffness and connection details.",
+    "visual": "Round pipe with raised outside ribs and smooth bore.",
+    "related_terms": [
+      "hdpe-pipe",
+      "pipe-stiffness",
+      "haunching"
+    ],
+    "common_mistakes": [
+      "Municipal approval varies; not all corrugated pipes are acceptable for sewer mains."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pvc-sdr35",
+    "term": "PVC SDR 35 pipe",
+    "pronunciation": "P-V-C S-D-R 35 PYPE",
+    "category": "drainage",
+    "definition_en": "PVC pipe identified by a standard diameter ratio near 35, typically specified in gravity sewers.",
+    "explanation_ru": "SDR определяет отношение наружного диаметра к толщине стенки трубы.",
+    "translation_ru": [
+      "ПВХ-труба SDR 35"
+    ],
+    "translation_vi": [
+      "ống PVC SDR 35"
+    ],
+    "example_en": "Use PVC SDR 35 pipe only where the owner's sewer specification permits.",
+    "scenario": "Use the specified item only where the owner's sewer specification permits.",
+    "visual": "PVC wall section with an SDR ratio dimension.",
+    "related_terms": [
+      "pvc-drain-pipe",
+      "pipe-outside-diameter",
+      "pipe-wall-thickness"
+    ],
+    "common_mistakes": [
+      "SDR 35 is not a universal pressure rating or a substitute for every PVC pipe."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pvc-sdr28",
+    "term": "PVC SDR 28 pipe",
+    "pronunciation": "P-V-C S-D-R 28 PYPE",
+    "category": "drainage",
+    "definition_en": "PVC pipe identified by a standard diameter ratio near 28 for specified sewer applications.",
+    "explanation_ru": "Вариант ПВХ-трубы с другим отношением диаметра к стенке, чем SDR 35.",
+    "translation_ru": [
+      "ПВХ-труба SDR 28"
+    ],
+    "translation_vi": [
+      "ống PVC SDR 28"
+    ],
+    "example_en": "Confirm PVC SDR 28 pipe is required before buying service connections.",
+    "scenario": "Confirm the specified item is required before buying service connections.",
+    "visual": "Side-by-side PVC cross-sections with differing walls.",
+    "related_terms": [
+      "pvc-sdr35",
+      "pipe-wall-thickness",
+      "pvc-drain-pipe"
+    ],
+    "common_mistakes": [
+      "SDR 28 and SDR 35 are not automatically interchangeable at the same nominal size."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-nominal-diameter",
+    "term": "nominal pipe diameter",
+    "pronunciation": "NOM-uh-nul PYPE dye-AM-i-ter",
+    "category": "utilities",
+    "definition_en": "A standardized size designation that may differ from measured internal and external diameters.",
+    "explanation_ru": "Условное обозначение размера не всегда совпадает с реальными ID и OD изделия.",
+    "translation_ru": [
+      "номинальный диаметр трубы"
+    ],
+    "translation_vi": [
+      "đường kính danh nghĩa ống"
+    ],
+    "example_en": "Record nominal pipe diameter separately from outside diameter for a tie-in.",
+    "scenario": "Record the specified item separately from outside diameter for a tie-in.",
+    "visual": "Circular pipe with nominal size label.",
+    "related_terms": [
+      "pipe-inside-diameter",
+      "pipe-outside-diameter",
+      "transition-coupling"
+    ],
+    "common_mistakes": [
+      "Never select a transition coupling only by nominal diameter."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-inside-diameter",
+    "term": "pipe inside diameter",
+    "pronunciation": "PYPE IN-syde dye-AM-i-ter",
+    "category": "utilities",
+    "definition_en": "The clear bore measured across the inner surface of a pipe, used in hydraulic calculations.",
+    "explanation_ru": "Внутренний диаметр определяет проходное сечение, зависит от толщины стенки.",
+    "translation_ru": [
+      "внутренний диаметр трубы"
+    ],
+    "translation_vi": [
+      "đường kính trong của ống"
+    ],
+    "example_en": "Verify pipe inside diameter used for flow capacity calculations.",
+    "scenario": "Verify the specified item used for flow capacity calculations.",
+    "visual": "Inner diameter dimension spanning pipe opening.",
+    "related_terms": [
+      "pipe-outside-diameter",
+      "pipe-wall-thickness",
+      "pipe-nominal-diameter"
+    ],
+    "common_mistakes": [
+      "Nominal diameter alone may not provide the real inside diameter."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-outside-diameter",
+    "term": "pipe outside diameter",
+    "pronunciation": "PYPE OUT-syde dye-AM-i-ter",
+    "category": "utilities",
+    "definition_en": "Diameter across the outside surface of a pipe, important for coupling and sleeve compatibility.",
+    "explanation_ru": "Наружный диаметр проверяют при подборе переходных муфт между материалами.",
+    "translation_ru": [
+      "наружный диаметр трубы"
+    ],
+    "translation_vi": [
+      "đường kính ngoài của ống"
+    ],
+    "example_en": "Measure the pipe outside diameter before selecting a transition coupling.",
+    "scenario": "Measure the the specified item before selecting a transition coupling.",
+    "visual": "Dimension between outer faces of a pipe section.",
+    "related_terms": [
+      "transition-coupling",
+      "pipe-sleeve",
+      "pipe-nominal-diameter"
+    ],
+    "common_mistakes": [
+      "Nominally equal pipes from different materials can have different ODs."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-wall-thickness",
+    "term": "pipe wall thickness",
+    "pronunciation": "PYPE WAWL THIK-nis",
+    "category": "utilities",
+    "definition_en": "The radial thickness between internal and external pipe surfaces.",
+    "explanation_ru": "Толщину стенки проверяют по стандарту изделия, она влияет на проход и прочность.",
+    "translation_ru": [
+      "толщина стенки трубы"
+    ],
+    "translation_vi": [
+      "chiều dày thành ống"
+    ],
+    "example_en": "Check pipe wall thickness against the specified SDR.",
+    "scenario": "Check the specified item against the specified SDR.",
+    "visual": "Radial dimension across pipe wall.",
+    "related_terms": [
+      "pipe-inside-diameter",
+      "pipe-outside-diameter",
+      "pvc-sdr35"
+    ],
+    "common_mistakes": [
+      "Do not derive wall thickness from nominal size without product dimensions."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-class",
+    "term": "pipe class",
+    "pronunciation": "PYPE KLAS",
+    "category": "utilities",
+    "definition_en": "The strength or performance class assigned under the applicable pipe product standard.",
+    "explanation_ru": "Класс трубы зависит от материала и стандарта и может отражать нагрузку, жёсткость или давление.",
+    "translation_ru": [
+      "класс прочности трубы"
+    ],
+    "translation_vi": [
+      "cấp chịu lực của ống"
+    ],
+    "example_en": "Confirm pipe class from the material schedule and applicable standard.",
+    "scenario": "Confirm the specified item from the material schedule and applicable standard.",
+    "visual": "Pipe with class designation and load arrows.",
+    "related_terms": [
+      "reinforced-concrete-pipe",
+      "pipe-stiffness",
+      "pressure-pipe"
+    ],
+    "common_mistakes": [
+      "Concrete pipe class and pressure class are not identical rating systems."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-stiffness",
+    "term": "pipe stiffness",
+    "pronunciation": "PYPE STIF-nis",
+    "category": "drainage",
+    "definition_en": "Resistance of a flexible pipe to deformation under standardized loading.",
+    "explanation_ru": "Кольцевая жёсткость работает совместно с боковой поддержкой и уплотнением обсыпки.",
+    "translation_ru": [
+      "кольцевая жёсткость трубы"
+    ],
+    "translation_vi": [
+      "độ cứng vòng của ống"
+    ],
+    "example_en": "Verify pipe stiffness for flexible storm drainage pipe.",
+    "scenario": "Verify the specified item for flexible storm drainage pipe.",
+    "visual": "Circular pipe compressed by side and vertical arrows.",
+    "related_terms": [
+      "corrugated-hdpe-pipe",
+      "pipe-deflection",
+      "haunching"
+    ],
+    "common_mistakes": [
+      "Stiffness alone cannot compensate for inadequate haunching."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-invert",
+    "term": "pipe invert",
+    "pronunciation": "PYPE IN-vurt",
+    "category": "drawings",
+    "definition_en": "The lowest internal point in a pipe section used as a reference for gravity sewer elevations.",
+    "explanation_ru": "Нижняя внутренняя точка трубы задаёт отметки входа и выхода в колодцы.",
+    "translation_ru": [
+      "лоток трубы, нижняя внутренняя точка"
+    ],
+    "translation_vi": [
+      "đáy trong của ống"
+    ],
+    "example_en": "Check pipe invert at each manhole connection.",
+    "scenario": "Check the specified item at each manhole connection.",
+    "visual": "Bottom inside point of circular pipe highlighted.",
+    "related_terms": [
+      "invert",
+      "pipe-gradient",
+      "manhole-channel"
+    ],
+    "common_mistakes": [
+      "Invert is not the exterior bottom of pipe or the bedding elevation."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-crown",
+    "term": "pipe crown",
+    "pronunciation": "PYPE KROWN",
+    "category": "drawings",
+    "definition_en": "The upper inside surface of a pipe barrel, often called the soffit in sewer work.",
+    "explanation_ru": "Верхняя внутренняя точка сечения, не совпадает с наружным верхом трубы.",
+    "translation_ru": [
+      "свод трубы, верхняя внутренняя точка"
+    ],
+    "translation_vi": [
+      "đỉnh trong của ống"
+    ],
+    "example_en": "Check the pipe crown against the design hydraulic grade.",
+    "scenario": "Check the the specified item against the design hydraulic grade.",
+    "visual": "Top inside point of circular pipe highlighted.",
+    "related_terms": [
+      "pipe-invert",
+      "pipe-cover-depth",
+      "pipe-inside-diameter"
+    ],
+    "common_mistakes": [
+      "Cover depth is measured above the outside pipe top, not necessarily the internal crown."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-springline",
+    "term": "pipe springline",
+    "pronunciation": "PYPE SPRING-line",
+    "category": "drawings",
+    "definition_en": "Horizontal line through the centre of a circular pipe separating its upper and lower halves.",
+    "explanation_ru": "Springline показывает уровень центра круглой трубы, часто предел боковой обсыпки.",
+    "translation_ru": [
+      "уровень горизонтального диаметра трубы"
+    ],
+    "translation_vi": [
+      "đường ngang qua tâm ống"
+    ],
+    "example_en": "Compact the embedment to pipe springline as detailed.",
+    "scenario": "Compact the embedment to the specified item as detailed.",
+    "visual": "Horizontal line through center of a pipe.",
+    "related_terms": [
+      "pipe-haunch",
+      "haunching",
+      "pipe-embedment"
+    ],
+    "common_mistakes": [
+      "Do not confuse springline with invert or crown."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-haunch",
+    "term": "pipe haunch",
+    "pronunciation": "PYPE HAWNCH",
+    "category": "excavation",
+    "definition_en": "Lower outer side region of a buried pipe between support bedding and the springline.",
+    "explanation_ru": "Нижние боковые пазухи нуждаются в правильном заполнении и уплотнении.",
+    "translation_ru": [
+      "нижняя боковая зона трубы"
+    ],
+    "translation_vi": [
+      "vùng hông dưới của ống"
+    ],
+    "example_en": "Inspect fill below each pipe haunch before closing the trench.",
+    "scenario": "Inspect fill below each the specified item before closing the trench.",
+    "visual": "Lower side sectors of buried pipe highlighted.",
+    "related_terms": [
+      "haunching",
+      "pipe-springline",
+      "pipe-embedment"
+    ],
+    "common_mistakes": [
+      "Haunch is a location; haunching is the support material placed there."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-cover-depth",
+    "term": "pipe cover depth",
+    "pronunciation": "PYPE KUV-er DEPTH",
+    "category": "drawings",
+    "definition_en": "Vertical distance from the outside top of a pipe to the specified ground or pavement surface.",
+    "explanation_ru": "Высота засыпки над трубой влияет на нагрузки, защиту и выбор конструкции.",
+    "translation_ru": [
+      "высота засыпки над верхом трубы"
+    ],
+    "translation_vi": [
+      "chiều sâu đất phủ trên đỉnh ống"
+    ],
+    "example_en": "Confirm pipe cover depth beneath the truck route.",
+    "scenario": "Confirm the specified item beneath the truck route.",
+    "visual": "Grade line and vertical dimension to outer pipe top.",
+    "related_terms": [
+      "pipe-crown",
+      "pipe-class",
+      "footing-excavation"
+    ],
+    "common_mistakes": [
+      "Do not measure pipe cover from the invert or confuse it with trench excavation depth."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-gradient",
+    "term": "pipe gradient",
+    "pronunciation": "PYPE GRAY-dee-ent",
+    "category": "drawings",
+    "definition_en": "Change in invert elevation divided by horizontal length for a gravity pipeline.",
+    "explanation_ru": "Уклон трубы рассчитывают по разнице отметок лотка и горизонтальному расстоянию.",
+    "translation_ru": [
+      "продольный уклон трубы"
+    ],
+    "translation_vi": [
+      "độ dốc dọc đường ống"
+    ],
+    "example_en": "Calculate pipe gradient from surveyed inverts and horizontal run.",
+    "scenario": "Calculate the specified item from surveyed inverts and horizontal run.",
+    "visual": "Long profile with downstream falling grade.",
+    "related_terms": [
+      "pipe-invert",
+      "centerline-length",
+      "gravity-pipe"
+    ],
+    "common_mistakes": [
+      "Pipe cover depth cannot replace invert data when computing slope."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-embedment",
+    "term": "pipe embedment",
+    "pronunciation": "PYPE em-BED-ment",
+    "category": "excavation",
+    "definition_en": "Specified support and protective materials directly below and around a buried pipe.",
+    "explanation_ru": "Обсыпка в зоне трубы включает подготовку и боковую поддержку согласно разрезу траншеи.",
+    "translation_ru": [
+      "зона основания и обсыпки трубы"
+    ],
+    "translation_vi": [
+      "vùng vật liệu đệm và bao quanh ống"
+    ],
+    "example_en": "Measure pipe embedment boundaries from the approved trench section.",
+    "scenario": "Measure the specified item boundaries from the approved trench section.",
+    "visual": "Pipe zone beneath and beside pipe shaded.",
+    "related_terms": [
+      "bedding",
+      "haunching",
+      "initial-backfill"
+    ],
+    "common_mistakes": [
+      "Embedment is not the entire trench backfill unless the detail says so."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "initial-backfill",
+    "term": "initial backfill",
+    "pronunciation": "i-NISH-ul BAK-fill",
+    "category": "excavation",
+    "definition_en": "Backfill placed around and above an installed pipe within the specified protective zone.",
+    "explanation_ru": "Первичная засыпка защищает трубу до общей обратной засыпки траншеи.",
+    "translation_ru": [
+      "первоначальная защитная засыпка"
+    ],
+    "translation_vi": [
+      "lớp lấp ban đầu quanh ống"
+    ],
+    "example_en": "Use approved material for initial backfill above the storm pipe.",
+    "scenario": "Use approved material for the specified item above the storm pipe.",
+    "visual": "Protection material immediately over the pipe highlighted.",
+    "related_terms": [
+      "pipe-embedment",
+      "haunching",
+      "final-backfill"
+    ],
+    "common_mistakes": [
+      "Initial backfill is not automatically approved general excavated soil."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "final-backfill",
+    "term": "final backfill",
+    "pronunciation": "FY-nul BAK-fill",
+    "category": "excavation",
+    "definition_en": "Backfill placed above the protective pipe zone up to required subgrade or finish.",
+    "explanation_ru": "Финальная засыпка восстанавливает траншею выше защитного слоя трубы.",
+    "translation_ru": [
+      "окончательная засыпка траншеи"
+    ],
+    "translation_vi": [
+      "vật liệu lấp trả phía trên cuối cùng"
+    ],
+    "example_en": "Allow for final backfill under the pavement structure.",
+    "scenario": "Allow for the specified item under the pavement structure.",
+    "visual": "Upper trench material highlighted.",
+    "related_terms": [
+      "backfill",
+      "initial-backfill",
+      "compaction"
+    ],
+    "common_mistakes": [
+      "Excavated material may not meet the specified compaction or gradation requirements."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-zone",
+    "term": "pipe zone",
+    "pronunciation": "PYPE ZOHN",
+    "category": "excavation",
+    "definition_en": "The part of a trench requiring special pipe-support material and installation controls.",
+    "explanation_ru": "Зона трубы имеет свои границы и требования к материалам, отличные от засыпки сверху.",
+    "translation_ru": [
+      "зона укладки трубы"
+    ],
+    "translation_vi": [
+      "vùng đặt và bảo vệ ống"
+    ],
+    "example_en": "Price pipe zone material separately from general backfill.",
+    "scenario": "Price the specified item material separately from general backfill.",
+    "visual": "Bracket around buried pipe and protective material.",
+    "related_terms": [
+      "pipe-embedment",
+      "initial-backfill",
+      "haunching"
+    ],
+    "common_mistakes": [
+      "Do not assume a fixed pipe zone height without the current trench standard detail."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-alignment",
+    "term": "pipe alignment",
+    "pronunciation": "PYPE uh-LYNE-ment",
+    "category": "drawings",
+    "definition_en": "Horizontal route of a pipeline, with specified stations, changes in direction and offsets.",
+    "explanation_ru": "Трассу выбирают по плану, пикетажу и ограничениям существующих сетей.",
+    "translation_ru": [
+      "трасса трубопровода"
+    ],
+    "translation_vi": [
+      "tim tuyến ống"
+    ],
+    "example_en": "Check pipe alignment at existing utility crossings.",
+    "scenario": "Check the specified item at existing utility crossings.",
+    "visual": "Plan centreline and station labels.",
+    "related_terms": [
+      "alignment",
+      "stationing",
+      "pipe-gradient"
+    ],
+    "common_mistakes": [
+      "Straight-line distance may exclude bends and offsets in the installed run."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-cut-length",
+    "term": "pipe cut length",
+    "pronunciation": "PYPE KUT LENGTH",
+    "category": "drawings",
+    "definition_en": "Measured pipe piece length adjusted for insertion into fittings and actual end geometry.",
+    "explanation_ru": "Размер короткой вставки включает допуски на заход в раструбы.",
+    "translation_ru": [
+      "отрезная длина трубы"
+    ],
+    "translation_vi": [
+      "chiều dài đoạn ống cần cắt"
+    ],
+    "example_en": "Confirm pipe cut length between the new wye and existing lead.",
+    "scenario": "Confirm the specified item between the new wye and existing lead.",
+    "visual": "Short closing piece with cut dimension.",
+    "related_terms": [
+      "short-pipe-section",
+      "pipe-section",
+      "pipe-bell-end"
+    ],
+    "common_mistakes": [
+      "The visible clear gap is not necessarily the required pipe cutting length."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-deflection",
+    "term": "pipe deflection",
+    "pronunciation": "PYPE di-FLEK-shun",
+    "category": "drainage",
+    "definition_en": "Change in shape or diameter of a flexible buried pipe under load.",
+    "explanation_ru": "Деформация гибкой трубы связана с нагрузкой и боковой поддержкой грунта.",
+    "translation_ru": [
+      "деформация поперечного сечения трубы"
+    ],
+    "translation_vi": [
+      "độ biến dạng méo của ống"
+    ],
+    "example_en": "Check pipe deflection after backfilling the flexible sewer.",
+    "scenario": "Check the specified item after backfilling the flexible sewer.",
+    "visual": "Distorted oval pipe compared with circular outline.",
+    "related_terms": [
+      "pipe-stiffness",
+      "pipe-deflection-test",
+      "haunching"
+    ],
+    "common_mistakes": [
+      "Do not confuse cross-sectional deformation with design angular joint deflection."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-bell-end",
+    "term": "pipe bell end",
+    "pronunciation": "PYPE BEL END",
+    "category": "utilities",
+    "definition_en": "Expanded socket end of a pipe that receives the spigot of the next pipe section.",
+    "explanation_ru": "Раструб принимает гладкий конец соседней трубы с предусмотренным уплотнением.",
+    "translation_ru": [
+      "раструб трубы"
+    ],
+    "translation_vi": [
+      "đầu nong ống"
+    ],
+    "example_en": "Keep the pipe bell end clean before inserting the next section.",
+    "scenario": "Keep the the specified part clean before inserting the next section.",
+    "visual": "Pipe socket and inserted spigot at an enlarged end.",
+    "related_terms": [
+      "pipe-spigot-end",
+      "bell-and-spigot-joint",
+      "integral-bell-end"
+    ],
+    "common_mistakes": [
+      "The socket is not always interchangeable across manufacturers or pipe types."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-spigot-end",
+    "term": "pipe spigot end",
+    "pronunciation": "PYPE SPIG-ut END",
+    "category": "utilities",
+    "definition_en": "Plain end of a pipe designed to insert into a receiving bell or socket.",
+    "explanation_ru": "Гладкий конец заводят в раструб на заданную глубину без повреждения уплотнения.",
+    "translation_ru": [
+      "гладкий вставляемый конец трубы"
+    ],
+    "translation_vi": [
+      "đầu trơn ống"
+    ],
+    "example_en": "Mark the insertion depth on the pipe spigot end before assembly.",
+    "scenario": "Mark the insertion depth on the the specified part before assembly.",
+    "visual": "Smooth pipe end entering a socket.",
+    "related_terms": [
+      "pipe-bell-end",
+      "bell-and-spigot-joint",
+      "pipe-cutting"
+    ],
+    "common_mistakes": [
+      "Cut spigot ends may need chamfering and manufacturer-approved preparation."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "bell-and-spigot-joint",
+    "term": "bell and spigot joint",
+    "pronunciation": "BEL and SPIG-ut JOYNT",
+    "category": "drainage",
+    "definition_en": "Joint formed by inserting a pipe spigot into a bell, typically using the specified sealing system.",
+    "explanation_ru": "Раструбный стык соединяет звенья труб; герметизация может выполняться резиновым кольцом.",
+    "translation_ru": [
+      "раструбное соединение труб"
+    ],
+    "translation_vi": [
+      "mối nối âm dương ống"
+    ],
+    "example_en": "Inspect the bell and spigot joint after pulling the pipes together.",
+    "scenario": "Inspect the the specified part after pulling the pipes together.",
+    "visual": "Bell socket with spigot and sealing ring.",
+    "related_terms": [
+      "pipe-bell-end",
+      "pipe-spigot-end",
+      "pipe-rubber-gasket"
+    ],
+    "common_mistakes": [
+      "Proper joint performance requires specified gasket, insertion depth and alignment."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-rubber-gasket",
+    "term": "pipe rubber gasket",
+    "pronunciation": "PYPE RUB-er GAS-kit",
+    "category": "utilities",
+    "definition_en": "Elastomeric seal compressed between pipe joint surfaces to limit leakage.",
+    "explanation_ru": "Резиновое уплотнение создаёт герметичный стык по геометрии раструба и паспорту изделия.",
+    "translation_ru": [
+      "резиновое уплотнение стыка трубы"
+    ],
+    "translation_vi": [
+      "gioăng cao su nối ống"
+    ],
+    "example_en": "Fit the pipe rubber gasket in the approved joint location.",
+    "scenario": "Fit the the specified part in the approved joint location.",
+    "visual": "Joint section showing compressed black rubber ring.",
+    "related_terms": [
+      "bell-and-spigot-joint",
+      "gasket-groove",
+      "pipe-o-ring"
+    ],
+    "common_mistakes": [
+      "Do not mix gasket profiles or use unapproved lubricants."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-o-ring",
+    "term": "pipe O-ring",
+    "pronunciation": "PYPE OH-ring",
+    "category": "utilities",
+    "definition_en": "Elastomeric sealing ring with a circular cross-section for specified pipe joints.",
+    "explanation_ru": "Круглое уплотнение O-ring применяется только в соответствующем пазу и стыковой системе.",
+    "translation_ru": [
+      "круглое резиновое уплотнительное кольцо"
+    ],
+    "translation_vi": [
+      "gioăng cao su chữ O"
+    ],
+    "example_en": "Confirm the pipe O-ring cross-section matches the supplied concrete pipe joint.",
+    "scenario": "Confirm the the specified part cross-section matches the supplied concrete pipe joint.",
+    "visual": "Circular seal seated in a joint groove.",
+    "related_terms": [
+      "pipe-rubber-gasket",
+      "gasket-groove",
+      "reinforced-concrete-pipe"
+    ],
+    "common_mistakes": [
+      "An O-ring is a gasket shape, not proof all gasketed pipe joints accept it."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "gasket-groove",
+    "term": "gasket groove",
+    "pronunciation": "GAS-kit GROOV",
+    "category": "utilities",
+    "definition_en": "Recess on a pipe joint surface designed to hold a gasket in position.",
+    "explanation_ru": "Паз удерживает уплотнение при соединении труб, его чистота критична.",
+    "translation_ru": [
+      "паз для уплотнения трубы"
+    ],
+    "translation_vi": [
+      "rãnh đặt gioăng"
+    ],
+    "example_en": "Clean the gasket groove before assembling the sewer joint.",
+    "scenario": "Clean the the specified part before assembling the sewer joint.",
+    "visual": "Close-up of joint recess and rubber ring.",
+    "related_terms": [
+      "pipe-o-ring",
+      "pipe-rubber-gasket",
+      "bell-and-spigot-joint"
+    ],
+    "common_mistakes": [
+      "Damage or grit in a gasket groove can cause leaks even with a new seal."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "push-on-joint",
+    "term": "push-on joint",
+    "pronunciation": "PUSH-on JOYNT",
+    "category": "utilities",
+    "definition_en": "A pipe joint assembled by pushing a prepared spigot into a gasketed socket.",
+    "explanation_ru": "Соединение собирают осевой подачей гладкого конца в раструб с уплотнением.",
+    "translation_ru": [
+      "натяжное раструбное соединение"
+    ],
+    "translation_vi": [
+      "mối nối gioăng đẩy lắp"
+    ],
+    "example_en": "Use the required lubricant for the push-on joint during installation.",
+    "scenario": "Use the required lubricant for the the specified part during installation.",
+    "visual": "Two sections being pushed together at a socket.",
+    "related_terms": [
+      "bell-and-spigot-joint",
+      "restrained-joint",
+      "ductile-iron-pipe"
+    ],
+    "common_mistakes": [
+      "Push-on does not automatically mean restrained against pressure thrust."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "restrained-joint",
+    "term": "restrained joint",
+    "pronunciation": "ree-STRAYND JOYNT",
+    "category": "utilities",
+    "definition_en": "Joint system designed to resist axial pullout forces due to pressure and thrust.",
+    "explanation_ru": "Удерживающий стык передаёт осевые усилия, предотвращая разъединение напорного трубопровода.",
+    "translation_ru": [
+      "соединение трубы с удержанием от осевого разъединения"
+    ],
+    "translation_vi": [
+      "mối nối ống chống tuột"
+    ],
+    "example_en": "Check restrained joint lengths near the pressure main bend.",
+    "scenario": "Check the specified part lengths near the pressure main bend.",
+    "visual": "Pressure main joint with mechanical restraint locks.",
+    "related_terms": [
+      "thrust-block",
+      "pipe-thrust-restraint",
+      "pressure-pipe"
+    ],
+    "common_mistakes": [
+      "A push-on sealing joint is not automatically axially restrained."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "mechanical-joint",
+    "term": "mechanical joint",
+    "pronunciation": "muh-KAN-i-kul JOYNT",
+    "category": "utilities",
+    "definition_en": "Pipe connection tightened with mechanical hardware and sealing components rather than fusion welding.",
+    "explanation_ru": "Механическое соединение использует болты, кольца и уплотнение по заводскому комплекту.",
+    "translation_ru": [
+      "механический фланцево-обжимной стык"
+    ],
+    "translation_vi": [
+      "mối nối ống cơ khí"
+    ],
+    "example_en": "Torque the mechanical joint fasteners to the specified sequence.",
+    "scenario": "Torque the the specified part fasteners to the specified sequence.",
+    "visual": "Gland with bolt set and sealing ring around pipe.",
+    "related_terms": [
+      "ductile-iron-pipe",
+      "pipe-rubber-gasket",
+      "restrained-joint"
+    ],
+    "common_mistakes": [
+      "A mechanical joint requires compatible fittings, correct bolt torque and proper restraint where needed."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "flanged-joint",
+    "term": "flanged joint",
+    "pronunciation": "FLANJD JOYNT",
+    "category": "utilities",
+    "definition_en": "Connection between two mating flanges held together by bolts and a specified gasket.",
+    "explanation_ru": "Фланцевое соединение применяют для труб и арматуры, обеспечивая разборный узел.",
+    "translation_ru": [
+      "фланцевое соединение труб"
+    ],
+    "translation_vi": [
+      "mối nối mặt bích"
+    ],
+    "example_en": "Install the flanged joint gasket without blocking the pipe bore.",
+    "scenario": "Install the the specified part gasket without blocking the pipe bore.",
+    "visual": "Two bolted flanges joined with flat gasket.",
+    "related_terms": [
+      "pipe-flange",
+      "flange-adaptor",
+      "valve"
+    ],
+    "common_mistakes": [
+      "Flanges need compatible drilling, gasket, rating and tightening sequence."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "butt-fusion-joint",
+    "term": "butt fusion joint",
+    "pronunciation": "BUT FYOO-zhun JOYNT",
+    "category": "utilities",
+    "definition_en": "Heat-fused end-to-end joint of compatible thermoplastic pipes formed with controlled heating and pressure.",
+    "explanation_ru": "Стыковая сварка ПНД требует правильной подготовки торцов, температуры и времени охлаждения.",
+    "translation_ru": [
+      "стыковая сварка полиэтиленовой трубы"
+    ],
+    "translation_vi": [
+      "mối hàn đối đầu ống nhựa"
+    ],
+    "example_en": "Document each butt fusion joint on the HDPE pressure main.",
+    "scenario": "Document each the specified part on the HDPE pressure main.",
+    "visual": "Two polyethylene pipe ends heat-fused at a bead.",
+    "related_terms": [
+      "hdpe-pipe",
+      "pressure-pipe",
+      "electrofusion-coupling"
+    ],
+    "common_mistakes": [
+      "Butt fusion is not an adhesive joint; incompatible resins or poor parameters can weaken it."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "flange-adaptor",
+    "term": "flange adaptor",
+    "pronunciation": "FLANJ uh-DAP-ter",
+    "category": "utilities",
+    "definition_en": "Component that connects a plain-end or socketed pipe system to a bolted flange interface.",
+    "explanation_ru": "Фланцевый переходник соединяет трубный конец с арматурой или оборудованием на фланцах.",
+    "translation_ru": [
+      "фланцевый адаптер трубы"
+    ],
+    "translation_vi": [
+      "đầu chuyển mặt bích"
+    ],
+    "example_en": "Allow for a flange adaptor at the valve chamber equipment interface.",
+    "scenario": "Allow for a the specified part at the valve chamber equipment interface.",
+    "visual": "Plain pipe transition to bolted flange plate.",
+    "related_terms": [
+      "flanged-joint",
+      "pipe-outside-diameter",
+      "valve-chamber"
+    ],
+    "common_mistakes": [
+      "Confirm pressure class, bolt pattern, pipe OD and end restraint requirements."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-elbow",
+    "term": "pipe elbow",
+    "pronunciation": "PYPE EL-boh",
+    "category": "utilities",
+    "definition_en": "Factory-made fitting that changes the direction of a piping run by a specified angle.",
+    "explanation_ru": "Колено меняет направление трассы; для напорного трубопровода проверяют распорные усилия.",
+    "translation_ru": [
+      "колено трубы, отвод"
+    ],
+    "translation_vi": [
+      "co ống"
+    ],
+    "example_en": "Count each pipe elbow shown in the watermain plan.",
+    "scenario": "Count each the specified part shown in the watermain plan.",
+    "visual": "Bend fitting with flow arrow turning ninety degrees.",
+    "related_terms": [
+      "pressure-pipe",
+      "thrust-block",
+      "pipe-alignment"
+    ],
+    "common_mistakes": [
+      "Pipe elbows may require restraint or thrust blocks in pressure mains."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-tee",
+    "term": "pipe tee",
+    "pronunciation": "PYPE TEE",
+    "category": "utilities",
+    "definition_en": "Three-opening pipe fitting used to form a branch from a main run.",
+    "explanation_ru": "Тройник образует ответвление трубопровода, его размеры и соединения должны совпадать с проектом.",
+    "translation_ru": [
+      "тройник трубы"
+    ],
+    "translation_vi": [
+      "tê ống"
+    ],
+    "example_en": "Include a pipe tee at the hydrant branch from the watermain.",
+    "scenario": "Include a the specified part at the hydrant branch from the watermain.",
+    "visual": "T-shaped fitting on a horizontal watermain.",
+    "related_terms": [
+      "wye-fitting",
+      "pipe-coupling",
+      "hydrant"
+    ],
+    "common_mistakes": [
+      "A perpendicular tee is not identical to a wye fitting for gravity sewers."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-cross",
+    "term": "pipe cross",
+    "pronunciation": "PYPE KRAWSS",
+    "category": "utilities",
+    "definition_en": "Four-opening fitting for a pipe junction where multiple branches meet.",
+    "explanation_ru": "Крестовина образует четыре направления и применяется только когда допустима проектом.",
+    "translation_ru": [
+      "крестовина трубопровода"
+    ],
+    "translation_vi": [
+      "tê chữ thập ống"
+    ],
+    "example_en": "Confirm whether the pipe cross is specified at the four-way water distribution junction.",
+    "scenario": "Confirm whether the the specified part is specified at the four-way water distribution junction.",
+    "visual": "Four-way cross fitting plan view.",
+    "related_terms": [
+      "pipe-tee",
+      "watermain",
+      "pipe-thrust-restraint"
+    ],
+    "common_mistakes": [
+      "Four-way fittings may be restricted by the owner, so do not add by default."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-cap",
+    "term": "pipe cap",
+    "pronunciation": "PYPE KAP",
+    "category": "utilities",
+    "definition_en": "End closure fitting that typically fits over or connects to the end of a pipe.",
+    "explanation_ru": "Колпак или торцевая заглушка перекрывает открытый конец трубы.",
+    "translation_ru": [
+      "заглушка на конец трубы"
+    ],
+    "translation_vi": [
+      "nắp bịt đầu ống"
+    ],
+    "example_en": "Provide a temporary pipe cap at the end of the watermain extension.",
+    "scenario": "Provide a temporary the specified part at the end of the watermain extension.",
+    "visual": "External cap covering end of a straight pipe.",
+    "related_terms": [
+      "pipe-plug",
+      "pressure-pipe",
+      "pipe-section"
+    ],
+    "common_mistakes": [
+      "Do not treat a temporary dust cap as a pressure-rated permanent closure."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-plug",
+    "term": "pipe plug",
+    "pronunciation": "PYPE PLUG",
+    "category": "utilities",
+    "definition_en": "Plug inserted into or fitted within a pipe opening to close flow temporarily or permanently as designed.",
+    "explanation_ru": "Пробка закрывает просвет трубы изнутри или в узле по выбранной системе.",
+    "translation_ru": [
+      "внутренняя пробка трубы"
+    ],
+    "translation_vi": [
+      "nút bịt ống"
+    ],
+    "example_en": "Install the approved pipe plug before the isolation test.",
+    "scenario": "Install the approved the specified part before the isolation test.",
+    "visual": "Plug seated inside a circular pipe opening.",
+    "related_terms": [
+      "pipe-cap",
+      "pipe-plugging",
+      "pipe-air-test"
+    ],
+    "common_mistakes": [
+      "A test plug may have strict pressure and restraint limits; keep personnel out of its line of fire."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-flange",
+    "term": "pipe flange",
+    "pronunciation": "PYPE FLANJ",
+    "category": "utilities",
+    "definition_en": "Rim or plate on a pipe or fitting with bolt holes for a bolted connection.",
+    "explanation_ru": "Фланец служит опорной поверхностью для прокладки и болтов в разборном стыке.",
+    "translation_ru": [
+      "фланец трубы"
+    ],
+    "translation_vi": [
+      "mặt bích ống"
+    ],
+    "example_en": "Verify pipe flange bolt-hole pattern against the equipment drawing.",
+    "scenario": "Verify the specified part bolt-hole pattern against the equipment drawing.",
+    "visual": "Flange ring with bolt holes around pipe.",
+    "related_terms": [
+      "flanged-joint",
+      "flange-adaptor",
+      "valve"
+    ],
+    "common_mistakes": [
+      "Same nominal size does not guarantee compatible flange pressure class or drilling."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-thrust-restraint",
+    "term": "pipe thrust restraint",
+    "pronunciation": "PYPE THRUST ree-STRAYNT",
+    "category": "utilities",
+    "definition_en": "Designed system that resists unbalanced pressure thrust at bends, tees, valves or dead ends.",
+    "explanation_ru": "Защита от распорных сил выполняется удерживающими стыками, анкерами или упорными блоками.",
+    "translation_ru": [
+      "упор или удержание от распорного усилия"
+    ],
+    "translation_vi": [
+      "hệ neo chống lực đẩy đường ống"
+    ],
+    "example_en": "Show pipe thrust restraint requirements near the fire hydrant tee.",
+    "scenario": "Show the specified part requirements near the fire hydrant tee.",
+    "visual": "Pressure pipe bend with thrust force arrows and restraint.",
+    "related_terms": [
+      "thrust-block",
+      "restrained-joint",
+      "pipe-elbow"
+    ],
+    "common_mistakes": [
+      "Restraint length and design depend on soil, pressure, geometry and joint system."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "casing-pipe",
+    "term": "casing pipe",
+    "pronunciation": "KAY-sing PYPE",
+    "category": "utilities",
+    "definition_en": "Outer protective pipe placed around a carrier pipe, frequently beneath roads or at trenchless crossings.",
+    "explanation_ru": "Футляр защищает или обеспечивает проход рабочего трубопровода через пересечение.",
+    "translation_ru": [
+      "защитный футляр трубопровода"
+    ],
+    "translation_vi": [
+      "ống vỏ bọc bảo vệ"
+    ],
+    "example_en": "Price the casing pipe separately from the carrier pipe under the rail crossing.",
+    "scenario": "Price the the specified part separately from the carrier pipe under the rail crossing.",
+    "visual": "Large outer casing with smaller carrier inside.",
+    "related_terms": [
+      "carrier-pipe",
+      "casing-spacer",
+      "pipe-jacking"
+    ],
+    "common_mistakes": [
+      "A casing pipe is not normally the fluid-carrying pipeline itself."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "carrier-pipe",
+    "term": "carrier pipe",
+    "pronunciation": "KARR-ee-er PYPE",
+    "category": "utilities",
+    "definition_en": "Actual service pipe installed inside a larger casing and carrying the utility flow.",
+    "explanation_ru": "Рабочая труба проводит воду или стоки, а футляр защищает её на переходе.",
+    "translation_ru": [
+      "рабочая труба внутри футляра"
+    ],
+    "translation_vi": [
+      "ống dẫn chính bên trong ống vỏ"
+    ],
+    "example_en": "Check the carrier pipe size and centralizers inside the steel casing.",
+    "scenario": "Check the the specified part size and centralizers inside the steel casing.",
+    "visual": "Inner service pipe centered inside protective casing.",
+    "related_terms": [
+      "casing-pipe",
+      "casing-spacer",
+      "pressure-pipe"
+    ],
+    "common_mistakes": [
+      "Do not confuse carrier and casing diameter in procurement or takeoff."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "casing-spacer",
+    "term": "casing spacer",
+    "pronunciation": "KAY-sing SPAY-ser",
+    "category": "utilities",
+    "definition_en": "Support assembly that positions the carrier pipe within the larger casing.",
+    "explanation_ru": "Центратор удерживает рабочую трубу в футляре без контакта стенок по проекту.",
+    "translation_ru": [
+      "центрирующая опора трубы в футляре"
+    ],
+    "translation_vi": [
+      "con kê định tâm ống trong ống vỏ"
+    ],
+    "example_en": "Count casing spacer sets at the intervals specified by the crossing detail.",
+    "scenario": "Count the specified part sets at the intervals specified by the crossing detail.",
+    "visual": "Two concentric pipes linked by small centering pads.",
+    "related_terms": [
+      "casing-pipe",
+      "carrier-pipe",
+      "bore-spacer"
+    ],
+    "common_mistakes": [
+      "Duct-bank spacers and bore spacers are not automatically approved casing supports."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-repair-clamp",
+    "term": "pipe repair clamp",
+    "pronunciation": "PYPE ree-PAIR KLAMP",
+    "category": "utilities",
+    "definition_en": "Clamping sleeve that seals a local pipe leak or damage where approved for that material and service.",
+    "explanation_ru": "Ремонтный хомут обжимает повреждённое место; применимость зависит от давления и состояния трубы.",
+    "translation_ru": [
+      "ремонтный хомут для трубы"
+    ],
+    "translation_vi": [
+      "đai sửa chữa ống"
+    ],
+    "example_en": "Select a pipe repair clamp by actual outside diameter and pressure rating.",
+    "scenario": "Select a the specified part by actual outside diameter and pressure rating.",
+    "visual": "Band clamp surrounding a damaged pipe section.",
+    "related_terms": [
+      "pipe-outside-diameter",
+      "pipe-coupling",
+      "pressure-pipe"
+    ],
+    "common_mistakes": [
+      "A repair clamp is not a substitute for a full pipe section replacement when required."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-tapping-sleeve",
+    "term": "pipe tapping sleeve",
+    "pronunciation": "PYPE TAP-ing SLEEV",
+    "category": "utilities",
+    "definition_en": "Clamping sleeve fitted around a main to provide an approved outlet for a pressurized tapping connection.",
+    "explanation_ru": "Седловая накладка для врезки в напорную магистраль, обычно с фланцевым выводом для крана.",
+    "translation_ru": [
+      "седельная муфта для врезки в напорную трубу"
+    ],
+    "translation_vi": [
+      "đai lấy nhánh ống có áp"
+    ],
+    "example_en": "Use the specified pipe tapping sleeve for the live watermain branch.",
+    "scenario": "Use the specified the specified part for the live watermain branch.",
+    "visual": "Clamped sleeve over pressurized main with outlet flange.",
+    "related_terms": [
+      "saddle-connection",
+      "flange-adaptor",
+      "watermain"
+    ],
+    "common_mistakes": [
+      "A pressure tapping sleeve is not the same as a sewer lateral saddle connection."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "pipe-joint-deflection",
+    "term": "pipe joint deflection",
+    "pronunciation": "PYPE JOYNT di-FLEK-shun",
+    "category": "drawings",
+    "definition_en": "Small intentional angular change allowed at certain pipe joints within manufacturer and design limits.",
+    "explanation_ru": "Угловой поворот между звеньями в стыке допускается только в разрешённых пределах.",
+    "translation_ru": [
+      "угловое отклонение в стыке трубы"
+    ],
+    "translation_vi": [
+      "độ lệch góc tại mối nối ống"
+    ],
+    "example_en": "Check pipe joint deflection at the curved alignment before installation.",
+    "scenario": "Check the specified part at the curved alignment before installation.",
+    "visual": "Two pipes meeting at a slight measured angle.",
+    "related_terms": [
+      "pipe-deflection",
+      "bell-and-spigot-joint",
+      "pipe-alignment"
+    ],
+    "common_mistakes": [
+      "Joint angular deflection differs from pipe ovalization and is not an excuse to exceed joint limits."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "open-cut-pipe-installation",
+    "term": "open-cut pipe installation",
+    "pronunciation": "OH-pen KUT PYPE in-stuh-LAY-shun",
+    "category": "excavation",
+    "definition_en": "Installing underground pipe in a surface-excavated trench rather than by trenchless methods.",
+    "explanation_ru": "Открытая прокладка требует траншеи, подготовки основания, монтажа и обратной засыпки.",
+    "translation_ru": [
+      "открытая прокладка трубы в траншее"
+    ],
+    "translation_vi": [
+      "thi công lắp ống đào mở"
+    ],
+    "example_en": "Estimate open-cut pipe installation separately from the trenchless crossing.",
+    "scenario": "Estimate the specified activity separately from the trenchless crossing.",
+    "visual": "Open trench with pipe suspended above bedding.",
+    "related_terms": [
+      "trench",
+      "bedding",
+      "pipe-jacking"
+    ],
+    "common_mistakes": [
+      "Deep trench sections can require excavation support and restoration not needed for trenchless work."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-jacking",
+    "term": "pipe jacking",
+    "pronunciation": "PYPE JAK-ing",
+    "category": "utilities",
+    "definition_en": "Trenchless installation that advances pipe or a casing by jacking it forward from a launch pit.",
+    "explanation_ru": "При продавливании трубу выдвигают домкратами через грунт, обычно из стартового котлована.",
+    "translation_ru": [
+      "продавливание труб домкратами"
+    ],
+    "translation_vi": [
+      "kích đẩy ống ngầm"
+    ],
+    "example_en": "Include launch and reception shafts for pipe jacking under the road.",
+    "scenario": "Include launch and reception shafts for the specified activity under the road.",
+    "visual": "Jacking ram pushing pipe from pit beneath a road.",
+    "related_terms": [
+      "casing-pipe",
+      "carrier-pipe",
+      "horizontal-directional-drilling"
+    ],
+    "common_mistakes": [
+      "Jacking loads, ground conditions and product suitability require engineered design."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "horizontal-directional-drilling",
+    "term": "horizontal directional drilling",
+    "pronunciation": "hor-i-ZON-tul di-REK-shun-ul DRIL-ing",
+    "category": "utilities",
+    "definition_en": "Trenchless method using a steerable bore to install suitable pipe along a controlled curved path.",
+    "explanation_ru": "ГНБ формирует управляемую скважину и затягивает рабочую трубу, часто ПНД.",
+    "translation_ru": [
+      "горизонтально-направленное бурение (ГНБ)"
+    ],
+    "translation_vi": [
+      "khoan định hướng ngang"
+    ],
+    "example_en": "Check horizontal directional drilling bore length and entry pit limits.",
+    "scenario": "Check the specified activity bore length and entry pit limits.",
+    "visual": "Curved underground bore trajectory between entry and exit pits.",
+    "related_terms": [
+      "hdpe-pipe",
+      "carrier-pipe",
+      "pipe-alignment"
+    ],
+    "common_mistakes": [
+      "Not all pipe materials and alignments can be installed by this method."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-stringing",
+    "term": "pipe stringing",
+    "pronunciation": "PYPE STRING-ing",
+    "category": "utilities",
+    "definition_en": "Staging individual pipe lengths alongside a planned installation route before joining and lowering.",
+    "explanation_ru": "Звенья труб раскладывают вдоль траншеи в порядке монтажа.",
+    "translation_ru": [
+      "раскладка секций трубы вдоль трассы"
+    ],
+    "translation_vi": [
+      "rải các đoạn ống dọc tuyến"
+    ],
+    "example_en": "Allow space and handling for pipe stringing along the watermain corridor.",
+    "scenario": "Allow space and handling for the specified activity along the watermain corridor.",
+    "visual": "Several pipe pieces arranged beside trench.",
+    "related_terms": [
+      "pipe-section",
+      "pipe-lowering",
+      "pipe-alignment"
+    ],
+    "common_mistakes": [
+      "Stringing is a staging operation, not proof that pipe joints have been installed."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-lowering",
+    "term": "pipe lowering",
+    "pronunciation": "PYPE LOH-er-ing",
+    "category": "safety",
+    "definition_en": "Controlled lifting and placement of pipe sections into an excavated trench or receiving support.",
+    "explanation_ru": "Трубы безопасно опускают на подготовленную постель с помощью подходящей оснастки.",
+    "translation_ru": [
+      "опускание трубы в траншею"
+    ],
+    "translation_vi": [
+      "hạ ống xuống rãnh"
+    ],
+    "example_en": "Include lifting equipment for pipe lowering in the heavy RCP installation rate.",
+    "scenario": "Include lifting equipment for the specified activity in the heavy RCP installation rate.",
+    "visual": "Crane lifting pipe onto trench bedding.",
+    "related_terms": [
+      "reinforced-concrete-pipe",
+      "bedding",
+      "pipe-section"
+    ],
+    "common_mistakes": [
+      "Never allow workers beneath suspended pipe loads or use unapproved rigging."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-cutting",
+    "term": "pipe cutting",
+    "pronunciation": "PYPE KUT-ing",
+    "category": "utilities",
+    "definition_en": "Cutting manufactured pipe to the required length using methods suitable for its material.",
+    "explanation_ru": "Подрезка трубы на месте с сохранением правильной формы торца и его подготовки к стыку.",
+    "translation_ru": [
+      "резка трубы по длине"
+    ],
+    "translation_vi": [
+      "cắt ống theo chiều dài"
+    ],
+    "example_en": "Allow for pipe cutting at the final connection to the existing main.",
+    "scenario": "Allow for the specified activity at the final connection to the existing main.",
+    "visual": "Saw cutting a straight pipe segment at marked line.",
+    "related_terms": [
+      "pipe-cut-length",
+      "pipe-spigot-end",
+      "short-pipe-section"
+    ],
+    "common_mistakes": [
+      "Cutting may require chamfering, coating repair or restrictions near fittings."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-laser-level",
+    "term": "pipe laser level",
+    "pronunciation": "PYPE LAY-zer LEV-ul",
+    "category": "drawings",
+    "definition_en": "Alignment laser set in a pipe or trench to guide pipe installation to design line and grade.",
+    "explanation_ru": "Трубный лазер задаёт направление и уклон при укладке самотечной сети.",
+    "translation_ru": [
+      "трубный лазер для задания оси и уклона"
+    ],
+    "translation_vi": [
+      "máy laser định tuyến ống"
+    ],
+    "example_en": "Use the pipe laser level to verify the sewer laying line.",
+    "scenario": "Use the the specified activity to verify the sewer laying line.",
+    "visual": "Laser reference beam across a trench pipe line.",
+    "related_terms": [
+      "pipe-gradient",
+      "pipe-alignment",
+      "pipe-invert"
+    ],
+    "common_mistakes": [
+      "A laser does not replace independent survey checks or calibrated setup."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-deflection-test",
+    "term": "pipe deflection test",
+    "pronunciation": "PYPE di-FLEK-shun TEST",
+    "category": "utilities",
+    "definition_en": "Assessment of flexible pipe deformation after installation, often using an approved mandrel or measurement method.",
+    "explanation_ru": "Проверка деформации после засыпки выявляет чрезмерное овальное сечение.",
+    "translation_ru": [
+      "испытание гибкой трубы на деформацию"
+    ],
+    "translation_vi": [
+      "kiểm tra độ biến dạng ống"
+    ],
+    "example_en": "Schedule the pipe deflection test after backfill and required waiting period.",
+    "scenario": "Schedule the the specified activity after backfill and required waiting period.",
+    "visual": "Mandrel being pulled through a buried flexible pipe.",
+    "related_terms": [
+      "pipe-deflection",
+      "mandrel-test",
+      "pipe-stiffness"
+    ],
+    "common_mistakes": [
+      "Limits, timing and devices are set by specifications; not every pipe uses a mandrel."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-air-test",
+    "term": "pipe air test",
+    "pronunciation": "PYPE AIR TEST",
+    "category": "utilities",
+    "definition_en": "Air-pressure leakage test for selected low-pressure gravity sewer systems under a specified procedure.",
+    "explanation_ru": "Воздушное испытание проверяет герметичность участка канализации с пробками и манометром.",
+    "translation_ru": [
+      "пневматическое испытание канализационной трубы"
+    ],
+    "translation_vi": [
+      "thử kín ống bằng áp suất khí"
+    ],
+    "example_en": "Provide temporary plugs and gauges for the pipe air test.",
+    "scenario": "Provide temporary plugs and gauges for the the specified activity.",
+    "visual": "Isolated pipe run with gauge and end plugs.",
+    "related_terms": [
+      "gravity-pipe",
+      "pipe-plug",
+      "pipe-leakage-test"
+    ],
+    "common_mistakes": [
+      "Compressed air tests involve stored-energy hazards and must follow approved procedures."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "hydrostatic-pressure-test",
+    "term": "hydrostatic pressure test",
+    "pronunciation": "hy-droh-STAT-ik PRESH-er TEST",
+    "category": "utilities",
+    "definition_en": "Water-pressure test used to check a pressure pipeline under approved test pressure and duration.",
+    "explanation_ru": "Гидроиспытание напорного трубопровода включает заполнение водой, удаление воздуха и выдержку.",
+    "translation_ru": [
+      "гидравлическое испытание напорной трубы"
+    ],
+    "translation_vi": [
+      "thử áp lực thủy tĩnh"
+    ],
+    "example_en": "Carry out the hydrostatic pressure test before the watermain is commissioned.",
+    "scenario": "Carry out the the specified activity before the watermain is commissioned.",
+    "visual": "Water-filled main with pump and pressure gauge.",
+    "related_terms": [
+      "pressure-pipe",
+      "pipe-isolation",
+      "watermain"
+    ],
+    "common_mistakes": [
+      "Test pressure, duration and acceptance vary by specification; avoid unauthorized overpressure."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-leakage-test",
+    "term": "pipe leakage test",
+    "pronunciation": "PYPE LEE-kij TEST",
+    "category": "utilities",
+    "definition_en": "Procedure used to determine leakage performance of an installed pipeline under specified conditions.",
+    "explanation_ru": "Проверка герметичности может выполняться воздухом, водой или другими предусмотренными способами.",
+    "translation_ru": [
+      "испытание трубопровода на утечку"
+    ],
+    "translation_vi": [
+      "thử rò rỉ đường ống"
+    ],
+    "example_en": "Record pipe leakage test results for each accepted sewer segment.",
+    "scenario": "Record the specified activity results for each accepted sewer segment.",
+    "visual": "Two capped pipe ends and leakage measuring device.",
+    "related_terms": [
+      "pipe-air-test",
+      "hydrostatic-pressure-test",
+      "pipe-joint-testing"
+    ],
+    "common_mistakes": [
+      "A passed visual inspection does not replace the prescribed leakage acceptance test."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "cctv-pipe-inspection",
+    "term": "CCTV pipe inspection",
+    "pronunciation": "C-C-T-V PYPE in-SPEK-shun",
+    "category": "utilities",
+    "definition_en": "Internal inspection of a sewer or drain using a remotely operated camera to record condition and defects.",
+    "explanation_ru": "Видеообследование трубы выявляет смещения стыков, трещины, мусор и дефекты уклона.",
+    "translation_ru": [
+      "телеинспекция трубопровода"
+    ],
+    "translation_vi": [
+      "kiểm tra ống bằng camera CCTV"
+    ],
+    "example_en": "Include CCTV pipe inspection and footage handover in the sanitary sewer scope.",
+    "scenario": "Include the specified activity and footage handover in the sanitary sewer scope.",
+    "visual": "Camera crawler in sewer pipe and video monitor.",
+    "related_terms": [
+      "sanitary-sewer",
+      "gravity-pipe",
+      "pipe-deflection"
+    ],
+    "common_mistakes": [
+      "CCTV provides visual evidence but not every strength or watertightness test."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-flushing",
+    "term": "pipe flushing",
+    "pronunciation": "PYPE FLUSH-ing",
+    "category": "utilities",
+    "definition_en": "Flowing water or an approved cleaning medium through pipework to remove construction debris.",
+    "explanation_ru": "Промывка удаляет посторонние частицы после монтажа трубопровода.",
+    "translation_ru": [
+      "промывка трубопровода"
+    ],
+    "translation_vi": [
+      "súc rửa đường ống"
+    ],
+    "example_en": "Allow for pipe flushing before watermain commissioning tests.",
+    "scenario": "Allow for the specified activity before watermain commissioning tests.",
+    "visual": "Flow arrows expelling sediment from end pipe.",
+    "related_terms": [
+      "watermain",
+      "watermain-disinfection",
+      "pipe-leakage-test"
+    ],
+    "common_mistakes": [
+      "Flushing requirements and disposal controls depend on service and water authority."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "watermain-disinfection",
+    "term": "watermain disinfection",
+    "pronunciation": "WAW-ter-MAYN dis-in-FEK-shun",
+    "category": "utilities",
+    "definition_en": "Approved disinfecting and water-sampling procedure for potable watermain commissioning.",
+    "explanation_ru": "Дезинфекция нового водопровода включает утверждённую обработку и лабораторный контроль воды.",
+    "translation_ru": [
+      "дезинфекция водопровода"
+    ],
+    "translation_vi": [
+      "khử trùng đường ống cấp nước"
+    ],
+    "example_en": "Include watermain disinfection and clearance sampling before service.",
+    "scenario": "Include the specified activity and clearance sampling before service.",
+    "visual": "New watermain with treatment and water quality sample.",
+    "related_terms": [
+      "watermain",
+      "pipe-flushing",
+      "hydrostatic-pressure-test"
+    ],
+    "common_mistakes": [
+      "Never apply sanitary chemical procedures to storm sewers by default."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-plugging",
+    "term": "pipe plugging",
+    "pronunciation": "PYPE PLUG-ing",
+    "category": "safety",
+    "definition_en": "Isolation of a pipe opening using a plug or closure appropriate to expected pressure and flow.",
+    "explanation_ru": "Заглушка временно перекрывает трубу при испытании или переключении сети.",
+    "translation_ru": [
+      "закрытие трубы заглушками"
+    ],
+    "translation_vi": [
+      "bịt kín đường ống"
+    ],
+    "example_en": "Set up pipe plugging before the controlled bypass changeover.",
+    "scenario": "Set up the specified activity before the controlled bypass changeover.",
+    "visual": "End plug and pressure restraint in pipe.",
+    "related_terms": [
+      "pipe-plug",
+      "pipe-isolation",
+      "bypass-pumping"
+    ],
+    "common_mistakes": [
+      "Inflatable test plugs can eject under pressure without correct restraints and safety controls."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-isolation",
+    "term": "pipe isolation",
+    "pronunciation": "PYPE eye-soh-LAY-shun",
+    "category": "utilities",
+    "definition_en": "Temporarily separating a pipe segment from an active network with approved valves or closures.",
+    "explanation_ru": "Перед работами участок сети отключают, проверяют герметичность и контролируют давление.",
+    "translation_ru": [
+      "отключение и изоляция участка трубы"
+    ],
+    "translation_vi": [
+      "cô lập đoạn đường ống"
+    ],
+    "example_en": "Confirm the pipe isolation sequence with the utility owner.",
+    "scenario": "Confirm the the specified activity sequence with the utility owner.",
+    "visual": "Segment bracketed by closed valves.",
+    "related_terms": [
+      "valve",
+      "pipe-plugging",
+      "shutdown-window"
+    ],
+    "common_mistakes": [
+      "Closing a valve alone may not satisfy energy-isolation or confined-space requirements."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-trench-shoring",
+    "term": "pipe trench shoring",
+    "pronunciation": "PYPE TRENCH SHOR-ing",
+    "category": "safety",
+    "definition_en": "Temporary support system used to prevent soil collapse during pipeline trench work.",
+    "explanation_ru": "Крепление траншеи выбирают с учётом глубины, грунта, воды и временных нагрузок.",
+    "translation_ru": [
+      "крепление стенок траншеи для труб"
+    ],
+    "translation_vi": [
+      "chống đỡ vách rãnh đặt ống"
+    ],
+    "example_en": "Carry pipe trench shoring as a separate allowance when required.",
+    "scenario": "Carry the specified activity as a separate allowance when required.",
+    "visual": "Trench braces and shield around exposed pipe.",
+    "related_terms": [
+      "shoring",
+      "trench-box",
+      "open-cut-pipe-installation"
+    ],
+    "common_mistakes": [
+      "Shoring needs site-specific engineering and legal safety compliance."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-joint-testing",
+    "term": "pipe joint testing",
+    "pronunciation": "PYPE JOYNT TESTING",
+    "category": "utilities",
+    "definition_en": "Verification of individual pipe joints by an approved air, water or mechanical procedure.",
+    "explanation_ru": "Испытание отдельных стыков контролирует качество раструбов и уплотнений.",
+    "translation_ru": [
+      "проверка герметичности стыков труб"
+    ],
+    "translation_vi": [
+      "kiểm tra kín mối nối ống"
+    ],
+    "example_en": "Complete pipe joint testing where the specification requires individual joint checks.",
+    "scenario": "Complete the specified activity where the specification requires individual joint checks.",
+    "visual": "Testing tool inserted across a gasketed pipe joint.",
+    "related_terms": [
+      "bell-and-spigot-joint",
+      "pipe-rubber-gasket",
+      "pipe-leakage-test"
+    ],
+    "common_mistakes": [
+      "Testing each joint does not automatically replace required whole-line testing."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-manhole",
+    "term": "precast manhole",
+    "pronunciation": "PREE-kast MAN-hohl",
+    "category": "utilities",
+    "definition_en": "Underground access chamber assembled from factory-made concrete base, riser and top sections.",
+    "explanation_ru": "Сборный колодец монтируют из заводских секций, герметизируют стыки и подсоединения труб.",
+    "translation_ru": [
+      "сборный железобетонный смотровой колодец"
+    ],
+    "translation_vi": [
+      "hố ga bê tông đúc sẵn"
+    ],
+    "example_en": "Price each precast manhole by depth, diameter and complete section schedule.",
+    "scenario": "Price each the specified item by depth, diameter and complete section schedule.",
+    "visual": "Stack of concrete manhole sections below a metal cover.",
+    "related_terms": [
+      "manhole",
+      "precast-manhole-base",
+      "precast-riser-section"
+    ],
+    "common_mistakes": [
+      "The precast barrel cost usually does not automatically include cast-iron frame and cover."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-manhole-base",
+    "term": "precast manhole base",
+    "pronunciation": "PREE-kast MAN-hohl BAYSS",
+    "category": "utilities",
+    "definition_en": "Factory-made lower section of a manhole supporting the risers and receiving pipe entries.",
+    "explanation_ru": "Нижняя сборная секция колодца принимает трубы и может содержать сформированный лоток.",
+    "translation_ru": [
+      "сборное основание колодца"
+    ],
+    "translation_vi": [
+      "đáy hố ga đúc sẵn"
+    ],
+    "example_en": "Confirm precast manhole base openings and channel before delivery.",
+    "scenario": "Confirm the specified item openings and channel before delivery.",
+    "visual": "Round base section with two pipe inlet ports.",
+    "related_terms": [
+      "precast-manhole",
+      "manhole-channel",
+      "manhole-pipe-boot"
+    ],
+    "common_mistakes": [
+      "Factory-made openings and channels may be separate special-order details."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-riser-section",
+    "term": "precast riser section",
+    "pronunciation": "PREE-kast RY-zer SEK-shun",
+    "category": "utilities",
+    "definition_en": "Precast cylindrical section used to build up the vertical barrel height of a manhole.",
+    "explanation_ru": "Секции колодца подбирают по высоте для достижения проектной отметки верха.",
+    "translation_ru": [
+      "сборное кольцо шахты колодца"
+    ],
+    "translation_vi": [
+      "đốt thân hố ga đúc sẵn"
+    ],
+    "example_en": "Count each precast riser section using the available manufactured heights.",
+    "scenario": "Count the specified items using the available manufactured heights.",
+    "visual": "Stackable cylinder between base and cone.",
+    "related_terms": [
+      "precast-manhole",
+      "precast-grade-ring",
+      "manhole-steps"
+    ],
+    "common_mistakes": [
+      "Do not confuse structural barrel sections with thin grade adjustment rings."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "eccentric-cone-section",
+    "term": "eccentric cone section",
+    "pronunciation": "ek-SEN-trik KOHN SEK-shun",
+    "category": "utilities",
+    "definition_en": "Precast tapered manhole top with its access opening offset from the centreline.",
+    "explanation_ru": "Конус с эксцентрическим смещением люка обеспечивает проход и размещение доступа по проекту.",
+    "translation_ru": [
+      "эксцентрическая конусная секция колодца"
+    ],
+    "translation_vi": [
+      "đốt côn lệch tâm hố ga"
+    ],
+    "example_en": "Verify eccentric cone section orientation relative to the sewer access side.",
+    "scenario": "Verify the specified item orientation relative to the sewer access side.",
+    "visual": "Tapered top with off-centre circular opening.",
+    "related_terms": [
+      "precast-manhole",
+      "concentric-cone-section",
+      "manhole-frame"
+    ],
+    "common_mistakes": [
+      "Offset openings cannot be assumed centred; check clearance and step alignment."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "concentric-cone-section",
+    "term": "concentric cone section",
+    "pronunciation": "kon-SEN-trik KOHN SEK-shun",
+    "category": "utilities",
+    "definition_en": "Precast tapered manhole top with the access opening aligned with the barrel centre.",
+    "explanation_ru": "Концентрический конус имеет отверстие люка по центральной оси колодца.",
+    "translation_ru": [
+      "концентрическая конусная секция колодца"
+    ],
+    "translation_vi": [
+      "đốt côn đồng tâm hố ga"
+    ],
+    "example_en": "Check concentric cone section availability for the specified manhole diameter.",
+    "scenario": "Check the specified item availability for the specified manhole diameter.",
+    "visual": "Symmetrical cone top with centred access.",
+    "related_terms": [
+      "eccentric-cone-section",
+      "precast-manhole",
+      "precast-flat-top"
+    ],
+    "common_mistakes": [
+      "Cone geometry and access safety must comply with owner drawings."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-flat-top",
+    "term": "precast flat top",
+    "pronunciation": "PREE-kast FLAT TOP",
+    "category": "concrete",
+    "definition_en": "Flat precast concrete roof or slab covering a chamber with an access opening.",
+    "explanation_ru": "Плоская сборная плита перекрывает колодец или камеру и содержит отверстие для люка.",
+    "translation_ru": [
+      "плоская железобетонная плита покрытия колодца"
+    ],
+    "translation_vi": [
+      "tấm đan bê tông đúc sẵn hố ga"
+    ],
+    "example_en": "Use the precast flat top where the manhole detail shows no cone.",
+    "scenario": "Use the the specified item where the manhole detail shows no cone.",
+    "visual": "Flat chamber top slab with circular access opening.",
+    "related_terms": [
+      "precast-manhole",
+      "precast-utility-vault",
+      "manhole-frame"
+    ],
+    "common_mistakes": [
+      "Top slab thickness and loading depend on the approved chamber design."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-grade-ring",
+    "term": "precast grade ring",
+    "pronunciation": "PREE-kast GRAYD RING",
+    "category": "utilities",
+    "definition_en": "Precast concrete adjustment ring placed above a chamber top to set the frame elevation.",
+    "explanation_ru": "Регулировочные кольца подводят чугунную раму к отметке готового покрытия.",
+    "translation_ru": [
+      "регулировочное железобетонное кольцо люка"
+    ],
+    "translation_vi": [
+      "vòng kê cao độ hố ga đúc sẵn"
+    ],
+    "example_en": "Include each precast grade ring below the manhole frame in the final road elevation.",
+    "scenario": "Include the specified items below the manhole frame in the final road elevation.",
+    "visual": "Thin round rings stacked directly below manhole frame.",
+    "related_terms": [
+      "manhole-frame",
+      "precast-riser-section",
+      "casting-grade-adjustment"
+    ],
+    "common_mistakes": [
+      "Grade rings are not the main structural riser sections; permitted height stack varies by owner."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "manhole-steps",
+    "term": "manhole steps",
+    "pronunciation": "MAN-hohl STEPS",
+    "category": "utilities",
+    "definition_en": "Individual footholds installed in manhole sections for approved safe access.",
+    "explanation_ru": "Ступени могут быть заводскими закладными и должны соответствовать требованиям безопасности доступа.",
+    "translation_ru": [
+      "скобы-ступени в колодце"
+    ],
+    "translation_vi": [
+      "bậc bước xuống hố ga"
+    ],
+    "example_en": "Check the manhole steps schedule and approved access orientation.",
+    "scenario": "Check the the specified item schedule and approved access orientation.",
+    "visual": "Series of access steps on inner manhole wall.",
+    "related_terms": [
+      "precast-manhole",
+      "precast-riser-section",
+      "manhole-cover"
+    ],
+    "common_mistakes": [
+      "Steps and ladders are not always required or allowed; never assume permit-to-enter safety."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "manhole-benching",
+    "term": "manhole benching",
+    "pronunciation": "MAN-hohl BENCH-ing",
+    "category": "drainage",
+    "definition_en": "Shaped surface on either side of a manhole flow channel to direct flow and support drainage.",
+    "explanation_ru": "Банкетку формируют с уклоном к лотку, исключая застой воды на полке колодца.",
+    "translation_ru": [
+      "банкетка внутри колодца"
+    ],
+    "translation_vi": [
+      "bệ tạo dốc trong hố ga"
+    ],
+    "example_en": "Allow for manhole benching at the sewer junction base.",
+    "scenario": "Allow for the specified item at the sewer junction base.",
+    "visual": "Sloped bench surfaces on both sides of channel.",
+    "related_terms": [
+      "manhole-channel",
+      "precast-manhole-base",
+      "pipe-invert"
+    ],
+    "common_mistakes": [
+      "Benching differs from the flowing channel itself and must match the approved detail."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "manhole-channel",
+    "term": "manhole channel",
+    "pronunciation": "MAN-hohl CHAN-ul",
+    "category": "drainage",
+    "definition_en": "Formed flow passage within the manhole base that guides water or sewage between connected pipes.",
+    "explanation_ru": "Лоток в основании обеспечивает направленное течение между входящими и выходящими трубами.",
+    "translation_ru": [
+      "лоток внутри колодца"
+    ],
+    "translation_vi": [
+      "rãnh dẫn dòng trong hố ga"
+    ],
+    "example_en": "Match the manhole channel to incoming pipe diameters and angles.",
+    "scenario": "Match the the specified item to incoming pipe diameters and angles.",
+    "visual": "Concrete channel curved between two pipe ports.",
+    "related_terms": [
+      "manhole-benching",
+      "precast-manhole-base",
+      "pipe-invert"
+    ],
+    "common_mistakes": [
+      "A channel is not the same as a sump and may require customized benching."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "manhole-sump",
+    "term": "manhole sump",
+    "pronunciation": "MAN-hohl SUMP",
+    "category": "drainage",
+    "definition_en": "Depressed portion of a manhole or chamber designed to collect sediment or liquids where specified.",
+    "explanation_ru": "Сумп ниже лотка нужен только там, где предусмотрен проектом для сбора осадка или воды.",
+    "translation_ru": [
+      "приямок в колодце"
+    ],
+    "translation_vi": [
+      "hố lắng đáy hố ga"
+    ],
+    "example_en": "Confirm manhole sump depth before ordering the special base.",
+    "scenario": "Confirm the specified item depth before ordering the special base.",
+    "visual": "Lowered collection recess below the outlet.",
+    "related_terms": [
+      "precast-manhole-base",
+      "catch-basin-sump",
+      "manhole-channel"
+    ],
+    "common_mistakes": [
+      "A standard sanitary manhole does not necessarily require a sump."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "drop-manhole",
+    "term": "drop manhole",
+    "pronunciation": "DROP MAN-hohl",
+    "category": "drainage",
+    "definition_en": "Manhole with an approved drop arrangement handling a significant incoming-to-outgoing invert difference.",
+    "explanation_ru": "Перепадный колодец применяют при большой разнице отметок входа и выхода, с внутренним или наружным перепадом по чертежам.",
+    "translation_ru": [
+      "перепадный канализационный колодец"
+    ],
+    "translation_vi": [
+      "hố ga có ống tụt"
+    ],
+    "example_en": "Detail the drop manhole inlet fitting and downstream channel.",
+    "scenario": "Detail the the specified item inlet fitting and downstream channel.",
+    "visual": "Incoming high pipe connecting down by vertical drop.",
+    "related_terms": [
+      "precast-manhole",
+      "pipe-invert",
+      "manhole-channel"
+    ],
+    "common_mistakes": [
+      "An elevation mismatch is not solved by simply cutting a hole higher in the manhole wall."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "manhole-pipe-boot",
+    "term": "manhole pipe boot",
+    "pronunciation": "MAN-hohl PYPE BOOT",
+    "category": "utilities",
+    "definition_en": "Flexible resilient seal connecting a pipe to an opening in a concrete manhole wall.",
+    "explanation_ru": "Эластичный манжет обеспечивает герметичный проход трубы через стенку сборного колодца.",
+    "translation_ru": [
+      "герметичная эластичная проходка трубы в колодец"
+    ],
+    "translation_vi": [
+      "gioăng cổ ống xuyên thành hố ga"
+    ],
+    "example_en": "Verify manhole pipe boot outside-diameter limits for the entering pipe.",
+    "scenario": "Verify the specified item outside-diameter limits for the entering pipe.",
+    "visual": "Flexible boot sealing pipe through concrete wall.",
+    "related_terms": [
+      "precast-manhole",
+      "manhole-cored-opening",
+      "transition-coupling"
+    ],
+    "common_mistakes": [
+      "A rigid grouted opening is not always equivalent to a specified flexible boot."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "manhole-cored-opening",
+    "term": "manhole cored opening",
+    "pronunciation": "MAN-hohl KORD OH-pen-ing",
+    "category": "utilities",
+    "definition_en": "Circular opening drilled in a manhole wall to receive an approved pipe connector.",
+    "explanation_ru": "Отверстие выполняют коронкой в заводской либо разрешённой на объекте операции.",
+    "translation_ru": [
+      "керновое отверстие в стенке колодца"
+    ],
+    "translation_vi": [
+      "lỗ khoan lõi thành hố ga"
+    ],
+    "example_en": "Order each manhole cored opening at the approved elevation and angle.",
+    "scenario": "Order each the specified item at the approved elevation and angle.",
+    "visual": "Circular cored hole in chamber wall.",
+    "related_terms": [
+      "manhole-pipe-boot",
+      "precast-manhole",
+      "pipe-invert"
+    ],
+    "common_mistakes": [
+      "Unapproved field coring can damage reinforcing steel and invalidate precast acceptance."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-catch-basin",
+    "term": "precast catch basin",
+    "pronunciation": "PREE-kast KACH BAY-sin",
+    "category": "drainage",
+    "definition_en": "Factory-made concrete drainage inlet box or chamber receiving storm runoff through a grate or curb inlet.",
+    "explanation_ru": "Сборный дождеприёмник устанавливают на подготовленное основание и подключают к ливневой сети.",
+    "translation_ru": [
+      "сборный железобетонный дождеприёмный колодец"
+    ],
+    "translation_vi": [
+      "hố thu nước mưa bê tông đúc sẵn"
+    ],
+    "example_en": "Check precast catch basin size, outlet location and casting type.",
+    "scenario": "Check the specified item size, outlet location and casting type.",
+    "visual": "Rectangular concrete catch basin with street grate.",
+    "related_terms": [
+      "catch-basin",
+      "catch-basin-sump",
+      "catch-basin-frame"
+    ],
+    "common_mistakes": [
+      "Precast box and its cast-iron grate are different procurement items."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "catch-basin-sump",
+    "term": "catch basin sump",
+    "pronunciation": "KACH BAY-sin SUMP",
+    "category": "drainage",
+    "definition_en": "Depressed base portion of a catch basin beneath its outlet invert, used to retain sediment.",
+    "explanation_ru": "Отстойник ниже отвода собирает песок и мусор до очистки дождеприёмника.",
+    "translation_ru": [
+      "отстойная часть дождеприёмника"
+    ],
+    "translation_vi": [
+      "hố lắng cặn của hố thu"
+    ],
+    "example_en": "Verify catch basin sump depth and cleaning access.",
+    "scenario": "Verify the specified item depth and cleaning access.",
+    "visual": "Catch basin with outlet high above sediment sump.",
+    "related_terms": [
+      "precast-catch-basin",
+      "catch-basin-outlet",
+      "pipe-invert"
+    ],
+    "common_mistakes": [
+      "Sump depth is a design dimension, not the same as the inlet box overall depth."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "catch-basin-outlet",
+    "term": "catch basin outlet",
+    "pronunciation": "KACH BAY-sin OUT-let",
+    "category": "drainage",
+    "definition_en": "Pipe opening or outlet connection that conveys collected water from a catch basin into the lead.",
+    "explanation_ru": "Отвод из дождеприёмника соединяют с CB lead на проектной отметке лотка.",
+    "translation_ru": [
+      "отводящий патрубок дождеприёмника"
+    ],
+    "translation_vi": [
+      "cửa xả ống từ hố thu"
+    ],
+    "example_en": "Set the catch basin outlet invert before pipe lead installation.",
+    "scenario": "Set the the specified item invert before pipe lead installation.",
+    "visual": "Side outlet leading to storm lateral.",
+    "related_terms": [
+      "catch-basin-lead",
+      "precast-catch-basin",
+      "pipe-invert"
+    ],
+    "common_mistakes": [
+      "Outlet size and direction must be coordinated with the connecting lateral."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-utility-vault",
+    "term": "precast utility vault",
+    "pronunciation": "PREE-kast yoo-TIL-i-tee VAWLT",
+    "category": "utilities",
+    "definition_en": "Factory-made below-grade concrete enclosure providing space for utility equipment or connections.",
+    "explanation_ru": "Сборная камера коммуникаций может иметь стены, основание, съёмную плиту и вводы труб.",
+    "translation_ru": [
+      "сборная железобетонная камера коммуникаций"
+    ],
+    "translation_vi": [
+      "bể kỹ thuật bê tông đúc sẵn"
+    ],
+    "example_en": "Price the precast utility vault separately from valves and access castings.",
+    "scenario": "Price the the specified item separately from valves and access castings.",
+    "visual": "Rectangular precast vault with removable roof.",
+    "related_terms": [
+      "utility-chamber",
+      "precast-flat-top",
+      "pipe-sleeve"
+    ],
+    "common_mistakes": [
+      "Vault dimensions, loading and waterproofing depend on the issued shop drawings."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-junction-box",
+    "term": "precast junction box",
+    "pronunciation": "PREE-kast JUNK-shun BOKS",
+    "category": "utilities",
+    "definition_en": "Precast box used as an access or connection point for storm pipes or utility ducts.",
+    "explanation_ru": "Сборный соединительный короб служит для изменения направления либо стыка нескольких коммуникаций.",
+    "translation_ru": [
+      "сборная железобетонная соединительная камера"
+    ],
+    "translation_vi": [
+      "hộp nối bê tông đúc sẵn"
+    ],
+    "example_en": "Confirm precast junction box openings before casting or fabrication.",
+    "scenario": "Confirm the specified item openings before casting or fabrication.",
+    "visual": "Rectangular buried box with several pipe ports.",
+    "related_terms": [
+      "precast-utility-vault",
+      "utility-chamber",
+      "pipe-sleeve"
+    ],
+    "common_mistakes": [
+      "A junction box is not automatically interchangeable with a manhole or catch basin."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-box-culvert",
+    "term": "precast box culvert",
+    "pronunciation": "PREE-kast BOKS KUL-vert",
+    "category": "drainage",
+    "definition_en": "Factory-made reinforced concrete rectangular culvert sections used to convey drainage under embankments or roads.",
+    "explanation_ru": "Сборные короба монтируют по звеньям на основание с соблюдением стыков и отметок.",
+    "translation_ru": [
+      "сборный прямоугольный водопропускной короб"
+    ],
+    "translation_vi": [
+      "cống hộp bê tông đúc sẵn"
+    ],
+    "example_en": "Count precast box culvert sections by length, size and load design.",
+    "scenario": "Count the specified item sections by length, size and load design.",
+    "visual": "Rectangular concrete barrel carrying water beneath road.",
+    "related_terms": [
+      "culvert",
+      "box-culvert-joint",
+      "precast-headwall"
+    ],
+    "common_mistakes": [
+      "A culvert segment does not automatically include headwalls, wingwalls or waterproof joints."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "box-culvert-joint",
+    "term": "box culvert joint",
+    "pronunciation": "BOKS KUL-vert JOYNT",
+    "category": "drainage",
+    "definition_en": "Designed connection between adjacent precast box culvert sections, often using a gasket or sealant.",
+    "explanation_ru": "Стык соседних коробов герметизируют по типовой детали и при необходимости защищают снаружи.",
+    "translation_ru": [
+      "стык сборных коробчатых водопропускных звеньев"
+    ],
+    "translation_vi": [
+      "mối nối đốt cống hộp"
+    ],
+    "example_en": "Include box culvert joint sealant and alignment checks.",
+    "scenario": "Include the specified item sealant and alignment checks.",
+    "visual": "Two rectangular precast sections at a sealed joint.",
+    "related_terms": [
+      "precast-box-culvert",
+      "precast-joint-sealant",
+      "concrete-curing"
+    ],
+    "common_mistakes": [
+      "Do not assume a dry stack will satisfy watertightness requirements."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-headwall",
+    "term": "precast headwall",
+    "pronunciation": "PREE-kast HED-wawl",
+    "category": "drainage",
+    "definition_en": "Factory-made end wall unit retaining fill and finishing a culvert inlet or outlet.",
+    "explanation_ru": "Сборный оголовок оформляет вход или выход трубы и поддерживает насыпь.",
+    "translation_ru": [
+      "сборный оголовок водопропускной трубы"
+    ],
+    "translation_vi": [
+      "tường đầu cống đúc sẵn"
+    ],
+    "example_en": "Verify precast headwall opening size matches the culvert barrel.",
+    "scenario": "Verify the specified item opening size matches the culvert barrel.",
+    "visual": "Concrete end wall around culvert outlet.",
+    "related_terms": [
+      "headwall",
+      "precast-wingwall",
+      "precast-box-culvert"
+    ],
+    "common_mistakes": [
+      "Headwall and wingwall are separate elements unless explicitly supplied together."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-wingwall",
+    "term": "precast wingwall",
+    "pronunciation": "PREE-kast WING-wawl",
+    "category": "drainage",
+    "definition_en": "Precast side wall extending from a headwall or culvert opening to retain embankment material.",
+    "explanation_ru": "Открылок удерживает грунт по бокам водопропускного сооружения.",
+    "translation_ru": [
+      "сборная откосная стенка у оголовка"
+    ],
+    "translation_vi": [
+      "tường cánh cống đúc sẵn"
+    ],
+    "example_en": "Include precast wingwall lifting and foundation requirements.",
+    "scenario": "Include the specified item lifting and foundation requirements.",
+    "visual": "Angled concrete sidewalls on culvert mouth.",
+    "related_terms": [
+      "precast-headwall",
+      "precast-box-culvert",
+      "culvert"
+    ],
+    "common_mistakes": [
+      "Wingwalls are not the same as the central culvert headwall."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-lifting-anchor",
+    "term": "precast lifting anchor",
+    "pronunciation": "PREE-kast LIFT-ing AN-ker",
+    "category": "safety",
+    "definition_en": "Engineered cast-in lifting insert used to pick up a precast unit with a matching approved clutch.",
+    "explanation_ru": "Закладной грузоподъёмный анкер устанавливают на заводе по схеме строповки элемента.",
+    "translation_ru": [
+      "закладной подъёмный анкер сборного железобетона"
+    ],
+    "translation_vi": [
+      "móc neo nâng cấu kiện bê tông đúc sẵn"
+    ],
+    "example_en": "Check precast lifting anchor locations before unloading the vault.",
+    "scenario": "Check the specified item locations before unloading the vault.",
+    "visual": "Lifting insert embedded in concrete with crane link.",
+    "related_terms": [
+      "precast-concrete",
+      "precast-lifting-clutch",
+      "precast-utility-vault"
+    ],
+    "common_mistakes": [
+      "Lifting inserts must never be treated as arbitrary attachment points without load verification."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-lifting-clutch",
+    "term": "precast lifting clutch",
+    "pronunciation": "PREE-kast LIFT-ing KLUTCH",
+    "category": "safety",
+    "definition_en": "Reusable rigging connector engaging a compatible cast-in precast lifting anchor.",
+    "explanation_ru": "Захват для анкера подбирают по типу и грузоподъёмности для монтажа заводских элементов.",
+    "translation_ru": [
+      "захват для подъёмного анкера сборного элемента"
+    ],
+    "translation_vi": [
+      "khóa móc nâng cấu kiện bê tông đúc sẵn"
+    ],
+    "example_en": "Use the manufacturer-matched precast lifting clutch during manhole installation.",
+    "scenario": "Use the manufacturer-matched the specified item during manhole installation.",
+    "visual": "Lifting clutch connected to anchor at top of precast vault.",
+    "related_terms": [
+      "precast-lifting-anchor",
+      "precast-manhole",
+      "pipe-lowering"
+    ],
+    "common_mistakes": [
+      "Do not mix incompatible lifting clutch systems or exceed the engineered lift plan."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "precast-joint-sealant",
+    "term": "precast joint sealant",
+    "pronunciation": "PREE-kast JOYNT SEE-lant",
+    "category": "concrete",
+    "definition_en": "Approved sealing material placed between precast concrete units to resist unwanted infiltration or leakage.",
+    "explanation_ru": "Герметик стыка между заводскими элементами подбирают по проекту и фактической геометрии торцов.",
+    "translation_ru": [
+      "герметик стыков сборных железобетонных элементов"
+    ],
+    "translation_vi": [
+      "chất trám kín mối nối bê tông đúc sẵn"
+    ],
+    "example_en": "Use approved precast joint sealant between the manhole riser sections.",
+    "scenario": "Use approved the specified item between the manhole riser sections.",
+    "visual": "Precast concrete section joint with continuous sealing bead.",
+    "related_terms": [
+      "precast-riser-section",
+      "box-culvert-joint",
+      "manhole-pipe-boot"
+    ],
+    "common_mistakes": [
+      "A butyl rope or mortar is not automatically interchangeable with a specified gasketed joint."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "utility-casting",
+    "term": "utility casting",
+    "pronunciation": "yoo-TIL-i-tee KAS-ting",
+    "category": "utilities",
+    "definition_en": "Metal component such as a manhole frame, cover or drainage grate manufactured by a casting process.",
+    "explanation_ru": "Литая деталь для колодца или водоприёмника; в смете не равна сборной бетонной шахте.",
+    "translation_ru": [
+      "литая металлическая деталь коммунального колодца"
+    ],
+    "translation_vi": [
+      "chi tiết gang đúc hạ tầng kỹ thuật"
+    ],
+    "example_en": "Confirm utility casting type and load rating separately from the precast structure.",
+    "scenario": "Confirm the specified assembly type and load rating separately from the precast structure.",
+    "visual": "Three icons: circular manhole frame, cover and grate.",
+    "related_terms": [
+      "manhole-frame",
+      "catch-basin-grate",
+      "cast-iron-casting"
+    ],
+    "common_mistakes": [
+      "Casting describes a metal product family, not cast-in-place concrete or all precast units."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "cast-iron-casting",
+    "term": "cast iron casting",
+    "pronunciation": "KAST EYE-ern KAS-ting",
+    "category": "utilities",
+    "definition_en": "Metal casting made of cast iron for an approved utility cover, frame or grate.",
+    "explanation_ru": "Чугунную отливку подбирают по стандарту материала и нагрузке.",
+    "translation_ru": [
+      "отливка из серого чугуна"
+    ],
+    "translation_vi": [
+      "sản phẩm đúc bằng gang xám"
+    ],
+    "example_en": "Check cast iron casting material and manufacturer certification.",
+    "scenario": "Check the specified assembly material and manufacturer certification.",
+    "visual": "Cross-section of cast iron cover with stiffening ribs.",
+    "related_terms": [
+      "utility-casting",
+      "ductile-iron-casting",
+      "manhole-cover"
+    ],
+    "common_mistakes": [
+      "Grey cast iron and ductile iron have different mechanical properties; do not treat them as synonyms."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ductile-iron-casting",
+    "term": "ductile iron casting",
+    "pronunciation": "DUK-til EYE-ern KAS-ting",
+    "category": "utilities",
+    "definition_en": "Casting made of ductile iron, selected where specified strength and impact performance are required.",
+    "explanation_ru": "Высокопрочный чугун применяется для отдельных рам и решёток, если предусмотрено стандартом и проектом.",
+    "translation_ru": [
+      "отливка из высокопрочного чугуна"
+    ],
+    "translation_vi": [
+      "sản phẩm đúc bằng gang dẻo"
+    ],
+    "example_en": "Verify ductile iron casting grade and traffic loading.",
+    "scenario": "Verify the specified assembly grade and traffic loading.",
+    "visual": "Ductile iron grille and material mark.",
+    "related_terms": [
+      "cast-iron-casting",
+      "utility-casting",
+      "ductile-iron-pipe"
+    ],
+    "common_mistakes": [
+      "Ductile iron pipe and ductile iron castings are related materials but separate products."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "manhole-frame",
+    "term": "manhole frame",
+    "pronunciation": "MAN-hohl FRAYM",
+    "category": "utilities",
+    "definition_en": "Metal seating frame fitted into the top of a manhole to carry the removable cover.",
+    "explanation_ru": "Рама чугунного люка опирается на регулируемые кольца или иной утверждённый узел.",
+    "translation_ru": [
+      "рама люка колодца"
+    ],
+    "translation_vi": [
+      "khung nắp hố ga"
+    ],
+    "example_en": "Install the manhole frame flush with finished paving elevation.",
+    "scenario": "Install the the specified assembly flush with finished paving elevation.",
+    "visual": "Circular frame ring seated atop precast collar.",
+    "related_terms": [
+      "manhole-cover",
+      "precast-grade-ring",
+      "casting-grade-adjustment"
+    ],
+    "common_mistakes": [
+      "Frame and cover must match; a loose mismatch can rock or pose traffic hazards."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "manhole-cover",
+    "term": "manhole cover",
+    "pronunciation": "MAN-hohl KUV-er",
+    "category": "utilities",
+    "definition_en": "Removable heavy lid fitted within the manhole frame for access and surface protection.",
+    "explanation_ru": "Съёмная крышка люка перекрывает доступ в колодец; выбирают по маркировке и нагрузке.",
+    "translation_ru": [
+      "крышка смотрового люка"
+    ],
+    "translation_vi": [
+      "nắp hố ga"
+    ],
+    "example_en": "Order the manhole cover with the specified sewer identification.",
+    "scenario": "Order the the specified assembly with the specified sewer identification.",
+    "visual": "Round removable lid within cast metal frame.",
+    "related_terms": [
+      "manhole-frame",
+      "manhole-frame-and-cover",
+      "traffic-rated-casting"
+    ],
+    "common_mistakes": [
+      "Manhole covers are not automatically watertight or traffic-rated without specification."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "manhole-frame-and-cover",
+    "term": "manhole frame and cover",
+    "pronunciation": "MAN-hohl FRAYM and KUV-er",
+    "category": "utilities",
+    "definition_en": "Matched metal frame and removable manhole cover supplied as a complete assembly.",
+    "explanation_ru": "Комплект чугунного люка включает совместимые раму и крышку, иногда с замком или уплотнением.",
+    "translation_ru": [
+      "комплект рамы и крышки люка"
+    ],
+    "translation_vi": [
+      "bộ khung và nắp hố ga"
+    ],
+    "example_en": "Carry one manhole frame and cover assembly per specified access opening.",
+    "scenario": "Carry one the specified assembly assembly per specified access opening.",
+    "visual": "Matched ring frame plus fitted circular cover.",
+    "related_terms": [
+      "manhole-frame",
+      "manhole-cover",
+      "precast-manhole"
+    ],
+    "common_mistakes": [
+      "Do not count frame and cover separately if the bid item already includes the complete assembly."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "adjustable-manhole-frame",
+    "term": "adjustable manhole frame",
+    "pronunciation": "uh-JUS-tuh-bul MAN-hohl FRAYM",
+    "category": "roadworks",
+    "definition_en": "Manhole frame assembly designed to permit specified adjustment of rim elevation during pavement work.",
+    "explanation_ru": "Регулируемая рама позволяет поднимать или опускать крышку до отметки покрытия в пределах конструкции.",
+    "translation_ru": [
+      "регулируемая по высоте рама люка"
+    ],
+    "translation_vi": [
+      "khung nắp hố ga điều chỉnh cao độ"
+    ],
+    "example_en": "Use the specified adjustable manhole frame in the arterial road section.",
+    "scenario": "Use the specified the specified assembly in the arterial road section.",
+    "visual": "Telescoping manhole frame adjusted to road surface.",
+    "related_terms": [
+      "manhole-frame",
+      "precast-grade-ring",
+      "casting-grade-adjustment"
+    ],
+    "common_mistakes": [
+      "An adjustable frame is not equivalent to unlimited stacking of concrete grade rings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "manhole-riser-ring",
+    "term": "manhole riser ring",
+    "pronunciation": "MAN-hohl RY-zer RING",
+    "category": "roadworks",
+    "definition_en": "Metal extension ring that raises the seating height of an existing manhole frame or cover where permitted.",
+    "explanation_ru": "Металлическое наращивающее кольцо повышает посадку люка без замены всей бетонной шахты.",
+    "translation_ru": [
+      "металлическое наращивающее кольцо люка"
+    ],
+    "translation_vi": [
+      "vòng nâng cao khung nắp hố ga"
+    ],
+    "example_en": "Confirm approval before using a manhole riser ring on the paved road.",
+    "scenario": "Confirm approval before using a the specified assembly on the paved road.",
+    "visual": "Narrow steel riser ring between frame and cover.",
+    "related_terms": [
+      "precast-grade-ring",
+      "manhole-frame",
+      "casting-grade-adjustment"
+    ],
+    "common_mistakes": [
+      "A metal riser ring is not the same as precast concrete grade ring, and some owners restrict its use."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "catch-basin-frame",
+    "term": "catch basin frame",
+    "pronunciation": "KACH BAY-sin FRAYM",
+    "category": "drainage",
+    "definition_en": "Metal frame installed atop a catch basin to seat and support the specified grate.",
+    "explanation_ru": "Рама дождеприёмника поддерживает решётку в уровне проезжей части или бордюра.",
+    "translation_ru": [
+      "рама дождеприёмной решётки"
+    ],
+    "translation_vi": [
+      "khung song chắn rác hố thu"
+    ],
+    "example_en": "Order the catch basin frame to match the precast box opening.",
+    "scenario": "Order the the specified assembly to match the precast box opening.",
+    "visual": "Rectangular frame around catch basin opening.",
+    "related_terms": [
+      "precast-catch-basin",
+      "catch-basin-grate",
+      "utility-casting"
+    ],
+    "common_mistakes": [
+      "Frame/grate size, traffic loading and inlet style must match approved drawings."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "catch-basin-grate",
+    "term": "catch basin grate",
+    "pronunciation": "KACH BAY-sin GRAYT",
+    "category": "drainage",
+    "definition_en": "Open metal cover with slots or bars that lets surface runoff enter a catch basin.",
+    "explanation_ru": "Решётка пропускает ливневую воду в дождеприёмник; геометрию проверяют по дорожной детали.",
+    "translation_ru": [
+      "дождеприёмная решётка"
+    ],
+    "translation_vi": [
+      "song chắn rác hố thu nước"
+    ],
+    "example_en": "Include the catch basin grate and frame in the drainage takeoff.",
+    "scenario": "Include the the specified assembly and frame in the drainage takeoff.",
+    "visual": "Slotted rectangular grate over drainage box.",
+    "related_terms": [
+      "catch-basin-frame",
+      "precast-catch-basin",
+      "traffic-rated-casting"
+    ],
+    "common_mistakes": [
+      "Not every grate style is bicycle-safe or accepted in every road classification."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "curb-inlet-casting",
+    "term": "curb inlet casting",
+    "pronunciation": "KERB IN-let KAS-ting",
+    "category": "drainage",
+    "definition_en": "Metal inlet assembly positioned at a curb opening to collect road runoff.",
+    "explanation_ru": "Боковой водоприёмник на бордюре принимает поток с проезжей части через специальную раму.",
+    "translation_ru": [
+      "чугунный водоприёмник у бордюра"
+    ],
+    "translation_vi": [
+      "bộ miệng thu nước sát bó vỉa đúc gang"
+    ],
+    "example_en": "Check curb inlet casting orientation with the curb and gutter profile.",
+    "scenario": "Check the specified assembly orientation with the curb and gutter profile.",
+    "visual": "Curb face opening feeding an inlet casting.",
+    "related_terms": [
+      "side-inlet-casting",
+      "catch-basin-frame",
+      "catch-basin"
+    ],
+    "common_mistakes": [
+      "Curb opening, frame and grate may have different configurations by municipality."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "side-inlet-casting",
+    "term": "side inlet casting",
+    "pronunciation": "SYDE IN-let KAS-ting",
+    "category": "drainage",
+    "definition_en": "Metal drainage inlet component receiving runoff through a side opening rather than only through a top grate.",
+    "explanation_ru": "Боковая литая деталь собирает поверхностный сток через отверстие в стенке бордюра или камеры.",
+    "translation_ru": [
+      "боковой литой водоприёмник"
+    ],
+    "translation_vi": [
+      "bộ miệng thu nước bên hông đúc gang"
+    ],
+    "example_en": "Use the specified side inlet casting at the depressed curb location.",
+    "scenario": "Use the specified the specified assembly at the depressed curb location.",
+    "visual": "Side entry hole cut in curb above drainage box.",
+    "related_terms": [
+      "curb-inlet-casting",
+      "combination-inlet",
+      "precast-catch-basin"
+    ],
+    "common_mistakes": [
+      "A side inlet casting is not automatically interchangeable with an open top-grated catch basin."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "combination-inlet",
+    "term": "combination inlet",
+    "pronunciation": "kom-bi-NAY-shun IN-let",
+    "category": "drainage",
+    "definition_en": "Stormwater inlet arrangement combining top grate and curb or side opening at the same location.",
+    "explanation_ru": "Комбинированный водоприёмник имеет решётку сверху и боковой проём для воды.",
+    "translation_ru": [
+      "комбинированный ливнеприёмник с боковым и верхним входом"
+    ],
+    "translation_vi": [
+      "cửa thu nước kết hợp miệng bên và nắp song"
+    ],
+    "example_en": "Measure both grate and curb opening for the combination inlet detail.",
+    "scenario": "Measure both grate and curb opening for the the specified assembly detail.",
+    "visual": "Top grate and curb side opening feeding one chamber.",
+    "related_terms": [
+      "catch-basin-grate",
+      "side-inlet-casting",
+      "precast-catch-basin"
+    ],
+    "common_mistakes": [
+      "Combined inlets require a coordinated precast box and matching casting components."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "catch-basin-hood",
+    "term": "catch basin hood",
+    "pronunciation": "KACH BAY-sin HOOD",
+    "category": "drainage",
+    "definition_en": "Internal baffle or hood near a catch basin outlet that may retain floating debris where specified.",
+    "explanation_ru": "Внутренняя перегородка дождеприёмника предотвращает попадание плавающего мусора в отвод при предусмотренном проектом устройстве.",
+    "translation_ru": [
+      "внутренняя защитная перегородка дождеприёмника"
+    ],
+    "translation_vi": [
+      "vách chắn hoặc chụp miệng ra của hố thu"
+    ],
+    "example_en": "Include the catch basin hood if the outlet detail requires one.",
+    "scenario": "Include the the specified assembly if the outlet detail requires one.",
+    "visual": "Internal hood covering an outlet port inside the chamber.",
+    "related_terms": [
+      "catch-basin-outlet",
+      "catch-basin-sump",
+      "precast-catch-basin"
+    ],
+    "common_mistakes": [
+      "A hood is not a grate or a standard part of every catch basin."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "trench-drain-grate",
+    "term": "trench drain grate",
+    "pronunciation": "TRENCH DRAYN GRAYT",
+    "category": "drainage",
+    "definition_en": "Removable grate covering a linear trench drain channel to admit surface water.",
+    "explanation_ru": "Решётка линейного лотка перекрывает водоотвод и выдерживает требуемую нагрузку.",
+    "translation_ru": [
+      "решётка линейного водоотводного лотка"
+    ],
+    "translation_vi": [
+      "song chắn rác rãnh thoát nước tuyến tính"
+    ],
+    "example_en": "Count trench drain grate lengths by channel type and load class.",
+    "scenario": "Count the specified assembly lengths by channel type and load class.",
+    "visual": "Long channel with successive narrow slotted grates.",
+    "related_terms": [
+      "trench-drain",
+      "traffic-rated-casting",
+      "utility-casting"
+    ],
+    "common_mistakes": [
+      "A trench drain grate is not the same as a rectangular catch basin grate."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "watertight-manhole-cover",
+    "term": "watertight manhole cover",
+    "pronunciation": "WAW-ter-TYTE MAN-hohl KUV-er",
+    "category": "utilities",
+    "definition_en": "Manhole cover assembly designed to resist specified water inflow or leakage with approved seals.",
+    "explanation_ru": "Герметичная крышка защищает колодец от поступления воды в пределах испытанного узла.",
+    "translation_ru": [
+      "герметичная крышка колодца"
+    ],
+    "translation_vi": [
+      "nắp hố ga kín nước"
+    ],
+    "example_en": "Specify a watertight manhole cover where flood inflow protection is required.",
+    "scenario": "Specify a the specified assembly where flood inflow protection is required.",
+    "visual": "Round lid with sealing gasket around rim.",
+    "related_terms": [
+      "manhole-cover",
+      "pipe-rubber-gasket",
+      "precast-manhole"
+    ],
+    "common_mistakes": [
+      "A standard manhole cover without a sealing design is not necessarily watertight."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "vented-manhole-cover",
+    "term": "vented manhole cover",
+    "pronunciation": "VEN-tid MAN-hohl KUV-er",
+    "category": "utilities",
+    "definition_en": "Manhole cover with designated ventilation or drainage openings as allowed by the utility owner.",
+    "explanation_ru": "Вентилируемая крышка имеет отверстия для обмена воздухом или водоприёма, если они разрешены.",
+    "translation_ru": [
+      "вентилируемая крышка колодца"
+    ],
+    "translation_vi": [
+      "nắp hố ga có lỗ thông khí"
+    ],
+    "example_en": "Check whether the vented manhole cover is allowed on the sanitary system.",
+    "scenario": "Check whether the the specified assembly is allowed on the sanitary system.",
+    "visual": "Manhole cover with several ventilation holes.",
+    "related_terms": [
+      "manhole-cover",
+      "watertight-manhole-cover",
+      "manhole-frame"
+    ],
+    "common_mistakes": [
+      "A vented cover can admit stormwater and is not suitable where a sealed cover is specified."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "locking-manhole-cover",
+    "term": "locking manhole cover",
+    "pronunciation": "LOK-ing MAN-hohl KUV-er",
+    "category": "utilities",
+    "definition_en": "Manhole cover fitted with a locking mechanism or captive fasteners to limit unauthorized access.",
+    "explanation_ru": "Запираемая крышка имеет замок или крепёж для ограниченного доступа и безопасности.",
+    "translation_ru": [
+      "запираемая крышка колодца"
+    ],
+    "translation_vi": [
+      "nắp hố ga có khóa"
+    ],
+    "example_en": "Include the locking manhole cover hardware at the secure vault.",
+    "scenario": "Include the the specified assembly hardware at the secure vault.",
+    "visual": "Circular metal lid with locking bolt.",
+    "related_terms": [
+      "manhole-cover",
+      "precast-utility-vault",
+      "traffic-rated-casting"
+    ],
+    "common_mistakes": [
+      "A locking cover does not automatically make the assembly watertight or traffic-rated."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "traffic-rated-casting",
+    "term": "traffic-rated casting",
+    "pronunciation": "TRAF-ik RAY-tid KAS-ting",
+    "category": "roadworks",
+    "definition_en": "Frame, cover or grate assigned a specified traffic loading class for its installation location.",
+    "explanation_ru": "Дорожная отливка выбирается по классу нагрузки и стандарту владельца, особенно на проезжей части.",
+    "translation_ru": [
+      "литая рама или решётка для транспортной нагрузки"
+    ],
+    "translation_vi": [
+      "bộ nắp khung gang chịu tải xe"
+    ],
+    "example_en": "Check traffic-rated casting requirements beneath the truck route.",
+    "scenario": "Check the specified assembly requirements beneath the truck route.",
+    "visual": "Truck wheel load arrow over a road-rated grate.",
+    "related_terms": [
+      "utility-casting",
+      "manhole-frame-and-cover",
+      "catch-basin-grate"
+    ],
+    "common_mistakes": [
+      "Do not assume every cast frame is suitable for heavy vehicles or that load classes match across standards."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "casting-grade-adjustment",
+    "term": "casting grade adjustment",
+    "pronunciation": "KAS-ting GRAYD uh-JUST-ment",
+    "category": "roadworks",
+    "definition_en": "Work to raise, lower or reset a casting to match a new pavement or finished surface.",
+    "explanation_ru": "При восстановлении дороги раму люка поднимают или опускают к проектной отметке, затем восстанавливают покрытие.",
+    "translation_ru": [
+      "регулировка отметки рамы люка или решётки"
+    ],
+    "translation_vi": [
+      "điều chỉnh cao độ khung nắp hố ga"
+    ],
+    "example_en": "Include casting grade adjustment at all affected asphalt overlay locations.",
+    "scenario": "Include the specified assembly at all affected asphalt overlay locations.",
+    "visual": "Street profile showing frame reset flush with new asphalt.",
+    "related_terms": [
+      "manhole-frame",
+      "adjustable-manhole-frame",
+      "precast-grade-ring"
+    ],
+    "common_mistakes": [
+      "Adjustment may need new rings, mortar, reconstruction and traffic control; not just lifting the cover."
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "top-of-pipe",
+    "term": "top of pipe",
+    "pronunciation": "TOP OF PIPE",
+    "category": "drawings",
+    "definition_en": "The uppermost outside surface of a buried pipe, distinct from the inner crown or obvert.",
+    "explanation_ru": "Наружная верхняя поверхность трубы, от которой отсчитывают толщину засыпки до земли или покрытия.",
+    "translation_ru": [
+      "наружный верх трубы"
+    ],
+    "translation_vi": [
+      "đỉnh ngoài của ống"
+    ],
+    "example_en": "Show the top of pipe elevation where the watermain crosses the storm sewer.",
+    "scenario": "Show the the measured feature elevation where the watermain crosses the storm sewer.",
+    "visual": "Cross-section of a pipe where the vertical reference points to the outer upper wall.",
+    "related_terms": [
+      "pipe-crown",
+      "pipe-cover-depth",
+      "pipe-wall-thickness"
+    ],
+    "common_mistakes": [
+      "Do not equate the exterior top-of-pipe elevation with the interior crown elevation."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "bottom-of-pipe",
+    "term": "bottom of pipe",
+    "pronunciation": "BOTTOM OF PIPE",
+    "category": "drawings",
+    "definition_en": "The lowest outside surface of a pipe barrel, used for checking clearance and support elevations.",
+    "explanation_ru": "Нижняя наружная поверхность трубы; находится ниже внутреннего invert на толщину стенки.",
+    "translation_ru": [
+      "наружный низ трубы"
+    ],
+    "translation_vi": [
+      "đáy ngoài của ống"
+    ],
+    "example_en": "Confirm the bottom of pipe elevation above the utility crossing.",
+    "scenario": "Confirm the the measured feature elevation above the utility crossing.",
+    "visual": "Cross-section of a pipe where the vertical reference points to the lowest exterior wall.",
+    "related_terms": [
+      "pipe-invert",
+      "pipe-wall-thickness",
+      "bedding"
+    ],
+    "common_mistakes": [
+      "The exterior bottom of pipe is not the same as the invert or trench bedding surface."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-centerline-elevation",
+    "term": "pipe centerline elevation",
+    "pronunciation": "PIPE CENTERLINE ELEVATION",
+    "category": "drawings",
+    "definition_en": "The elevation of the geometric centreline of a pipe section at a stated station or location.",
+    "explanation_ru": "Отметка геометрической оси трубы, рассчитываемая с учётом фактического внутреннего диаметра при переводе из invert.",
+    "translation_ru": [
+      "отметка оси трубы"
+    ],
+    "translation_vi": [
+      "cao độ tim ống"
+    ],
+    "example_en": "Use the pipe centerline elevation to coordinate the pressurized main crossing.",
+    "scenario": "Use the the measured feature to coordinate the pressurized main crossing.",
+    "visual": "Cross-section of circular pipe with horizontal centreline and a surveyed elevation marker.",
+    "related_terms": [
+      "pipe-invert",
+      "pipe-inside-diameter",
+      "pipe-crown"
+    ],
+    "common_mistakes": [
+      "Centreline elevation is not interchangeable with invert elevation, especially for different pipe diameters."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "upstream-invert",
+    "term": "upstream invert",
+    "pronunciation": "UPSTREAM INVERT",
+    "category": "drawings",
+    "definition_en": "The pipe invert elevation at the upstream end of a run or at the entry to a structure.",
+    "explanation_ru": "Отметка внутреннего низа трубы выше по потоку, от которой задают начальную высоту самотечного участка.",
+    "translation_ru": [
+      "отметка лотка на входе участка"
+    ],
+    "translation_vi": [
+      "cao độ đáy ống thượng lưu"
+    ],
+    "example_en": "Verify the upstream invert before setting the first gravity sewer section.",
+    "scenario": "Verify the the measured feature before setting the first gravity sewer section.",
+    "visual": "Profile of gravity pipe entering a structure from the upstream side with an invert callout.",
+    "related_terms": [
+      "pipe-invert",
+      "downstream-invert",
+      "pipe-gradient"
+    ],
+    "common_mistakes": [
+      "Upstream and downstream locations must follow the actual flow direction, not drawing left and right."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "downstream-invert",
+    "term": "downstream invert",
+    "pronunciation": "DOWNSTREAM INVERT",
+    "category": "drawings",
+    "definition_en": "The pipe invert elevation at the downstream end of a run or at the exit from a structure.",
+    "explanation_ru": "Отметка внутреннего низа ниже по потоку, используемая для расчёта падения и уклона.",
+    "translation_ru": [
+      "отметка лотка на выходе участка"
+    ],
+    "translation_vi": [
+      "cao độ đáy ống hạ lưu"
+    ],
+    "example_en": "Check the downstream invert against the outfall connection detail.",
+    "scenario": "Check the the measured feature against the outfall connection detail.",
+    "visual": "Profile of a gravity pipe leaving a chamber with the downstream invert elevation highlighted.",
+    "related_terms": [
+      "pipe-invert",
+      "upstream-invert",
+      "pipe-gradient"
+    ],
+    "common_mistakes": [
+      "Do not swap upstream and downstream invert values when calculating pipe fall."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "manhole-invert-drop",
+    "term": "manhole invert drop",
+    "pronunciation": "MANHOLE INVERT DROP",
+    "category": "drawings",
+    "definition_en": "Difference in invert elevations between incoming and outgoing pipes through a manhole.",
+    "explanation_ru": "Разность отметок лотков входящей и выходящей труб внутри колодца; допустимые значения задаются проектом.",
+    "translation_ru": [
+      "перепад отметок лотков в колодце"
+    ],
+    "translation_vi": [
+      "độ chênh cao độ đáy ống trong hố ga"
+    ],
+    "example_en": "Measure the manhole invert drop from inlet to outlet elevations.",
+    "scenario": "Measure the the measured feature from inlet to outlet elevations.",
+    "visual": "Manhole section showing inlet and outlet invert levels with a vertical difference.",
+    "related_terms": [
+      "upstream-invert",
+      "downstream-invert",
+      "manhole-channel"
+    ],
+    "common_mistakes": [
+      "Minimum required drops depend on jurisdiction, alignment and pipe sizes; never apply one fixed number."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "crown-matching",
+    "term": "crown matching",
+    "pronunciation": "CROWN MATCHING",
+    "category": "drawings",
+    "definition_en": "A connection design approach aligning or controlling the relative inner crown elevations of pipes with different sizes.",
+    "explanation_ru": "Привязка входящей и выходящей трубы по внутреннему своду; при разных диаметрах это создаёт разные отметки лотков.",
+    "translation_ru": [
+      "совмещение отметок сводов труб"
+    ],
+    "translation_vi": [
+      "căn bằng cao độ đỉnh trong các ống"
+    ],
+    "example_en": "Confirm crown matching requirements where a 200 mm inlet joins a larger sanitary outlet.",
+    "scenario": "Confirm the measured feature requirements where a 200 mm inlet joins a larger sanitary outlet.",
+    "visual": "Manhole elevation profile with two different pipe diameters sharing an inner top reference.",
+    "related_terms": [
+      "pipe-crown",
+      "manhole-invert-drop",
+      "pipe-inside-diameter"
+    ],
+    "common_mistakes": [
+      "Crown alignment and invert alignment are not the same; follow owner-specific hydraulic criteria."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-barrel",
+    "term": "pipe barrel",
+    "pronunciation": "PIPE BARREL",
+    "category": "utilities",
+    "definition_en": "The main cylindrical body of a manufactured pipe section between its joint ends.",
+    "explanation_ru": "Тело звена трубы между раструбом и гладким концом, без учёта особенности стыкового профиля.",
+    "translation_ru": [
+      "тело трубы между концами"
+    ],
+    "translation_vi": [
+      "thân ống"
+    ],
+    "example_en": "Inspect the pipe barrel for cracks before lowering the precast section.",
+    "scenario": "Inspect the the measured feature for cracks before lowering the precast section.",
+    "visual": "Side view of a manufactured pipe with the plain cylindrical body shaded between end joints.",
+    "related_terms": [
+      "pipe-section",
+      "pipe-bell-end",
+      "pipe-spigot-end"
+    ],
+    "common_mistakes": [
+      "Barrel length, nominal section length and effective lay length may differ."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-lay-length",
+    "term": "pipe lay length",
+    "pronunciation": "PIPE LAY LENGTH",
+    "category": "drawings",
+    "definition_en": "Effective installed length contributed by a pipe section between joints after joint insertion.",
+    "explanation_ru": "Монтажная длина звена с учётом захода в раструбы; именно она может отличаться от общей заводской длины.",
+    "translation_ru": [
+      "полезная монтажная длина звена трубы"
+    ],
+    "translation_vi": [
+      "chiều dài lắp đặt hữu dụng của đốt ống"
+    ],
+    "example_en": "Use the pipe lay length to estimate the number of reinforced concrete pipe sections.",
+    "scenario": "Use the the measured feature to estimate the number of reinforced concrete pipe sections.",
+    "visual": "Side view of bell-and-spigot pipe with effective installed length dimension.",
+    "related_terms": [
+      "pipe-section",
+      "pipe-barrel",
+      "pipe-cut-length"
+    ],
+    "common_mistakes": [
+      "A 2.5 m manufactured unit may not contribute exactly 2.5 m to a joined run."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe-crossing-clearance",
+    "term": "pipe crossing clearance",
+    "pronunciation": "PIPE CROSSING CLEARANCE",
+    "category": "drawings",
+    "definition_en": "Minimum clear separation measured between external surfaces of two pipes at an underground crossing.",
+    "explanation_ru": "Чистый зазор между наружными стенками труб в месте пересечения, который сравнивают с нормативом владельца.",
+    "translation_ru": [
+      "вертикальный зазор между пересекающимися трубами"
+    ],
+    "translation_vi": [
+      "khoảng cách thông thủy tại vị trí ống giao nhau"
+    ],
+    "example_en": "Check pipe crossing clearance before finalizing the sanitary sewer profile.",
+    "scenario": "Check the measured feature before finalizing the sanitary sewer profile.",
+    "visual": "Section showing two pipes crossing with a vertical clear space dimension between outer surfaces.",
+    "related_terms": [
+      "top-of-pipe",
+      "bottom-of-pipe",
+      "pipe-cover-depth"
+    ],
+    "common_mistakes": [
+      "Do not measure clearance centreline-to-centreline without subtracting the outside radii."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "hydraulic-grade-line",
+    "term": "hydraulic grade line",
+    "pronunciation": "HYDRAULIC GRADE LINE",
+    "category": "drawings",
+    "definition_en": "Line indicating the level to which water would rise in piezometers along a hydraulic system.",
+    "explanation_ru": "Линия гидравлического напора показывает потенциальный уровень воды в системе при заданном режиме, важна при подпоре.",
+    "translation_ru": [
+      "линия пьезометрического напора (HGL)"
+    ],
+    "translation_vi": [
+      "đường mực nước thủy lực HGL"
+    ],
+    "example_en": "Review the hydraulic grade line at the proposed manhole connection.",
+    "scenario": "Review the the measured feature at the proposed manhole connection.",
+    "visual": "Longitudinal sewer profile with hydraulic water surface line above pipe crown.",
+    "related_terms": [
+      "pipe-crown",
+      "pressure-pipe",
+      "storm-sewer"
+    ],
+    "common_mistakes": [
+      "HGL is not necessarily the pipe crown or ground profile; it changes with flow and boundary conditions."
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "pipe",
+    "term": "pipe",
+    "pronunciation": "PYPE",
+    "category": "utilities",
+    "definition_en": "A hollow manufactured conduit for conveying water, wastewater or another fluid; material, wall geometry and joint design depend on its service.",
+    "explanation_ru": "Труба — пустотелое изделие для транспортировки воды или стоков. При выборе проверяют материал, назначение, диаметр, класс нагрузки или давления и тип соединения.",
+    "translation_ru": [
+      "труба",
+      "трубопроводный элемент"
+    ],
+    "translation_vi": [
+      "ống",
+      "ống dẫn nước"
+    ],
+    "example_en": "Confirm the pipe material, diameter and joint system before preparing the tender takeoff.",
+    "scenario": "A linear utility is shown between manholes and requires product size, class and joint selection.",
+    "visual": "Cross-section and side view of a hollow cylindrical pipe with separate wall, bore and joint ends.",
+    "related_terms": [
+      "gravity-pipe",
+      "pressure-pipe",
+      "pipe-section",
+      "pipe-nominal-diameter",
+      "pipe-invert"
+    ],
+    "common_mistakes": [
+      "A pipe for conveying fluid is not automatically interchangeable with an electrical conduit, and pipe size alone does not define joint or strength class."
+    ],
+    "difficulty": 1
   }
 ]

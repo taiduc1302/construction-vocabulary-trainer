@@ -17,9 +17,9 @@ const sw=read('sw.js');
 
 assert.deepEqual(validateTermTrees(graph,terms),[],'concept trees must be well formed and only reference existing terms');
 assert.equal(graph.version,1);
-assert.equal(graph.families.length,4,'seed slabs, footings, conduit and topping trees');
+assert.equal(graph.families.length,8,'four existing and four new pipe, geometry, precast and casting trees');
 const byId=new Map(terms.map(t=>[t.id,t]));
-assert.equal(terms.length,387,'preserve all 387 vocabulary items');
+assert.equal(terms.length,516,'preserve all 516 vocabulary items');
 assert.equal(byId.get('suspended-slab')?.term,'suspended slab','canonical suspended slab term is present');
 assert.equal(matchesDictionaryTerm(byId.get('suspended-slab'),'suspended slab'),true);
 assert.equal(matchesDictionaryTerm(byId.get('suspended-slab'),'structural slab'),true);
@@ -83,10 +83,10 @@ assert.ok(validateTermTrees(cyclic,terms).some(message=>message.includes('cycle'
 for(const file of ["./src/term-tree.js","./src/term-tree.css","./data/term-trees.json"]){
   assert.ok(sw.includes("'"+file+"'"),file+' must be cached for offline term pages');
 }
-assert.ok(sw.includes("const CACHE='construction-vocab-v25'"),'new content must bump PWA cache');
+assert.ok(sw.includes("const CACHE='construction-vocab-v26'"),'new content must bump PWA cache');
 assert.ok(detail.includes('src/term-tree.css'),'term detail must load tree styles');
 assert.ok(home.includes('src/term-tree.css'),'home explorer must load tree styles');
 assert.ok(termPage.includes("fetchJson('data/term-trees.json')"),'term detail loads curated tree data');
 assert.ok(termPage.includes('renderTermTrees(treeData,terms,term.id)'),'term detail renders the actual tree');
 assert.ok(termPage.includes("catch(error=>{console.warn('Term trees unavailable; showing standard term page.'"),'missing optional tree data must not break term details');
-console.log('Concept tree tests OK: 387 words, discoverable Suspended slab, four validated trees, typed relationships, navigation, integrity checks and offline assets.');
+console.log('Concept tree tests OK: 516 words, discoverable Suspended slab, eight validated trees, typed relationships, navigation, integrity checks and offline assets.');

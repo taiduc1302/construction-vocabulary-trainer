@@ -5,11 +5,19 @@
     "catch-basin": {
       "drawing_labels": [
         "CB"
+      ],
+      "aliases_en": [
+        "CB",
+        "catch basin inlet"
       ]
     },
     "manhole": {
       "drawing_labels": [
         "MH"
+      ],
+      "aliases_en": [
+        "maintenance hole",
+        "MH structure"
       ]
     },
     "storm-sewer": {
@@ -1083,7 +1091,9 @@
     "precast-concrete": {
       "aliases_en": [
         "precast",
-        "precast concrete element"
+        "precast concrete element",
+        "precast structure",
+        "precast concrete structures"
       ]
     },
     "spalling": {
@@ -1502,6 +1512,826 @@
       "aliases_en": [
         "curing concrete",
         "curing of concrete"
+      ]
+    },
+    "pipe": {
+      "aliases_en": [
+        "pipes",
+        "fluid-carrying pipe",
+        "utility pipe",
+        "pipework",
+        "piping"
+      ]
+    },
+    "pipe-section": {
+      "aliases_en": [
+        "pipe segment",
+        "pipe length",
+        "pipe piece"
+      ]
+    },
+    "gravity-pipe": {
+      "aliases_en": [
+        "gravity sewer pipe",
+        "gravity drain pipe"
+      ]
+    },
+    "pressure-pipe": {
+      "aliases_en": [
+        "pressurized pipe",
+        "pressurised pipe"
+      ]
+    },
+    "reinforced-concrete-pipe": {
+      "aliases_en": [
+        "RCP",
+        "reinforced concrete sewer pipe",
+        "reinforced concrete culvert pipe",
+        "RCP pipe"
+      ]
+    },
+    "non-reinforced-concrete-pipe": {
+      "aliases_en": [
+        "plain concrete pipe",
+        "unreinforced concrete pipe"
+      ]
+    },
+    "ductile-iron-pipe": {
+      "aliases_en": [
+        "DIP",
+        "DI pipe",
+        "ductile iron watermain"
+      ]
+    },
+    "corrugated-hdpe-pipe": {
+      "aliases_en": [
+        "corrugated polyethylene pipe",
+        "HDPE storm pipe",
+        "double-wall HDPE pipe"
+      ]
+    },
+    "pvc-sdr35": {
+      "aliases_en": [
+        "SDR 35",
+        "SDR35",
+        "PVC SDR35"
+      ]
+    },
+    "pvc-sdr28": {
+      "aliases_en": [
+        "SDR 28",
+        "SDR28",
+        "PVC SDR28"
+      ]
+    },
+    "pipe-nominal-diameter": {
+      "aliases_en": [
+        "pipe nominal size",
+        "nominal diameter",
+        "DN pipe"
+      ]
+    },
+    "pipe-inside-diameter": {
+      "aliases_en": [
+        "pipe internal diameter",
+        "pipe ID",
+        "inside diameter of pipe"
+      ]
+    },
+    "pipe-outside-diameter": {
+      "aliases_en": [
+        "pipe OD",
+        "pipe external diameter",
+        "outside diameter of pipe"
+      ]
+    },
+    "pipe-wall-thickness": {
+      "aliases_en": [
+        "pipe wall gauge",
+        "wall thickness of pipe"
+      ]
+    },
+    "pipe-class": {
+      "aliases_en": [
+        "RCP class",
+        "pipe strength class"
+      ]
+    },
+    "pipe-stiffness": {
+      "aliases_en": [
+        "ring stiffness",
+        "pipe ring stiffness"
+      ]
+    },
+    "pipe-invert": {
+      "aliases_en": [
+        "pipe flowline",
+        "pipe flow line",
+        "invert of pipe",
+        "pipe invert level"
+      ]
+    },
+    "pipe-crown": {
+      "aliases_en": [
+        "obvert",
+        "pipe obvert",
+        "crown of pipe",
+        "crown / obvert",
+        "crown overt",
+        "obvert elevation",
+        "crown elevation",
+        "pipe soffit"
+      ]
+    },
+    "pipe-springline": {
+      "aliases_en": [
+        "springline",
+        "spring line of pipe"
+      ]
+    },
+    "pipe-haunch": {
+      "aliases_en": [
+        "haunch of pipe",
+        "lower pipe haunch"
+      ]
+    },
+    "pipe-cover-depth": {
+      "aliases_en": [
+        "cover over pipe",
+        "depth of cover",
+        "depth of pipe cover"
+      ]
+    },
+    "pipe-gradient": {
+      "aliases_en": [
+        "pipe slope",
+        "sewer grade",
+        "gravity pipe gradient"
+      ]
+    },
+    "pipe-embedment": {
+      "aliases_en": [
+        "pipe surround",
+        "pipe support zone"
+      ]
+    },
+    "initial-backfill": {
+      "aliases_en": [
+        "initial pipe backfill",
+        "pipe-zone backfill"
+      ]
+    },
+    "final-backfill": {
+      "aliases_en": [
+        "general fill above pipe",
+        "upper trench backfill"
+      ]
+    },
+    "pipe-zone": {
+      "aliases_en": [
+        "embedment zone",
+        "pipe protection zone"
+      ]
+    },
+    "pipe-alignment": {
+      "aliases_en": [
+        "pipeline alignment",
+        "sewer centreline"
+      ]
+    },
+    "pipe-cut-length": {
+      "aliases_en": [
+        "cutting length of pipe",
+        "pipe cut dimension"
+      ]
+    },
+    "pipe-deflection": {
+      "aliases_en": [
+        "pipe ovalization",
+        "pipe ovalisation",
+        "pipe ring deflection"
+      ]
+    },
+    "pipe-bell-end": {
+      "aliases_en": [
+        "bell end",
+        "socket end of pipe",
+        "pipe socket"
+      ]
+    },
+    "pipe-spigot-end": {
+      "aliases_en": [
+        "spigot",
+        "plain end of pipe"
+      ]
+    },
+    "bell-and-spigot-joint": {
+      "aliases_en": [
+        "bell-spigot joint",
+        "socket-spigot joint",
+        "bell spigot"
+      ]
+    },
+    "pipe-rubber-gasket": {
+      "aliases_en": [
+        "pipe joint gasket",
+        "rubber pipe seal"
+      ]
+    },
+    "pipe-o-ring": {
+      "aliases_en": [
+        "O-ring gasket",
+        "pipe joint O ring"
+      ]
+    },
+    "gasket-groove": {
+      "aliases_en": [
+        "seal groove",
+        "gasket seat"
+      ]
+    },
+    "push-on-joint": {
+      "aliases_en": [
+        "push fit joint",
+        "gasketed push joint"
+      ]
+    },
+    "restrained-joint": {
+      "aliases_en": [
+        "restrained pipe joint",
+        "axially restrained joint"
+      ]
+    },
+    "mechanical-joint": {
+      "aliases_en": [
+        "MJ",
+        "mechanical pipe joint"
+      ]
+    },
+    "flanged-joint": {
+      "aliases_en": [
+        "bolted flange joint",
+        "flange connection"
+      ]
+    },
+    "butt-fusion-joint": {
+      "aliases_en": [
+        "butt fusion",
+        "HDPE butt weld"
+      ]
+    },
+    "flange-adaptor": {
+      "aliases_en": [
+        "flange adapter",
+        "flanged adapter"
+      ]
+    },
+    "pipe-elbow": {
+      "aliases_en": [
+        "pipe bend",
+        "pipe 90 degree elbow"
+      ]
+    },
+    "pipe-tee": {
+      "aliases_en": [
+        "tee fitting",
+        "T fitting",
+        "pipe T"
+      ]
+    },
+    "pipe-cross": {
+      "aliases_en": [
+        "cross fitting",
+        "four way pipe fitting"
+      ]
+    },
+    "pipe-cap": {
+      "aliases_en": [
+        "end cap",
+        "pipe end cap"
+      ]
+    },
+    "pipe-plug": {
+      "aliases_en": [
+        "test plug",
+        "end plug"
+      ]
+    },
+    "pipe-flange": {
+      "aliases_en": [
+        "flange plate",
+        "pipe flange fitting"
+      ]
+    },
+    "pipe-thrust-restraint": {
+      "aliases_en": [
+        "thrust restraint",
+        "pressure thrust restraint"
+      ]
+    },
+    "casing-pipe": {
+      "aliases_en": [
+        "protective casing",
+        "pipe casing",
+        "steel casing pipe"
+      ]
+    },
+    "carrier-pipe": {
+      "aliases_en": [
+        "service carrier pipe",
+        "carrier inside casing"
+      ]
+    },
+    "casing-spacer": {
+      "aliases_en": [
+        "casing centralizer",
+        "carrier pipe spacer"
+      ]
+    },
+    "pipe-repair-clamp": {
+      "aliases_en": [
+        "repair clamp",
+        "pipe band clamp"
+      ]
+    },
+    "pipe-tapping-sleeve": {
+      "aliases_en": [
+        "tapping sleeve",
+        "pressure tapping saddle"
+      ]
+    },
+    "pipe-joint-deflection": {
+      "aliases_en": [
+        "joint angular deflection",
+        "angular joint allowance"
+      ]
+    },
+    "open-cut-pipe-installation": {
+      "aliases_en": [
+        "open cut installation",
+        "trench installation"
+      ]
+    },
+    "pipe-jacking": {
+      "aliases_en": [
+        "jacked pipe",
+        "jack-and-bore pipe"
+      ]
+    },
+    "horizontal-directional-drilling": {
+      "aliases_en": [
+        "HDD",
+        "directional bore",
+        "directional drilling"
+      ]
+    },
+    "pipe-stringing": {
+      "aliases_en": [
+        "pipe laying out",
+        "stringing pipe sections"
+      ]
+    },
+    "pipe-lowering": {
+      "aliases_en": [
+        "lowering pipe into trench",
+        "pipe placement"
+      ]
+    },
+    "pipe-cutting": {
+      "aliases_en": [
+        "field cutting pipe",
+        "pipe trimming"
+      ]
+    },
+    "pipe-laser-level": {
+      "aliases_en": [
+        "pipe laser",
+        "sewer laser"
+      ]
+    },
+    "pipe-deflection-test": {
+      "aliases_en": [
+        "pipe ovality test",
+        "flexible pipe mandrel check"
+      ]
+    },
+    "pipe-air-test": {
+      "aliases_en": [
+        "low pressure air test",
+        "sewer air leakage test"
+      ]
+    },
+    "hydrostatic-pressure-test": {
+      "aliases_en": [
+        "hydro test",
+        "watermain hydrostatic test",
+        "pressure test"
+      ]
+    },
+    "pipe-leakage-test": {
+      "aliases_en": [
+        "sewer leakage test",
+        "pipeline leakage test"
+      ]
+    },
+    "cctv-pipe-inspection": {
+      "aliases_en": [
+        "CCTV inspection",
+        "sewer camera inspection",
+        "pipe video inspection"
+      ]
+    },
+    "pipe-flushing": {
+      "aliases_en": [
+        "pipeline flushing",
+        "watermain flush"
+      ]
+    },
+    "watermain-disinfection": {
+      "aliases_en": [
+        "watermain chlorination",
+        "disinfection and sampling"
+      ]
+    },
+    "pipe-plugging": {
+      "aliases_en": [
+        "pipe stoppling",
+        "pipeline plugging"
+      ]
+    },
+    "pipe-isolation": {
+      "aliases_en": [
+        "line isolation",
+        "watermain isolation"
+      ]
+    },
+    "pipe-trench-shoring": {
+      "aliases_en": [
+        "sewer trench shoring",
+        "pipeline trench support"
+      ]
+    },
+    "pipe-joint-testing": {
+      "aliases_en": [
+        "joint leak test",
+        "pipe gasket joint test"
+      ]
+    },
+    "precast-manhole": {
+      "aliases_en": [
+        "precast MH",
+        "precast maintenance hole",
+        "precast concrete manhole"
+      ]
+    },
+    "precast-manhole-base": {
+      "aliases_en": [
+        "precast MH base",
+        "manhole base section",
+        "MH base"
+      ]
+    },
+    "precast-riser-section": {
+      "aliases_en": [
+        "precast riser",
+        "manhole riser",
+        "MH riser"
+      ]
+    },
+    "eccentric-cone-section": {
+      "aliases_en": [
+        "eccentric manhole cone",
+        "eccentric cone"
+      ]
+    },
+    "concentric-cone-section": {
+      "aliases_en": [
+        "concentric manhole cone",
+        "concentric cone"
+      ]
+    },
+    "precast-flat-top": {
+      "aliases_en": [
+        "precast top slab",
+        "flat top manhole slab",
+        "manhole top slab"
+      ]
+    },
+    "precast-grade-ring": {
+      "aliases_en": [
+        "concrete grade ring",
+        "MH adjustment ring",
+        "precast adjusting ring"
+      ]
+    },
+    "manhole-steps": {
+      "aliases_en": [
+        "manhole step irons",
+        "MH access steps"
+      ]
+    },
+    "manhole-benching": {
+      "aliases_en": [
+        "MH benching",
+        "benching inside manhole"
+      ]
+    },
+    "manhole-channel": {
+      "aliases_en": [
+        "sewer manhole channel",
+        "flow channel in manhole"
+      ]
+    },
+    "manhole-sump": {
+      "aliases_en": [
+        "manhole bottom sump",
+        "maintenance hole sump"
+      ]
+    },
+    "drop-manhole": {
+      "aliases_en": [
+        "drop MH",
+        "drop maintenance hole",
+        "drop sewer manhole"
+      ]
+    },
+    "manhole-pipe-boot": {
+      "aliases_en": [
+        "resilient pipe connector",
+        "manhole boot",
+        "MH pipe boot"
+      ]
+    },
+    "manhole-cored-opening": {
+      "aliases_en": [
+        "core drilled manhole opening",
+        "MH core hole"
+      ]
+    },
+    "precast-catch-basin": {
+      "aliases_en": [
+        "precast CB",
+        "precast CB box",
+        "precast drainage inlet"
+      ]
+    },
+    "catch-basin-sump": {
+      "aliases_en": [
+        "CB sump",
+        "catch basin sediment sump"
+      ]
+    },
+    "catch-basin-outlet": {
+      "aliases_en": [
+        "CB outlet",
+        "catch basin discharge opening"
+      ]
+    },
+    "precast-utility-vault": {
+      "aliases_en": [
+        "precast vault",
+        "precast utility chamber"
+      ]
+    },
+    "precast-junction-box": {
+      "aliases_en": [
+        "precast JB",
+        "precast drainage junction box"
+      ]
+    },
+    "precast-box-culvert": {
+      "aliases_en": [
+        "box culvert precast",
+        "precast RCB"
+      ]
+    },
+    "box-culvert-joint": {
+      "aliases_en": [
+        "precast culvert joint",
+        "box joint seal"
+      ]
+    },
+    "precast-headwall": {
+      "aliases_en": [
+        "precast culvert headwall",
+        "factory headwall"
+      ]
+    },
+    "precast-wingwall": {
+      "aliases_en": [
+        "precast wing wall",
+        "factory wingwall"
+      ]
+    },
+    "precast-lifting-anchor": {
+      "aliases_en": [
+        "precast lift anchor",
+        "cast-in lifting anchor"
+      ]
+    },
+    "precast-lifting-clutch": {
+      "aliases_en": [
+        "lifting clutch",
+        "precast lifting attachment"
+      ]
+    },
+    "precast-joint-sealant": {
+      "aliases_en": [
+        "butyl precast joint seal",
+        "precast joint mastic"
+      ]
+    },
+    "utility-casting": {
+      "aliases_en": [
+        "castings",
+        "utility castings",
+        "iron casting"
+      ]
+    },
+    "cast-iron-casting": {
+      "aliases_en": [
+        "cast iron utility casting",
+        "grey iron casting"
+      ]
+    },
+    "ductile-iron-casting": {
+      "aliases_en": [
+        "ductile iron utility casting",
+        "DI casting"
+      ]
+    },
+    "manhole-frame": {
+      "aliases_en": [
+        "MH frame",
+        "manhole casting frame"
+      ]
+    },
+    "manhole-cover": {
+      "aliases_en": [
+        "MH cover",
+        "manhole lid"
+      ]
+    },
+    "manhole-frame-and-cover": {
+      "aliases_en": [
+        "MH frame and cover",
+        "F&C",
+        "frame and lid assembly"
+      ]
+    },
+    "adjustable-manhole-frame": {
+      "aliases_en": [
+        "adjustable MH frame",
+        "adjustable frame and cover"
+      ]
+    },
+    "manhole-riser-ring": {
+      "aliases_en": [
+        "metal manhole riser ring",
+        "MH extension ring"
+      ]
+    },
+    "catch-basin-frame": {
+      "aliases_en": [
+        "CB frame",
+        "catch basin casting frame"
+      ]
+    },
+    "catch-basin-grate": {
+      "aliases_en": [
+        "CB grate",
+        "grated catch basin cover"
+      ]
+    },
+    "curb-inlet-casting": {
+      "aliases_en": [
+        "curb inlet frame",
+        "curb inlet casting assembly"
+      ]
+    },
+    "side-inlet-casting": {
+      "aliases_en": [
+        "side inlet iron casting",
+        "side entry casting"
+      ]
+    },
+    "combination-inlet": {
+      "aliases_en": [
+        "combo inlet",
+        "combined curb and grated inlet"
+      ]
+    },
+    "catch-basin-hood": {
+      "aliases_en": [
+        "CB outlet hood",
+        "debris hood in CB"
+      ]
+    },
+    "trench-drain-grate": {
+      "aliases_en": [
+        "trench grate",
+        "linear drainage grate"
+      ]
+    },
+    "watertight-manhole-cover": {
+      "aliases_en": [
+        "sealed manhole cover",
+        "watertight MH lid"
+      ]
+    },
+    "vented-manhole-cover": {
+      "aliases_en": [
+        "vented MH lid",
+        "perforated manhole cover"
+      ]
+    },
+    "locking-manhole-cover": {
+      "aliases_en": [
+        "lockable MH lid",
+        "bolted down manhole cover"
+      ]
+    },
+    "traffic-rated-casting": {
+      "aliases_en": [
+        "road-rated casting",
+        "heavy duty frame and grate"
+      ]
+    },
+    "casting-grade-adjustment": {
+      "aliases_en": [
+        "reset casting to grade",
+        "adjust manhole frame to grade"
+      ]
+    },
+    "top-of-pipe": {
+      "aliases_en": [
+        "outer top of pipe",
+        "TOP elevation",
+        "exterior pipe crown"
+      ]
+    },
+    "bottom-of-pipe": {
+      "aliases_en": [
+        "outer bottom of pipe",
+        "BOP elevation"
+      ]
+    },
+    "pipe-centerline-elevation": {
+      "aliases_en": [
+        "pipe CL elevation",
+        "centreline of pipe",
+        "pipe centreline level"
+      ]
+    },
+    "upstream-invert": {
+      "aliases_en": [
+        "upstream IL",
+        "inlet invert elevation"
+      ]
+    },
+    "downstream-invert": {
+      "aliases_en": [
+        "downstream IL",
+        "outlet invert elevation"
+      ]
+    },
+    "manhole-invert-drop": {
+      "aliases_en": [
+        "invert drop in manhole",
+        "MH invert difference"
+      ]
+    },
+    "crown-matching": {
+      "aliases_en": [
+        "crown alignment",
+        "obvert matching",
+        "crown to crown connection"
+      ]
+    },
+    "pipe-barrel": {
+      "aliases_en": [
+        "pipe body",
+        "straight pipe barrel"
+      ]
+    },
+    "pipe-lay-length": {
+      "aliases_en": [
+        "laying length",
+        "effective pipe length",
+        "pipe effective length"
+      ]
+    },
+    "pipe-crossing-clearance": {
+      "aliases_en": [
+        "vertical pipe crossing clearance",
+        "pipe separation"
+      ]
+    },
+    "hydraulic-grade-line": {
+      "aliases_en": [
+        "HGL",
+        "hydraulic gradeline",
+        "hydraulic grade elevation"
       ]
     }
   }

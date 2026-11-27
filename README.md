@@ -247,6 +247,10 @@ The app migrates `construction-vocab-state-v2` and the older `construction-vocab
 
 Learning state is local to the browser and is **not committed to GitHub**. Use Export/Import before clearing browser data or moving devices.
 
+### Pipes, precast and castings
+
+The pipe and underground drainage vocabulary now covers **obvert/crown**, invert, top of pipe, cover, RCP / HDPE / PVC, fittings, pipe joints, precast manhole sections, CB boxes and cast-iron / ductile-iron castings. **Pipes, precast concrete and metal castings are different procurement scopes** and have separate learning packs. Four new linked concept trees illustrate types versus parts, measurement references and associated installation methods. See [Pipe geometry and takeoff guide](docs/PIPES_PRECAST_CASTINGS.md). On Today, open **Pipes & fittings**, **Crown / Obvert**, **Invert**, **Precast structures** or **Frames & castings**.
+
 ## Data files
 
 - `data/learning-packs.json` — role/work-area learning paths that reference canonical term IDs.
