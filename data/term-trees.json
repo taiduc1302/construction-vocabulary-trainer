@@ -411,6 +411,648 @@
           "label": "Supporting substrate below separation layer"
         }
       ]
+    },
+    {
+      "id": "pipe-types",
+      "title": "Pipes: services and materials",
+      "root": "pipe",
+      "description": "A pipe can be described by service (gravity or pressure), material (concrete, PVC, HDPE or ductile iron) and manufactured form. The branches are overlapping classification facets, not exclusive alternatives.",
+      "nodes": [
+        {
+          "id": "pipe",
+          "parent": null,
+          "facet": "Conveys fluid"
+        },
+        {
+          "id": "gravity-pipe",
+          "parent": "pipe",
+          "facet": "Service: gravity"
+        },
+        {
+          "id": "pressure-pipe",
+          "parent": "pipe",
+          "facet": "Service: pressure"
+        },
+        {
+          "id": "reinforced-concrete-pipe",
+          "parent": "pipe",
+          "facet": "Material: reinforced concrete / RCP"
+        },
+        {
+          "id": "non-reinforced-concrete-pipe",
+          "parent": "pipe",
+          "facet": "Material: plain concrete"
+        },
+        {
+          "id": "ductile-iron-pipe",
+          "parent": "pipe",
+          "facet": "Material: ductile iron / DIP"
+        },
+        {
+          "id": "hdpe-pipe",
+          "parent": "pipe",
+          "facet": "Material: HDPE"
+        },
+        {
+          "id": "corrugated-hdpe-pipe",
+          "parent": "hdpe-pipe",
+          "facet": "Wall form: corrugated"
+        },
+        {
+          "id": "pvc-drain-pipe",
+          "parent": "pipe",
+          "facet": "Material: PVC drainage"
+        },
+        {
+          "id": "pvc-sdr35",
+          "parent": "pvc-drain-pipe",
+          "facet": "Dimension ratio: SDR 35"
+        },
+        {
+          "id": "pvc-sdr28",
+          "parent": "pvc-drain-pipe",
+          "facet": "Dimension ratio: SDR 28"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "pipe",
+          "id": "pipe-section",
+          "group": "parts",
+          "label": "Manufactured lengths / sections"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-barrel",
+          "group": "parts",
+          "label": "Cylindrical body of a section"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-bell-end",
+          "group": "parts",
+          "label": "Socket end on selected systems"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-spigot-end",
+          "group": "parts",
+          "label": "Inserted end on selected systems"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-rubber-gasket",
+          "group": "parts",
+          "label": "Gasket where specified"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-coupling",
+          "group": "parts",
+          "label": "Joint of pipe ends"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-elbow",
+          "group": "parts",
+          "label": "Direction change fitting"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-tee",
+          "group": "parts",
+          "label": "Branch connection fitting"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-flange",
+          "group": "parts",
+          "label": "Bolted connection component"
+        },
+        {
+          "owner": "pipe",
+          "id": "casing-pipe",
+          "group": "parts",
+          "label": "Protective outer pipe where required"
+        },
+        {
+          "owner": "pipe",
+          "id": "open-cut-pipe-installation",
+          "group": "methods",
+          "label": "Open-trench installation"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-jacking",
+          "group": "methods",
+          "label": "Pipe / casing jacking where suitable"
+        },
+        {
+          "owner": "pipe",
+          "id": "horizontal-directional-drilling",
+          "group": "methods",
+          "label": "Selected trenchless installations"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-leakage-test",
+          "group": "methods",
+          "label": "Acceptance checks to approved standard"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-class",
+          "group": "coordination",
+          "label": "Verify approved performance class"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-nominal-diameter",
+          "group": "coordination",
+          "label": "Check nominal size"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-outside-diameter",
+          "group": "coordination",
+          "label": "Coupling selection requires actual OD"
+        },
+        {
+          "owner": "gravity-pipe",
+          "id": "pipe-gradient",
+          "group": "coordination",
+          "label": "Confirm gradient using inverts"
+        },
+        {
+          "owner": "pressure-pipe",
+          "id": "pipe-thrust-restraint",
+          "group": "coordination",
+          "label": "Restrained joints or thrust blocks if required"
+        }
+      ]
+    },
+    {
+      "id": "pipe-geometry",
+      "title": "Pipe section: obvert, invert and elevations",
+      "root": "pipe",
+      "description": "Inside crown is also called obvert; invert is the bottom inside surface. These are geometric reference points, NOT different types of pipe. Exterior top/bottom, springline and installed cover are separate measurements.",
+      "nodes": [
+        {
+          "id": "pipe",
+          "parent": null,
+          "facet": "Circular section / pipe body"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "pipe",
+          "id": "pipe-crown",
+          "group": "parts",
+          "label": "Obvert: TOP INSIDE, not outside pipe top"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-invert",
+          "group": "parts",
+          "label": "Invert: BOTTOM INSIDE / flowline"
+        },
+        {
+          "owner": "pipe",
+          "id": "top-of-pipe",
+          "group": "parts",
+          "label": "Outside uppermost wall"
+        },
+        {
+          "owner": "pipe",
+          "id": "bottom-of-pipe",
+          "group": "parts",
+          "label": "Outside lowest wall"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-springline",
+          "group": "parts",
+          "label": "Horizontal centreline"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-haunch",
+          "group": "parts",
+          "label": "Lower side zone for support"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-inside-diameter",
+          "group": "parts",
+          "label": "Flow bore diameter (ID)"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-outside-diameter",
+          "group": "parts",
+          "label": "Outer diameter (OD)"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-wall-thickness",
+          "group": "parts",
+          "label": "Wall thickness separates inside from outside"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-laser-level",
+          "group": "methods",
+          "label": "Guides line and grade during installation"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-deflection-test",
+          "group": "methods",
+          "label": "Flexible-pipe acceptance where specified"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-cover-depth",
+          "group": "coordination",
+          "label": "Measured from OUTSIDE top to ground"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-centerline-elevation",
+          "group": "coordination",
+          "label": "Elevation at geometric axis"
+        },
+        {
+          "owner": "pipe",
+          "id": "upstream-invert",
+          "group": "coordination",
+          "label": "Pipe entry / higher flowline station"
+        },
+        {
+          "owner": "pipe",
+          "id": "downstream-invert",
+          "group": "coordination",
+          "label": "Pipe exit / lower flowline station"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-gradient",
+          "group": "coordination",
+          "label": "Longitudinal fall divided by run"
+        },
+        {
+          "owner": "pipe",
+          "id": "manhole-invert-drop",
+          "group": "coordination",
+          "label": "Invert difference through manhole"
+        },
+        {
+          "owner": "pipe",
+          "id": "crown-matching",
+          "group": "coordination",
+          "label": "Potential crown alignment at size changes"
+        },
+        {
+          "owner": "pipe",
+          "id": "pipe-crossing-clearance",
+          "group": "coordination",
+          "label": "Clear distance between exterior pipe walls"
+        },
+        {
+          "owner": "pipe",
+          "id": "hydraulic-grade-line",
+          "group": "coordination",
+          "label": "Hydraulic water level, not physical crown"
+        }
+      ]
+    },
+    {
+      "id": "precast-drainage",
+      "title": "Precast structures: pieces and assemblies",
+      "root": "precast-concrete",
+      "description": "Precast concrete is the factory-made structural component, whereas access frames, covers and grates are normally separate metal castings. Check approved sections, connection seals and delivery inclusions.",
+      "nodes": [
+        {
+          "id": "precast-concrete",
+          "parent": null,
+          "facet": "Factory-cast concrete"
+        },
+        {
+          "id": "precast-manhole",
+          "parent": "precast-concrete",
+          "facet": "Access structure"
+        },
+        {
+          "id": "precast-catch-basin",
+          "parent": "precast-concrete",
+          "facet": "Surface drainage inlet"
+        },
+        {
+          "id": "precast-utility-vault",
+          "parent": "precast-concrete",
+          "facet": "Utility enclosure"
+        },
+        {
+          "id": "precast-junction-box",
+          "parent": "precast-concrete",
+          "facet": "Utility connection box"
+        },
+        {
+          "id": "precast-box-culvert",
+          "parent": "precast-concrete",
+          "facet": "Box drainage culvert"
+        },
+        {
+          "id": "precast-headwall",
+          "parent": "precast-concrete",
+          "facet": "Culvert end wall"
+        },
+        {
+          "id": "precast-wingwall",
+          "parent": "precast-concrete",
+          "facet": "Culvert side retaining wall"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "precast-manhole",
+          "id": "precast-manhole-base",
+          "group": "parts",
+          "label": "Base with pipe openings"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "precast-riser-section",
+          "group": "parts",
+          "label": "Stackable barrel sections"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "eccentric-cone-section",
+          "group": "parts",
+          "label": "Offset access cone if specified"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "concentric-cone-section",
+          "group": "parts",
+          "label": "Centred access cone if specified"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "precast-flat-top",
+          "group": "parts",
+          "label": "Roof slab alternative to cone"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "precast-grade-ring",
+          "group": "parts",
+          "label": "Rim adjustment rings"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "manhole-steps",
+          "group": "parts",
+          "label": "Access footholds where allowed"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "manhole-channel",
+          "group": "parts",
+          "label": "Flow-through base channel"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "manhole-benching",
+          "group": "parts",
+          "label": "Sloping surfaces beside channel"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "manhole-pipe-boot",
+          "group": "parts",
+          "label": "Resilient pipe entry seal"
+        },
+        {
+          "owner": "precast-catch-basin",
+          "id": "catch-basin-sump",
+          "group": "parts",
+          "label": "Sediment collection below outlet"
+        },
+        {
+          "owner": "precast-catch-basin",
+          "id": "catch-basin-outlet",
+          "group": "parts",
+          "label": "Outlet to CB lead"
+        },
+        {
+          "owner": "precast-catch-basin",
+          "id": "catch-basin-hood",
+          "group": "parts",
+          "label": "Outlet baffle if detailed"
+        },
+        {
+          "owner": "precast-box-culvert",
+          "id": "box-culvert-joint",
+          "group": "parts",
+          "label": "Joint between adjacent box units"
+        },
+        {
+          "owner": "precast-concrete",
+          "id": "precast-joint-sealant",
+          "group": "parts",
+          "label": "Approved inter-section seal where required"
+        },
+        {
+          "owner": "precast-concrete",
+          "id": "precast-lifting-anchor",
+          "group": "methods",
+          "label": "Engineered lifting inserts"
+        },
+        {
+          "owner": "precast-concrete",
+          "id": "precast-lifting-clutch",
+          "group": "methods",
+          "label": "Matched lifting equipment"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "manhole-cored-opening",
+          "group": "methods",
+          "label": "Coring only where approved"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "manhole-frame-and-cover",
+          "group": "coordination",
+          "label": "Separate metal cover assembly"
+        },
+        {
+          "owner": "precast-catch-basin",
+          "id": "catch-basin-frame",
+          "group": "coordination",
+          "label": "Matching casting frame"
+        },
+        {
+          "owner": "precast-catch-basin",
+          "id": "catch-basin-grate",
+          "group": "coordination",
+          "label": "Drainage grate and inlet capacity"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "pipe-invert",
+          "group": "coordination",
+          "label": "Inlet and outlet invert elevations"
+        },
+        {
+          "owner": "precast-manhole",
+          "id": "drop-manhole",
+          "group": "coordination",
+          "label": "Special drop arrangement if required"
+        },
+        {
+          "owner": "precast-box-culvert",
+          "id": "precast-headwall",
+          "group": "coordination",
+          "label": "Outlet / inlet end wall if detailed"
+        }
+      ]
+    },
+    {
+      "id": "utility-castings",
+      "title": "Utility castings: metal frames, lids and grates",
+      "root": "utility-casting",
+      "description": "Castings are manufactured metal products (often grey or ductile iron) such as frames, lids and grates. Materials, function and traffic ratings are independent facets; they are distinct from a precast concrete catch basin or manhole.",
+      "nodes": [
+        {
+          "id": "utility-casting",
+          "parent": null,
+          "facet": "Metal cast component"
+        },
+        {
+          "id": "cast-iron-casting",
+          "parent": "utility-casting",
+          "facet": "Material: grey cast iron"
+        },
+        {
+          "id": "ductile-iron-casting",
+          "parent": "utility-casting",
+          "facet": "Material: ductile iron"
+        },
+        {
+          "id": "manhole-frame-and-cover",
+          "parent": "utility-casting",
+          "facet": "Assembly: access lid + frame"
+        },
+        {
+          "id": "catch-basin-grate",
+          "parent": "utility-casting",
+          "facet": "Function: surface inlet grate"
+        },
+        {
+          "id": "curb-inlet-casting",
+          "parent": "utility-casting",
+          "facet": "Function: curb-side intake"
+        },
+        {
+          "id": "side-inlet-casting",
+          "parent": "utility-casting",
+          "facet": "Function: side inlet"
+        },
+        {
+          "id": "traffic-rated-casting",
+          "parent": "utility-casting",
+          "facet": "Performance: specified traffic loading"
+        }
+      ],
+      "connections": [
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "manhole-frame",
+          "group": "parts",
+          "label": "Seating frame"
+        },
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "manhole-cover",
+          "group": "parts",
+          "label": "Removable metal lid"
+        },
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "locking-manhole-cover",
+          "group": "parts",
+          "label": "Locking alternative where detailed"
+        },
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "vented-manhole-cover",
+          "group": "parts",
+          "label": "Vented alternative where permitted"
+        },
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "watertight-manhole-cover",
+          "group": "parts",
+          "label": "Gasketed watertight alternative"
+        },
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "manhole-riser-ring",
+          "group": "parts",
+          "label": "Metal height extension if approved"
+        },
+        {
+          "owner": "catch-basin-grate",
+          "id": "catch-basin-frame",
+          "group": "parts",
+          "label": "Matching grate frame"
+        },
+        {
+          "owner": "catch-basin-grate",
+          "id": "trench-drain-grate",
+          "group": "parts",
+          "label": "Different grate form for linear drain"
+        },
+        {
+          "owner": "utility-casting",
+          "id": "casting-grade-adjustment",
+          "group": "methods",
+          "label": "Reset to finished surface elevation"
+        },
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "adjustable-manhole-frame",
+          "group": "methods",
+          "label": "Adjustable frame option"
+        },
+        {
+          "owner": "manhole-frame-and-cover",
+          "id": "precast-manhole",
+          "group": "coordination",
+          "label": "Concrete structure beneath metal assembly"
+        },
+        {
+          "owner": "catch-basin-grate",
+          "id": "precast-catch-basin",
+          "group": "coordination",
+          "label": "Concrete drainage box below"
+        },
+        {
+          "owner": "catch-basin-grate",
+          "id": "combination-inlet",
+          "group": "coordination",
+          "label": "Combined curb-and-top inlet arrangement"
+        },
+        {
+          "owner": "utility-casting",
+          "id": "traffic-rated-casting",
+          "group": "coordination",
+          "label": "Verify vehicle load class by location"
+        }
+      ]
     }
   ]
 }

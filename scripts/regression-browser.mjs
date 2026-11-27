@@ -382,6 +382,29 @@ await scenario('Suspended slab is discoverable from Today and Dictionary and sho
   assert.ok((await page.locator('#dictionaryLoadMore').innerText()).includes('Showing'));
 },{mobile:true});
 
+
+await scenario('Pipe crown / obvert and invert are findable and linked to precast and casting trees',async({page})=>{
+  await openApp(page);
+  await page.locator('.term-tree-home-links a[href="term.html?term=pipe"]').click();
+  await page.locator('#termPage h1').waitFor();
+  assert.match(await page.locator('#termPage h1').innerText(),/^pipe$/i);
+  assert.ok(await page.locator('.term-tree-explorer').count(),'pipe card should include relationship trees');
+  assert.ok(await page.locator('.term-tree-explorer a[href="term.html?term=pipe-crown"]').count());
+  await page.locator('.term-tree-explorer a[href="term.html?term=pipe-crown"]').first().click();
+  assert.match(await page.locator('#termPage h1').innerText(),/pipe crown/i);
+  assert.match(await page.locator('#termPage').innerText(),/obvert/i);
+  await page.goto(origin+'/',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelector('#categoryFilter')?.options.length>1,null,{timeout:20000});
+  await page.locator('.tabs .tab[data-view="dictionary"]').click();
+  await page.locator('#categoryFilter').selectOption('concrete');
+  await page.locator('#searchInput').fill('obvert');
+  assert.equal(await page.locator('#categoryFilter').inputValue(),'all');
+  await page.waitForFunction(()=>document.querySelector('#dictionaryGrid')?.textContent?.toLowerCase().includes('pipe crown'));
+  assert.match(await page.locator('#dictionaryGrid .term-title').first().innerText(),/pipe crown/i);
+  await page.locator('#searchInput').fill('RCP');
+  await page.waitForFunction(()=>document.querySelector('#dictionaryGrid')?.textContent?.toLowerCase().includes('reinforced concrete pipe'));
+},{mobile:true});
+
 await browser.close();
 console.log('BROWSER REGRESSION SUMMARY '+passed+' passed, '+failed+' failed');
 await import('node:fs/promises').then(fs=>fs.writeFile(output+'/results.json',JSON.stringify({passed,failed,results},null,2)));

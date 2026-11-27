@@ -1,4 +1,4 @@
-const CACHE='construction-vocab-v25';
+const CACHE='construction-vocab-v26';
 const ASSETS=[
   './',
   './index.html',

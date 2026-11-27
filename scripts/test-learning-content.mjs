@@ -1,3 +1,4 @@
+import './test-pipes-precast-castings.mjs';
 import './test-term-trees.mjs';
 import './test-structural-vocabulary.mjs';
 import './test-storm-tie-in-vocabulary.mjs';
