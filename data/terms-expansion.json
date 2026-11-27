@@ -11620,7 +11620,7 @@
     "translation_vi": [
       "đốt thân hố ga đúc sẵn"
     ],
-    "example_en": "Count precast riser sections using the available manufactured heights.",
+    "example_en": "Count each precast riser section using the available manufactured heights.",
     "scenario": "Count the specified items using the available manufactured heights.",
     "visual": "Stackable cylinder between base and cone.",
     "related_terms": [
@@ -11724,7 +11724,7 @@
     "translation_vi": [
       "vòng kê cao độ hố ga đúc sẵn"
     ],
-    "example_en": "Include precast grade rings below the manhole frame in the final road elevation.",
+    "example_en": "Include each precast grade ring below the manhole frame in the final road elevation.",
     "scenario": "Include the specified items below the manhole frame in the final road elevation.",
     "visual": "Thin round rings stacked directly below manhole frame.",
     "related_terms": [

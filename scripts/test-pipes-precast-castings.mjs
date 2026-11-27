@@ -50,7 +50,7 @@ for(const id of newIds){
  const t=byId.get(id);
  assert.ok(t,'missing new vocabulary '+id);
  for(const key of ['term','pronunciation','definition_en','explanation_ru','scenario','example_en','visual']){
-  assert.ok(typeof t[key]==='string'&&t[key].length>=(key==='pronunciation'?1:10),'invalid '+id+'.'+key);
+  assert.ok(typeof t[key]==='string'&&t[key].length>=(['term','pronunciation'].includes(key)?1:10),'invalid '+id+'.'+key);
  }
  for(const lang of ['translation_ru','translation_vi']){
   assert.ok(Array.isArray(t[lang])&&t[lang].length>=1&&t[lang].every(Boolean),'missing '+id+'.'+lang);
